@@ -8,6 +8,11 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
+  def gravatar_url
+    gravatar_id = Digest::MD5::hexdigest(email.downcase)
+    "https://secure.gravatar.com/avatar/#{gravatar_id}"
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable

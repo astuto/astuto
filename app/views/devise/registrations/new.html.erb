@@ -18,7 +18,7 @@
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
       <small id="passwordHelp" class="form-text text-muted">
-        (<%= @minimum_password_length %> characters minimum)
+        <%= @minimum_password_length %> characters minimum
       </small>
     <% end %>
   </div>
