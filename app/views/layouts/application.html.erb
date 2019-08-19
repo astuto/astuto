@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>Astuto</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+    <%= render "layouts/alerts" %>
+
     <%= yield %>
   </body>
 </html>
