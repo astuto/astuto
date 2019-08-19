@@ -1,1 +1,7 @@
-@import './bootstrap_custom.scss'
+@import './bootstrap_custom.scss';
+@import './navbar.scss';
+@import './forms.scss';
+
+.container {
+  max-width: 920px;
+}
