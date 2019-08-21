@@ -8,6 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
+          <% if current_user.moderator? || current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "Admin Panel", admin_root_path, class: "nav-link", 'data-turbolinks': 'false' %>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag(current_user.gravatar_url, class: "gravatar", alt: current_user.full_name, size: 24) %>

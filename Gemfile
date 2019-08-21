@@ -28,7 +28,11 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Authentication
 gem 'devise', git: 'https://github.com/plataformatec/devise'
+
+# Administration panel
+gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
