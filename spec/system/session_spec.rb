@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Session", type: :system do
+# RSpec.describe "Session", type: :system do
 
   # def log_in_as(user)
   #   visit new_user_session_path
@@ -17,4 +17,4 @@ RSpec.describe "Session", type: :system do
   #   expect(current_path).to eq(edit_user_registration_path)
   # end
 
-end
+# end

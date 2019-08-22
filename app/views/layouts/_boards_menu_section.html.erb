@@ -1,0 +1,5 @@
+<% boards.each do |board| %>
+  <li class="nav-item<%= board.id == @board.id ? ' active' : '' unless @board.nil? %>">
+    <%= link_to board.name, board_path(board), class: "nav-link" %>
+  </li>
+<% end %>
