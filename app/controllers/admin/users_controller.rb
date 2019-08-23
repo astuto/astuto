@@ -32,9 +32,12 @@ module Admin
     # for more information
 
     def authenticate_admin
-      super # apply the generic rules for authentication in the admin panel...
-      
-      # ...plus this one
+      unless user_signed_in?
+        flash[:alert] = "You must be logged in to access this page."
+        redirect_to new_user_session_path
+        return
+      end
+
       unless current_user.admin?
         flash[:alert] = "You do not have the privilegies to access this page."
         redirect_to root_path

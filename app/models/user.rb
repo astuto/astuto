@@ -6,7 +6,7 @@ class User < ApplicationRecord
   enum role: [:user, :moderator, :admin]
   after_initialize :set_default_role, if: :new_record?
 
-  validates :full_name, presence: true
+  validates :full_name, presence: true, length: { in: 2..32 }
 
   def set_default_role
     self.role ||= :user
