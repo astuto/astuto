@@ -8,7 +8,7 @@ RSpec.describe PostStatus, type: :model do
   end
 
   it 'must have a name' do
-    empty_name = FactoryBot.build(:post_status, name: "")
+    empty_name = FactoryBot.build(:post_status, name: '')
     nil_name = FactoryBot.build(:post_status, name: nil)
 
     expect(empty_name).to be_invalid
@@ -23,11 +23,11 @@ RSpec.describe PostStatus, type: :model do
 
   it 'has a valid hex color' do
     nil_color = FactoryBot.build(:post_status, color: nil)
-    empty_color = FactoryBot.build(:post_status, color: "")
-    invalid_color = FactoryBot.build(:post_status, color: "ffffff")
-    invalid_color2 = FactoryBot.build(:post_status, color: "#ffff")
-    valid_color = FactoryBot.build(:post_status, color: "#fff")
-    valid_color2 = FactoryBot.build(:post_status, color: "#ffffff")
+    empty_color = FactoryBot.build(:post_status, color: '')
+    invalid_color = FactoryBot.build(:post_status, color: 'ffffff')
+    invalid_color2 = FactoryBot.build(:post_status, color: '#ffff')
+    valid_color = FactoryBot.build(:post_status, color: '#fff')
+    valid_color2 = FactoryBot.build(:post_status, color: '#ffffff')
 
     expect(nil_color).to be_invalid
     expect(empty_color).to be_invalid

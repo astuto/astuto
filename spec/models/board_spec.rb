@@ -9,7 +9,7 @@ RSpec.describe Board, type: :model do
 
   it 'has a non-nil and non-empty name' do
     nil_name_board = FactoryBot.build(:board, name: nil)
-    empty_name_board = FactoryBot.build(:board, name: "")
+    empty_name_board = FactoryBot.build(:board, name: '')
 
     expect(nil_name_board).to be_invalid
     expect(empty_name_board).to be_invalid
@@ -24,7 +24,7 @@ RSpec.describe Board, type: :model do
 
   it 'has a description that can be nil or empty' do
     nil_description_board = FactoryBot.build(:board, description: nil)
-    empty_description_board = FactoryBot.build(:board, description: "")
+    empty_description_board = FactoryBot.build(:board, description: '')
 
     expect(nil_description_board).to be_valid
     expect(empty_description_board).to be_valid
