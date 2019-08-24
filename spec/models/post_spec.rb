@@ -7,7 +7,7 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
 
-  it 'has a non-null and non-empty title' do
+  it 'has a non-nil and non-empty title' do
     nil_post = FactoryBot.build(:post, title: nil)
     empty_post = FactoryBot.build(:post, title: "")
 

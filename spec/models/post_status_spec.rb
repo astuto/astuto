@@ -8,11 +8,11 @@ RSpec.describe PostStatus, type: :model do
   end
 
   it 'must have a name' do
-    emptyname = FactoryBot.build(:post_status, name: "")
-    nilname = FactoryBot.build(:post_status, name: nil)
+    empty_name = FactoryBot.build(:post_status, name: "")
+    nil_name = FactoryBot.build(:post_status, name: nil)
 
-    expect(emptyname).to be_invalid
-    expect(nilname).to be_invalid
+    expect(empty_name).to be_invalid
+    expect(nil_name).to be_invalid
   end
 
   it 'has a unique name' do
@@ -22,18 +22,18 @@ RSpec.describe PostStatus, type: :model do
   end
 
   it 'has a valid hex color' do
-    nilcolor = FactoryBot.build(:post_status, color: nil)
-    emptycolor = FactoryBot.build(:post_status, color: "")
-    invalidcolor = FactoryBot.build(:post_status, color: "ffffff")
-    invalidcolor2 = FactoryBot.build(:post_status, color: "#ffff")
-    validcolor = FactoryBot.build(:post_status, color: "#fff")
-    validcolor2 = FactoryBot.build(:post_status, color: "#ffffff")
+    nil_color = FactoryBot.build(:post_status, color: nil)
+    empty_color = FactoryBot.build(:post_status, color: "")
+    invalid_color = FactoryBot.build(:post_status, color: "ffffff")
+    invalid_color2 = FactoryBot.build(:post_status, color: "#ffff")
+    valid_color = FactoryBot.build(:post_status, color: "#fff")
+    valid_color2 = FactoryBot.build(:post_status, color: "#ffffff")
 
-    expect(nilcolor).to be_invalid
-    expect(emptycolor).to be_invalid
-    expect(invalidcolor).to be_invalid
-    expect(invalidcolor2).to be_invalid
-    expect(validcolor).to be_valid
-    expect(validcolor2).to be_valid
+    expect(nil_color).to be_invalid
+    expect(empty_color).to be_invalid
+    expect(invalid_color).to be_invalid
+    expect(invalid_color2).to be_invalid
+    expect(valid_color).to be_valid
+    expect(valid_color2).to be_valid
   end
 end
