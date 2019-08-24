@@ -44,4 +44,21 @@ RSpec.describe 'Requests to the admin panel', type: :request do
     get admin_boards_path
     expect(response).to have_http_status(:success)
   end
+
+  it 'requires at least a logged-in moderator to view PostStatuses admin panel' do
+    get admin_post_statuses_path
+    expect(response).to redirect_to(new_user_session_path)
+
+    sign_in user
+    get admin_post_statuses_path
+    expect(response).to redirect_to(root_path)
+
+    sign_in moderator
+    get admin_post_statuses_path
+    expect(response).to have_http_status(:success)
+
+    sign_in admin
+    get admin_post_statuses_path
+    expect(response).to have_http_status(:success)
+  end
 end
