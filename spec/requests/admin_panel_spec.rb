@@ -11,7 +11,7 @@ RSpec.describe 'Requests to the admin panel', type: :request do
     admin.confirm
   end
   
-  it 'requires a logged-in admin to administrate Users' do
+  it 'requires a logged-in admin to view Users admin panel' do
     get admin_users_path
     expect(response).to redirect_to(new_user_session_path)
 
@@ -28,7 +28,7 @@ RSpec.describe 'Requests to the admin panel', type: :request do
     expect(response).to have_http_status(:success)
   end
 
-  it 'requires at least a logged-in moderator to administrate Boards' do
+  it 'requires at least a logged-in moderator to view Boards admin panel' do
     get admin_boards_path
     expect(response).to redirect_to(new_user_session_path)
 
