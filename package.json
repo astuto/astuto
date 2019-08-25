@@ -2,14 +2,24 @@
   "name": "app",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "4.3.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
-    "turbolinks": "^5.2.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react_ujs": "^2.6.0",
+    "ts-loader": "^6.0.4",
+    "turbolinks": "^5.2.0",
+    "typescript": "^3.5.3"
   },
   "version": "0.1.0",
   "devDependencies": {
