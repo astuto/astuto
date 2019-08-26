@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_093234) do
+ActiveRecord::Schema.define(version: 2019_08_26_154118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_093234) do
     t.string "color", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order", default: 999, null: false
+    t.boolean "show_in_roadmap", default: false, null: false
     t.index ["name"], name: "index_post_statuses_on_name", unique: true
   end
 

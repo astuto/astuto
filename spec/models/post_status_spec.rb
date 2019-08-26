@@ -36,4 +36,18 @@ RSpec.describe PostStatus, type: :model do
     expect(valid_color).to be_valid
     expect(valid_color2).to be_valid
   end
+
+  it 'must have a order of type integer and positive' do
+    nil_order = FactoryBot.build(:post_status, order: nil)
+    empty_order = FactoryBot.build(:post_status, order: '')
+    decimal_order = FactoryBot.build(:post_status, order: 1.1)
+    negative_order = FactoryBot.build(:post_status, order: -1)
+    zero_order = FactoryBot.build(:post_status, order: 0)
+
+    expect(nil_order).to be_invalid
+    expect(empty_order).to be_invalid
+    expect(decimal_order).to be_invalid
+    expect(negative_order).to be_invalid
+    expect(zero_order).to be_invalid
+  end
 end

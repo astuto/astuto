@@ -11,6 +11,8 @@ class PostStatusDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     color: ColorField,
+    order: Field::Number,
+    show_in_roadmap: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,6 +25,8 @@ class PostStatusDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   name
   color
+  order
+  show_in_roadmap
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -31,6 +35,8 @@ class PostStatusDashboard < Administrate::BaseDashboard
   id
   name
   color
+  order
+  show_in_roadmap
   created_at
   updated_at
   ].freeze
@@ -41,6 +47,8 @@ class PostStatusDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   color
+  order
+  show_in_roadmap
   ].freeze
 
   # COLLECTION_FILTERS
