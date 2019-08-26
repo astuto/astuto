@@ -7,10 +7,10 @@ feature_board = Board.create(name: 'Feature Requests', description: 'Post here y
 bug_board = Board.create(name: 'Bug Reports', description: 'Post here your bug reports.')
 
 # Create some post statuses
-planned_post_status = PostStatus.create(name: 'Planned', color: '#0096ff')
-in_progress_post_status = PostStatus.create(name: 'In Progress', color: '#9437ff')
-completed_post_status = PostStatus.create(name: 'Completed', color: '#6ac47c')
-rejected_post_status = PostStatus.create(name: 'Rejected', color: '#ff2600')
+planned_post_status = PostStatus.create(name: 'Planned', color: '#0096ff', order: 1, show_in_roadmap: true)
+in_progress_post_status = PostStatus.create(name: 'In Progress', color: '#9437ff', order: 2, show_in_roadmap: true)
+completed_post_status = PostStatus.create(name: 'Completed', color: '#6ac47c', order: 3, show_in_roadmap: true)
+rejected_post_status = PostStatus.create(name: 'Rejected', color: '#ff2600', order: 4, show_in_roadmap: false)
 
 # Create some posts
 Post.create(
