@@ -12,7 +12,6 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 
 RUN yarn install --check-files
-RUN yarn install
 
 COPY . /app
 

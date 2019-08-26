@@ -6,6 +6,8 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
+    environment:
+      - UPDATE=0
     volumes:
       - .:/app
     ports:
