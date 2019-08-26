@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#home'
+  root to: 'static_pages#roadmap'
 
   namespace :admin do
     root to: 'boards#index'

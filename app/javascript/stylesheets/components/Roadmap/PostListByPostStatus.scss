@@ -1,0 +1,46 @@
+@media (max-width: 800px) {
+  .roadmapColumn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 801px) {
+  .roadmapColumn {
+    width: 32%;
+  }
+}
+
+.roadmapColumn {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+
+  margin: 8px 0;
+  padding: 8px;
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+
+  padding-bottom: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+
+.columnTitle {
+  margin: 0 8px;
+  font-weight: 700;
+}
+
+.scrollContainer {
+  overflow-y: auto;
+  max-height: 350px;
+}
