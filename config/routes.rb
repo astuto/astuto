@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'static_pages#roadmap'
+  get '/roadmap', to: 'static_pages#roadmap'
 
   namespace :admin do
     root to: 'boards#index'
