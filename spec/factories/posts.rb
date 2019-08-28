@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    title { 'Post Title' }
+    sequence(:title) { |n| "Post #{n}" }
     description { 'Post Description' }
     board
     user
