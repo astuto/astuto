@@ -62,7 +62,7 @@ module Admin
 
     # overwrite default update
     def update
-      user = User.find(params[:user][:id])
+      user = User.find(params[:id])
       
       if params[:user][:password].empty?
         user.assign_attributes(user_params.except(:password))
