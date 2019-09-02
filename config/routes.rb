@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :boards, only: [:show]
+
+  post '/posts', to: 'posts#create'
 end

@@ -1,2 +1,10 @@
-<h1><%= @board.name %></h1>
-<p><%= @board.description %></p>
+<%=
+  react_component(
+    'Board/Board',
+    {
+      board: @board,
+      isLoggedIn: user_signed_in?,
+      authenticityToken: form_authenticity_token,
+    }
+  )
+%>
