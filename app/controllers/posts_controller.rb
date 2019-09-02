@@ -1,5 +1,16 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
+  def index_by_board_id
+    board_id = params[:board_id] || 1
+    
+    posts = Post
+      .left_outer_joins(:post_status)
+      .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
+      .where(board_id: board_id)
+    
+      render json: posts
+  end
 
   def create
     post = Post.new(post_params)

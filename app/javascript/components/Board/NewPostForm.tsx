@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import '../../stylesheets/components/Board/NewPostForm.scss';
-
 interface Props {
   title: string;
   description: string;

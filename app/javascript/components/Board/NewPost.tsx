@@ -1,11 +1,9 @@
 import * as React from 'react';
 
 import NewPostForm from './NewPostForm';
-import Spinner from '../Shared/Spinner';
+import Spinner from '../shared/Spinner';
 
 import IBoard from '../../interfaces/IBoard';
-
-import '../../stylesheets/components/Board/NewPost.scss';
 
 interface Props {
   board: IBoard;

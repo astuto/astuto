@@ -19,8 +19,10 @@ class Board extends React.Component<Props> {
 
     return (
       <div className="boardContainer">
-        <NewPost board={board} isLoggedIn={isLoggedIn} authenticityToken={authenticityToken} />
-        <PostList />
+        <div className="sidebar">
+          <NewPost board={board} isLoggedIn={isLoggedIn} authenticityToken={authenticityToken} />
+        </div>
+        <PostList board={board} />
       </div>
     );
   }

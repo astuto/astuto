@@ -4,4 +4,128 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: nowrap;
+
+  .sidebar {
+    top: 20px;
+    position: sticky;
+  }
+
+  .newBoardContainer {
+    flex: 0 0 auto;
+  
+    width: 250px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  
+    border: 1px solid black;
+    border-radius: 4px;
+  
+    padding: 8px;
+    margin: 8px;
+
+    .boardName {
+      font-size: 24px;
+      font-weight: 600;
+      
+      text-align: center;
+    }
+    
+    .boardDescription {
+      color: grey;
+      font-size: 17px;
+      font-weight: 200;
+    
+      text-align: center;
+    
+      margin-bottom: 8px;
+    }
+    
+    .submitBtn {
+      margin-bottom: 8px;
+    }
+    
+    .success {
+      color: green;
+      text-align: center;
+    }
+    
+    .error {
+      color: red;
+      text-align: center;
+    }
+  }
+  
+  .postList {
+    display: flex;
+    flex-direction: column;
+    
+    flex: 1 1 auto;
+  
+    border: 1px solid black;
+    border-radius: 4px;
+    
+    padding: 8px;
+    margin: 8px;
+
+    .postLink {
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    
+    .postLink:hover {
+      text-decoration: none;
+      background-color: #f5f5f5;
+    }
+    
+    .postListItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    
+      height: 114px;
+      margin: 4px 0;
+      padding: 8px 4px;
+    }
+    
+    .postTitle {
+      color: black;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    
+    .postDescription {
+      color: grey;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    
+    .postDetails {
+      display: flex;
+    
+      color: black;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    
+    .postDetailsComments {
+      margin-right: 16px;
+    }
+    
+    .postDetailsStatus {
+      display: flex;
+    }
+    
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 4px;
+    }
+  }
 }
