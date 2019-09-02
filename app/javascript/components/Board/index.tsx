@@ -5,7 +5,7 @@ import PostList from './PostList';
 
 import IBoard from '../../interfaces/IBoard';
 
-import '../../stylesheets/components/Board/Board.scss';
+import '../../stylesheets/components/Board.scss';
 
 interface Props {
   board: IBoard;

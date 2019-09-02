@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import '../../stylesheets/components/Roadmap/PostListItem.scss';
-
 interface Props {
   title: string;
   boardName: string;

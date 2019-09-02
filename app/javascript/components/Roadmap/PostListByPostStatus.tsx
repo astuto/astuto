@@ -6,8 +6,6 @@ import IPostStatus from '../../interfaces/IPostStatus';
 import IPost from '../../interfaces/IPost';
 import IBoard from '../../interfaces/IBoard';
 
-import '../../stylesheets/components/Roadmap/PostListByPostStatus.scss';
-
 interface Props {
   postStatus: IPostStatus;
   posts: Array<IPost>;

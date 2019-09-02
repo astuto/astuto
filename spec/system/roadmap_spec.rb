@@ -46,9 +46,9 @@ feature 'roadmap', type: :system, js: true do
     within roadmap_columns do
       expect(page).to have_selector(roadmap_column, count: 2)
       expect(page).to have_selector(column_header, count: 2)
-      expect(page).to have_content(post_status_1.name)
-      expect(page).to have_content(post_status_2.name)
-      expect(page).not_to have_content(post_status_3.name)
+      expect(page).to have_content(/#{post_status_1.name}/i)
+      expect(page).to have_content(/#{post_status_2.name}/i)
+      expect(page).not_to have_content(/#{post_status_3.name}/i)
     end
   end
 
@@ -57,9 +57,9 @@ feature 'roadmap', type: :system, js: true do
 
     within roadmap_columns do
       expect(page).to have_selector(post_link, count: 2)
-      expect(page).to have_content(post1.title)
-      expect(page).to have_content(post2.title)
-      expect(page).not_to have_content(post3.title)
+      expect(page).to have_content(/#{post1.title}/)
+      expect(page).to have_content(/#{post2.title}/)
+      expect(page).not_to have_content(/#{post3.title}/)
     end
   end
 
@@ -67,9 +67,9 @@ feature 'roadmap', type: :system, js: true do
     visit root_path
 
     within roadmap_columns do
-      expect(page).to have_content(post1.board.name)
-      expect(page).to have_content(post2.board.name)
-      expect(page).not_to have_content(post3.board.name)
+      expect(page).to have_content(/#{post1.board.name}/i)
+      expect(page).to have_content(/#{post2.board.name}/i)
+      expect(page).not_to have_content(/#{post3.board.name}/i)
     end
   end
 end

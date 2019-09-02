@@ -5,8 +5,6 @@ import PostListItem from './PostListItem';
 import IPost from '../../interfaces/IPost';
 import IBoard from '../../interfaces/IBoard';
 
-import '../../stylesheets/components/Roadmap/PostList.scss';
-
 interface Props {
   posts: Array<IPost>;
   boards: Array<IBoard>;
