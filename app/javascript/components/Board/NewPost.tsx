@@ -135,7 +135,7 @@ class NewPost extends React.Component<Props, State> {
           isLoggedIn ?
             <button
               onClick={this.toggleForm}
-              className="submitBtn btn btn-dark">
+              className={`submitBtn btn btn-${showForm ? 'outline-' : ''}dark`}>
               { showForm ? 'Cancel' : 'Submit feedback' }
             </button>
           :

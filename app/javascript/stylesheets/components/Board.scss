@@ -5,11 +5,6 @@
   align-items: flex-start;
   flex-wrap: nowrap;
 
-  .smallTitle {
-    font-size: 18px;
-    font-weight: 500;
-  }
-
   .sidebar {
     top: 20px;
     position: sticky;
@@ -32,6 +27,11 @@
   
     padding: 8px;
     margin: 8px;
+
+    .smallTitle {
+      font-size: 19px;
+      font-weight: 600;
+    }
   }
 
   .newBoardContainer {
@@ -85,7 +85,8 @@
       display: flex;
       align-items: center;
 
-      text-transform: uppercase;
+      font-size: 17px;
+      font-weight: 500;
 
       padding: 4px;
     }
@@ -151,6 +152,7 @@
       
         color: black;
         font-size: 16px;
+        font-weight: 300;
         text-transform: uppercase;
         
         .postDetailsComments {

@@ -23,7 +23,7 @@ const PostListItem = ({ title, description, postStatus}: Props) => (
           <span className="comment icon"></span>
           <span>0 comments</span>
         </div>
-        <div className="postDetailsStatus" style={{color: postStatus.color}}>
+        <div className="postDetailsStatus">
           <div className="dot" style={{backgroundColor: postStatus.color}}></div>
           <span className="postStatusName">{postStatus.name}</span>
         </div>
