@@ -5,27 +5,36 @@
   align-items: flex-start;
   flex-wrap: nowrap;
 
+  .smallTitle {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
   .sidebar {
     top: 20px;
     position: sticky;
+
+    .sidebar-box {
+      flex: 0 0 auto;
+  
+      width: 250px;
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
 
-  .newBoardContainer {
-    flex: 0 0 auto;
-  
-    width: 250px;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  
+  .box {
     border: 1px solid black;
     border-radius: 4px;
   
     padding: 8px;
     margin: 8px;
+  }
 
+  .newBoardContainer {
     .boardName {
       font-size: 24px;
       font-weight: 600;
@@ -57,18 +66,53 @@
       text-align: center;
     }
   }
+
+  .postStatusFilterContainer {
+    .postStatusListItemContainer {
+      display: flex;
+
+      flex: 1 1 auto;
+      align-self: stretch;
+    }
+
+    .postStatusListItemLink {
+      flex: 1 1 auto;
+    }
+
+    .postStatusListItem {
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+
+      text-transform: uppercase;
+
+      padding: 4px;
+    }
+
+    .postStatusListItem:hover {
+      cursor: pointer;
+
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+
+    .resetFilter {
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+
+      padding: 0;
+
+      align-self: center;
+    }
+  }
   
   .postList {
     display: flex;
     flex-direction: column;
     
     flex: 1 1 auto;
-  
-    border: 1px solid black;
-    border-radius: 4px;
-    
-    padding: 8px;
-    margin: 8px;
 
     .postLink {
       text-decoration: none;
@@ -117,16 +161,17 @@
           display: flex;
         }
   
-        .dot {
-          width: 16px;
-          height: 16px;
-          border-radius: 100%;
-    
-          margin-top: auto;
-          margin-bottom: auto;
-          margin-right: 4px;
-        }
       }
     }
   }
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 4px;
 }

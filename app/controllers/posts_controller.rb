@@ -3,11 +3,12 @@ class PostsController < ApplicationController
 
   def index_by_board_id
     board_id = params[:board_id] || 1
+
     
     posts = Post
       .left_outer_joins(:post_status)
       .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
-      .where(board_id: board_id)
+      .where(filter_params)
     
       render json: posts
   end
@@ -24,8 +25,13 @@ class PostsController < ApplicationController
   end
 
   private
-
+  
+    def filter_params
+      params.permit(:board_id, :post_status_id)
+    end
+    
     def post_params
       params.require(:post).permit(:title, :description, :board_id)
     end
+
 end

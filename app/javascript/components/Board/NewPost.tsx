@@ -127,7 +127,7 @@ class NewPost extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <div className="newBoardContainer">
+      <div className="box sidebar-box newBoardContainer">
         <span className="boardName">{board.name}</span>
         <span className="boardDescription">{board.description}</span>
         {/* <span>{this.props.authenticityToken}</span> */}

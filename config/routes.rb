@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   post '/posts', to: 'posts#create'
   get '/posts', to: 'posts#index_by_board_id'
+  get '/post_statuses', to: 'post_statuses#index'
 end
