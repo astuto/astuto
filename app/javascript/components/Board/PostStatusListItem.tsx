@@ -16,7 +16,7 @@ const PostStatusListItem = ({
   isCurrentFilter,
   handleResetFilter,
 }: Props) => (
-  <div className="postStatusListItemContainer">
+  <div className={"postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')}`}>
     <a onClick={handleClick} className="postStatusListItemLink">
       <div className="postStatusListItem">
         <div className="dot" style={{backgroundColor: color}}></div>

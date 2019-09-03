@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     sequence(:title) { |n| "Post #{n}" }
-    description { 'Post Description' }
+    sequence(:description) { |n| "Post #{n} description" }
     board
     user
     post_status

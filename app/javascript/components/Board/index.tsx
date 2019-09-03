@@ -74,7 +74,7 @@ class Board extends React.Component<Props, State> {
     if (byPostStatus) params += `&post_status_id=${byPostStatus}`;
 
     try {
-      let res = await fetch(`http://localhost:3000/posts?board_id=${boardId}${params}`);
+      let res = await fetch(`/posts?board_id=${boardId}${params}`);
       let data = await res.json();
 
       this.setState({
@@ -110,7 +110,7 @@ class Board extends React.Component<Props, State> {
     });
 
     try {
-      let res = await fetch('http://localhost:3000/post_statuses');
+      let res = await fetch('/post_statuses');
       let data = await res.json();
 
       this.setState({

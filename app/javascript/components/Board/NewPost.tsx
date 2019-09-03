@@ -85,7 +85,7 @@ class NewPost extends React.Component<Props, State> {
     }
 
     try {
-      let res = await fetch('http://localhost:3000/posts', {
+      let res = await fetch('/posts', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -139,7 +139,7 @@ class NewPost extends React.Component<Props, State> {
               { showForm ? 'Cancel' : 'Submit feedback' }
             </button>
           :
-            <a href="http://localhost:3000/users/sign_in" className="btn btn-dark">
+            <a href="/users/sign_in" className="btn btn-dark">
               Log in / Sign up
             </a>
         }
