@@ -102,10 +102,11 @@ class NewPost extends React.Component<Props, State> {
       });
       this.setState({isLoading: false});
 
-      let data = await res.json();
-
-      if (data.status === 'success') this.setState({success: 'Your post has been published!'});
-      else this.setState({error: data.message});
+      if (res.status === 204) this.setState({success: 'Your post has been published!'});
+      else {
+        let data = await res.json();
+        this.setState({error: data.message});
+      }
 
     } catch (e) {
       this.setState({
@@ -130,7 +131,6 @@ class NewPost extends React.Component<Props, State> {
       <div className="box sidebar-box newBoardContainer">
         <span className="boardName">{board.name}</span>
         <span className="boardDescription">{board.description}</span>
-        {/* <span>{this.props.authenticityToken}</span> */}
         {
           isLoggedIn ?
             <button

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create]
 
   def index_by_board_id
     board_id = params[:board_id] || 1
@@ -10,17 +10,18 @@ class PostsController < ApplicationController
       .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
       .where(filter_params)
     
-      render json: posts
+    render json: posts
   end
 
   def create
     post = Post.new(post_params)
-    post.user_id = current_user.id
 
     if post.save
-      render json: { status: 'success' }
+      render json: post, status: :no_content
     else
-      render json: { status: 'error', message: post.errors.full_messages }
+      render json: {
+        error: I18n.t('errors.post.create', message: post.errors.full_messages)
+      }, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +32,10 @@ class PostsController < ApplicationController
     end
     
     def post_params
-      params.require(:post).permit(:title, :description, :board_id)
+      params
+        .require(:post)
+        .permit(:title, :description, :board_id)
+        .merge(user_id: current_user.id)
     end
 
 end
