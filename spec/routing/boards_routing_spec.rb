@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'board routing', :aggregate_failures, type: :routing do
-  it 'only routes the page to show a board' do
+RSpec.describe 'boards routing', :aggregate_failures, type: :routing do
+  it 'routes boards' do
     expect(get: '/boards/1').to route_to(
       controller: 'boards', action: 'show', id: '1'
     )

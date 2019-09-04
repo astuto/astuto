@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :boards, only: [:show]
-
-  post '/posts', to: 'posts#create'
-  get '/posts', to: 'posts#index_by_board_id'
-  get '/post_statuses', to: 'post_statuses#index'
+  resources :posts, only: [:index, :create]
+  resources :post_statuses, only: [:index]
 end

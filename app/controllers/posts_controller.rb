@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
-  def index_by_board_id
-    board_id = params[:board_id] || 1
-
-    
+  def index
     posts = Post
       .left_outer_joins(:post_status)
       .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
@@ -28,7 +25,11 @@ class PostsController < ApplicationController
   private
   
     def filter_params
-      params.permit(:board_id, :post_status_id)
+      defaults = { board_id: Board.first.id }
+
+      params
+        .permit(:board_id, :post_status_id)
+        .with_defaults(defaults)
     end
     
     def post_params
@@ -37,5 +38,4 @@ class PostsController < ApplicationController
         .permit(:title, :description, :board_id)
         .merge(user_id: current_user.id)
     end
-
 end
