@@ -25,7 +25,7 @@ const PostList = ({ posts, areLoading, error, handleLoadMore, page, hasMore }: P
       loadMore={handleLoadMore}
       threshold={50}
       hasMore={hasMore}
-      loader={<Spinner />}
+      loader={<Spinner key={0} />}
       useWindow={true}
     >
       {posts.map((post, i) => (

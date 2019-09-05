@@ -1,3 +1,38 @@
+@media (max-width: 800px) {
+  .boardContainer {
+    flex-direction: column;
+
+    .sidebar {
+      position: relative;
+      width: 100%;
+      top: 0;
+
+      .sidebar-box {
+        width: 100%;
+      }
+    }
+
+    .box {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 801px) {
+  .boardContainer {
+    flex-direction: row;
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+
+      .sidebar-box {
+        width: 250px;
+      }
+    }
+  }
+}
+
 .boardContainer {
   display: flex;
   flex: 1 1 auto;
@@ -5,15 +40,11 @@
   align-items: flex-start;
   flex-wrap: nowrap;
 
+  
   .sidebar {
-    top: 20px;
-    position: sticky;
-
     .sidebar-box {
       flex: 0 0 auto;
   
-      width: 250px;
-    
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -116,6 +147,7 @@
     flex: 1 1 auto;
 
     .postLink {
+      display: block;
       text-decoration: none;
       border-radius: 4px;
       margin: 8px 0;
