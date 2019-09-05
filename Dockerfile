@@ -11,6 +11,12 @@ RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 RUN mkdir /app
 WORKDIR /app
 
+# Ruby language server
+RUN gem install solargraph
+
+# Launch processes in Procfile
+RUN gem install foreman
+
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
@@ -25,4 +31,4 @@ ENTRYPOINT ["/app/docker-entrypoint.sh"]
 EXPOSE 3000
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["foreman", "start", "-p", "3000"]
