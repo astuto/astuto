@@ -6,6 +6,7 @@ class PostsController < ApplicationController
       .left_outer_joins(:post_status)
       .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
       .where(filter_params)
+      .search(params[:search])
       .page(params[:page])
     
     render json: posts
@@ -26,12 +27,12 @@ class PostsController < ApplicationController
   private
   
     def filter_params
-      defaults = { board_id: Board.first.id, page: 1 }
+      defaults = { board_id: Board.first.id }
 
       params
-        .permit(:board_id, :post_status_id, :page)
+        .permit(:board_id, :post_status_id, :page, :search)
         .with_defaults(defaults)
-        .except(:page) # do not return page param
+        .except(:page, :search) # permit, but do not return page and search params
     end
     
     def post_params

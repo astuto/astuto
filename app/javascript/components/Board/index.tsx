@@ -1,12 +1,15 @@
 import * as React from 'react';
 
 import NewPost from './NewPost';
+import SearchFilter from './SearchFilter';
 import PostStatusFilter from './PostStatusFilter';
 import PostList from './PostList';
 
 import IBoard from '../../interfaces/IBoard';
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
+
+import debounce from '../../helpers/debounce.js';
 
 import '../../stylesheets/components/Board.scss';
 
@@ -19,6 +22,7 @@ interface Props {
 interface State {
   filters: {
     byPostStatus: number;
+    searchQuery: string;
   };
   posts: {
     items: Array<IPost>;
@@ -42,6 +46,7 @@ class Board extends React.Component<Props, State> {
     this.state = {
       filters: {
         byPostStatus: 0,
+        searchQuery: '',
       },
       posts: {
         items: [],
@@ -61,8 +66,9 @@ class Board extends React.Component<Props, State> {
     this.requestPosts = this.requestPosts.bind(this);
     this.loadMorePosts = this.loadMorePosts.bind(this);
     this.requestPostStatuses = this.requestPostStatuses.bind(this);
-    this.setPostStatusFilter = this.setPostStatusFilter.bind(this);
 
+    this.setSearchFilter = this.setSearchFilter.bind(this);
+    this.setPostStatusFilter = this.setPostStatusFilter.bind(this);
   }
 
   componentDidMount() {
@@ -82,12 +88,13 @@ class Board extends React.Component<Props, State> {
     });
 
     const boardId = this.props.board.id;
-    const { byPostStatus } = this.state.filters;
+    const { byPostStatus, searchQuery } = this.state.filters;
 
     let params = '';
     params += `page=${page}`;
     params += `&board_id=${boardId}`;
     if (byPostStatus) params += `&post_status_id=${byPostStatus}`;
+    if (searchQuery) params += `&search=${searchQuery}`;
 
     try {
       let res = await fetch(`/posts?${params}`);
@@ -137,9 +144,17 @@ class Board extends React.Component<Props, State> {
     }
   }
 
+  setSearchFilter(searchQuery: string) {
+    debounce(() => (
+        this.setState({
+          filters: { ...this.state.filters, searchQuery },
+        }, this.requestPosts)
+    ), 1000)();
+  }
+
   setPostStatusFilter(postStatusId: number) {
     this.setState({
-      filters: { byPostStatus: postStatusId },
+      filters: { ...this.state.filters, byPostStatus: postStatusId },
     }, this.requestPosts);
   }
 
@@ -172,7 +187,7 @@ class Board extends React.Component<Props, State> {
 
   render() {
     const { board, isLoggedIn, authenticityToken } = this.props;
-    const { posts, postStatuses } = this.state;
+    const { posts, postStatuses, filters } = this.state;
 
     return (
       <div className="boardContainer">
@@ -182,13 +197,17 @@ class Board extends React.Component<Props, State> {
             isLoggedIn={isLoggedIn}
             authenticityToken={authenticityToken}
           />
+          <SearchFilter
+            searchQuery={filters.searchQuery}
+            handleChange={this.setSearchFilter}
+          />
           <PostStatusFilter
             postStatuses={postStatuses.items}
             areLoading={postStatuses.areLoading}
             error={postStatuses.error}
 
             handleFilterClick={this.setPostStatusFilter}
-            currentFilter={this.state.filters.byPostStatus}
+            currentFilter={filters.byPostStatus}
           />
         </div>
         <PostList
