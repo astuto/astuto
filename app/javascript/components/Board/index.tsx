@@ -9,8 +9,6 @@ import IBoard from '../../interfaces/IBoard';
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 
-import debounce from '../../helpers/debounce.js';
-
 import '../../stylesheets/components/Board.scss';
 
 interface Props {
@@ -40,6 +38,8 @@ interface State {
 }
 
 class Board extends React.Component<Props, State> {
+  searchFilterTimeoutId: number;
+
   constructor(props) {
     super(props);
 
@@ -145,11 +145,13 @@ class Board extends React.Component<Props, State> {
   }
 
   setSearchFilter(searchQuery: string) {
-    debounce(() => (
+    if (this.searchFilterTimeoutId) clearInterval(this.searchFilterTimeoutId);
+    
+    this.searchFilterTimeoutId = setTimeout(() => (
         this.setState({
           filters: { ...this.state.filters, searchQuery },
         }, this.requestPosts)
-    ), 1000)();
+    ), 500);
   }
 
   setPostStatusFilter(postStatusId: number) {

@@ -28,15 +28,20 @@ const PostList = ({ posts, areLoading, error, handleLoadMore, page, hasMore }: P
       loader={<Spinner key={0} />}
       useWindow={true}
     >
-      {posts.map((post, i) => (
-        <PostListItem
-          title={post.title}
-          description={post.description}
-          postStatus={post.postStatus}
+      {
+        posts.length > 0 ?
+          posts.map((post, i) => (
+            <PostListItem
+              title={post.title}
+              description={post.description}
+              postStatus={post.postStatus}
 
-          key={i}
-        />
-      ))}
+              key={i}
+            />
+          ))
+        :
+          !areLoading ? <span className="infoText text-muted">There are no posts.</span> : null
+      }
     </InfiniteScroll>
   </div>
 );

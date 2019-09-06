@@ -102,10 +102,16 @@ class NewPost extends React.Component<Props, State> {
       });
       this.setState({isLoading: false});
 
-      if (res.status === 204) this.setState({success: 'Your post has been published!'});
-      else {
+      if (res.status === 204) {
+        this.setState({
+          success: 'Your post has been published!',
+
+          title: '',
+          description: '',
+        });
+      } else {
         let data = await res.json();
-        this.setState({error: data.message});
+        this.setState({error: data.error});
       }
 
     } catch (e) {
