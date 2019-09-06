@@ -38,7 +38,7 @@ interface State {
 }
 
 class Board extends React.Component<Props, State> {
-  searchFilterTimeoutId: number;
+  searchFilterTimeoutId: ReturnType<typeof setTimeout>;
 
   constructor(props) {
     super(props);
