@@ -7,9 +7,15 @@ class Post < ApplicationRecord
 
   paginates_per 15
 
-  def self.search(s = '')
-    s = s || ''
-    s = sanitize_sql_like(s)
-    where("posts.title ILIKE ? OR posts.description ILIKE ?", "%#{s}%", "%#{s}%")
+  class << self
+    def find_with_post_status_in(post_statuses)
+      where(post_status_id: post_statuses.pluck(:id))
+    end
+
+    def search_by_name_or_description(s)
+      s = s || ''
+      s = sanitize_sql_like(s)
+      where("posts.title ILIKE ? OR posts.description ILIKE ?", "%#{s}%", "%#{s}%")
+    end
   end
 end
