@@ -11,9 +11,6 @@ RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 RUN mkdir /app
 WORKDIR /app
 
-# Ruby language server
-RUN gem install solargraph
-
 # Launch processes in Procfile
 RUN gem install foreman
 
