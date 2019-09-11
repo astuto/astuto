@@ -50,7 +50,10 @@ const PostList = ({
             />
           ))
         :
-          !areLoading ? <span className="infoText text-muted">There are no posts.</span> : null
+          areLoading ?
+            <span className="infoText">Loading...</span>
+          :
+            <span className="infoText text-muted">There are no posts.</span>
       }
     </InfiniteScroll>
   </div>

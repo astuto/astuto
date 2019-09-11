@@ -24,9 +24,6 @@ const PostStatusFilter = ({
 }: Props) => (
   <div className="box sidebar-box postStatusFilterContainer">
     <span className="smallTitle">Filter by post status:</span>
-
-    { areLoading ? <Spinner /> : null }
-    { error ? <span className="error">{error}</span> : null }
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem
@@ -41,6 +38,8 @@ const PostStatusFilter = ({
         />
       ))
     }
+    { areLoading ? <Spinner /> : null }
+    { error ? <span className="error">{error}</span> : null }
   </div>
 );
 
