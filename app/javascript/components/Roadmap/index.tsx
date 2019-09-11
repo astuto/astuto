@@ -3,14 +3,14 @@ import * as React from 'react';
 import PostListByPostStatus from './PostListByPostStatus';
 
 import IPostStatus from '../../interfaces/IPostStatus';
-import IPost from '../../interfaces/IPost';
+import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';
 
 import '../../stylesheets/components/Roadmap.scss';
 
 interface Props {
   postStatuses: Array<IPostStatus>;
-  posts: Array<IPost>;
+  posts: Array<IPostJSON>;
   boards: Array<IBoard>;
 }
 

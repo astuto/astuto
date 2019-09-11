@@ -3,8 +3,7 @@ class PostsController < ApplicationController
 
   def index
     posts = Post
-      .left_outer_joins(:post_status)
-      .select('posts.title, posts.description, post_statuses.name as post_status_name, post_statuses.color as post_status_color')
+      .select(:title, :description, :post_status_id)
       .where(filter_params)
       .search_by_name_or_description(params[:search])
       .page(params[:page])

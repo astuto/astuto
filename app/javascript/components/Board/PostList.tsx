@@ -6,9 +6,11 @@ import PostListItem from './PostListItem';
 import Spinner from '../shared/Spinner';
 
 import IPost from '../../interfaces/IPost';
+import IPostStatus from '../../interfaces/IPostStatus';
 
 interface Props {
   posts: Array<IPost>;
+  postStatuses: Array<IPostStatus>;
   areLoading: boolean;
   error: string;
 
@@ -17,7 +19,15 @@ interface Props {
   hasMore: boolean;
 }
 
-const PostList = ({ posts, areLoading, error, handleLoadMore, page, hasMore }: Props) => (
+const PostList = ({
+  posts,
+  postStatuses,
+  areLoading,
+  error,
+  handleLoadMore,
+  page,
+  hasMore
+}: Props) => (
   <div className="box postList">
     { error ? <span className="error">{error}</span> : null }
     <InfiniteScroll
@@ -34,7 +44,7 @@ const PostList = ({ posts, areLoading, error, handleLoadMore, page, hasMore }: P
             <PostListItem
               title={post.title}
               description={post.description}
-              postStatus={post.postStatus}
+              postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
 
               key={i}
             />

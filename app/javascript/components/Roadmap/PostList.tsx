@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import PostListItem from './PostListItem';
 
-import IPost from '../../interfaces/IPost';
+import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';
 
 interface Props {
-  posts: Array<IPost>;
+  posts: Array<IPostJSON>;
   boards: Array<IBoard>;
 }
 

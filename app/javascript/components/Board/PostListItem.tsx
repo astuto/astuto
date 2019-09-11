@@ -1,9 +1,11 @@
 import * as React from 'react';
 
+import IPostStatus from '../../interfaces/IPostStatus';
+
 interface Props {
   title: string;
   description?: string;
-  postStatus: {name: string, color: string};
+  postStatus: IPostStatus;
 }
 
 const PostListItem = ({ title, description, postStatus}: Props) => (
@@ -23,10 +25,15 @@ const PostListItem = ({ title, description, postStatus}: Props) => (
           <span className="comment icon"></span>
           <span>0 comments</span>
         </div>
-        <div className="postDetailsStatus">
-          <div className="dot" style={{backgroundColor: postStatus.color}}></div>
-          <span className="postStatusName">{postStatus.name}</span>
-        </div>
+        {
+          postStatus ?
+            <div className="postDetailsStatus">
+              <div className="dot" style={{backgroundColor: postStatus.color}}></div>
+              <span className="postStatusName">{postStatus.name}</span>
+            </div>
+          :
+            null
+        }
       </div>
     </div>
   </a>
