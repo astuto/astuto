@@ -102,7 +102,7 @@ class BoardP extends React.Component<Props> {
           areLoading={posts.areLoading}
           error={posts.error}
 
-          handleLoadMore={() => requestPosts(board.id, posts.page + 1)}
+          handleLoadMore={() => posts.areLoading ? null : requestPosts(board.id, posts.page + 1)}
         />
       </div>
     );
