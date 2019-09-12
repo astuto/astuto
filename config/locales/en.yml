@@ -1,4 +1,6 @@
 en:
   errors:
+    unauthorized: 'You are not authorized'
     post:
       create: 'Post create error: %{message}'
+      update: 'Post update error: %{message}'

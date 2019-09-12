@@ -42,6 +42,7 @@ const PostList = ({
         posts.length > 0 ?
           posts.map((post, i) => (
             <PostListItem
+              id={post.id}
               title={post.title}
               description={post.description}
               postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}

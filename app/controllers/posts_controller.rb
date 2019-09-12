@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :update]
 
   def index
     posts = Post
-      .select(:title, :description, :post_status_id)
+      .select(:id, :title, :description, :post_status_id)
       .where(filter_params)
       .search_by_name_or_description(params[:search])
       .page(params[:page])
@@ -19,6 +19,37 @@ class PostsController < ApplicationController
     else
       render json: {
         error: I18n.t('errors.post.create', message: post.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @post_statuses = PostStatus
+      .find_roadmap
+      .select(:id, :name, :color)
+
+    respond_to do |format|
+      format.html
+
+      format.json { render json: @post }
+    end
+  end
+
+  def update
+    post = Post.find(params[:id])
+    
+    if current_user.role == :user && current_user.id != post.user_id
+      render json: I18n.t('errors.unauthorized'), status: :unauthorized
+    end
+
+    post.post_status_id = params[:post][:post_status_id]
+
+    if post.save
+      render json: post, status: :no_content
+    else
+      render json: {
+        error: I18n.t('errors.post.update', message: post.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end

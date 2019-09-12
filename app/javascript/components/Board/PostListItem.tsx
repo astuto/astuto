@@ -3,13 +3,14 @@ import * as React from 'react';
 import IPostStatus from '../../interfaces/IPostStatus';
 
 interface Props {
+  id: number;
   title: string;
   description?: string;
   postStatus: IPostStatus;
 }
 
-const PostListItem = ({ title, description, postStatus}: Props) => (
-  <a href="#" className="postLink">
+const PostListItem = ({ id, title, description, postStatus}: Props) => (
+  <a href={`/posts/${id}`} className="postLink">
     <div className="postListItem">
       <div className="postTitle">{title}</div>
       <div className="postDescription">

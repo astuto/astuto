@@ -12,6 +12,8 @@ import {
   POSTS_REQUEST_FAILURE,
 } from '../actions/requestPosts';
 
+import { postRequestSuccess } from '../actions/requestPost';
+
 import {
   ChangeFiltersActionTypes,
   SET_SEARCH_FILTER,
@@ -54,9 +56,9 @@ const postsReducer = (
       return {
         ...state,
         items: action.page === 1 ?
-          action.posts.map(post => postReducer(undefined, {type: 'CONVERT', post})) //improve
+          action.posts.map(post => postReducer(undefined, postRequestSuccess(post)))
           :
-          [...state.items, ...action.posts.map(post => postReducer(undefined, {type: 'CONVERT', post}))],
+          [...state.items, ...action.posts.map(post => postReducer(undefined, postRequestSuccess(post)))],
         page: action.page,
         haveMore: action.posts.length === 15,
         areLoading: false,

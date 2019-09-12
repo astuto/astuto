@@ -16,6 +16,7 @@ const PostList = ({ posts, boards }: Props) => (
       posts.length > 0 ?
         posts.map((post, i) => (
           <PostListItem
+            id={post.id}
             title={post.title}
             boardName={boards.find(board => board.id === post.board_id).name}
 
