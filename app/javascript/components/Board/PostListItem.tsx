@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import PostStatusLabel from '../shared/PostStatusLabel';
+
 import IPostStatus from '../../interfaces/IPostStatus';
 
 interface Props {
@@ -26,15 +28,7 @@ const PostListItem = ({ id, title, description, postStatus}: Props) => (
           <span className="comment icon"></span>
           <span>0 comments</span>
         </div>
-        {
-          postStatus ?
-            <div className="postDetailsStatus">
-              <div className="dot" style={{backgroundColor: postStatus.color}}></div>
-              <span className="postStatusName">{postStatus.name}</span>
-            </div>
-          :
-            null
-        }
+        { postStatus ? <PostStatusLabel {...postStatus} /> : null }
       </div>
     </div>
   </a>

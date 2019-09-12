@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import PostStatusLabel from '../shared/PostStatusLabel';
+
 interface Props {
   name: string;
   color: string;
@@ -19,8 +21,7 @@ const PostStatusListItem = ({
   <div className={"postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')}`}>
     <a onClick={handleClick} className="postStatusListItemLink">
       <div className="postStatusListItem">
-        <div className="dot" style={{backgroundColor: color}}></div>
-        <span className="postStatusName">{name}</span>
+        <PostStatusLabel id={undefined} name={name} color={color} />
       </div>
     </a>
     {

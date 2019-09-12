@@ -39,8 +39,9 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     
-    if current_user.role == :user && current_user.id != post.user_id
+    if current_user.role == 'user' && current_user.id != post.user_id
       render json: I18n.t('errors.unauthorized'), status: :unauthorized
+      return
     end
 
     post.post_status_id = params[:post][:post_status_id]

@@ -17,6 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   changePostStatus(postId: number, newPostStatusId: number, authenticityToken: string) {
+    if (isNaN(newPostStatusId)) newPostStatusId = null;
+
     dispatch(changePostStatus(postId, newPostStatusId, authenticityToken));
   },
 });

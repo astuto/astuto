@@ -18,7 +18,7 @@ const PostStatusSelect = ({
   handleChange,
 }: Props) => (
   <select
-    value={selectedPostStatusId || ''}
+    value={selectedPostStatusId || 'none'}
     onChange={
       (e: FormEvent) => (
         handleChange(parseInt((e.target as HTMLSelectElement).value))
@@ -30,7 +30,7 @@ const PostStatusSelect = ({
         {postStatus.name}
       </option>
     ))}
-    <option>None</option>
+    <option value="none">None</option>
   </select>
 );
 

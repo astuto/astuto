@@ -4,6 +4,7 @@ import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 
 import PostStatusSelect from './PostStatusSelect';
+import PostStatusLabel from '../shared/PostStatusLabel';
 
 interface Props {
   postId: number;
@@ -39,9 +40,9 @@ class PostP extends React.Component<Props> {
 
     return (
       <div>
-        <h1>{post.title}</h1>
+        <h2>{post.title}</h2>
         {
-          isPowerUser ?
+          isPowerUser && post ?
             <PostStatusSelect
               postStatuses={postStatuses}
               selectedPostStatusId={post.postStatusId}
@@ -50,7 +51,9 @@ class PostP extends React.Component<Props> {
               }
             />
           :
-            <span>LLL</span>
+            <PostStatusLabel
+              {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
+            />
         }
 
         <p>{post.description}</p>
