@@ -31,6 +31,16 @@ feature 'board', type: :system, js: true do
     post4
   }
 
+  def assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
+    within board_container do
+      if n_of_posts_in_board < n_of_posts_per_page * page_number
+        expect(page).to have_selector(post_link, count: n_of_posts_in_board)
+      else
+        expect(page).to have_selector(post_link, count: n_of_posts_per_page * page_number)
+      end
+    end
+  end
+
   it 'renders correctly' do
     visit board_path(board)
 
@@ -141,5 +151,48 @@ feature 'board', type: :system, js: true do
     expect(page).to have_content(/#{post1.title}/i)
     expect(page).to have_content(/#{post2.title}/i)
     expect(page).to have_content(/#{post3.title}/i)
+  end
+
+  it 'enables users to search posts by title and description' do
+    visit board_path(board)
+
+    expect(page).to have_content(/#{post1.title}/i)
+    expect(page).to have_content(/#{post2.title}/i)
+    expect(page).to have_content(/#{post3.title}/i)
+
+    within sidebar do
+      fill_in 'Search:', with: post1.title
+    end
+
+    expect(page).to have_content(/#{post1.title}/i)
+    expect(page).to have_no_content(/#{post2.title}/i)
+    expect(page).to have_no_content(/#{post3.title}/i)
+
+    within sidebar do
+      fill_in 'Search:', with: post2.description
+    end
+
+    expect(page).to have_no_content(/#{post1.description}/i)
+    expect(page).to have_content(/#{post2.description}/i)
+    expect(page).to have_no_content(/#{post3.description}/i)
+  end
+
+  it 'autoloads new posts with infinite scroll' do
+    40.times { FactoryBot.create(:post, board: board) }
+    n_of_posts_in_board = Post.where(board_id: board.id).count
+
+    visit board_path(board)
+    
+    n_of_posts_per_page = page.all(:css, post_link).size
+    page_number = 1
+
+    assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
+
+    # scroll to the bottom of the page until all posts are shown
+    while n_of_posts_in_board > n_of_posts_per_page * page_number
+      execute_script('window.scrollTo(0, document.body.scrollHeight);');
+      page_number += 1
+      assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
+    end
   end
 end
