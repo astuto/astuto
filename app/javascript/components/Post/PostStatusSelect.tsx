@@ -17,21 +17,25 @@ const PostStatusSelect = ({
   selectedPostStatusId,
   handleChange,
 }: Props) => (
-  <select
-    value={selectedPostStatusId || 'none'}
-    onChange={
-      (e: FormEvent) => (
-        handleChange(parseInt((e.target as HTMLSelectElement).value))
-    )}
-    className="selectPicker"
-  >
-    {postStatuses.map((postStatus, i) => (
-      <option value={postStatus.id} key={i}>
-        {postStatus.name}
-      </option>
-    ))}
-    <option value="none">None</option>
-  </select>
+  <React.Fragment>
+    <label htmlFor="postStatusSelect">Status:</label>
+    <select
+      value={selectedPostStatusId || 'none'}
+      onChange={
+        (e: FormEvent) => (
+          handleChange(parseInt((e.target as HTMLSelectElement).value))
+      )}
+      id="postStatusSelect"
+      className="selectPicker"
+    >
+      {postStatuses.map((postStatus, i) => (
+        <option value={postStatus.id} key={i}>
+          {postStatus.name}
+        </option>
+      ))}
+      <option value="none">None</option>
+    </select>
+  </React.Fragment>
 );
 
 export default PostStatusSelect;
