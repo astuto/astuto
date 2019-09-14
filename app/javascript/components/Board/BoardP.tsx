@@ -104,7 +104,10 @@ class BoardP extends React.Component<Props> {
           error={posts.error}
 
           handleLoadMore={() =>
-            requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
+            posts.areLoading ?
+              null
+            :
+              requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
           }
         />
       </div>
