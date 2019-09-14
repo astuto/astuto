@@ -71,6 +71,7 @@ class BoardP extends React.Component<Props> {
       handleSearchFilterChange,
       handlePostStatusFilterChange,
     } = this.props;
+    const { filters } = posts;
 
     return (
       <div className="boardContainer">
@@ -81,7 +82,7 @@ class BoardP extends React.Component<Props> {
             authenticityToken={authenticityToken}
           />
           <SearchFilter
-            searchQuery={posts.filters.searchQuery}
+            searchQuery={filters.searchQuery}
             handleChange={handleSearchFilterChange}
           />
           <PostStatusFilter
@@ -89,7 +90,7 @@ class BoardP extends React.Component<Props> {
             areLoading={postStatuses.areLoading}
             error={postStatuses.error}
 
-            currentFilter={posts.filters.postStatusId}
+            currentFilter={filters.postStatusId}
             handleFilterClick={handlePostStatusFilterChange}
           />
         </div>
@@ -102,7 +103,9 @@ class BoardP extends React.Component<Props> {
           areLoading={posts.areLoading}
           error={posts.error}
 
-          handleLoadMore={() => posts.areLoading ? null : requestPosts(board.id, posts.page + 1)}
+          handleLoadMore={() =>
+            requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
+          }
         />
       </div>
     );

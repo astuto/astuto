@@ -61,8 +61,9 @@ class PostsController < ApplicationController
       defaults = { board_id: Board.first.id }
 
       params
-        .permit(:board_id, :post_status_id)
+        .permit(:board_id, :post_status_id, :page, :search)
         .with_defaults(defaults)
+        .except(:page, :search)
     end
     
     def post_params

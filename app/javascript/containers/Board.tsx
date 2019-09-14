@@ -17,7 +17,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestPosts(boardId: number, page: number = 1, searchQuery: string = '', postStatusId: number) {
+  requestPosts(boardId: number, page: number = 1, searchQuery: string = '', postStatusId: number = null) {
     dispatch(requestPosts(boardId, page, searchQuery, postStatusId));
   },
 
