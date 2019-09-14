@@ -52,4 +52,29 @@ RSpec.describe Post, type: :model do
 
     expect(no_board_post).to be_invalid
   end
+
+  it 'has a method that returns posts with status in array' do
+    post_status1 = FactoryBot.create(:post_status)
+    post_status2 = FactoryBot.create(:post_status)
+    post1 = FactoryBot.create(:post, post_status: post_status1)
+    post2 = FactoryBot.create(:post, post_status: post_status2)
+    post
+
+    expected = Post.where(post_status_id: [post_status1.id, post_status2.id])
+    got = Post.find_with_post_status_in([post_status1, post_status2])
+
+    expect(expected).to eq(got)
+  end
+
+  it 'has a method that returns posts with title or description like search query' do
+    post1 = FactoryBot.create(:post, title: 'Fantastic title', description: 'Fabolous description')
+    post2 = FactoryBot.create(:post, title: 'Incredible title', description: 'Wonderful description')
+
+    expect(Post.search_by_name_or_description('fantastic').first).to eq(post1)
+    expect(Post.search_by_name_or_description('WONDERFUL').first).to eq(post2)
+    expect(Post.search_by_name_or_description('brutiful').first).to be_nil
+
+    expect { Post.search_by_name_or_description(nil) }.not_to raise_error
+    expect { Post.search_by_name_or_description('dangerous symbols: " \' %') }.not_to raise_error
+  end
 end

@@ -50,4 +50,15 @@ RSpec.describe PostStatus, type: :model do
     expect(negative_order).to be_invalid
     expect(zero_order).to be_invalid
   end
+
+  it 'has a method that returns only post statuses that should show up in roadmap' do
+    post_status2 = FactoryBot.create(:post_status, show_in_roadmap: true, order: 2)
+    post_status3 = FactoryBot.create(:post_status, show_in_roadmap: true, order: 1)
+
+    roadmap = PostStatus.find_roadmap
+
+    expect(roadmap.size).to eq(2)
+    expect(roadmap.first).to eq(post_status3)
+    expect(roadmap.second).to eq(post_status2)
+  end
 end
