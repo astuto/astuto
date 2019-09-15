@@ -1,0 +1,12 @@
+@import 'vendors/bootstrap_custom';
+
+@import 'general/index';
+@import 'general/navbar';
+@import 'general/form';
+@import 'general/icons';
+
+/*
+  Components stylesheets are not imported here. Instead,
+  they are imported in the specific React components
+  that use them
+*/
