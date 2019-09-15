@@ -1,6 +1,8 @@
 import * as React from 'react';
 
+import CommentsNumber from '../shared/CommentsNumber';
 import PostStatusLabel from '../shared/PostStatusLabel';
+import { TitleText, DescriptionText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -13,21 +15,12 @@ interface Props {
 
 const PostListItem = ({ id, title, description, postStatus}: Props) => (
   <a href={`/posts/${id}`} className="postLink">
-    <div className="postListItem">
-      <div className="postTitle">{title}</div>
-      <div className="postDescription">
-        {
-          description && description.length > 120  ?
-            description.slice(0, 119) + '...'
-          :
-            description || '<No description provided.>'
-        }
-      </div>
-      <div className="postDetails">
-        <div className="postDetailsComments">
-          <span className="comment icon"></span>
-          <span>0 comments</span>
-        </div>
+    <div className="postListItem d-flex flex-column justify-content-between m-0 px-2 py-1">
+      <TitleText>{title}</TitleText>
+      <DescriptionText limit={120}>{description}</DescriptionText>
+
+      <div className="postDetails d-flex justify-content-between text-uppercase">
+        <CommentsNumber number={0} />
         { postStatus ? <PostStatusLabel {...postStatus} /> : null }
       </div>
     </div>

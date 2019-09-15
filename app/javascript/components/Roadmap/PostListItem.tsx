@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { TitleText, UppercaseText } from '../shared/CustomTexts';
+
 interface Props {
   id: number;
   title: string;
@@ -8,9 +10,9 @@ interface Props {
 
 const PostListItem = ({id, title, boardName}: Props) => (
   <a href={`/posts/${id}`} className="postLink">
-    <div className="postListItem">
-      <div className="postTitle">{title}</div>
-      <div className="postBoard">{boardName}</div>
+    <div className="postListItem d-flex flex-column my-1 py-2">
+      <TitleText>{title}</TitleText>
+      <UppercaseText>{boardName}</UppercaseText>
     </div>
   </a>
 );

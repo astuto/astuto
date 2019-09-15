@@ -2,6 +2,12 @@ import * as React from 'react';
 
 import NewPostForm from './NewPostForm';
 import Spinner from '../shared/Spinner';
+import {
+  TitleText,
+  MutedText,
+  DangerText,
+  SuccessText,
+} from '../shared/CustomTexts';
 
 import IBoard from '../../interfaces/IBoard';
 
@@ -134,14 +140,14 @@ class NewPost extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <div className="box sidebar-box newBoardContainer">
-        <span className="boardName">{board.name}</span>
-        <span className="boardDescription">{board.description}</span>
+      <div className="newBoardContainer sidebarBox">
+        <TitleText>{board.name}</TitleText>
+        <MutedText>{board.description}</MutedText>
         {
           isLoggedIn ?
             <button
               onClick={this.toggleForm}
-              className={`submitBtn btn btn-${showForm ? 'outline-' : ''}dark`}>
+              className={`submitBtn btn btn-${showForm ? 'outline-' : ''}dark my-2`}>
               { showForm ? 'Cancel' : 'Submit feedback' }
             </button>
           :
@@ -164,8 +170,8 @@ class NewPost extends React.Component<Props, State> {
         }
 
         { isLoading ? <Spinner /> : null }
-        { error ? <span className="error">{error}</span> : null }
-        { success ? <span className="success">{success}</span> : null }
+        { error ? <DangerText>{error}</DangerText> : null }
+        { success ? <SuccessText>{success}</SuccessText> : null }
       </div>
     );
   }

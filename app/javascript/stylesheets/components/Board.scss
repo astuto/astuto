@@ -1,5 +1,5 @@
-@media (max-width: 800px) {
-  .boardContainer {
+.boardContainer {
+  @media (max-width: 800px) {
     flex-direction: column;
 
     .sidebar {
@@ -7,200 +7,74 @@
       width: 100%;
       top: 0;
 
-      .sidebar-box {
+      .sidebarBox {
         width: 100%;
       }
     }
-
-    .box {
-      width: 100%;
-    }
   }
-}
 
-@media (min-width: 801px) {
-  .boardContainer {
+  @media (min-width: 801px) {
     flex-direction: row;
 
     .sidebar {
       position: sticky;
       top: 20px;
 
-      .sidebar-box {
+      .sidebarBox {
         width: 250px;
       }
     }
   }
-}
 
-.boardContainer {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  
-  .sidebar {
-    .sidebar-box {
-      flex: 0 0 auto;
-  
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-  }
+  .sidebarBox {
+    flex: 0 0 auto;
 
-  .box {
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: thin solid black;
     border-radius: 4px;
-  
-    padding: 8px;
+
     margin: 8px;
-
-    .smallTitle {
-      font-size: 19px;
-      font-weight: 600;
-    }
+    padding: 8px;
   }
 
-  .newBoardContainer {
-    .boardName {
-      font-size: 24px;
-      font-weight: 600;
-      
-      text-align: center;
-    }
-    
-    .boardDescription {
-      color: grey;
-      font-size: 17px;
-      font-weight: 200;
-    
-      text-align: center;
-    
-      margin-bottom: 8px;
-    }
-    
-    .submitBtn {
-      margin-bottom: 8px;
-    }
-    
-    .success {
-      color: green;
-      text-align: center;
-    }
-    
-    .error {
-      color: red;
-      text-align: center;
-    }
-  }
+  .postStatusListItem {
+    height: 40px;
 
-  .postStatusFilterContainer {
-    .postStatusListItemContainer {
-      display: flex;
-
-      flex: 1 1 auto;
-      align-self: stretch;
-    }
-
-    .postStatusListItemLink {
-      flex: 1 1 auto;
-    }
-
-    .postStatusListItem {
-      height: 40px;
-
-      display: flex;
-      align-items: center;
-
-      font-size: 17px;
-      font-weight: 500;
-
-      padding: 4px;
-    }
-
-    .postStatusListItem:hover {
+    &:hover {
       cursor: pointer;
 
       background-color: #f5f5f5;
       border-radius: 4px;
     }
+  }
 
-    .resetFilter {
-      flex: 0 0 auto;
-      width: 30px;
-      height: 30px;
+  .resetFilter {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
 
-      padding: 0;
+    padding: 0;
 
-      align-self: center;
-    }
+    align-self: center;
+  }
+
+  .postLink {
+    display: block;
+    border-radius: 4px;
+    margin: 8px 0;
+    color: black;
   }
   
-  .postList {
-    display: flex;
-    flex-direction: column;
-    
-    flex: 1 1 auto;
-
-    .postLink {
-      display: block;
-      text-decoration: none;
-      border-radius: 4px;
-      margin: 8px 0;
-    }
-    
-    .postLink:hover {
-      text-decoration: none;
-      background-color: #f5f5f5;
-    }
-    
-    .postListItem {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    
-      height: 114px;
-      margin: 0;
-      padding: 8px 4px;
-      
-      .postTitle {
-        color: black;
-        font-weight: 500;
-        font-size: 17px;
-      }
-      
-      .postDescription {
-        color: grey;
-        font-weight: 400;
-        font-size: 15px;
-      }
-      
-      .postDetails {
-        display: flex;
-      
-        color: black;
-        font-size: 16px;
-        font-weight: 300;
-        text-transform: uppercase;
-        
-        .postDetailsComments {
-          margin-right: 16px;
-        }
-        
-        .postDetailsStatus {
-          display: flex;
-        }
-  
-      }
-    }
+  .postLink:hover {
+    text-decoration: none;
+    background-color: #f5f5f5;
   }
-}
 
-.infoText {
-  display: block;
-  text-align: center;
-  font-style: italic;
+  .postListItem {
+    height: 114px;
+  }
 }

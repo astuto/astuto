@@ -1,13 +1,15 @@
 import * as React from 'react';
 
+import { TitleText } from '../shared/CustomTexts';
+
 interface Props {
   searchQuery: string;
   handleChange(newSearchQuery: string): void;
 }
 
 const SearchFilter = ({ searchQuery, handleChange }: Props) => (
-  <div className="box sidebar-box">
-    <label htmlFor="searchPostInput" className="smallTitle">Search:</label>
+  <div className="sidebarBox">
+    <TitleText>Search:</TitleText>
     <input
       type="search"
       onChange={e => handleChange(e.target.value)}

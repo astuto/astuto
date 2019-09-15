@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import PostStatusListItem from './PostStatusListItem';
 import Spinner from '../shared/Spinner';
+import { TitleText, DangerText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -22,8 +23,8 @@ const PostStatusFilter = ({
   handleFilterClick,
   currentFilter,
 }: Props) => (
-  <div className="box sidebar-box postStatusFilterContainer">
-    <span className="smallTitle">Filter by post status:</span>
+  <div className="postStatusFilterContainer sidebarBox">
+    <TitleText>Filter by post status:</TitleText>
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem
@@ -39,7 +40,7 @@ const PostStatusFilter = ({
       ))
     }
     { areLoading ? <Spinner /> : null }
-    { error ? <span className="error">{error}</span> : null }
+    { error ? <DangerText>{error}</DangerText> : null }
   </div>
 );
 

@@ -115,7 +115,7 @@ feature 'board', type: :system, js: true do
       fill_in 'Description (optional)', with: post_description
       click_button 'Submit feedback' # submit
 
-      expect(page).to have_selector('.success')
+      expect(page).to have_selector('.text-success')
     end
 
     visit board_path(board)
@@ -161,7 +161,7 @@ feature 'board', type: :system, js: true do
     expect(page).to have_content(/#{post3.title}/i)
 
     within sidebar do
-      fill_in 'Search:', with: post1.title
+      find('#searchPostInput').set post1.title
     end
 
     expect(page).to have_content(/#{post1.title}/i)
@@ -169,7 +169,7 @@ feature 'board', type: :system, js: true do
     expect(page).to have_no_content(/#{post3.title}/i)
 
     within sidebar do
-      fill_in 'Search:', with: post2.description
+      find('#searchPostInput').set post2.description
     end
 
     expect(page).to have_no_content(/#{post1.description}/i)

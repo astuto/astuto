@@ -18,15 +18,20 @@ const PostStatusListItem = ({
   isCurrentFilter,
   handleResetFilter,
 }: Props) => (
-  <div className={"postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')}`}>
-    <a onClick={handleClick} className="postStatusListItemLink">
-      <div className="postStatusListItem">
+  <div className={
+    "postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')} d-flex align-self-stretch`
+  }>
+    <a onClick={handleClick} className="postStatusListItemLink flex-grow-1">
+      <div className="postStatusListItem p-1">
         <PostStatusLabel id={undefined} name={name} color={color} />
       </div>
     </a>
     {
       isCurrentFilter ?
-        <button onClick={handleResetFilter} className="btn btn-outline-dark resetFilter">X</button> : null
+        <button onClick={handleResetFilter}
+        className="resetFilter btn btn-outline-dark">X</button>
+      :
+        null
     }
   </div>
 );

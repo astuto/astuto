@@ -4,6 +4,10 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 import PostListItem from './PostListItem';
 import Spinner from '../shared/Spinner';
+import {
+  DangerText,
+  MutedText,
+} from '../shared/CustomTexts';
 
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
@@ -28,8 +32,8 @@ const PostList = ({
   page,
   hasMore
 }: Props) => (
-  <div className="box postList">
-    { error ? <span className="error">{error}</span> : null }
+  <div className="postList d-flex flex-column flex-grow-1">
+    { error ? <DangerText>{error}</DangerText> : null }
     <InfiniteScroll
       initialLoad={false}
       loadMore={handleLoadMore}
@@ -52,9 +56,9 @@ const PostList = ({
           ))
         :
           areLoading ?
-            <span className="infoText">Loading...</span>
+            <MutedText>Loading...</MutedText>
           :
-            <span className="infoText text-muted">There are no posts.</span>
+            <MutedText>There are no posts.</MutedText>
       }
     </InfiniteScroll>
   </div>

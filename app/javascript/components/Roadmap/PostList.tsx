@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import PostListItem from './PostListItem';
+import { MutedText } from '../shared/CustomTexts';
 
 import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';
@@ -24,7 +25,7 @@ const PostList = ({ posts, boards }: Props) => (
           />
         ))
       :
-        <span className="infoText text-muted">There are no posts that have this status.</span>
+        <MutedText>There are no posts that have this status.</MutedText>
     }
   </div>
 );

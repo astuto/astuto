@@ -19,7 +19,7 @@ class Roadmap extends React.Component<Props> {
     const { postStatuses, posts, boards } = this.props;
 
     return (
-      <div className="roadmapColumns">
+      <div className="roadmapColumns d-flex justify-content-between flex-wrap">
         {postStatuses.map((postStatus, i) => (
           <PostListByPostStatus
             postStatus={postStatus}
