@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :boards, only: [:show]
-  resources :posts, only: [:index, :create, :show, :update]
+  resources :posts, only: [:index, :create, :show, :update] do
+    resources :comments, only: [:index]
+  end
   resources :post_statuses, only: [:index]
 end

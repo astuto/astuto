@@ -13,26 +13,29 @@ completed_post_status = PostStatus.create(name: 'Completed', color: '#6ac47c', o
 rejected_post_status = PostStatus.create(name: 'Rejected', color: '#ff2600', order: 4, show_in_roadmap: false)
 
 # Create some posts
-Post.create(
+post1 = Post.create(
   title: 'This is how users give you feedback',
   description: 'They can also provide an extendend description like this... bla bla...',
   board_id: feature_board.id,
   user_id: admin.id
 )
-Post.create(
+post2 = Post.create(
   title: 'You can assign a status to each post',
   description: 'This one, for example, is marked as "Planned"',
   board_id: feature_board.id,
   user_id: admin.id,
   post_status_id: planned_post_status.id
 )
-Post.create(
+post3 = Post.create(
   title: 'There are multiple boards',
   description: 'For now you have Feature Requests and Bug Reports, but you can add or remove as many as you want!',
   board_id: bug_board.id,
   user_id: admin.id,
   post_status_id: in_progress_post_status.id
 )
+
+# Create some comments
+post1.comments.create(body: 'Users can comment to express their opinions!', user_id: admin.id)
 
 # Let the user know how to log in with admin account
 puts 'A default admin account has been created. Credentials:'
