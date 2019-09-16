@@ -115,7 +115,7 @@ feature 'board', type: :system, js: true do
       fill_in 'Description (optional)', with: post_description
       click_button 'Submit feedback' # submit
 
-      expect(page).to have_selector('.text-success')
+      expect(page).to have_selector('.successText')
     end
 
     visit board_path(board)
