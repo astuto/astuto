@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import Board from '../../containers/Board';
 import createStoreHelper from '../../helpers/createStore';
 
-import '../../stylesheets/components/Board.scss';
-
 import IBoard from '../../interfaces/IBoard';
 
 interface Props {

@@ -14,13 +14,13 @@ interface Props {
 }
 
 const PostListByPostStatus = ({ postStatus, posts, boards }: Props) => (
-  <div className="roadmapColumn card my-2 px-2" style={{borderColor: postStatus.color}}>
-    <div className="columnHeader card-header d-flex bg-transparent"
+  <div className="roadmapColumn" style={{borderColor: postStatus.color}}>
+    <div className="columnHeader"
       style={{borderBottomColor: postStatus.color}}>
       <div className="dot" style={{backgroundColor: postStatus.color}}></div>
       <div className="columnTitle"><TitleText>{postStatus.name}</TitleText></div>
     </div>
-    <div className="scrollContainer card-body">
+    <div className="scrollContainer">
       <PostList
         posts={posts}
         boards={boards}

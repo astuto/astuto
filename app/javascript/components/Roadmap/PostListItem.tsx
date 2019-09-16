@@ -10,7 +10,7 @@ interface Props {
 
 const PostListItem = ({id, title, boardName}: Props) => (
   <a href={`/posts/${id}`} className="postLink">
-    <div className="postListItem d-flex flex-column my-1 py-2">
+    <div className="postListItem">
       <TitleText>{title}</TitleText>
       <UppercaseText>{boardName}</UppercaseText>
     </div>

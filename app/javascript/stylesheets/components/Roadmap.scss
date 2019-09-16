@@ -1,22 +1,46 @@
 .roadmapColumns {
-  @media (max-width: 800px) {
-    .roadmapColumn {
+  @extend
+    .d-flex,
+    .justify-content-between,
+    .flex-wrap;
+
+  .roadmapColumn {
+    @extend
+      .card,
+      .my-2,
+      .px-2;
+
+    width: 32%;
+
+    @media (max-width: 800px) {
       width: 100%;
     }
   }
-  
-  @media (min-width: 801px) {
-    .roadmapColumn {
-      width: 32%;
-    }
+
+  .columnHeader {
+    @extend
+      .card-header,
+      .d-flex,
+      .bg-transparent;
   }
 
   .scrollContainer {
+    @extend
+      .card-body;
+
     overflow-y: auto;
     max-height: 350px;
   }
 
   .postLink:hover {
     text-decoration: none;
+  }
+
+  .postListItem {
+    @extend
+      .d-flex,
+      .flex-column,
+      .my-1,
+      .py-2;
   }
 }

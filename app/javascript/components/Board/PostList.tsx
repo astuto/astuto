@@ -32,7 +32,7 @@ const PostList = ({
   page,
   hasMore
 }: Props) => (
-  <div className="postList d-flex flex-column flex-grow-1">
+  <div className="postList">
     { error ? <DangerText>{error}</DangerText> : null }
     <InfiniteScroll
       initialLoad={false}

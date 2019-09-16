@@ -8,6 +8,7 @@ import {
   DangerText,
   SuccessText,
 } from '../shared/CustomTexts';
+import Button from '../shared/Button';
 
 import IBoard from '../../interfaces/IBoard';
 
@@ -145,11 +146,12 @@ class NewPost extends React.Component<Props, State> {
         <MutedText>{board.description}</MutedText>
         {
           isLoggedIn ?
-            <button
+            <Button
               onClick={this.toggleForm}
-              className={`submitBtn btn btn-${showForm ? 'outline-' : ''}dark my-2`}>
+              className="submitBtn"
+              outline={showForm}>
               { showForm ? 'Cancel' : 'Submit feedback' }
-            </button>
+            </Button>
           :
             <a href="/users/sign_in" className="btn btn-dark">
               Log in / Sign up

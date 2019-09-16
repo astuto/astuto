@@ -6,8 +6,6 @@ import IPostStatus from '../../interfaces/IPostStatus';
 import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';
 
-import '../../stylesheets/components/Roadmap.scss';
-
 interface Props {
   postStatuses: Array<IPostStatus>;
   posts: Array<IPostJSON>;
@@ -19,7 +17,7 @@ class Roadmap extends React.Component<Props> {
     const { postStatuses, posts, boards } = this.props;
 
     return (
-      <div className="roadmapColumns d-flex justify-content-between flex-wrap">
+      <div className="roadmapColumns">
         {postStatuses.map((postStatus, i) => (
           <PostListByPostStatus
             postStatus={postStatus}

@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Button from '../shared/Button';
+
 interface Props {
   title: string;
   description: string;
@@ -41,11 +43,9 @@ const NewPostForm = ({
           id="postDescription"
         ></textarea>
       </div>
-      <button
-        onClick={e => handleSubmit(e)}
-        className="submitBtn btn btn-dark d-block mx-auto">
-          Submit feedback
-        </button>
+      <Button onClick={e => handleSubmit(e)} className="submitBtn d-block mx-auto">
+        Submit feedback
+      </Button>
     </form>
   </div>
 );

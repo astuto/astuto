@@ -1,4 +1,20 @@
 .boardContainer {
+  @extend
+    .d-flex,
+    .justify-content-between,
+    .align-items-start;
+
+  flex-direction: row;
+
+  .sidebar {
+    position: sticky;
+    top: 20px;
+
+    .sidebarBox {
+      width: 250px;
+    }
+  }
+
   @media (max-width: 800px) {
     flex-direction: column;
 
@@ -13,26 +29,14 @@
     }
   }
 
-  @media (min-width: 801px) {
-    flex-direction: row;
-
-    .sidebar {
-      position: sticky;
-      top: 20px;
-
-      .sidebarBox {
-        width: 250px;
-      }
-    }
-  }
-
   .sidebarBox {
-    flex: 0 0 auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    @extend
+      .d-flex,
+      .flex-column,
+      .justify-content-start,
+      .align-items-center,
+      .flex-grow-0,
+      .flex-shrink-0;
 
     border: thin solid black;
     border-radius: 4px;
@@ -41,7 +45,21 @@
     padding: 8px;
   }
 
+  .postStatusListItemContainer {
+    @extend
+      .d-flex,
+      .align-self-stretch;
+  }
+
+  .postStatusListItemLink {
+    @extend
+      .flex-grow-1;
+  }
+
   .postStatusListItem {
+    @extend
+      .p-1;
+
     height: 40px;
 
     &:hover {
@@ -53,13 +71,21 @@
   }
 
   .resetFilter {
-    flex: 0 0 auto;
+    @extend
+      .flex-grow-0,
+      .flex-shrink-0,
+      .align-self-center,
+      .p-0;
+
     width: 30px;
     height: 30px;
+  }
 
-    padding: 0;
-
-    align-self: center;
+  .postList {
+    @extend
+      .d-flex,
+      .flex-column,
+      .flex-grow-1;
   }
 
   .postLink {
@@ -67,14 +93,29 @@
     border-radius: 4px;
     margin: 8px 0;
     color: black;
-  }
-  
-  .postLink:hover {
-    text-decoration: none;
-    background-color: #f5f5f5;
+
+    &:hover {
+      text-decoration: none;
+      background-color: #f5f5f5;
+    }
   }
 
   .postListItem {
+    @extend
+      .d-flex,
+      .flex-column,
+      .justify-content-between,
+      .m-0,
+      .px-2,
+      .py-1;
+
     height: 114px;
+  }
+
+  .postDetails {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .text-uppercase;
   }
 }

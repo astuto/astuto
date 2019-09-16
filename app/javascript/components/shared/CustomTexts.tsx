@@ -10,27 +10,27 @@ interface DescriptionTextProps {
 }
 
 export const TitleText = ({ children }: Props) => (
-  <span className="text-dark font-weight-bolder">{children}</span>
+  <span className="titleText">{children}</span>
 );
 
 export const MutedText = ({ children }: Props) => (
-  <span className="text-muted text-center">{children}</span>
+  <span className="mutedText">{children}</span>
 );
 
 export const UppercaseText = ({ children }: Props) => (
-  <span className="text-secondary text-uppercase font-weight-lighter">{children}</span>
+  <span className="uppercaseText">{children}</span>
 );
 
 export const SuccessText = ({ children }: Props) => (
-  <span className="text-success text-center">{children}</span>
+  <span className="successText">{children}</span>
 );
 
 export const DangerText = ({ children }: Props) => (
-  <span className="text-danger text-center">{children}</span>
+  <span className="dangerText">{children}</span>
 );
 
 export const DescriptionText = ({ children, limit = 90}: DescriptionTextProps) => (
-  <span className="text-muted">
+  <span className="descriptionText">
     {
       children && children.length > limit ?
         children.slice(0, limit-1) + '...'

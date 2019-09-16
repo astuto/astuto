@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import PostStatusLabel from '../shared/PostStatusLabel';
+import Button from '../shared/Button';
 
 interface Props {
   name: string;
@@ -19,17 +20,18 @@ const PostStatusListItem = ({
   handleResetFilter,
 }: Props) => (
   <div className={
-    "postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')} d-flex align-self-stretch`
+    "postStatusListItemContainer " + `postStatus${name.replace(/ /g, '')}`
   }>
-    <a onClick={handleClick} className="postStatusListItemLink flex-grow-1">
-      <div className="postStatusListItem p-1">
+    <a onClick={handleClick} className="postStatusListItemLink">
+      <div className="postStatusListItem">
         <PostStatusLabel id={undefined} name={name} color={color} />
       </div>
     </a>
     {
       isCurrentFilter ?
-        <button onClick={handleResetFilter}
-        className="resetFilter btn btn-outline-dark">X</button>
+        <Button onClick={handleResetFilter} className="resetFilter" outline>
+          X
+        </Button>
       :
         null
     }

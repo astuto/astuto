@@ -74,7 +74,7 @@ class BoardP extends React.Component<Props> {
     const { filters } = posts;
 
     return (
-      <div className="boardContainer d-flex justify-content-between align-items-start">
+      <div className="boardContainer">
         <div className="sidebar">
           <NewPost
             board={board}

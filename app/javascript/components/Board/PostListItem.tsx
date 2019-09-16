@@ -15,11 +15,11 @@ interface Props {
 
 const PostListItem = ({ id, title, description, postStatus}: Props) => (
   <a href={`/posts/${id}`} className="postLink">
-    <div className="postListItem d-flex flex-column justify-content-between m-0 px-2 py-1">
+    <div className="postListItem">
       <TitleText>{title}</TitleText>
       <DescriptionText limit={120}>{description}</DescriptionText>
 
-      <div className="postDetails d-flex justify-content-between text-uppercase">
+      <div className="postDetails">
         <CommentsNumber number={0} />
         { postStatus ? <PostStatusLabel {...postStatus} /> : null }
       </div>
