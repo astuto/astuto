@@ -18,4 +18,8 @@ class User < ApplicationRecord
     gravatar_id = Digest::MD5::hexdigest(email.downcase)
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
+
+  def power_user?
+    role == 'admin' || role == 'moderator'
+  end
 end

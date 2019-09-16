@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.build(:user) }
+  let(:moderator) { FactoryBot.build(:moderator) }
+  let(:admin) { FactoryBot.build(:admin) }
 
   it 'should be valid' do
     expect(user).to be_valid
@@ -12,10 +14,6 @@ RSpec.describe User, type: :model do
   end
 
   it 'can have the following roles: "user", "moderator" and "admin"' do
-    user = FactoryBot.build(:user)
-    moderator = FactoryBot.build(:moderator)
-    admin = FactoryBot.build(:admin)
-
     expect(user.role).to eq('user')
     expect(moderator.role).to eq('moderator')
     expect(admin.role).to eq('admin')
@@ -49,5 +47,11 @@ RSpec.describe User, type: :model do
     invalid_email_user = FactoryBot.build(:user, email: 'invalid.email')
 
     expect(invalid_email_user).to be_invalid
+  end
+
+  it 'knows if it is a power user' do
+    expect(user).not_to be_a_power_user
+    expect(moderator).to be_a_power_user
+    expect(admin).to be_a_power_user
   end
 end
