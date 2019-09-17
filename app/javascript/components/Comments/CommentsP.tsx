@@ -5,15 +5,19 @@ import Spinner from '../shared/Spinner';
 import { DangerText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
+import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
 
 interface Props {
   postId: number;
 
   comments: Array<IComment>;
+  replies: Array<CommentRepliesState>;
   areLoading: boolean;
   error: string;
 
   requestComments(postId: number, page?: number);
+  toggleCommentReply(commentId: number);
+  setCommentReplyBody(commentId: number, body: string);
 }
 
 class CommentsP extends React.Component<Props> {
@@ -24,8 +28,12 @@ class CommentsP extends React.Component<Props> {
   render() {
     const {
       comments,
+      replies,
       areLoading,
       error,
+
+      toggleCommentReply,
+      setCommentReplyBody,
     } = this.props;
 
     return (
@@ -37,6 +45,9 @@ class CommentsP extends React.Component<Props> {
 
         <CommentList
           comments={comments}
+          replies={replies}
+          toggleCommentReply={toggleCommentReply}
+          setCommentReplyBody={setCommentReplyBody}
           parentId={null}
           level={1}
         />
