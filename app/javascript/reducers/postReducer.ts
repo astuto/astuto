@@ -1,7 +1,5 @@
 import {
-  POST_REQUEST_START,
   POST_REQUEST_SUCCESS,
-  POST_REQUEST_FAILURE,
 } from '../actions/requestPost';
 
 import {
@@ -42,8 +40,6 @@ const postReducer = (
         postStatusId: action.newPostStatusId,
       };
 
-    case POST_REQUEST_START:
-    case POST_REQUEST_FAILURE:
     default:
       return state;
   }

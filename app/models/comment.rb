@@ -5,4 +5,6 @@ class Comment < ApplicationRecord
   has_many :children, class_name: 'Comment', foreign_key: 'parent_id', dependent: :destroy
 
   validates :body, presence: true, length: { minimum: 4 }
+
+  paginates_per 15
 end

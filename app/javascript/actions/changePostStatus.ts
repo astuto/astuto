@@ -3,7 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 import { State } from '../reducers/rootReducer';
 
 export const CHANGE_POST_STATUS_SUCCESS = 'CHANGE_POST_STATUS_SUCCESS';
-interface ChangePostStatusSuccessAction {
+export interface ChangePostStatusSuccessAction {
   type: typeof CHANGE_POST_STATUS_SUCCESS;
   newPostStatusId;
 }

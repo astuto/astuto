@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 import postsReducer from './postsReducer';
 import postStatusesReducer from './postStatusesReducer';
-import postReducer from './postReducer';
+import currentPostReducer from './currentPostReducer';
 
 const rootReducer = combineReducers({
   posts: postsReducer,
   postStatuses: postStatusesReducer,
-  currentPost: postReducer,
+  currentPost: currentPostReducer,
 });
 
 export type State = ReturnType<typeof rootReducer>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :boards, only: [:show]
   resources :posts, only: [:index, :create, :show, :update] do
-    resources :comments, only: [:index]
+    resources :comments, only: [:index, :create]
   end
   resources :post_statuses, only: [:index]
 end

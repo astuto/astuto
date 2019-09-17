@@ -5,6 +5,7 @@ import IPostStatus from '../../interfaces/IPostStatus';
 
 import PostStatusSelect from './PostStatusSelect';
 import PostStatusLabel from '../shared/PostStatusLabel';
+import Comments from '../../containers/Comments';
 
 interface Props {
   postId: number;
@@ -15,6 +16,7 @@ interface Props {
   authenticityToken: string;
 
   requestPost(postId: number): void;
+  requestComments(postId: number, page?: number): void;
   changePostStatus(
     postId: number,
     newPostStatusId: number,
@@ -57,6 +59,8 @@ class PostP extends React.Component<Props> {
         }
 
         <p>{post.description}</p>
+
+        <Comments postId={this.props.postId} />
       </div>
     );
   }
