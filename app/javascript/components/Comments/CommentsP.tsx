@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import CommentList from './CommentList';
+import Spinner from '../shared/Spinner';
+import { DangerText } from '../shared/CustomTexts';
+
 import IComment from '../../interfaces/IComment';
 
 interface Props {
@@ -25,10 +29,17 @@ class CommentsP extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div>
-        {comments.map((comment, i) => (
-          <div key={i}>{comment.body}</div>
-        ))}
+      <div className="comments">
+        <h2>Comments</h2>
+
+        { areLoading ? <Spinner /> : null }
+        { error ? <DangerText>{error}</DangerText> : null }
+
+        <CommentList
+          comments={comments}
+          parentId={null}
+          level={1}
+        />
       </div>
     );
   }

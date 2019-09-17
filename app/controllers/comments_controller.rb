@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     comments = Comment
       .where(post_id: params[:post_id])
       .left_outer_joins(:user)
-      .select('comments.id, comments.body, comments.updated_at, users.full_name as user_full_name')
+      .select('comments.id, comments.body, comments.parent_id, comments.updated_at, users.full_name as user_full_name')
       .order(updated_at: :desc)
 
     render json: comments

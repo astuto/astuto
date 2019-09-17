@@ -1,0 +1,21 @@
+.comments {
+  .commentList > .commentList {
+    padding-left: 32px;
+  }
+
+  .comment {
+    margin-bottom: 32px;
+
+    .commentHeader {
+      @extend
+        .font-weight-bolder;
+
+      font-size: 17px;
+    }
+
+    .commentBody {
+      @extend
+        .my-2;
+    }
+  }
+}

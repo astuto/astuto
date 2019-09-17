@@ -6,11 +6,8 @@
 @import 'general/index';
 @import 'general/navbar';
 
-/*
-  Components stylesheets are not imported here. Instead,
-  they are imported in the specific React components
-  that use them
-*/
+/* Components */
 @import 'components/Board';
+@import 'components/Comments';
 @import 'components/Post';
 @import 'components/Roadmap';

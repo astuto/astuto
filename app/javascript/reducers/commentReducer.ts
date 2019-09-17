@@ -7,8 +7,9 @@ import IComment from '../interfaces/IComment';
 const initialState: IComment = {
   id: 0,
   body: '',
-  userFullName: '',
-  updatedAt: '',
+  parentId: null,
+  userFullName: '<Unknown user>',
+  updatedAt: undefined,
 };
 
 const commentReducer = (
@@ -20,6 +21,7 @@ const commentReducer = (
       return {
         id: action.comment.id,
         body: action.comment.body,
+        parentId: action.comment.parent_id,
         userFullName: action.comment.user_full_name,
         updatedAt: action.comment.updated_at,
       };
