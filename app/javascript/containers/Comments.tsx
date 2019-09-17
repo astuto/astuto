@@ -10,13 +10,11 @@ const mapStateToProps = (state: State) => ({
   comments: state.currentPost.comments.items,
   areLoading: state.currentPost.comments.areLoading,
   error: state.currentPost.comments.error,
-  page: state.currentPost.comments.page,
-  haveMore: state.currentPost.comments.haveMore,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestComments(postId: number, page: number = 1) {
-    dispatch(requestComments(postId, page));
+  requestComments(postId: number) {
+    dispatch(requestComments(postId));
   },
 });
 

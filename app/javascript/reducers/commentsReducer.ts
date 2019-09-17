@@ -14,16 +14,12 @@ export interface CommentsState {
   items: Array<IComment>;
   areLoading: boolean;
   error: string;
-  page: number;
-  haveMore: boolean;
 }
 
 const initialState: CommentsState = {
   items: [],
   areLoading: false,
   error: '',
-  page: 0,
-  haveMore: true,
 };
 
 const commentsReducer = (
@@ -40,17 +36,9 @@ const commentsReducer = (
     case COMMENTS_REQUEST_SUCCESS:
       return {
         ...state,
-        items: action.page === 1 ?
-          action.comments.map(comment => commentReducer(undefined, commentRequestSuccess(comment)))
-          :
-          [
-            ...state.items,
-            ...action.comments.map(
-              comment => commentReducer(undefined, commentRequestSuccess(comment))
-            ),
-          ],
-        page: action.page,
-        haveMore: action.comments.length === 15,
+        items: action.comments.map(
+          comment => commentReducer(undefined, commentRequestSuccess(comment))
+        ),
         areLoading: false,
         error: '',
       };

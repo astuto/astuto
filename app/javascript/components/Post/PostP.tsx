@@ -16,7 +16,6 @@ interface Props {
   authenticityToken: string;
 
   requestPost(postId: number): void;
-  requestComments(postId: number, page?: number): void;
   changePostStatus(
     postId: number,
     newPostStatusId: number,

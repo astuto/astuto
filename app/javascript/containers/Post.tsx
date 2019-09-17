@@ -18,10 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(requestPost(postId));
   },
 
-  requestComments(postId: number, page: number = 1) {
-    dispatch(requestComments(postId, page));
-  },
-
   changePostStatus(postId: number, newPostStatusId: number, authenticityToken: string) {
     if (isNaN(newPostStatusId)) newPostStatusId = null;
 

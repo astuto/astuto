@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
       .left_outer_joins(:user)
       .select('comments.id, comments.body, comments.updated_at, users.full_name as user_full_name')
       .order(updated_at: :desc)
-      .page(params[:page])
 
     render json: comments
   end

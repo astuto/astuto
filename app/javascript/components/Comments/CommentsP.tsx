@@ -8,8 +8,6 @@ interface Props {
   comments: Array<IComment>;
   areLoading: boolean;
   error: string;
-  page: number;
-  haveMore: boolean;
 
   requestComments(postId: number, page?: number);
 }
@@ -24,8 +22,6 @@ class CommentsP extends React.Component<Props> {
       comments,
       areLoading,
       error,
-      page,
-      haveMore,
     } = this.props;
 
     return (

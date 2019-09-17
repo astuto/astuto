@@ -14,7 +14,6 @@ export const COMMENTS_REQUEST_SUCCESS = 'COMMENTS_REQUEST_SUCCESS';
 interface CommentsRequestSuccessAction {
   type: typeof COMMENTS_REQUEST_SUCCESS;
   comments: Array<ICommentJSON>;
-  page: number;
 }
 
 export const COMMENTS_REQUEST_FAILURE = 'COMMENTS_REQUEST_FAILURE';
@@ -35,11 +34,9 @@ const commentsRequestStart = (): CommentsRequestActionTypes => ({
 
 const commentsRequestSuccess = (
   comments: Array<ICommentJSON>,
-  page: number
 ): CommentsRequestActionTypes => ({
   type: COMMENTS_REQUEST_SUCCESS,
   comments,
-  page,
 });
 
 const commentsRequestFailure = (error: string): CommentsRequestActionTypes => ({
@@ -49,14 +46,13 @@ const commentsRequestFailure = (error: string): CommentsRequestActionTypes => ({
 
 export const requestComments = (
   postId: number,
-  page: number,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(commentsRequestStart());
 
   try {
-    const response = await fetch(`/posts/${postId}/comments?page=${page}`);
+    const response = await fetch(`/posts/${postId}/comments`);
     const json = await response.json();
-    dispatch(commentsRequestSuccess(json, page));
+    dispatch(commentsRequestSuccess(json));
   } catch (e) {
     dispatch(commentsRequestFailure(e));
   }
