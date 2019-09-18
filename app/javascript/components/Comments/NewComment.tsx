@@ -20,6 +20,7 @@ const NewComment = ({
     <textarea
       value={body}
       onChange={handleChange}
+      className="newCommentBody"
     />
     <Button onClick={() => handleSubmit(body, parentId)}>Submit</Button>
   </div>

@@ -39,7 +39,7 @@ const Comment = ({
     </div>
     <p className="commentBody">{body}</p>
     <div className="commentFooter">
-      <a onClick={handleToggleCommentReply}>Reply</a>
+      <a className="commentReplyButton" onClick={handleToggleCommentReply}>Reply</a>
       <MutedText>{updatedAt}</MutedText>
     </div>
     {

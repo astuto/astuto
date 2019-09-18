@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    body { "MyText" }
+    sequence(:body) { |n| "Comment #{n}" }
     user
     post
     parent { nil }
