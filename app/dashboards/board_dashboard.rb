@@ -11,6 +11,7 @@ class BoardDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
+    order: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,6 +24,7 @@ class BoardDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   name
   description
+  order
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -31,6 +33,7 @@ class BoardDashboard < Administrate::BaseDashboard
   id
   name
   description
+  order
   created_at
   updated_at
   ].freeze
@@ -41,6 +44,7 @@ class BoardDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   description
+  order
   ].freeze
 
   # COLLECTION_FILTERS
