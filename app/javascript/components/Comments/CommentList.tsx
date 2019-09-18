@@ -12,8 +12,9 @@ interface Props {
   parentId: number;
   level: number;
 
-  toggleCommentReply(commentId: number);
-  setCommentReplyBody(commentId: number, body: string);
+  toggleCommentReply(commentId: number): void;
+  setCommentReplyBody(commentId: number, body: string): void;
+  handleSubmitComment(body: string, parentId: number): void;
 }
 
 const CommentList = ({
@@ -24,12 +25,13 @@ const CommentList = ({
 
   toggleCommentReply,
   setCommentReplyBody,
+  handleSubmitComment,
 }: Props) => (
   <React.Fragment>
     {comments.map((comment, i) => {
       if (comment.parentId === parentId) {
         return (
-          <div className="commentList">
+          <div className="commentList" key={i}>
             <Comment
               level={level}
               reply={replies.find(reply => reply.commentId === comment.id)}
@@ -39,6 +41,7 @@ const CommentList = ({
                   setCommentReplyBody(comment.id, (e.target as HTMLTextAreaElement).value)
                 )
               }
+              handleSubmitComment={handleSubmitComment}
               {...comment}
             />
 
@@ -50,6 +53,7 @@ const CommentList = ({
 
               toggleCommentReply={toggleCommentReply}
               setCommentReplyBody={setCommentReplyBody}
+              handleSubmitComment={handleSubmitComment}
             />
           </div>
         );

@@ -15,9 +15,11 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
 
     if comment.save
-      render json: comment, status: :no_content
+      render json: comment, status: :created
     else
-      render json: I18n.t('errors.unauthorized'), status: :unauthorized
+      render json: {
+        error: I18n.t('errors.comment.create', message: comment.errors.full_messages)
+      }, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +28,7 @@ class CommentsController < ApplicationController
     def comment_params
       params
         .require(:comment)
-        .permit(:body)
+        .permit(:body, :parent_id)
         .merge(
           user_id: current_user.id,
           post_id: params[:post_id]

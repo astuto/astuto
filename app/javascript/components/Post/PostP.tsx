@@ -59,7 +59,10 @@ class PostP extends React.Component<Props> {
 
         <p>{post.description}</p>
 
-        <Comments postId={this.props.postId} />
+        <Comments
+          postId={this.props.postId}
+          authenticityToken={authenticityToken}
+        />
       </div>
     );
   }

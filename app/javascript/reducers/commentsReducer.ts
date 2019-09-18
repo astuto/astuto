@@ -13,6 +13,12 @@ import {
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';
 
+import {
+  COMMENT_SUBMIT_START,
+  COMMENT_SUBMIT_SUCCESS,
+  COMMENT_SUBMIT_FAILURE,
+} from '../actions/submitComment';
+
 import commentReducer from './commentReducer';
 import commentRepliesReducer from './commentRepliesReducer';
 
@@ -50,9 +56,10 @@ const commentsReducer = (
         items: action.comments.map(
           comment => commentReducer(undefined, commentRequestSuccess(comment))
         ),
-        replies: action.comments.map(
-          comment => commentRepliesReducer(undefined, commentRequestSuccess(comment))
-        ),
+        replies: [commentRepliesReducer(undefined, {type: 'COMMENT_REQUEST_SUCCESS', comment: { id: -1 } }),
+          ...action.comments.map(
+            comment => commentRepliesReducer(undefined, commentRequestSuccess(comment))
+        )],
         areLoading: false,
         error: '',
       };
@@ -76,6 +83,38 @@ const commentsReducer = (
               reply
           )
         ),
+      };
+
+    case COMMENT_SUBMIT_START:
+    case COMMENT_SUBMIT_FAILURE:
+      return {
+        ...state,
+        replies: state.replies.map(
+          reply => (
+            reply.commentId === action.parentId ?
+              commentRepliesReducer(reply, action)
+            :
+              reply
+          )
+        ),
+      };
+
+    case COMMENT_SUBMIT_SUCCESS:
+      console.log(action.comment);
+      return {
+        ...state,
+        items: [commentReducer(undefined, commentRequestSuccess(action.comment)), ...state.items],
+        replies: [
+          ...state.replies.map(
+            reply => (
+              reply.commentId === action.comment.parent_id ?
+                commentRepliesReducer(reply, action)
+              :
+                reply
+            )
+          ),
+          commentRepliesReducer(undefined, commentRequestSuccess(action.comment)),
+        ],
       };
 
     default:

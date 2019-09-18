@@ -23,6 +23,13 @@ import {
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';
 
+import {
+  CommentSubmitActionTypes,
+  COMMENT_SUBMIT_START,
+  COMMENT_SUBMIT_SUCCESS,
+  COMMENT_SUBMIT_FAILURE,
+} from '../actions/submitComment';
+
 import postReducer from './postReducer';
 import commentsReducer from './commentsReducer';
 
@@ -50,7 +57,8 @@ const currentPostReducer = (
     PostRequestActionTypes |
     ChangePostStatusSuccessAction |
     CommentsRequestActionTypes |
-    HandleCommentRepliesType
+    HandleCommentRepliesType |
+    CommentSubmitActionTypes
 ): CurrentPostState => {
   switch (action.type) {
     case POST_REQUEST_START:
@@ -85,6 +93,9 @@ const currentPostReducer = (
     case COMMENTS_REQUEST_FAILURE:
     case TOGGLE_COMMENT_REPLY:
     case SET_COMMENT_REPLY_BODY:
+    case COMMENT_SUBMIT_START:
+    case COMMENT_SUBMIT_SUCCESS:
+    case COMMENT_SUBMIT_FAILURE:
       return {
         ...state,
         comments: commentsReducer(state.comments, action),

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FormEvent } from 'react';
 
+import NewComment from './NewComment';
 import { MutedText } from '../shared/CustomTexts';
 
 import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
@@ -16,6 +17,7 @@ interface Props {
   reply: CommentRepliesState;
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: FormEvent): void;
+  handleSubmitComment(body: string, parentId: number): void;
 }
 
 const Comment = ({
@@ -29,6 +31,7 @@ const Comment = ({
   reply,
   handleToggleCommentReply,
   handleCommentReplyBodyChange,
+  handleSubmitComment,
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
@@ -41,9 +44,11 @@ const Comment = ({
     </div>
     {
       reply.isOpen ?
-        <textarea
-          value={reply.body}
-          onChange={handleCommentReplyBodyChange}
+        <NewComment
+          body={reply.body}
+          parentId={id}
+          handleChange={handleCommentReplyBodyChange}
+          handleSubmit={handleSubmitComment}
         />
         :
         null

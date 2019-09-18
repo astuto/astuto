@@ -4,3 +4,5 @@ en:
     post:
       create: 'Post create error: %{message}'
       update: 'Post update error: %{message}'
+    comment:
+      create: 'Comment create error: %{message}'
