@@ -62,6 +62,12 @@ RSpec.describe PostStatus, type: :model do
     expect(roadmap.second).to eq(post_status2)
   end
 
+  it 'automatically sets a random color if not specified' do
+    post_status1 = PostStatus.new
+
+    expect(post_status1.color).to match(/\A#(?:[0-9a-fA-F]{3}){1,2}\z/)
+  end
+
   it 'automatically sets order to last order if not specified' do
     order = 10
     post_status1 = FactoryBot.create(:post_status, order: order)
