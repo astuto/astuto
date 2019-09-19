@@ -1,4 +1,6 @@
 class Board < ApplicationRecord
+  has_many :posts, dependent: :destroy
+  
   after_initialize :set_order_to_last
 
   validates :name, presence: true, uniqueness: true
