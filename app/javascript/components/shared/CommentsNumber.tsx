@@ -5,10 +5,7 @@ interface Props {
 }
 
 const CommentsNumber = ({ number }: Props) => (
-  <div className="d-flex">
-    <span className="comment icon"></span>
-    <span>{`${number} comment${number === 1 ? '' : 's'}`}</span>
-  </div>
+  <span className="badge badgeLight">{`${number} comment${number === 1 ? '' : 's'}`}</span>
 );
 
 export default CommentsNumber;

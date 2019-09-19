@@ -1,13 +1,42 @@
 .navbar {
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+
+  background-color: white;
+
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: black;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
 
-  margin-bottom: 1.5em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15), 0 1px 8px rgba(0,0,0,0.15);
+
+  margin-bottom: 1em;
 
   .navbar-brand {
     font-size: 18pt;
     font-weight: 700;
+  }
+
+  .boardsNav {
+    @extend
+      .navbar-nav,
+      .nav-pills,
+      .d-flex,
+      .flex-row,
+      .mr-auto;
+
+    .nav-item {
+      @extend
+        .badge,
+        .text-uppercase;
+
+      a { @extend .text-dark; }
+    }
+
+    .nav-item.active {
+      @extend .badgeLight;
+    }
   }
 
   .fullname {

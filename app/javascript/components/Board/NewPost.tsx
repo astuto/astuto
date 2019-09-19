@@ -142,8 +142,8 @@ class NewPost extends React.Component<Props, State> {
 
     return (
       <div className="newBoardContainer sidebarBox">
-        <TitleText>{board.name}</TitleText>
-        <MutedText>{board.description}</MutedText>
+        <span className="boardTitle">{board.name}</span>
+        <p><MutedText>{board.description}</MutedText></p>
         {
           isLoggedIn ?
             <Button

@@ -5,14 +5,17 @@
 
 .titleText {
   @extend
-   .text-dark,
    .font-weight-bolder;
 }
 
-.mutedText {
+.centeredText {
   @extend
-    .text-muted,
-    .text-center;
+    .text-center,
+    .p-2;
+}
+
+.mutedText {
+  color: $muted-text-color;
 }
 
 .uppercaseText {
@@ -20,6 +23,8 @@
     .text-secondary,
     .text-uppercase,
     .font-weight-lighter;
+  
+    font-size: 13px;
 }
 
 .successText {

@@ -6,12 +6,12 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav nav-pills mr-auto">
+      <ul class="boardsNav">
         <%= render 'layouts/boards_menu_section', boards: @boards unless @boards.nil? %>
       </ul>
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <% if current_user.moderator? || current_user.admin? %>
+          <% if current_user.power_user? %>
             <li class="nav-item">
               <%= link_to 'Admin Panel', admin_root_path, class: 'nav-link', 'data-turbolinks': 'false' %>
             </li>

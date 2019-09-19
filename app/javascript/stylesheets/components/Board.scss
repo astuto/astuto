@@ -8,10 +8,11 @@
 
   .sidebar {
     position: sticky;
-    top: 20px;
+    top: 60px;
 
     .sidebarBox {
       width: 250px;
+      margin-right: 16px;
     }
   }
 
@@ -29,20 +30,27 @@
     }
   }
 
+  .newBoardContainer {
+    background-color: $astuto-grey;
+    text-align: center;
+
+    .boardTitle {
+      font-size: 25px;
+      font-weight: 600;
+    }
+  }
+
   .sidebarBox {
     @extend
+      .card,
       .d-flex,
       .flex-column,
       .justify-content-start,
       .align-items-center,
       .flex-grow-0,
-      .flex-shrink-0;
-
-    border: thin solid black;
-    border-radius: 4px;
-
-    margin: 8px;
-    padding: 8px;
+      .flex-shrink-0,
+      .my-3,
+      .p-2;
   }
 
   .postStatusListItemContainer {
@@ -63,10 +71,12 @@
     height: 40px;
 
     &:hover {
+      filter: brightness(90%);
       cursor: pointer;
+    }
 
-      background-color: #f5f5f5;
-      border-radius: 4px;
+    span.badge {
+      display: block; font-size: 15px;
     }
   }
 
@@ -74,6 +84,7 @@
     @extend
       .flex-grow-0,
       .flex-shrink-0,
+      .rounded-circle,
       .align-self-center,
       .p-0;
 
@@ -89,33 +100,38 @@
   }
 
   .postLink {
+    @extend .my-3;
+    
     display: block;
-    border-radius: 4px;
-    margin: 8px 0;
     color: black;
 
-    &:hover {
-      text-decoration: none;
-      background-color: #f5f5f5;
-    }
+    &:hover { text-decoration: none; }
   }
 
   .postListItem {
     @extend
+      .card3D,
       .d-flex,
       .flex-column,
       .justify-content-between,
-      .m-0,
-      .px-2,
-      .py-1;
+      .p-3;
 
-    height: 114px;
+    height: 140px;
+  }
+
+  .postTitle {
+    @extend
+      .font-weight-bold;
   }
 
   .postDetails {
     @extend
       .d-flex,
-      .justify-content-between,
+      .justify-content-start,
       .text-uppercase;
+
+    .badge {
+      @extend .mr-2;
+    }
   }
 }

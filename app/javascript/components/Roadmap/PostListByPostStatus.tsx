@@ -14,10 +14,9 @@ interface Props {
 }
 
 const PostListByPostStatus = ({ postStatus, posts, boards }: Props) => (
-  <div className="roadmapColumn" style={{borderColor: postStatus.color}}>
+  <div className="roadmapColumn">
     <div className="columnHeader"
-      style={{borderBottomColor: postStatus.color}}>
-      <div className="dot" style={{backgroundColor: postStatus.color}}></div>
+      style={{backgroundColor: postStatus.color}}>
       <div className="columnTitle"><TitleText>{postStatus.name}</TitleText></div>
     </div>
     <div className="scrollContainer">

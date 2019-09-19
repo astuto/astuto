@@ -6,7 +6,7 @@ import PostListItem from './PostListItem';
 import Spinner from '../shared/Spinner';
 import {
   DangerText,
-  MutedText,
+  CenteredMutedText,
 } from '../shared/CustomTexts';
 
 import IPost from '../../interfaces/IPost';
@@ -55,10 +55,7 @@ const PostList = ({
             />
           ))
         :
-          areLoading ?
-            <MutedText>Loading...</MutedText>
-          :
-            <MutedText>There are no posts.</MutedText>
+          areLoading ? <p></p> : <CenteredMutedText>There are no posts.</CenteredMutedText>
       }
     </InfiniteScroll>
   </div>

@@ -8,9 +8,10 @@
     @extend
       .card,
       .my-2,
-      .px-2;
+      .p-0;
 
     width: 32%;
+    background-color: $astuto-grey;
 
     @media (max-width: 800px) {
       width: 100%;
@@ -20,27 +21,31 @@
   .columnHeader {
     @extend
       .card-header,
-      .d-flex,
-      .bg-transparent;
+      .d-flex;
+
+    .columnTitle {
+      color: white;
+    }
   }
 
   .scrollContainer {
-    @extend
-      .card-body;
-
     overflow-y: auto;
     max-height: 350px;
   }
 
-  .postLink:hover {
-    text-decoration: none;
+  .postLink {
+    @extend
+      .my-2;
+
+    &:hover { text-decoration: none; }
   }
 
   .postListItem {
     @extend
+      .card3D,
       .d-flex,
       .flex-column,
-      .my-1,
+      .m-2,
       .py-2;
   }
 }

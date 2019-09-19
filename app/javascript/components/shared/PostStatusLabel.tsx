@@ -7,10 +7,7 @@ const PostStatusLabel = ({
   name,
   color,
 }: IPostStatus) => (
-  <div style={{display: 'flex'}}>
-    <div className="dot" style={{backgroundColor: color}}></div>
-    <span className="postStatusName">{name}</span>
-  </div>
+  <span className="badge" style={{backgroundColor: color, color: 'white'}}>{name}</span>
 );
 
 export default PostStatusLabel;

@@ -16,7 +16,7 @@ interface Props {
 const PostListItem = ({ id, title, description, postStatus}: Props) => (
   <a href={`/posts/${id}`} className="postLink">
     <div className="postListItem">
-      <TitleText>{title}</TitleText>
+      <span className="postTitle">{title}</span>
       <DescriptionText limit={120}>{description}</DescriptionText>
 
       <div className="postDetails">
