@@ -16,7 +16,7 @@
     }
   }
 
-  @media (max-width: 800px) {
+  @include media-breakpoint-down(sm) {
     flex-direction: column;
 
     .sidebar {
@@ -24,10 +24,10 @@
       width: 100%;
       top: 0;
 
-      .sidebarBox {
-        width: 100%;
-      }
+      .sidebarBox { width: 100%; }
     }
+
+    .postList { width: 100%; }
   }
 
   .newBoardContainer {

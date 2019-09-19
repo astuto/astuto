@@ -13,7 +13,7 @@
     width: 32%;
     background-color: $astuto-grey;
 
-    @media (max-width: 800px) {
+    @include media-breakpoint-down(sm) {
       width: 100%;
     }
   }
