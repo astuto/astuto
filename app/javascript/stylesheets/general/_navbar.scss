@@ -19,19 +19,12 @@
   }
 
   .boardsNav {
-    @extend
-      .navbar-nav,
-      .nav-pills,
-      .d-flex,
-      .flex-row,
-      .mr-auto;
-
     .nav-item {
       @extend
         .badge,
         .text-uppercase;
-
-      a { @extend .text-dark; }
+      
+      font-size: 14px;
     }
 
     .nav-item.active {
