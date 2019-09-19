@@ -7,6 +7,7 @@ class PostsController < ApplicationController
       .where(filter_params)
       .search_by_name_or_description(params[:search])
       .page(params[:page])
+      .order(updated_at: :desc)
     
     render json: posts
   end
@@ -25,9 +26,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_statuses = PostStatus
-      .find_roadmap
-      .select(:id, :name, :color)
+    @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
 
     respond_to do |format|
       format.html
