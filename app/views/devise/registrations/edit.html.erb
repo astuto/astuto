@@ -1,6 +1,6 @@
-<h2>Profile settings</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <h2>Profile settings</h2>
+
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
@@ -12,7 +12,7 @@
     <%= f.label :email %>
     <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
     <small id="emailGravatarHelp" class="form-text text-muted">
-      the email is <a href="https://gravatar.com">gravatar</a>ized
+      the email is <a href="https://gravatar.com" target="_blank">gravatar</a>ized
     </small>
   </div>
 
@@ -47,12 +47,15 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update profile", class: "btn btn-primary" %>
+    <%= f.submit "Update profile", class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 
 <br />
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+<div class="edit_user">
+  <h3>Cancel my account</h3>
+  <p>Unhappy?
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
+  </p>
+</div>
