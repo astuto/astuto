@@ -25,6 +25,7 @@
         .text-uppercase;
       
       font-size: 14px;
+      text-align: left;
     }
 
     .nav-item.active {
@@ -40,5 +41,13 @@
 
   .dropdown-toggle::after {
     vertical-align: middle;
+  }
+
+  .navbar-toggler:focus {
+    outline: none;
+  }
+
+  .navbar-toggler[aria-expanded="true"] {
+    background-color: $astuto-grey;
   }
 }

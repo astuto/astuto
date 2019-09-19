@@ -27,6 +27,11 @@
       .sidebarBox { width: 100%; }
     }
 
+    .postStatusFilterContainer {
+      flex-direction: row !important;
+      flex-wrap: wrap;
+    }
+
     .postList { width: 100%; }
   }
 
