@@ -1,3 +1,9 @@
+a {
+  color: #333;
+
+  &:hover { color: inherit; }
+}
+
 .card {
   @extend .card;
 

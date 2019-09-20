@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FormEvent } from 'react';
 
 interface Props {
-  children: string;
+  children: any;
   onClick(e: FormEvent): void;
   className?: string;
   outline?: boolean;

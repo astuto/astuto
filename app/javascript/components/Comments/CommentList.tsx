@@ -15,6 +15,8 @@ interface Props {
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
   handleSubmitComment(body: string, parentId: number): void;
+
+  isLoggedIn: boolean;
 }
 
 const CommentList = ({
@@ -26,6 +28,8 @@ const CommentList = ({
   toggleCommentReply,
   setCommentReplyBody,
   handleSubmitComment,
+
+  isLoggedIn,
 }: Props) => (
   <React.Fragment>
     {comments.map((comment, i) => {
@@ -43,6 +47,8 @@ const CommentList = ({
               }
               handleSubmitComment={handleSubmitComment}
               {...comment}
+
+              isLoggedIn={isLoggedIn}
             />
 
             <CommentList
@@ -54,6 +60,8 @@ const CommentList = ({
               toggleCommentReply={toggleCommentReply}
               setCommentReplyBody={setCommentReplyBody}
               handleSubmitComment={handleSubmitComment}
+
+              isLoggedIn={isLoggedIn}
             />
           </div>
         );

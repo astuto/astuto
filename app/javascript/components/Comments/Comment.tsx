@@ -20,6 +20,8 @@ interface Props {
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: FormEvent): void;
   handleSubmitComment(body: string, parentId: number): void;
+
+  isLoggedIn: boolean;
 }
 
 const Comment = ({
@@ -34,6 +36,8 @@ const Comment = ({
   handleToggleCommentReply,
   handleCommentReplyBodyChange,
   handleSubmitComment,
+
+  isLoggedIn,
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
@@ -52,8 +56,11 @@ const Comment = ({
         <NewComment
           body={reply.body}
           parentId={id}
+          isSubmitting={reply.isSubmitting}
           handleChange={handleCommentReplyBodyChange}
           handleSubmit={handleSubmitComment}
+
+          isLoggedIn={isLoggedIn}
         />
         :
         null

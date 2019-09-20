@@ -36,6 +36,7 @@ class PostP extends React.Component<Props> {
       post,
       postStatuses,
 
+      isLoggedIn,
       isPowerUser,
       authenticityToken,
 
@@ -73,6 +74,7 @@ class PostP extends React.Component<Props> {
 
           <Comments
             postId={this.props.postId}
+            isLoggedIn={isLoggedIn}
             authenticityToken={authenticityToken}
           />
         </div>

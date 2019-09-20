@@ -11,6 +11,7 @@ import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
 
 interface Props {
   postId: number;
+  isLoggedIn: boolean;
   authenticityToken: string;
 
   comments: Array<IComment>;
@@ -45,6 +46,8 @@ class CommentsP extends React.Component<Props> {
 
   render() {
     const {
+      isLoggedIn,
+
       comments,
       replies,
       areLoading,
@@ -55,17 +58,22 @@ class CommentsP extends React.Component<Props> {
       submitComment,
     } = this.props;
 
+    const postReply = replies.find(reply => reply.commentId === -1);
+
     return (
       <div className="commentsContainer">
         <NewComment
-          body={replies.find(reply => reply.commentId === -1) && replies.find(reply => reply.commentId === -1).body}
+          body={postReply && postReply.body}
           parentId={null}
+          isSubmitting={postReply && postReply.isSubmitting}
           handleChange={
             (e: FormEvent) => (
               setCommentReplyBody(-1, (e.target as HTMLTextAreaElement).value)
             )
           }
           handleSubmit={this._handleSubmitComment}
+
+          isLoggedIn={isLoggedIn}
         />
 
         { areLoading ? <Spinner /> : null }
@@ -83,6 +91,7 @@ class CommentsP extends React.Component<Props> {
           handleSubmitComment={this._handleSubmitComment}
           parentId={null}
           level={1}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     );
