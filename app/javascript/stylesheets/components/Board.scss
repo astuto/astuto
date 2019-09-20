@@ -6,26 +6,8 @@
 
   flex-direction: row;
 
-  .sidebar {
-    position: sticky;
-    top: 60px;
-
-    .sidebarBox {
-      width: 250px;
-      margin-right: 16px;
-    }
-  }
-
   @include media-breakpoint-down(sm) {
     flex-direction: column;
-
-    .sidebar {
-      position: relative;
-      width: 100%;
-      top: 0;
-
-      .sidebarBox { width: 100%; }
-    }
 
     .postStatusFilterContainer {
       flex-direction: row !important;
@@ -43,19 +25,6 @@
       font-size: 25px;
       font-weight: 600;
     }
-  }
-
-  .sidebarBox {
-    @extend
-      .card,
-      .d-flex,
-      .flex-column,
-      .justify-content-start,
-      .align-items-center,
-      .flex-grow-0,
-      .flex-shrink-0,
-      .my-3,
-      .p-2;
   }
 
   .postStatusListItemContainer {

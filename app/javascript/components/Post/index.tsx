@@ -7,8 +7,6 @@ import Post from '../../containers/Post';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
-import '../../stylesheets/components/Post.scss';
-
 interface Props {
   postId: number;
   postStatuses: Array<IPostStatus>;

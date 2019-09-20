@@ -23,7 +23,7 @@ const PostStatusFilter = ({
   handleFilterClick,
   currentFilter,
 }: Props) => (
-  <div className="postStatusFilterContainer sidebarBox">
+  <div className="postStatusFilterContainer sidebarCard">
     <TitleText>Filter by post status:</TitleText>
     {
       postStatuses.map((postStatus, i) => (

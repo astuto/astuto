@@ -1,21 +1,67 @@
-.comments {
+.commentsContainer {
+  .newCommentForm {
+    @extend
+      .d-flex,
+      .my-3;
+
+    .newCommentBody {
+      @extend
+        .form-control,
+        .w-100,
+        .p-2,
+        .mr-2;
+
+      height: 80px;
+      
+      border: thin solid grey;
+      border-radius: 4px;
+
+      resize: none;
+    }
+
+    .submitCommentButton {
+      @extend
+        .align-self-end;
+
+      height: 40px;
+    }
+  }
+
+  .commentsTitle {
+    @extend
+      .text-secondary,
+      .text-uppercase,
+      .font-weight-lighter,
+      .my-2;
+  }
+
   .commentList > .commentList {
     padding-left: 32px;
   }
 
   .comment {
-    margin-bottom: 32px;
+    @extend
+      .my-3;
 
     .commentHeader {
-      @extend
-        .font-weight-bolder;
-
-      font-size: 17px;
+      @extend .titleText;
     }
 
     .commentBody {
-      @extend
-        .my-2;
+      @extend .my-1;
+    }
+
+    .commentFooter {
+      font-size: 14px;
+
+      .commentReplyButton {
+        color: #333;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

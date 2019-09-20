@@ -21,6 +21,37 @@
   }
 }
 
+.sidebar {
+  position: sticky;
+  top: 60px;
+
+  .sidebarCard {
+    @extend
+      .card,
+      .d-flex,
+      .flex-column,
+      .justify-content-start,
+      .align-items-center,
+      .flex-grow-0,
+      .flex-shrink-0,
+      .my-3,
+      .p-2;
+
+    width: 250px;
+    margin-right: 16px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+
+    .sidebarCard { width: 100%; }
+  }
+}
+
 .badge {
   @extend
     .badge,

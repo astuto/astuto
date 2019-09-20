@@ -20,9 +20,14 @@ const NewComment = ({
     <textarea
       value={body}
       onChange={handleChange}
+      placeholder="Leave a comment"
       className="newCommentBody"
     />
-    <Button onClick={() => handleSubmit(body, parentId)}>Submit</Button>
+    <Button
+      onClick={() => handleSubmit(body, parentId)}
+      className="submitCommentButton">
+      Submit
+    </Button>
   </div>
 );
 

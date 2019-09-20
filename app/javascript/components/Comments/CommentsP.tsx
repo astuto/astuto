@@ -4,7 +4,7 @@ import { FormEvent } from 'react';
 import NewComment from './NewComment';
 import CommentList from './CommentList';
 import Spinner from '../shared/Spinner';
-import { DangerText } from '../shared/CustomTexts';
+import { DangerText, UppercaseText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
@@ -56,9 +56,7 @@ class CommentsP extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div className="comments">
-        <h2>Comments</h2>
-
+      <div className="commentsContainer">
         <NewComment
           body={replies.find(reply => reply.commentId === -1) && replies.find(reply => reply.commentId === -1).body}
           parentId={null}
@@ -72,6 +70,10 @@ class CommentsP extends React.Component<Props> {
 
         { areLoading ? <Spinner /> : null }
         { error ? <DangerText>{error}</DangerText> : null }
+
+        <span className="commentsTitle">
+          activity &bull; {comments.length} comments
+        </span>
 
         <CommentList
           comments={comments}

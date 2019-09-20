@@ -6,6 +6,8 @@ import { MutedText } from '../shared/CustomTexts';
 
 import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
 
+import friendlyDate from '../../helpers/friendlyDate';
+
 interface Props {
   id: number;
   body: string;
@@ -39,8 +41,11 @@ const Comment = ({
     </div>
     <p className="commentBody">{body}</p>
     <div className="commentFooter">
-      <a className="commentReplyButton" onClick={handleToggleCommentReply}>Reply</a>
-      <MutedText>{updatedAt}</MutedText>
+      <a className="commentReplyButton" onClick={handleToggleCommentReply}>
+        { reply.isOpen ? 'Cancel' : 'Reply' }
+      </a>
+      &nbsp;&bull;&nbsp;
+      <MutedText>{friendlyDate(updatedAt)}</MutedText>
     </div>
     {
       reply.isOpen ?
