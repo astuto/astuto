@@ -5,10 +5,12 @@ import createStoreHelper from '../../helpers/createStore';
 
 import Post from '../../containers/Post';
 
+import IBoard from '../../interfaces/IBoard';
 import IPostStatus from '../../interfaces/IPostStatus';
 
 interface Props {
   postId: number;
+  boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
@@ -27,6 +29,7 @@ class PostRoot extends React.Component<Props> {
   render() {
     const {
       postId,
+      boards,
       postStatuses,
       isLoggedIn,
       isPowerUser,
@@ -37,6 +40,7 @@ class PostRoot extends React.Component<Props> {
       <Provider store={this.store}>
         <Post
           postId={postId}
+          boards={boards}
           postStatuses={postStatuses}
 
           isLoggedIn={isLoggedIn}

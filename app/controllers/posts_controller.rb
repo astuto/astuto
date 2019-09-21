@@ -45,7 +45,8 @@ class PostsController < ApplicationController
       return
     end
 
-    post.post_status_id = params[:post][:post_status_id]
+    post.board_id = params[:post][:board_id] if params[:post].has_key?(:board_id)
+    post.post_status_id = params[:post][:post_status_id] if params[:post].has_key?(:post_status_id)
 
     if post.save
       render json: post, status: :no_content

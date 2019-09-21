@@ -18,6 +18,26 @@
       .flex-grow-1,
       .p-3;
 
+    .postInfo {
+      @extend .d-flex;
+
+      span {
+        @extend .mr-2;
+      }
+    }
+
+    .postSettings {
+      @extend
+        .d-flex,
+        .justify-content-between;
+
+      .selectPicker {
+        @extend
+          .custom-select,
+          .mx-2;
+      }
+    }
+
     .postDescription {
       @extend
         .my-3;

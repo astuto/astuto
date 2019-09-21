@@ -3,6 +3,7 @@
     'Post',
     {
       postId: @post.id,
+      boards: @boards,
       postStatuses: @post_statuses,
       isLoggedIn: user_signed_in?,
       isPowerUser: user_signed_in? ? current_user.power_user? : false,

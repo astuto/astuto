@@ -3,6 +3,10 @@ import {
 } from '../actions/requestPost';
 
 import {
+  CHANGE_POST_BOARD_SUCCESS,
+} from '../actions/changePostBoard';
+
+import {
   CHANGE_POST_STATUS_SUCCESS,
 } from '../actions/changePostStatus';
 
@@ -34,6 +38,12 @@ const postReducer = (
         commentsCount: action.post.comments_count,
         userId: action.post.user_id,
         createdAt: action.post.created_at,
+      };
+
+    case CHANGE_POST_BOARD_SUCCESS:
+      return {
+        ...state,
+        boardId: action.newBoardId,
       };
 
     case CHANGE_POST_STATUS_SUCCESS:
