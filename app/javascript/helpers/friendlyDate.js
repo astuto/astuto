@@ -5,8 +5,7 @@ const friendlyDate = date => {
   var secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
   
   if (secondsPast < 60) {
-    secondsPast = parseInt(secondsPast);
-    return secondsPast + ' ' + (secondsPast === 1 ? 'second' : 'seconds') + ' ago';
+    return 'just now';
   } else if (secondsPast < 3600) {
     let minutesPast = parseInt(secondsPast / 60);
     return minutesPast + ' ' + (minutesPast === 1 ? 'minute' : 'minutes') + ' ago';

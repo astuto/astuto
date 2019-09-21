@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
 
     if comment.save
-      render json: comment, status: :created
+      render json: comment.attributes.merge({ user_full_name: current_user.full_name}),
+        status: :created
     else
       render json: {
         error: I18n.t('errors.comment.create', message: comment.errors.full_messages)

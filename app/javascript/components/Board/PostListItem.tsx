@@ -11,16 +11,17 @@ interface Props {
   title: string;
   description?: string;
   postStatus: IPostStatus;
+  commentsCount: number;
 }
 
-const PostListItem = ({ id, title, description, postStatus}: Props) => (
+const PostListItem = ({ id, title, description, postStatus, commentsCount }: Props) => (
   <a href={`/posts/${id}`} className="postLink">
     <div className="postListItem">
       <span className="postTitle">{title}</span>
       <DescriptionText limit={120}>{description}</DescriptionText>
 
       <div className="postDetails">
-        <CommentsNumber number={0} />
+        <CommentsNumber number={commentsCount} />
         { postStatus ? <PostStatusLabel {...postStatus} /> : null }
       </div>
     </div>

@@ -100,7 +100,6 @@ const commentsReducer = (
       };
 
     case COMMENT_SUBMIT_SUCCESS:
-      console.log(action.comment);
       return {
         ...state,
         items: [commentReducer(undefined, commentRequestSuccess(action.comment)), ...state.items],

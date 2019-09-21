@@ -14,6 +14,7 @@ const initialState: IPost = {
   description: null,
   boardId: 0,
   postStatusId: null,
+  commentsCount: 0,
   userId: 0,
   createdAt: '',
 };
@@ -30,6 +31,7 @@ const postReducer = (
         description: action.post.description,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
+        commentsCount: action.post.comments_count,
         userId: action.post.user_id,
         createdAt: action.post.created_at,
       };

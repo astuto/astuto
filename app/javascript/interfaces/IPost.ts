@@ -4,6 +4,7 @@ interface IPost {
   description?: string;
   boardId: number;
   postStatusId?: number;
+  commentsCount: number;
   userId: number;
   createdAt: string;
 }

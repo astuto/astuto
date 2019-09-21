@@ -92,7 +92,7 @@ class NewPost extends React.Component<Props, State> {
     }
 
     try {
-      let res = await fetch('/posts', {
+      const res = await fetch('/posts', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -107,18 +107,22 @@ class NewPost extends React.Component<Props, State> {
           },
         }),
       });
+      const json = await res.json();
       this.setState({isLoading: false});
 
-      if (res.status === 204) {
+      if (res.status === 201) {
         this.setState({
-          success: 'Your post has been published!',
+          success: 'Post published! You will be redirected soon...',
 
           title: '',
           description: '',
         });
+
+        setTimeout(() => (
+          window.location.href = `/posts/${json.id}`
+        ), 1000);
       } else {
-        let data = await res.json();
-        this.setState({error: data.error});
+        this.setState({error: json.error});
       }
 
     } catch (e) {

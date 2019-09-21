@@ -31,6 +31,7 @@ const NewComment = ({
             value={body}
             onChange={handleChange}
             placeholder="Leave a comment"
+            autoFocus
             className="newCommentBody"
           />
           <Button

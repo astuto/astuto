@@ -50,6 +50,7 @@ const PostList = ({
               title={post.title}
               description={post.description}
               postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
+              commentsCount={post.commentsCount}
 
               key={i}
             />

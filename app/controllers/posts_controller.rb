@@ -3,7 +3,9 @@ class PostsController < ApplicationController
 
   def index
     posts = Post
-      .select(:id, :title, :description, :post_status_id)
+      .select('posts.id, title, description, post_status_id, COUNT(comments.id) as comments_count')
+      .left_outer_joins(:comments)
+      .group('posts.id')
       .where(filter_params)
       .search_by_name_or_description(params[:search])
       .page(params[:page])
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     if post.save
-      render json: post, status: :no_content
+      render json: post, status: :created
     else
       render json: {
         error: I18n.t('errors.post.create', message: post.errors.full_messages)
