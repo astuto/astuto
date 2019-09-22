@@ -4,13 +4,6 @@
 set -e
 
 if [ "$UPDATE" = 1 ]; then
-  echo "UPDATE (yarn packages, db preparation and webpack compilation)"
-
-  # Launch yarn install
-  echo "Launching yarn install..."
-  yarn install
-  echo "yarn install successfully executed."
-
   # Create database, load schema, run migrations and seed data in an idempotent way.
   echo "Preparing database..."
   rake db:prepare
@@ -20,6 +13,8 @@ if [ "$UPDATE" = 1 ]; then
   echo "Compiling JS and CSS with webpack..."
   ./bin/webpack
   echo "Webpack compilation completed."
+
+  exit 0
 fi
 
 # Remove a potentially pre-existing server.pid for Rails.

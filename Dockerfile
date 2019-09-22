@@ -14,10 +14,12 @@ WORKDIR /app
 # Launch processes in Procfile
 RUN gem install foreman
 
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+# Copy Gemfile and install gems
+COPY Gemfile* /app/
 RUN bundle install
 
+# Copy package.json and install packages
+COPY package.json yarn.lock /app/
 RUN yarn install --check-files
 
 COPY . /app
