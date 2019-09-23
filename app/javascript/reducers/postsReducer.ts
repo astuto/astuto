@@ -5,6 +5,8 @@ import { FiltersState } from './filtersReducer';
 import postReducer from './postReducer';
 import filtersReducer from './filtersReducer';
 
+import { POSTS_PER_PAGE } from '../constants';
+
 import {
   PostsRequestActionTypes,
   POSTS_REQUEST_START,
@@ -60,7 +62,7 @@ const postsReducer = (
           :
           [...state.items, ...action.posts.map(post => postReducer(undefined, postRequestSuccess(post)))],
         page: action.page,
-        haveMore: action.posts.length === 15,
+        haveMore: action.posts.length === POSTS_PER_PAGE,
         areLoading: false,
         error: '',
       };

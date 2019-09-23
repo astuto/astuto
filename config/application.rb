@@ -23,5 +23,9 @@ module App
     def email_confirmation?
       ENV["EMAIL_CONFIRMATION"] == "1"
     end
+
+    def posts_per_page
+      ENV["POSTS_PER_PAGE"].to_i
+    end
   end
 end

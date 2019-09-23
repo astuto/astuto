@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { in: 4..64 }
 
-  paginates_per 15
+  paginates_per Rails.application.posts_per_page
 
   class << self
     def find_with_post_status_in(post_statuses)
