@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-light">
   <div class="container">
+    <%=
+      if Rails.application.show_logo?
+        link_to image_tag(asset_pack_path('media/images/logo.png')), root_path, class: 'logo navbar-brand'
+      end
+    %>
     <%= link_to Rails.application.name, root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

@@ -24,6 +24,10 @@ module App
       ENV["EMAIL_CONFIRMATION"] == "1"
     end
 
+    def show_logo?
+      ENV["SHOW_LOGO"] == "1"
+    end
+
     def posts_per_page
       ENV["POSTS_PER_PAGE"].to_i
     end
