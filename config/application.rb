@@ -19,5 +19,9 @@ module App
     def name
       ENV["APP_NAME"]
     end
+
+    def email_confirmation?
+      ENV["EMAIL_CONFIRMATION"] == "1"
+    end
   end
 end

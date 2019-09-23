@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
+         :recoverable, :rememberable, :validatable
+  
+  self.send(:devise, :confirmable) if Rails.application.email_confirmation?
 
   has_many :comments
 
