@@ -29,5 +29,4 @@ ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 EXPOSE 3000
 
-# Start the main process.
-CMD ["foreman", "start", "-p", "3000"]
+# No default CMD is provided in Dockerfile

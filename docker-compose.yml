@@ -2,12 +2,19 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
     environment:
       - UPDATE=0
+      - ENVIRONMENT
+      - APP_NAME
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
     volumes:
       - .:/app
     ports:
