@@ -4,9 +4,10 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN npm install -g yarn
 
-# Install Chrome (needed by Capybara). TODO: optional installation, only if development
+# Install Chrome (needed by Capybara). TODO: optional installation, only if needed
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+RUN dpkg -i /google-chrome-stable_current_amd64.deb; apt-get -fy install
+RUN rm /google-chrome-stable_current_amd64.deb
 
 RUN mkdir /app
 WORKDIR /app

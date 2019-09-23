@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This file serves 3 use cases:
-# 1: if the env variable UPDATE is 1, the database is prepared
+# 1: if the env variable UPDATE is 1, db is prepared and assets compiled by webpack
 # 2: if a command was supplied, it is executed
 # 3: otherwise, check env variable ENVIRONMENT and launch server
 

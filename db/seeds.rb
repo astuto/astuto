@@ -1,6 +1,11 @@
 # Create an admin user and confirm its email automatically
-admin = User.create(email: 'admin@example.com', password: 'password', role: 'admin', full_name: 'Admin')
-admin.confirm
+admin = User.create(
+  full_name: 'Admin',
+  email: 'admin@example.com',
+  password: 'password',
+  role: 'admin',
+  confirmed_at: Time.zone.now
+)
 
 # Create some boards
 feature_board = Board.create(name: 'Feature Requests', description: 'Post here your feature requests.')
