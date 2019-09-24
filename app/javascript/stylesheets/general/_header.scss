@@ -16,10 +16,15 @@
   .navbar-brand {
     font-size: 18pt;
     font-weight: 700;
-  }
 
-  .logo img {
-    width: 48px;
+    .logo {
+      @extend
+        .d-inline-block,
+        .align-top,
+        .mr-2;
+
+      width: 36px;
+    }
   }
 
   .boardsNav {
