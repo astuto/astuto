@@ -23,6 +23,8 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     role: RoleField,
     full_name: Field::String,
+    posts: Field::HasMany,
+    comments: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,6 +36,8 @@ class UserDashboard < Administrate::BaseDashboard
   full_name
   email
   role
+  posts
+  comments
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,6 +48,8 @@ class UserDashboard < Administrate::BaseDashboard
   email
   role
   password
+  posts
+  comments
   created_at
   updated_at
   confirmed_at
@@ -76,7 +82,7 @@ class UserDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    "#{user.role.capitalize} \"#{user.full_name}\""
+  end
 end

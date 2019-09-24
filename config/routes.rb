@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     root to: 'boards#index'
 
     resources :boards
+    resources :comments
+    resources :posts
     resources :post_statuses
     resources :users
   end

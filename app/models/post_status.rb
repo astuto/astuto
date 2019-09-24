@@ -1,4 +1,6 @@
 class PostStatus < ApplicationRecord
+  has_many :posts, dependent: :nullify
+
   after_initialize :set_random_color, :set_order_to_last
 
   validates :name, presence: true, uniqueness: true

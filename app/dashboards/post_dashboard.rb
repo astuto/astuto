@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class PostStatusDashboard < Administrate::BaseDashboard
+class PostDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,11 +9,12 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    color: ColorField,
-    order: Field::Number,
-    show_in_roadmap: Field::Boolean,
-    posts: Field::HasMany,
+    title: Field::String,
+    description: Field::Text,
+    comments: Field::HasMany,
+    user: Field::BelongsTo,
+    board: Field::BelongsTo,
+    post_status: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,22 +25,24 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  name
-  color
-  order
-  show_in_roadmap
-  posts
+  title
+  description
+  user
+  board
+  post_status
+  comments
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  name
-  color
-  order
-  show_in_roadmap
-  posts
+  title
+  description
+  user
+  board
+  post_status
+  comments
   created_at
   updated_at
   ].freeze
@@ -48,10 +51,11 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
-  color
-  order
-  show_in_roadmap
+  title
+  description
+  user
+  board
+  post_status
   ].freeze
 
   # COLLECTION_FILTERS
@@ -66,10 +70,10 @@ class PostStatusDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how post statuses are displayed
+  # Overwrite this method to customize how posts are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(post_status)
-    "PostStatus \"#{post_status.name}\""
-  end
+  # def display_resource(post)
+  #   "Post ##{post.id}"
+  # end
 end

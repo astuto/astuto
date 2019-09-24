@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :board
   belongs_to :user
   belongs_to :post_status, optional: true
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true, length: { in: 4..64 }
 

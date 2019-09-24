@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class PostStatusDashboard < Administrate::BaseDashboard
+class CommentDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,11 +9,12 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    color: ColorField,
-    order: Field::Number,
-    show_in_roadmap: Field::Boolean,
-    posts: Field::HasMany,
+    body: Field::Text,
+    parent_id: Field::Number,
+    parent: Field::BelongsTo.with_options(class_name: "Comment"),
+    children: Field::HasMany.with_options(class_name: "Comment"),
+    user: Field::BelongsTo,
+    post: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,22 +25,22 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  name
-  color
-  order
-  show_in_roadmap
-  posts
+  body
+  user
+  post
+  children
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  name
-  color
-  order
-  show_in_roadmap
-  posts
+  body
+  parent_id
+  parent
+  children
+  user
+  post
   created_at
   updated_at
   ].freeze
@@ -48,10 +49,10 @@ class PostStatusDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
-  color
-  order
-  show_in_roadmap
+  body
+  parent
+  user
+  post
   ].freeze
 
   # COLLECTION_FILTERS
@@ -66,10 +67,10 @@ class PostStatusDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how post statuses are displayed
+  # Overwrite this method to customize how comments are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(post_status)
-    "PostStatus \"#{post_status.name}\""
-  end
+  # def display_resource(comment)
+  #   "Comment ##{comment.id}"
+  # end
 end

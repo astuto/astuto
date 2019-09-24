@@ -12,6 +12,7 @@ class BoardDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: Field::Text,
     order: Field::Number,
+    posts: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,6 +26,7 @@ class BoardDashboard < Administrate::BaseDashboard
   name
   description
   order
+  posts
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,6 +36,7 @@ class BoardDashboard < Administrate::BaseDashboard
   name
   description
   order
+  posts
   created_at
   updated_at
   ].freeze
@@ -62,7 +65,7 @@ class BoardDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how boards are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(board)
-  #   "Board ##{board.id}"
-  # end
+  def display_resource(board)
+    "Board \"#{board.name}\""
+  end
 end
