@@ -1,18 +1,25 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
   
-  self.send(:devise, :confirmable) if Rails.application.email_confirmation?
-
   has_many :comments
 
   enum role: [:user, :moderator, :admin]
   after_initialize :set_default_role, if: :new_record?
+  after_initialize :skip_confirmation, if: :new_record?
 
   validates :full_name, presence: true, length: { in: 2..32 }
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def skip_confirmation
+    return if Rails.application.email_confirmation?
+    skip_confirmation!
+    skip_confirmation_notification!
+    skip_reconfirmation!
   end
 
   def gravatar_url

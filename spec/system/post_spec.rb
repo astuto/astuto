@@ -49,10 +49,9 @@ feature 'post', type: :system, js: true do
     expect(page).to have_select selectPickerStatus, selected: post_status1.name
     expect(post.reload.post_status_id).to eq(post_status1.id)
 
-    # don't know why it doesn't work anymore :(
-    # select 'None', from: selectPickerStatus
-    # expect(page).to have_select selectPickerStatus, selected: 'None'
-    # expect(post.reload.post_status_id).to be_nil
+    select 'None', from: selectPickerStatus
+    expect(page).to have_select selectPickerStatus, selected: 'None'
+    expect(post.reload.post_status_id).to be_nil
   end
 
   it 'does not show board and status selection to users' do

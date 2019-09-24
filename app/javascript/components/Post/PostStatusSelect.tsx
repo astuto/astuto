@@ -3,6 +3,8 @@ import { FormEvent } from 'react';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
+const NO_POST_STATUS_VALUE = 'none';
+
 interface Props {
   postStatuses: Array<IPostStatus>;
   selectedPostStatusId: number;
@@ -18,7 +20,7 @@ const PostStatusSelect = ({
   handleChange,
 }: Props) => (
   <select
-    value={selectedPostStatusId || 'Loading...'}
+    value={selectedPostStatusId || NO_POST_STATUS_VALUE}
     onChange={
       (e: FormEvent) => (
         handleChange(parseInt((e.target as HTMLSelectElement).value))
@@ -34,7 +36,7 @@ const PostStatusSelect = ({
       ))}
     </optgroup>
     <optgroup label="No post status">
-      <option value="none">None</option>
+      <option value={NO_POST_STATUS_VALUE}>None</option>
     </optgroup>
   </select>
 );

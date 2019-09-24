@@ -31,16 +31,6 @@ feature 'board', type: :system, js: true do
     post4
   }
 
-  def assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
-    within board_container do
-      if n_of_posts_in_board < n_of_posts_per_page * page_number
-        expect(page).to have_selector(post_link, count: n_of_posts_in_board)
-      else
-        expect(page).to have_selector(post_link, count: n_of_posts_per_page * page_number)
-      end
-    end
-  end
-
   it 'renders correctly' do
     visit board_path(board)
 
@@ -114,8 +104,6 @@ feature 'board', type: :system, js: true do
       fill_in 'Title', with: post_title
       fill_in 'Description (optional)', with: post_description
       click_button 'Submit feedback' # submit
-
-      expect(page).to have_selector('.successText')
     end
 
     visit board_path(board)
@@ -175,6 +163,17 @@ feature 'board', type: :system, js: true do
     expect(page).to have_no_content(/#{post1.description}/i)
     expect(page).to have_content(/#{post2.description}/i)
     expect(page).to have_no_content(/#{post3.description}/i)
+  end
+
+  def assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
+    # puts "tot: #{n_of_posts_in_board}, perpage: #{n_of_posts_per_page}, page: #{page_number}"
+    within board_container do
+      if n_of_posts_in_board < n_of_posts_per_page * page_number
+        expect(page).to have_selector(post_link, count: n_of_posts_in_board)
+      else
+        expect(page).to have_selector(post_link, count: n_of_posts_per_page * page_number)
+      end
+    end
   end
 
   it 'autoloads new posts with infinite scroll' do
