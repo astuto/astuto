@@ -21,11 +21,11 @@ module App
     end
 
     def email_confirmation?
-      ENV["EMAIL_CONFIRMATION"] == "1"
+      ENV["EMAIL_CONFIRMATION"] == "yes"
     end
 
     def show_logo?
-      ENV["SHOW_LOGO"] == "1"
+      ENV["SHOW_LOGO"] == "yes"
     end
 
     def posts_per_page

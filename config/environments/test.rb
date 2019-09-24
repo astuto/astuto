@@ -4,8 +4,8 @@
 # and recreated between test runs. Don't rely on the data there!
 
 # Set up default environment variables
-ENV["EMAIL_CONFIRMATION"] = "0"
-ENV["POSTS_PER_PAGE"] = "8"
+ENV["EMAIL_CONFIRMATION"] = "no"
+ENV["POSTS_PER_PAGE"] = "15"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

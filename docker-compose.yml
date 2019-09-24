@@ -12,9 +12,12 @@ services:
     environment:
       - UPDATE=0
       - ENVIRONMENT
-      - APP_NAME
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+      - EMAIL_CONFIRMATION
+      - APP_NAME
+      - SHOW_LOGO
+      - POSTS_PER_PAGE
     volumes:
       - .:/app
     ports:
