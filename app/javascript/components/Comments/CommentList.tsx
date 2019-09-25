@@ -17,6 +17,7 @@ interface Props {
   handleSubmitComment(body: string, parentId: number): void;
 
   isLoggedIn: boolean;
+  isPowerUser: boolean;
 }
 
 const CommentList = ({
@@ -30,6 +31,7 @@ const CommentList = ({
   handleSubmitComment,
 
   isLoggedIn,
+  isPowerUser,
 }: Props) => (
   <React.Fragment>
     {comments.map((comment, i) => {
@@ -49,6 +51,7 @@ const CommentList = ({
               {...comment}
 
               isLoggedIn={isLoggedIn}
+              isPowerUser={isPowerUser}
             />
 
             <CommentList
@@ -62,6 +65,7 @@ const CommentList = ({
               handleSubmitComment={handleSubmitComment}
 
               isLoggedIn={isLoggedIn}
+              isPowerUser={isPowerUser}
             />
           </div>
         );

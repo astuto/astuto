@@ -12,6 +12,7 @@ import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
 interface Props {
   postId: number;
   isLoggedIn: boolean;
+  isPowerUser: boolean;
   authenticityToken: string;
 
   comments: Array<IComment>;
@@ -47,6 +48,7 @@ class CommentsP extends React.Component<Props> {
   render() {
     const {
       isLoggedIn,
+      isPowerUser,
 
       comments,
       replies,
@@ -92,6 +94,7 @@ class CommentsP extends React.Component<Props> {
           parentId={null}
           level={1}
           isLoggedIn={isLoggedIn}
+          isPowerUser={isPowerUser}
         />
       </div>
     );

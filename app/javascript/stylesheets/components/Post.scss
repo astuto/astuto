@@ -26,6 +26,18 @@
       }
     }
 
+    .postHeader {
+      @extend
+        .d-flex;
+
+      a {
+        @extend
+          .ml-1;
+        
+        line-height: 1em;
+      }
+    }
+
     .postSettings {
       @extend
         .d-flex,

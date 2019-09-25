@@ -65,7 +65,13 @@ class PostP extends React.Component<Props> {
 
         <div className="postAndCommentsContainer">
           <div className="postContainer">
-            <h2>{post.title}</h2>
+            <div className="postHeader">
+              <h2>{post.title}</h2>
+              {
+                isPowerUser && post ?
+                  <a href={`/admin/posts/${post.id}`} data-turbolinks="false">Edit</a> : null
+              }
+            </div>
             {
               isPowerUser && post ?
                 <div className="postSettings">
@@ -101,6 +107,7 @@ class PostP extends React.Component<Props> {
           <Comments
             postId={this.props.postId}
             isLoggedIn={isLoggedIn}
+            isPowerUser={isPowerUser}
             authenticityToken={authenticityToken}
           />
         </div>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FormEvent } from 'react';
 
 import NewComment from './NewComment';
+import Separator from '../shared/Separator';
 import { MutedText } from '../shared/CustomTexts';
 
 import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
@@ -22,6 +23,7 @@ interface Props {
   handleSubmitComment(body: string, parentId: number): void;
 
   isLoggedIn: boolean;
+  isPowerUser: boolean;
 }
 
 const Comment = ({
@@ -38,6 +40,7 @@ const Comment = ({
   handleSubmitComment,
 
   isLoggedIn,
+  isPowerUser,
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
@@ -48,7 +51,16 @@ const Comment = ({
       <a className="commentReplyButton" onClick={handleToggleCommentReply}>
         { reply.isOpen ? 'Cancel' : 'Reply' }
       </a>
-      &nbsp;&bull;&nbsp;
+      {
+        isPowerUser ?
+          <React.Fragment>
+            <Separator />
+            <a href={`/admin/comments/${id}`} data-turbolinks="false">Edit</a>
+          </React.Fragment>
+        :
+          null
+      }
+      <Separator />
       <MutedText>{friendlyDate(updatedAt)}</MutedText>
     </div>
     {
