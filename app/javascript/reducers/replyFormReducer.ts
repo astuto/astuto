@@ -16,7 +16,7 @@ import {
   COMMENT_SUBMIT_FAILURE,
 } from '../actions/submitComment';
 
-export interface CommentRepliesState {
+export interface ReplyFormState {
   commentId: number;
   isOpen: boolean;
   body: string;
@@ -24,7 +24,7 @@ export interface CommentRepliesState {
   error: string;
 }
 
-const initialState: CommentRepliesState = {
+const initialState: ReplyFormState = {
   commentId: undefined,
   isOpen: false,
   body: '',
@@ -32,7 +32,7 @@ const initialState: CommentRepliesState = {
   error: '',
 }
 
-const commentRepliesReducer = (
+const replyFormReducer = (
   state = initialState,
   action:
     CommentRequestSuccessAction |
@@ -77,6 +77,7 @@ const commentRepliesReducer = (
       return {
         ...state,
         error: action.error,
+        isSubmitting: false,
       };
 
     default:
@@ -84,4 +85,4 @@ const commentRepliesReducer = (
   }
 }
 
-export default commentRepliesReducer;
+export default replyFormReducer;

@@ -21,22 +21,23 @@ import {
 } from '../actions/submitComment';
 
 import commentReducer from './commentReducer';
-import commentRepliesReducer from './commentRepliesReducer';
+import replyFormsReducer from './replyFormsReducer';
+
+import { ReplyFormState } from './replyFormReducer';
 
 import IComment from '../interfaces/IComment';
 import ICommentJSON from '../interfaces/json/IComment';
-import { CommentRepliesState } from './commentRepliesReducer';
 
 export interface CommentsState {
   items: Array<IComment>;
-  replies: Array<CommentRepliesState>;
+  replyForms: Array<ReplyFormState>;
   areLoading: boolean;
   error: string;
 }
 
 const initialState: CommentsState = {
   items: [],
-  replies: [],
+  replyForms: [],
   areLoading: false,
   error: '',
 };
@@ -61,10 +62,7 @@ const commentsReducer = (
         items: action.comments.map(
           (comment: ICommentJSON) => commentReducer(undefined, commentRequestSuccess(comment))
         ),
-        replies: [commentRepliesReducer(undefined, {type: 'COMMENT_REQUEST_SUCCESS', comment: { id: -1 } as ICommentJSON }),
-          ...action.comments.map(
-            (comment: ICommentJSON) => commentRepliesReducer(undefined, commentRequestSuccess(comment))
-        )],
+        replyForms: replyFormsReducer(state.replyForms, action),
         areLoading: false,
         error: '',
       };
@@ -80,45 +78,21 @@ const commentsReducer = (
     case SET_COMMENT_REPLY_BODY:
       return {
         ...state,
-        replies: state.replies.map(
-          reply => (
-            reply.commentId === action.commentId ?
-              commentRepliesReducer(reply, action)
-            :
-              reply
-          )
-        ),
+        replyForms: replyFormsReducer(state.replyForms, action),
       };
 
     case COMMENT_SUBMIT_START:
     case COMMENT_SUBMIT_FAILURE:
       return {
         ...state,
-        replies: state.replies.map(
-          reply => (
-            reply.commentId === action.parentId ?
-              commentRepliesReducer(reply, action)
-            :
-              reply
-          )
-        ),
+        replyForms: replyFormsReducer(state.replyForms, action),
       };
 
     case COMMENT_SUBMIT_SUCCESS:
       return {
         ...state,
         items: [commentReducer(undefined, commentRequestSuccess(action.comment)), ...state.items],
-        replies: [
-          ...state.replies.map(
-            reply => (
-              reply.commentId === action.comment.parent_id ?
-                commentRepliesReducer(reply, action)
-              :
-                reply
-            )
-          ),
-          commentRepliesReducer(undefined, commentRequestSuccess(action.comment)),
-        ],
+        replyForms: replyFormsReducer(state.replyForms, action),
       };
 
     default:

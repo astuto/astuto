@@ -4,7 +4,7 @@ import NewComment from './NewComment';
 import Separator from '../shared/Separator';
 import { MutedText } from '../shared/CustomTexts';
 
-import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
+import { ReplyFormState } from '../../reducers/replyFormReducer';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
@@ -14,7 +14,7 @@ interface Props {
   userFullName: string;
   updatedAt: string;
 
-  reply: CommentRepliesState;
+  replyForm: ReplyFormState;
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: React.FormEvent): void;
   handleSubmitComment(body: string, parentId: number): void;
@@ -29,7 +29,7 @@ const Comment = ({
   userFullName,
   updatedAt,
 
-  reply,
+  replyForm,
   handleToggleCommentReply,
   handleCommentReplyBodyChange,
   handleSubmitComment,
@@ -44,7 +44,7 @@ const Comment = ({
     <p className="commentBody">{body}</p>
     <div className="commentFooter">
       <a className="commentReplyButton" onClick={handleToggleCommentReply}>
-        { reply.isOpen ? 'Cancel' : 'Reply' }
+        { replyForm.isOpen ? 'Cancel' : 'Reply' }
       </a>
       {
         isPowerUser ?
@@ -59,11 +59,12 @@ const Comment = ({
       <MutedText>{friendlyDate(updatedAt)}</MutedText>
     </div>
     {
-      reply.isOpen ?
+      replyForm.isOpen ?
         <NewComment
-          body={reply.body}
+          body={replyForm.body}
           parentId={id}
-          isSubmitting={reply.isSubmitting}
+          isSubmitting={replyForm.isSubmitting}
+          error={replyForm.error}
           handleChange={handleCommentReplyBodyChange}
           handleSubmit={handleSubmitComment}
 

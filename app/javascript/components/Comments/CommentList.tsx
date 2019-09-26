@@ -3,11 +3,11 @@ import * as React from 'react';
 import Comment from './Comment';
 
 import IComment from '../../interfaces/IComment';
-import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
+import { ReplyFormState } from '../../reducers/replyFormReducer';
 
 interface Props {
   comments: Array<IComment>;
-  replies: Array<CommentRepliesState>;
+  replyForms: Array<ReplyFormState>;
   parentId: number;
   level: number;
 
@@ -21,7 +21,7 @@ interface Props {
 
 const CommentList = ({
   comments,
-  replies,
+  replyForms,
   parentId,
   level,
 
@@ -38,7 +38,7 @@ const CommentList = ({
         return (
           <div className="commentList" key={i}>
             <Comment
-              reply={replies.find(reply => reply.commentId === comment.id)}
+              replyForm={replyForms.find(replyForm => replyForm.commentId === comment.id)}
               handleToggleCommentReply={() => toggleCommentReply(comment.id)}
               handleCommentReplyBodyChange={
                 (e: React.FormEvent) => (
@@ -54,7 +54,7 @@ const CommentList = ({
 
             <CommentList
               comments={comments}
-              replies={replies}
+              replyForms={replyForms}
               parentId={comment.id}
               level={level+1}
 

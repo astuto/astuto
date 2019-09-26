@@ -6,7 +6,7 @@ import Spinner from '../shared/Spinner';
 import { DangerText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
-import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
+import { ReplyFormState } from '../../reducers/replyFormReducer';
 
 interface Props {
   postId: number;
@@ -15,7 +15,7 @@ interface Props {
   authenticityToken: string;
 
   comments: Array<IComment>;
-  replies: Array<CommentRepliesState>;
+  replyForms: Array<ReplyFormState>;
   areLoading: boolean;
   error: string;
 
@@ -50,7 +50,7 @@ class CommentsP extends React.Component<Props> {
       isPowerUser,
 
       comments,
-      replies,
+      replyForms,
       areLoading,
       error,
 
@@ -58,7 +58,7 @@ class CommentsP extends React.Component<Props> {
       setCommentReplyBody,
     } = this.props;
 
-    const postReply = replies.find(reply => reply.commentId === -1);
+    const postReply = replyForms.find(replyForm => replyForm.commentId === null);
 
     return (
       <div className="commentsContainer">
@@ -66,9 +66,10 @@ class CommentsP extends React.Component<Props> {
           body={postReply && postReply.body}
           parentId={null}
           isSubmitting={postReply && postReply.isSubmitting}
+          error={postReply && postReply.error}
           handleChange={
             (e: React.FormEvent) => (
-              setCommentReplyBody(-1, (e.target as HTMLTextAreaElement).value)
+              setCommentReplyBody(null, (e.target as HTMLTextAreaElement).value)
             )
           }
           handleSubmit={this._handleSubmitComment}
@@ -79,13 +80,13 @@ class CommentsP extends React.Component<Props> {
         { areLoading ? <Spinner /> : null }
         { error ? <DangerText>{error}</DangerText> : null }
 
-        <span className="commentsTitle">
+        <div className="commentsTitle">
           activity &bull; {comments.length} comments
-        </span>
+        </div>
 
         <CommentList
           comments={comments}
-          replies={replies}
+          replyForms={replyForms}
           toggleCommentReply={toggleCommentReply}
           setCommentReplyBody={setCommentReplyBody}
           handleSubmitComment={this._handleSubmitComment}

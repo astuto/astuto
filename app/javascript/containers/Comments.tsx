@@ -13,7 +13,7 @@ import CommentsP from '../components/Comments/CommentsP';
 
 const mapStateToProps = (state: State) => ({
   comments: state.currentPost.comments.items,
-  replies: state.currentPost.comments.replies,
+  replyForms: state.currentPost.comments.replyForms,
   areLoading: state.currentPost.comments.areLoading,
   error: state.currentPost.comments.error,
 });
