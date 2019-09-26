@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 interface Props {
   children: any;
-  onClick(e: FormEvent): void;
+  onClick(e: React.FormEvent): void;
   className?: string;
   outline?: boolean;
 }

@@ -1,5 +1,4 @@
 import {
-  CommentsRequestActionTypes,
   COMMENTS_REQUEST_START,
   COMMENTS_REQUEST_SUCCESS,
   COMMENTS_REQUEST_FAILURE,
@@ -8,7 +7,6 @@ import {
 import { commentRequestSuccess } from '../actions/requestComment';
 
 import {
-  HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';
@@ -23,6 +21,7 @@ import commentReducer from './commentReducer';
 import commentRepliesReducer from './commentRepliesReducer';
 
 import IComment from '../interfaces/IComment';
+import ICommentJSON from '../interfaces/json/IComment';
 import { CommentRepliesState } from './commentRepliesReducer';
 
 export interface CommentsState {
@@ -54,11 +53,11 @@ const commentsReducer = (
       return {
         ...state,
         items: action.comments.map(
-          comment => commentReducer(undefined, commentRequestSuccess(comment))
+          (comment: ICommentJSON) => commentReducer(undefined, commentRequestSuccess(comment))
         ),
         replies: [commentRepliesReducer(undefined, {type: 'COMMENT_REQUEST_SUCCESS', comment: { id: -1 } }),
           ...action.comments.map(
-            comment => commentRepliesReducer(undefined, commentRequestSuccess(comment))
+            (comment: ICommentJSON) => commentRepliesReducer(undefined, commentRequestSuccess(comment))
         )],
         areLoading: false,
         error: '',

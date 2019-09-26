@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import NewComment from './NewComment';
 import Separator from '../shared/Separator';
@@ -12,14 +11,12 @@ import friendlyDate from '../../helpers/friendlyDate';
 interface Props {
   id: number;
   body: string;
-  parentId: number;
   userFullName: string;
   updatedAt: string;
 
-  level: number;
   reply: CommentRepliesState;
   handleToggleCommentReply(): void;
-  handleCommentReplyBodyChange(e: FormEvent): void;
+  handleCommentReplyBodyChange(e: React.FormEvent): void;
   handleSubmitComment(body: string, parentId: number): void;
 
   isLoggedIn: boolean;
@@ -29,11 +26,9 @@ interface Props {
 const Comment = ({
   id,
   body,
-  parentId,
   userFullName,
   updatedAt,
 
-  level,
   reply,
   handleToggleCommentReply,
   handleCommentReplyBodyChange,

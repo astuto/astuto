@@ -19,7 +19,6 @@ interface Props {
   error: string;
 
   handleLoadMore(): void;
-  page: number;
   hasMore: boolean;
 }
 
@@ -29,7 +28,6 @@ const PostList = ({
   areLoading,
   error,
   handleLoadMore,
-  page,
   hasMore
 }: Props) => (
   <div className="postList">

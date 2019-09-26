@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import IBoard from '../../interfaces/IBoard';
 
@@ -20,7 +19,7 @@ const PostBoardSelect = ({
   <select
     value={selectedBoardId || 'Loading...'}
     onChange={
-      (e: FormEvent) => (
+      (e: React.FormEvent) => (
         handleChange(parseInt((e.target as HTMLSelectElement).value))
     )}
     id="selectPickerBoard"

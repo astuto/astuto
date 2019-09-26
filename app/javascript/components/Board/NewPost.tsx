@@ -3,7 +3,6 @@ import * as React from 'react';
 import NewPostForm from './NewPostForm';
 import Spinner from '../shared/Spinner';
 import {
-  TitleText,
   MutedText,
   DangerText,
   SuccessText,
@@ -29,7 +28,7 @@ interface State {
 }
 
 class NewPost extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -57,20 +56,20 @@ class NewPost extends React.Component<Props, State> {
     });
   }
 
-  onTitleChange(title) {
+  onTitleChange(title: string) {
     this.setState({
       title,
       error: '',
     });
   }
 
-  onDescriptionChange(description) {
+  onDescriptionChange(description: string) {
     this.setState({
       description,
     });
   }
 
-  async submitForm(e) {
+  async submitForm(e: React.FormEvent) {
     e.preventDefault();
 
     this.setState({

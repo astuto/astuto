@@ -1,12 +1,14 @@
 import * as React from 'react';
 
-import IPostStatus from '../../interfaces/IPostStatus';
+interface Props {
+  name: string;
+  color: string;
+}
 
 const PostStatusLabel = ({
-  id,
   name,
   color,
-}: IPostStatus) => (
+}: Props) => (
   <span className="badge" style={{backgroundColor: color, color: 'white'}}>{name}</span>
 );
 

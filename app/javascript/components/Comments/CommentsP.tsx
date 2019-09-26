@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import NewComment from './NewComment';
 import CommentList from './CommentList';
 import Spinner from '../shared/Spinner';
-import { DangerText, UppercaseText } from '../shared/CustomTexts';
+import { DangerText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { CommentRepliesState } from '../../reducers/commentRepliesReducer';
@@ -36,7 +35,7 @@ class CommentsP extends React.Component<Props> {
     this.props.requestComments(this.props.postId);
   }
 
-  _handleSubmitComment = (body, parentId) => {
+  _handleSubmitComment = (body: string, parentId: number) => {
     this.props.submitComment(
       this.props.postId,
       body,
@@ -57,7 +56,6 @@ class CommentsP extends React.Component<Props> {
 
       toggleCommentReply,
       setCommentReplyBody,
-      submitComment,
     } = this.props;
 
     const postReply = replies.find(reply => reply.commentId === -1);
@@ -69,7 +67,7 @@ class CommentsP extends React.Component<Props> {
           parentId={null}
           isSubmitting={postReply && postReply.isSubmitting}
           handleChange={
-            (e: FormEvent) => (
+            (e: React.FormEvent) => (
               setCommentReplyBody(-1, (e.target as HTMLTextAreaElement).value)
             )
           }

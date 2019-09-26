@@ -6,7 +6,6 @@ import PostStatusFilter from './PostStatusFilter';
 import PostList from './PostList';
 
 import IBoard from '../../interfaces/IBoard';
-import IPost from '../../interfaces/IPost';
 
 import { PostsState } from '../../reducers/postsReducer';
 import { PostStatusesState } from '../../reducers/postStatusesReducer';
@@ -37,7 +36,7 @@ class BoardP extends React.Component<Props> {
     this.props.requestPostStatuses();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { searchQuery } = this.props.posts.filters;
     const prevSearchQuery = prevProps.posts.filters.searchQuery;
 
@@ -98,7 +97,6 @@ class BoardP extends React.Component<Props> {
         <PostList
           posts={posts.items}
           postStatuses={postStatuses.items}
-          page={posts.page}
           hasMore={posts.haveMore}
           areLoading={posts.areLoading}
           error={posts.error}

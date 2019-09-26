@@ -3,7 +3,6 @@ import {
 } from '../actions/requestComment';
 
 import {
-  HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';

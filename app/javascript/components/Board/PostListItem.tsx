@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import CommentsNumber from '../shared/CommentsNumber';
 import PostStatusLabel from '../shared/PostStatusLabel';
-import { TitleText, DescriptionText } from '../shared/CustomTexts';
+import { DescriptionText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 

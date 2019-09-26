@@ -24,7 +24,7 @@ const PostStatusListItem = ({
   }>
     <a onClick={handleClick} className="postStatusListItemLink">
       <div className="postStatusListItem">
-        <PostStatusLabel id={undefined} name={name} color={color} />
+        <PostStatusLabel name={name} color={color} />
       </div>
     </a>
     {

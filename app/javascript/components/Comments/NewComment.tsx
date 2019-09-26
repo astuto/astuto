@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import Button from '../shared/Button';
 import Spinner from '../shared/Spinner';
@@ -8,7 +7,7 @@ interface Props {
   body: string;
   parentId: number;
   isSubmitting: boolean;
-  handleChange(e: FormEvent): void;
+  handleChange(e: React.FormEvent): void;
   handleSubmit(body: string, parentId: number): void;
 
   isLoggedIn: boolean;

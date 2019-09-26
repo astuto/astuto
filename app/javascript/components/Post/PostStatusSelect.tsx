@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -22,7 +21,7 @@ const PostStatusSelect = ({
   <select
     value={selectedPostStatusId || NO_POST_STATUS_VALUE}
     onChange={
-      (e: FormEvent) => (
+      (e: React.FormEvent) => (
         handleChange(parseInt((e.target as HTMLSelectElement).value))
     )}
     id="selectPickerStatus"

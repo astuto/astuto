@@ -15,7 +15,7 @@ interface Props {
 class BoardRoot extends React.Component<Props> {
   store: any;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.store = createStoreHelper();

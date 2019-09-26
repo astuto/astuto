@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormEvent } from 'react';
 
 import Comment from './Comment';
 
@@ -39,11 +38,10 @@ const CommentList = ({
         return (
           <div className="commentList" key={i}>
             <Comment
-              level={level}
               reply={replies.find(reply => reply.commentId === comment.id)}
               handleToggleCommentReply={() => toggleCommentReply(comment.id)}
               handleCommentReplyBodyChange={
-                (e: FormEvent) => (
+                (e: React.FormEvent) => (
                   setCommentReplyBody(comment.id, (e.target as HTMLTextAreaElement).value)
                 )
               }

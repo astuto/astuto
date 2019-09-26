@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 import { requestPost } from '../actions/requestPost';
-import { requestComments } from '../actions/requestComments';
 import { changePostBoard } from '../actions/changePostBoard';
 import { changePostStatus } from '../actions/changePostStatus';
 
