@@ -7,6 +7,9 @@
 # Ignore the actual contents of .env
 .env
 
+# Ignore vs code config.
+.vscode
+
 # Ignore bundler config.
 /.bundle
 
