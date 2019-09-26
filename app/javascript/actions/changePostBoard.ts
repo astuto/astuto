@@ -5,7 +5,7 @@ import { State } from '../reducers/rootReducer';
 export const CHANGE_POST_BOARD_SUCCESS = 'CHANGE_POST_BOARD_SUCCESS';
 export interface ChangePostBoardSuccessAction {
   type: typeof CHANGE_POST_BOARD_SUCCESS;
-  newBoardId;
+  newBoardId: number;
 }
 
 const changePostBoardSuccess = (newBoardId: number): ChangePostBoardSuccessAction => ({

@@ -6,6 +6,9 @@ import createStoreHelper from '../../helpers/createStore';
 
 import IBoard from '../../interfaces/IBoard';
 
+import { Store } from 'redux';
+import { State } from '../../reducers/rootReducer';
+
 interface Props {
   board: IBoard;
   isLoggedIn: boolean;
@@ -13,7 +16,7 @@ interface Props {
 }
 
 class BoardRoot extends React.Component<Props> {
-  store: any;
+  store: Store<State, any>;
 
   constructor(props: Props) {
     super(props);

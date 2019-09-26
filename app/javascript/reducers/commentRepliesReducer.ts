@@ -1,13 +1,16 @@
 import {
+  CommentRequestSuccessAction,
   COMMENT_REQUEST_SUCCESS,
 } from '../actions/requestComment';
 
 import {
+  HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';
 
 import {
+  CommentSubmitActionTypes,
   COMMENT_SUBMIT_START,
   COMMENT_SUBMIT_SUCCESS,
   COMMENT_SUBMIT_FAILURE,
@@ -31,7 +34,10 @@ const initialState: CommentRepliesState = {
 
 const commentRepliesReducer = (
   state = initialState,
-  action,
+  action:
+    CommentRequestSuccessAction |
+    HandleCommentRepliesType |
+    CommentSubmitActionTypes,
 ) => {
   switch (action.type) {
     case COMMENT_REQUEST_SUCCESS:

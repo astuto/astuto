@@ -8,6 +8,9 @@ import Post from '../../containers/Post';
 import IBoard from '../../interfaces/IBoard';
 import IPostStatus from '../../interfaces/IPostStatus';
 
+import { Store } from 'redux';
+import { State } from '../../reducers/rootReducer';
+
 interface Props {
   postId: number;
   boards: Array<IBoard>;
@@ -18,7 +21,7 @@ interface Props {
 }
 
 class PostRoot extends React.Component<Props> {
-  store: any;
+  store: Store<State, any>;
 
   constructor(props: Props) {
     super(props);

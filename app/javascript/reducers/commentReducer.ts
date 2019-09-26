@@ -1,4 +1,5 @@
 import {
+  CommentRequestSuccessAction,
   COMMENT_REQUEST_SUCCESS,
 } from '../actions/requestComment';
 
@@ -14,7 +15,7 @@ const initialState: IComment = {
 
 const commentReducer = (
   state = initialState,
-  action,
+  action: CommentRequestSuccessAction,
 ): IComment => {
   switch (action.type) {
     case COMMENT_REQUEST_SUCCESS:

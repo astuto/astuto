@@ -11,12 +11,12 @@ interface SetCommentReplyBodyAction {
   body: string;
 }
 
-export const toggleCommentReply = (commentId): ToggleCommentReplyAction => ({
+export const toggleCommentReply = (commentId: number): ToggleCommentReplyAction => ({
   type: TOGGLE_COMMENT_REPLY,
   commentId,
 });
 
-export const setCommentReplyBody = (commentId, body): SetCommentReplyBodyAction => ({
+export const setCommentReplyBody = (commentId: number, body: string): SetCommentReplyBodyAction => ({
   type: SET_COMMENT_REPLY_BODY,
   commentId,
   body,

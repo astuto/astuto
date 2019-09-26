@@ -50,10 +50,10 @@ interface CurrentPostState {
 }
 
 const initialState: CurrentPostState = {
-  item: postReducer(undefined, {}),
+  item: postReducer(undefined, {} as PostRequestActionTypes),
   isLoading: false,
   error: '',
-  comments: commentsReducer(undefined, {}),
+  comments: commentsReducer(undefined, {} as CommentsRequestActionTypes),
 };
 
 const currentPostReducer = (

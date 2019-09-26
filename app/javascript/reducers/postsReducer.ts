@@ -37,10 +37,7 @@ const initialState: PostsState = {
   haveMore: true,
   areLoading: false,
   error: '',
-  filters: { // improve
-    searchQuery: '',
-    postStatusId: null,
-  },
+  filters: filtersReducer(undefined, {} as ChangeFiltersActionTypes),
 };
 
 const postsReducer = (

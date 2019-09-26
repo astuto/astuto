@@ -1,4 +1,5 @@
 import {
+  CommentsRequestActionTypes,
   COMMENTS_REQUEST_START,
   COMMENTS_REQUEST_SUCCESS,
   COMMENTS_REQUEST_FAILURE,
@@ -7,11 +8,13 @@ import {
 import { commentRequestSuccess } from '../actions/requestComment';
 
 import {
+  HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
 } from '../actions/handleCommentReplies';
 
 import {
+  CommentSubmitActionTypes,
   COMMENT_SUBMIT_START,
   COMMENT_SUBMIT_SUCCESS,
   COMMENT_SUBMIT_FAILURE,
@@ -40,7 +43,10 @@ const initialState: CommentsState = {
 
 const commentsReducer = (
   state = initialState,
-  action,
+  action:
+    CommentsRequestActionTypes |
+    HandleCommentRepliesType |
+    CommentSubmitActionTypes
 ): CommentsState => {
   switch (action.type) {
     case COMMENTS_REQUEST_START:
@@ -55,7 +61,7 @@ const commentsReducer = (
         items: action.comments.map(
           (comment: ICommentJSON) => commentReducer(undefined, commentRequestSuccess(comment))
         ),
-        replies: [commentRepliesReducer(undefined, {type: 'COMMENT_REQUEST_SUCCESS', comment: { id: -1 } }),
+        replies: [commentRepliesReducer(undefined, {type: 'COMMENT_REQUEST_SUCCESS', comment: { id: -1 } as ICommentJSON }),
           ...action.comments.map(
             (comment: ICommentJSON) => commentRepliesReducer(undefined, commentRequestSuccess(comment))
         )],

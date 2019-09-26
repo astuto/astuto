@@ -1,12 +1,15 @@
 import {
+  PostRequestActionTypes,
   POST_REQUEST_SUCCESS,
 } from '../actions/requestPost';
 
 import {
+  ChangePostBoardSuccessAction,
   CHANGE_POST_BOARD_SUCCESS,
 } from '../actions/changePostBoard';
 
 import {
+  ChangePostStatusSuccessAction,
   CHANGE_POST_STATUS_SUCCESS,
 } from '../actions/changePostStatus';
 
@@ -25,7 +28,10 @@ const initialState: IPost = {
 
 const postReducer = (
   state = initialState,
-  action,
+  action:
+    PostRequestActionTypes |
+    ChangePostBoardSuccessAction |
+    ChangePostStatusSuccessAction,
 ): IPost => {
   switch (action.type) {
     case POST_REQUEST_SUCCESS:

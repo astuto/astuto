@@ -28,7 +28,7 @@ export type CommentSubmitActionTypes =
   CommentSubmitSuccessAction |
   CommentSubmitFailureAction;
 
-const commentSubmitStart = (parentId): CommentSubmitStartAction => ({
+const commentSubmitStart = (parentId: number): CommentSubmitStartAction => ({
   type: COMMENT_SUBMIT_START,
   parentId,
 });
@@ -40,17 +40,17 @@ const commentSubmitSuccess = (
   comment: commentJSON,
 });
 
-const commentSubmitFailure = (parentId, error): CommentSubmitFailureAction => ({
+const commentSubmitFailure = (parentId: number, error: string): CommentSubmitFailureAction => ({
   type: COMMENT_SUBMIT_FAILURE,
   parentId,
   error,
 });
 
 export const submitComment = (
-  postId,
-  body,
-  parentId,
-  authenticityToken,
+  postId: number,
+  body: string,
+  parentId: number,
+  authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(commentSubmitStart(parentId));
 
