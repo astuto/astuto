@@ -3,13 +3,23 @@ class PostsController < ApplicationController
 
   def index
     posts = Post
-      .select('posts.id, title, description, post_status_id, COUNT(comments.id) as comments_count')
+      .select(
+        :id,
+        :title,
+        :description,
+        :post_status_id,
+        'COUNT(DISTINCT likes.id) AS likes_count',
+        'COUNT(DISTINCT comments.id) AS comments_count',
+        '((LOG(COUNT(DISTINCT likes.id) + 1) + LOG(COUNT(DISTINCT comments.id) + 1)) + (EXTRACT(EPOCH FROM posts.created_at) / 45000)) AS hotness',
+        "(SELECT COUNT(*) AS liked FROM likes WHERE likes.user_id=#{current_user ? current_user.id : -1} AND likes.post_id=posts.id)"
+      )
+      .left_outer_joins(:likes)
       .left_outer_joins(:comments)
       .group('posts.id')
       .where(filter_params)
       .search_by_name_or_description(params[:search])
+      .order('hotness DESC')
       .page(params[:page])
-      .order(updated_at: :desc)
     
     render json: posts
   end
