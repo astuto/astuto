@@ -97,16 +97,19 @@ class BoardP extends React.Component<Props> {
         <PostList
           posts={posts.items}
           postStatuses={postStatuses.items}
-          hasMore={posts.haveMore}
           areLoading={posts.areLoading}
           error={posts.error}
-
+          
+          hasMore={posts.haveMore}
           handleLoadMore={() =>
             posts.areLoading ?
               null
             :
               requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
           }
+
+          isLoggedIn={isLoggedIn}
+          authenticityToken={authenticityToken}
         />
       </div>
     );

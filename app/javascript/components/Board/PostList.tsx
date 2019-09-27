@@ -18,8 +18,11 @@ interface Props {
   areLoading: boolean;
   error: string;
 
-  handleLoadMore(): void;
   hasMore: boolean;
+  handleLoadMore(): void;
+
+  isLoggedIn: boolean;
+  authenticityToken: string;
 }
 
 const PostList = ({
@@ -27,8 +30,10 @@ const PostList = ({
   postStatuses,
   areLoading,
   error,
+  hasMore,
   handleLoadMore,
-  hasMore
+  isLoggedIn,
+  authenticityToken,
 }: Props) => (
   <div className="postList">
     { error ? <DangerText>{error}</DangerText> : null }
@@ -48,7 +53,12 @@ const PostList = ({
               title={post.title}
               description={post.description}
               postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
+              likesCount={post.likesCount}
+              liked={post.liked}
               commentsCount={post.commentsCount}
+
+              isLoggedIn={isLoggedIn}
+              authenticityToken={authenticityToken}
 
               key={i}
             />

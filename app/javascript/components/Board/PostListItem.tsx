@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import LikeButton from '../../containers/LikeButton';
 import CommentsNumber from '../shared/CommentsNumber';
 import PostStatusLabel from '../shared/PostStatusLabel';
 import { DescriptionText } from '../shared/CustomTexts';
@@ -11,21 +12,46 @@ interface Props {
   title: string;
   description?: string;
   postStatus: IPostStatus;
+  likesCount: number;
+  liked: number;
   commentsCount: number;
+
+  isLoggedIn: boolean;
+  authenticityToken: string;
 }
 
-const PostListItem = ({ id, title, description, postStatus, commentsCount }: Props) => (
-  <a href={`/posts/${id}`} className="postLink">
-    <div className="postListItem">
-      <span className="postTitle">{title}</span>
-      <DescriptionText limit={120}>{description}</DescriptionText>
+const PostListItem = ({
+  id,
+  title,
+  description,
+  postStatus,
+  likesCount,
+  liked,
+  commentsCount,
 
-      <div className="postDetails">
-        <CommentsNumber number={commentsCount} />
-        { postStatus ? <PostStatusLabel {...postStatus} /> : null }
+  isLoggedIn,
+  authenticityToken,
+}: Props) => (
+  <React.Fragment>
+    <LikeButton
+      postId={id}
+      likesCount={likesCount}
+      liked={liked}
+      isLoggedIn={isLoggedIn}
+      authenticityToken={authenticityToken}
+    />
+    <a href={`/posts/${id}`} className="postLink">
+      <div className="postListItem">
+        <span className="postTitle">{title}</span>
+        <DescriptionText limit={120}>{description}</DescriptionText>
+
+        <div className="postDetails">
+          <CommentsNumber number={commentsCount} />
+          { postStatus ? <PostStatusLabel {...postStatus} /> : null }
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </React.Fragment>
 );
 
 export default PostListItem;

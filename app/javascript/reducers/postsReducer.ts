@@ -22,6 +22,11 @@ import {
   SET_POST_STATUS_FILTER,
 } from '../actions/changeFilters';
 
+import {
+  LikeActionTypes,
+  LIKE_SUBMIT_SUCCESS,
+} from '../actions/submitLike';
+
 export interface PostsState {
   items: Array<IPost>;
   page: number;
@@ -42,7 +47,10 @@ const initialState: PostsState = {
 
 const postsReducer = (
   state = initialState,
-  action: PostsRequestActionTypes | ChangeFiltersActionTypes,
+  action:
+    PostsRequestActionTypes |
+    ChangeFiltersActionTypes |
+    LikeActionTypes,
 ): PostsState => {
   switch (action.type) {
     case POSTS_REQUEST_START:
@@ -76,6 +84,19 @@ const postsReducer = (
       return {
         ...state,
         filters: filtersReducer(state.filters, action),
+      };
+
+    case LIKE_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(post => {
+          if (action.postId === post.id) {
+            return action.isLike ?
+              { ...post, likesCount: post.likesCount + 1, liked: 1 }
+              :
+              { ...post, likesCount: post.likesCount - 1, liked: 0 }
+          } else return post;
+        }),
       };
 
     default:

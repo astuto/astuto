@@ -14,10 +14,12 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.where(like_params)
+    like = Like.find_by(like_params)
+    
+    return if like.nil?
 
     if like.destroy
-      render json: {}, status: :no_content
+      render json: {}, status: :accepted
     else
       render json: {
         error: I18n.t('errors.likes.destroy', message: like.errors.full_messages)
@@ -28,6 +30,9 @@ class LikesController < ApplicationController
   private
 
     def like_params
-      params.permit(:post_id).merge(user_id: current_user.id)
+      {
+        post_id: params[:post_id],
+        user_id: current_user.id,
+      }
     end
 end
