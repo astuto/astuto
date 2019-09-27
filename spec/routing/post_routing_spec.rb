@@ -15,6 +15,9 @@ RSpec.describe 'posts routing', :aggregate_failures, type: :routing do
       controller: 'posts', action: 'update', id: '1'
     )
 
+    expect(get: '/posts/new').not_to route_to(
+      controller: 'posts', action: 'new'
+    )
     expect(get: '/posts/1/edit').not_to be_routable
     expect(delete: '/posts/1').not_to be_routable
   end
