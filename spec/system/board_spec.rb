@@ -15,7 +15,7 @@ feature 'board', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   let(:board_container) { '.boardContainer' }
-  let(:post_link) { '.postLink' }
+  let(:post_list_item) { '.postListItem' }
   let(:sidebar) { '.sidebar' }
   let(:new_post_form) { '.newPostForm' }
   let(:reset_filter) { '.resetFilter' }
@@ -43,7 +43,7 @@ feature 'board', type: :system, js: true do
     visit board_path(board)
 
     within board_container do
-      expect(page).to have_selector(post_link, count: 3)
+      expect(page).to have_selector(post_list_item, count: 3)
       expect(page).to have_content(/#{post1.title}/i)
       expect(page).to have_content(/#{post1.description}/i)
       expect(page).to have_no_content(/#{post4.title}/i)
@@ -169,9 +169,9 @@ feature 'board', type: :system, js: true do
     # puts "tot: #{n_of_posts_in_board}, perpage: #{n_of_posts_per_page}, page: #{page_number}"
     within board_container do
       if n_of_posts_in_board < n_of_posts_per_page * page_number
-        expect(page).to have_selector(post_link, count: n_of_posts_in_board)
+        expect(page).to have_selector(post_list_item, count: n_of_posts_in_board)
       else
-        expect(page).to have_selector(post_link, count: n_of_posts_per_page * page_number)
+        expect(page).to have_selector(post_list_item, count: n_of_posts_per_page * page_number)
       end
     end
   end
@@ -182,7 +182,7 @@ feature 'board', type: :system, js: true do
 
     visit board_path(board)
     
-    n_of_posts_per_page = page.all(:css, post_link).size
+    n_of_posts_per_page = page.all(:css, post_list_item).size
     page_number = 1
 
     assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)

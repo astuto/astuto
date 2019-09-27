@@ -32,7 +32,7 @@ const PostListItem = ({
   isLoggedIn,
   authenticityToken,
 }: Props) => (
-  <React.Fragment>
+  <div onClick={() => window.location.href = `/posts/${id}`} className="postListItem">
     <LikeButton
       postId={id}
       likesCount={likesCount}
@@ -40,18 +40,17 @@ const PostListItem = ({
       isLoggedIn={isLoggedIn}
       authenticityToken={authenticityToken}
     />
-    <a href={`/posts/${id}`} className="postLink">
-      <div className="postListItem">
-        <span className="postTitle">{title}</span>
-        <DescriptionText limit={120}>{description}</DescriptionText>
 
-        <div className="postDetails">
-          <CommentsNumber number={commentsCount} />
-          { postStatus ? <PostStatusLabel {...postStatus} /> : null }
-        </div>
+    <div className="postContainer">
+      <span className="postTitle">{title}</span>
+      <DescriptionText limit={120}>{description}</DescriptionText>
+
+      <div className="postDetails">
+        <CommentsNumber number={commentsCount} />
+        { postStatus ? <PostStatusLabel {...postStatus} /> : null }
       </div>
-    </a>
-  </React.Fragment>
+    </div>
+  </div>
 );
 
 export default PostListItem;

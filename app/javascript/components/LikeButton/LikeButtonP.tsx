@@ -22,14 +22,15 @@ const LikeButtonP = ({
   isLoggedIn,
 }: Props) => (
   <div className="likeButtonContainer">
-    <button onClick={() =>
-      isLoggedIn ?
-        handleLikeSubmit(postId, !liked, authenticityToken)
-        :
-        window.location.href = `/users/sign_in`
-    }>
-      { liked ? 'down' : 'up' }
-    </button>
+    <div onClick={(e) => {
+      e.stopPropagation();
+      
+      if (isLoggedIn) handleLikeSubmit(postId, !liked, authenticityToken);
+      else window.location.href = `/users/sign_in`;
+      }}
+      className={`likeButton${liked ? ' liked' : ''}`}
+    >
+    </div>
     <span className="likesCountLabel">{likesCount}</span>
   </div>
 );

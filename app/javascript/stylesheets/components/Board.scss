@@ -73,24 +73,26 @@
       .flex-grow-1;
   }
 
-  .postLink {
-    @extend .my-3;
-    
-    display: block;
-    color: $astuto-black;
-
-    &:hover { text-decoration: none; }
-  }
-
   .postListItem {
     @extend
       .card3D,
       .d-flex,
-      .flex-column,
-      .justify-content-between,
+      .flex-row,
+      .justify-content-start,
+      .my-3,
       .p-3;
 
     height: 140px;
+    color: $astuto-black;
+
+    &:hover { cursor: pointer; }
+
+    .postContainer {
+      @extend
+        .d-flex,
+        .flex-column,
+        .justify-content-between;
+    }
   }
 
   .postTitle {
