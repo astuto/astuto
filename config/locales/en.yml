@@ -4,5 +4,7 @@ en:
     post:
       create: 'Post create error: %{message}'
       update: 'Post update error: %{message}'
+    like:
+      create: 'Like create error: %{message}'
     comment:
       create: 'Comment create error: %{message}'

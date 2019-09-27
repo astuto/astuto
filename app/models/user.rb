@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :confirmable
   
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   enum role: [:user, :moderator, :admin]
