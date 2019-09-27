@@ -45,7 +45,7 @@
   .fullname {
     vertical-align: middle;
 
-    color: black;
+    color: $astuto-black;
   }
 
   .dropdown-toggle::after {
@@ -58,5 +58,9 @@
 
   .navbar-toggler[aria-expanded="true"] {
     background-color: $astuto-grey;
+  }
+
+  .dropdown-item:active {
+    background-color: $astuto-black;
   }
 }

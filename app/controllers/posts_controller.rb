@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
+    @board = @post.board
 
     respond_to do |format|
       format.html

@@ -77,7 +77,7 @@
     @extend .my-3;
     
     display: block;
-    color: black;
+    color: $astuto-black;
 
     &:hover { text-decoration: none; }
   }
