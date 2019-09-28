@@ -95,16 +95,17 @@ feature 'comments', type: :system, js: true do
     end
   end
 
-  # it 'enables users to comment' do
-  #   log_in_as user
-  #   visit post_path(post)
+  it 'enables users to comment' do
+    log_in_as user
+    visit post_path(post)
 
-  #   comments_count = Comment.where(post_id: post.id).count
-  #   comment_body = 'this is a comment!'
+    comments_count = Comment.where(post_id: post.id).count
+    comment_body = 'this is a comment!'
 
-  #   find(newCommentBodySelector).fill_in with: comment_body
-  #   click_button 'Submit'
+    find(newCommentBodySelector).fill_in with: comment_body
+    click_button 'Submit'
+    visit post_path(post)
 
-  #   expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
-  # end
+    expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
+  end
 end
