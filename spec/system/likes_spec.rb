@@ -7,9 +7,11 @@ feature 'likes', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   let(:board_container) { '.boardContainer' }
+  let(:post_header_selector) { '.postHeader' }
   let(:like_button_container_selector) { '.likeButtonContainer' }
   let(:like_button_selector) { '.likeButton' }
   let(:likes_count_label_selector) { '.likesCountLabel' }
+  let(:like_list_container_selector) { '.likeListContainer' }
 
   before(:each) do
     board
@@ -56,6 +58,61 @@ feature 'likes', type: :system, js: true do
         # unlike
         first_like_button.click
         expect(like_container).to have_content(0)
+      end
+    end
+  end
+
+  context 'in Post component' do
+    it 'renders correctly' do
+      visit post_path(post1)
+
+      expect(page).to have_selector(like_button_container_selector)
+      expect(page).to have_selector(like_button_selector)
+      expect(page).to have_selector(likes_count_label_selector)
+    end
+
+    it 'likes and unlikes' do
+      user.confirm
+      sign_in user
+      visit post_path(post1)
+
+      like_button = find(like_button_selector)
+      like_container = find(like_button_container_selector)
+
+      # starts at zero likes
+      expect(like_container).to have_content(0)
+      within like_list_container_selector do
+        expect(page).not_to have_content(/#{user.full_name}/i)
+      end
+
+      # like
+      like_button.click
+      # expect(like_container).to have_content(1)
+      within like_list_container_selector do
+        expect(page).to have_content(/#{user.full_name}/i)
+      end
+
+      # unlike
+      like_button.click
+      expect(like_container).to have_content(0)
+      within like_list_container_selector do
+        expect(page).not_to have_content(/#{user.full_name}/i)
+      end
+    end
+
+    it 'renders list of likes' do
+      visit post_path(post1)
+
+      within like_list_container_selector do
+        expect(page).not_to have_content(/#{user.full_name}/i)
+      end
+
+      FactoryBot.create(:like, post: post1, user: user)
+
+      visit post_path(post1)
+
+      within like_list_container_selector do
+        expect(page).to have_content(/#{user.full_name}/i)
       end
     end
   end
