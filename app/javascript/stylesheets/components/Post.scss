@@ -4,13 +4,19 @@
     .justify-content-between,
     .align-items-start;
 
-    flex-direction: row;
+  flex-direction: row;
 
-    @include media-breakpoint-down(sm) {
-      flex-direction: column;
-  
-      .postAndCommentsContainer { width: 100%; }
-    }
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+
+    .postAndCommentsContainer { width: 100%; }
+  }
+
+  .sidebar {
+    .likeList {
+      @extend .sidebarCard;
+    } 
+  }
 
   .postAndCommentsContainer {
     @extend

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { requestPost } from '../actions/requestPost';
+import { requestLikes } from '../actions/requestLikes';
 import { changePostBoard } from '../actions/changePostBoard';
 import { changePostStatus } from '../actions/changePostStatus';
 
@@ -10,12 +11,16 @@ import PostP from '../components/Post/PostP';
 
 const mapStateToProps = (state: State) => ({
   post: state.currentPost.item,
-  comments: state.currentPost.comments,
+  likes: state.currentPost.likes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   requestPost(postId: number) {
     dispatch(requestPost(postId));
+  },
+
+  requestLikes(postId: number) {
+    dispatch(requestLikes(postId));
   },
 
   changePostBoard(postId: number, newBoardId: number, authenticityToken: string) {

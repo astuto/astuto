@@ -16,6 +16,18 @@ import {
 } from '../actions/changePostStatus';
 
 import {
+  LikesRequestActionTypes,
+  LIKES_REQUEST_START,
+  LIKES_REQUEST_SUCCESS,
+  LIKES_REQUEST_FAILURE,
+} from '../actions/requestLikes';
+
+import {
+  LikeActionTypes,
+  LIKE_SUBMIT_SUCCESS,
+} from '../actions/submitLike';
+
+import {
   CommentsRequestActionTypes,
   COMMENTS_REQUEST_START,
   COMMENTS_REQUEST_SUCCESS,
@@ -36,8 +48,10 @@ import {
 } from '../actions/submitComment';
 
 import postReducer from './postReducer';
+import likesReducer from './likesReducer';
 import commentsReducer from './commentsReducer';
 
+import { LikesState } from './likesReducer';
 import { CommentsState } from './commentsReducer';
 
 import IPost from '../interfaces/IPost';
@@ -46,6 +60,7 @@ interface CurrentPostState {
   item: IPost;
   isLoading: boolean;
   error: string;
+  likes: LikesState;
   comments: CommentsState;
 }
 
@@ -53,6 +68,7 @@ const initialState: CurrentPostState = {
   item: postReducer(undefined, {} as PostRequestActionTypes),
   isLoading: false,
   error: '',
+  likes: likesReducer(undefined, {} as LikesRequestActionTypes),
   comments: commentsReducer(undefined, {} as CommentsRequestActionTypes),
 };
 
@@ -62,6 +78,8 @@ const currentPostReducer = (
     PostRequestActionTypes |
     ChangePostBoardSuccessAction |
     ChangePostStatusSuccessAction |
+    LikesRequestActionTypes |
+    LikeActionTypes |
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes
@@ -93,6 +111,15 @@ const currentPostReducer = (
       return {
         ...state,
         item: postReducer(state.item, action),
+      };
+
+    case LIKES_REQUEST_START:
+    case LIKES_REQUEST_SUCCESS:
+    case LIKES_REQUEST_FAILURE:
+    case LIKE_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        likes: likesReducer(state.likes, action),
       };
 
     case COMMENTS_REQUEST_START:

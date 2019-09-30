@@ -4,6 +4,8 @@ import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 
+import LikeList from './LikeList';
+import LikeButton from '../../containers/LikeButton';
 import PostBoardSelect from './PostBoardSelect';
 import PostStatusSelect from './PostStatusSelect';
 import PostBoardLabel from '../shared/PostBoardLabel';
@@ -12,18 +14,21 @@ import Comments from '../../containers/Comments';
 import { MutedText } from '../shared/CustomTexts';
 
 import friendlyDate from '../../helpers/friendlyDate';
+import { LikesState } from '../../reducers/likesReducer';
 
 interface Props {
   postId: number;
   post: IPost;
+  likes: LikesState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  userEmail: string;
   authenticityToken: string;
 
   requestPost(postId: number): void;
-
+  requestLikes(postId: number): void;
   changePostBoard(
     postId: number,
     newBoardId: number,
@@ -39,16 +44,19 @@ interface Props {
 class PostP extends React.Component<Props> {
   componentDidMount() {
     this.props.requestPost(this.props.postId);
+    this.props.requestLikes(this.props.postId);
   }
 
   render() {
     const {
       post,
+      likes,
       boards,
       postStatuses,
 
       isLoggedIn,
       isPowerUser,
+      userEmail,
       authenticityToken,
 
       changePostBoard,
@@ -58,14 +66,23 @@ class PostP extends React.Component<Props> {
     return (
       <div className="pageContainer">
         <div className="sidebar">
-          <div className="sidebarCard"></div>
-          <div className="sidebarCard"></div>
-          <div className="sidebarCard"></div>
+          <LikeList
+            likes={likes.items}
+            areLoading={likes.areLoading}
+            error={likes.error}
+          />
         </div>
 
         <div className="postAndCommentsContainer">
           <div className="postContainer">
             <div className="postHeader">
+            <LikeButton
+              postId={post.id}
+              likesCount={likes.items.length}
+              liked={likes.items.find(like => like.email === userEmail) ? 1 : 0}
+              isLoggedIn={isLoggedIn}
+              authenticityToken={authenticityToken}
+            />
               <h2>{post.title}</h2>
               {
                 isPowerUser && post ?
