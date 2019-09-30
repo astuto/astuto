@@ -15,12 +15,6 @@ RSpec.describe Comment, type: :model do
     expect(empty_body).to be_invalid
   end
 
-  it 'has a body with 4 or more characters' do
-    short_body = FactoryBot.build(:comment, body: 'a' * 3)
-
-    expect(short_body).to be_invalid
-  end
-
   it 'can have no parent' do
     no_parent = FactoryBot.build(:comment, parent: nil)
 
