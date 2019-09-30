@@ -45,6 +45,12 @@
 
     .commentHeader {
       @extend .titleText;
+
+      .commentAuthor {
+        @extend .ml-2;
+
+        vertical-align: middle;
+      }
     }
 
     .commentBody {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Gravatar from 'react-gravatar';
 
 import NewComment from './NewComment';
 import Separator from '../shared/Separator';
@@ -12,6 +13,7 @@ interface Props {
   id: number;
   body: string;
   userFullName: string;
+  userEmail: string;
   updatedAt: string;
 
   replyForm: ReplyFormState;
@@ -27,6 +29,7 @@ const Comment = ({
   id,
   body,
   userFullName,
+  userEmail,
   updatedAt,
 
   replyForm,
@@ -39,6 +42,7 @@ const Comment = ({
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
+      <Gravatar email={userEmail} size={24} className="gravatar" />
       <span className="commentAuthor">{userFullName}</span>
     </div>
     <p className="commentBody">{body}</p>

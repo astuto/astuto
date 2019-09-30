@@ -3,6 +3,7 @@ interface IComment {
   body: string;
   parentId: number;
   userFullName: string;
+  userEmail: string;
   updatedAt: string;
 }
 

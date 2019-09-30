@@ -10,6 +10,7 @@ const initialState: IComment = {
   body: '',
   parentId: null,
   userFullName: '<Unknown user>',
+  userEmail: 'example@example.com',
   updatedAt: undefined,
 };
 
@@ -24,6 +25,7 @@ const commentReducer = (
         body: action.comment.body,
         parentId: action.comment.parent_id,
         userFullName: action.comment.user_full_name,
+        userEmail: action.comment.user_email,
         updatedAt: action.comment.updated_at,
       };
 
