@@ -13,8 +13,25 @@
   }
 
   .sidebar {
-    .likeList {
+    .likeListContainer {
       @extend .sidebarCard;
+
+      .likeList {
+        @extend .w-100;
+
+        max-height: 170px;
+        overflow-y: scroll;
+
+        .likeListItem {
+          @extend
+            .p-2,
+            .my-1;
+  
+          .likeListItemName {
+            @extend .ml-2;
+          }
+        }
+      }
     } 
   }
 
