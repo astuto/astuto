@@ -4,5 +4,6 @@ FactoryBot.define do
     user
     post
     parent { nil }
+    is_post_update { false }
   end
 end

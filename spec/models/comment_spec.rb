@@ -41,4 +41,10 @@ RSpec.describe Comment, type: :model do
 
     expect(parent.children.length).to eq(2)
   end
+
+  it 'has a flag to tell if it is a post update that defaults to false' do
+    comment = Comment.new
+    
+    expect(comment.is_post_update).to be_falsy
+  end
 end

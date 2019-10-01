@@ -13,6 +13,43 @@
   }
 
   .sidebar {
+    .postUpdateListContainer {
+      @extend .sidebarCard;
+
+      .postUpdateList {
+        @extend .w-100;
+
+        max-height: 250px;
+        overflow-y: scroll;
+
+        .postUpdateListItem {
+          @extend
+            .d-flex,
+            .flex-column,
+            .p-2,
+            .my-1;
+
+          .postUpdateListItemHeader {
+            @extend .d-flex;
+
+            span {
+              @extend
+                .ml-2;
+
+              font-weight: 600;
+              vertical-align: middle;
+            }
+          }
+
+          .postUpdateListItemBody {
+            @extend .m-0;
+
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
     .likeListContainer {
       @extend .sidebarCard;
 

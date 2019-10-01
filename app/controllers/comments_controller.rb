@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
         :id,
         :body,
         :parent_id,
+        :is_post_update,
         :updated_at,
         'users.full_name as user_full_name',
         'users.email as user_email',

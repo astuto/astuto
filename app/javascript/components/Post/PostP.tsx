@@ -15,11 +15,14 @@ import { MutedText } from '../shared/CustomTexts';
 
 import friendlyDate from '../../helpers/friendlyDate';
 import { LikesState } from '../../reducers/likesReducer';
+import { CommentsState } from '../../reducers/commentsReducer';
+import PostUpdateList from './PostUpdateList';
 
 interface Props {
   postId: number;
   post: IPost;
   likes: LikesState;
+  comments: CommentsState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
@@ -51,6 +54,7 @@ class PostP extends React.Component<Props> {
     const {
       post,
       likes,
+      comments,
       boards,
       postStatuses,
 
@@ -66,6 +70,12 @@ class PostP extends React.Component<Props> {
     return (
       <div className="pageContainer">
         <div className="sidebar">
+          <PostUpdateList
+            postUpdates={comments.items.filter(comment => comment.isPostUpdate === true)}
+            areLoading={comments.areLoading}
+            error={comments.error}
+          />
+
           <LikeList
             likes={likes.items}
             areLoading={likes.areLoading}

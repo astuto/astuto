@@ -12,6 +12,7 @@ import PostP from '../components/Post/PostP';
 const mapStateToProps = (state: State) => ({
   post: state.currentPost.item,
   likes: state.currentPost.likes,
+  comments: state.currentPost.comments,
 });
 
 const mapDispatchToProps = (dispatch) => ({
