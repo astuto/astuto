@@ -58,6 +58,13 @@
 
         vertical-align: middle;
       }
+
+      .postUpdateBadge {
+        @extend
+          .badge,
+          .badgeLight,
+          .ml-2;
+      }
     }
 
     .commentBody {
@@ -67,7 +74,7 @@
     .commentFooter {
       font-size: 14px;
 
-      .commentReplyButton {
+      .commentLink {
         color: $astuto-black;
 
         &:hover {

@@ -20,6 +20,11 @@ import {
   COMMENT_SUBMIT_FAILURE,
 } from '../actions/submitComment';
 
+import {
+  ToggleIsUpdateSuccessAction,
+  TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
+} from '../actions/updateComment';
+
 import commentReducer from './commentReducer';
 import replyFormsReducer from './replyFormsReducer';
 
@@ -47,7 +52,8 @@ const commentsReducer = (
   action:
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
-    CommentSubmitActionTypes
+    CommentSubmitActionTypes |
+    ToggleIsUpdateSuccessAction
 ): CommentsState => {
   switch (action.type) {
     case COMMENTS_REQUEST_START:
@@ -94,6 +100,18 @@ const commentsReducer = (
         items: [commentReducer(undefined, commentRequestSuccess(action.comment)), ...state.items],
         replyForms: replyFormsReducer(state.replyForms, action),
       };
+
+    case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:
+        return {
+          ...state,
+          items:
+            state.items.map(comment => {
+              if (comment.id === action.commentId) {
+                comment.isPostUpdate = !comment.isPostUpdate;
+                return comment;
+              } else return comment;
+            })
+        }
 
     default:
       return state;

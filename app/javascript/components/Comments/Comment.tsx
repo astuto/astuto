@@ -12,6 +12,7 @@ import friendlyDate from '../../helpers/friendlyDate';
 interface Props {
   id: number;
   body: string;
+  isPostUpdate: boolean;
   userFullName: string;
   userEmail: string;
   updatedAt: string;
@@ -19,6 +20,7 @@ interface Props {
   replyForm: ReplyFormState;
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: React.FormEvent): void;
+  handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
   handleSubmitComment(body: string, parentId: number): void;
 
   isLoggedIn: boolean;
@@ -29,6 +31,7 @@ interface Props {
 const Comment = ({
   id,
   body,
+  isPostUpdate,
   userFullName,
   userEmail,
   updatedAt,
@@ -36,6 +39,7 @@ const Comment = ({
   replyForm,
   handleToggleCommentReply,
   handleCommentReplyBodyChange,
+  handleToggleIsCommentUpdate,
   handleSubmitComment,
 
   isLoggedIn,
@@ -46,17 +50,26 @@ const Comment = ({
     <div className="commentHeader">
       <Gravatar email={userEmail} size={24} className="gravatar" />
       <span className="commentAuthor">{userFullName}</span>
+      { isPostUpdate ? <span className="postUpdateBadge">Post update</span> : null }
     </div>
     <p className="commentBody">{body}</p>
     <div className="commentFooter">
-      <a className="commentReplyButton" onClick={handleToggleCommentReply}>
+      <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
         { replyForm.isOpen ? 'Cancel' : 'Reply' }
       </a>
       {
         isPowerUser ?
           <React.Fragment>
             <Separator />
+            <a
+              onClick={() => handleToggleIsCommentUpdate(id, isPostUpdate)}
+              className="commentLink"
+            >
+              { isPostUpdate ? 'No post update' : 'Post update' }
+            </a>
+            <Separator />
             <a href={`/admin/comments/${id}`} data-turbolinks="false">Edit</a>
+
           </React.Fragment>
         :
           null

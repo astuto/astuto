@@ -23,6 +23,12 @@ interface Props {
   requestComments(postId: number, page?: number): void;
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
+  toggleCommentIsPostUpdate(
+    postId: number,
+    commentId: number,
+    currentIsPostUpdate: boolean,
+    authenticityToken: string,
+  ): void;
   submitComment(
     postId: number,
     body: string,
@@ -34,6 +40,15 @@ interface Props {
 class CommentsP extends React.Component<Props> {
   componentDidMount() {
     this.props.requestComments(this.props.postId);
+  }
+
+  _handleToggleIsCommentUpdate = (commentId: number, currentIsPostUpdate: boolean) => {
+    this.props.toggleCommentIsPostUpdate(
+      this.props.postId,
+      commentId,
+      currentIsPostUpdate,
+      this.props.authenticityToken,
+    );
   }
 
   _handleSubmitComment = (body: string, parentId: number) => {
@@ -92,6 +107,7 @@ class CommentsP extends React.Component<Props> {
           replyForms={replyForms}
           toggleCommentReply={toggleCommentReply}
           setCommentReplyBody={setCommentReplyBody}
+          handleToggleIsCommentUpdate={this._handleToggleIsCommentUpdate}
           handleSubmitComment={this._handleSubmitComment}
           parentId={null}
           level={1}

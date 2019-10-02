@@ -8,3 +8,4 @@ en:
       create: 'Like create error: %{message}'
     comment:
       create: 'Comment create error: %{message}'
+      update: 'Comment update error: %{message}'

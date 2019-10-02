@@ -5,6 +5,7 @@ import {
   toggleCommentReply,
   setCommentReplyBody,
 } from '../actions/handleCommentReplies';
+import { toggleCommentIsUpdate } from '../actions/updateComment';
 import { submitComment } from '../actions/submitComment';
 
 import { State } from '../reducers/rootReducer';
@@ -29,6 +30,15 @@ const mapDispatchToProps = (dispatch) => ({
 
   setCommentReplyBody(commentId: number, body: string) {
     dispatch(setCommentReplyBody(commentId, body));
+  },
+
+  toggleCommentIsPostUpdate(
+    postId: number,
+    commentId: number,
+    currentIsPostUpdate: boolean,
+    authenticityToken: string,
+  ) {
+    dispatch(toggleCommentIsUpdate(postId, commentId, currentIsPostUpdate, authenticityToken));
   },
 
   submitComment(

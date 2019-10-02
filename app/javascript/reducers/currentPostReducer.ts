@@ -47,6 +47,11 @@ import {
   COMMENT_SUBMIT_FAILURE,
 } from '../actions/submitComment';
 
+import {
+  ToggleIsUpdateSuccessAction,
+  TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
+} from '../actions/updateComment';
+
 import postReducer from './postReducer';
 import likesReducer from './likesReducer';
 import commentsReducer from './commentsReducer';
@@ -82,7 +87,8 @@ const currentPostReducer = (
     LikeActionTypes |
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
-    CommentSubmitActionTypes
+    CommentSubmitActionTypes |
+    ToggleIsUpdateSuccessAction
 ): CurrentPostState => {
   switch (action.type) {
     case POST_REQUEST_START:
@@ -130,6 +136,7 @@ const currentPostReducer = (
     case COMMENT_SUBMIT_START:
     case COMMENT_SUBMIT_SUCCESS:
     case COMMENT_SUBMIT_FAILURE:
+    case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:
       return {
         ...state,
         comments: commentsReducer(state.comments, action),
