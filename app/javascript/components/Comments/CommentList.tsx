@@ -17,6 +17,7 @@ interface Props {
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  userEmail: string;
 }
 
 const CommentList = ({
@@ -31,6 +32,7 @@ const CommentList = ({
 
   isLoggedIn,
   isPowerUser,
+  userEmail,
 }: Props) => (
   <React.Fragment>
     {comments.map((comment, i) => {
@@ -50,6 +52,7 @@ const CommentList = ({
 
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
+              currentUserEmail={userEmail}
             />
 
             <CommentList
@@ -64,6 +67,7 @@ const CommentList = ({
 
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
+              userEmail={userEmail}
             />
           </div>
         );

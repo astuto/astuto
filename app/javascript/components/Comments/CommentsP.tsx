@@ -12,6 +12,7 @@ interface Props {
   postId: number;
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  userEmail: string;
   authenticityToken: string;
 
   comments: Array<IComment>;
@@ -48,6 +49,7 @@ class CommentsP extends React.Component<Props> {
     const {
       isLoggedIn,
       isPowerUser,
+      userEmail,
 
       comments,
       replyForms,
@@ -75,6 +77,7 @@ class CommentsP extends React.Component<Props> {
           handleSubmit={this._handleSubmitComment}
 
           isLoggedIn={isLoggedIn}
+          userEmail={userEmail}
         />
 
         { areLoading ? <Spinner /> : null }
@@ -94,6 +97,7 @@ class CommentsP extends React.Component<Props> {
           level={1}
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
+          userEmail={userEmail}
         />
       </div>
     );

@@ -4,6 +4,13 @@
       .d-flex,
       .my-3;
 
+    .currentUserAvatar {
+      @extend
+        .gravatar,
+        .align-self-end,
+        .mr-2;
+    }
+
     .newCommentBody {
       @extend
         .form-control,

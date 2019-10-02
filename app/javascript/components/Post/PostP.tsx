@@ -135,6 +135,7 @@ class PostP extends React.Component<Props> {
             postId={this.props.postId}
             isLoggedIn={isLoggedIn}
             isPowerUser={isPowerUser}
+            userEmail={userEmail}
             authenticityToken={authenticityToken}
           />
         </div>

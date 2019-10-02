@@ -23,6 +23,7 @@ interface Props {
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  currentUserEmail: string;
 }
 
 const Comment = ({
@@ -39,6 +40,7 @@ const Comment = ({
 
   isLoggedIn,
   isPowerUser,
+  currentUserEmail,
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
@@ -73,6 +75,7 @@ const Comment = ({
           handleSubmit={handleSubmitComment}
 
           isLoggedIn={isLoggedIn}
+          userEmail={currentUserEmail}
         />
         :
         null

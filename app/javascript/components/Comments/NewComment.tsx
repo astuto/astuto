@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Gravatar from 'react-gravatar';
 
 import Button from '../shared/Button';
 import Spinner from '../shared/Spinner';
@@ -13,6 +14,7 @@ interface Props {
   handleSubmit(body: string, parentId: number): void;
 
   isLoggedIn: boolean;
+  userEmail: string;
 }
 
 const NewComment = ({
@@ -24,12 +26,14 @@ const NewComment = ({
   handleSubmit,
 
   isLoggedIn,
+  userEmail,
 }: Props) => (
   <React.Fragment>
     <div className="newCommentForm">
       {
         isLoggedIn ?
           <React.Fragment>
+            <Gravatar email={userEmail} size={36} className="currentUserAvatar" />
             <textarea
               value={body}
               onChange={handleChange}
