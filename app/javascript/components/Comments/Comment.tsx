@@ -65,10 +65,16 @@ const Comment = ({
               onClick={() => handleToggleIsCommentUpdate(id, isPostUpdate)}
               className="commentLink"
             >
-              { isPostUpdate ? 'No post update' : 'Post update' }
+              { 'Post update: ' + (isPostUpdate ? 'yes' : 'no') }
             </a>
             <Separator />
-            <a href={`/admin/comments/${id}`} data-turbolinks="false">Edit</a>
+            <a href={`/admin/comments/${id}/edit`} data-turbolinks="false">Edit</a>
+            <Separator />
+            <a
+              href={`/admin/comments/${id}`}
+              data-method="delete"
+              data-confirm="Are you sure?"
+              data-turbolinks="false">Delete</a>
 
           </React.Fragment>
         :
