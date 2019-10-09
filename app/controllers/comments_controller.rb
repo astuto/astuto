@@ -34,7 +34,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = Comment.find_by(post_id: params[:post_id])
+    comment = Comment.find(params[:id])
+
     comment.assign_attributes(comment_params)
 
     if !current_user.power_user? && current_user.id != post.user_id
