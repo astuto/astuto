@@ -9,7 +9,7 @@ interface Props {
 
 const SearchFilter = ({ searchQuery, handleChange }: Props) => (
   <div className="sidebarCard">
-    <TitleText>Search:</TitleText>
+    <TitleText>Search</TitleText>
     <input
       type="search"
       value={searchQuery}

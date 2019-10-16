@@ -17,11 +17,11 @@ interface Props {
 
 const LikeList = ({ likes, areLoading, error}: Props) => (
   <div className="likeListContainer">
-    <TitleText>People who liked:</TitleText>
+    <TitleText>People who liked</TitleText>
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
     <div className="likeList">
-      { likes.length === 0 ? <CenteredMutedText>There are not likes yet.</CenteredMutedText> : null }
+      { likes.length === 0 ? <CenteredMutedText>There are no likes yet.</CenteredMutedText> : null }
       {
         likes.map((like, i) => (
           <div className="likeListItem" key={i}>

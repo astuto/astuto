@@ -20,11 +20,11 @@ const PostUpdateList = ({
   error,
 }: Props) => (
   <div className="postUpdateListContainer">
-    <TitleText>Post updates:</TitleText>
+    <TitleText>Post updates</TitleText>
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
     <div className="postUpdateList">
-      { postUpdates.length === 0 ? <CenteredMutedText>There are not post updates yet.</CenteredMutedText> : null }
+      { postUpdates.length === 0 ? <CenteredMutedText>There are no post updates yet.</CenteredMutedText> : null }
       {
         postUpdates.map((postUpdate, i) => (
           <div className="postUpdateListItem" key={i}>
