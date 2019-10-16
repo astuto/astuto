@@ -32,5 +32,6 @@ done
 if [ $n_of_errors -gt 0 ]; then
 	echo "You need to set these ${n_of_errors} variables in your .env file."
 	echo "See .env-example for a configuration example."
+	echo "Check out https://github.com/riggraz/astuto/wiki/Required-environment-variables"
 	exit 2
 fi
