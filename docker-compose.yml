@@ -12,6 +12,7 @@ services:
     environment:
       - UPDATE=0
       - ENVIRONMENT
+      - SECRET_KEY_BASE
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - EMAIL_CONFIRMATION

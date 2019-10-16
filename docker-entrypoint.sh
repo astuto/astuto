@@ -18,7 +18,16 @@ rm -f /app/tmp/pids/server.pid
 if [ "$UPDATE" = 1 ]; then
   # Create database, load schema, run migrations and seed data in an idempotent way.
   echo "Preparing database..."
-  rake db:prepare
+  db_version=$(bundle exec rake db:version)
+  echo "$db_version"
+  if [ "$db_version" = "Current version: 0" ]; then
+    bundle exec rake db:create
+    bundle exec rake db:schema:load
+    bundle exec rake db:migrate
+    bundle exec rake db:seed
+  else
+    bundle exec rake db:migrate
+  fi
   echo "Database prepared."
 
   # Use webpack to build JS and CSS.
@@ -37,11 +46,13 @@ fi
 
 # Use case 3
 echo "Environment is: $ENVIRONMENT"
+export RAILS_ENV="$ENVIRONMENT"
+export NODE_ENV="$ENVIRONMENT"
 if [ $ENVIRONMENT == "development" ]; then
   # Launch Rails server and webpack-dev-server using Foreman
   foreman start -p 3000
 else # production
-  # Compile assets with Webpack and then launch Rails server
+  # Compile assets and launch server
   ./bin/webpack
   rails server -e production
 fi
