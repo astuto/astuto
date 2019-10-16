@@ -53,6 +53,6 @@ if [ $ENVIRONMENT == "development" ]; then
   foreman start -p 3000
 else # production
   # Compile assets and launch server
-  ./bin/webpack
+  rails assets:precompile
   rails server -e production
 fi
