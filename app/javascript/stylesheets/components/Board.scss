@@ -85,6 +85,10 @@
     height: 140px;
     color: $astuto-black;
 
+    @include media-breakpoint-down(sm) {
+      height: auto;
+    }
+
     &:hover { cursor: pointer; }
 
     .postContainer {
