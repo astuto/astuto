@@ -28,6 +28,6 @@ You can check out a demo [here](#).
 Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
 * [Here](https://github.com/riggraz/astuto/wiki/Improving-Astuto) you can find a todo list of what we would like to work on next.
 * [Here](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines) you can take a look at the contributing guidelines.
-* [Here](https://github.com/riggraz/astuto/wiki/Technologies) you can take a look at the technologies used to build Astuto. Don't wory, you do not need to know all of them!
+* [Here](https://github.com/riggraz/astuto/wiki/Technologies) you can take a look at the technologies used to build Astuto. If you know at least one of them you are welcome to contribute to Astuto!
 * You can run the test suite by typing `rspec`.
 * If you just have some suggestions you can [create an issue](https://github.com/riggraz/astuto/issues) or [email us directly](mailto:riccardo.graziosi97@gmail.com).
