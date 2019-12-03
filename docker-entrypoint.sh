@@ -12,7 +12,7 @@ set -e
 /bin/bash ./check-env.sh
 
 # Remove a potentially pre-existing server.pid for Rails.
-rm -f /app/tmp/pids/server.pid
+rm -f $APP_ROOT/tmp/pids/server.pid
 
 # Use case 1
 if [ "$UPDATE" = 1 ]; then
@@ -32,7 +32,7 @@ if [ "$UPDATE" = 1 ]; then
 
   # Use webpack to build JS and CSS.
   echo "Compiling JS and CSS with webpack..."
-  ./bin/webpack
+  $APP_ROOT/bin/webpack
   echo "Webpack compilation completed."
 
   exit 0
