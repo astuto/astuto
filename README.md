@@ -2,7 +2,7 @@
 
 Astuto is a free, open source, self-hosted customer feedback tool.
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
-You can check out a demo [here](#).
+If you are interested, you can check out a [demo of Astuto](http://116.203.226.196/).
 
 ## Requirements
 
@@ -12,10 +12,10 @@ You can check out a demo [here](#).
 ## Installation
 
 1. Ensure that you have the required software installed.
-2. Download Astuto from [here](#) or by cloning this repo.
-3. In the root directory, create a file named `.env` and write the required environment variables (see file `.env-example` for an example and check [this page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
+2. Download Astuto by cloning this repo or from [here](#).
+3. In the root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
 4. Run `script/docker-update-and-run.sh`.
-5. You should now have a running instance of Astuto, check it out at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
+5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ## Post-installation notes
 
@@ -26,8 +26,9 @@ You can check out a demo [here](#).
 ## Contributing
 
 Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
-* [Here](https://github.com/riggraz/astuto/wiki/Improving-Astuto) you can find a todo list of what we would like to work on next.
-* [Here](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines) you can take a look at the contributing guidelines.
-* [Here](https://github.com/riggraz/astuto/wiki/Technologies) you can take a look at the technologies used to build Astuto. If you know at least one of them you are welcome to contribute to Astuto!
+* You can suggest new features from the [Astuto demo](http://116.203.226.196/).
+* You can find a [todo list](https://github.com/riggraz/astuto/wiki/Improving-Astuto) of what we would like to work on next.
+* You should take a look at the [contribution guidelines](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines).
+* You should take a look at the [technologies](https://github.com/riggraz/astuto/wiki/Technologies) used to build Astuto. If you know at least one of them you are welcome to contribute to Astuto's codebase!
 * You can run the test suite by typing `rspec`.
 * If you just have some suggestions you can [create an issue](https://github.com/riggraz/astuto/issues) or [email us directly](mailto:riccardo.graziosi97@gmail.com).
