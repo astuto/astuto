@@ -13,12 +13,13 @@ If you are interested, you can check out a [demo of Astuto](http://116.203.226.1
 
 1. Ensure that you have the required software installed.
 2. Download Astuto by cloning this repo or from [here](#).
-3. In the root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
+3. In the root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this wiki page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
 4. Run `script/docker-update-and-run.sh`.
 5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ## Post-installation notes
 
+* **If you run into any problems take a look at the [common problems page](https://github.com/riggraz/astuto/wiki/Common-problems)**.
 * When you want to launch Astuto you have to run `script/docker-run.sh`. If you installed new gems, packages or updated the database schema, you first need to run `script/docker-update.sh` and then `script/docker-run.sh`. You can run them together with `script/docker-update-and-run.sh`.
 * You can always run `script/docker-update-and-run.sh` if unsure whether you should update or not. However, please note that `script/docker-update-and-run.sh` takes more time to run than `script/docker-run.sh`.
 * If you changed some environment variables in `.env` you have to restart the instance for these changes to take effect.
