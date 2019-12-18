@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This file serves 3 use cases:
-# 1: if the env variable UPDATE is 1, db is prepared and assets compiled by webpack
+# 1: if the env variable UPDATE is 1, db is prepared
 # 2: if a command was supplied, it is executed
 # 3: otherwise, check env variable ENVIRONMENT and launch server
 
@@ -29,11 +29,6 @@ if [ "$UPDATE" = 1 ]; then
     bundle exec rake db:migrate
   fi
   echo "Database prepared."
-
-  # Use webpack to build JS and CSS.
-  echo "Compiling JS and CSS with webpack..."
-  $APP_ROOT/bin/webpack
-  echo "Webpack compilation completed."
 
   exit 0
 fi
