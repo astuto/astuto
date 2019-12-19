@@ -1,13 +1,30 @@
-# Astuto
+<p align="center"><img width="400" src="./images/logo-and-name.png" /></p>
+<p align="center">
+  <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=for-the-badge">
+</p>
+<p align="center">Try the <a href="http://116.203.226.196/">online demo</a>!</p>
 
-Astuto is a free, open source, self-hosted customer feedback tool.
+---
+
+- [What is Astuto?](#what-is-astuto)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Post-installation notes](#post-installation-notes)
+- [Contributing](#contributing)
+
+---
+
+## What is Astuto?
+
+Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
 If you are interested, you can check out a [demo of Astuto](http://116.203.226.196/).
 
 ## Requirements
 
-* Docker (installation instructions [here](https://docs.docker.com/v17.09/engine/installation/))
-* Docker Compose (installation instructions [here](https://docs.docker.com/compose/install/))
+* Docker ([installation instructions](https://docs.docker.com/install/))
+* Docker Compose ([installation instructions](https://docs.docker.com/compose/install/))
 
 ## Installation
 
