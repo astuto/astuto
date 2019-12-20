@@ -29,8 +29,8 @@ If you are interested, you can check out a [demo of Astuto](http://116.203.226.1
 ## Installation
 
 1. Ensure that you have the required software installed.
-2. Download Astuto by cloning this repo or from [here](#).
-3. In the root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this wiki page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
+2. Clone this repository.
+3. In Astuto's root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this wiki page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
 4. Run `script/docker-update-and-run.sh`.
 5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
