@@ -17,35 +17,28 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authentication
-gem 'devise', git: 'https://github.com/plataformatec/devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise', tag: 'v4.7.0'
 
 # Administration panel
-gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
+gem "administrate", git: "https://github.com/thoughtbot/administrate.git", tag: 'v0.12.0'
 
 # React
-gem 'react-rails'
+gem 'react-rails', '~> 2.6.0'
 
 # Pagination
-gem 'kaminari'
+gem 'kaminari', '~> 1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8.2'
+  gem 'factory_bot_rails', '~> 5.0.2'
 end
 
 group :development do
