@@ -44,6 +44,7 @@ If you are interested, you can check out a [demo of Astuto](http://116.203.226.1
 ## Contributing
 
 Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
+* Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch.
 * You can suggest new features from the [Astuto demo](http://116.203.226.196/).
 * You can find a [todo list](https://github.com/riggraz/astuto/wiki/Improving-Astuto) of what we would like to work on next.
 * You should take a look at the [contribution guidelines](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines).
