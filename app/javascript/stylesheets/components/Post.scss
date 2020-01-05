@@ -76,7 +76,8 @@
     @extend
       .card,
       .flex-grow-1,
-      .p-3;
+      .p-3,
+      .mb-3;
 
     .postInfo {
       @extend .d-flex;

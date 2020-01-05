@@ -144,7 +144,7 @@ class NewPost extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <div className="newBoardContainer sidebarCard">
+      <div className="newPostContainer sidebarCard">
         <span className="boardTitle">{board.name}</span>
         <p><MutedText>{board.description}</MutedText></p>
         {

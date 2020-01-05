@@ -17,13 +17,17 @@
     .postList { width: 100%; }
   }
 
-  .newBoardContainer {
+  .newPostContainer {
     background-color: $astuto-grey;
     text-align: center;
 
     .boardTitle {
       font-size: 25px;
       font-weight: 600;
+    }
+
+    .newPostForm {
+      @extend .my-2;
     }
   }
 
