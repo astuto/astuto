@@ -47,8 +47,7 @@ If you are interested, you can check out a [demo of Astuto](http://116.203.226.1
 
 Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
 * Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch.
-* Take a look at the [road to v1.0 tasks](https://github.com/riggraz/astuto/projects/1).
-* You can find a [todo list](https://github.com/riggraz/astuto/wiki/Improving-Astuto) of what we would like to work on next.
+* You can find a [todo list](https://github.com/riggraz/astuto/projects/1) of what we would like to work on right now.
 * You should take a look at the [contribution guidelines](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines).
 * You should take a look at the [technologies](https://github.com/riggraz/astuto/wiki/Technologies) used to build Astuto.
 * You can run the test suite by typing `rspec` inside the `web` container. Before you can run `rspec`, you need to uncomment the Google Chrome installation lines in `docker/app/Dockerfile` and run `./script/docker-update-and-run.sh`.
