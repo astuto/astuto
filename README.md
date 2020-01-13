@@ -3,7 +3,7 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=for-the-badge">
 </p>
-<div align="center"><h2>Try the <a href="http://116.203.226.196/">online demo</a>!</h2></div>
+<div align="center"><h3>Try the <a href="http://116.203.226.196/">online demo</a>!</h3></div>
 
 ---
 
