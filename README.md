@@ -3,7 +3,7 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=for-the-badge">
 </p>
-<p align="center">Try the <a href="http://116.203.226.196/">online demo</a>!</p>
+<div align="center"><h2>Try the <a href="http://116.203.226.196/">online demo</a>!</h2></div>
 
 ---
 
@@ -20,6 +20,8 @@
 Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
 If you are interested, you can check out a [demo of Astuto](http://116.203.226.196/).
+
+<img src="./images/screenshot.png" />
 
 ## Requirements
 
