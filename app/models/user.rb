@@ -50,7 +50,6 @@ class User < ApplicationRecord
         )
       user.skip_password_validation = true
       user.save!
-      binding.pry
       user
     end
   end

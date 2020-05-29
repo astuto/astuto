@@ -16,8 +16,14 @@ module App
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.i18n.default_locale = :ja
+    config.i18n.fallbacks = %i[ja en]
+    config.i18n.available_locales = %i[ja en]
+    config.time_zone = 'Tokyo'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
     def name
-      ENV["APP_NAME"]
+      ENV["APP_NAME"] || 'ASTUTO'
     end
 
     def email_confirmation?
@@ -29,7 +35,7 @@ module App
     end
 
     def posts_per_page
-      ENV["POSTS_PER_PAGE"].to_i
+      (ENV["POSTS_PER_PAGE"] || 15).to_i
     end
   end
 end

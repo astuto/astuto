@@ -1,31 +1,5 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <h2>Log in</h2>
-
-  <div class="form-group">
-    <%= f.label :email, class: "sr-only" %>
-    <%= f.email_field :email, autocomplete: "email", placeholder: "Email address", required: true, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password, class: "sr-only" %>
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", required: true, class: "form-control" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
-      <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label :remember_me, class: "form-check-label" %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-dark btn-block" %>
-  </div>
-
-<% end %>
-
 <div class="actions">
+  <h2>Log in</h2>
   <%= button_to 'SCS LOGIN', user_scs_omniauth_authorize_path, class: "btn btn-dark btn-block" %>
 </div>
 

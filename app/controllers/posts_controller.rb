@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       .where(filter_params)
       .search_by_name_or_description(params[:search])
       .order('hotness DESC')
-      .page(params[:page])
+      # .page(params[:page].to_i)
     
     render json: posts
   end
@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @post = Post.find(params[:id])
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
     @board = @post.board
