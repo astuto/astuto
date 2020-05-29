@@ -109,4 +109,8 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.scs_server = ENV['SCS_SERVER']
+  config.scs_key = ENV['SCS_KEY'] || Rails.application.credentials[Rails.env.to_sym][:scs][:client_key]
+  config.scs_secret = ENV['SCS_SECRET'] || Rails.application.credentials[Rails.env.to_sym][:scs][:client_secret]
 end

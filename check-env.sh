@@ -12,8 +12,8 @@ fi
 # Array of environment variables that must be present
 env_vars=(
 	"ENVIRONMENT" \
-	"POSTGRES_USER" \
-	"POSTGRES_PASSWORD" \
+	"DATABASE_USER" \
+	"DATABASE_PASSWORD" \
 	"EMAIL_CONFIRMATION" \
 	"APP_NAME" \
 	"SHOW_LOGO" \

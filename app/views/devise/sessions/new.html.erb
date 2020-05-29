@@ -1,4 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <h2>Log in</h2>
 
   <div class="form-group">
@@ -21,6 +22,11 @@
   <div class="actions">
     <%= f.submit "Log in", class: "btn btn-dark btn-block" %>
   </div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="actions">
+  <%= button_to 'SCS LOGIN', user_scs_omniauth_authorize_path, class: "btn btn-dark btn-block" %>
+</div>
+
+

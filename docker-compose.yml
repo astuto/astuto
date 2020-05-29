@@ -3,8 +3,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+      - DATABASE_USER
+      - DATABASE_PASSWORD
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
@@ -15,12 +15,17 @@ services:
       - UPDATE=0
       - ENVIRONMENT
       - SECRET_KEY_BASE
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+      - DATABASE_USER
+      - DATABASE_PASSWORD
+      - DATABASE_NAME
+      - DATABASE_HOST
       - EMAIL_CONFIRMATION
       - APP_NAME
       - SHOW_LOGO
       - POSTS_PER_PAGE
+      - SCS_SERVER
+      - SCS_KEY
+      - SCS_SECRET
     volumes:
       - .:/astuto
     ports:
