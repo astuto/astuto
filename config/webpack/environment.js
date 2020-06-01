@@ -1,4 +1,5 @@
 const { environment } = require('@rails/webpacker')
+const erb =  require('./loaders/erb')
 const typescript =  require('./loaders/typescript')
 const webpack = require('webpack')
 
@@ -12,4 +13,5 @@ environment.plugins.append(
   })
 )
 
+environment.loaders.prepend('erb', erb)
 module.exports = environment

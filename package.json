@@ -15,6 +15,7 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
+    "rails-erb-loader": "^5.5.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-gravatar": "^2.6.3",
