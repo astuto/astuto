@@ -131,6 +131,8 @@ GEM
     hashie (4.1.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.7.0)
+      i18n (>= 0.6.6)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -338,6 +340,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise!
   factory_bot_rails (~> 5.0.2)
+  i18n-js
   jbuilder (~> 2.7)
   kaminari (~> 1.1.1)
   listen (>= 3.0.5, < 3.2)
