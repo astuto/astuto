@@ -1,0 +1,7 @@
+ja:
+  javascript:
+    components:
+      board:
+        new_post:
+          cancel: キャンセル
+          submit_feedback: フィードバックを投稿

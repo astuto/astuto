@@ -1,0 +1,8 @@
+ja:
+  javascript:
+    components:
+      board:
+        new_post_form:
+          title: タイトル
+          submit_feedback: フィードバックを投稿
+          description_optional: 詳細（任意）

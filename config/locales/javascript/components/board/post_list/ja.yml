@@ -1,0 +1,6 @@
+ja:
+  javascript:
+    components:
+      board:
+        post_list:
+          no_post: 投稿はありません。

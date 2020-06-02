@@ -6,6 +6,8 @@ import { CenteredMutedText } from '../shared/CustomTexts';
 import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';
 
+import I18n from 'i18n-js';
+
 interface Props {
   posts: Array<IPostJSON>;
   boards: Array<IBoard>;
@@ -25,9 +27,10 @@ const PostList = ({ posts, boards }: Props) => (
           />
         ))
       :
-        <CenteredMutedText>There are no posts that have this status.</CenteredMutedText>
+        <CenteredMutedText>{I18n.t('javascript.components.roadmap.post_list.no_post')}</CenteredMutedText>
     }
   </div>
+  
 );
 
 export default PostList;

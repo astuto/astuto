@@ -8,6 +8,8 @@ import IComment from '../../interfaces/IComment';
 
 import friendlyDate from '../../helpers/friendlyDate';
 
+import I18n from 'i18n-js';
+
 interface Props {
   postUpdates: Array<IComment>;
   areLoading: boolean;
@@ -20,11 +22,11 @@ const PostUpdateList = ({
   error,
 }: Props) => (
   <div className="postUpdateListContainer">
-    <TitleText>Post updates</TitleText>
+    <TitleText>{I18n.t('javascript.components.post.post_update_list.post_updates')}</TitleText>
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
     <div className="postUpdateList">
-      { postUpdates.length === 0 ? <CenteredMutedText>There are no post updates yet.</CenteredMutedText> : null }
+      { postUpdates.length === 0 ? <CenteredMutedText>{I18n.t('javascript.components.post.post_update_list.no_post_update')}</CenteredMutedText> : null }
       {
         postUpdates.map((postUpdate, i) => (
           <div className="postUpdateListItem" key={i}>

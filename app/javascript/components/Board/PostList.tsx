@@ -12,6 +12,8 @@ import {
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 
+import I18n from 'i18n-js';
+
 interface Props {
   posts: Array<IPost>;
   postStatuses: Array<IPostStatus>;
@@ -47,7 +49,9 @@ const PostList = ({
     >
       {
         posts.length > 0 ?
-          posts.map((post, i) => (
+          posts.filter((x, i, self) => {
+            return self.findIndex(obj => obj.id == x.id) === i;
+          }).map((post, i) => (
             <PostListItem
               id={post.id}
               title={post.title}
@@ -64,7 +68,7 @@ const PostList = ({
             />
           ))
         :
-          areLoading ? <p></p> : <CenteredMutedText>There are no posts.</CenteredMutedText>
+          areLoading ? <p></p> : <CenteredMutedText>{I18n.t('javascript.components.board.post_list.no_post')}</CenteredMutedText>
       }
     </InfiniteScroll>
   </div>

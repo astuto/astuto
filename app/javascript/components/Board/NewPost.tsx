@@ -11,6 +11,8 @@ import Button from '../shared/Button';
 
 import IBoard from '../../interfaces/IBoard';
 
+import I18n from 'i18n-js';
+
 interface Props {
   board: IBoard;
   isLoggedIn: boolean;
@@ -153,7 +155,7 @@ class NewPost extends React.Component<Props, State> {
               onClick={this.toggleForm}
               className="submitBtn"
               outline={showForm}>
-              { showForm ? 'Cancel' : 'Submit feedback' }
+              { showForm ? I18n.t('javascript.components.board.new_post.cancel') : I18n.t('javascript.components.board.new_post.submit_feedback') }
             </Button>
           :
             <a href="/users/sign_in" className="btn btn-dark">

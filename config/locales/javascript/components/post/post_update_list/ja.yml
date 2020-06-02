@@ -1,0 +1,7 @@
+ja:
+  javascript:
+    components:
+      post:
+        post_update_list:
+          no_post_update: 更新された投稿はありません。
+          post_updates: 投稿の更新

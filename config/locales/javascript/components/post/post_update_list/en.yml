@@ -1,0 +1,7 @@
+en:
+  javascript:
+    components:
+      post:
+        post_update_list:
+          no_post_update: There are no post updates yet.
+          post_updates: Post updates

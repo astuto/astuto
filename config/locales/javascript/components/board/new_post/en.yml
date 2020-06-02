@@ -1,0 +1,7 @@
+en:
+  javascript:
+    components:
+      board:
+        new_post:
+          cancel: Cancel
+          submit_feedback: Submit feedback

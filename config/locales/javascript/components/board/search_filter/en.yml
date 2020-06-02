@@ -1,0 +1,6 @@
+en:
+  javascript:
+    components:
+      board:
+        search_filter:
+          search: Search

@@ -1,0 +1,6 @@
+en:
+  javascript:
+    components:
+      board:
+        post_list:
+          no_post: There are no posts.

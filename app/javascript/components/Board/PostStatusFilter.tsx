@@ -6,6 +6,8 @@ import { TitleText, DangerText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
+import I18n from 'i18n-js';
+
 interface Props {
   postStatuses: Array<IPostStatus>;
   areLoading: boolean;
@@ -24,7 +26,7 @@ const PostStatusFilter = ({
   currentFilter,
 }: Props) => (
   <div className="postStatusFilterContainer sidebarCard">
-    <TitleText>Filter by post status</TitleText>
+    <TitleText>{I18n.t('javascript.components.board.post_status_filter.filter_by_post_status')}</TitleText>
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem

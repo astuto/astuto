@@ -1,0 +1,6 @@
+en:
+  javascript:
+    components:
+      roadmap:
+        post_list:
+          no_post: There are no posts that have this status.

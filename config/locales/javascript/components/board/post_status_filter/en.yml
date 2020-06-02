@@ -1,0 +1,6 @@
+en:
+  javascript:
+    components:
+      board:
+        post_status_filter:
+          filter_by_post_status: Filter by post status

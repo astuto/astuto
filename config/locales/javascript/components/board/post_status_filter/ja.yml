@@ -1,0 +1,6 @@
+ja:
+  javascript:
+    components:
+      board:
+        post_status_filter:
+          filter_by_post_status: 投稿の状態でフィルター
