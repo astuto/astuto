@@ -171,7 +171,7 @@ GEM
     pg (1.1.4)
     public_suffix (3.1.1)
     puma (3.12.2)
-    rack (2.0.8)
+    rack (2.2.3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
