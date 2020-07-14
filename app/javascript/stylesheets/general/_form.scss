@@ -35,3 +35,13 @@
 
   a { color: $astuto-black; }
 }
+
+@media (prefers-color-scheme: dark) {
+  .deviseLinks {
+    a { color: white !important; }
+  }
+
+  .form-control {
+    background-color: #242424;
+  }
+}

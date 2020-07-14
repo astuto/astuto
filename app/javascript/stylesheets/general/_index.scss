@@ -29,3 +29,29 @@
 .loginInfo {
   text-decoration: underline;
 }
+
+.btn {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #242424;
+  }
+
+  .container, h2 {
+    color: white;
+  }
+
+  .loginInfo {
+    color: white !important;
+  }
+
+  .btn {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+  }
+}

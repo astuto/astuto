@@ -29,3 +29,11 @@
     font-size: 17px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  $like_button_size: 11px;
+
+  .likeButton {
+    border-bottom: $like_button_size solid white !important;
+  }
+}

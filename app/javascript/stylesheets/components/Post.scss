@@ -119,3 +119,14 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+
+  .postDescription {
+    color: white !important;
+  }
+
+  .badgeLight {
+    color: white !important;
+  }
+}

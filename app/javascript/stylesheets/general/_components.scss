@@ -72,3 +72,10 @@ a {
 
   background-color: $astuto-grey;
 }
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    color: white !important;
+    background-color: $astuto-black !important;
+  }
+}

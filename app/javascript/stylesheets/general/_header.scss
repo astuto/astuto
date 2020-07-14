@@ -64,3 +64,62 @@
     background-color: $astuto-black;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: $astuto-black;
+
+    .fullname {  
+      color: $navbar-dark-brand-color;
+    }
+
+    .navbar-brand {
+      color: $navbar-dark-brand-color;
+  
+      @include hover-focus {
+        color: $navbar-dark-brand-hover-color;
+      }
+    }
+  
+    .navbar-nav {
+      .nav-link {
+        color: $navbar-dark-color;
+  
+        @include hover-focus {
+          color: $navbar-dark-hover-color;
+        }
+  
+        &.disabled {
+          color: $navbar-dark-disabled-color;
+        }
+      }
+  
+      .show > .nav-link,
+      .active > .nav-link,
+      .nav-link.show,
+      .nav-link.active {
+        color: $navbar-dark-active-color;
+      }
+    }
+  
+    .navbar-toggler {
+      color: $navbar-dark-color;
+      border-color: $navbar-dark-toggler-border-color;
+    }
+  
+    .navbar-toggler-icon {
+      background-image: $navbar-dark-toggler-icon-bg;
+    }
+  
+    .navbar-text {
+      color: $navbar-dark-color;
+      a {
+        color: $navbar-dark-active-color;
+  
+        @include hover-focus {
+          color: $navbar-dark-active-color;
+        }
+      }
+    }
+  }
+}
