@@ -127,6 +127,17 @@
   }
 
   .badgeLight {
+    color: white;
+  }
+
+  .postAndCommentsContainer .postSettings .selectPicker {
+    background-color: #282828 !important;
     color: white !important;
   }
+
+  .postAndCommentsContainer .postHeader a {
+    color: white;
+  }
+
+
 }

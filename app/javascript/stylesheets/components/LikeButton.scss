@@ -35,5 +35,17 @@
 
   .likeButton {
     border-bottom: $like_button_size solid white !important;
+
+    &:hover {
+      border-bottom-color: $astuto-brand !important;
+    }
+  }
+
+  .likeButton.liked {
+    border-bottom-color: $astuto-brand !important;
+  }
+
+  .likesCountLabel {
+    color: white !important;
   }
 }

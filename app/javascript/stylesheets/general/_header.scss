@@ -80,6 +80,17 @@
         color: $navbar-dark-brand-hover-color;
       }
     }
+
+    .dropdown-menu {
+      background-color: #363636;
+    }
+
+    .dropdown-item {
+      color: white !important;
+      &:hover {
+        background-color: #375a7f;
+      }
+    }
   
     .navbar-nav {
       .nav-link {
