@@ -31,21 +31,21 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  $like_button_size: 11px;
+  .likeButtonContainer {
+    .likeButton {
+      border-bottom-color: white;
 
-  .likeButton {
-    border-bottom: $like_button_size solid white !important;
-
-    &:hover {
-      border-bottom-color: $astuto-brand !important;
+      &:hover {
+        border-bottom-color: black;
+      }
     }
-  }
 
-  .likeButton.liked {
-    border-bottom-color: $astuto-brand !important;
-  }
+    .likeButton.liked {
+      border-bottom-color: black;
+    }
 
-  .likesCountLabel {
-    color: white !important;
+    .likesCountLabel {
+      color: white;
+    }
   }
 }
