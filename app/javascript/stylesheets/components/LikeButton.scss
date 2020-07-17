@@ -29,3 +29,23 @@
     font-size: 17px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .likeButtonContainer {
+    .likeButton {
+      border-bottom-color: white;
+
+      &:hover {
+        border-bottom-color: black;
+      }
+    }
+
+    .likeButton.liked {
+      border-bottom-color: black;
+    }
+
+    .likesCountLabel {
+      color: white;
+    }
+  }
+}

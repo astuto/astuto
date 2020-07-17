@@ -85,3 +85,10 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .commentList .comment .commentFooter .commentLink {
+    color: white;
+  }
+
+}
