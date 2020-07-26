@@ -72,3 +72,21 @@ a {
 
   background-color: $astuto-grey;
 }
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    color: white;
+    background-color: $astuto-black;
+  }
+
+  .alert-primary {
+    background-color: #00bc8c;
+    border-color: #fff;
+  }
+
+  .alert-danger {
+    background-color: #E74C3C;
+    border-color: #fff;
+  }
+
+}

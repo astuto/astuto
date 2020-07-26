@@ -68,10 +68,11 @@ const Comment = ({
               { 'Post update: ' + (isPostUpdate ? 'yes' : 'no') }
             </a>
             <Separator />
-            <a href={`/admin/comments/${id}/edit`} data-turbolinks="false">Edit</a>
+            <a href={`/admin/comments/${id}/edit`} className="commentLink" data-turbolinks="false">Edit</a>
             <Separator />
             <a
               href={`/admin/comments/${id}`}
+              className="commentLink"
               data-method="delete"
               data-confirm="Are you sure?"
               data-turbolinks="false">Delete</a>
