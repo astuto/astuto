@@ -31,7 +31,7 @@ gem "administrate", git: "https://github.com/thoughtbot/administrate.git", tag: 
 gem 'react-rails', '~> 2.6.0'
 
 # Pagination
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
