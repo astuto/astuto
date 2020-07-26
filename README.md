@@ -1,13 +1,16 @@
 <p align="center"><img width="400" src="./images/logo-and-name.png" /></p>
 <p align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=for-the-badge">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=for-the-badge">
+  <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=flat">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=flat">
+  <br>
+  <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=dark&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 </p>
 <div align="center"><h3>Try the <a href="http://116.203.226.196/">online demo</a>!</h3></div>
 
 ---
 
 - [What is Astuto?](#what-is-astuto)
+- [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Post-installation notes](#post-installation-notes)
@@ -21,7 +24,19 @@ Astuto is a free, open source, self-hosted customer feedback tool. It helps you 
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
 If you are interested, you can check out a [demo of Astuto](http://116.203.226.196/).
 
-<img src="./images/screenshot.png" />
+<img src="./images/featured-image.png" />
+
+## Features
+
+* Collect and manage feedback
+* Boards, to divide different types of feedback
+* Roadmap, to let your users know what you're working on
+* Comments, to discuss with your customers
+* Feedback labels, to inform about the state of a certain feedback
+* Feedback updates, to notify your users with news regarding a certain feedback
+* Completely customizable (i.e. you can add/edit/remove as many boards, feedback statuses as you want; you can configure the roadmap the way you want; etc.)
+* Admin panel (multiple admins/moderators allowed)
+* Dark mode
 
 ## Requirements
 
