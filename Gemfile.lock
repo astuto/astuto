@@ -170,7 +170,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.4)
     public_suffix (3.1.1)
-    puma (3.12.2)
+    puma (3.12.4)
     rack (2.0.8)
     rack-proxy (0.6.5)
       rack
