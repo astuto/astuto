@@ -5,7 +5,6 @@
   <br>
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=dark&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 </p>
-<div align="center"><h3>Try the <a href="http://116.203.226.196/">online demo</a>!</h3></div>
 
 ---
 
@@ -22,7 +21,6 @@
 
 Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
-If you are interested, you can check out a [demo of Astuto](http://116.203.226.196/).
 
 <img src="./images/featured-image.png" />
 
