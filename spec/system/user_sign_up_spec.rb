@@ -9,6 +9,7 @@ feature 'sign up', type: :system do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     fill_in 'Password confirmation', with: user.password
+    check 'Notifications enabled'
     click_button 'Sign up'
   end
 
@@ -19,14 +20,14 @@ feature 'sign up', type: :system do
 
   scenario 'with valid fields' do
     user_count = User.count
-    
+
     sign_up_as user
-    
+
     expect(User.count).to eq(user_count + 1)
     expect(page).to have_current_path(root_path)
     expect(page).to have_css('.notice')
   end
-  
+
   scenario 'with invalid Full Name' do
     user_count = User.count
 
@@ -74,5 +75,17 @@ feature 'sign up', type: :system do
     expect(User.count).to eq(user_count)
     expect_to_be_on_sign_up_page
     expect(page).to have_css('.alert')
+  end
+
+  scenario 'and disables notifications' do
+    visit new_user_registration_path
+    fill_in 'Full name', with: user.full_name
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    fill_in 'Password confirmation', with: user.password
+    uncheck 'Notifications enabled'
+    click_button 'Sign up'
+
+    expect(User.last.notifications_enabled).to eq(false)
   end
 end

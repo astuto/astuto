@@ -16,6 +16,11 @@
     </small>
   </div>
 
+  <div class="form-group">
+    <%= f.label :notifications_enabled %>
+    <%= f.check_box :notifications_enabled %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
