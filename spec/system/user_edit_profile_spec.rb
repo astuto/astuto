@@ -4,10 +4,10 @@ require 'rails_helper'
 feature 'edit user profile settings', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
-  before(:each) do 
+  before(:each) do
     user.confirm # devise helper to confirm user account
     sign_in user # devise helper to login user
-    
+
     # check that user is confirmed and saved in the db
     expect(user.confirmed_at).not_to be_nil
     expect(User.count).to eq(1)
@@ -42,6 +42,30 @@ feature 'edit user profile settings', type: :system do
     user.confirm
     expect(user.email).to eq(new_email)
     expect(page).to have_css('.notice')
+  end
+
+  scenario 'turns on notifications' do
+    user.update(notifications_enabled: false)
+
+    visit edit_user_registration_path
+    check 'Notifications enabled'
+    fill_in 'Current password', with: user.password
+    click_button 'Update profile'
+
+    user.reload
+    expect(user.notifications_enabled).to eq(true)
+  end
+
+  scenario 'turns off notifications' do
+    user.update(notifications_enabled: user)
+
+    visit edit_user_registration_path
+    uncheck 'Notifications enabled'
+    fill_in 'Current password', with: user.password
+    click_button 'Update profile'
+
+    user.reload
+    expect(user.notifications_enabled).to eq(false)
   end
 
   # Remember that 'password' is just a virtual attribute (i.e. it is not stored in the db)
@@ -91,7 +115,7 @@ feature 'edit user profile settings', type: :system do
     visit edit_user_registration_path
     click_button 'Cancel my account'
     page.driver.browser.switch_to.alert.accept # accepts js pop up
-    
+
     expect(page).to have_current_path(root_path)
     expect(User.count).to eq(user_count - 1)
     expect(page).to have_css('.notice')
