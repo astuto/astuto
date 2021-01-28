@@ -108,4 +108,34 @@ feature 'comments', type: :system, js: true do
 
     expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
   end
+
+  it 'notifies post owner when comment is posted' do
+    log_in_as user
+    visit post_path(post)
+    allow(UserMailer).to receive_message_chain(:notify_post_owner, :deliver_later)
+
+    comment_body = 'this is a comment!'
+
+    find(newCommentBodySelector).fill_in with: comment_body
+    click_button 'Submit'
+    visit post_path(post)
+
+    expect(UserMailer).to have_received(:notify_post_owner)
+  end
+
+  it 'does not notify the post owner if he refused notifications' do
+    post_owner = FactoryBot.create(:user, notifications_enabled: false)
+    post = FactoryBot.create(:post, user: post_owner)
+    log_in_as user
+    visit post_path(post)
+    allow(UserMailer).to receive_message_chain(:notify_post_owner, :deliver_later)
+
+    comment_body = 'this is a comment!'
+
+    find(newCommentBodySelector).fill_in with: comment_body
+    click_button 'Submit'
+    visit post_path(post)
+
+    expect(UserMailer).not_to have_received(:notify_post_owner)
+  end
 end

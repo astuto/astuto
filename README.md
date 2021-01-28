@@ -30,6 +30,7 @@ It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed,
 * Boards, to divide different types of feedback
 * Roadmap, to let your users know what you're working on
 * Comments, to discuss with your customers
+* Notifications, to inform post owner of comments
 * Feedback labels, to inform about the state of a certain feedback
 * Feedback updates, to notify your users with news regarding a certain feedback
 * Completely customizable (i.e. you can add/edit/remove as many boards, feedback statuses as you want; you can configure the roadmap the way you want; etc.)

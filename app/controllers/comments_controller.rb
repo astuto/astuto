@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update]
-  
+
   def index
     comments = Comment
       .select(
@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
 
     if comment.save
+      send_notifications(comment)
+
       render json: comment.attributes.merge(
         { user_full_name: current_user.full_name, user_email: current_user.email}
       ), status: :created
@@ -55,14 +57,19 @@ class CommentsController < ApplicationController
   end
 
   private
+  def comment_params
+    params
+      .require(:comment)
+      .permit(:body, :parent_id, :is_post_update)
+      .merge(
+        user_id: current_user.id,
+        post_id: params[:post_id]
+      )
+  end
 
-    def comment_params
-      params
-        .require(:comment)
-        .permit(:body, :parent_id, :is_post_update)
-        .merge(
-          user_id: current_user.id,
-          post_id: params[:post_id]
-        )
+  def send_notifications(comment)
+    if comment.post.user.notifications_enabled?
+      UserMailer.notify_post_owner(comment: comment).deliver_later
     end
+  end
 end

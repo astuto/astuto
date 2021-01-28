@@ -77,7 +77,7 @@ feature 'sign up', type: :system do
     expect(page).to have_css('.alert')
   end
 
-  scenario 'and disables notifications' do
+  scenario 'with disabled notifications' do
     visit new_user_registration_path
     fill_in 'Full name', with: user.full_name
     fill_in 'Email', with: user.email
