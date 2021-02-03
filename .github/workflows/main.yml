@@ -17,14 +17,14 @@ services:
 steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-- name: Set up Ruby
+    - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.7.1
-- name: Install PostgreSQL 12 client
+    - name: Install PostgreSQL 12 client
       run: |
         sudo apt-get -yqq install libpq-dev
-- name: Cache Ruby Gems
+    - name: Cache Ruby Gems
       uses: actions/cache@v2
       with:
         path: vendor/bundle
@@ -36,7 +36,7 @@ steps:
       run: |
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-- name: Run Tests
+    - name: Run Tests
       env:
         PG_DATABASE: postgres
         PG_HOST: localhost
