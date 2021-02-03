@@ -1,50 +1,56 @@
-name: Specs
+name: Rails
 on: [push, pull_request]
+
 jobs:
-  build:
+  verify:
+    name: Build
     runs-on: ubuntu-latest
-services:
+
+    services:
       postgres:
-        image: postgres:12
-        ports: ["5432:5432"]
+        image: postgres:11
         env:
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: rails_github_actions
+          POSTGRES_DB: rails_github_actions_test
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-      with:
-        ruby-version: 2.7.1
-    - name: Install PostgreSQL 12 client
-      run: |
-        sudo apt-get -yqq install libpq-dev
-    - name: Cache Ruby Gems
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-
-    - name: Bundle Install
-      run: |
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-    - name: Run Tests
-      env:
-        PG_DATABASE: postgres
-        PG_HOST: localhost
-        PG_USER: postgres
-        PG_PASSWORD: password
-        RAILS_ENV: test
-        WITH_COVERAGE: true
-        DISABLE_SPRING: 1
-      run: |
-        bin/rails db:setup
-        bundle exec rake rspec
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.13.0
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          yarn install
+      - name: Setup test database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          POSTGRES_DB: rails_github_actions_test
+          POSTGRES_USER: rails_github_actions
+          POSTGRES_PASSWORD: postgres
+        run: |
+          cp config/database.ci.yml config/database.yml
+          rake db:create db:migrate
+      - name: Run tests
+        env:
+          PGHOST: localhost
+          POSTGRES_DB: rails_github_actions_test
+          POSTGRES_USER: rails_github_actions
+          POSTGRES_PASSWORD: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          RAILS_ENV: test
+        run: rspec
