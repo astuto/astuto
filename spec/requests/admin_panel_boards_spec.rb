@@ -25,11 +25,11 @@ RSpec.describe 'requests to boards in the admin panel', :admin_panel, type: :req
       expect(response).to redirect_to(new_user_session_path)
     end
     it 'redirects create action' do
-      post admin_boards_path, params: { board: { name: board.name + 'a' } }
+      post admin_boards_path, params: { board: { name: 'fakename' } }
       expect(response).to redirect_to(new_user_session_path)
     end
     it 'redirects update action' do
-      patch admin_board_path(board), params: { board: { name: board.name + 'a' } }
+      patch admin_board_path(board), params: { board: { name: 'newname' } }
       expect(response).to redirect_to(new_user_session_path)
     end
     it 'redirects destroy action' do
@@ -61,11 +61,11 @@ RSpec.describe 'requests to boards in the admin panel', :admin_panel, type: :req
       expect(response).to redirect_to(root_path)
     end
     it 'redirects create action' do
-      post admin_boards_path, params: { board: { name: board.name + 'a' } }
+      post admin_boards_path, params: { board: { name: 'fakename' } }
       expect(response).to redirect_to(root_path)
     end
     it 'redirects update action' do
-      patch admin_board_path(board), params: { board: { name: board.name + 'a' } }
+      patch admin_board_path(board), params: { board: { name: 'newname' } }
       expect(response).to redirect_to(root_path)
     end
     it 'redirects destroy action' do
@@ -97,11 +97,15 @@ RSpec.describe 'requests to boards in the admin panel', :admin_panel, type: :req
       expect(response).to have_http_status(:success)
     end
     it 'fulfills create action' do
-      post admin_boards_path, params: { board: { name: board.name + 'a' } }
-      expect(response).to redirect_to(admin_board_path(board.id + 1))
+      post admin_boards_path, params: { board: { name: 'fakename'} }
+
+      new_board = Board.last
+      expect(new_board.name).to eq('fakename')
+      expect(response).to redirect_to(admin_board_path(new_board))
     end
     it 'fulfills update action' do
-      patch admin_board_path(board), params: { board: { name: board.name + 'a' } }
+      patch admin_board_path(board), params: { board: { name: 'newname' } }
+      expect(board.reload.name).to eq('newname')
       expect(response).to redirect_to(admin_board_path(board))
     end
     it 'fulfills destroy action' do
@@ -133,11 +137,14 @@ RSpec.describe 'requests to boards in the admin panel', :admin_panel, type: :req
       expect(response).to have_http_status(:success)
     end
     it 'fulfills create action' do
-      post admin_boards_path, params: { board: { name: board.name + 'a' } }
-      expect(response).to redirect_to(admin_board_path(board.id + 1))
+      post admin_boards_path, params: { board: { name: 'fakename' } }
+      new_board = Board.last
+      expect(new_board.name).to eq('fakename')
+      expect(response).to redirect_to(admin_board_path(new_board))
     end
     it 'fulfills update action' do
-      patch admin_board_path(board), params: { board: { name: board.name + 'a' } }
+      patch admin_board_path(board), params: { board: { name: 'newname' } }
+      expect(board.reload.name).to eq('newname')
       expect(response).to redirect_to(admin_board_path(board))
     end
     it 'fulfills destroy action' do

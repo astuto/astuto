@@ -38,4 +38,22 @@ RSpec.describe Board, type: :model do
     expect(board1.order).to eq(order)
     expect(board2.order).to eq(order + 1)
   end
+
+  describe '.to_param' do
+    it 'uses the name as param' do
+      board = FactoryBot.build(:board, name: 'Random Board', slug: nil)
+
+      board.update(name: "Example")
+      
+      expect(board.to_param).to eq('example')
+    end
+
+    it 'transforms name using parameterize' do
+      board = FactoryBot.build(:board, name: 'Random Board', slug: nil)
+      
+      board.update(name: "My Funky Name")
+
+      expect(board.to_param).to eq('my-funky-name')
+    end
+  end
 end

@@ -9,6 +9,8 @@ module Admin
       )
     end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
+    def find_resource(param)
+      Board.find_by!(slug: param)
+    end
   end
 end

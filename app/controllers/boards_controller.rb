@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
   def show
-    @board = Board.find(params[:id])
+    @board = Board.find_by(slug: params[:id])
   end
 end

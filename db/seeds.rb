@@ -8,8 +8,8 @@ admin = User.create(
 )
 
 # Create some boards
-feature_board = Board.create(name: 'Feature Requests', description: 'Post here your feature requests.')
-bug_board = Board.create(name: 'Bug Reports', description: 'Post here your bug reports.')
+feature_board = Board.create(name: 'Feature Requests', description: 'Post here your feature requests.', slug: 'feature-requests')
+bug_board = Board.create(name: 'Bug Reports', description: 'Post here your bug reports.', slug: 'bug-reports')
 
 # Create some post statuses
 planned_post_status = PostStatus.create(name: 'Planned', color: '#0096ff', order: 1, show_in_roadmap: true)

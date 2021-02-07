@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
     end
 
     def load_boards
-      @boards = Board.select(:id, :name).order(order: :asc)
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
     end
 end
