@@ -1,4 +1,3 @@
-<p align="center"><img width="400" src="./images/logo-and-name.png" /></p>
 <p align="center">
   <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=flat">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=flat">
