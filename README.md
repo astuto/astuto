@@ -18,7 +18,7 @@
 
 ## What is Astuto?
 
-Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
+Astuto is self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
 It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
 
 <img src="./images/featured-image.png" />
