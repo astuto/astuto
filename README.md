@@ -1,12 +1,4 @@
-<p align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=flat">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=flat">
-  <br>
-</p>
-
----
-
-- [What is Astuto?](#what-is-astuto)
+- [What is Astutos?](#what-is-astutos)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -15,10 +7,10 @@
 
 ---
 
-## What is Astuto?
+## What is Astutos?
 
 Astuto is self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users.
-It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
+It has been heavely inspired by [Canny.io](https://canny.io/) ("astutos", indeed, is the italian translation of the word "canny").
 
 <img src="./images/featured-image.png" />
 
