@@ -11,8 +11,6 @@ set -e
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f $APP_ROOT/tmp/pids/server.pid
 
-yarn install --check-files # needed to avoid yarn integrity check fail
-
 # Wait until the database is ready
 until bundle exec rake db:version; do
   >&2 echo "Database is unavailable - sleeping"
@@ -22,7 +20,6 @@ done
 # Create database, load schema, run migrations and seed data in an idempotent way.
 echo "Preparing database..."
 db_version=$(bundle exec rake db:version)
-echo "$db_version"
 if [ "$db_version" = "Current version: 0" ]; then
   bundle exec rake db:create
   bundle exec rake db:schema:load
@@ -33,15 +30,13 @@ else
 fi
 echo "Database prepared."
 
-
+# Launch web server
 echo "Environment is: $ENVIRONMENT"
 export RAILS_ENV="$ENVIRONMENT"
 export NODE_ENV="$ENVIRONMENT"
 if [ "$ENVIRONMENT" = "development" ]; then
-  # Launch Rails server and webpack-dev-server using Foreman
   foreman start -p 3000
-else # production
-  # Compile assets and launch server
+else
   rails assets:precompile
   rails server -e production
 fi
