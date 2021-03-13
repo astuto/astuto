@@ -2,7 +2,7 @@
   <div class="container">
     <%=
       link_to root_path, class: 'navbar-brand' do
-        app_name = content_tag :span, Rails.application.name
+        app_name = content_tag :span, 'Feedback User'
         logo = image_tag(asset_pack_path('media/images/logo.png'), class: 'logo')
 
         Rails.application.show_logo? ? logo + app_name : app_name
