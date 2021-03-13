@@ -32,6 +32,8 @@ gem 'react-rails', '~> 2.6.0'
 
 # Pagination
 gem 'kaminari', '~> 1.2.1'
+gem 'figaro'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
