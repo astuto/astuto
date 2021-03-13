@@ -14,6 +14,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :subdomain, class: "sr-only" %>
+    <%= f.text_field :subdomain, placeholder: "Subdomain", required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password, class: "sr-only" %>
     <%= f.password_field :password, placeholder: "Password", required: true, class: "form-control" %>
   </div>
