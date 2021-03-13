@@ -18,4 +18,6 @@ development:
   SHOW_LOGO: yes
   POSTS_PER_PAGE: 15
   EMAIL_CONFIRMATION: no
-
+production:
+  gmail_username: feedbacksuser@gmail.com
+  gmail_password: wjixdofssgochmrg
