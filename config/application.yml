@@ -19,5 +19,10 @@ development:
   POSTS_PER_PAGE: 15
   EMAIL_CONFIRMATION: no
 production:
+  APP_NAME: feedbackuser
   gmail_username: feedbacksuser@gmail.com
   gmail_password: wjixdofssgochmrg
+  SHOW_LOGO: yes
+  POSTS_PER_PAGE: 15
+  EMAIL_CONFIRMATION: no
+  SECRET_KEY_BASE: 33C9D07F8177510D2A8487E95BEA529D670A103AD7CE4FDAE4DDB0C8D757BAEE
