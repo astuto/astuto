@@ -1,11 +1,5 @@
-module Subdomain
-
-  def initializer(router)
-    @router = router
-  end
-
+class Subdomain
   def self.matches?(request)
-    User.exists? subdomain: request.subdomain
+    request.subdomain.present? && request.subdomain != 'www'
   end
-
 end

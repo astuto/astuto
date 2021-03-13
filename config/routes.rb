@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#roadmap'
   get '/roadmap', to: 'static_pages#roadmap'
 
   namespace :admin do
@@ -11,8 +10,15 @@ Rails.application.routes.draw do
     resources :post_statuses
     resources :users
   end
-  
+
+
   devise_for :users
+  # resources :users, :only => :show
+  constraints(Subdomain) do
+    match '/' => 'users#show', :via => [:get],as: :users_show
+  end
+
+  root to: 'static_pages#roadmap'
 
   resources :posts, only: [:index, :create, :show, :update] do
     resource :likes, only: [:create, :destroy]

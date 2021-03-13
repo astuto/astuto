@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+
   def roadmap
     @post_statuses = PostStatus
       .find_roadmap
@@ -8,4 +9,5 @@ class StaticPagesController < ApplicationController
       .find_with_post_status_in(@post_statuses)
       .select(:id, :title, :board_id, :post_status_id, :user_id, :created_at)
   end
+
 end
