@@ -1,12 +1,35 @@
-<h2>Roadmap</h2>
-
-<%=
-  react_component(
-    'Roadmap',
-    {
-      postStatuses: @post_statuses,
-      posts: @posts,
-      boards: @boards,
+<style>
+    h1{
+        text-align: center;
     }
-  )
-%>
+    .started_button{
+        width: max-content;
+        margin-left: 160px;
+    }
+    .div_container{
+        margin-top: 3%;
+    }
+    .feedback_image{
+        padding-left: 34%;
+    }
+</style>
+
+<div class="overlay">
+  <%= image_tag "feedback.png",class: "feedback_image"%>
+</div>
+<div class="div_container">
+  <div class="row">
+    <div class="col-xl-9 mx-auto">
+      <h1 class="mb-5">Get Feedback From Your Users!</h1>
+    </div>
+    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+      <div class="form-row">
+        <div class="col-12 col-md-3">
+          <%= link_to "Get Started!",new_user_session_path,class: "btn btn-block btn-lg btn-primary started_button"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
