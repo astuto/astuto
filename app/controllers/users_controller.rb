@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(:subdomain => request.subdomain).first || not_found
+    @boards = @user.boards.select(:id, :name).order(order: :asc)
     @post_statuses = PostStatus
                        .find_roadmap
                        .select(:id, :name, :color)
