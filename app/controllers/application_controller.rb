@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_boards
-    if request.subdomain.present?
+    if request.subdomain.present? && request.subdomain!= 'www'
       @user = User.where(:subdomain => request.subdomain).first
       @boards = @user.boards.select(:id, :name).order(order: :asc)
     end
