@@ -17,6 +17,14 @@ module Admin
     end
     private
 
+    def scoped_resource
+      if current_user.role == 'admin'
+        Board.all
+      else
+        Board.where(user_id: current_user.id)
+      end
+    end
+
     def board_params
       params
         .require(:board)
