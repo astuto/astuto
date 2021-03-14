@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def show
     @user = User.where(:subdomain => request.subdomain).first || not_found
-    # @boards = @user.boards.select(:id, :name).order(order: :asc)
+    @boards = @user.boards.select(:id, :name).order(order: :asc)
     @post_statuses = PostStatus
                        .find_roadmap
                        .select(:id, :name, :color)
@@ -13,7 +13,5 @@ class UsersController < ApplicationController
                .select(:id, :title, :board_id, :post_status_id, :user_id, :created_at)
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('User Not Found')
-  end
+
 end
