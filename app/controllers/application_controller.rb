@@ -7,18 +7,18 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-     users_show_url(subdomain: resource.subdomain)
+    users_show_url(subdomain: resource.subdomain)
   end
 
   protected
 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :notifications_enabled,:subdomain])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :notifications_enabled,:subdomain,:role])
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :notifications_enabled])
   end
 
   def load_boards
-    # @boards = Board.select(:id, :name).order(order: :asc)
+    @boards = Board.where(id: current_user.id).select(:id, :name).order(order: :asc) if current_user.present?
   end
 end
