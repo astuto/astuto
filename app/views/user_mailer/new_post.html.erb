@@ -6,9 +6,9 @@
 <body>
 <h1>Hello, <%= @user.full_name %></h1>
 <p>
-  There is a new like by <%= @like.user.full_name %> on your post <b><%= @like.post.title %></b>
+  There is a new post by <%= @post.user.full_name %> on your board <b><%= @board.name %></b>
 </p>
-<p> To see this like, <%= link_to "Click here", post_url(@like.post,subdomain: @user.subdomain) %> </p>
+<p> To see this post, <%= link_to "Click here", post_url(@post,subdomain: @user.subdomain) %></p>
 <p>Have a great day!</p>
 </body>
 <footer>
