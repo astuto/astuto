@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.role == "user"
-      users_show_url
+      if request.subdomain.present? && request.subdomain!= 'www'
+        users_show_url
+      else
+        get_started_url
+      end
     elsif resource.power_user?
       users_show_url(subdomain: resource.subdomain)
     end
