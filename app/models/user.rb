@@ -14,9 +14,10 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: { in: 2..32 }
 
+  validates_uniqueness_of :subdomain, message: "is already taken"
   validates_format_of :subdomain, with: /\A[a-z0-9_]+\z/, message: "must be lowercase alphanumerics only",:allow_blank => true
   validates_length_of :subdomain, maximum: 32, message: "exceeds maximum of 32 characters"
-  validates_exclusion_of :subdomain, in: ['www', 'mail', 'ftp'], message: "is not available"
+  validates_exclusion_of :subdomain, in: ['www', 'mail', 'ftp'], message: "not available"
 
 
   def set_default_role
