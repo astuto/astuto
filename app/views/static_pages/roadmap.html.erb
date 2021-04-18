@@ -1,35 +1,203 @@
 <style>
-    h1{
-        text-align: center;
-    }
-    .started_button{
-        width: max-content;
-        margin-left: 160px;
-    }
+
     .div_container{
         margin-top: 3%;
     }
-    .feedback_image{
-        padding-left: 34%;
+    .main_text{
+        display: flex;
+        flex-direction: column;
+        grid-column: 1 / 7;
+        text-align: center;
+        word-break: break-word;
+        color: rgb(0, 0, 0);
+        font-size: 27px;
+        margin-top: 30px;
+    }
+    .button_div{
+        /*margin: 25px 0px 0px;*/
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        position: relative;
+        flex-direction: column;
+    }
+    .button_main{
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        justify-content: center;
+        font-weight: 600;
+        border: 1px none;
+        text-align: center;
+        cursor: pointer;
+        opacity: 1;
+        word-break: break-word;
+        outline: none;
+        color: rgb(255, 255, 255);
+        width: auto;
+        padding: 9px 25px;
+        font-size: 21px;
+        align-self: center;
+        background-color: rgb(1, 116, 199);
+        border-radius: 5px;
+        display: flex !important;
+    }
+    .how{
+        word-break: break-word;
+        color: rgb(0, 0, 0);
+        font-size: 32px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .text{
+        word-break: break-word;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        margin: 0px;
+        text-align: center;
+    }
+    .card{
+        margin-right: 20px;
+        display: grid;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        /*grid-template-columns: repeat(12, 1fr);*/
+        padding: 20px 30px;
+        box-shadow: rgba(0, 0, 0, 2) 0px 1px 5px 0px;
+        background-color: rgb(255, 255, 255);
+        background-image: none;
+        column-gap: unset !important;
+    }
+    .f-20{
+        font-size: 25px;
+    }
+    .no_flex{
+        flex-wrap: nowrap;
+    }
+    .logo{
+        width: 36px;
+    }
+    .name{
+        padding-left: 10px;
+        font-size: 18pt;
+        font-weight: 700;
+    }
+    .cStkQp {
+        float: right;
+        margin-top: 13px;
+        margin-right: 10px;
+        margin-left: 10px;
+        list-style: none;
+        padding: 0px;
     }
 </style>
 
-<div class="overlay">
-  <%= image_tag "feedback.png",class: "feedback_image"%>
-</div>
 <div class="div_container">
   <div class="row">
-    <div class="col-xl-9 mx-auto">
-      <h1 class="mb-5">Get Feedback From Your Users!</h1>
+    <div class="col-lg-6 main_text">
+      <b>How to Improve Your Software By Communicating To All Your Users In One Place</b>
+      <br>
+      <div class="button_div">
+        <button class="btn btn-primary button_main">
+          Start Free 7 day Trial Now
+          <small>Start Improving Your Software Right Now!</small>
+        </button>
+      </div>
     </div>
-    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-      <div class="form-row">
-        <div class="col-12 col-md-3">
-          <%= link_to "Get Started!",new_user_session_path,class: "btn btn-block btn-lg btn-primary started_button"%>
+    <div class="col-lg-6">
+      Watch the demo:
+      <iframe width="460" height="259" src="https://www.youtube.com/embed/h-bsynFzWjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-lg-12 how">
+      <strong>How it Works</strong>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-3 text">
+      1) Get your feedback site in less than a minute.
+    </div>
+    <div class="col-lg-3 text">
+      2) Give users an easy  acces to your feedback site on your software website.
+    </div>
+    <div class="col-lg-3 text">
+      3) Users give features requests and upvote features they like and much more.
+    </div>
+    <div class="col-lg-3 text">
+      4) Listen to your users and improve your product.
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-lg-12 how">
+      <strong>Pricing</strong>
+    </div>
+  </div>
+  <br>
+  <div class="row no_flex">
+    <div class="col-lg-4 card">
+      <div class="row">
+        <div class="text-center">
+          <strong class="f-20">Starter</strong>
+          <h3>$ 47/mo</h3>
+          <p>Less than 2000 users</p>
+          <br>
+          <button class="btn btn-primary button_main">
+            Get Started
+            <small>Free 7-day Trial</small>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 card">
+      <div class="row card_heading">
+        <div class="text-center">
+          <strong class="f-20">Growth</strong>
+          <h3>$ 197/mo</h3>
+          <p>2,000 to 10,000 users</p>
+          <br>
+          <button class="btn btn-primary button_main">
+            Get Started
+            <small>Free 7-day Trial</small>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 card">
+      <div class="row card_heading">
+        <div class="text-center">
+          <strong class="f-20">Business</strong>
+          <h3>$ 47/mo</h3>
+          <p>Unlimited users</p>
+          <br>
+          <button class="btn btn-primary button_main">
+            Get Started
+            <small>Free 7-day Trial</small>
+          </button>
         </div>
       </div>
     </div>
   </div>
+  <br><br><br>
+  <div class="row">
+    <div class="col-lg-6">
+      <%=
+        link_to root_path, class: 'navbar-brand' do
+          app_name = content_tag :span, 'feedbackuser',class: "name"
+          logo = image_tag(asset_pack_path('media/images/logo.png'), class: 'logo')
+
+          Rails.application.show_logo? ? logo + app_name : app_name
+        end
+      %>
+    </div>
+    <div class="col-lg-6">
+      <ul class="sc-rBLzX cStkQp">
+        <li>© 2021 feedbackuser.com</li>
+      </ul>
+    </div>
+  </div>
+  <!--  <div class="sc-htoDjs ebugRC"><section id="section-b373ee7c" class="sc-jTzLTM bRhmEa"><div width="fullPage" class="sc-fjdhpX eOimlE"><div class="sc-htoDjs cdYtUE"><div id="row-780184ac" class="sc-bAeIUo iyolSm"><div size="6" class="sc-iujRgT bJsWTU"><div class="sc-htoDjs hAqefX"><div id="image-dede9598" class="sc-iwsKbI kGmfcw"><picture style="display:block;position:relative;height:0;overflow:visible;padding-bottom:23.752969121140143%"><img loading="lazy" src="https://d1yei2z3i6k35z.cloudfront.net/898992/606abf508d7ae_Screenshot_2021-04-05feedbackuser.png" class="sc-dnqmqq jxgiPE"></picture></div></div></div><div size="6" class="sc-iujRgT bjYRvS"><div class="sc-htoDjs lfmlqX"><div id="menu-53fa03be" class="sc-fhYwyz fUOcYW"><a href="" class="sc-bnXvFD iqPcyi">Privacy</a><div class="sc-gFaPwZ koQCMy"></div><a href="/contacts" class="sc-bnXvFD iqPcyi">Terms</a><div class="sc-gFaPwZ koQCMy"></div><a href="" class="sc-bnXvFD iqPcyi">© 2021 feedbackuser.com</a></div><div class="sc-gJWqzi kzXmVq"><ul class="sc-rBLzX cStkQp"><li class="sc-jzgbtB jvlPor"><a href="" class="sc-bMvGRv hGugKn">Privacy</a></li><li class="sc-jzgbtB jvlPor"><a href="/contacts" class="sc-bMvGRv hGugKn">Terms</a></li><li class="sc-jzgbtB jvlPor"><a href="" class="sc-bMvGRv hGugKn">© 2021 feedbackuser.com</a></li></ul></div></div></div></div></div></div></section></div>-->
 </div>
 
 
