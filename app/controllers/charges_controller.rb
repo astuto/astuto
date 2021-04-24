@@ -1,12 +1,12 @@
 class ChargesController < ApplicationController
   skip_before_action :check_subscription
   require "stripe"
+
   def index
     @subscription = Subscription.find_by(id: params[:s_id])
   end
 
   def create
-    binding.pry
     customer =  find_or_create_customer(card_token: params[:stripeToken],
                                              customer_id: current_user.stripe_customer_id,
                                              email: params[:stripeEmail])
