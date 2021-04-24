@@ -1,0 +1,26 @@
+<%= form_tag charges_path do %>
+  <%= hidden_field_tag "subscription",@subscription.stripe_plan_name %>
+  <div>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <div class="div_container">
+      <div class="row">
+        <div class="col-lg-12 main_text">
+          <b>Subscription Name: <%= @subscription.name %></b>
+          <p>Description: <%= @subscription.description %></p>
+        </div>
+      </div>
+    </div>
+    <label class="amount">
+      <span>Amount: $<%= @subscription.price %></span>
+    </label>
+  </div>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+          data-description="A month's subscription"
+          data-amount="<%= @subscription.price_in_cents %>"
+          data-locale="auto"></script>
+<% end %>

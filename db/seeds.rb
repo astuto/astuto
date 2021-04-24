@@ -46,3 +46,7 @@ post1.comments.create(body: 'Users can comment to express their opinions!', user
 puts 'A default admin account has been created. Credentials:'
 puts "-> email: #{admin.email}"
 puts "-> password: #{admin.password}"
+
+Subscription.create(name: 'Starter',price: 47,stripe_plan_name: "starter",description: "Less than 2000 users")
+Subscription.create(name: 'Growth',price: 197,stripe_plan_name: "growth",description: "2,000 to 10,000 users")
+Subscription.create(name: 'Business',price: 1997,stripe_plan_name: "business",description: "Unlimited users")

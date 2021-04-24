@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_boards
+  before_action :check_subscription
+
 
   def after_sign_out_path_for(resource_or_scope)
     root_url(subdomain: false)
@@ -19,6 +21,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def check_subscription
+    if current_user.present? && current_user.role == "moderator" && current_user.stripe_subscription_id.nil?
+      if (Date.today - current_user.created_at.to_date) >= 1
+        redirect_to buy_subscriptions_path
+      end
+    end
+  end
 
   def not_found
     raise ActionController::RoutingError.new('User Not Found')

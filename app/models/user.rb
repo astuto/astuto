@@ -2,11 +2,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
-  
+
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :boards, dependent: :destroy
+
 
   enum role: [:user, :moderator, :admin]
   after_initialize :set_default_role, if: :new_record?
@@ -19,6 +20,14 @@ class User < ApplicationRecord
   validates_length_of :subdomain, maximum: 32, message: "exceeds maximum of 32 characters"
   validates_exclusion_of :subdomain, in: ['www', 'mail', 'ftp'], message: "not available"
 
+  after_commit :assign_customer_id, on: :create
+
+  def assign_customer_id
+    if self.moderator?
+      customer = Stripe::Customer.create(email: email)
+      self.customer_id = customer.id
+    end
+  end
 
   def set_default_role
     self.role ||= :user

@@ -93,42 +93,12 @@
 
 <div class="div_container">
   <div class="row">
-    <div class="col-lg-6 main_text">
-      <b>How to Improve Your Software By Communicating To All Your Users In One Place</b>
-      <br>
-      <div class="button_div">
-        <%= link_to new_user_session_path,class: "btn btn-primary button_main" do %>
-          Start Free 7 day Trial Now
-          <small>Start Improving Your Software Right Now!</small>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      Watch the demo:
-      <iframe width="460" height="259" src="https://www.youtube.com/embed/h-bsynFzWjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="col-lg-12 main_text">
+      <b>Your 7 Day Free Trial Has Expired!</b>
+      <p>Please purchase one of the subscriptions below to continue getting feedback from your customers!</p>
     </div>
   </div>
-  <div class="row ">
-    <div class="col-lg-12 how">
-      <strong>How it Works</strong>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-lg-3 text">
-      1) Get your feedback site in less than a minute.
-    </div>
-    <div class="col-lg-3 text">
-      2) Give users an easy  acces to your feedback site on your software website.
-    </div>
-    <div class="col-lg-3 text">
-      3) Users give features requests and upvote features they like and much more.
-    </div>
-    <div class="col-lg-3 text">
-      4) Listen to your users and improve your product.
-    </div>
-  </div>
-  <br><br>
+
   <div class="row">
     <div class="col-lg-12 how">
       <strong>Pricing</strong>
@@ -136,54 +106,21 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="row">
-          <div class="text-center">
-            <strong class="f-20">Starter</strong>
-            <h3>$ 47/mo</h3>
-            <p>Less than 2000 users</p>
-            <br>
-            <%= link_to new_user_session_path,class: "btn btn-primary button_main" do %>
-              Get Started
-              <small>Free 7-day Trial</small>
-            <% end %>
+    <% @subscriptions.each do |s| %>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="row">
+            <div class="text-center">
+              <strong class="f-20"><%= s.name %></strong>
+              <h3>$<%= s.price %>/mo</h3>
+              <p><%= s.description %></p>
+              <br>
+              <%= link_to "Buy Subscription",charges_path(s_id: s.id),class: "btn btn-primary button_main" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="row">
-          <div class="text-center">
-            <strong class="f-20">Growth</strong>
-            <h3>$ 197/mo</h3>
-            <p>2,000 to 10,000 users</p>
-            <br>
-            <%= link_to new_user_session_path,class: "btn btn-primary button_main" do %>
-              Get Started
-              <small>Free 7-day Trial</small>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="row">
-          <div class="text-center">
-            <strong class="f-20">Business</strong>
-            <h3>$ 1997/mo</h3>
-            <p>Unlimited users</p>
-            <br>
-            <%= link_to new_user_session_path,class: "btn btn-primary button_main" do %>
-              Get Started
-              <small>Free 7-day Trial</small>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
   <br><br><br>
   <div class="row">

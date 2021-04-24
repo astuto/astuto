@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   # before_action :authenticate_user!
+  skip_before_action :check_subscription,only: [:buy_subscriptions]
+
+  def buy_subscriptions
+    @subscriptions = Subscription.all
+
+  end
 
   def show
     @user = User.where(:subdomain => request.subdomain).first || not_found
@@ -10,6 +16,5 @@ class UsersController < ApplicationController
                  .find_with_post_status_in(@post_statuses)
                  .select(:id, :title, :board_id, :post_status_id, :user_id, :created_at)
   end
-
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :credit_cards
   get '/roadmap', to: 'static_pages#roadmap'
   get '/get_started', to: 'static_pages#get_started'
   get '/make_site', to: 'static_pages#make_site'
@@ -29,4 +30,10 @@ Rails.application.routes.draw do
   end
   resources :boards, only: [:show]
   resources :post_statuses, only: [:index]
+  resources :charges, only: [:index,:create] do
+    collection do
+      post :cancel_subscription
+    end
+  end
+  get 'buy-subscriptions' => 'users#buy_subscriptions'
 end

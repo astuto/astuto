@@ -33,6 +33,7 @@ gem 'react-rails', '~> 2.6.0'
 # Pagination
 gem 'kaminari', '~> 1.2.1'
 gem 'figaro'
+gem 'stripe-rails'
 
 
 group :development, :test do

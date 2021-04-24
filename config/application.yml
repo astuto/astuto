@@ -18,6 +18,8 @@ development:
   SHOW_LOGO: yes
   POSTS_PER_PAGE: 15
   EMAIL_CONFIRMATION: no
+  STRIPE_SECRET_KEY: sk_test_51CehsNIAJbgav8ffdOgXfU87vprq8ddlnSgIf4bEKAPQ6H9CBty6OzpZfoHNv0isKvSets1VGTWfIAB3S0cdIAUU00rHhOe32s
+  STRIPE_PUBLISHABLE_KEY: pk_test_51CehsNIAJbgav8ffFN4jOlCvl3Ne5hSx8A2mqv7Phx9FgnWd7Y4V7ObIL7gjzsCqrwYAUdR44l3O7zO8brrFRuKH00ISI3DUxW
 production:
   APP_NAME: feedbackuser
   gmail_username: feedbacksuser@gmail.com
