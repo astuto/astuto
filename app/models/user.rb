@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def assign_customer_id
     if self.moderator?
       customer = Stripe::Customer.create(email: email)
-      self.customer_id = customer.id
+      self.stripe_customer_id = customer.id
     end
   end
 

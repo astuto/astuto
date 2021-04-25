@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   # before_action :authenticate_user!
-  skip_before_action :check_subscription,only: [:buy_subscriptions]
+  before_action :check_subscription,only: :show
+
 
   def buy_subscriptions
     @subscriptions = Subscription.all
-
   end
 
   def show
