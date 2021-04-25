@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-  skip_before_action :check_subscription
+  # skip_before_action :check_subscription
   require "stripe"
 
   def index
