@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
 
   def check_subscription
     if current_user.present? && current_user.role == "moderator" && current_user.stripe_subscription_id.nil?
@@ -28,6 +27,9 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  protected
+
 
   def not_found
     raise ActionController::RoutingError.new('User Not Found')
