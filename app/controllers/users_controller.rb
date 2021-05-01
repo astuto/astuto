@@ -17,14 +17,6 @@ class UsersController < ApplicationController
                  .select(:id, :title, :board_id, :post_status_id, :user_id, :created_at)
   end
 
-  private
 
-  def check_subscription
-    if current_user.present? && current_user.role == "moderator" && current_user.stripe_subscription_id.nil?
-      if (Date.today - current_user.created_at.to_date) >= 1
-        redirect_to buy_subscriptions_url
-      end
-    end
-  end
 
 end
