@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def check_subscription
     if current_user.present? && current_user.role == "moderator" && current_user.stripe_subscription_id.nil?
-      if (Date.today - current_user.created_at.to_date) >= 1
+      if (Date.today - current_user.created_at.to_date) >= 7
         redirect_to buy_subscriptions_url
       end
     end
