@@ -1,3 +1,8 @@
+# beginning of routes.rb 
+match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :protocol => "http://" }
+match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :subdomain => "" }
+
+
 Rails.application.routes.draw do
   resources :credit_cards
   get '/roadmap', to: 'static_pages#roadmap'
