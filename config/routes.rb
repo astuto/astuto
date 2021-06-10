@@ -1,9 +1,8 @@
-# beginning of routes.rb 
-match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :protocol => "http://" }
-match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :subdomain => "" }
-
-
 Rails.application.routes.draw do
+  # beginning of routes.rb 
+  match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :protocol => "http://" }
+  match "*path" => redirect("https://www.mysite.com/%{path}"), :constraints => { :subdomain => "" }
+  
   resources :credit_cards
   get '/roadmap', to: 'static_pages#roadmap'
   get '/get_started', to: 'static_pages#get_started'
