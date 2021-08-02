@@ -4,7 +4,7 @@ class Board < ApplicationRecord
   
   after_initialize :set_order_to_last
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true #, uniqueness: true
   validates :description, length: { in: 0..1024 }, allow_nil: true
 
   def set_order_to_last
