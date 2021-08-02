@@ -4,9 +4,9 @@ module Admin
 
     def create
       @board = Board.new(board_params)
-      #if @board.save!
-        #redirect_to admin_boards_path
-      #end
+      if @board.save!
+        redirect_to admin_boards_path
+      end
     end
 
     def default_order
