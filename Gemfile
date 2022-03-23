@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0'
+gem 'rails', '6.0.4.7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -22,10 +22,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authentication
-gem 'devise', git: 'https://github.com/plataformatec/devise', tag: 'v4.7.0'
+gem 'devise', '4.7.3'
 
 # Administration panel
-gem "administrate", git: "https://github.com/thoughtbot/administrate.git", tag: 'v0.12.0'
+gem "administrate", '0.16.0'
 
 # React
 gem 'react-rails', '~> 2.6.0'
