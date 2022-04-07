@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.6
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
@@ -18,7 +18,7 @@ WORKDIR ${APP_ROOT}
 RUN gem install foreman
 
 # Copy Gemfile and install gems
-COPY Gemfile* ${APP_ROOT}/
+COPY Gemfile Gemfile.lock ${APP_ROOT}/
 RUN bundle install
 
 # Copy package.json and install packages
