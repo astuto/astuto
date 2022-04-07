@@ -17,8 +17,11 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :notifications_enabled %>
-    <%= f.check_box :notifications_enabled %>
+    <%= f.label :notifications_enabled %> <br />
+    <%= f.check_box :notifications_enabled, style: "transform: scale(1.5)" %>
+    <small id="notificationsHelp" class="form-text text-muted">
+      if disabled, you won't receive any notification
+    </small>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

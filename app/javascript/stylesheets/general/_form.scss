@@ -36,6 +36,11 @@
   a { color: $astuto-black; }
 }
 
+.switch {
+  @extend
+    .custom-control-input;
+}
+
 @media (prefers-color-scheme: dark) {
   .deviseLinks {
     a { color: white; }

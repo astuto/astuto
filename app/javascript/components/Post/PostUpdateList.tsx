@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Gravatar from 'react-gravatar';
 
-import { TitleText, DangerText, CenteredMutedText, MutedText } from '../shared/CustomTexts';
+import { BoxTitleText, DangerText, CenteredMutedText, MutedText } from '../shared/CustomTexts';
 import Spinner from '../shared/Spinner';
 
 import IComment from '../../interfaces/IComment';
@@ -20,11 +20,11 @@ const PostUpdateList = ({
   error,
 }: Props) => (
   <div className="postUpdateListContainer">
-    <TitleText>Post updates</TitleText>
+    <BoxTitleText>Updates</BoxTitleText>
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
     <div className="postUpdateList">
-      { postUpdates.length === 0 ? <CenteredMutedText>There are no post updates yet.</CenteredMutedText> : null }
+      { postUpdates.length === 0 ? <CenteredMutedText>There are no updates yet.</CenteredMutedText> : null }
       {
         postUpdates.map((postUpdate, i) => (
           <div className="postUpdateListItem" key={i}>

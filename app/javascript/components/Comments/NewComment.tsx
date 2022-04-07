@@ -43,7 +43,7 @@ const NewComment = ({
             <Button
               onClick={() => handleSubmit(body, parentId)}
               className="submitCommentButton">
-              { isSubmitting ? <Spinner /> : 'Submit' }
+              { isSubmitting ? <Spinner color="light" /> : 'Submit' }
             </Button>
           </React.Fragment>
         :

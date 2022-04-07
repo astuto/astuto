@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TitleText } from '../shared/CustomTexts';
+import { BoxTitleText } from '../shared/CustomTexts';
 
 interface Props {
   searchQuery: string;
@@ -9,7 +9,8 @@ interface Props {
 
 const SearchFilter = ({ searchQuery, handleChange }: Props) => (
   <div className="sidebarCard">
-    <TitleText>Search</TitleText>
+    <BoxTitleText>Search</BoxTitleText>
+
     <input
       type="search"
       value={searchQuery}

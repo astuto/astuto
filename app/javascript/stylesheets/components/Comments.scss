@@ -30,6 +30,8 @@
       @extend
         .align-self-end;
 
+      box-sizing: border-box;
+      width: 120px;
       height: 40px;
     }
   }
@@ -90,5 +92,4 @@
   .commentList .comment .commentFooter .commentLink {
     color: white;
   }
-
 }

@@ -4,7 +4,7 @@ import Gravatar from 'react-gravatar';
 import ILike from '../../interfaces/ILike';
 import Spinner from '../shared/Spinner';
 import {
-  TitleText,
+  BoxTitleText,
   DangerText,
   CenteredMutedText
 } from '../shared/CustomTexts';
@@ -17,7 +17,7 @@ interface Props {
 
 const LikeList = ({ likes, areLoading, error}: Props) => (
   <div className="likeListContainer">
-    <TitleText>People who liked</TitleText>
+    <BoxTitleText>Likes</BoxTitleText>
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
     <div className="likeList">

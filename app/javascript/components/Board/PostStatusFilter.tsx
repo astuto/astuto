@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import PostStatusListItem from './PostStatusListItem';
 import Spinner from '../shared/Spinner';
-import { TitleText, DangerText } from '../shared/CustomTexts';
+import { BoxTitleText, DangerText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -24,7 +24,7 @@ const PostStatusFilter = ({
   currentFilter,
 }: Props) => (
   <div className="postStatusFilterContainer sidebarCard">
-    <TitleText>Filter by post status</TitleText>
+    <BoxTitleText>Filter by status</BoxTitleText>
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem

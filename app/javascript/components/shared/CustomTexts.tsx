@@ -13,6 +13,10 @@ export const TitleText = ({ children }: Props) => (
   <span className="titleText">{children}</span>
 );
 
+export const BoxTitleText = ({ children }: Props) => (
+  <span className="boxTitleText">{children}</span>
+);
+
 export const MutedText = ({ children }: Props) => (
   <span className="mutedText">{children}</span>
 );

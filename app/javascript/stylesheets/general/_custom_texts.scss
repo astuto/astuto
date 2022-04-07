@@ -8,6 +8,15 @@
    .font-weight-bolder;
 }
 
+.boxTitleText {
+  @extend
+    .font-weight-bolder,
+    .text-uppercase,
+    .mb-2;
+
+  font-size: 16px;
+}
+
 .centeredText {
   @extend
     .text-center,
