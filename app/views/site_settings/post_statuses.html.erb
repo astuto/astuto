@@ -3,6 +3,13 @@
 
   <div class="content">
     <h2>Post statuses</h2>
-    Work in progress
+    <%=
+      react_component(
+        'SiteSettings/PostStatuses',
+        {
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
   </div>
 </div>

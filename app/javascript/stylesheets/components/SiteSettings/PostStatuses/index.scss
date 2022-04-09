@@ -1,0 +1,7 @@
+.postStatusEditable {
+  @extend
+    .d-flex,
+    .justify-content-between,
+    .p-2,
+    .m-2;
+}

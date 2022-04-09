@@ -84,6 +84,20 @@ a {
   }
 }
 
+.drag-zone {
+  @extend
+    .align-self-center,
+    .pl-4,
+    .pr-4,
+    .pt-1,
+    .pb-1;
+
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
 
 @include media-breakpoint-down(sm) {
   .sidebar {
