@@ -10,6 +10,7 @@ import {
 import Button from '../shared/Button';
 
 import IBoard from '../../interfaces/IBoard';
+import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 
 interface Props {
   board: IBoard;
@@ -93,11 +94,7 @@ class NewPost extends React.Component<Props, State> {
     try {
       const res = await fetch('/posts', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': authenticityToken,
-        },
+        headers: buildRequestHeaders(authenticityToken),
         body: JSON.stringify({
           post: {
             title,

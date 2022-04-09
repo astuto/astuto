@@ -3,6 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 import { State } from '../reducers/rootReducer';
 
 import ICommentJSON from '../interfaces/json/IComment';
+import buildRequestHeaders from '../helpers/buildRequestHeaders';
 
 export const COMMENT_SUBMIT_START = 'COMMENT_SUBMIT_START';
 interface CommentSubmitStartAction {
@@ -57,11 +58,7 @@ export const submitComment = (
   try {
     const res = await fetch(`/posts/${postId}/comments`, {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': authenticityToken,
-      },
+      headers: buildRequestHeaders(authenticityToken),
       body: JSON.stringify({
         comment: {
           body,

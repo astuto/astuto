@@ -3,6 +3,7 @@ import { ThunkAction } from "redux-thunk";
 
 import { State } from "../reducers/rootReducer";
 import ILikeJSON from "../interfaces/json/ILike";
+import buildRequestHeaders from "../helpers/buildRequestHeaders";
 
 export const LIKE_SUBMIT_SUCCESS = 'LIKE_SUBMIT_SUCCESS';
 interface LikeSubmitSuccessAction {
@@ -33,11 +34,7 @@ export const submitLike = (
   try {
     const res = await fetch(`/posts/${postId}/likes`, {
       method: isLike ? 'POST' : 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': authenticityToken,
-      },
+      headers: buildRequestHeaders(authenticityToken),
     });
     const json = await res.json();
 

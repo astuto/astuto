@@ -2,6 +2,8 @@ import { ThunkAction } from "redux-thunk";
 import { State } from "../reducers/rootReducer";
 import { Action } from "redux";
 
+import buildRequestHeaders from "../helpers/buildRequestHeaders";
+
 export const TOGGLE_COMMENT_IS_UPDATE_SUCCESS = 'TOGGLE_COMMENT_IS_UPDATE_SUCCESS';
 export interface ToggleIsUpdateSuccessAction {
   type: typeof TOGGLE_COMMENT_IS_UPDATE_SUCCESS;
@@ -24,11 +26,7 @@ export const toggleCommentIsUpdate = (
   try {
     const response = await fetch(`/posts/${postId}/comments/${commentId}`, {
       method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': authenticityToken,
-      },
+      headers: buildRequestHeaders(authenticityToken),
       body: JSON.stringify({
         comment: {
           is_post_update: !currentIsPostUpdate,
