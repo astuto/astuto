@@ -15,6 +15,7 @@
     "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^16.9.0",
     "react-gravatar": "^2.6.3",
     "react-infinite-scroller": "^1.2.4",

@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-const DragZone = () => (
-  <span className="drag-zone"><span className="drag-icon"></span></span>
+const DragZone = ({dndProvided}) => (
+  <span className="drag-zone" {...dndProvided.dragHandleProps}>
+    <span className="drag-icon"></span>
+  </span>
 );
 
 export default DragZone;

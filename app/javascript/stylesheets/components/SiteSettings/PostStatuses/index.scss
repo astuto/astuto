@@ -1,7 +1,13 @@
-.postStatusEditable {
-  @extend
-    .d-flex,
-    .justify-content-between,
-    .p-2,
-    .m-2;
+.postStatusList {
+  @extend .p-0;
+ 
+  list-style: none;
+  
+  .postStatusEditable {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .p-2,
+      .m-2;
+  }
 }
