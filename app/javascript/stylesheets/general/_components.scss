@@ -27,6 +27,29 @@ a {
   }
 }
 
+.multiColumnContainer {
+  @extend
+    .d-flex,
+    .justify-content-between,
+    .align-items-start;
+
+  flex-direction: row;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+
+    .postAndCommentsContainer { width: 100%; }
+  }
+}
+
+.content {
+  @extend
+    .card,
+    .flex-grow-1,
+    .p-3,
+    .mb-3;
+}
+
 .sidebar {
   position: sticky;
   top: 79px;
@@ -47,6 +70,20 @@ a {
     margin-right: 16px;
   }
 }
+
+.verticalNavigation {
+  @extend
+    .nav,
+    .flex-column,
+    .nav-pills,
+    .text-center,
+    .align-self-stretch;
+
+  .nav-link.active {
+    background-color: $astuto-black;
+  }
+}
+
 
 @include media-breakpoint-down(sm) {
   .sidebar {

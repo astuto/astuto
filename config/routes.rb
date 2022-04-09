@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   end
   resources :boards, only: [:show]
   resources :post_statuses, only: [:index]
+
+  namespace :site_settings do
+    get 'general'
+    get 'post_statuses'
+  end
 end

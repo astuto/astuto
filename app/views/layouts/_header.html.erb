@@ -18,17 +18,18 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <% if current_user.power_user? %>
-            <li class="nav-item">
-              <%= link_to 'Admin Panel', admin_root_path, class: 'nav-link', 'data-turbolinks': 'false' %>
-            </li>
-          <% end %>
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
               <span class="fullname"><%= current_user.full_name %></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if current_user.power_user? %>
+                <%= link_to 'Site settings', site_settings_general_path, class: 'dropdown-item' %>
+                <%= link_to 'Admin Panel', admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
+                <div class="dropdown-divider"></div>
+              <% end %>
               <%= link_to 'Profile settings', edit_user_registration_path, class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
