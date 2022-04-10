@@ -5,6 +5,13 @@ import {
   POST_STATUSES_REQUEST_FAILURE,
 } from '../actions/requestPostStatuses';
 
+import {
+  PostStatusOrderUpdateActionTypes,
+  POSTSTATUS_ORDER_UPDATE_START,
+  POSTSTATUS_ORDER_UPDATE_SUCCESS,
+  POSTSTATUS_ORDER_UPDATE_FAILURE,
+} from '../actions/updatePostStatusOrder';
+
 import IPostStatus from '../interfaces/IPostStatus';
 
 export interface PostStatusesState {
@@ -21,7 +28,7 @@ const initialState: PostStatusesState = {
 
 const postStatusesReducer = (
   state = initialState,
-  action: PostStatusesRequestActionTypes,
+  action: PostStatusesRequestActionTypes | PostStatusOrderUpdateActionTypes,
 ) => {
   switch (action.type) {
     case POST_STATUSES_REQUEST_START:
@@ -43,12 +50,20 @@ const postStatusesReducer = (
       };
 
     case POST_STATUSES_REQUEST_FAILURE:
+    case POSTSTATUS_ORDER_UPDATE_FAILURE:
       return {
         ...state,
         areLoading: false,
         error: action.error,
       };
 
+    case POSTSTATUS_ORDER_UPDATE_START:
+      return {
+        ...state,
+        items: action.newOrder,
+      };
+
+    case POSTSTATUS_ORDER_UPDATE_SUCCESS:
     default:
       return state;
   }
