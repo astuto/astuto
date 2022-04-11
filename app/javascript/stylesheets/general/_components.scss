@@ -42,6 +42,11 @@ a {
   }
 }
 
+.multiRowContent {
+  @extend
+    .flex-grow-1;
+}
+
 .content {
   @extend
     .card,
@@ -94,10 +99,15 @@ a {
 
   cursor: grab;
 
-  &:active {
-    cursor: grabbing;
+  &.drag-zone-disabled {
+    cursor: not-allowed;
+
+    &:active { cursor: not-allowed; }
   }
+
+  &:active { cursor: grabbing; }
 }
+
 
 @include media-breakpoint-down(sm) {
   .sidebar {

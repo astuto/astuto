@@ -8,6 +8,8 @@ import { State } from "../reducers/rootReducer";
 
 const mapStateToProps = (state: State) => ({
   postStatuses: state.postStatuses,
+  settingsAreUpdating: state.siteSettings.areUpdating,
+  settingsError: state.siteSettings.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

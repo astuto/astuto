@@ -4,11 +4,14 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import IPostStatus from '../../../interfaces/IPostStatus';
 
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
+import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
 import PostStatusEditable from './PostStatusEditable';
 
 interface Props {
   authenticityToken: string;
   postStatuses: PostStatusesState;
+  settingsAreUpdating: boolean;
+  settingsError: string;
 
   requestPostStatuses(): void;
   updatePostStatusOrder(
@@ -32,6 +35,8 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
   }
 
   handleDragEnd(result) {
+    if (result.source.index === result.destination.index) return;
+    
     this.props.updatePostStatusOrder(
       parseInt(result.draggableId),
       this.props.postStatuses.items,
@@ -42,28 +47,37 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
   }
 
   render() {
-    const { postStatuses } = this.props;
+    const { postStatuses, settingsAreUpdating, settingsError } = this.props;
     
     return (
-      <DragDropContext onDragEnd={this.handleDragEnd}>
-        <Droppable droppableId="postStatuses">
-          {provided => (
-              <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusList">
-                {postStatuses.items.map((postStatus, i) => (
-                  <PostStatusEditable
-                    id={postStatus.id}
-                    name={postStatus.name}
-                    color={postStatus.color}
-                    index={i}
+      <React.Fragment>
+        <div className="content">
+          <h2>Post statuses</h2>
 
-                    key={postStatus.id}
-                  />
-                ))}
-                {provided.placeholder}
-              </ul>
-            )}
-        </Droppable>
-      </DragDropContext>
+          <DragDropContext onDragEnd={this.handleDragEnd}>
+            <Droppable droppableId="postStatuses">
+              {provided => (
+                  <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusList">
+                    {postStatuses.items.map((postStatus, i) => (
+                      <PostStatusEditable
+                        id={postStatus.id}
+                        name={postStatus.name}
+                        color={postStatus.color}
+                        index={i}
+                        settingsAreUpdating={settingsAreUpdating}
+
+                        key={postStatus.id}
+                      />
+                    ))}
+                    {provided.placeholder}
+                  </ul>
+                )}
+            </Droppable>
+          </DragDropContext>
+        </div>
+
+        <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />
+      </React.Fragment>
     );
   }
 }

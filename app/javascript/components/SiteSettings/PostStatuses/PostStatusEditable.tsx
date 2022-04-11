@@ -6,11 +6,11 @@ import PostStatusLabel from "../../shared/PostStatusLabel";
 import DragZone from '../../shared/DragZone';
 import Separator from '../../shared/Separator';
 
-const PostStatusEditable = ({id, name, color, index}) => (
-  <Draggable key={id} draggableId={id.toString()} index={index}>
+const PostStatusEditable = ({id, name, color, index, settingsAreUpdating}) => (
+  <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={settingsAreUpdating}>
     {provided => (
       <li className="postStatusEditable" ref={provided.innerRef} {...provided.draggableProps}>
-        <DragZone dndProvided={provided} />
+        <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
         
         <PostStatusLabel name={name} color={color} />
 

@@ -30,7 +30,7 @@ class ReorderWorkflow
     convert_indexes_to_i
     
     if src_index == dst_index
-      return nil
+      return {}
     end
 
     lowest_index = src_index < dst_index ? src_index : dst_index
