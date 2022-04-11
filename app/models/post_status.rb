@@ -2,10 +2,11 @@ class PostStatus < ApplicationRecord
   has_many :posts, dependent: :nullify
 
   after_initialize :set_random_color, :set_order_to_last
+  after_destroy :ensure_coherent_order
 
   validates :name, presence: true, uniqueness: true
   validates :color, format: { with: /\A#(?:[0-9a-fA-F]{3}){1,2}\z/ }
-  validates :order, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :order, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   class << self
     def find_roadmap
@@ -25,7 +26,14 @@ class PostStatus < ApplicationRecord
     return unless new_record?
     return unless order.nil?
     
-    order_last = PostStatus.maximum(:order) || 0
+    order_last = PostStatus.maximum(:order) || -1
     self.order = order_last + 1
+  end
+
+  def ensure_coherent_order
+    EnsureCoherentOrderingWorkflow.new(
+      entity_classname: PostStatus,
+      column_name: 'order'
+    ).run
   end
 end
