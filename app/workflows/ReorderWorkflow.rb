@@ -2,7 +2,6 @@ class ReorderWorkflow
   attr_accessor :entity_classname, :column_name
   attr_accessor :entity_id, :src_index, :dst_index
 
-
   # This workflow is used by entities which has a "order" column of sort
   # Given:
   #   entity_classname: the entity class name, e.g. PostStatus
