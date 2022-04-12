@@ -1,5 +1,7 @@
 .postStatusList {
-  @extend .p-0;
+  @extend
+    .p-0,
+    .m-0;
  
   list-style: none;
   
@@ -7,7 +9,6 @@
     @extend
       .d-flex,
       .justify-content-between,
-      .p-2,
-      .m-2;
+      .p-3;
   }
 }
