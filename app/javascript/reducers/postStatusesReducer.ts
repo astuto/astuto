@@ -8,9 +8,12 @@ import {
 import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
-  POSTSTATUS_ORDER_UPDATE_SUCCESS,
-  POSTSTATUS_ORDER_UPDATE_FAILURE,
 } from '../actions/updatePostStatusOrder';
+
+import {
+  PostStatusDeleteActionTypes,
+  POST_STATUS_DELETE_SUCCESS,
+} from '../actions/deletePostStatus';
 
 import IPostStatus from '../interfaces/IPostStatus';
 
@@ -28,7 +31,9 @@ const initialState: PostStatusesState = {
 
 const postStatusesReducer = (
   state = initialState,
-  action: PostStatusesRequestActionTypes | PostStatusOrderUpdateActionTypes,
+  action: PostStatusesRequestActionTypes |
+    PostStatusOrderUpdateActionTypes |
+    PostStatusDeleteActionTypes,
 ) => {
   switch (action.type) {
     case POST_STATUSES_REQUEST_START:
@@ -50,7 +55,6 @@ const postStatusesReducer = (
       };
 
     case POST_STATUSES_REQUEST_FAILURE:
-    case POSTSTATUS_ORDER_UPDATE_FAILURE:
       return {
         ...state,
         areLoading: false,
@@ -63,7 +67,12 @@ const postStatusesReducer = (
         items: action.newOrder,
       };
 
-    case POSTSTATUS_ORDER_UPDATE_SUCCESS:
+    case POST_STATUS_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(postStatus => postStatus.id !== action.id),
+      };
+
     default:
       return state;
   }

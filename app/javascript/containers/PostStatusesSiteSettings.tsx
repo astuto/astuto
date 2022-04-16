@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { deletePostStatus } from "../actions/deletePostStatus";
 
 import { requestPostStatuses } from "../actions/requestPostStatuses";
 import { updatePostStatusOrder } from "../actions/updatePostStatusOrder";
@@ -8,8 +9,8 @@ import { State } from "../reducers/rootReducer";
 
 const mapStateToProps = (state: State) => ({
   postStatuses: state.postStatuses,
-  settingsAreUpdating: state.siteSettings.areUpdating,
-  settingsError: state.siteSettings.error,
+  settingsAreUpdating: state.siteSettings.postStatuses.areUpdating,
+  settingsError: state.siteSettings.postStatuses.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch: any) => ({
     destinationIndex: number,
     authenticityToken: string) {
       dispatch(updatePostStatusOrder(id, postStatuses, sourceIndex, destinationIndex, authenticityToken));
+  },
+
+  deletePostStatus(id: number, authenticityToken: string) {
+    dispatch(deletePostStatus(id, authenticityToken));
   },
 });
 

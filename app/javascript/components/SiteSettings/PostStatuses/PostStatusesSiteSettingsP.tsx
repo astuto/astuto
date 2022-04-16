@@ -21,6 +21,7 @@ interface Props {
     destinationIndex: number,
     authenticityToken: string,
   ): void;
+  deletePostStatus(id: number, authenticityToken: string): void;
 }
 
 class PostStatusesSiteSettingsP extends React.Component<Props> {
@@ -28,6 +29,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
     super(props);
 
     this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   
   componentDidMount() {
@@ -44,6 +46,10 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
       result.destination.index,
       this.props.authenticityToken,
     );
+  }
+
+  handleDelete(id: number) {
+    this.props.deletePostStatus(id, this.props.authenticityToken);
   }
 
   render() {
@@ -65,6 +71,8 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
                         color={postStatus.color}
                         index={i}
                         settingsAreUpdating={settingsAreUpdating}
+
+                        handleDelete={this.handleDelete}
 
                         key={postStatus.id}
                       />

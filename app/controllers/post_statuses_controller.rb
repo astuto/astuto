@@ -1,10 +1,26 @@
 class PostStatusesController < ApplicationController
-  before_action :authenticate_user!, only: [:update_order]
+  include ApplicationHelper
+  
+  before_action :authenticate_admin, only: [:destroy, :update_order]
 
   def index
     post_statuses = PostStatus.order(order: :asc)
 
     render json: post_statuses
+  end
+
+  def destroy
+    post_status = PostStatus.find(params[:id])
+
+    if post_status.destroy
+      render json: {
+        id: params[:id]
+      }, status: :accepted
+    else
+      render json: {
+        error: I18n.t('errors.post_statuses.destroy', message: post_status.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
   end
 
   def update_order

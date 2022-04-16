@@ -5,39 +5,37 @@ import {
   POSTSTATUS_ORDER_UPDATE_FAILURE,
 } from '../actions/updatePostStatusOrder';
 
+import {
+  PostStatusDeleteActionTypes,
+  POST_STATUS_DELETE_START,
+  POST_STATUS_DELETE_SUCCESS,
+  POST_STATUS_DELETE_FAILURE,
+} from '../actions/deletePostStatus';
+
+import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
+
 interface SiteSettingsState {
-  areUpdating: boolean;
-  error: string;
+  postStatuses: SiteSettingsPostStatusesState;
 }
 
 const initialState: SiteSettingsState = {
-  areUpdating: false,
-  error: '',
+  postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
 };
 
 const siteSettingsReducer = (
   state = initialState,
-  action: PostStatusOrderUpdateActionTypes
+  action: PostStatusOrderUpdateActionTypes |
+    PostStatusDeleteActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case POSTSTATUS_ORDER_UPDATE_START:
-      return {
-        ...state,
-        areUpdating: true,
-      };
-
     case POSTSTATUS_ORDER_UPDATE_SUCCESS:
-      return {
-        ...state,
-        areUpdating: false,
-        error: '',
-      };
-
     case POSTSTATUS_ORDER_UPDATE_FAILURE:
+    case POST_STATUS_DELETE_START:
+    case POST_STATUS_DELETE_SUCCESS:
+    case POST_STATUS_DELETE_FAILURE:
       return {
-        ...state,
-        areUpdating: false,
-        error: action.error,
+        postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action)
       };
 
     default:

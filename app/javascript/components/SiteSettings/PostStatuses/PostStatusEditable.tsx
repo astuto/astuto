@@ -6,7 +6,16 @@ import PostStatusLabel from "../../shared/PostStatusLabel";
 import DragZone from '../../shared/DragZone';
 import Separator from '../../shared/Separator';
 
-const PostStatusEditable = ({id, name, color, index, settingsAreUpdating}) => (
+interface Props {
+  id: number;
+  name: string;
+  color: string;
+  index: number;
+  settingsAreUpdating: boolean;
+  handleDelete(id: number): void;
+}
+
+const PostStatusEditable = ({id, name, color, index, settingsAreUpdating, handleDelete}: Props) => (
   <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={settingsAreUpdating}>
     {provided => (
       <li className="postStatusEditable" ref={provided.innerRef} {...provided.draggableProps}>
@@ -17,7 +26,12 @@ const PostStatusEditable = ({id, name, color, index, settingsAreUpdating}) => (
         <div className="postStatusEditableActions">
           <a href="#">Edit</a>
           <Separator />
-          <a href="#">Delete</a>
+          <a
+            onClick={() => handleDelete(id)}
+            data-confirm="Are you sure?"
+          >
+            Delete
+          </a>
         </div>
       </li>
     )}
