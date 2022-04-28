@@ -15,6 +15,11 @@ import {
   POST_STATUS_DELETE_SUCCESS,
 } from '../actions/deletePostStatus';
 
+import {
+  PostStatusSubmitActionTypes,
+  POSTSTATUS_SUBMIT_SUCCESS,
+} from '../actions/submitPostStatus';
+
 import IPostStatus from '../interfaces/IPostStatus';
 
 export interface PostStatusesState {
@@ -33,7 +38,8 @@ const postStatusesReducer = (
   state = initialState,
   action: PostStatusesRequestActionTypes |
     PostStatusOrderUpdateActionTypes |
-    PostStatusDeleteActionTypes,
+    PostStatusDeleteActionTypes |
+    PostStatusSubmitActionTypes
 ) => {
   switch (action.type) {
     case POST_STATUSES_REQUEST_START:
@@ -71,6 +77,12 @@ const postStatusesReducer = (
       return {
         ...state,
         items: state.items.filter(postStatus => postStatus.id !== action.id),
+      };
+
+    case POSTSTATUS_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        items: [...state.items, action.postStatus],
       };
 
     default:

@@ -5,6 +5,7 @@ import IPostStatus from '../../../interfaces/IPostStatus';
 
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
+import NewPostStatusForm from './NewPostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
 
 interface Props {
@@ -14,6 +15,11 @@ interface Props {
   settingsError: string;
 
   requestPostStatuses(): void;
+  submitPostStatus(
+    name: string,
+    color: string,
+    authenticityToken: string,
+  ): void;
   updatePostStatusOrder(
     id: number,
     postStatuses: Array<IPostStatus>,
@@ -28,12 +34,17 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
   
   componentDidMount() {
     this.props.requestPostStatuses();
+  }
+
+  handleSubmit(name: string, color: string) {
+    this.props.submitPostStatus(name, color, this.props.authenticityToken);
   }
 
   handleDragEnd(result) {
@@ -82,6 +93,12 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
                 )}
             </Droppable>
           </DragDropContext>
+        </div>
+
+        <div className="content">
+          <h2>New</h2>
+
+          <NewPostStatusForm handleSubmit={this.handleSubmit} />
         </div>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />

@@ -12,6 +12,13 @@ import {
   POST_STATUS_DELETE_FAILURE,
 } from '../../actions/deletePostStatus';
 
+import {
+  PostStatusSubmitActionTypes,
+  POSTSTATUS_SUBMIT_START,
+  POSTSTATUS_SUBMIT_SUCCESS,
+  POSTSTATUS_SUBMIT_FAILURE,
+} from '../../actions/submitPostStatus';
+
 export interface SiteSettingsPostStatusesState {
   areUpdating: boolean;
   error: string;
@@ -25,11 +32,13 @@ const initialState: SiteSettingsPostStatusesState = {
 const siteSettingsPostStatusesReducer = (
   state = initialState,
   action: PostStatusOrderUpdateActionTypes |
-    PostStatusDeleteActionTypes
+    PostStatusDeleteActionTypes |
+    PostStatusSubmitActionTypes
 ): SiteSettingsPostStatusesState => {
   switch (action.type) {
     case POSTSTATUS_ORDER_UPDATE_START:
     case POST_STATUS_DELETE_START:
+    case POSTSTATUS_SUBMIT_START:
       return {
         ...state,
         areUpdating: true,
@@ -37,6 +46,7 @@ const siteSettingsPostStatusesReducer = (
 
     case POSTSTATUS_ORDER_UPDATE_SUCCESS:
     case POST_STATUS_DELETE_SUCCESS:
+    case POSTSTATUS_SUBMIT_SUCCESS:
       return {
         ...state,
         areUpdating: false,
@@ -45,6 +55,7 @@ const siteSettingsPostStatusesReducer = (
 
     case POSTSTATUS_ORDER_UPDATE_FAILURE:
     case POST_STATUS_DELETE_FAILURE:
+    case POSTSTATUS_SUBMIT_FAILURE:
       return {
         ...state,
         areUpdating: false,

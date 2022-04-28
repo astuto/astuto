@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :update]
   end
   resources :boards, only: [:show]
-  resources :post_statuses, only: [:index, :destroy] do
+  resources :post_statuses, only: [:index, :create, :destroy] do
     patch 'update_order', on: :collection
   end
 

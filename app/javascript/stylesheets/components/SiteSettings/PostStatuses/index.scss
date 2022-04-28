@@ -12,3 +12,11 @@
       .p-3;
   }
 }
+
+.newPostStatusForm {
+  @extend
+    .d-flex,
+    .m-2;
+
+  column-gap: 16px;
+}

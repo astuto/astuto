@@ -5,12 +5,14 @@ interface Props {
   onClick(e: React.FormEvent): void;
   className?: string;
   outline?: boolean;
+  disabled?: boolean;
 }
 
-const Button = ({ children, onClick, className = '', outline = false}: Props) => (
+const Button = ({ children, onClick, className = '', outline = false, disabled = false}: Props) => (
   <button
     onClick={onClick}
     className={`${className} btn btn-${outline ? 'outline-' : ''}dark`}
+    disabled={disabled}
   >
     {children}
   </button>

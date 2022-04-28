@@ -9,6 +9,18 @@ class PostStatusesController < ApplicationController
     render json: post_statuses
   end
 
+  def create
+    post_status = PostStatus.new(post_params)
+
+    if post_status.save
+      render json: post_status, status: :created
+    else
+      render json: {
+        error: I18n.t('errors.post_status.create', message: post_status.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     post_status = PostStatus.find(params[:id])
 
@@ -45,4 +57,11 @@ class PostStatusesController < ApplicationController
       }, status: :unprocessable_entity
     end
   end
+
+  private
+    def post_params
+      params
+        .require(:post_status)
+        .permit(:name, :color)
+    end
 end

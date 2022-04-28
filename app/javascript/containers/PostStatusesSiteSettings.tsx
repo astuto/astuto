@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { deletePostStatus } from "../actions/deletePostStatus";
 
 import { requestPostStatuses } from "../actions/requestPostStatuses";
+import { submitPostStatus } from "../actions/submitPostStatus";
 import { updatePostStatusOrder } from "../actions/updatePostStatusOrder";
 import PostStatusesSiteSettingsP from "../components/SiteSettings/PostStatuses/PostStatusesSiteSettingsP";
 import IPostStatus from "../interfaces/IPostStatus";
@@ -16,6 +17,10 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   requestPostStatuses() {
     dispatch(requestPostStatuses());
+  },
+
+  submitPostStatus(name: string, color: string, authenticityToken: string) {
+    dispatch(submitPostStatus(name, color, authenticityToken));
   },
 
   updatePostStatusOrder(
