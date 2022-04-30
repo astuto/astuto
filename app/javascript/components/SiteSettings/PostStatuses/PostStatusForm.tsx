@@ -3,7 +3,18 @@ import * as React from 'react';
 import Button from '../../shared/Button';
 
 interface Props {
-  handleSubmit(
+  mode: 'create' | 'update';
+
+  id?: number;
+  name?: string;
+  color?: string;
+
+  handleSubmit?(
+    name: string,
+    color: string,
+  ): void;
+  handleUpdate?(
+    id: number,
     name: string,
     color: string,
   ): void;
@@ -14,7 +25,7 @@ interface State {
   color: string;
 }
 
-class NewPostStatusForm extends React.Component<Props, State> {
+class PostStatusForm extends React.Component<Props, State> {
   initialState: State = {
     name: '',
     color: this.getRandomColor(),
@@ -23,7 +34,15 @@ class NewPostStatusForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.state = this.initialState;
+    this.state = this.props.mode === 'create' ?
+      this.initialState
+      :
+      {
+        name: this.props.name,
+        color: this.props.color,
+      };
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   getRandomColor() {
@@ -47,16 +66,22 @@ class NewPostStatusForm extends React.Component<Props, State> {
     });
   }
 
-  onSubmit(name: string, color: string) {
-    this.props.handleSubmit(name, color);
+  onSubmit() {
+    if (this.props.mode === 'create') {
+      this.props.handleSubmit(this.state.name, this.state.color);
+    } else {
+      this.props.handleUpdate(this.props.id, this.state.name, this.state.color);
+    }
+    
     this.setState({...this.initialState, color: this.getRandomColor()});
   }
 
   render() {
+    const {mode} = this.props;
     const {name, color} = this.state;
 
     return (
-      <div className="newPostStatusForm">
+      <div className="postStatusForm">
         <input
           type="text"
           placeholder="Name"
@@ -73,15 +98,15 @@ class NewPostStatusForm extends React.Component<Props, State> {
         />
 
         <Button
-          onClick={() => this.onSubmit(name, color)}
+          onClick={this.onSubmit}
           className="newPostStatusButton"
           disabled={!this.isFormValid()}
         >
-          Create
+          {mode === 'create' ? 'Create' : 'Update'}
         </Button>
       </div>
     );
   }
 }
 
-export default NewPostStatusForm;
+export default PostStatusForm;

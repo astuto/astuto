@@ -20,6 +20,11 @@ import {
   POSTSTATUS_SUBMIT_SUCCESS,
 } from '../actions/submitPostStatus';
 
+import {
+  PostStatusUpdateActionTypes,
+  POSTSTATUS_UPDATE_SUCCESS,
+} from '../actions/updatePostStatus';
+
 import IPostStatus from '../interfaces/IPostStatus';
 
 export interface PostStatusesState {
@@ -39,7 +44,8 @@ const postStatusesReducer = (
   action: PostStatusesRequestActionTypes |
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
-    PostStatusSubmitActionTypes
+    PostStatusSubmitActionTypes |
+    PostStatusUpdateActionTypes
 ) => {
   switch (action.type) {
     case POST_STATUSES_REQUEST_START:
@@ -67,10 +73,19 @@ const postStatusesReducer = (
         error: action.error,
       };
 
-    case POSTSTATUS_ORDER_UPDATE_START:
+    case POSTSTATUS_SUBMIT_SUCCESS:
       return {
         ...state,
-        items: action.newOrder,
+        items: [...state.items, action.postStatus],
+      };
+
+    case POSTSTATUS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(postStatus => {
+          if (postStatus.id !== action.postStatus.id) return postStatus;
+          return {...postStatus, name: action.postStatus.name, color: action.postStatus.color};
+        }),
       };
 
     case POST_STATUS_DELETE_SUCCESS:
@@ -79,10 +94,10 @@ const postStatusesReducer = (
         items: state.items.filter(postStatus => postStatus.id !== action.id),
       };
 
-    case POSTSTATUS_SUBMIT_SUCCESS:
+    case POSTSTATUS_ORDER_UPDATE_START:
       return {
         ...state,
-        items: [...state.items, action.postStatus],
+        items: action.newOrder,
       };
 
     default:

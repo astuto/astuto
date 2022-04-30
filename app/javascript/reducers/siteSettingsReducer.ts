@@ -19,6 +19,13 @@ import {
   POSTSTATUS_SUBMIT_FAILURE,
 } from '../actions/submitPostStatus';
 
+import {
+  PostStatusUpdateActionTypes,
+  POSTSTATUS_UPDATE_START,
+  POSTSTATUS_UPDATE_SUCCESS,
+  POSTSTATUS_UPDATE_FAILURE,
+} from '../actions/updatePostStatus';
+
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 
 interface SiteSettingsState {
@@ -33,7 +40,8 @@ const siteSettingsReducer = (
   state = initialState,
   action: PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
-    PostStatusSubmitActionTypes
+    PostStatusSubmitActionTypes |
+    PostStatusUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case POSTSTATUS_ORDER_UPDATE_START:
@@ -45,6 +53,9 @@ const siteSettingsReducer = (
     case POSTSTATUS_SUBMIT_START:
     case POSTSTATUS_SUBMIT_SUCCESS:
     case POSTSTATUS_SUBMIT_FAILURE:
+    case POSTSTATUS_UPDATE_START:
+    case POSTSTATUS_UPDATE_SUCCESS:
+    case POSTSTATUS_UPDATE_FAILURE:
       return {
         postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action)
       };

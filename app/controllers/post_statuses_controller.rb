@@ -10,13 +10,26 @@ class PostStatusesController < ApplicationController
   end
 
   def create
-    post_status = PostStatus.new(post_params)
+    post_status = PostStatus.new(post_status_params)
 
     if post_status.save
       render json: post_status, status: :created
     else
       render json: {
         error: I18n.t('errors.post_status.create', message: post_status.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    post_status = PostStatus.find(params[:id])
+    post_status.assign_attributes(post_status_params)
+
+    if post_status.save
+      render json: post_status, status: :ok
+    else
+      render json: {
+        error: I18n.t('errors.post_status.update', message: post_status.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -59,7 +72,7 @@ class PostStatusesController < ApplicationController
   end
 
   private
-    def post_params
+    def post_status_params
       params
         .require(:post_status)
         .permit(:name, :color)

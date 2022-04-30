@@ -6,8 +6,9 @@ import IPostStatus from '../../../interfaces/IPostStatus';
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import { CenteredMutedText } from '../../shared/CustomTexts';
 import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
-import NewPostStatusForm from './NewPostStatusForm';
+import PostStatusForm from './PostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
+import Spinner from '../../shared/Spinner';
 
 interface Props {
   authenticityToken: string;
@@ -17,6 +18,12 @@ interface Props {
 
   requestPostStatuses(): void;
   submitPostStatus(
+    name: string,
+    color: string,
+    authenticityToken: string,
+  ): void;
+  updatePostStatus(
+    id: number,
     name: string,
     color: string,
     authenticityToken: string,
@@ -36,6 +43,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -46,6 +54,10 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
 
   handleSubmit(name: string, color: string) {
     this.props.submitPostStatus(name, color, this.props.authenticityToken);
+  }
+
+  handleUpdate(id: number, name: string, color: string) {
+    this.props.updatePostStatus(id, name, color, this.props.authenticityToken);
   }
 
   handleDragEnd(result) {
@@ -87,6 +99,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
                           index={i}
                           settingsAreUpdating={settingsAreUpdating}
 
+                          handleUpdate={this.handleUpdate}
                           handleDelete={this.handleDelete}
 
                           key={postStatus.id}
@@ -98,14 +111,17 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
               </Droppable>
             </DragDropContext>
           :
-            <CenteredMutedText>There are no post statuses. Create one below!</CenteredMutedText>
+            postStatuses.areLoading ?
+              <Spinner />
+            :
+              <CenteredMutedText>There are no post statuses. Create one below!</CenteredMutedText>
           }
         </div>
 
         <div className="content">
           <h2>New</h2>
 
-          <NewPostStatusForm handleSubmit={this.handleSubmit} />
+          <PostStatusForm mode='create' handleSubmit={this.handleSubmit} />
         </div>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />

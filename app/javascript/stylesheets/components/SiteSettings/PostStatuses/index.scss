@@ -11,15 +11,19 @@
       .justify-content-between,
       .p-3;
 
-    .postStatusEditableActions a {
+    a {
       cursor: pointer;
 
       &:hover { text-decoration: underline; }
     }
+
+    .postStatusFormCancelButton {
+      align-self: center;
+    }
   }
 }
 
-.newPostStatusForm {
+.postStatusForm {
   @extend
     .d-flex,
     .m-2;

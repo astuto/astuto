@@ -3,6 +3,7 @@ import { deletePostStatus } from "../actions/deletePostStatus";
 
 import { requestPostStatuses } from "../actions/requestPostStatuses";
 import { submitPostStatus } from "../actions/submitPostStatus";
+import { updatePostStatus } from "../actions/updatePostStatus";
 import { updatePostStatusOrder } from "../actions/updatePostStatusOrder";
 import PostStatusesSiteSettingsP from "../components/SiteSettings/PostStatuses/PostStatusesSiteSettingsP";
 import IPostStatus from "../interfaces/IPostStatus";
@@ -21,6 +22,15 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   submitPostStatus(name: string, color: string, authenticityToken: string) {
     dispatch(submitPostStatus(name, color, authenticityToken));
+  },
+
+  updatePostStatus(
+    id: number,
+    name: string,
+    color: string,
+    authenticityToken: string,
+  ) {
+    dispatch(updatePostStatus(id, name, color, authenticityToken));
   },
 
   updatePostStatusOrder(
