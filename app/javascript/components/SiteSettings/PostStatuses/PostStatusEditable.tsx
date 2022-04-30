@@ -18,6 +18,7 @@ interface Props {
     id: number,
     name: string,
     color: string,
+    onSuccess: Function,
   ): void;
   handleDelete(id: number): void;
 }
@@ -43,8 +44,12 @@ class PostStatusEditable extends React.Component<Props, State> {
   }
 
   handleUpdate(id: number, name: string, color: string) {
-    this.props.handleUpdate(id, name, color);
-    this.setState({editMode: false});
+    this.props.handleUpdate(
+      id,
+      name,
+      color,
+      () => this.setState({editMode: false}),
+    );
   }
 
   render() {

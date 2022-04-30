@@ -20,12 +20,14 @@ interface Props {
   submitPostStatus(
     name: string,
     color: string,
+    onSuccess: Function,
     authenticityToken: string,
   ): void;
   updatePostStatus(
     id: number,
     name: string,
     color: string,
+    onSuccess: Function,
     authenticityToken: string,
   ): void;
   updatePostStatusOrder(
@@ -52,12 +54,12 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
     this.props.requestPostStatuses();
   }
 
-  handleSubmit(name: string, color: string) {
-    this.props.submitPostStatus(name, color, this.props.authenticityToken);
+  handleSubmit(name: string, color: string, onSuccess: Function) {
+    this.props.submitPostStatus(name, color, onSuccess, this.props.authenticityToken);
   }
 
-  handleUpdate(id: number, name: string, color: string) {
-    this.props.updatePostStatus(id, name, color, this.props.authenticityToken);
+  handleUpdate(id: number, name: string, color: string, onSuccess: Function) {
+    this.props.updatePostStatus(id, name, color, onSuccess, this.props.authenticityToken);
   }
 
   handleDragEnd(result) {

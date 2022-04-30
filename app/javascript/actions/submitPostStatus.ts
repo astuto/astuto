@@ -67,7 +67,11 @@ export const submitPostStatus = (
     } else {
       dispatch(postStatusSubmitFailure(json.error));
     }
+
+    return Promise.resolve(res);
   } catch (e) {
     dispatch(postStatusSubmitFailure(e));
+
+    return Promise.resolve(null);
   }
 };

@@ -20,17 +20,27 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(requestPostStatuses());
   },
 
-  submitPostStatus(name: string, color: string, authenticityToken: string) {
-    dispatch(submitPostStatus(name, color, authenticityToken));
+  submitPostStatus(
+    name: string,
+    color: string,
+    onSuccess: Function,
+    authenticityToken: string
+  ) {
+    dispatch(submitPostStatus(name, color, authenticityToken)).then(res => {
+      if (res && res.status === 201) onSuccess();
+    });
   },
 
   updatePostStatus(
     id: number,
     name: string,
     color: string,
+    onSuccess: Function,
     authenticityToken: string,
   ) {
-    dispatch(updatePostStatus(id, name, color, authenticityToken));
+    dispatch(updatePostStatus(id, name, color, authenticityToken)).then(res => {
+      if (res && res.status === 200) onSuccess();
+    });
   },
 
   updatePostStatusOrder(

@@ -12,6 +12,7 @@ interface Props {
   handleSubmit?(
     name: string,
     color: string,
+    onSuccess: Function,
   ): void;
   handleUpdate?(
     id: number,
@@ -68,12 +69,14 @@ class PostStatusForm extends React.Component<Props, State> {
 
   onSubmit() {
     if (this.props.mode === 'create') {
-      this.props.handleSubmit(this.state.name, this.state.color);
+      this.props.handleSubmit(
+        this.state.name,
+        this.state.color,
+        () => this.setState({...this.initialState, color: this.getRandomColor()}),
+      );
     } else {
       this.props.handleUpdate(this.props.id, this.state.name, this.state.color);
     }
-    
-    this.setState({...this.initialState, color: this.getRandomColor()});
   }
 
   render() {

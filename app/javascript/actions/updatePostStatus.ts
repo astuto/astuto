@@ -68,7 +68,11 @@ export const updatePostStatus = (
     } else {
       dispatch(postStatusUpdateFailure(json.error));
     }
+
+    return Promise.resolve(res);
   } catch (e) {
     dispatch(postStatusUpdateFailure(e));
+    
+    return Promise.resolve(null);
   }
 };
