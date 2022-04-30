@@ -105,7 +105,7 @@ class PostStatusForm extends React.Component<Props, State> {
           className="newPostStatusButton"
           disabled={!this.isFormValid()}
         >
-          {mode === 'create' ? 'Create' : 'Update'}
+          {mode === 'create' ? 'Create' : 'Save'}
         </Button>
       </div>
     );

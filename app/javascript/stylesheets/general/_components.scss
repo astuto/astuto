@@ -44,7 +44,8 @@ a {
 
 .multiRowContent {
   @extend
-    .flex-grow-1;
+    .flex-grow-1,
+    .w-100;
 }
 
 .content {
