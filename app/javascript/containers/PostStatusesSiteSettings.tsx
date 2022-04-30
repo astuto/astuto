@@ -6,6 +6,7 @@ import { submitPostStatus } from "../actions/submitPostStatus";
 import { updatePostStatus } from "../actions/updatePostStatus";
 import { updatePostStatusOrder } from "../actions/updatePostStatusOrder";
 import PostStatusesSiteSettingsP from "../components/SiteSettings/PostStatuses/PostStatusesSiteSettingsP";
+import HttpStatus from "../constants/http_status";
 import IPostStatus from "../interfaces/IPostStatus";
 import { State } from "../reducers/rootReducer";
 
@@ -27,7 +28,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     authenticityToken: string
   ) {
     dispatch(submitPostStatus(name, color, authenticityToken)).then(res => {
-      if (res && res.status === 201) onSuccess();
+      if (res && res.status === HttpStatus.Created) onSuccess();
     });
   },
 
@@ -39,7 +40,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     authenticityToken: string,
   ) {
     dispatch(updatePostStatus(id, name, color, authenticityToken)).then(res => {
-      if (res && res.status === 200) onSuccess();
+      if (res && res.status === HttpStatus.OK) onSuccess();
     });
   },
 

@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
+import HttpStatus from "../constants/http_status";
 
 import buildRequestHeaders from "../helpers/buildRequestHeaders";
 import IPostStatus from "../interfaces/IPostStatus";
@@ -71,7 +72,7 @@ export const updatePostStatusOrder = (
     });
     const json = await res.json();
 
-    if (res.status === 200) {
+    if (res.status === HttpStatus.OK) {
       dispatch(postStatusOrderUpdateSuccess());
     } else {
       dispatch(postStatusOrderUpdateFailure(json.error));

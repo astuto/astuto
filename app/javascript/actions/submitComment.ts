@@ -4,6 +4,7 @@ import { State } from '../reducers/rootReducer';
 
 import ICommentJSON from '../interfaces/json/IComment';
 import buildRequestHeaders from '../helpers/buildRequestHeaders';
+import HttpStatus from '../constants/http_status';
 
 export const COMMENT_SUBMIT_START = 'COMMENT_SUBMIT_START';
 interface CommentSubmitStartAction {
@@ -68,7 +69,7 @@ export const submitComment = (
     });
     const json = await res.json();
 
-    if (res.status === 201) {
+    if (res.status === HttpStatus.Created) {
       dispatch(commentSubmitSuccess(json));
     } else {
       dispatch(commentSubmitFailure(parentId, json.error));

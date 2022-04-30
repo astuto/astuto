@@ -11,6 +11,7 @@ import Button from '../shared/Button';
 
 import IBoard from '../../interfaces/IBoard';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
+import HttpStatus from '../../constants/http_status';
 
 interface Props {
   board: IBoard;
@@ -106,7 +107,7 @@ class NewPost extends React.Component<Props, State> {
       const json = await res.json();
       this.setState({isLoading: false});
 
-      if (res.status === 201) {
+      if (res.status === HttpStatus.Created) {
         this.setState({
           success: 'Post published! You will be redirected soon...',
 
