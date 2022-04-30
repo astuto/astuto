@@ -4,6 +4,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import IPostStatus from '../../../interfaces/IPostStatus';
 
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
+import { CenteredMutedText } from '../../shared/CustomTexts';
 import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
 import NewPostStatusForm from './NewPostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
@@ -48,7 +49,8 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
   }
 
   handleDragEnd(result) {
-    if (result.source.index === result.destination.index) return;
+    if (result.destination == null || result.source.index === result.destination.index)
+      return;
     
     this.props.updatePostStatusOrder(
       parseInt(result.draggableId),
@@ -71,28 +73,33 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
         <div className="content">
           <h2>Post statuses</h2>
 
-          <DragDropContext onDragEnd={this.handleDragEnd}>
-            <Droppable droppableId="postStatuses">
-              {provided => (
-                  <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusList">
-                    {postStatuses.items.map((postStatus, i) => (
-                      <PostStatusEditable
-                        id={postStatus.id}
-                        name={postStatus.name}
-                        color={postStatus.color}
-                        index={i}
-                        settingsAreUpdating={settingsAreUpdating}
+          {
+            postStatuses.items.length > 0 ?
+              <DragDropContext onDragEnd={this.handleDragEnd}>
+              <Droppable droppableId="postStatuses">
+                {provided => (
+                    <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusList">
+                      {postStatuses.items.map((postStatus, i) => (
+                        <PostStatusEditable
+                          id={postStatus.id}
+                          name={postStatus.name}
+                          color={postStatus.color}
+                          index={i}
+                          settingsAreUpdating={settingsAreUpdating}
 
-                        handleDelete={this.handleDelete}
+                          handleDelete={this.handleDelete}
 
-                        key={postStatus.id}
-                      />
-                    ))}
-                    {provided.placeholder}
-                  </ul>
-                )}
-            </Droppable>
-          </DragDropContext>
+                          key={postStatus.id}
+                        />
+                      ))}
+                      {provided.placeholder}
+                    </ul>
+                  )}
+              </Droppable>
+            </DragDropContext>
+          :
+            <CenteredMutedText>There are no post statuses. Create one below!</CenteredMutedText>
+          }
         </div>
 
         <div className="content">

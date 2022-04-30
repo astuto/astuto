@@ -1,5 +1,5 @@
-import { string } from 'prop-types';
 import * as React from 'react';
+
 import Button from '../../shared/Button';
 
 interface Props {

@@ -18,7 +18,6 @@ import {
   COMMENT_SUBMIT_FAILURE,
 } from '../actions/submitComment';
 
-
 import replyFormReducer, { ReplyFormState } from './replyFormReducer';
 
 import ICommentJSON from '../interfaces/json/IComment';

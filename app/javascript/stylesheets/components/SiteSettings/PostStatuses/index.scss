@@ -10,6 +10,12 @@
       .d-flex,
       .justify-content-between,
       .p-3;
+
+    .postStatusEditableActions a {
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
   }
 }
 
