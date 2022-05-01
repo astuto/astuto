@@ -4,6 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import { State } from "../reducers/rootReducer";
 import ILikeJSON from "../interfaces/json/ILike";
 import buildRequestHeaders from "../helpers/buildRequestHeaders";
+import HttpStatus from "../constants/http_status";
 
 export const LIKE_SUBMIT_SUCCESS = 'LIKE_SUBMIT_SUCCESS';
 interface LikeSubmitSuccessAction {
@@ -38,7 +39,7 @@ export const submitLike = (
     });
     const json = await res.json();
 
-    if (res.status === 201 || res.status === 202)
+    if (res.status === HttpStatus.Created || res.status === HttpStatus.Accepted)
       dispatch(likeSubmitSuccess(postId, isLike, json));
   } catch (e) {
     console.log('An error occurred while liking a post');

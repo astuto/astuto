@@ -37,7 +37,7 @@ RSpec.describe PostStatus, type: :model do
     expect(valid_color2).to be_valid
   end
 
-  it 'must have a order of type integer and positive' do
+  it 'must have a order of type integer and non-negative' do
     nil_order = FactoryBot.build(:post_status, order: nil)
     empty_order = FactoryBot.build(:post_status, order: '')
     decimal_order = FactoryBot.build(:post_status, order: 1.1)
@@ -48,7 +48,7 @@ RSpec.describe PostStatus, type: :model do
     expect(empty_order).to be_invalid
     expect(decimal_order).to be_invalid
     expect(negative_order).to be_invalid
-    expect(zero_order).to be_invalid
+    expect(zero_order).to be_valid
   end
 
   it 'has a method that returns only post statuses that should show up in roadmap' do

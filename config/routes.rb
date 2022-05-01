@@ -20,5 +20,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :update]
   end
   resources :boards, only: [:show]
-  resources :post_statuses, only: [:index]
+  resources :post_statuses, only: [:index, :create, :update, :destroy] do
+    patch 'update_order', on: :collection
+  end
+
+  namespace :site_settings do
+    get 'general'
+    get 'post_statuses'
+  end
 end

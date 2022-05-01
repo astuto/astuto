@@ -32,4 +32,8 @@ class User < ApplicationRecord
   def power_user?
     role == 'admin' || role == 'moderator'
   end
+
+  def admin?
+    role == 'admin'
+  end
 end

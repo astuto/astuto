@@ -1,0 +1,11 @@
+<div class="sidebar">
+  <div class="sidebarCard">
+    <span class="boxTitleText">Site Settings</span>
+    <div class="verticalNavigation" role="tablist" aria-orientation="vertical">
+      <%= render 'menu_link', label: 'General', path: site_settings_general_path %>
+      <%= render 'menu_link', label: 'Appearance', path: '#' %>
+      <%= render 'menu_link', label: 'Post statuses', path: site_settings_post_statuses_path %>
+      <%= render 'menu_link', label: 'Widgets', path: '#' %>
+    </div>
+  </div>
+</div>

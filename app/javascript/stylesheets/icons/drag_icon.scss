@@ -1,0 +1,23 @@
+/* Code taken from: https://gist.github.com/JakeSidSmith/83c324dbe7e4d91ee8c52525b1d504d9 */
+/* Thanks JakeSidSmith */
+
+span.drag-icon {
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+}
+
+span.drag-icon,
+span.drag-icon::before {
+  background-image: radial-gradient(black 40%, transparent 40%);
+  background-size: 4px 4px;
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+}
+
+span.drag-icon::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 33%;
+}

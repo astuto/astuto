@@ -1,0 +1,13 @@
+<div class="multiColumnContainer">
+  <%= render 'menu' %>
+  <div class="multiRowContent">
+    <%=
+      react_component(
+        'SiteSettings/PostStatuses',
+        {
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.postStatusList {
+  @extend
+    .p-0,
+    .m-0;
+ 
+  list-style: none;
+  
+  .postStatusEditable {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .p-3;
+
+    a {
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    .postStatusFormCancelButton {
+      align-self: center;
+    }
+  }
+}
+
+.postStatusForm {
+  @extend
+    .d-flex,
+    .m-2;
+
+  column-gap: 16px;
+}
