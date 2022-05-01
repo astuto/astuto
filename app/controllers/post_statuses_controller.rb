@@ -1,7 +1,7 @@
 class PostStatusesController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:destroy, :update_order]
+  before_action :authenticate_admin, only: [:create, :update, :update_order, :destroy]
 
   def index
     post_statuses = PostStatus.order(order: :asc)
@@ -49,11 +49,6 @@ class PostStatusesController < ApplicationController
   end
 
   def update_order
-    if not current_user.admin?
-      render json: I18n.t('errors.unauthorized'), status: :unauthorized
-      return
-    end
-
     workflow_output = ReorderWorkflow.new(
       entity_classname: PostStatus,
       column_name: 'order',
