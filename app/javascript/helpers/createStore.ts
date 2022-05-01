@@ -7,7 +7,7 @@ const createStoreHelper = () => (
   createStore(
     rootReducer,
     compose(
-      applyMiddleware(thunkMiddleware),
+      applyMiddleware(thunkMiddleware)
     )
   )
 );
