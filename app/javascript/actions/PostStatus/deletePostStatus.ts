@@ -1,7 +1,7 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import buildRequestHeaders from "../helpers/buildRequestHeaders";
-import { State } from "../reducers/rootReducer";
+import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import { State } from "../../reducers/rootReducer";
 
 export const POST_STATUS_DELETE_START = 'POST_STATUS_DELETE_START';
 interface PostStatusDeleteStartAction {

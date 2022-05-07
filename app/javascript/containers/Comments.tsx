@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { requestComments } from '../actions/requestComments';
+import { requestComments } from '../actions/Comment/requestComments';
 import {
   toggleCommentReply,
   setCommentReplyBody,
-} from '../actions/handleCommentReplies';
-import { toggleCommentIsUpdate } from '../actions/updateComment';
-import { submitComment } from '../actions/submitComment';
+} from '../actions/Comment/handleCommentReplies';
+import { toggleCommentIsUpdate } from '../actions/Comment/updateComment';
+import { submitComment } from '../actions/Comment/submitComment';
 
 import { State } from '../reducers/rootReducer';
 

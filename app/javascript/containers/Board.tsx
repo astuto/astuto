@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { requestPosts } from '../actions/requestPosts';
-import { requestPostStatuses } from '../actions/requestPostStatuses';
+import { requestPosts } from '../actions/Post/requestPosts';
+import { requestPostStatuses } from '../actions/PostStatus/requestPostStatuses';
 import {
   setSearchFilter,
   setPostStatusFilter,

@@ -1,10 +1,10 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { State } from '../reducers/rootReducer';
+import { State } from '../../reducers/rootReducer';
 
-import ICommentJSON from '../interfaces/json/IComment';
-import buildRequestHeaders from '../helpers/buildRequestHeaders';
-import HttpStatus from '../constants/http_status';
+import ICommentJSON from '../../interfaces/json/IComment';
+import buildRequestHeaders from '../../helpers/buildRequestHeaders';
+import HttpStatus from '../../constants/http_status';
 
 export const COMMENT_SUBMIT_START = 'COMMENT_SUBMIT_START';
 interface CommentSubmitStartAction {

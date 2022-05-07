@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
-import { requestPost } from '../actions/requestPost';
-import { requestLikes } from '../actions/requestLikes';
-import { changePostBoard } from '../actions/changePostBoard';
-import { changePostStatus } from '../actions/changePostStatus';
+import { requestPost } from '../actions/Post/requestPost';
+import { requestLikes } from '../actions/Like/requestLikes';
+import { changePostBoard } from '../actions/Post/changePostBoard';
+import { changePostStatus } from '../actions/Post/changePostStatus';
 
 import { State } from '../reducers/rootReducer';
 

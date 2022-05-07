@@ -1,9 +1,9 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import HttpStatus from "../constants/http_status";
-import buildRequestHeaders from "../helpers/buildRequestHeaders";
-import IPostStatusJSON from "../interfaces/json/IPostStatus";
-import { State } from "../reducers/rootReducer";
+import HttpStatus from "../../constants/http_status";
+import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import IPostStatusJSON from "../../interfaces/json/IPostStatus";
+import { State } from "../../reducers/rootReducer";
 
 export const POSTSTATUS_SUBMIT_START = 'POSTSTATUS_SUBMIT_START';
 interface PostStatusSubmitStartAction {

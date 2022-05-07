@@ -1,4 +1,4 @@
-import ICommentJSON from '../interfaces/json/IComment';
+import ICommentJSON from '../../interfaces/json/IComment';
 
 export const COMMENT_REQUEST_SUCCESS = 'COMMENT_REQUEST_SUCCESS';
 export interface CommentRequestSuccessAction {

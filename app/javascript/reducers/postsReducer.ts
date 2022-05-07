@@ -12,9 +12,9 @@ import {
   POSTS_REQUEST_START,
   POSTS_REQUEST_SUCCESS,
   POSTS_REQUEST_FAILURE,
-} from '../actions/requestPosts';
+} from '../actions/Post/requestPosts';
 
-import { postRequestSuccess } from '../actions/requestPost';
+import { postRequestSuccess } from '../actions/Post/requestPost';
 
 import {
   ChangeFiltersActionTypes,
@@ -25,7 +25,7 @@ import {
 import {
   LikeActionTypes,
   LIKE_SUBMIT_SUCCESS,
-} from '../actions/submitLike';
+} from '../actions/Like/submitLike';
 
 export interface PostsState {
   items: Array<IPost>;

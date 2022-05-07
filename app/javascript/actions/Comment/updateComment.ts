@@ -1,8 +1,8 @@
 import { ThunkAction } from "redux-thunk";
-import { State } from "../reducers/rootReducer";
+import { State } from "../../reducers/rootReducer";
 import { Action } from "redux";
 
-import buildRequestHeaders from "../helpers/buildRequestHeaders";
+import buildRequestHeaders from "../../helpers/buildRequestHeaders";
 
 export const TOGGLE_COMMENT_IS_UPDATE_SUCCESS = 'TOGGLE_COMMENT_IS_UPDATE_SUCCESS';
 export interface ToggleIsUpdateSuccessAction {

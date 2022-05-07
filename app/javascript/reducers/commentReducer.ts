@@ -1,7 +1,7 @@
 import {
   CommentRequestSuccessAction,
   COMMENT_REQUEST_SUCCESS,
-} from '../actions/requestComment';
+} from '../actions/Comment/requestComment';
 
 import IComment from '../interfaces/IComment';
 

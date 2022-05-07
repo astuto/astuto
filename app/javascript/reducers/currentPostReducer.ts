@@ -3,54 +3,54 @@ import {
   POST_REQUEST_START,
   POST_REQUEST_SUCCESS,
   POST_REQUEST_FAILURE,
-} from '../actions/requestPost';
+} from '../actions/Post/requestPost';
 
 import {
   ChangePostBoardSuccessAction,
   CHANGE_POST_BOARD_SUCCESS,
-} from '../actions/changePostBoard';
+} from '../actions/Post/changePostBoard';
 
 import {
   ChangePostStatusSuccessAction,
   CHANGE_POST_STATUS_SUCCESS,
-} from '../actions/changePostStatus';
+} from '../actions/Post/changePostStatus';
 
 import {
   LikesRequestActionTypes,
   LIKES_REQUEST_START,
   LIKES_REQUEST_SUCCESS,
   LIKES_REQUEST_FAILURE,
-} from '../actions/requestLikes';
+} from '../actions/Like/requestLikes';
 
 import {
   LikeActionTypes,
   LIKE_SUBMIT_SUCCESS,
-} from '../actions/submitLike';
+} from '../actions/Like/submitLike';
 
 import {
   CommentsRequestActionTypes,
   COMMENTS_REQUEST_START,
   COMMENTS_REQUEST_SUCCESS,
   COMMENTS_REQUEST_FAILURE,
-} from '../actions/requestComments';
+} from '../actions/Comment/requestComments';
 
 import {
   HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
-} from '../actions/handleCommentReplies';
+} from '../actions/Comment/handleCommentReplies';
 
 import {
   CommentSubmitActionTypes,
   COMMENT_SUBMIT_START,
   COMMENT_SUBMIT_SUCCESS,
   COMMENT_SUBMIT_FAILURE,
-} from '../actions/submitComment';
+} from '../actions/Comment/submitComment';
 
 import {
   ToggleIsUpdateSuccessAction,
   TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
-} from '../actions/updateComment';
+} from '../actions/Comment/updateComment';
 
 import postReducer from './postReducer';
 import likesReducer from './likesReducer';

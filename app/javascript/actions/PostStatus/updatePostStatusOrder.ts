@@ -1,10 +1,10 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import HttpStatus from "../constants/http_status";
+import HttpStatus from "../../constants/http_status";
 
-import buildRequestHeaders from "../helpers/buildRequestHeaders";
-import IPostStatus from "../interfaces/IPostStatus";
-import { State } from "../reducers/rootReducer";
+import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import IPostStatus from "../../interfaces/IPostStatus";
+import { State } from "../../reducers/rootReducer";
 
 export const POSTSTATUS_ORDER_UPDATE_START = 'POSTSTATUS_ORDER_UPDATE_START';
 interface PostStatusOrderUpdateStartAction {

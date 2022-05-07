@@ -1,17 +1,17 @@
 import {
   PostRequestActionTypes,
   POST_REQUEST_SUCCESS,
-} from '../actions/requestPost';
+} from '../actions/Post/requestPost';
 
 import {
   ChangePostBoardSuccessAction,
   CHANGE_POST_BOARD_SUCCESS,
-} from '../actions/changePostBoard';
+} from '../actions/Post/changePostBoard';
 
 import {
   ChangePostStatusSuccessAction,
   CHANGE_POST_STATUS_SUCCESS,
-} from '../actions/changePostStatus';
+} from '../actions/Post/changePostStatus';
 
 import IPost from '../interfaces/IPost';
 

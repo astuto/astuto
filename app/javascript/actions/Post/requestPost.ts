@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import IPostJSON from '../interfaces/json/IPost';
+import IPostJSON from '../../interfaces/json/IPost';
 
-import { State } from '../reducers/rootReducer';
+import { State } from '../../reducers/rootReducer';
 
 export const POST_REQUEST_START = 'POST_REQUEST_START';
 interface PostRequestStartAction {

@@ -3,27 +3,27 @@ import {
   POST_STATUSES_REQUEST_START,
   POST_STATUSES_REQUEST_SUCCESS,
   POST_STATUSES_REQUEST_FAILURE,
-} from '../actions/requestPostStatuses';
+} from '../actions/PostStatus/requestPostStatuses';
 
 import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
-} from '../actions/updatePostStatusOrder';
+} from '../actions/PostStatus/updatePostStatusOrder';
 
 import {
   PostStatusDeleteActionTypes,
   POST_STATUS_DELETE_SUCCESS,
-} from '../actions/deletePostStatus';
+} from '../actions/PostStatus/deletePostStatus';
 
 import {
   PostStatusSubmitActionTypes,
   POSTSTATUS_SUBMIT_SUCCESS,
-} from '../actions/submitPostStatus';
+} from '../actions/PostStatus/submitPostStatus';
 
 import {
   PostStatusUpdateActionTypes,
   POSTSTATUS_UPDATE_SUCCESS,
-} from '../actions/updatePostStatus';
+} from '../actions/PostStatus/updatePostStatus';
 
 import IPostStatus from '../interfaces/IPostStatus';
 

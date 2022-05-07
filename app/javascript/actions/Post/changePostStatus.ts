@@ -1,8 +1,8 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { State } from '../reducers/rootReducer';
+import { State } from '../../reducers/rootReducer';
 
-import buildRequestHeaders from '../helpers/buildRequestHeaders';
+import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 
 export const CHANGE_POST_STATUS_SUCCESS = 'CHANGE_POST_STATUS_SUCCESS';
 export interface ChangePostStatusSuccessAction {

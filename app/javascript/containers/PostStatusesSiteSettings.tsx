@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { deletePostStatus } from "../actions/deletePostStatus";
+import { deletePostStatus } from "../actions/PostStatus/deletePostStatus";
 
-import { requestPostStatuses } from "../actions/requestPostStatuses";
-import { submitPostStatus } from "../actions/submitPostStatus";
-import { updatePostStatus } from "../actions/updatePostStatus";
-import { updatePostStatusOrder } from "../actions/updatePostStatusOrder";
+import { requestPostStatuses } from "../actions/PostStatus/requestPostStatuses";
+import { submitPostStatus } from "../actions/PostStatus/submitPostStatus";
+import { updatePostStatus } from "../actions/PostStatus/updatePostStatus";
+import { updatePostStatusOrder } from "../actions/PostStatus/updatePostStatusOrder";
 import PostStatusesSiteSettingsP from "../components/SiteSettings/PostStatuses/PostStatusesSiteSettingsP";
 import HttpStatus from "../constants/http_status";
 import IPostStatus from "../interfaces/IPostStatus";

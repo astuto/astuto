@@ -1,20 +1,20 @@
 import {
   CommentRequestSuccessAction,
   COMMENT_REQUEST_SUCCESS,
-} from '../actions/requestComment';
+} from '../actions/Comment/requestComment';
 
 import {
   HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
-} from '../actions/handleCommentReplies';
+} from '../actions/Comment/handleCommentReplies';
 
 import {
   CommentSubmitActionTypes,
   COMMENT_SUBMIT_START,
   COMMENT_SUBMIT_SUCCESS,
   COMMENT_SUBMIT_FAILURE,
-} from '../actions/submitComment';
+} from '../actions/Comment/submitComment';
 
 export interface ReplyFormState {
   commentId: number;

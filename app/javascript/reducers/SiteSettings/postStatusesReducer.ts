@@ -3,28 +3,28 @@ import {
   POSTSTATUS_ORDER_UPDATE_START,
   POSTSTATUS_ORDER_UPDATE_SUCCESS,
   POSTSTATUS_ORDER_UPDATE_FAILURE,
-} from '../../actions/updatePostStatusOrder';
+} from '../../actions/PostStatus/updatePostStatusOrder';
 
 import {
   PostStatusDeleteActionTypes,
   POST_STATUS_DELETE_START,
   POST_STATUS_DELETE_SUCCESS,
   POST_STATUS_DELETE_FAILURE,
-} from '../../actions/deletePostStatus';
+} from '../../actions/PostStatus/deletePostStatus';
 
 import {
   PostStatusSubmitActionTypes,
   POSTSTATUS_SUBMIT_START,
   POSTSTATUS_SUBMIT_SUCCESS,
   POSTSTATUS_SUBMIT_FAILURE,
-} from '../../actions/submitPostStatus';
+} from '../../actions/PostStatus/submitPostStatus';
 
 import {
   PostStatusUpdateActionTypes,
   POSTSTATUS_UPDATE_START,
   POSTSTATUS_UPDATE_SUCCESS,
   POSTSTATUS_UPDATE_FAILURE,
-} from '../../actions/updatePostStatus';
+} from '../../actions/PostStatus/updatePostStatus';
 
 export interface SiteSettingsPostStatusesState {
   areUpdating: boolean;

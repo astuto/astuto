@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import ILikeJSON from '../interfaces/json/ILike';
+import ILikeJSON from '../../interfaces/json/ILike';
 
-import { State } from '../reducers/rootReducer';
+import { State } from '../../reducers/rootReducer';
 
 export const LIKES_REQUEST_START = 'LIKES_REQUEST_START';
 interface LikesRequestStartAction {

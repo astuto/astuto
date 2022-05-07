@@ -3,12 +3,12 @@ import {
   LIKES_REQUEST_START,
   LIKES_REQUEST_SUCCESS,
   LIKES_REQUEST_FAILURE,
-} from '../actions/requestLikes';
+} from '../actions/Like/requestLikes';
 
 import {
   LikeActionTypes,
   LIKE_SUBMIT_SUCCESS,
-} from '../actions/submitLike';
+} from '../actions/Like/submitLike';
 
 import ILike from '../interfaces/ILike';
 

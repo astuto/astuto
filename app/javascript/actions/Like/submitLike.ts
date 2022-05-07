@@ -1,10 +1,10 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { State } from "../reducers/rootReducer";
-import ILikeJSON from "../interfaces/json/ILike";
-import buildRequestHeaders from "../helpers/buildRequestHeaders";
-import HttpStatus from "../constants/http_status";
+import { State } from "../../reducers/rootReducer";
+import ILikeJSON from "../../interfaces/json/ILike";
+import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import HttpStatus from "../../constants/http_status";
 
 export const LIKE_SUBMIT_SUCCESS = 'LIKE_SUBMIT_SUCCESS';
 interface LikeSubmitSuccessAction {

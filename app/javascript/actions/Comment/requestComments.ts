@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import ICommentJSON from '../interfaces/json/IComment';
+import ICommentJSON from '../../interfaces/json/IComment';
 
-import { State } from '../reducers/rootReducer';
+import { State } from '../../reducers/rootReducer';
 
 export const COMMENTS_REQUEST_START = 'COMMENTS_REQUEST_START';
 interface CommentsRequestStartAction {
