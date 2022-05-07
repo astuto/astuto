@@ -1,12 +1,16 @@
 class BoardsController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:create, :update_order, :destroy]
+  before_action :authenticate_admin, only: [:create, :update, :update_order, :destroy]
 
   def index
     boards = Board.order(order: :asc)
 
     render json: boards
+  end
+
+  def show
+    @board = Board.find(params[:id])
   end
 
   def create
@@ -17,6 +21,35 @@ class BoardsController < ApplicationController
     else
       render json: {
         error: I18n.t('errors.board.create', message: board.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    board = Board.find(params[:id])
+    board.assign_attributes(board_params)
+
+    if board.save
+      render json: board, status: :ok
+    else
+      print board.errors.full_messages
+      
+      render json: {
+        error: I18n.t('errors.board.update', message: board.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    board = Board.find(params[:id])
+
+    if board.destroy
+      render json: {
+        id: params[:id]
+      }, status: :accepted
+    else
+      render json: {
+        error: I18n.t('errors.board.destroy', message: board.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -37,24 +70,6 @@ class BoardsController < ApplicationController
         error: I18n.t("errors.board.update_order")
       }, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    board = Board.find(params[:id])
-
-    if board.destroy
-      render json: {
-        id: params[:id]
-      }, status: :accepted
-    else
-      render json: {
-        error: I18n.t('errors.board.destroy', message: board.errors.full_messages)
-      }, status: :unprocessable_entity
-    end
-  end
-  
-  def show
-    @board = Board.find(params[:id])
   end
 
   private
