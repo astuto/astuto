@@ -22,6 +22,7 @@ export const POSTSTATUS_ORDER_UPDATE_FAILURE = 'POSTSTATUS_ORDER_UPDATE_FAILURE'
 interface PostStatusOrderUpdateFailureAction {
   type: typeof POSTSTATUS_ORDER_UPDATE_FAILURE;
   error: string;
+  oldOrder: Array<IPostStatus>;
 }
 
 export type PostStatusOrderUpdateActionTypes =
@@ -41,10 +42,12 @@ const postStatusOrderUpdateSuccess = (): PostStatusOrderUpdateSuccessAction => (
 });
 
 const postStatusOrderUpdateFailure = (
-  error: string
+  error: string,
+  oldOrder: Array<IPostStatus>
 ): PostStatusOrderUpdateFailureAction => ({
   type: POSTSTATUS_ORDER_UPDATE_FAILURE,
   error,
+  oldOrder,
 });
 
 export const updatePostStatusOrder = (
@@ -55,6 +58,7 @@ export const updatePostStatusOrder = (
 
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
+  const oldOrder = postStatuses;
   let newOrder = createNewOrdering(postStatuses, sourceIndex, destinationIndex);
 
   dispatch(postStatusOrderUpdateStart(newOrder));
@@ -76,10 +80,10 @@ export const updatePostStatusOrder = (
     if (res.status === HttpStatus.OK) {
       dispatch(postStatusOrderUpdateSuccess());
     } else {
-      dispatch(postStatusOrderUpdateFailure(json.error));
+      dispatch(postStatusOrderUpdateFailure(json.error, oldOrder));
     }
   } catch (e) {
-    dispatch(postStatusOrderUpdateFailure(e));
+    dispatch(postStatusOrderUpdateFailure(e, oldOrder));
   }
 };
 
