@@ -31,6 +31,7 @@ interface Props {
     destinationIndex: number,
     authenticityToken: string,
   ): void;
+  deleteBoard(id: number, authenticityToken: string): void;
 }
 
 class BoardsSiteSettingsP extends React.Component<Props> {
@@ -39,6 +40,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +62,10 @@ class BoardsSiteSettingsP extends React.Component<Props> {
       result.destination.index,
       this.props.authenticityToken,
     );
+  }
+
+  handleDelete(id: number) {
+    this.props.deleteBoard(id, this.props.authenticityToken);
   }
 
   render() {
@@ -87,6 +93,8 @@ class BoardsSiteSettingsP extends React.Component<Props> {
                           description={board.description}
                           index={i}
                           settingsAreUpdating={settingsAreUpdating}
+
+                          handleDelete={this.handleDelete}
 
                           key={board.id}
                         />

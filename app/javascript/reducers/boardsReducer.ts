@@ -11,6 +11,11 @@ import {
 } from '../actions/Board/submitBoard';
 
 import {
+  BoardDeleteActionTypes,
+  BOARD_DELETE_SUCCESS,
+} from '../actions/Board/deleteBoard';
+
+import {
   BoardOrderUpdateActionTypes,
   BOARD_ORDER_UPDATE_START,
   BOARD_ORDER_UPDATE_FAILURE,
@@ -35,7 +40,8 @@ const boardsReducer = (
   action:
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
-    BoardOrderUpdateActionTypes
+    BoardOrderUpdateActionTypes |
+    BoardDeleteActionTypes
 ) => {
   switch (action.type) {
     case BOARDS_REQUEST_START:
@@ -79,6 +85,12 @@ const boardsReducer = (
       return {
         ...state,
         items: action.oldOrder,
+      };
+
+    case BOARD_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(board => board.id !== action.id),
       };
 
     default:

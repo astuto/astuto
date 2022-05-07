@@ -13,6 +13,8 @@ interface Props {
   description?: string;
   index: number;
   settingsAreUpdating: boolean;
+
+  handleDelete(id: number): void;
 }
 
 interface State {
@@ -51,6 +53,7 @@ class BoardsEditable extends React.Component<Props, State> {
       description,
       index,
       settingsAreUpdating,
+      handleDelete,
     } = this.props;
     const { editMode } = this.state;
 
@@ -77,7 +80,7 @@ class BoardsEditable extends React.Component<Props, State> {
                   <Separator />
 
                   <a
-                    onClick={() => null}
+                    onClick={() => handleDelete(id)}
                     data-confirm="Are you sure?"
                   >
                     Delete

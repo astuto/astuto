@@ -7,6 +7,7 @@ import IBoard from "../interfaces/IBoard";
 import { State } from "../reducers/rootReducer";
 import { submitBoard } from "../actions/Board/submitBoard";
 import HttpStatus from "../constants/http_status";
+import { deleteBoard } from "../actions/Board/deleteBoard";
 
 const mapStateToProps = (state: State) => ({
   boards: state.boards,
@@ -37,6 +38,10 @@ const mapDispatchToProps = (dispatch: any) => ({
     destinationIndex: number,
     authenticityToken: string) {
       dispatch(updateBoardOrder(id, boards, sourceIndex, destinationIndex, authenticityToken));
+  },
+
+  deleteBoard(id: number, authenticityToken: string) {
+    dispatch(deleteBoard(id, authenticityToken));
   },
 });
 

@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:create, :update_order]
+  before_action :authenticate_admin, only: [:create, :update_order, :destroy]
 
   def index
     boards = Board.order(order: :asc)
@@ -35,6 +35,20 @@ class BoardsController < ApplicationController
     else
       render json: {
         error: I18n.t("errors.board.update_order")
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    board = Board.find(params[:id])
+
+    if board.destroy
+      render json: {
+        id: params[:id]
+      }, status: :accepted
+    else
+      render json: {
+        error: I18n.t('errors.board.destroy', message: board.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
