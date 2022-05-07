@@ -39,7 +39,14 @@
 .boardForm {
   @extend
     .d-flex,
+    .flex-column,
     .m-2;
 
-  column-gap: 16px;
+  row-gap: 16px;
+
+  .boardMandatoryForm {
+    @extend .d-flex;
+
+    column-gap: 16px;
+  }
 }

@@ -89,7 +89,7 @@ class PostStatusForm extends React.Component<Props, State> {
       <div className="postStatusForm">
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Post status name"
           value={name}
           onChange={e => this.onNameChange(e.target.value)}
           className="form-control"

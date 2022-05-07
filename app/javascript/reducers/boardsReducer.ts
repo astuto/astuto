@@ -6,6 +6,11 @@ import {
 } from '../actions/Board/requestBoards';
 
 import {
+  BoardSubmitActionTypes,
+  BOARD_SUBMIT_SUCCESS,
+} from '../actions/Board/submitBoard';
+
+import {
   BoardOrderUpdateActionTypes,
   BOARD_ORDER_UPDATE_START,
   BOARD_ORDER_UPDATE_FAILURE,
@@ -29,6 +34,7 @@ const boardsReducer = (
   state = initialState,
   action:
     BoardsRequestActionTypes |
+    BoardSubmitActionTypes |
     BoardOrderUpdateActionTypes
 ) => {
   switch (action.type) {
@@ -55,6 +61,12 @@ const boardsReducer = (
         ...state,
         areLoading: false,
         error: action.error,
+      };
+
+    case BOARD_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        items: [...state.items, action.board],
       };
 
     case BOARD_ORDER_UPDATE_START:

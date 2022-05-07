@@ -1,12 +1,24 @@
 class BoardsController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:update_order]
+  before_action :authenticate_admin, only: [:create, :update_order]
 
   def index
     boards = Board.order(order: :asc)
 
     render json: boards
+  end
+
+  def create
+    board = Board.new(board_params)
+
+    if board.save
+      render json: board, status: :created
+    else
+      render json: {
+        error: I18n.t('errors.board.create', message: board.errors.full_messages)
+      }, status: :unprocessable_entity
+    end
   end
 
   def update_order
@@ -30,4 +42,11 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
   end
+
+  private
+    def board_params
+      params
+        .require(:board)
+        .permit(:name, :description)
+    end
 end

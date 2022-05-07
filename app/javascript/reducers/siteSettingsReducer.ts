@@ -6,6 +6,20 @@ import {
 } from '../actions/Board/requestBoards';
 
 import {
+  BoardSubmitActionTypes,
+  BOARD_SUBMIT_START,
+  BOARD_SUBMIT_SUCCESS,
+  BOARD_SUBMIT_FAILURE,
+} from '../actions/Board/submitBoard';
+
+import {
+  BoardOrderUpdateActionTypes,
+  BOARD_ORDER_UPDATE_START,
+  BOARD_ORDER_UPDATE_SUCCESS,
+  BOARD_ORDER_UPDATE_FAILURE,
+} from '../actions/Board/updateBoardOrder';
+
+import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
   POSTSTATUS_ORDER_UPDATE_SUCCESS,
@@ -50,6 +64,8 @@ const siteSettingsReducer = (
   state = initialState,
   action:
     BoardsRequestActionTypes |
+    BoardSubmitActionTypes |
+    BoardOrderUpdateActionTypes |
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
@@ -59,6 +75,12 @@ const siteSettingsReducer = (
     case BOARDS_REQUEST_START:
     case BOARDS_REQUEST_SUCCESS:
     case BOARDS_REQUEST_FAILURE:
+    case BOARD_SUBMIT_START:
+    case BOARD_SUBMIT_SUCCESS:
+    case BOARD_SUBMIT_FAILURE:
+    case BOARD_ORDER_UPDATE_START:
+    case BOARD_ORDER_UPDATE_SUCCESS:
+    case BOARD_ORDER_UPDATE_FAILURE:
       return {
         ...state,
         boards: siteSettingsBoardsReducer(state.boards, action),

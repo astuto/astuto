@@ -3,6 +3,7 @@ import * as React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import BoardEditable from './BoardEditable';
+import BoardForm from './BoardForm';
 import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
 import Spinner from '../../shared/Spinner';
 import { BoardsState } from '../../../reducers/boardsReducer';
@@ -17,6 +18,12 @@ interface Props {
   settingsError: string;
 
   requestBoards(): void;
+  submitBoard(
+    name: string,
+    onSuccess: Function,
+    authenticityToken: string,
+    description?: string,
+  ): void;
   updateBoardOrder(
     id: number,
     boards: Array<IBoard>,
@@ -30,11 +37,16 @@ class BoardsSiteSettingsP extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
   }
 
   componentDidMount() {
     this.props.requestBoards();
+  }
+
+  handleSubmit(name: string, onSuccess: Function, description?: string) {
+    this.props.submitBoard(name, onSuccess, this.props.authenticityToken, description);
   }
 
   handleDragEnd(result) {
@@ -95,7 +107,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
         <div className="content">
           <h2>New</h2>
 
-          { /* qui ci va il form */ }
+          <BoardForm mode='create' handleSubmit={this.handleSubmit} />
         </div>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || boards.areLoading} error={settingsError} />

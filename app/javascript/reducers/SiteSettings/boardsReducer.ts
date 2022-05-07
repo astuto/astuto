@@ -6,6 +6,13 @@ import {
 } from '../../actions/Board/requestBoards';
 
 import {
+  BoardSubmitActionTypes,
+  BOARD_SUBMIT_START,
+  BOARD_SUBMIT_SUCCESS,
+  BOARD_SUBMIT_FAILURE,
+} from '../../actions/Board/submitBoard';
+
+import {
   BoardOrderUpdateActionTypes,
   BOARD_ORDER_UPDATE_START,
   BOARD_ORDER_UPDATE_SUCCESS,
@@ -26,10 +33,12 @@ const siteSettingsBoardsReducer = (
   state = initialState,
   action:
     BoardsRequestActionTypes | 
+    BoardSubmitActionTypes |
     BoardOrderUpdateActionTypes
 ): SiteSettingsBoardsState => {
   switch (action.type) {
     case BOARDS_REQUEST_START:
+    case BOARD_SUBMIT_START:
     case BOARD_ORDER_UPDATE_START:
       return {
         ...state,
@@ -37,6 +46,7 @@ const siteSettingsBoardsReducer = (
       };
 
     case BOARDS_REQUEST_SUCCESS:
+    case BOARD_SUBMIT_SUCCESS:
     case BOARD_ORDER_UPDATE_SUCCESS:
       return {
         ...state,
@@ -45,6 +55,7 @@ const siteSettingsBoardsReducer = (
       };
 
     case BOARDS_REQUEST_FAILURE:
+    case BOARD_SUBMIT_FAILURE:
     case BOARD_ORDER_UPDATE_FAILURE:
       return {
         ...state,

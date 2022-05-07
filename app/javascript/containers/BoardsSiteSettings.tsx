@@ -5,6 +5,8 @@ import { requestBoards } from "../actions/Board/requestBoards";
 import { updateBoardOrder } from "../actions/Board/updateBoardOrder";
 import IBoard from "../interfaces/IBoard";
 import { State } from "../reducers/rootReducer";
+import { submitBoard } from "../actions/Board/submitBoard";
+import HttpStatus from "../constants/http_status";
 
 const mapStateToProps = (state: State) => ({
   boards: state.boards,
@@ -15,6 +17,17 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   requestBoards() {
     dispatch(requestBoards());
+  },
+
+  submitBoard(
+    name: string,
+    onSuccess: Function,
+    authenticityToken: string,
+    description?: string,
+  ) {
+    dispatch(submitBoard(name, description, authenticityToken)).then(res => {
+      if (res && res.status === HttpStatus.Created) onSuccess();
+    });
   },
 
   updateBoardOrder(
