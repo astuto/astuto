@@ -92,7 +92,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
               <DragDropContext onDragEnd={this.handleDragEnd}>
               <Droppable droppableId="postStatuses">
                 {provided => (
-                    <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusList">
+                    <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusesList">
                       {postStatuses.items.map((postStatus, i) => (
                         <PostStatusEditable
                           id={postStatus.id}

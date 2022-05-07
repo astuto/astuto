@@ -25,7 +25,7 @@ interface PostStatusesRequestFailureAction {
 export type PostStatusesRequestActionTypes =
   PostStatusesRequestStartAction |
   PostStatusesRequestSuccessAction |
-  PostStatusesRequestFailureAction
+  PostStatusesRequestFailureAction;
 
 
 const postStatusesRequestStart = (): PostStatusesRequestActionTypes => ({
