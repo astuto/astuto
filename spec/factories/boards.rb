@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :board do
     sequence(:name) { |n| "Board#{n}" }
     description { 'My fantastic board' }
-    order { 1 }
+    sequence(:order) { |n| n }
   end
 end

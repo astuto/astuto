@@ -30,12 +30,12 @@ RSpec.describe Board, type: :model do
     expect(empty_description_board).to be_valid
   end
 
-  it 'automatically sets order to last order if not specified' do
-    order = 10
-    board1 = FactoryBot.create(:board, order: order)
+  it 'is Orderable' do
+    board1 = FactoryBot.create(:board)
     board2 = Board.new
+
+    board1_order = board1.order
     
-    expect(board1.order).to eq(order)
-    expect(board2.order).to eq(order + 1)
+    expect(board2.order).to eq(board1_order + 1)
   end
 end

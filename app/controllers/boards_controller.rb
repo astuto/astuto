@@ -1,8 +1,30 @@
 class BoardsController < ApplicationController
+  include ApplicationHelper
+  
+  before_action :authenticate_admin, only: [:update_order]
+
   def index
     boards = Board.order(order: :asc)
 
     render json: boards
+  end
+
+  def update_order
+    workflow_output = ReorderWorkflow.new(
+      entity_classname: Board,
+      column_name: 'order',
+      entity_id: params[:board][:id],
+      src_index: params[:board][:src_index],
+      dst_index: params[:board][:dst_index]
+    ).run
+
+    if workflow_output
+      render json: workflow_output
+    else
+      render json: {
+        error: I18n.t("errors.board.update_order")
+      }, status: :unprocessable_entity
+    end
   end
   
   def show

@@ -7,18 +7,30 @@ import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
 import Spinner from '../../shared/Spinner';
 import { BoardsState } from '../../../reducers/boardsReducer';
 import { CenteredMutedText } from '../../shared/CustomTexts';
+import IBoard from '../../../interfaces/IBoard';
 
 interface Props {
   authenticityToken: string;
 
   boards: BoardsState;
+  settingsAreUpdating: boolean;
+  settingsError: string;
 
   requestBoards(): void;
+  updateBoardOrder(
+    id: number,
+    boards: Array<IBoard>,
+    sourceIndex: number,
+    destinationIndex: number,
+    authenticityToken: string,
+  ): void;
 }
 
 class BoardsSiteSettingsP extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
+
+    this.handleDragEnd = this.handleDragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -26,21 +38,24 @@ class BoardsSiteSettingsP extends React.Component<Props> {
   }
 
   handleDragEnd(result) {
-    // if (result.destination == null || result.source.index === result.destination.index)
-    //   return;
+    if (result.destination == null || result.source.index === result.destination.index)
+      return;
     
-    // this.props.updatePostStatusOrder(
-    //   parseInt(result.draggableId),
-    //   this.props.postStatuses.items,
-    //   result.source.index,
-    //   result.destination.index,
-    //   this.props.authenticityToken,
-    // );
-    return;
+    this.props.updateBoardOrder(
+      parseInt(result.draggableId),
+      this.props.boards.items,
+      result.source.index,
+      result.destination.index,
+      this.props.authenticityToken,
+    );
   }
 
   render() {
-    const { boards } = this.props;
+    const {
+      boards,
+      settingsAreUpdating,
+      settingsError,
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -59,6 +74,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
                           name={board.name}
                           description={board.description}
                           index={i}
+                          settingsAreUpdating={settingsAreUpdating}
 
                           key={board.id}
                         />
@@ -82,7 +98,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
           { /* qui ci va il form */ }
         </div>
 
-        <SiteSettingsInfoBox areUpdating={boards.areLoading} error={null} />
+        <SiteSettingsInfoBox areUpdating={settingsAreUpdating || boards.areLoading} error={settingsError} />
       </React.Fragment>
     );
   }

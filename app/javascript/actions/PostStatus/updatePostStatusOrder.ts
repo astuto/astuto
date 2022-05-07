@@ -3,6 +3,7 @@ import { ThunkAction } from "redux-thunk";
 import HttpStatus from "../../constants/http_status";
 
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import createNewOrdering from "../../helpers/createNewOrdering";
 import IPostStatus from "../../interfaces/IPostStatus";
 import { State } from "../../reducers/rootReducer";
 
@@ -54,7 +55,7 @@ export const updatePostStatusOrder = (
 
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
-  let newOrder = createNewOrder(postStatuses, sourceIndex, destinationIndex);
+  let newOrder = createNewOrdering(postStatuses, sourceIndex, destinationIndex);
 
   dispatch(postStatusOrderUpdateStart(newOrder));
 
@@ -82,15 +83,3 @@ export const updatePostStatusOrder = (
   }
 };
 
-function createNewOrder(
-  oldOrder: Array<IPostStatus>,
-  sourceIndex: number,
-  destinationIndex: number
-) {
-  let newOrder = JSON.parse(JSON.stringify(oldOrder));
-
-  const [reorderedItem] = newOrder.splice(sourceIndex, 1);
-  newOrder.splice(destinationIndex, 0, reorderedItem);
-
-  return newOrder;
-}

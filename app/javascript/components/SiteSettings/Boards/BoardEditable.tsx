@@ -12,6 +12,7 @@ interface Props {
   name: string;
   description?: string;
   index: number;
+  settingsAreUpdating: boolean;
 }
 
 interface State {
@@ -49,14 +50,15 @@ class BoardsEditable extends React.Component<Props, State> {
       name,
       description,
       index,
+      settingsAreUpdating,
     } = this.props;
-    const {editMode} = this.state;
+    const { editMode } = this.state;
 
     return (
-      <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={true}>
+      <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={settingsAreUpdating}>
         {provided => (
           <li className="boardEditable" ref={provided.innerRef} {...provided.draggableProps}>
-            <DragZone dndProvided={provided} isDragDisabled={true} />
+            <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
 
             { editMode === false ?
               <React.Fragment>

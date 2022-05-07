@@ -5,6 +5,12 @@ import {
   BOARDS_REQUEST_FAILURE,
 } from '../actions/Board/requestBoards';
 
+import {
+  BoardOrderUpdateActionTypes,
+  BOARD_ORDER_UPDATE_START,
+  BOARD_ORDER_UPDATE_FAILURE,
+} from '../actions/Board/updateBoardOrder';
+
 import IBoard from "../interfaces/IBoard";
 
 export interface BoardsState {
@@ -21,7 +27,9 @@ const initialState: BoardsState = {
 
 const boardsReducer = (
   state = initialState,
-  action: BoardsRequestActionTypes,
+  action:
+    BoardsRequestActionTypes |
+    BoardOrderUpdateActionTypes
 ) => {
   switch (action.type) {
     case BOARDS_REQUEST_START:
@@ -47,6 +55,18 @@ const boardsReducer = (
         ...state,
         areLoading: false,
         error: action.error,
+      };
+
+    case BOARD_ORDER_UPDATE_START:
+      return {
+        ...state,
+        items: action.newOrder,
+      };
+
+    case BOARD_ORDER_UPDATE_FAILURE:
+      return {
+        ...state,
+        items: action.oldOrder,
       };
 
     default:

@@ -6,7 +6,10 @@ RSpec.describe 'boards routing', :aggregate_failures, type: :routing do
       controller: 'boards', action: 'show', id: '1'
     )
 
-    expect(get: '/boards').not_to be_routable
+    expect(get: '/boards').to route_to(
+      controller: 'boards', action: 'index'
+    )
+    
     expect(get: '/boards/new').not_to route_to(
       controller: 'boards', action: 'new'
     )
