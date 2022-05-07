@@ -6,6 +6,7 @@ import { DescriptionText } from '../../shared/CustomTexts';
 import DragZone from '../../shared/DragZone';
 import PostBoardLabel from '../../shared/PostBoardLabel';
 import Separator from '../../shared/Separator';
+import BoardForm from './BoardForm';
 
 interface Props {
   id: number;
@@ -14,6 +15,12 @@ interface Props {
   index: number;
   settingsAreUpdating: boolean;
 
+  handleUpdate(
+    id: number,
+    description: string,
+    name: string,
+    onSuccess: Function,
+  ): void;
   handleDelete(id: number): void;
 }
 
@@ -37,13 +44,13 @@ class BoardsEditable extends React.Component<Props, State> {
     this.setState({editMode: !this.state.editMode});
   }
 
-  handleUpdate(id: number, name: string, description?: string) {
-    // this.props.handleUpdate(
-    //   id,
-    //   name,
-    //   color,
-    //   () => this.setState({editMode: false}),
-    // );
+  handleUpdate(id: number, name: string, description: string) {
+    this.props.handleUpdate(
+      id,
+      name,
+      description,
+      () => this.setState({editMode: false}),
+    );
   }
 
   render() {
@@ -88,7 +95,21 @@ class BoardsEditable extends React.Component<Props, State> {
                 </div>
               </React.Fragment>
             :
-              null
+              <React.Fragment>
+                <BoardForm
+                  mode='update'
+                  id={id}
+                  name={name}
+                  description={description}
+                  handleUpdate={this.handleUpdate}
+                />
+
+                <a
+                  className="boardFormCancelButton"
+                  onClick={this.toggleEditMode}>
+                  Cancel
+                </a>
+              </React.Fragment>
             }
           </li>
         )}

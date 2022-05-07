@@ -11,15 +11,20 @@ import {
 } from '../actions/Board/submitBoard';
 
 import {
-  BoardDeleteActionTypes,
-  BOARD_DELETE_SUCCESS,
-} from '../actions/Board/deleteBoard';
+  BoardUpdateActionTypes,
+  BOARD_UPDATE_SUCCESS
+} from '../actions/Board/updateBoard';
 
 import {
   BoardOrderUpdateActionTypes,
   BOARD_ORDER_UPDATE_START,
   BOARD_ORDER_UPDATE_FAILURE,
 } from '../actions/Board/updateBoardOrder';
+
+import {
+  BoardDeleteActionTypes,
+  BOARD_DELETE_SUCCESS,
+} from '../actions/Board/deleteBoard';
 
 import IBoard from "../interfaces/IBoard";
 
@@ -40,6 +45,7 @@ const boardsReducer = (
   action:
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
+    BoardUpdateActionTypes |
     BoardOrderUpdateActionTypes |
     BoardDeleteActionTypes
 ) => {
@@ -73,6 +79,15 @@ const boardsReducer = (
       return {
         ...state,
         items: [...state.items, action.board],
+      };
+
+    case BOARD_UPDATE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(board => {
+          if (board.id !== action.board.id) return board;
+          return {...board, name: action.board.name, description: action.board.description};
+        }),
       };
 
     case BOARD_ORDER_UPDATE_START:

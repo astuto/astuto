@@ -20,9 +20,16 @@ interface Props {
   requestBoards(): void;
   submitBoard(
     name: string,
+    description: string,
     onSuccess: Function,
     authenticityToken: string,
-    description?: string,
+  ): void;
+  updateBoard(
+    id: number,
+    name: string,
+    description: string,
+    onSuccess: Function,
+    authenticityToken: string,
   ): void;
   updateBoardOrder(
     id: number,
@@ -39,6 +46,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -47,8 +55,12 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     this.props.requestBoards();
   }
 
-  handleSubmit(name: string, onSuccess: Function, description?: string) {
-    this.props.submitBoard(name, onSuccess, this.props.authenticityToken, description);
+  handleSubmit(name: string, description: string, onSuccess: Function) {
+    this.props.submitBoard(name, description, onSuccess, this.props.authenticityToken);
+  }
+
+  handleUpdate(id: number, name: string, description: string, onSuccess: Function) {
+    this.props.updateBoard(id, name, description, onSuccess, this.props.authenticityToken);
   }
 
   handleDragEnd(result) {
@@ -94,6 +106,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
                           index={i}
                           settingsAreUpdating={settingsAreUpdating}
 
+                          handleUpdate={this.handleUpdate}
                           handleDelete={this.handleDelete}
 
                           key={board.id}

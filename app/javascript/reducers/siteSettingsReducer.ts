@@ -20,6 +20,13 @@ import {
 } from '../actions/Board/updateBoardOrder';
 
 import {
+  BoardUpdateActionTypes,
+  BOARD_UPDATE_START,
+  BOARD_UPDATE_SUCCESS,
+  BOARD_UPDATE_FAILURE,
+} from '../actions/Board/updateBoard';
+
+import {
   BoardDeleteActionTypes,
   BOARD_DELETE_START,
   BOARD_DELETE_SUCCESS,
@@ -72,6 +79,7 @@ const siteSettingsReducer = (
   action:
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
+    BoardUpdateActionTypes |
     BoardOrderUpdateActionTypes |
     BoardDeleteActionTypes |
     PostStatusOrderUpdateActionTypes |
@@ -86,6 +94,9 @@ const siteSettingsReducer = (
     case BOARD_SUBMIT_START:
     case BOARD_SUBMIT_SUCCESS:
     case BOARD_SUBMIT_FAILURE:
+    case BOARD_UPDATE_START:
+    case BOARD_UPDATE_SUCCESS:
+    case BOARD_UPDATE_FAILURE:
     case BOARD_ORDER_UPDATE_START:
     case BOARD_ORDER_UPDATE_SUCCESS:
     case BOARD_ORDER_UPDATE_FAILURE:

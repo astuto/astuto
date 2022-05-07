@@ -8,6 +8,7 @@ import { State } from "../reducers/rootReducer";
 import { submitBoard } from "../actions/Board/submitBoard";
 import HttpStatus from "../constants/http_status";
 import { deleteBoard } from "../actions/Board/deleteBoard";
+import { updateBoard } from "../actions/Board/updateBoard";
 
 const mapStateToProps = (state: State) => ({
   boards: state.boards,
@@ -22,12 +23,24 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   submitBoard(
     name: string,
+    description: string,
     onSuccess: Function,
     authenticityToken: string,
-    description?: string,
   ) {
     dispatch(submitBoard(name, description, authenticityToken)).then(res => {
       if (res && res.status === HttpStatus.Created) onSuccess();
+    });
+  },
+
+  updateBoard(
+    id: number,
+    name: string,
+    description: string,
+    onSuccess: Function,
+    authenticityToken: string,
+  ) {
+    dispatch(updateBoard(id, name, description, authenticityToken)).then(res => {
+      if (res && res.status === HttpStatus.OK) onSuccess();
     });
   },
 

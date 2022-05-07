@@ -20,7 +20,9 @@ RSpec.describe 'boards routing', :aggregate_failures, type: :routing do
       controller: 'boards', action: 'create'
     )
 
-    expect(patch: '/boards/1').not_to be_routable
+    expect(patch: '/boards/1').to route_to(
+      controller: 'boards', action: 'update', id: '1'
+    )
 
     expect(delete: '/boards/1').to route_to(
       controller: 'boards', action: 'destroy', id: '1'

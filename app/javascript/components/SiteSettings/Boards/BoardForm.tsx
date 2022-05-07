@@ -11,7 +11,12 @@ interface Props {
 
   handleSubmit?(
     name: string,
+    description: string,
     onSuccess: Function,
+  ): void;
+  handleUpdate?(
+    id: number,
+    name: string,
     description?: string,
   ): void;
 }
@@ -61,11 +66,11 @@ class BoardForm extends React.Component<Props, State> {
     if (this.props.mode === 'create') {
       this.props.handleSubmit(
         this.state.name,
-        () => this.setState({...this.initialState}),
         this.state.description,
+        () => this.setState({...this.initialState}),
       );
     } else {
-      //this.props.handleUpdate(this.props.id, this.state.name, this.state.color);
+      this.props.handleUpdate(this.props.id, this.state.name, this.state.description);
     }
   }
 
