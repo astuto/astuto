@@ -31,11 +31,18 @@ RSpec.describe Board, type: :model do
   end
 
   it 'is Orderable' do
-    board1 = FactoryBot.create(:board)
-    board2 = Board.new
+    # I didn't used FactoryBot because it didn't apply
+    # the custom logic to the 'order' column
 
-    board1_order = board1.order
+    board1 = Board.create(name: 'b1', order: 0)
+    board2 = Board.create(name: 'b2')
+    board3 = Board.new
     
-    expect(board2.order).to eq(board1_order + 1)
+    expect(board2.order).to eq(1)
+    expect(board3.order).to eq(2)
+
+    board1.destroy
+
+    expect(board2.reload.order).to eq(0)
   end
 end

@@ -1,3 +1,13 @@
+# An Orderable model is a model with an 'order' column
+
+# 1) An new Orderable entity gets, by default, an
+# 'order' equal to current maximum order + 1
+# 2) When an Orderable entity gets deleted
+# all other entities are reordered to be consistent
+
+# Note: update is not handled by the Orderable concern,
+# but rather in the entity controller action "update_order"
+
 module Orderable
   extend ActiveSupport::Concern
 
