@@ -66,8 +66,8 @@ class BoardsEditable extends React.Component<Props, State> {
 
     return (
       <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={settingsAreUpdating}>
-        {provided => (
-          <li className="boardEditable" ref={provided.innerRef} {...provided.draggableProps}>
+        {(provided, snapshot) => (
+          <li className={`boardEditable${snapshot.isDragging ? ' dragging' : ''}`} ref={provided.innerRef} {...provided.draggableProps}>
             <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
 
             { editMode === false ?

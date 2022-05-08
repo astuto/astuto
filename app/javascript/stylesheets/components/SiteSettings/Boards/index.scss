@@ -42,11 +42,12 @@
     .flex-column,
     .m-2;
 
-  row-gap: 16px;
+  flex-grow: 1;
+  row-gap: 8px;
 
   .boardMandatoryForm {
     @extend .d-flex;
 
-    column-gap: 16px;
+    column-gap: 8px;
   }
 }

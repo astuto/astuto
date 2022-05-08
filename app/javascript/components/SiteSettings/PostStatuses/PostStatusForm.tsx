@@ -99,7 +99,7 @@ class PostStatusForm extends React.Component<Props, State> {
           type="color"
           value={color}
           onChange={e => this.onColorChange(e.target.value)}
-          className="form-control"
+          className="form-control postStatusColorInput"
         />
 
         <Button
