@@ -3,6 +3,7 @@ import { ThunkAction } from "redux-thunk";
 import HttpStatus from "../../constants/http_status";
 
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import createNewOrdering from "../../helpers/createNewOrdering";
 import IPostStatus from "../../interfaces/IPostStatus";
 import { State } from "../../reducers/rootReducer";
 
@@ -21,6 +22,7 @@ export const POSTSTATUS_ORDER_UPDATE_FAILURE = 'POSTSTATUS_ORDER_UPDATE_FAILURE'
 interface PostStatusOrderUpdateFailureAction {
   type: typeof POSTSTATUS_ORDER_UPDATE_FAILURE;
   error: string;
+  oldOrder: Array<IPostStatus>;
 }
 
 export type PostStatusOrderUpdateActionTypes =
@@ -40,10 +42,12 @@ const postStatusOrderUpdateSuccess = (): PostStatusOrderUpdateSuccessAction => (
 });
 
 const postStatusOrderUpdateFailure = (
-  error: string
+  error: string,
+  oldOrder: Array<IPostStatus>
 ): PostStatusOrderUpdateFailureAction => ({
   type: POSTSTATUS_ORDER_UPDATE_FAILURE,
   error,
+  oldOrder,
 });
 
 export const updatePostStatusOrder = (
@@ -54,7 +58,8 @@ export const updatePostStatusOrder = (
 
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
-  let newOrder = createNewOrder(postStatuses, sourceIndex, destinationIndex);
+  const oldOrder = postStatuses;
+  let newOrder = createNewOrdering(postStatuses, sourceIndex, destinationIndex);
 
   dispatch(postStatusOrderUpdateStart(newOrder));
 
@@ -75,22 +80,10 @@ export const updatePostStatusOrder = (
     if (res.status === HttpStatus.OK) {
       dispatch(postStatusOrderUpdateSuccess());
     } else {
-      dispatch(postStatusOrderUpdateFailure(json.error));
+      dispatch(postStatusOrderUpdateFailure(json.error, oldOrder));
     }
   } catch (e) {
-    dispatch(postStatusOrderUpdateFailure(e));
+    dispatch(postStatusOrderUpdateFailure(e, oldOrder));
   }
 };
 
-function createNewOrder(
-  oldOrder: Array<IPostStatus>,
-  sourceIndex: number,
-  destinationIndex: number
-) {
-  let newOrder = JSON.parse(JSON.stringify(oldOrder));
-
-  const [reorderedItem] = newOrder.splice(sourceIndex, 1);
-  newOrder.splice(destinationIndex, 0, reorderedItem);
-
-  return newOrder;
-}

@@ -1,0 +1,53 @@
+.boardsList {
+  @extend
+    .p-0,
+    .m-0;
+ 
+  list-style: none;
+  
+  .boardEditable {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .p-3;
+
+    column-gap: 32px;
+
+    a {
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    .boardInfo {
+      @extend
+        .d-flex,
+        .flex-column;
+        
+      row-gap: 8px;
+
+      .boardName { @extend .align-self-center; }
+      .boardDescription { @extend .text-center; }
+    }
+
+    .boardEditableActions, .boardFormCancelButton {
+      @extend .align-self-center;
+    }
+  }
+}
+
+.boardForm {
+  @extend
+    .d-flex,
+    .flex-column,
+    .m-2;
+
+  flex-grow: 1;
+  row-gap: 8px;
+
+  .boardMandatoryForm {
+    @extend .d-flex;
+
+    column-gap: 8px;
+  }
+}

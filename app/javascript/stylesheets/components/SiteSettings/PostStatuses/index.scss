@@ -1,4 +1,4 @@
-.postStatusList {
+.postStatusesList {
   @extend
     .p-0,
     .m-0;
@@ -28,5 +28,9 @@
     .d-flex,
     .m-2;
 
-  column-gap: 16px;
+  column-gap: 8px;
+
+  .postStatusColorInput {
+    flex: 0 1 100px;
+  }
 }

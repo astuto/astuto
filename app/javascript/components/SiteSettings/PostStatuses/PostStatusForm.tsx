@@ -89,7 +89,7 @@ class PostStatusForm extends React.Component<Props, State> {
       <div className="postStatusForm">
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Post status name"
           value={name}
           onChange={e => this.onNameChange(e.target.value)}
           className="form-control"
@@ -99,7 +99,7 @@ class PostStatusForm extends React.Component<Props, State> {
           type="color"
           value={color}
           onChange={e => this.onColorChange(e.target.value)}
-          className="form-control"
+          className="form-control postStatusColorInput"
         />
 
         <Button

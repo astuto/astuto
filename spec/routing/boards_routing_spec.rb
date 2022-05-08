@@ -6,13 +6,26 @@ RSpec.describe 'boards routing', :aggregate_failures, type: :routing do
       controller: 'boards', action: 'show', id: '1'
     )
 
-    expect(get: '/boards').not_to be_routable
+    expect(get: '/boards').to route_to(
+      controller: 'boards', action: 'index'
+    )
+    
     expect(get: '/boards/new').not_to route_to(
       controller: 'boards', action: 'new'
     )
+
     expect(get: '/boards/1/edit').not_to be_routable
-    expect(post: '/boards').not_to be_routable
-    expect(patch: '/boards/1').not_to be_routable
-    expect(delete: '/boards/1').not_to be_routable
+
+    expect(post: '/boards').to route_to(
+      controller: 'boards', action: 'create'
+    )
+
+    expect(patch: '/boards/1').to route_to(
+      controller: 'boards', action: 'update', id: '1'
+    )
+
+    expect(delete: '/boards/1').to route_to(
+      controller: 'boards', action: 'destroy', id: '1'
+    )
   end
 end

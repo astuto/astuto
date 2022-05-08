@@ -30,12 +30,19 @@ RSpec.describe Board, type: :model do
     expect(empty_description_board).to be_valid
   end
 
-  it 'automatically sets order to last order if not specified' do
-    order = 10
-    board1 = FactoryBot.create(:board, order: order)
-    board2 = Board.new
+  it 'is Orderable' do
+    # I didn't used FactoryBot because it didn't apply
+    # the custom logic to the 'order' column
+
+    board1 = Board.create(name: 'b1', order: 0)
+    board2 = Board.create(name: 'b2')
+    board3 = Board.new
     
-    expect(board1.order).to eq(order)
-    expect(board2.order).to eq(order + 1)
+    expect(board2.order).to eq(1)
+    expect(board3.order).to eq(2)
+
+    board1.destroy
+
+    expect(board2.reload.order).to eq(0)
   end
 end

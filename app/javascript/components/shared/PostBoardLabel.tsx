@@ -1,8 +1,10 @@
 import * as React from 'react';
 
-import IBoard from '../../interfaces/IBoard';
+interface Props {
+  name: string;
+}
 
-const PostBoardLabel = ({ name }: IBoard) => (
+const PostBoardLabel = ({ name }: Props) => (
   <span className="badge badgeLight">{name?.toUpperCase()}</span>
 );
 

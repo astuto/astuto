@@ -8,6 +8,7 @@ import {
 import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
+  POSTSTATUS_ORDER_UPDATE_FAILURE,
 } from '../actions/PostStatus/updatePostStatusOrder';
 
 import {
@@ -98,6 +99,12 @@ const postStatusesReducer = (
       return {
         ...state,
         items: action.newOrder,
+      };
+
+    case POSTSTATUS_ORDER_UPDATE_FAILURE:
+      return {
+        ...state,
+        items: action.oldOrder,
       };
 
     default:

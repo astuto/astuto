@@ -62,18 +62,19 @@ RSpec.describe PostStatus, type: :model do
     expect(roadmap.second).to eq(post_status2)
   end
 
-  it 'automatically sets a random color if not specified' do
-    post_status1 = PostStatus.new
+  it 'is Orderable' do
+    # I didn't used FactoryBot because it didn't apply
+    # the custom logic to the 'order' column
 
-    expect(post_status1.color).to match(/\A#(?:[0-9a-fA-F]{3}){1,2}\z/)
-  end
-
-  it 'automatically sets order to last order if not specified' do
-    order = 10
-    post_status1 = FactoryBot.create(:post_status, order: order)
-    post_status2 = PostStatus.new
+    post_status1 = PostStatus.create(name: 'ps1', color: '#000000', order: 0)
+    post_status2 = PostStatus.create(name: 'ps2', color: '#000000')
+    post_status3 = PostStatus.new
     
-    expect(post_status1.order).to eq(order)
-    expect(post_status2.order).to eq(order + 1)
+    expect(post_status2.order).to eq(1)
+    expect(post_status3.order).to eq(2)
+
+    post_status1.destroy
+
+    expect(post_status2.reload.order).to eq(0)
   end
 end

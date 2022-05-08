@@ -6,6 +6,9 @@ class SiteSettingsController < ApplicationController
   def general
   end
 
+  def boards
+  end
+
   def post_statuses
   end
 end

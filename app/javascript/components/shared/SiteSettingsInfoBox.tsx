@@ -14,7 +14,7 @@ const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
       <Spinner />
     :
       error ?
-        <span className="error">An error occurred: {error}</span>
+        <span className="error">An error occurred: {JSON.stringify(error)}</span>
       :
         <span>Everything up to date</span>
   }
