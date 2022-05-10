@@ -5,4 +5,4 @@ set -e
 
 echo "Starting Astuto..."
 
-docker-compose up "$@"
+docker compose up "$@"
