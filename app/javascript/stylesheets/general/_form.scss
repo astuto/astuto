@@ -40,22 +40,3 @@
   @extend
     .custom-control-input;
 }
-
-@media (prefers-color-scheme: dark) {
-  .deviseLinks {
-    a { color: white; }
-  }
-
-  .form-control, .form-control:focus {
-    color: white;
-    background-color: $astuto-grey;
-  }
-
-  .form-control {
-    border-color: grey;
-  }
-
-  .form-control:focus {
-    border-color: white;
-  }
-}

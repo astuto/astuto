@@ -154,7 +154,7 @@ class NewPost extends React.Component<Props, State> {
               { showForm ? 'Cancel' : 'Submit feedback' }
             </Button>
           :
-            <a href="/users/sign_in" className="btn">
+            <a href="/users/sign_in" className="btn btn-dark">
               Log in / Sign up
             </a>
         }

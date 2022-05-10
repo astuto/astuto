@@ -35,23 +35,3 @@
   background-color: #343a40;
   border-color: #343a40;
 }
-
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background-color: #242424;
-  }
-
-  .container, h2 {
-    color: white;
-  }
-
-  .loginInfo {
-    color: white;
-  }
-
-  .btn {
-    color: #212529;
-    background-color: #f8f9fa;
-    border-color: #f8f9fa;
-  }
-}
