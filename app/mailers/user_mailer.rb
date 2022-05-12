@@ -1,6 +1,4 @@
 class UserMailer < ApplicationMailer
-  default from: "notifications@example.com"
-
   def notify_post_owner(comment:)
     @comment = comment
     @user = comment.post.user

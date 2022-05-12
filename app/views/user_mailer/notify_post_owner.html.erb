@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
   </head>
   <body>
     <h1>Hello, <%= @user.full_name %></h1>
     <p>
-      There is a new comment by <%= @comment.user.full_name %> on your post <b><%= @comment.post.title %></b>
+      There is a new comment by <b><%= @comment.user.full_name %></b> on your post <b><%= @comment.post.title %></b>:
     </p>
-    <p> To see this comment, <%= link_to "Click here", post_url(@comment.post) %> </p>
-    <p>Have a great day!</p>
+    <p>
+      <i><%= @comment.body %></i>
+    </p>
+    <p>
+      <%= link_to "Click here", post_url(@comment.post) %> to have your say!
+    </p>
+    <p>
+      Have a great day!
+    </p>
   </body>
   <footer>
-    Annoyed ? You can <%= link_to("turn off notifications here", edit_user_registration_url) %>
+    Annoyed? You can <%= link_to("turn off notifications here", edit_user_registration_url) %>.
   </footer>
 </html>

@@ -68,7 +68,7 @@ class CommentsController < ApplicationController
   end
 
   def send_notifications(comment)
-    if comment.post.user.notifications_enabled?
+    if comment.post.user.notifications_enabled? and comment.parent_id == nil
       UserMailer.notify_post_owner(comment: comment).deliver_later
     end
   end
