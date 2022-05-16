@@ -6,7 +6,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - dbdata:/var/lib/postgresql/data
   web:
     build:
       context: .
@@ -27,3 +27,6 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    
+volumes:
+  dbdata:
