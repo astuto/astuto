@@ -52,6 +52,9 @@ import {
   TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
 } from '../actions/Comment/updateComment';
 
+import { FollowActionTypes, FOLLOW_SUBMIT_SUCCESS } from '../actions/Follow/submitFollow';
+import { FollowRequestActionTypes, FOLLOW_REQUEST_SUCCESS } from '../actions/Follow/requestFollow';
+
 import postReducer from './postReducer';
 import likesReducer from './likesReducer';
 import commentsReducer from './commentsReducer';
@@ -66,6 +69,7 @@ interface CurrentPostState {
   isLoading: boolean;
   error: string;
   likes: LikesState;
+  followed: boolean;
   comments: CommentsState;
 }
 
@@ -74,6 +78,7 @@ const initialState: CurrentPostState = {
   isLoading: false,
   error: '',
   likes: likesReducer(undefined, {} as LikesRequestActionTypes),
+  followed: false,
   comments: commentsReducer(undefined, {} as CommentsRequestActionTypes),
 };
 
@@ -88,7 +93,9 @@ const currentPostReducer = (
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes |
-    ToggleIsUpdateSuccessAction
+    ToggleIsUpdateSuccessAction |
+    FollowActionTypes |
+    FollowRequestActionTypes
 ): CurrentPostState => {
   switch (action.type) {
     case POST_REQUEST_START:
@@ -140,6 +147,18 @@ const currentPostReducer = (
       return {
         ...state,
         comments: commentsReducer(state.comments, action),
+      };
+
+    case FOLLOW_REQUEST_SUCCESS:
+      return {
+        ...state,
+        followed: action.follow.user_id ? true : false,
+      };
+      
+    case FOLLOW_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        followed: action.isFollow,
       };
 
     default:

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts, only: [:index, :create, :show, :update] do
+    resource :follows, only: [:create, :destroy]
+    resources :follows, only: [:index]
     resource :likes, only: [:create, :destroy]
     resources :likes, only: [:index]
     resources :comments, only: [:index, :create, :update]

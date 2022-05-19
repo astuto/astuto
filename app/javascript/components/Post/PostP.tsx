@@ -17,11 +17,13 @@ import friendlyDate from '../../helpers/friendlyDate';
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import PostUpdateList from './PostUpdateList';
+import ActionBox from './ActionBox';
 
 interface Props {
   postId: number;
   post: IPost;
   likes: LikesState;
+  followed: boolean;
   comments: CommentsState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
@@ -32,6 +34,7 @@ interface Props {
 
   requestPost(postId: number): void;
   requestLikes(postId: number): void;
+  requestFollow(postId: number): void;
   changePostBoard(
     postId: number,
     newBoardId: number,
@@ -42,18 +45,25 @@ interface Props {
     newPostStatusId: number,
     authenticityToken: string,
   ): void;
+  submitFollow(
+    postId: number,
+    isFollow: boolean,
+    authenticityToken: string,
+  ): void;
 }
 
 class PostP extends React.Component<Props> {
   componentDidMount() {
     this.props.requestPost(this.props.postId);
     this.props.requestLikes(this.props.postId);
+    this.props.requestFollow(this.props.postId);
   }
 
   render() {
     const {
       post,
       likes,
+      followed,
       comments,
       boards,
       postStatuses,
@@ -65,6 +75,7 @@ class PostP extends React.Component<Props> {
 
       changePostBoard,
       changePostStatus,
+      submitFollow,
     } = this.props;
 
     return (
@@ -80,6 +91,13 @@ class PostP extends React.Component<Props> {
             likes={likes.items}
             areLoading={likes.areLoading}
             error={likes.error}
+          />
+
+          <ActionBox
+            followed={followed}
+            submitFollow={() => submitFollow(post.id, !followed, authenticityToken)}
+
+            isLoggedIn={isLoggedIn}
           />
         </div>
 

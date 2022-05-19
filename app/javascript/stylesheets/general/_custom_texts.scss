@@ -27,6 +27,15 @@
   color: $muted-text-color;
 }
 
+.smallMutedText {
+  @extend
+    .mutedText,
+    .m-0;
+  
+  font-size: smaller;
+  line-height: 95%;
+}
+
 .uppercaseText {
   @extend
     .text-secondary,

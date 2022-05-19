@@ -69,7 +69,19 @@
           }
         }
       }
-    } 
+    }
+
+    .actionBoxContainer {
+      @extend
+        .sidebarCard,
+        .text-center;
+
+      .btn {
+        @extend
+          .mt-3,
+          .mb-1;
+      }
+    }
   }
 
   .postAndCommentsContainer {
