@@ -28,6 +28,8 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     if post.save
+      Follow.create(post_id: post.id, user_id: current_user.id)
+      
       render json: post, status: :created
     else
       render json: {

@@ -5,4 +5,11 @@ class UserMailer < ApplicationMailer
 
     mail(to: @user.email, subject: "[#{ENV.fetch('APP_NAME')}] - New comment on #{comment.post.title}")
   end
+
+  def notify_comment_owner(comment:)
+    @comment = comment
+    @user = comment.parent.user
+
+    mail(to: @user.email, subject: "[#{ENV.fetch('APP_NAME')}] - New reply on your comment from #{comment.post.title}")
+  end
 end
