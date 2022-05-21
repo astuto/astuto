@@ -21,7 +21,7 @@ interface Props {
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: React.FormEvent): void;
   handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
-  handleSubmitComment(body: string, parentId: number): void;
+  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
@@ -89,12 +89,15 @@ const Comment = ({
         <NewComment
           body={replyForm.body}
           parentId={id}
+          postUpdateFlagValue={replyForm.isPostUpdate}
           isSubmitting={replyForm.isSubmitting}
           error={replyForm.error}
           handleChange={handleCommentReplyBodyChange}
+          handlePostUpdateFlag={() => null}
           handleSubmit={handleSubmitComment}
 
           isLoggedIn={isLoggedIn}
+          isPowerUser={isPowerUser}
           userEmail={currentUserEmail}
         />
         :

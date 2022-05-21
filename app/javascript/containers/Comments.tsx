@@ -4,6 +4,7 @@ import { requestComments } from '../actions/Comment/requestComments';
 import {
   toggleCommentReply,
   setCommentReplyBody,
+  toggleCommentIsPostUpdateFlag,
 } from '../actions/Comment/handleCommentReplies';
 import { toggleCommentIsUpdate } from '../actions/Comment/updateComment';
 import { submitComment } from '../actions/Comment/submitComment';
@@ -32,6 +33,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setCommentReplyBody(commentId, body));
   },
 
+  toggleCommentIsPostUpdateFlag() {
+    dispatch(toggleCommentIsPostUpdateFlag(null));
+  },
+
   toggleCommentIsPostUpdate(
     postId: number,
     commentId: number,
@@ -45,9 +50,10 @@ const mapDispatchToProps = (dispatch) => ({
     postId: number,
     body: string,
     parentId: number,
+    isPostUpdate: boolean,
     authenticityToken: string,
   ) {
-    dispatch(submitComment(postId, body, parentId, authenticityToken));
+    dispatch(submitComment(postId, body, parentId, isPostUpdate, authenticityToken));
   },
 });
 

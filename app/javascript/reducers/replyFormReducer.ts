@@ -7,6 +7,7 @@ import {
   HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
+  TOGGLE_COMMENT_IS_POST_UPDATE_FLAG,
 } from '../actions/Comment/handleCommentReplies';
 
 import {
@@ -20,6 +21,7 @@ export interface ReplyFormState {
   commentId: number;
   isOpen: boolean;
   body: string;
+  isPostUpdate: boolean;
   isSubmitting: boolean;
   error: string;
 }
@@ -28,6 +30,7 @@ const initialState: ReplyFormState = {
   commentId: undefined,
   isOpen: false,
   body: '',
+  isPostUpdate: false,
   isSubmitting: false,
   error: '',
 }
@@ -58,6 +61,12 @@ const replyFormReducer = (
         body: action.body,
       };
 
+    case TOGGLE_COMMENT_IS_POST_UPDATE_FLAG:
+      return {
+        ...state,
+        isPostUpdate: !state.isPostUpdate,
+      };
+
     case COMMENT_SUBMIT_START:
       return {
         ...state,
@@ -69,6 +78,7 @@ const replyFormReducer = (
         ...state,
         isOpen: false,
         body: '',
+        isPostUpdate: false,
         isSubmitting: false,
         error: '',
       };

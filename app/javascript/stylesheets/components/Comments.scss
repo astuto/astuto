@@ -2,7 +2,21 @@
   .newCommentForm {
     @extend
       .d-flex,
+      .flex-column,
       .my-3;
+
+    .commentBodyForm {
+      @extend .d-flex;
+    }
+
+    .commentIsUpdateForm {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .mt-3;
+
+      margin-left: 48px;
+    }
 
     .currentUserAvatar {
       @extend
