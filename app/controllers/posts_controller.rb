@@ -59,9 +59,25 @@ class PostsController < ApplicationController
     end
 
     post.board_id = params[:post][:board_id] if params[:post].has_key?(:board_id)
-    post.post_status_id = params[:post][:post_status_id] if params[:post].has_key?(:post_status_id)
+    
+    post_status_changed = false
+    
+    if params[:post].has_key?(:post_status_id) and
+       params[:post][:post_status_id] != post.post_status_id
+      
+      post_status_changed = true
+      post.post_status_id = params[:post][:post_status_id]
+    end
 
     if post.save
+      if post_status_changed
+        PostStatusChange.create(
+          user_id: current_user.id,
+          post_id: post.id,
+          post_status_id: post.post_status_id
+        )
+      end
+
       render json: post, status: :no_content
     else
       render json: {

@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :post_status_changes, dependent: :destroy
 
   validates :title, presence: true, length: { in: 4..64 }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_12_184400) do
+ActiveRecord::Schema.define(version: 2022_05_21_161950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2022_05_12_184400) do
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "post_status_changes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "post_status_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_status_changes_on_post_id"
+    t.index ["post_status_id"], name: "index_post_status_changes_on_post_status_id"
+    t.index ["user_id"], name: "index_post_status_changes_on_user_id"
   end
 
   create_table "post_statuses", force: :cascade do |t|
@@ -107,6 +118,9 @@ ActiveRecord::Schema.define(version: 2022_05_12_184400) do
   add_foreign_key "follows", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "post_status_changes", "post_statuses"
+  add_foreign_key "post_status_changes", "posts"
+  add_foreign_key "post_status_changes", "users"
   add_foreign_key "posts", "boards"
   add_foreign_key "posts", "post_statuses"
   add_foreign_key "posts", "users"
