@@ -106,7 +106,7 @@ class CommentsP extends React.Component<Props> {
         { error ? <DangerText>{error}</DangerText> : null }
 
         <div className="commentsTitle">
-          activity &bull; {comments.length} comments
+          activity &bull; {comments.length} comment{comments.length === 1 ? '' : 's'}
         </div>
 
         <CommentList
