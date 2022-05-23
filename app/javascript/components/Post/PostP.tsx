@@ -18,6 +18,7 @@ import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import PostUpdateList from './PostUpdateList';
 import ActionBox from './ActionBox';
+import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
 
 interface Props {
   postId: number;
@@ -25,16 +26,19 @@ interface Props {
   likes: LikesState;
   followed: boolean;
   comments: CommentsState;
+  postStatusChanges: PostStatusChangesState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  userFullName: string;
   userEmail: string;
   authenticityToken: string;
 
   requestPost(postId: number): void;
   requestLikes(postId: number): void;
   requestFollow(postId: number): void;
+  requestPostStatusChanges(postId: number): void;
   changePostBoard(
     postId: number,
     newBoardId: number,
@@ -54,9 +58,12 @@ interface Props {
 
 class PostP extends React.Component<Props> {
   componentDidMount() {
-    this.props.requestPost(this.props.postId);
-    this.props.requestLikes(this.props.postId);
-    this.props.requestFollow(this.props.postId);
+    const {postId} = this.props;
+
+    this.props.requestPost(postId);
+    this.props.requestLikes(postId);
+    this.props.requestFollow(postId);
+    this.props.requestPostStatusChanges(postId);
   }
 
   render() {
@@ -65,6 +72,7 @@ class PostP extends React.Component<Props> {
       likes,
       followed,
       comments,
+      postStatusChanges,
       boards,
       postStatuses,
 
@@ -77,6 +85,8 @@ class PostP extends React.Component<Props> {
       changePostStatus,
       submitFollow,
     } = this.props;
+
+    console.log(postStatusChanges);
 
     return (
       <div className="pageContainer">

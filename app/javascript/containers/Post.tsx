@@ -6,6 +6,7 @@ import { changePostBoard } from '../actions/Post/changePostBoard';
 import { changePostStatus } from '../actions/Post/changePostStatus';
 import { submitFollow } from '../actions/Follow/submitFollow';
 import { requestFollow } from '../actions/Follow/requestFollow';
+import { requestPostStatusChanges } from '../actions/PostStatusChange/requestPostStatusChanges';
 
 import { State } from '../reducers/rootReducer';
 
@@ -16,6 +17,7 @@ const mapStateToProps = (state: State) => ({
   likes: state.currentPost.likes,
   followed: state.currentPost.followed,
   comments: state.currentPost.comments,
+  postStatusChanges: state.currentPost.postStatusChanges,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,6 +31,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   requestFollow(postId: number) {
     dispatch(requestFollow(postId));
+  },
+
+  requestPostStatusChanges(postId: number) {
+    dispatch(requestPostStatusChanges(postId));
   },
 
   changePostBoard(postId: number, newBoardId: number, authenticityToken: string) {

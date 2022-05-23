@@ -27,7 +27,6 @@ export type FollowRequestActionTypes =
   FollowRequestSuccessAction |
   FollowRequestFailureAction;
 
-
 const followRequestStart = (): FollowRequestActionTypes => ({
   type: FOLLOW_REQUEST_START,
 });
@@ -56,4 +55,4 @@ export const requestFollow = (
   } catch (e) {
     dispatch(followRequestFailure(e));
   }
-}
+};

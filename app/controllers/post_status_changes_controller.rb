@@ -1,6 +1,6 @@
 class PostStatusChangesController < ApplicationController
   def index
-    post_status_changes = PostStatusChanges
+    post_status_changes = PostStatusChange
       .select(
         :post_status_id,
         :updated_at,
