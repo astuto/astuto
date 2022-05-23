@@ -5,17 +5,22 @@ import { BoxTitleText, DangerText, CenteredMutedText, MutedText } from '../share
 import Spinner from '../shared/Spinner';
 
 import IComment from '../../interfaces/IComment';
+import IPostStatusChange from '../../interfaces/IPostStatusChange';
+import IPostStatus from '../../interfaces/IPostStatus';
 
 import friendlyDate from '../../helpers/friendlyDate';
+import PostStatusLabel from '../shared/PostStatusLabel';
 
 interface Props {
-  postUpdates: Array<IComment>;
+  postUpdates: Array<IComment | IPostStatusChange>;
+  postStatuses: Array<IPostStatus>
   areLoading: boolean;
   error: string;
 }
 
 const PostUpdateList = ({
   postUpdates,
+  postStatuses,
   areLoading,
   error,
 }: Props) => (
@@ -33,7 +38,18 @@ const PostUpdateList = ({
               <span>{postUpdate.userFullName}</span>
             </div>
 
-            <p className="postUpdateListItemBody">{postUpdate.body}</p>
+            <p className="postUpdateListItemBody">
+              { 'body' in postUpdate ?
+                  postUpdate.body
+                :
+                  <React.Fragment>
+                    <i>changed status to</i>&nbsp;
+                    <PostStatusLabel
+                      {...postStatuses.find(postStatus => postStatus.id === postUpdate.postStatusId)}
+                    />
+                  </React.Fragment>  
+              }
+            </p>
 
             <MutedText>{friendlyDate(postUpdate.updatedAt)}</MutedText>
           </div>

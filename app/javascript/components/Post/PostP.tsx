@@ -4,7 +4,9 @@ import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 
+import PostUpdateList from './PostUpdateList';
 import LikeList from './LikeList';
+import ActionBox from './ActionBox';
 import LikeButton from '../../containers/LikeButton';
 import PostBoardSelect from './PostBoardSelect';
 import PostStatusSelect from './PostStatusSelect';
@@ -13,12 +15,11 @@ import PostStatusLabel from '../shared/PostStatusLabel';
 import Comments from '../../containers/Comments';
 import { MutedText } from '../shared/CustomTexts';
 
-import friendlyDate from '../../helpers/friendlyDate';
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
-import PostUpdateList from './PostUpdateList';
-import ActionBox from './ActionBox';
 import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
+
+import friendlyDate, { fromRailsStringToJavascriptDate } from '../../helpers/friendlyDate';
 
 interface Props {
   postId: number;
@@ -86,13 +87,20 @@ class PostP extends React.Component<Props> {
       submitFollow,
     } = this.props;
 
-    console.log(postStatusChanges);
+    const postUpdates = [
+      ...comments.items.filter(comment => comment.isPostUpdate === true),
+      ...postStatusChanges.items,
+    ].sort(
+      (a, b) =>
+      fromRailsStringToJavascriptDate(a.updatedAt) < fromRailsStringToJavascriptDate(b.updatedAt) ? 1 : -1
+    );
 
     return (
       <div className="pageContainer">
         <div className="sidebar">
           <PostUpdateList
-            postUpdates={comments.items.filter(comment => comment.isPostUpdate === true)}
+            postUpdates={postUpdates}
+            postStatuses={postStatuses}
             areLoading={comments.areLoading}
             error={comments.error}
           />

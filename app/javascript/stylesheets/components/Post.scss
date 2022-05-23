@@ -27,7 +27,7 @@
             .d-flex,
             .flex-column,
             .p-2,
-            .my-1;
+            .my-2;
 
           .postUpdateListItemHeader {
             @extend .d-flex;
@@ -42,7 +42,7 @@
           }
 
           .postUpdateListItemBody {
-            @extend .m-0;
+            @extend .my-1;
 
             font-size: 15px;
           }
