@@ -7,10 +7,13 @@ import { changePostStatus } from '../actions/Post/changePostStatus';
 import { submitFollow } from '../actions/Follow/submitFollow';
 import { requestFollow } from '../actions/Follow/requestFollow';
 import { requestPostStatusChanges } from '../actions/PostStatusChange/requestPostStatusChanges';
+import { postStatusChangeSubmitted } from '../actions/PostStatusChange/submittedPostStatusChange';
 
 import { State } from '../reducers/rootReducer';
 
 import PostP from '../components/Post/PostP';
+
+import { fromJavascriptDateToRailsString } from '../helpers/datetime';
 
 const mapStateToProps = (state: State) => ({
   post: state.currentPost.item,
@@ -41,10 +44,25 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changePostBoard(postId, newBoardId, authenticityToken));
   },
 
-  changePostStatus(postId: number, newPostStatusId: number, authenticityToken: string) {
+  changePostStatus(
+    postId: number,
+    newPostStatusId: number,
+    userFullName: string,
+    userEmail: string,
+    authenticityToken: string
+  ) {
     if (isNaN(newPostStatusId)) newPostStatusId = null;
 
-    dispatch(changePostStatus(postId, newPostStatusId, authenticityToken));
+    dispatch(changePostStatus(postId, newPostStatusId, authenticityToken)).then(res => {
+      if (res && res.status !== 204) return;
+
+      dispatch(postStatusChangeSubmitted({
+        postStatusId: newPostStatusId,
+        userFullName,
+        userEmail,
+        updatedAt: fromJavascriptDateToRailsString(new Date()),
+      }));
+    });
   },
 
   submitFollow(postId: number, isFollow: boolean, authenticityToken: string) {

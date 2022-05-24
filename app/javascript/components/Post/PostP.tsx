@@ -48,6 +48,8 @@ interface Props {
   changePostStatus(
     postId: number,
     newPostStatusId: number,
+    userFullName: string,
+    userEmail: string,
     authenticityToken: string,
   ): void;
   submitFollow(
@@ -79,6 +81,7 @@ class PostP extends React.Component<Props> {
 
       isLoggedIn,
       isPowerUser,
+      userFullName,
       userEmail,
       authenticityToken,
 
@@ -149,7 +152,8 @@ class PostP extends React.Component<Props> {
                     postStatuses={postStatuses}
                     selectedPostStatusId={post.postStatusId}
                     handleChange={
-                      newPostStatusId => changePostStatus(post.id, newPostStatusId, authenticityToken)
+                      newPostStatusId =>
+                        changePostStatus(post.id, newPostStatusId, userFullName, userEmail, authenticityToken)
                     }
                   />
                 </div>

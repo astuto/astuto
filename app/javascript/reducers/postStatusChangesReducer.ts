@@ -5,6 +5,11 @@ import {
   POST_STATUS_CHANGES_REQUEST_FAILURE,
 } from "../actions/PostStatusChange/requestPostStatusChanges";
 
+import {
+  PostStatusChangeSubmitted,
+  POST_STATUS_CHANGE_SUBMITTED
+} from '../actions/PostStatusChange/submittedPostStatusChange';
+
 import IPostStatusChange from "../interfaces/IPostStatusChange";
 
 export interface PostStatusChangesState {
@@ -21,7 +26,9 @@ const initialState: PostStatusChangesState = {
 
 const postStatusChangesReducer = (
   state = initialState,
-  action: PostStatusChangesRequestActionTypes,
+  action:
+    PostStatusChangesRequestActionTypes |
+    PostStatusChangeSubmitted
 ) => {
   switch (action.type) {
     case POST_STATUS_CHANGES_REQUEST_START:
@@ -48,6 +55,12 @@ const postStatusChangesReducer = (
         ...state,
         areLoading: false,
         error: action.error,
+      };
+
+    case POST_STATUS_CHANGE_SUBMITTED:
+      return {
+        ...state,
+        items: [action.postStatusChange, ...state.items],
       };
 
     default:

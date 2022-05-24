@@ -30,3 +30,7 @@ export const fromRailsStringToJavascriptDate = date => {
   
   return new Date(`${dateOnly}T${timeOnly}Z`);
 }
+
+export const fromJavascriptDateToRailsString = (date: Date) => {
+  return date.toJSON();
+}

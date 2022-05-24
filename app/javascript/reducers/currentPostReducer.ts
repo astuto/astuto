@@ -63,6 +63,10 @@ import {
   POST_STATUS_CHANGES_REQUEST_FAILURE,
 } from '../actions/PostStatusChange/requestPostStatusChanges';
 
+import {
+  PostStatusChangeSubmitted,
+  POST_STATUS_CHANGE_SUBMITTED
+} from '../actions/PostStatusChange/submittedPostStatusChange';
 
 import postReducer from './postReducer';
 import likesReducer from './likesReducer';
@@ -73,6 +77,7 @@ import { CommentsState } from './commentsReducer';
 import postStatusChangesReducer, { PostStatusChangesState } from './postStatusChangesReducer';
 
 import IPost from '../interfaces/IPost';
+
 
 interface CurrentPostState {
   item: IPost;
@@ -108,7 +113,8 @@ const currentPostReducer = (
     ToggleIsUpdateSuccessAction |
     FollowActionTypes |
     FollowRequestActionTypes |
-    PostStatusChangesRequestActionTypes
+    PostStatusChangesRequestActionTypes |
+    PostStatusChangeSubmitted
 ): CurrentPostState => {
   switch (action.type) {
     case POST_REQUEST_START:
@@ -178,6 +184,7 @@ const currentPostReducer = (
     case POST_STATUS_CHANGES_REQUEST_START:
     case POST_STATUS_CHANGES_REQUEST_SUCCESS:
     case POST_STATUS_CHANGES_REQUEST_FAILURE:
+    case POST_STATUS_CHANGE_SUBMITTED:
       return {
         ...state,
         postStatusChanges: postStatusChangesReducer(state.postStatusChanges, action),
