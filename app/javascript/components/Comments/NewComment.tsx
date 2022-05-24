@@ -46,7 +46,7 @@ const NewComment = ({
         isLoggedIn ?
           <React.Fragment>
             <div className="commentBodyForm">
-              <Gravatar email={userEmail} size={36} className="currentUserAvatar" />
+              <Gravatar email={userEmail} size={48} className="currentUserAvatar" />
               <textarea
                 value={body}
                 onChange={handleChange}

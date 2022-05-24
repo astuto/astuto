@@ -23,7 +23,7 @@ const NewCommentUpdateSection = ({
     </div>
     {
       postUpdateFlagValue ?
-        <MutedText>Users that follow this post will be notified.</MutedText>
+        <MutedText>Users that follow this post will be notified</MutedText>
       :
         null
     }

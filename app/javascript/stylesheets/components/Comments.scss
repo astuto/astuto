@@ -1,4 +1,6 @@
 .commentsContainer {
+  @extend .my-3;
+
   .newCommentForm {
     @extend
       .d-flex,

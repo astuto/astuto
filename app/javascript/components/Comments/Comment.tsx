@@ -48,7 +48,7 @@ const Comment = ({
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
-      <Gravatar email={userEmail} size={24} className="gravatar" />
+      <Gravatar email={userEmail} size={28} className="gravatar" />
       <span className="commentAuthor">{userFullName}</span>
       { isPostUpdate ? <span className="postUpdateBadge">Post update</span> : null }
     </div>
