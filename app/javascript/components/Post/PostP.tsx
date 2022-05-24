@@ -19,7 +19,7 @@ import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
 
-import friendlyDate, { fromRailsStringToJavascriptDate } from '../../helpers/friendlyDate';
+import friendlyDate, { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
 
 interface Props {
   postId: number;

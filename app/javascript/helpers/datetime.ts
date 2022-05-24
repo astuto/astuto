@@ -1,4 +1,4 @@
-const friendlyDate = date => {
+export const friendlyDate = date => {
   var now = new Date();
   var timeStamp = fromRailsStringToJavascriptDate(date);
 

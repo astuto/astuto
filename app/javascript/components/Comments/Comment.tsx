@@ -7,7 +7,7 @@ import { MutedText } from '../shared/CustomTexts';
 
 import { ReplyFormState } from '../../reducers/replyFormReducer';
 
-import friendlyDate from '../../helpers/friendlyDate';
+import friendlyDate from '../../helpers/datetime';
 
 interface Props {
   id: number;

@@ -8,7 +8,7 @@ import IComment from '../../interfaces/IComment';
 import IPostStatusChange from '../../interfaces/IPostStatusChange';
 import IPostStatus from '../../interfaces/IPostStatus';
 
-import friendlyDate from '../../helpers/friendlyDate';
+import friendlyDate from '../../helpers/datetime';
 import PostStatusLabel from '../shared/PostStatusLabel';
 
 interface Props {
