@@ -17,7 +17,9 @@
       @extend .sidebarCard;
 
       .postUpdateList {
-        @extend .w-100;
+        @extend
+          .scroll-shadows,
+          .w-100;
 
         max-height: 250px;
         overflow-y: scroll;
@@ -26,8 +28,16 @@
           @extend
             .d-flex,
             .flex-column,
-            .p-2,
-            .my-2;
+            .p-2;
+
+          &:after { // displays the little centered border under each post update
+            content: "";
+            display: block;
+            margin: 0 auto;
+            width: 25%;
+            padding-top: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          }
 
           .postUpdateListItemHeader {
             @extend .d-flex;
@@ -54,7 +64,9 @@
       @extend .sidebarCard;
 
       .likeList {
-        @extend .w-100;
+        @extend
+          .scroll-shadows,
+          .w-100;
 
         max-height: 170px;
         overflow-y: scroll;
