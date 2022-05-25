@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <p>
+      There is a new update on the post you're following <b><%= @comment.post.title %></b>:
+    </p>
+    <p>
+      <i><%= @comment.body %></i>
+    </p>
+    <p>
+      <%= link_to "Click here", post_url(@comment.post) %> to have your say!
+    </p>
+    <p>
+      Have a great day!
+    </p>
+  </body>
+  <footer>
+    Annoyed? You can <%= link_to("turn off notifications here", edit_user_registration_url) %>.
+  </footer>
+</html>

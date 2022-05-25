@@ -68,6 +68,11 @@ class CommentsController < ApplicationController
   end
 
   def send_notifications(comment)
+    if comment.is_post_update # Post update
+      UserMailer.notify_followers(comment: comment).deliver_later
+      return
+    end
+    
     if comment.parent_id == nil # Reply to a post
       user = comment.post.user
       
