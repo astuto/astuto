@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[[#{app_name}] - New comment on #{comment.post.title}"
+      subject: "[#{app_name}] New comment on #{comment.post.title}"
     )
   end
 
@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[[#{app_name}] - New reply on your comment from #{comment.post.title}"
+      subject: "[#{app_name}] New reply on your comment from #{comment.post.title}"
     )
   end
 
@@ -24,7 +24,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: comment.post.followers.pluck(:email),
-      subject: "[#{app_name}] - New update on #{comment.post.title}"
+      subject: "[#{app_name}] New update on #{comment.post.title}"
     )
   end
 
@@ -33,7 +33,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: post.followers.pluck(:email),
-      subject: "[#{app_name}] - Status change on post #{post.title}"
+      subject: "[#{app_name}] Status change on post #{post.title}"
     )
   end
 
