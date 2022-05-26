@@ -69,7 +69,7 @@ class CommentsController < ApplicationController
 
   def send_notifications(comment)
     if comment.is_post_update # Post update
-      UserMailer.notify_followers(comment: comment).deliver_later
+      UserMailer.notify_followers_of_post_update(comment: comment).deliver_later
       return
     end
     

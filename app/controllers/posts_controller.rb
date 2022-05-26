@@ -76,6 +76,8 @@ class PostsController < ApplicationController
           post_id: post.id,
           post_status_id: post.post_status_id
         )
+
+        send_notifications(post)
       end
 
       render json: post, status: :no_content
@@ -102,5 +104,9 @@ class PostsController < ApplicationController
         .require(:post)
         .permit(:title, :description, :board_id)
         .merge(user_id: current_user.id)
+    end
+
+    def send_notifications(post)
+      UserMailer.notify_followers_of_post_status_change(post: post).deliver_later
     end
 end
