@@ -8,15 +8,16 @@ RSpec.describe UserMailer, type: :mailer do
     let(:mail) { UserMailer.notify_post_owner(comment: comment) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("[#{ENV.fetch('APP_NAME')}] - New comment on #{post.title}")
+      expect(mail.subject).to eq("[#{ENV.fetch('APP_NAME')}] New comment on #{post.title}")
       expect(mail.to).to eq(["notified@example.com"])
       expect(mail.from).to eq(["notifications@example.com"])
     end
 
-    it "renders the body" do
-      expect(mail.body.encoded).to include("Hello, #{user.full_name}")
-      expect(mail.body.encoded).to include("There is a new comment by")
-      expect(mail.body.encoded).to include('Annoyed ? You can <a href="http://localhost:3000/users/edit">turn off notifications here</a>')
+    it "renders the user name, post title, replier name and comment body" do
+      expect(mail.body.encoded).to include(user.full_name)
+      expect(mail.body.encoded).to include(post.title)
+      expect(mail.body.encoded).to include(comment.user.full_name)
+      expect(mail.body.encoded).to include(comment.body)
     end
   end
 end

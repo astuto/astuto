@@ -11,6 +11,12 @@ interface SetCommentReplyBodyAction {
   body: string;
 }
 
+export const TOGGLE_COMMENT_IS_POST_UPDATE_FLAG = 'TOGGLE_COMMENT_IS_POST_UPDATE_FLAG';
+interface ToggleCommentIsPostUpdateFlag {
+  type: typeof TOGGLE_COMMENT_IS_POST_UPDATE_FLAG;
+  commentId: number;
+}
+
 export const toggleCommentReply = (commentId: number): ToggleCommentReplyAction => ({
   type: TOGGLE_COMMENT_REPLY,
   commentId,
@@ -22,6 +28,12 @@ export const setCommentReplyBody = (commentId: number, body: string): SetComment
   body,
 });
 
+export const toggleCommentIsPostUpdateFlag = (commentId: number): ToggleCommentIsPostUpdateFlag => ({
+  type: TOGGLE_COMMENT_IS_POST_UPDATE_FLAG,
+  commentId,
+});
+
 export type HandleCommentRepliesType =
   ToggleCommentReplyAction |
-  SetCommentReplyBodyAction;
+  SetCommentReplyBodyAction |
+  ToggleCommentIsPostUpdateFlag;

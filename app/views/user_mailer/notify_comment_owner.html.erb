@@ -6,7 +6,7 @@
   <body>
     <h1>Hello, <%= @user.full_name %></h1>
     <p>
-      There is a new comment by <b><%= @comment.user.full_name %></b> on your post <b><%= @comment.post.title %></b>:
+      There is a new reply by <b><%= @comment.user.full_name %></b> on your comment from post <b><%= @comment.post.title %></b>:
     </p>
     <p>
       <i><%= @comment.body %></i>

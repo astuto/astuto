@@ -38,6 +38,7 @@ import {
   HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
+  TOGGLE_COMMENT_IS_POST_UPDATE_FLAG,
 } from '../actions/Comment/handleCommentReplies';
 
 import {
@@ -52,21 +53,40 @@ import {
   TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
 } from '../actions/Comment/updateComment';
 
+import { FollowActionTypes, FOLLOW_SUBMIT_SUCCESS } from '../actions/Follow/submitFollow';
+import { FollowRequestActionTypes, FOLLOW_REQUEST_SUCCESS } from '../actions/Follow/requestFollow';
+
+import {
+  PostStatusChangesRequestActionTypes,
+  POST_STATUS_CHANGES_REQUEST_START,
+  POST_STATUS_CHANGES_REQUEST_SUCCESS,
+  POST_STATUS_CHANGES_REQUEST_FAILURE,
+} from '../actions/PostStatusChange/requestPostStatusChanges';
+
+import {
+  PostStatusChangeSubmitted,
+  POST_STATUS_CHANGE_SUBMITTED
+} from '../actions/PostStatusChange/submittedPostStatusChange';
+
 import postReducer from './postReducer';
 import likesReducer from './likesReducer';
 import commentsReducer from './commentsReducer';
 
 import { LikesState } from './likesReducer';
 import { CommentsState } from './commentsReducer';
+import postStatusChangesReducer, { PostStatusChangesState } from './postStatusChangesReducer';
 
 import IPost from '../interfaces/IPost';
+
 
 interface CurrentPostState {
   item: IPost;
   isLoading: boolean;
   error: string;
   likes: LikesState;
+  followed: boolean;
   comments: CommentsState;
+  postStatusChanges: PostStatusChangesState,
 }
 
 const initialState: CurrentPostState = {
@@ -74,7 +94,9 @@ const initialState: CurrentPostState = {
   isLoading: false,
   error: '',
   likes: likesReducer(undefined, {} as LikesRequestActionTypes),
+  followed: false,
   comments: commentsReducer(undefined, {} as CommentsRequestActionTypes),
+  postStatusChanges: postStatusChangesReducer(undefined, {} as PostStatusChangesRequestActionTypes),
 };
 
 const currentPostReducer = (
@@ -88,7 +110,11 @@ const currentPostReducer = (
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes |
-    ToggleIsUpdateSuccessAction
+    ToggleIsUpdateSuccessAction |
+    FollowActionTypes |
+    FollowRequestActionTypes |
+    PostStatusChangesRequestActionTypes |
+    PostStatusChangeSubmitted
 ): CurrentPostState => {
   switch (action.type) {
     case POST_REQUEST_START:
@@ -137,9 +163,31 @@ const currentPostReducer = (
     case COMMENT_SUBMIT_SUCCESS:
     case COMMENT_SUBMIT_FAILURE:
     case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:
+    case TOGGLE_COMMENT_IS_POST_UPDATE_FLAG:
       return {
         ...state,
         comments: commentsReducer(state.comments, action),
+      };
+
+    case FOLLOW_REQUEST_SUCCESS:
+      return {
+        ...state,
+        followed: action.follow.user_id ? true : false,
+      };
+      
+    case FOLLOW_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        followed: action.isFollow,
+      };
+
+    case POST_STATUS_CHANGES_REQUEST_START:
+    case POST_STATUS_CHANGES_REQUEST_SUCCESS:
+    case POST_STATUS_CHANGES_REQUEST_FAILURE:
+    case POST_STATUS_CHANGE_SUBMITTED:
+      return {
+        ...state,
+        postStatusChanges: postStatusChangesReducer(state.postStatusChanges, action),
       };
 
     default:

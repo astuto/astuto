@@ -14,7 +14,7 @@ interface Props {
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
   handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
-  handleSubmitComment(body: string, parentId: number): void;
+  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
 
   isLoggedIn: boolean;
   isPowerUser: boolean;

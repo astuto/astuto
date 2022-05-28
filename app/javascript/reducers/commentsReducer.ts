@@ -11,6 +11,7 @@ import {
   HandleCommentRepliesType,
   TOGGLE_COMMENT_REPLY,
   SET_COMMENT_REPLY_BODY,
+  TOGGLE_COMMENT_IS_POST_UPDATE_FLAG,
 } from '../actions/Comment/handleCommentReplies';
 
 import {
@@ -82,6 +83,7 @@ const commentsReducer = (
 
     case TOGGLE_COMMENT_REPLY:
     case SET_COMMENT_REPLY_BODY:
+    case TOGGLE_COMMENT_IS_POST_UPDATE_FLAG:
       return {
         ...state,
         replyForms: replyFormsReducer(state.replyForms, action),

@@ -4,15 +4,15 @@
     <meta content='text/html; charset=utf-8' http-equiv='content-type' />
   </head>
   <body>
-    <h1>Hello, <%= @user.full_name %></h1>
+    <h1>Hello!</h1>
     <p>
-      There is a new comment by <b><%= @comment.user.full_name %></b> on your post <b><%= @comment.post.title %></b>:
+      The post you're following <b><%= @post.title %></b> has a new status:
+      <span style='background-color: <%= @post.post_status.color %>; color: white;'%>>
+        <%= @post.post_status.name %>
+      </span>
     </p>
     <p>
-      <i><%= @comment.body %></i>
-    </p>
-    <p>
-      <%= link_to "Click here", post_url(@comment.post) %> to have your say!
+      <%= link_to "Click here", post_url(@post) %> to learn more!
     </p>
     <p>
       Have a great day!

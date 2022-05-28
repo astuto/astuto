@@ -23,6 +23,7 @@ interface Props {
   requestComments(postId: number, page?: number): void;
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
+  toggleCommentIsPostUpdateFlag(): void;
   toggleCommentIsPostUpdate(
     postId: number,
     commentId: number,
@@ -33,6 +34,7 @@ interface Props {
     postId: number,
     body: string,
     parentId: number,
+    isPostUpdate: boolean,
     authenticityToken: string,
   ): void;
 }
@@ -51,11 +53,12 @@ class CommentsP extends React.Component<Props> {
     );
   }
 
-  _handleSubmitComment = (body: string, parentId: number) => {
+  _handleSubmitComment = (body: string, parentId: number, isPostUpdate: boolean) => {
     this.props.submitComment(
       this.props.postId,
       body,
       parentId,
+      isPostUpdate,
       this.props.authenticityToken,
     );
   }
@@ -73,6 +76,7 @@ class CommentsP extends React.Component<Props> {
 
       toggleCommentReply,
       setCommentReplyBody,
+      toggleCommentIsPostUpdateFlag,
     } = this.props;
 
     const postReply = replyForms.find(replyForm => replyForm.commentId === null);
@@ -82,6 +86,7 @@ class CommentsP extends React.Component<Props> {
         <NewComment
           body={postReply && postReply.body}
           parentId={null}
+          postUpdateFlagValue={postReply && postReply.isPostUpdate}
           isSubmitting={postReply && postReply.isSubmitting}
           error={postReply && postReply.error}
           handleChange={
@@ -89,9 +94,11 @@ class CommentsP extends React.Component<Props> {
               setCommentReplyBody(null, (e.target as HTMLTextAreaElement).value)
             )
           }
+          handlePostUpdateFlag={toggleCommentIsPostUpdateFlag}
           handleSubmit={this._handleSubmitComment}
 
           isLoggedIn={isLoggedIn}
+          isPowerUser={isPowerUser}
           userEmail={userEmail}
         />
 
@@ -99,7 +106,7 @@ class CommentsP extends React.Component<Props> {
         { error ? <DangerText>{error}</DangerText> : null }
 
         <div className="commentsTitle">
-          activity &bull; {comments.length} comments
+          activity &bull; {comments.length} comment{comments.length === 1 ? '' : 's'}
         </div>
 
         <CommentList

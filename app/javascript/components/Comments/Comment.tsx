@@ -7,7 +7,7 @@ import { MutedText } from '../shared/CustomTexts';
 
 import { ReplyFormState } from '../../reducers/replyFormReducer';
 
-import friendlyDate from '../../helpers/friendlyDate';
+import friendlyDate from '../../helpers/datetime';
 
 interface Props {
   id: number;
@@ -21,7 +21,7 @@ interface Props {
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: React.FormEvent): void;
   handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
-  handleSubmitComment(body: string, parentId: number): void;
+  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
@@ -48,7 +48,7 @@ const Comment = ({
 }: Props) => (
   <div className="comment">
     <div className="commentHeader">
-      <Gravatar email={userEmail} size={24} className="gravatar" />
+      <Gravatar email={userEmail} size={28} className="gravatar" />
       <span className="commentAuthor">{userFullName}</span>
       { isPostUpdate ? <span className="postUpdateBadge">Post update</span> : null }
     </div>
@@ -89,12 +89,15 @@ const Comment = ({
         <NewComment
           body={replyForm.body}
           parentId={id}
+          postUpdateFlagValue={replyForm.isPostUpdate}
           isSubmitting={replyForm.isSubmitting}
           error={replyForm.error}
           handleChange={handleCommentReplyBodyChange}
+          handlePostUpdateFlag={() => null}
           handleSubmit={handleSubmitComment}
 
           isLoggedIn={isLoggedIn}
+          isPowerUser={isPowerUser}
           userEmail={currentUserEmail}
         />
         :

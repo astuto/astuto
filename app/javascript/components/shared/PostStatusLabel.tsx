@@ -9,8 +9,8 @@ const PostStatusLabel = ({
   name,
   color,
 }: Props) => (
-  <span className="badge" style={{backgroundColor: color, color: 'white'}}>
-    {name?.toUpperCase()}
+  <span className="badge" style={{backgroundColor: color || 'black', color: 'white'}}>
+    {(name || 'no status').toUpperCase()}
   </span>
 );
 

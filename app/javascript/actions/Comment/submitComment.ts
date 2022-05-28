@@ -52,6 +52,7 @@ export const submitComment = (
   postId: number,
   body: string,
   parentId: number,
+  isPostUpdate: boolean,
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(commentSubmitStart(parentId));
@@ -64,6 +65,7 @@ export const submitComment = (
         comment: {
           body,
           parent_id: parentId,
+          is_post_update: isPostUpdate,
         },
       }),
     });

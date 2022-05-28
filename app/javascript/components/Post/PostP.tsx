@@ -4,7 +4,9 @@ import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 
+import PostUpdateList from './PostUpdateList';
 import LikeList from './LikeList';
+import ActionBox from './ActionBox';
 import LikeButton from '../../containers/LikeButton';
 import PostBoardSelect from './PostBoardSelect';
 import PostStatusSelect from './PostStatusSelect';
@@ -13,25 +15,31 @@ import PostStatusLabel from '../shared/PostStatusLabel';
 import Comments from '../../containers/Comments';
 import { MutedText } from '../shared/CustomTexts';
 
-import friendlyDate from '../../helpers/friendlyDate';
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
-import PostUpdateList from './PostUpdateList';
+import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
+
+import friendlyDate, { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
 
 interface Props {
   postId: number;
   post: IPost;
   likes: LikesState;
+  followed: boolean;
   comments: CommentsState;
+  postStatusChanges: PostStatusChangesState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  userFullName: string;
   userEmail: string;
   authenticityToken: string;
 
   requestPost(postId: number): void;
   requestLikes(postId: number): void;
+  requestFollow(postId: number): void;
+  requestPostStatusChanges(postId: number): void;
   changePostBoard(
     postId: number,
     newBoardId: number,
@@ -40,38 +48,62 @@ interface Props {
   changePostStatus(
     postId: number,
     newPostStatusId: number,
+    userFullName: string,
+    userEmail: string,
+    authenticityToken: string,
+  ): void;
+  submitFollow(
+    postId: number,
+    isFollow: boolean,
     authenticityToken: string,
   ): void;
 }
 
 class PostP extends React.Component<Props> {
   componentDidMount() {
-    this.props.requestPost(this.props.postId);
-    this.props.requestLikes(this.props.postId);
+    const {postId} = this.props;
+
+    this.props.requestPost(postId);
+    this.props.requestLikes(postId);
+    this.props.requestFollow(postId);
+    this.props.requestPostStatusChanges(postId);
   }
 
   render() {
     const {
       post,
       likes,
+      followed,
       comments,
+      postStatusChanges,
       boards,
       postStatuses,
 
       isLoggedIn,
       isPowerUser,
+      userFullName,
       userEmail,
       authenticityToken,
 
       changePostBoard,
       changePostStatus,
+      submitFollow,
     } = this.props;
+
+    const postUpdates = [
+      ...comments.items.filter(comment => comment.isPostUpdate === true),
+      ...postStatusChanges.items,
+    ].sort(
+      (a, b) =>
+      fromRailsStringToJavascriptDate(a.updatedAt) < fromRailsStringToJavascriptDate(b.updatedAt) ? 1 : -1
+    );
 
     return (
       <div className="pageContainer">
         <div className="sidebar">
           <PostUpdateList
-            postUpdates={comments.items.filter(comment => comment.isPostUpdate === true)}
+            postUpdates={postUpdates}
+            postStatuses={postStatuses}
             areLoading={comments.areLoading}
             error={comments.error}
           />
@@ -80,6 +112,13 @@ class PostP extends React.Component<Props> {
             likes={likes.items}
             areLoading={likes.areLoading}
             error={likes.error}
+          />
+
+          <ActionBox
+            followed={followed}
+            submitFollow={() => submitFollow(post.id, !followed, authenticityToken)}
+
+            isLoggedIn={isLoggedIn}
           />
         </div>
 
@@ -113,7 +152,8 @@ class PostP extends React.Component<Props> {
                     postStatuses={postStatuses}
                     selectedPostStatusId={post.postStatusId}
                     handleChange={
-                      newPostStatusId => changePostStatus(post.id, newPostStatusId, authenticityToken)
+                      newPostStatusId =>
+                        changePostStatus(post.id, newPostStatusId, userFullName, userEmail, authenticityToken)
                     }
                   />
                 </div>

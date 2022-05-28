@@ -28,6 +28,8 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     if post.save
+      Follow.create(post_id: post.id, user_id: current_user.id)
+      
       render json: post, status: :created
     else
       render json: {
@@ -57,9 +59,27 @@ class PostsController < ApplicationController
     end
 
     post.board_id = params[:post][:board_id] if params[:post].has_key?(:board_id)
-    post.post_status_id = params[:post][:post_status_id] if params[:post].has_key?(:post_status_id)
+    
+    post_status_changed = false
+    
+    if params[:post].has_key?(:post_status_id) and
+       params[:post][:post_status_id] != post.post_status_id
+      
+      post_status_changed = true
+      post.post_status_id = params[:post][:post_status_id]
+    end
 
     if post.save
+      if post_status_changed
+        PostStatusChange.create(
+          user_id: current_user.id,
+          post_id: post.id,
+          post_status_id: post.post_status_id
+        )
+
+        send_notifications(post)
+      end
+
       render json: post, status: :no_content
     else
       render json: {
@@ -84,5 +104,9 @@ class PostsController < ApplicationController
         .require(:post)
         .permit(:title, :description, :board_id)
         .merge(user_id: current_user.id)
+    end
+
+    def send_notifications(post)
+      UserMailer.notify_followers_of_post_status_change(post: post).deliver_later
     end
 end

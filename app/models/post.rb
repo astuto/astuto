@@ -2,8 +2,12 @@ class Post < ApplicationRecord
   belongs_to :board
   belongs_to :user
   belongs_to :post_status, optional: true
+
   has_many :likes, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followers, through: :follows, source: :user
   has_many :comments, dependent: :destroy
+  has_many :post_status_changes, dependent: :destroy
 
   validates :title, presence: true, length: { in: 4..64 }
 
