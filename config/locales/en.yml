@@ -9,6 +9,32 @@ en:
     comment:
       create: 'Comment create error: %{message}'
       update: 'Comment update error: %{message}'
-  components:
+  roadmap:
+    title: 'Roadmap'
+  post:
+    edit_button: 'Edit'
+    updates_box:
+      title: 'Updates'
+      empty: 'There are no updates yet'
+      status_change: 'changed status to'
+    action_box:
+      title: 'Actions'
+      follow_button: 'Follow'
+      unfollow_button: 'Unfollow'
+      following_description: 'youre receiving notifications about new updates on this post'
+      not_following_description: 'you wont receive notifications about this post'
+    comments:
+      title:
+        one: 'Activity • 1 comment'
+        other: 'Activity • %{count} comments'
+      post_update_badge: 'Update'
+      reply_button: 'Reply'
+      cancel_button: 'Cancel'
+      edit_button: 'Edit'
+      delete_button: 'Delete'
     new_comment:
+      body_placeholder: 'Leave a comment'
+      submit_button: 'Submit'
+      is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
+      not_logged_in: 'You need to log in to post comments'

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
@@ -135,7 +136,11 @@ class PostP extends React.Component<Props> {
               <h2>{post.title}</h2>
               {
                 isPowerUser && post ?
-                  <a href={`/admin/posts/${post.id}`} data-turbolinks="false">Edit</a> : null
+                  <a href={`/admin/posts/${post.id}`} data-turbolinks="false">
+                    {I18n.t('post.edit_button')}
+                  </a>
+                :
+                  null
               }
             </div>
             {

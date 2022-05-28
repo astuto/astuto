@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { MutedText } from '../shared/CustomTexts';
-
 import I18n from 'i18n-js';
+
+import { MutedText } from '../shared/CustomTexts';
 
 interface Props {
   postUpdateFlagValue: boolean;
@@ -21,11 +21,11 @@ const NewCommentUpdateSection = ({
         checked={postUpdateFlagValue || false}
       />
       &nbsp;
-      <label htmlFor="isPostUpdateFlag">Mark as post update</label>
+      <label htmlFor="isPostUpdateFlag">{I18n.t('post.new_comment.is_post_update')}</label>
     </div>
     {
       postUpdateFlagValue ?
-        <MutedText>{I18n.t('components.new_comment.user_notification')}</MutedText>
+        <MutedText>{I18n.t('post.new_comment.user_notification')}</MutedText>
       :
         null
     }

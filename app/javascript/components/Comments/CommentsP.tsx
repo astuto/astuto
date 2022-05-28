@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
 import CommentList from './CommentList';
@@ -106,7 +107,7 @@ class CommentsP extends React.Component<Props> {
         { error ? <DangerText>{error}</DangerText> : null }
 
         <div className="commentsTitle">
-          activity &bull; {comments.length} comment{comments.length === 1 ? '' : 's'}
+          {I18n.t('post.comments.title', { count: comments.length })}
         </div>
 
         <CommentList

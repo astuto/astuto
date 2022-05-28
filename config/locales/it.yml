@@ -9,6 +9,32 @@ it:
     comment:
       create: 'Errore creazione commento: %{message}'
       update: 'Errore aggiornamento commento: %{message}'
-  components:
+  roadmap:
+    title: 'Roadmap'
+  post:
+    edit_button: 'Modifica'
+    updates_box:
+      title: 'Aggiornamenti'
+      empty: 'Non ci sono aggiornamenti'
+      status_change: 'stato cambiato in'
+    action_box:
+      title: 'Azioni'
+      follow_button: 'Segui'
+      unfollow_button: 'Non seguire più'
+      following_description: 'riceverai notifiche sugli aggiornamenti di questo post'
+      not_following_description: 'non riceverai alcuna notifica riguardo questo post'
+    comments:
+      title:
+        one: 'Attività • Un commento'
+        other: 'Attività • %{count} commenti'
+      post_update_badge: 'Aggiornamento'
+      reply_button: 'Rispondi'
+      cancel_button: 'Annulla'
+      edit_button: 'Modifica'
+      delete_button: 'Elimina'
     new_comment:
+      body_placeholder: 'Lascia un commento'
+      submit_button: 'Invia'
+      is_post_update: 'Contrassegna come aggiornamento'
       user_notification: 'Gli utenti che seguono questo post saranno notificati'
+      not_logged_in: 'Devi effettuare il log in per commentare'
