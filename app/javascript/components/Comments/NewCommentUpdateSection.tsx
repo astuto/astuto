@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { MutedText } from '../shared/CustomTexts';
 
+import I18n from 'i18n-js';
+
 interface Props {
   postUpdateFlagValue: boolean;
   handlePostUpdateFlag(): void;
@@ -23,7 +25,7 @@ const NewCommentUpdateSection = ({
     </div>
     {
       postUpdateFlagValue ?
-        <MutedText>Users that follow this post will be notified</MutedText>
+        <MutedText>{I18n.t('components.new_comment.user_notification')}</MutedText>
       :
         null
     }

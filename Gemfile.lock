@@ -112,6 +112,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.9.2)
+      i18n (>= 0.6.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -297,6 +299,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise (= 4.7.3)
   factory_bot_rails (~> 5.0.2)
+  i18n-js
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
   listen (>= 3.0.5, < 3.2)

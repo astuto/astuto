@@ -9,3 +9,6 @@ en:
     comment:
       create: 'Comment create error: %{message}'
       update: 'Comment update error: %{message}'
+  components:
+    new_comment:
+      user_notification: 'Users that follow this post will be notified'
