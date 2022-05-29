@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import I18n from 'i18n-js';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import PostListItem from './PostListItem';
@@ -64,7 +64,7 @@ const PostList = ({
             />
           ))
         :
-          areLoading ? <p></p> : <CenteredMutedText>There are no posts.</CenteredMutedText>
+          areLoading ? <p></p> : <CenteredMutedText>{I18n.t('board.posts_list.empty')}</CenteredMutedText>
       }
     </InfiniteScroll>
   </div>

@@ -9,14 +9,47 @@ en:
     comment:
       create: 'Comment create error: %{message}'
       update: 'Comment update error: %{message}'
+  common:
+    comments_number:
+      one: '1 comment'
+      other: '%{count} comments'
+    no_status: 'No status'
+    loading: 'Loading...'
+    buttons:
+      edit: 'Edit'
+      delete: 'Delete'
+      cancel: 'Cancel'
+      create: 'Create'
+      update: 'Save'
   roadmap:
     title: 'Roadmap'
+  board:
+    new_post:
+      submit_button: 'Submit feedback'
+      cancel_button: 'Cancel'
+      login_button: 'Log in / Sign up'
+      title: 'Title'
+      description: 'Description (optional)'
+      no_title: 'Title field is mandatory'
+      submit_success: 'Feedback published! You will be redirected soon...'
+      submit_error: 'An unknown error occurred, try again'
+    search_box:
+      title: 'Search'
+    filter_box:
+      title: 'Filter by status'
+    posts_list:
+      empty: 'There are no posts'
   post:
     edit_button: 'Edit'
+    post_status_select:
+      no_post_status: 'None'
     updates_box:
       title: 'Updates'
       empty: 'There are no updates yet'
       status_change: 'changed status to'
+    likes_box:
+      title: 'Likes'
+      empty: 'There are no likes yet'
     action_box:
       title: 'Actions'
       follow_button: 'Follow'
@@ -24,17 +57,29 @@ en:
       following_description: 'youre receiving notifications about new updates on this post'
       not_following_description: 'you wont receive notifications about this post'
     comments:
-      title:
-        one: 'Activity • 1 comment'
-        other: 'Activity • %{count} comments'
+      title: 'Activity'
       post_update_badge: 'Update'
       reply_button: 'Reply'
-      cancel_button: 'Cancel'
-      edit_button: 'Edit'
-      delete_button: 'Delete'
     new_comment:
       body_placeholder: 'Leave a comment'
       submit_button: 'Submit'
       is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
       not_logged_in: 'You need to log in to post comments'
+  site_settings:
+    info_box:
+      up_to_date: 'All changes saved'
+      error: 'An error occurred: %{message}'
+    boards:
+      title: 'Boards'
+      empty: 'There are no boards. Create one below!'
+      new: 'New'
+      form:
+        name: 'Board name'
+        description: 'Board description (optional)'
+    post_statuses:
+      title: 'Statuses'
+      empty: 'There are no statuses. Create one below!'
+      new: 'New'
+      form:
+        name: 'Status name'

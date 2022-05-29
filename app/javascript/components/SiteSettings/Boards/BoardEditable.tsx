@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import { Draggable } from 'react-beautiful-dnd';
 import { DescriptionText } from '../../shared/CustomTexts';
@@ -82,7 +83,7 @@ class BoardsEditable extends React.Component<Props, State> {
                 </div>
 
                 <div className="boardEditableActions">
-                  <a onClick={this.toggleEditMode}>Edit</a>
+                  <a onClick={this.toggleEditMode}>{I18n.t('common.buttons.edit')}</a>
 
                   <Separator />
 
@@ -90,7 +91,7 @@ class BoardsEditable extends React.Component<Props, State> {
                     onClick={() => handleDelete(id)}
                     data-confirm="Are you sure?"
                   >
-                    Delete
+                    {I18n.t('common.buttons.delete')}
                   </a>
                 </div>
               </React.Fragment>
@@ -107,7 +108,7 @@ class BoardsEditable extends React.Component<Props, State> {
                 <a
                   className="boardFormCancelButton"
                   onClick={this.toggleEditMode}>
-                  Cancel
+                  {I18n.t('common.buttons.cancel')}
                 </a>
               </React.Fragment>
             }

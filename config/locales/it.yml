@@ -9,14 +9,47 @@ it:
     comment:
       create: 'Errore creazione commento: %{message}'
       update: 'Errore aggiornamento commento: %{message}'
+  common:
+    comments_number:
+      one: '1 commento'
+      other: '%{count} commenti'
+    no_status: 'Nessuno stato'
+    loading: 'Caricamento...'
+    buttons:
+      edit: 'Modifica'
+      delete: 'Elimina'
+      cancel: 'Annulla'
+      create: 'Crea'
+      update: 'Salva'
   roadmap:
     title: 'Roadmap'
+  board:
+    new_post:
+      submit_button: 'Invia feedback'
+      cancel_button: 'Annulla'
+      login_button: 'Accedi / Registrati'
+      title: 'Titolo'
+      description: 'Descrizione (opzionale)'
+      no_title: 'Il campo titolo è obbligatorio'
+      submit_success: 'Feedback pubblicato! Sarai reindirizzato a breve...'
+      submit_error: 'Si è verificato un errore sconosciuto, riprova'
+    search_box:
+      title: 'Cerca'
+    filter_box:
+      title: 'Filtra per stato'
+    posts_list:
+      empty: 'Non ci sono post'
   post:
     edit_button: 'Modifica'
+    post_status_select:
+      no_post_status: 'Nessuno'
     updates_box:
       title: 'Aggiornamenti'
-      empty: 'Non ci sono aggiornamenti'
+      empty: 'Non ci sono aggiornamenti per ora'
       status_change: 'stato cambiato in'
+    likes_box:
+      title: 'Mi piace'
+      empty: 'Non ci sono mi piace per ora'
     action_box:
       title: 'Azioni'
       follow_button: 'Segui'
@@ -24,17 +57,29 @@ it:
       following_description: 'riceverai notifiche sugli aggiornamenti di questo post'
       not_following_description: 'non riceverai alcuna notifica riguardo questo post'
     comments:
-      title:
-        one: 'Attività • Un commento'
-        other: 'Attività • %{count} commenti'
+      title: 'Attività'
       post_update_badge: 'Aggiornamento'
       reply_button: 'Rispondi'
-      cancel_button: 'Annulla'
-      edit_button: 'Modifica'
-      delete_button: 'Elimina'
     new_comment:
       body_placeholder: 'Lascia un commento'
       submit_button: 'Invia'
       is_post_update: 'Contrassegna come aggiornamento'
       user_notification: 'Gli utenti che seguono questo post saranno notificati'
       not_logged_in: 'Devi effettuare il log in per commentare'
+  site_settings:
+    info_box:
+      up_to_date: 'Tutte le modifiche sono state salvate'
+      error: 'Si è verificato un errore: %{message}'
+    boards:
+      title: 'Bacheche'
+      empty: 'Non ci sono bacheche. Creane una qua sotto!'
+      new: 'Nuova'
+      form:
+        name: 'Nome bacheca'
+        description: 'Descrizione bacheca (opzionale)'
+    post_statuses:
+      title: 'Stati'
+      empty: 'Non ci sono stati. Creane uno qua sotto!'
+      new: 'Nuovo'
+      form:
+        name: 'Nome stato'

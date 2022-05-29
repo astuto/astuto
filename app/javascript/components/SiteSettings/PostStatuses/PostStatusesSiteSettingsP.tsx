@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import IPostStatus from '../../../interfaces/IPostStatus';
@@ -85,7 +86,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
     return (
       <React.Fragment>
         <div className="content">
-          <h2>Post statuses</h2>
+          <h2>{I18n.t('site_settings.post_statuses.title')}</h2>
 
           {
             postStatuses.items.length > 0 ?
@@ -116,12 +117,12 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
             postStatuses.areLoading ?
               <Spinner />
             :
-              <CenteredMutedText>There are no post statuses. Create one below!</CenteredMutedText>
+              <CenteredMutedText>{I18n.t('site_settings.post_statuses.empty')}</CenteredMutedText>
           }
         </div>
 
         <div className="content">
-          <h2>New</h2>
+          <h2>{I18n.t('site_settings.post_statuses.new')}</h2>
 
           <PostStatusForm mode='create' handleSubmit={this.handleSubmit} />
         </div>

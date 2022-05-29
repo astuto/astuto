@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
@@ -90,7 +91,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     return (
       <React.Fragment>
         <div className="content">
-          <h2>Boards</h2>
+          <h2>{I18n.t('site_settings.boards.title')}</h2>
 
           {
             boards.items.length > 0 ?
@@ -121,12 +122,12 @@ class BoardsSiteSettingsP extends React.Component<Props> {
             boards.areLoading ?
               <Spinner />
             :
-              <CenteredMutedText>There are no boards. Create one below!</CenteredMutedText>
+              <CenteredMutedText>{I18n.t('site_settings.boards.empty')}</CenteredMutedText>
           }
         </div>
 
         <div className="content">
-          <h2>New</h2>
+          <h2>{I18n.t('site_settings.boards.new')}</h2>
 
           <BoardForm mode='create' handleSubmit={this.handleSubmit} />
         </div>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import { BoxTitleText } from '../shared/CustomTexts';
 
@@ -9,7 +10,7 @@ interface Props {
 
 const SearchFilter = ({ searchQuery, handleChange }: Props) => (
   <div className="sidebarCard">
-    <BoxTitleText>Search</BoxTitleText>
+    <BoxTitleText>{I18n.t('board.search_box.title')}</BoxTitleText>
 
     <input
       type="search"

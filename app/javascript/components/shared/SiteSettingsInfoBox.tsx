@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import Spinner from './Spinner';
 
@@ -14,9 +15,11 @@ const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
       <Spinner />
     :
       error ?
-        <span className="error">An error occurred: {JSON.stringify(error)}</span>
+        <span className="error">
+          {I18n.t('site_settings.info_box.error', { message: JSON.stringify(error) })}
+        </span>
       :
-        <span>Everything up to date</span>
+        <span>{I18n.t('site_settings.info_box.up_to_date')}</span>
   }
   </div>
 );

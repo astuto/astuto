@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -35,7 +36,7 @@ const PostStatusSelect = ({
       ))}
     </optgroup>
     <optgroup label="No post status">
-      <option value={NO_POST_STATUS_VALUE}>None</option>
+      <option value={NO_POST_STATUS_VALUE}>{I18n.t('post.post_status_select.no_post_status')}</option>
     </optgroup>
   </select>
 );

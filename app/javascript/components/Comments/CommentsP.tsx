@@ -8,6 +8,7 @@ import { DangerText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
+import Separator from '../shared/Separator';
 
 interface Props {
   postId: number;
@@ -107,7 +108,9 @@ class CommentsP extends React.Component<Props> {
         { error ? <DangerText>{error}</DangerText> : null }
 
         <div className="commentsTitle">
-          {I18n.t('post.comments.title', { count: comments.length })}
+          {I18n.t('post.comments.title')}
+          <Separator />
+          {I18n.t('common.comments_number', { count: comments.length })}
         </div>
 
         <CommentList

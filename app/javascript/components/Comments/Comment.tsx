@@ -65,7 +65,7 @@ const Comment = ({
       <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
         {
           replyForm.isOpen ?
-            I18n.t('post.comments.cancel_button')
+            I18n.t('common.buttons.cancel')
           :
             I18n.t('post.comments.reply_button')
         }
@@ -82,7 +82,7 @@ const Comment = ({
             </a>
             <Separator />
             <a href={`/admin/comments/${id}/edit`} className="commentLink" data-turbolinks="false">
-              {I18n.t('post.comments.edit_button')}
+              {I18n.t('common.buttons.edit')}
             </a>
             <Separator />
             <a
@@ -91,7 +91,7 @@ const Comment = ({
               data-method="delete"
               data-confirm="Are you sure?"
               data-turbolinks="false">
-                {I18n.t('post.comments.delete_button')}
+                {I18n.t('common.buttons.delete')}
             </a>
 
           </React.Fragment>
