@@ -20,7 +20,7 @@ class BoardsController < ApplicationController
       render json: board, status: :created
     else
       render json: {
-        error: I18n.t('errors.board.create', message: board.errors.full_messages)
+        error: I18n.t('backend.errors.board.create', message: board.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
       print board.errors.full_messages
       
       render json: {
-        error: I18n.t('errors.board.update', message: board.errors.full_messages)
+        error: I18n.t('backend.errors.board.update', message: board.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
       }, status: :accepted
     else
       render json: {
-        error: I18n.t('errors.board.destroy', message: board.errors.full_messages)
+        error: I18n.t('backend.errors.board.destroy', message: board.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -67,7 +67,7 @@ class BoardsController < ApplicationController
       render json: workflow_output
     else
       render json: {
-        error: I18n.t("errors.board.update_order")
+        error: I18n.t("backend.errors.board.update_order")
       }, status: :unprocessable_entity
     end
   end

@@ -33,7 +33,7 @@ class PostsController < ApplicationController
       render json: post, status: :created
     else
       render json: {
-        error: I18n.t('errors.post.create', message: post.errors.full_messages)
+        error: I18n.t('backend.errors.post.create', message: post.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     
     if !current_user.power_user? && current_user.id != post.user_id
-      render json: I18n.t('errors.unauthorized'), status: :unauthorized
+      render json: I18n.t('backend.errors.unauthorized'), status: :unauthorized
       return
     end
 
@@ -83,7 +83,7 @@ class PostsController < ApplicationController
       render json: post, status: :no_content
     else
       render json: {
-        error: I18n.t('errors.post.update', message: post.errors.full_messages)
+        error: I18n.t('backend.errors.post.update', message: post.errors.full_messages)
       }, status: :unprocessable_entity
     end
   end

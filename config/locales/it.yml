@@ -1,14 +1,4 @@
 it:
-  errors:
-    unauthorized: 'Non sei autorizzato'
-    post:
-      create: 'Errore creazione post: %{message}'
-      update: 'Errore aggiornamento post: %{message}'
-    like:
-      create: 'Errore creazione mi piace: %{message}'
-    comment:
-      create: 'Errore creazione commento: %{message}'
-      update: 'Errore aggiornamento commento: %{message}'
   common:
     forms:
       auth:

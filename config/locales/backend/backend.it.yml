@@ -1,0 +1,21 @@
+it:
+  backend:
+    errors:
+      unauthorized: 'Non sei autorizzato'
+      post:
+        create: 'Errore creazione post: %{message}'
+        update: 'Errore modifica post: %{message}'
+      like:
+        create: 'Errore creazione mi piace: %{message}'
+        destroy: 'Errore eliminazione mi piace: %{message}'
+      comment:
+        create: 'Errore creazione commento: %{message}'
+        update: 'Errore modifica commento: %{message}'
+      board:
+        create: 'Errore creazione bacheca: %{message}'
+        update: 'Errore modifica bacheca: %{message}'
+        destroy: 'Errore eliminazione bacheca: %{message}'
+        update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
+      follow:
+        create: 'Errore nel seguire il post: %{message}'
+        destroy: 'Errore nel non seguire più il post: %{message}'
