@@ -1,26 +1,35 @@
-<h2>Change your password</h2>
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <h2><%= I18n.t('common.forms.auth.change_password') %></h2>
+
   <%= render "devise/shared/error_messages", resource: resource %>
+
   <%= f.hidden_field :reset_password_token %>
 
   <div class="form-group">
-    <%= f.label :password, "New password" %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+    <%= f.label :password, class: "sr-only" %>
+    <%= f.password_field :password,
+      autofocus: true,
+      autocomplete: "new-password",
+      placeholder: I18n.t('common.forms.auth.new_password'),
+      class: "form-control" %>
+
     <% if @minimum_password_length %>
       <small id="passwordHelp" class="form-text text-muted">
-        (<%= @minimum_password_length %> characters minimum)
+        (<%= I18n.t('common.forms.auth.password_help', { count: @minimum_password_length }) %>)
       </small>
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirm new password" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    <%= f.label :password_confirmation, class: "sr-only" %>
+    <%= f.password_field :password_confirmation,
+      autocomplete: "new-password",
+      placeholder: I18n.t('common.forms.auth.new_password_confirmation'),
+      class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Change my password", class: "btn btn-dark btn-primary" %>
+    <%= f.submit I18n.t('common.forms.auth.change_password'), class: "btn btn-dark btn-primary" %>
   </div>
 <% end %>
 

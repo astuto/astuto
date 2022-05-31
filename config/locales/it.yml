@@ -10,6 +10,25 @@ it:
       create: 'Errore creazione commento: %{message}'
       update: 'Errore aggiornamento commento: %{message}'
   common:
+    forms:
+      auth:
+        email: 'Indirizzo email'
+        full_name: 'Nome e cognome'
+        password: 'Password'
+        password_confirmation: 'Conferma password'
+        new_password: 'Nuova password'
+        new_password_confirmation: 'Conferma nuova password'
+        remember_me: 'Ricordami'
+        log_in: 'Accedi'
+        sign_up: 'Registrati'
+        forgot_password: 'Password dimenticata?'
+        confirmation_instructions_not_received: 'Non hai ricevuto le istruzioni di conferma?'
+        unlock_instructions_not_received: 'Non hai ricevuto le istruzioni di sblocco?'
+        send_reset_password_instructions: 'Invia istruzioni per reset password'
+        resend_confirmation_instructions: 'Invia istruzioni di conferma'
+        resend_unlock_instructions: 'Invia istruzioni di sblocco'
+        change_password: 'Cambia password'
+        password_help: '%{count} caratteri minimo'
     comments_number:
       one: '1 commento'
       other: '%{count} commenti'
@@ -32,6 +51,13 @@ it:
       days:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
+  header:
+    menu:
+      site_settings: 'Impostazioni sito'
+      admin_panel: 'Admin panel (deprecato)'
+      profile_settings: 'Impostazioni profilo'
+      sign_out: 'Esci'
+    log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
   board:

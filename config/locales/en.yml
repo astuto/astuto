@@ -10,6 +10,25 @@ en:
       create: 'Comment create error: %{message}'
       update: 'Comment update error: %{message}'
   common:
+    forms:
+      auth:
+        email: 'Email address'
+        full_name: 'Full name'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        new_password: 'New password'
+        new_password_confirmation: 'New password confirmation'
+        remember_me: 'Remember me'
+        log_in: 'Log in'
+        sign_up: 'Sign up'
+        forgot_password: 'Forgot your password?'
+        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
+        unlock_instructions_not_received: "Didn't receive unlock instructions?"
+        send_reset_password_instructions: 'Send me reset password instructions'
+        resend_confirmation_instructions: 'Resend confirmation instructions'
+        resend_unlock_instructions: 'Resend unlock instructions'
+        change_password: 'Change password'
+        password_help: '%{count} characters minimum'
     comments_number:
       one: '1 comment'
       other: '%{count} comments'
@@ -32,6 +51,13 @@ en:
       days:
         one: '1 day ago'
         other: '%{count} days ago'
+  header:
+    menu:
+      site_settings: 'Site settings'
+      admin_panel: 'Admin panel (deprecated)'
+      profile_settings: 'Profile settings'
+      sign_out: 'Sign out'
+    log_in: 'Log in / Sign up'
   roadmap:
     title: 'Roadmap'
   board:
@@ -65,8 +91,8 @@ en:
       title: 'Actions'
       follow_button: 'Follow'
       unfollow_button: 'Unfollow'
-      following_description: 'youre receiving notifications about new updates on this post'
-      not_following_description: 'you wont receive notifications about this post'
+      following_description: "you're receiving notifications about new updates on this post"
+      not_following_description: "you won't receive notifications about this post"
     comments:
       title: 'Activity'
       post_update_badge: 'Update'
