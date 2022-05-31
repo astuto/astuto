@@ -21,6 +21,17 @@ en:
       cancel: 'Cancel'
       create: 'Create'
       update: 'Save'
+    datetime:
+      now: 'just now'
+      minutes:
+        one: '1 minute ago'
+        other: '%{count} minutes ago'
+      hours:
+        one: '1 hour ago'
+        other: '%{count} hours ago'
+      days:
+        one: '1 day ago'
+        other: '%{count} days ago'
   roadmap:
     title: 'Roadmap'
   board:

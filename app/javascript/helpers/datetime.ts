@@ -1,3 +1,5 @@
+import I18n from 'i18n-js';
+
 export const friendlyDate = date => {
   var now = new Date();
   var timeStamp = fromRailsStringToJavascriptDate(date);
@@ -5,16 +7,16 @@ export const friendlyDate = date => {
   var secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
   
   if (secondsPast < 60) {
-    return 'just now';
+    return I18n.t('common.datetime.now');
   } else if (secondsPast < 3600) {
     let minutesPast = Math.round(secondsPast / 60);
-    return minutesPast + ' ' + (minutesPast === 1 ? 'minute' : 'minutes') + ' ago';
+    return I18n.t('common.datetime.minutes', { count: minutesPast });
   } else if (secondsPast <= 86400) {
     let hoursPast = Math.round(secondsPast / 3600);
-    return hoursPast + ' ' + (hoursPast === 1 ? 'hour' : 'hours') + ' ago';
+    return I18n.t('common.datetime.hours', { count: hoursPast });
   } else {
     let daysPast = Math.round(secondsPast / 86400);
-    return daysPast + ' ' + (daysPast === 1 ? 'day' : 'days') + ' ago';
+    return I18n.t('common.datetime.days', { count: daysPast });
   }
 }
 

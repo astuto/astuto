@@ -21,6 +21,17 @@ it:
       cancel: 'Annulla'
       create: 'Crea'
       update: 'Salva'
+    datetime:
+      now: 'adesso'
+      minutes:
+        one: '1 minuto fa'
+        other: '%{count} minuti fa'
+      hours:
+        one: '1 ora fa'
+        other: '%{count} ore fa'
+      days:
+        one: '1 giorno fa'
+        other: '%{count} giorni fa'
   roadmap:
     title: 'Roadmap'
   board:
