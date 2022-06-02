@@ -16,7 +16,7 @@ class PostStatusesController < ApplicationController
       render json: post_status, status: :created
     else
       render json: {
-        error: I18n.t('backend.errors.post_status.create', message: post_status.errors.full_messages)
+        error: post_status.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -29,7 +29,7 @@ class PostStatusesController < ApplicationController
       render json: post_status, status: :ok
     else
       render json: {
-        error: I18n.t('backend.errors.post_status.update', message: post_status.errors.full_messages)
+        error: post_status.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -43,7 +43,7 @@ class PostStatusesController < ApplicationController
       }, status: :accepted
     else
       render json: {
-        error: I18n.t('backend.errors.post_statuses.destroy', message: post_status.errors.full_messages)
+        error: post_status.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -61,7 +61,7 @@ class PostStatusesController < ApplicationController
       render json: workflow_output
     else
       render json: {
-        error: I18n.t("backend.errors.post_status.update_order")
+        error: I18n.t("controller.errors.post_status.update_order")
       }, status: :unprocessable_entity
     end
   end

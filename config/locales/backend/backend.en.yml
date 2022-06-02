@@ -1,26 +1,10 @@
 en:
-  backend:
+  controller:
     errors:
       unauthorized: 'You are not authorized'
-      post:
-        create: 'Post create error: %{message}'
-        update: 'Post update error: %{message}'
-      like:
-        create: 'Like create error: %{message}'
-        destroy: 'Like delete error: %{message}'
-      comment:
-        create: 'Comment create error: %{message}'
-        update: 'Comment update error: %{message}'
+      not_logged_in: 'You must be logged in to access this page'
+      not_enough_privileges: 'You do not have the privilegies to access this page'
       board:
-        create: 'Board create error: %{message}'
-        update: 'Board update error: %{message}'
-        destroy: 'Board delete error: %{message}'
         update_order: 'There was an error in reordering boards'
-      follow:
-        create: 'Error in follow post: %{message}'
-        destroy: 'Error in unfollow post: %{message}'
       post_status:
-        create: 'Post status create error: %{message}'
-        update: 'Post status update error: %{message}'
-        destroy: 'Post status delete error: %{message}'
-        update_order: 'There was an error in reordering post statuses'
+        update_order: 'There was an error in reordering statuses'

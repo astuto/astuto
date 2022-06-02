@@ -1,21 +1,52 @@
 it:
-  backend:
+  controller:
     errors:
       unauthorized: 'Non sei autorizzato'
-      post:
-        create: 'Errore creazione post: %{message}'
-        update: 'Errore modifica post: %{message}'
-      like:
-        create: 'Errore creazione mi piace: %{message}'
-        destroy: 'Errore eliminazione mi piace: %{message}'
-      comment:
-        create: 'Errore creazione commento: %{message}'
-        update: 'Errore modifica commento: %{message}'
+      not_logged_in: "Devi effettuare l'accesso per visualizzare questa pagina"
+      not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
       board:
-        create: 'Errore creazione bacheca: %{message}'
-        update: 'Errore modifica bacheca: %{message}'
-        destroy: 'Errore eliminazione bacheca: %{message}'
         update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
+      post_status:
+        update_order: 'Si è verificato un errore durante il riordinamento degli stati'
+  activerecord:
+    attributes:
+      board:
+        name: 'Nome'
+        description: 'Descrizione'
+        order: 'Ordine'
+      comment:
+        body: 'Corpo'
+        is_post_update: 'Aggiornamento post'
+        user_id: 'Autore'
+        post_id: 'Post'
+        parent_id: 'Commento padre'
       follow:
-        create: 'Errore nel seguire il post: %{message}'
-        destroy: 'Errore nel non seguire più il post: %{message}'
+        user_id: 'Utente'
+        post_id: 'Post'
+      like:
+        user_id: 'Utente'
+        post_id: 'Post'
+      post_status:
+        name: 'Nome'
+        color: 'Colore'
+        order: 'Ordine'
+        show_in_roadmap: 'Mostra nella roadmap'
+      post:
+        title: 'Titolo'
+        description: 'Descrizione'
+        board_id: 'Bacheca del post'
+        user_id: 'Autore del post'
+        post_status_id: 'Stato del post'
+      user:
+        email: 'E-mail'
+        full_name: 'Nome e cognome'
+        role: 'Ruolo'
+        notifications_enabled: 'Notifiche abilitate'
+    errors:
+      messages:
+        invalid: 'è invalido'
+        required: 'è obbligatorio'
+        blank: 'non può essere vuoto'
+        taken: 'è già in uso'
+        too_short: 'è troppo corto (almeno %{count} caratteri)'
+        too_long: 'è troppo lungo (massimo ${count} caratteri)'
