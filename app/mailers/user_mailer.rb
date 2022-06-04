@@ -1,11 +1,13 @@
 class UserMailer < ApplicationMailer
+  layout 'user_mailer'
+
   def notify_post_owner(comment:)
     @comment = comment
     @user = comment.post.user
 
     mail(
       to: @user.email,
-      subject: "[#{app_name}] New comment on #{comment.post.title}"
+      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
     )
   end
 
@@ -15,7 +17,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[#{app_name}] New reply on your comment from #{comment.post.title}"
+      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
     )
   end
 
@@ -24,7 +26,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: comment.post.followers.pluck(:email),
-      subject: "[#{app_name}] New update on #{comment.post.title}"
+      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
     )
   end
 
@@ -33,7 +35,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: post.followers.pluck(:email),
-      subject: "[#{app_name}] Status change on post #{post.title}"
+      subject: default_i18n_subject(app_name: app_name, post: post.title)
     )
   end
 

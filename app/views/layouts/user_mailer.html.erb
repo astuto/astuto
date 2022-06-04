@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <p><%= I18n.t('user_mailer.opening_greeting') %></p>
+
+    <div><%= yield %></div>
+    
+    <p><%= I18n.t('user_mailer.closing_greeting') %></p>
+
+    <footer>
+      <%= link_to(I18n.t('user_mailer.unsubscribe'), edit_user_registration_url) %>.
+    </footer>
+  </body>
+</html>
