@@ -100,6 +100,10 @@ en:
       user_notification: 'Users that follow this post will be notified'
       not_logged_in: 'You need to log in to post comments'
   site_settings:
+    menu:
+      title: 'Site settings'
+      boards: 'Boards'
+      post_statuses: 'Statuses'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -133,3 +137,12 @@ en:
     notify_followers_of_post_status_change:
       subject: '[%{app_name}] Status change on post %{post}'
       body: "The post you're following %{post} has a new status"
+  backend:
+    errors:
+      unauthorized: 'You are not authorized'
+      not_logged_in: 'You must be logged in to access this page'
+      not_enough_privileges: 'You do not have the privilegies to access this page'
+      board:
+        update_order: 'There was an error in reordering boards'
+      post_status:
+        update_order: 'There was an error in reordering statuses'

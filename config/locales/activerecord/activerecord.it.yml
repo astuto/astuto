@@ -1,13 +1,4 @@
 it:
-  controller:
-    errors:
-      unauthorized: 'Non sei autorizzato'
-      not_logged_in: "Devi effettuare l'accesso per visualizzare questa pagina"
-      not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
-      board:
-        update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
-      post_status:
-        update_order: 'Si è verificato un errore durante il riordinamento degli stati'
   activerecord:
     attributes:
       board:

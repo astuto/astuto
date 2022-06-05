@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <h2><%= I18n.t('common.forms.auth.sign_up') %></h2>
+  <h2><%= t('common.forms.auth.sign_up') %></h2>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -7,7 +7,7 @@
     <%= f.label :full_name, class: "sr-only" %>
     <%= f.text_field :full_name,
       autofocus: true,
-      placeholder: I18n.t('common.forms.auth.full_name'),
+      placeholder: t('common.forms.auth.full_name'),
       required: true,
       class: "form-control" %>
   </div>
@@ -16,7 +16,7 @@
     <%= f.label :email, class: "sr-only" %>
     <%= f.email_field :email,
       autocomplete: "email",
-      placeholder: I18n.t('common.forms.auth.email'),
+      placeholder: t('common.forms.auth.email'),
       required: true,
       class: "form-control" %>
   </div>
@@ -24,7 +24,7 @@
   <div class="form-group">
     <%= f.label :password, class: "sr-only" %>
     <%= f.password_field :password,
-      placeholder: I18n.t('common.forms.auth.password'),
+      placeholder: t('common.forms.auth.password'),
       required: true,
       class: "form-control" %>
   </div>
@@ -32,13 +32,13 @@
   <div class="form-group">
     <%= f.label :password_confirmation, class: "sr-only" %>
     <%= f.password_field :password_confirmation,
-      placeholder: I18n.t('common.forms.auth.password_confirmation'),
+      placeholder: t('common.forms.auth.password_confirmation'),
       required: true,
       class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit I18n.t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
+    <%= f.submit t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 

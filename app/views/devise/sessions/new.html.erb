@@ -1,11 +1,11 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <h2><%= I18n.t('common.forms.auth.log_in') %></h2>
+  <h2><%= t('common.forms.auth.log_in') %></h2>
 
   <div class="form-group">
     <%= f.label :email, class: "sr-only" %>
     <%= f.email_field :email,
       autocomplete: "email",
-      placeholder: I18n.t('common.forms.auth.email'),
+      placeholder: t('common.forms.auth.email'),
       required: true,
       class: "form-control" %>
   </div>
@@ -14,7 +14,7 @@
     <%= f.label :password, class: "sr-only" %>
     <%= f.password_field :password,
       autocomplete: "current-password",
-      placeholder: I18n.t('common.forms.auth.password'),
+      placeholder: t('common.forms.auth.password'),
       required: true,
       class: "form-control" %>
   </div>
@@ -22,12 +22,12 @@
   <% if devise_mapping.rememberable? %>
     <div class="form-group form-check">
       <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label I18n.t('common.forms.auth.remember_me'), class: "form-check-label" %>
+      <%= f.label t('common.forms.auth.remember_me'), class: "form-check-label" %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit I18n.t('common.forms.auth.log_in'), class: "btn btn-dark btn-block" %>
+    <%= f.submit t('common.forms.auth.log_in'), class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 

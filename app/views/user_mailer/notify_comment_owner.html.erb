@@ -1,5 +1,5 @@
 <p>
-  <%= I18n.t('user_mailer.notify_comment_owner.body', { user: @comment.user.full_name, post: @comment.post.title }) %>
+  <%= t('user_mailer.notify_comment_owner.body', { user: @comment.user.full_name, post: @comment.post.title }) %>
 </p>
 
 <p>
@@ -7,5 +7,5 @@
 </p>
 
 <p>
-  <%= link_to I18n.t('user_mailer.learn_more'), post_url(@comment.post) %>
+  <%= link_to t('user_mailer.learn_more'), post_url(@comment.post) %>
 </p>

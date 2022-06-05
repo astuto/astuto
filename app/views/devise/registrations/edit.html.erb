@@ -1,23 +1,23 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <h2><%= I18n.t('common.forms.auth.profile_settings') %></h2>
+  <h2><%= t('common.forms.auth.profile_settings') %></h2>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.full_name') %>
+    <%= f.label t('common.forms.auth.full_name') %>
     <%= f.text_field :full_name, autocomplete: "full-name", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.email') %>
+    <%= f.label t('common.forms.auth.email') %>
     <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.notifications_enabled') %>&nbsp;
+    <%= f.label t('common.forms.auth.notifications_enabled') %>&nbsp;
     <%= f.check_box :notifications_enabled, style: "transform: scale(1.5)" %>
     <small id="notificationsHelp" class="form-text text-muted">
-      <%= I18n.t('common.forms.auth.notifications_enabled_help') %>
+      <%= t('common.forms.auth.notifications_enabled_help') %>
     </small>
   </div>
 
@@ -26,7 +26,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.password') %>
+    <%= f.label t('common.forms.auth.password') %>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <small id="passwordEditHelp" class="form-text text-muted">
       leave blank if you don't want to change your password
@@ -34,12 +34,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.password_confirmation') %>
+    <%= f.label t('common.forms.auth.password_confirmation') %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label I18n.t('common.forms.auth.current_password') %>
+    <%= f.label t('common.forms.auth.current_password') %>
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
     <small id="currentPasswordHelp" class="form-text text-muted">
       we need your current password to confirm your changes
@@ -47,16 +47,16 @@
   </div>
 
   <div class="actions">
-    <%= f.submit I18n.t('common.forms.auth.update_profile'), class: "btn btn-dark btn-block" %>
+    <%= f.submit t('common.forms.auth.update_profile'), class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 
 <br />
 
 <div class="edit_user">
-  <h3><%= I18n.t('common.forms.auth.cancel_account') %></h3>
+  <h3><%= t('common.forms.auth.cancel_account') %></h3>
   
-  <%= button_to I18n.t('common.forms.auth.cancel_account'),
+  <%= button_to t('common.forms.auth.cancel_account'),
     registration_path(resource_name),
     data: { confirm: "Are you sure?" },
     method: :delete,

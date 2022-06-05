@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     comment.assign_attributes(comment_params)
 
     if !current_user.power_user? && current_user.id != post.user_id
-      render json: I18n.t('controller.errors.unauthorized'), status: :unauthorized
+      render json: t('backend.errors.unauthorized'), status: :unauthorized
       return
     end
 

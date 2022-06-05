@@ -67,7 +67,7 @@ class BoardsController < ApplicationController
       render json: workflow_output
     else
       render json: {
-        error: I18n.t("controller.errors.board.update_order")
+        error: t("backend.errors.board.update_order")
       }, status: :unprocessable_entity
     end
   end

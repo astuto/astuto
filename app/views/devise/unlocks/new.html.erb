@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <h2><%= I18n.t('common.forms.auth.resend_unlock_instructions') %></h2>
+  <h2><%= t('common.forms.auth.resend_unlock_instructions') %></h2>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -8,11 +8,11 @@
     <%= f.email_field :email,
       autofocus: true,
       autocomplete: "email"
-      placeholder: I18n.t('common.forms.auth.email') %>
+      placeholder: t('common.forms.auth.email') %>
   </div>
 
   <div class="actions">
-    <%= f.submit I18n.t('common.forms.auth.resend_unlock_instructions'), class: "btn btn-dark btn-block" %>
+    <%= f.submit t('common.forms.auth.resend_unlock_instructions'), class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 

@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <h2><%= I18n.t('common.forms.auth.change_password') %></h2>
+  <h2><%= t('common.forms.auth.change_password') %></h2>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -10,12 +10,12 @@
     <%= f.password_field :password,
       autofocus: true,
       autocomplete: "new-password",
-      placeholder: I18n.t('common.forms.auth.new_password'),
+      placeholder: t('common.forms.auth.new_password'),
       class: "form-control" %>
 
     <% if @minimum_password_length %>
       <small id="passwordHelp" class="form-text text-muted">
-        (<%= I18n.t('common.forms.auth.password_help', { count: @minimum_password_length }) %>)
+        (<%= t('common.forms.auth.password_help', { count: @minimum_password_length }) %>)
       </small>
     <% end %>
   </div>
@@ -24,12 +24,12 @@
     <%= f.label :password_confirmation, class: "sr-only" %>
     <%= f.password_field :password_confirmation,
       autocomplete: "new-password",
-      placeholder: I18n.t('common.forms.auth.new_password_confirmation'),
+      placeholder: t('common.forms.auth.new_password_confirmation'),
       class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit I18n.t('common.forms.auth.change_password'), class: "btn btn-dark btn-primary" %>
+    <%= f.submit t('common.forms.auth.change_password'), class: "btn btn-dark btn-primary" %>
   </div>
 <% end %>
 
