@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import NewPostForm from './NewPostForm';
 import Spinner from '../shared/Spinner';
@@ -86,7 +87,7 @@ class NewPost extends React.Component<Props, State> {
 
     if (title === '') {
       this.setState({
-        error: 'You forgot to enter a title!',
+        error: I18n.t('board.new_post.no_title'),
         isLoading: false,
       });
       return;
@@ -109,7 +110,7 @@ class NewPost extends React.Component<Props, State> {
 
       if (res.status === HttpStatus.Created) {
         this.setState({
-          success: 'Post published! You will be redirected soon...',
+          success: I18n.t('board.new_post.submit_success'),
 
           title: '',
           description: '',
@@ -124,7 +125,7 @@ class NewPost extends React.Component<Props, State> {
 
     } catch (e) {
       this.setState({
-        error: 'An unknown error occurred, try again.'
+        error: I18n.t('board.new_post.submit_error')
       });
     }
   }
@@ -151,11 +152,16 @@ class NewPost extends React.Component<Props, State> {
               onClick={this.toggleForm}
               className="submitBtn"
               outline={showForm}>
-              { showForm ? 'Cancel' : 'Submit feedback' }
+              {
+                showForm ?
+                  I18n.t('board.new_post.cancel_button')
+                :
+                  I18n.t('board.new_post.submit_button')
+              }
             </Button>
           :
             <a href="/users/sign_in" className="btn btn-dark">
-              Log in / Sign up
+              {I18n.t('board.new_post.login_button')}
             </a>
         }
 

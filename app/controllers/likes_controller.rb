@@ -25,7 +25,7 @@ class LikesController < ApplicationController
       }, status: :created
     else
       render json: {
-        error: I18n.t('errors.likes.create', message: like.errors.full_messages)
+        error: like.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -42,7 +42,7 @@ class LikesController < ApplicationController
       }, status: :accepted
     else
       render json: {
-        error: I18n.t('errors.likes.destroy', message: like.errors.full_messages)
+        error: like.errors.full_messages
       }, status: :unprocessable_entity
     end
   end

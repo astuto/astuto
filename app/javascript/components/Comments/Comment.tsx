@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 import Gravatar from 'react-gravatar';
 
 import NewComment from './NewComment';
@@ -50,12 +51,24 @@ const Comment = ({
     <div className="commentHeader">
       <Gravatar email={userEmail} size={28} className="gravatar" />
       <span className="commentAuthor">{userFullName}</span>
-      { isPostUpdate ? <span className="postUpdateBadge">Post update</span> : null }
+      {
+        isPostUpdate ?
+          <span className="postUpdateBadge">
+            {I18n.t('post.comments.post_update_badge')}
+          </span>
+        :
+          null
+      }
     </div>
     <p className="commentBody">{body}</p>
     <div className="commentFooter">
       <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
-        { replyForm.isOpen ? 'Cancel' : 'Reply' }
+        {
+          replyForm.isOpen ?
+            I18n.t('common.buttons.cancel')
+          :
+            I18n.t('post.comments.reply_button')
+        }
       </a>
       {
         isPowerUser ?
@@ -68,14 +81,18 @@ const Comment = ({
               { 'Post update: ' + (isPostUpdate ? 'yes' : 'no') }
             </a>
             <Separator />
-            <a href={`/admin/comments/${id}/edit`} className="commentLink" data-turbolinks="false">Edit</a>
+            <a href={`/admin/comments/${id}/edit`} className="commentLink" data-turbolinks="false">
+              {I18n.t('common.buttons.edit')}
+            </a>
             <Separator />
             <a
               href={`/admin/comments/${id}`}
               className="commentLink"
               data-method="delete"
               data-confirm="Are you sure?"
-              data-turbolinks="false">Delete</a>
+              data-turbolinks="false">
+                {I18n.t('common.buttons.delete')}
+            </a>
 
           </React.Fragment>
         :

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import Button from '../../shared/Button';
 
@@ -89,7 +90,7 @@ class PostStatusForm extends React.Component<Props, State> {
       <div className="postStatusForm">
         <input
           type="text"
-          placeholder="Post status name"
+          placeholder={I18n.t('site_settings.post_statuses.form.name')}
           value={name}
           onChange={e => this.onNameChange(e.target.value)}
           className="form-control"
@@ -107,7 +108,12 @@ class PostStatusForm extends React.Component<Props, State> {
           className="newPostStatusButton"
           disabled={!this.isFormValid()}
         >
-          {mode === 'create' ? 'Create' : 'Save'}
+          {
+              mode === 'create' ?
+                I18n.t('common.buttons.create')
+              :
+                I18n.t('common.buttons.update')
+            }
         </Button>
       </div>
     );

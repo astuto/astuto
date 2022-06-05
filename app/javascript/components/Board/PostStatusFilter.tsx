@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import PostStatusListItem from './PostStatusListItem';
 import Spinner from '../shared/Spinner';
@@ -24,7 +25,7 @@ const PostStatusFilter = ({
   currentFilter,
 }: Props) => (
   <div className="postStatusFilterContainer sidebarCard">
-    <BoxTitleText>Filter by status</BoxTitleText>
+    <BoxTitleText>{I18n.t('board.filter_box.title')}</BoxTitleText>
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem

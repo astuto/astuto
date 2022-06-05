@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       ), status: :created
     else
       render json: {
-        error: I18n.t('errors.comment.create', message: comment.errors.full_messages)
+        error: comment.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     comment.assign_attributes(comment_params)
 
     if !current_user.power_user? && current_user.id != post.user_id
-      render json: I18n.t('errors.unauthorized'), status: :unauthorized
+      render json: t('backend.errors.unauthorized'), status: :unauthorized
       return
     end
 
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
       )
     else
       render json: {
-        error: I18n.t('errors.comment.update', message: comment.errors.full_messages)
+        error: comment.errors.full_messages
       }, status: :unprocessable_entity
     end
   end

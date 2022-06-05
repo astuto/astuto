@@ -8,7 +8,6 @@ RSpec.describe UserMailer, type: :mailer do
     let(:mail) { UserMailer.notify_post_owner(comment: comment) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("[#{ENV.fetch('APP_NAME')}] New comment on #{post.title}")
       expect(mail.to).to eq(["notified@example.com"])
       expect(mail.from).to eq(["notifications@example.com"])
     end

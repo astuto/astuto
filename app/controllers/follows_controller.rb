@@ -20,7 +20,7 @@ class FollowsController < ApplicationController
       }, status: :created
     else
       render json: {
-        error: I18n.t('errors.follows.create', message: follow.errors.full_messages)
+        error: follow.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -37,7 +37,7 @@ class FollowsController < ApplicationController
       }, status: :accepted
     else
       render json: {
-        error: I18n.t('errors.follow.destroy', message: follow.errors.full_messages)
+        error: follow.errors.full_messages
       }, status: :unprocessable_entity
     end
   end

@@ -26,18 +26,18 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.power_user? %>
-                <%= link_to 'Site settings', site_settings_boards_path, class: 'dropdown-item' %>
-                <%= link_to 'Admin Panel', admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
+                <%= link_to t('header.menu.site_settings'), site_settings_boards_path, class: 'dropdown-item' %>
+                <%= link_to t('header.menu.admin_panel'), admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
                 <div class="dropdown-divider"></div>
               <% end %>
-              <%= link_to 'Profile settings', edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to 'Log in / Sign up', new_user_session_path, class: 'nav-link' %>
+            <%= link_to t('header.log_in'), new_user_session_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>

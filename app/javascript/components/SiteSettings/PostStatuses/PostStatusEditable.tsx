@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import { Draggable } from 'react-beautiful-dnd';
 
@@ -74,7 +75,7 @@ class PostStatusEditable extends React.Component<Props, State> {
                 <PostStatusLabel name={name} color={color} />
 
                 <div className="postStatusEditableActions">
-                  <a onClick={this.toggleEditMode}>Edit</a>
+                  <a onClick={this.toggleEditMode}>{I18n.t('common.buttons.edit')}</a>
 
                   <Separator />
 
@@ -82,7 +83,7 @@ class PostStatusEditable extends React.Component<Props, State> {
                     onClick={() => handleDelete(id)}
                     data-confirm="Are you sure?"
                   >
-                    Delete
+                    {I18n.t('common.buttons.delete')}
                   </a>
                 </div>
               </React.Fragment>
@@ -99,7 +100,7 @@ class PostStatusEditable extends React.Component<Props, State> {
                 <a
                   className="postStatusFormCancelButton"
                   onClick={this.toggleEditMode}>
-                  Cancel
+                  {I18n.t('common.buttons.cancel')}
                 </a>
               </React.Fragment>
             }

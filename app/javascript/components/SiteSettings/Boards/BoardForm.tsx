@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import Button from '../../shared/Button';
 
@@ -83,7 +84,7 @@ class BoardForm extends React.Component<Props, State> {
         <div className="boardMandatoryForm">
           <input
             type="text"
-            placeholder="Board name"
+            placeholder={I18n.t('site_settings.boards.form.name')}
             value={name}
             onChange={e => this.onNameChange(e.target.value)}
             className="form-control"
@@ -94,12 +95,17 @@ class BoardForm extends React.Component<Props, State> {
             className="newBoardButton"
             disabled={!this.isFormValid()}
           >
-            {mode === 'create' ? 'Create' : 'Save'}
+            {
+              mode === 'create' ?
+                I18n.t('common.buttons.create')
+              :
+                I18n.t('common.buttons.update')
+            }
           </Button>
         </div>
         
         <textarea
-          placeholder="Optional board description"
+          placeholder={I18n.t('site_settings.boards.form.description')}
           value={description}
           onChange={e => this.onDescriptionChange(e.target.value)}
           className="form-control"

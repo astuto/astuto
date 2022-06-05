@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
 import CommentList from './CommentList';
@@ -7,6 +8,7 @@ import { DangerText } from '../shared/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
+import Separator from '../shared/Separator';
 
 interface Props {
   postId: number;
@@ -106,7 +108,9 @@ class CommentsP extends React.Component<Props> {
         { error ? <DangerText>{error}</DangerText> : null }
 
         <div className="commentsTitle">
-          activity &bull; {comments.length} comment{comments.length === 1 ? '' : 's'}
+          {I18n.t('post.comments.title')}
+          <Separator />
+          {I18n.t('common.comments_number', { count: comments.length })}
         </div>
 
         <CommentList

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Button from '../shared/Button';
+import I18n from 'i18n-js';
 
+import Button from '../shared/Button';
 import { BoxTitleText, SmallMutedText } from '../shared/CustomTexts';
 
 interface Props {
@@ -13,17 +14,17 @@ interface Props {
 const ActionBox = ({followed, submitFollow, isLoggedIn}: Props) => (
   <div className="actionBoxContainer">
     <div className="actionBoxFollow">
-      <BoxTitleText>Actions</BoxTitleText>
+      <BoxTitleText>{I18n.t('post.action_box.title')}</BoxTitleText>
       <br />
       <Button onClick={isLoggedIn ? submitFollow : () => location.href = '/users/sign_in'} outline>
-        { followed ? 'Unfollow post' : 'Follow post' }
+        { followed ? I18n.t('post.action_box.unfollow_button') : I18n.t('post.action_box.follow_button') }
       </Button>
       <br />
       <SmallMutedText>
         { followed ?
-          'you\'re receiving notifications about new updates on this post'
+          I18n.t('post.action_box.following_description')
           :
-          'you won\'t receive notifications about this post'
+          I18n.t('post.action_box.not_following_description')
         }
       </SmallMutedText>
     </div>

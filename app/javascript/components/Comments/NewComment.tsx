@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 import Gravatar from 'react-gravatar';
 
 import NewCommentUpdateSection from './NewCommentUpdateSection';
@@ -50,13 +51,13 @@ const NewComment = ({
               <textarea
                 value={body}
                 onChange={handleChange}
-                placeholder="Leave a comment"
+                placeholder={I18n.t('post.new_comment.body_placeholder')}
                 className="newCommentBody"
               />
               <Button
                 onClick={() => handleSubmit(body, parentId, postUpdateFlagValue)}
                 className="submitCommentButton">
-                { isSubmitting ? <Spinner color="light" /> : 'Submit' }
+                { isSubmitting ? <Spinner color="light" /> : I18n.t('post.new_comment.submit_button') }
               </Button>
             </div>
             {
@@ -70,9 +71,12 @@ const NewComment = ({
             }
           </React.Fragment>
         :
-          <a href="/users/sign_in" className="loginInfo">You need to log in to post comments.</a>
+          <a href="/users/sign_in" className="loginInfo">
+            {I18n.t('post.new_comment.not_logged_in')}
+          </a>
       }
     </div>
+
     { error ? <DangerText>{error}</DangerText> : null }
   </React.Fragment>
 );

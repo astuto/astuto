@@ -1,15 +1,20 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <h2>Forgot your password?</h2>
+  <h2><%= t('common.forms.auth.forgot_password') %></h2>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
     <%= f.label :email, class: "sr-only" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", required: true, class: "form-control" %>
+    <%= f.email_field :email,
+      autofocus: true,
+      autocomplete: "email",
+      placeholder: t('common.forms.auth.email'),
+      required: true,
+      class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions", class: "btn btn-dark btn-block" %>
+    <%= f.submit t('common.forms.auth.send_reset_password_instructions'), class: "btn btn-dark btn-block" %>
   </div>
 <% end %>
 

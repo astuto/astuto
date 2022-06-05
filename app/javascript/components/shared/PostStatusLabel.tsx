@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 interface Props {
   name: string;
@@ -10,7 +11,7 @@ const PostStatusLabel = ({
   color,
 }: Props) => (
   <span className="badge" style={{backgroundColor: color || 'black', color: 'white'}}>
-    {(name || 'no status').toUpperCase()}
+    {(name || I18n.t('common.no_status')).toUpperCase()}
   </span>
 );
 

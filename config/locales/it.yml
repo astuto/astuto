@@ -1,0 +1,148 @@
+it:
+  common:
+    forms:
+      auth:
+        email: 'Indirizzo email'
+        full_name: 'Nome e cognome'
+        password: 'Password'
+        password_confirmation: 'Conferma password'
+        new_password: 'Nuova password'
+        new_password_confirmation: 'Conferma nuova password'
+        current_password: 'Password corrente'
+        notifications_enabled: 'Notifiche abilitate'
+        notifications_enabled_help: "se disabilitato, non riceverai alcuna notifica"
+        remember_me: 'Ricordami'
+        log_in: 'Accedi'
+        sign_up: 'Registrati'
+        profile_settings: 'Impostazioni profilo'
+        update_profile: 'Aggiorna profilo'
+        cancel_account: 'Cancella account'
+        forgot_password: 'Password dimenticata?'
+        confirmation_instructions_not_received: 'Non hai ricevuto le istruzioni di conferma?'
+        unlock_instructions_not_received: 'Non hai ricevuto le istruzioni di sblocco?'
+        send_reset_password_instructions: 'Invia istruzioni per reset password'
+        resend_confirmation_instructions: 'Invia istruzioni di conferma'
+        resend_unlock_instructions: 'Invia istruzioni di sblocco'
+        change_password: 'Cambia password'
+        password_help: '%{count} caratteri minimo'
+    comments_number:
+      one: '1 commento'
+      other: '%{count} commenti'
+    no_status: 'Nessuno stato'
+    loading: 'Caricamento...'
+    buttons:
+      edit: 'Modifica'
+      delete: 'Elimina'
+      cancel: 'Annulla'
+      create: 'Crea'
+      update: 'Salva'
+    datetime:
+      now: 'adesso'
+      minutes:
+        one: '1 minuto fa'
+        other: '%{count} minuti fa'
+      hours:
+        one: '1 ora fa'
+        other: '%{count} ore fa'
+      days:
+        one: '1 giorno fa'
+        other: '%{count} giorni fa'
+  header:
+    menu:
+      site_settings: 'Impostazioni sito'
+      admin_panel: 'Admin panel (deprecato)'
+      profile_settings: 'Impostazioni profilo'
+      sign_out: 'Esci'
+    log_in: 'Accedi / Registrati'
+  roadmap:
+    title: 'Roadmap'
+  board:
+    new_post:
+      submit_button: 'Invia feedback'
+      cancel_button: 'Annulla'
+      login_button: 'Accedi / Registrati'
+      title: 'Titolo'
+      description: 'Descrizione (opzionale)'
+      no_title: 'Il campo titolo è obbligatorio'
+      submit_success: 'Feedback pubblicato! Sarai reindirizzato a breve...'
+      submit_error: 'Si è verificato un errore sconosciuto, riprova'
+    search_box:
+      title: 'Cerca'
+    filter_box:
+      title: 'Filtra per stato'
+    posts_list:
+      empty: 'Non ci sono post'
+  post:
+    edit_button: 'Modifica'
+    post_status_select:
+      no_post_status: 'Nessuno'
+    updates_box:
+      title: 'Aggiornamenti'
+      empty: 'Non ci sono aggiornamenti per ora'
+      status_change: 'stato cambiato in'
+    likes_box:
+      title: 'Mi piace'
+      empty: 'Non ci sono mi piace per ora'
+    action_box:
+      title: 'Azioni'
+      follow_button: 'Segui'
+      unfollow_button: 'Non seguire più'
+      following_description: 'riceverai notifiche sugli aggiornamenti di questo post'
+      not_following_description: 'non riceverai alcuna notifica riguardo questo post'
+    comments:
+      title: 'Attività'
+      post_update_badge: 'Aggiornamento'
+      reply_button: 'Rispondi'
+    new_comment:
+      body_placeholder: 'Lascia un commento'
+      submit_button: 'Invia'
+      is_post_update: 'Contrassegna come aggiornamento'
+      user_notification: 'Gli utenti che seguono questo post saranno notificati'
+      not_logged_in: 'Devi effettuare il log in per commentare'
+  site_settings:
+    menu:
+      title: 'Impostazioni sito'
+      boards: 'Bacheche'
+      post_statuses: 'Stati'
+    info_box:
+      up_to_date: 'Tutte le modifiche sono state salvate'
+      error: 'Si è verificato un errore: %{message}'
+    boards:
+      title: 'Bacheche'
+      empty: 'Non ci sono bacheche. Creane una qua sotto!'
+      new: 'Nuova'
+      form:
+        name: 'Nome bacheca'
+        description: 'Descrizione bacheca (opzionale)'
+    post_statuses:
+      title: 'Stati'
+      empty: 'Non ci sono stati. Creane uno qua sotto!'
+      new: 'Nuovo'
+      form:
+        name: 'Nome stato'
+  user_mailer:
+    opening_greeting: 'Ciao!'
+    closing_greeting: 'Buona giornata!'
+    learn_more: 'Clicca qui per saperne di più'
+    unsubscribe: 'Non vuoi più ricevere notifiche? Clicca qui'
+    notify_post_owner:
+      subject: '[%{app_name}] Nuovo commento al tuo post %{post}'
+      body: '%{user} ha commentato il tuo post %{post}'
+    notify_comment_owner:
+      subject: '[%{app_name}] Risposta al tuo commento nel post %{post}'
+      body: '%{user} ha risposto al tuo commento nel post %{post}'
+    notify_followers_of_post_update:
+      subject: '[%{app_name}] Nuovo aggiornamento per il post %{post}'
+      body: "There is a new update on the post you're following %{post}"
+    notify_followers_of_post_status_change:
+      subject: '[%{app_name}] Aggiornamento stato per il post %{post}'
+      body: "Il post che segui %{post} ha un nuovo stato"
+  backend:
+    errors:
+      unauthorized: 'Non sei autorizzato'
+      not_logged_in: "Devi effettuare l'accesso per visualizzare questa pagina"
+      not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
+      board:
+        update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
+      post_status:
+        update_order: 'Si è verificato un errore durante il riordinamento degli stati'
