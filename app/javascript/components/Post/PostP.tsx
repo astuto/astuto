@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
 import IPost from '../../interfaces/IPost';
@@ -172,7 +173,15 @@ class PostP extends React.Component<Props> {
                   />
                 </div>
             }
-            <p className="postDescription">{post.description}</p>
+            
+            <ReactMarkdown
+              className="postDescription"
+              disallowedElements={['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']}
+              unwrapDisallowed
+            >
+              {post.description}
+            </ReactMarkdown>
+            
             <MutedText>{friendlyDate(post.createdAt)}</MutedText>
           </div>
 

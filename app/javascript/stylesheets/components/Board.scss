@@ -26,6 +26,10 @@
       font-weight: 600;
     }
 
+    .boardDescription {
+      @extend .mutedText;
+    }
+
     .newPostForm {
       @extend .my-2;
     }

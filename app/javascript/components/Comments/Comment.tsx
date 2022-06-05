@@ -1,6 +1,7 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
+import ReactMarkdown from 'react-markdown';
 import Gravatar from 'react-gravatar';
+import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
 import Separator from '../shared/Separator';
@@ -60,7 +61,15 @@ const Comment = ({
           null
       }
     </div>
-    <p className="commentBody">{body}</p>
+
+    <ReactMarkdown
+      className="commentBody"
+      disallowedElements={['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']}
+      unwrapDisallowed
+    >
+      {body}
+    </ReactMarkdown>
+
     <div className="commentFooter">
       <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
         {

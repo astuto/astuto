@@ -1,9 +1,9 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import LikeButton from '../../containers/LikeButton';
 import CommentsNumber from '../shared/CommentsNumber';
 import PostStatusLabel from '../shared/PostStatusLabel';
-import { DescriptionText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 
@@ -43,7 +43,9 @@ const PostListItem = ({
 
     <div className="postContainer">
       <span className="postTitle">{title}</span>
-      <DescriptionText limit={120}>{description}</DescriptionText>
+        <ReactMarkdown className="descriptionText" allowedElements={[]} unwrapDisallowed>
+          {description?.slice(0, 120)}
+        </ReactMarkdown>
 
       <div className="postDetails">
         <CommentsNumber number={commentsCount} />

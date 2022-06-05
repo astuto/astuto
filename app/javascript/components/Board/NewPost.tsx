@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
 import NewPostForm from './NewPostForm';
@@ -145,7 +146,15 @@ class NewPost extends React.Component<Props, State> {
     return (
       <div className="newPostContainer sidebarCard">
         <span className="boardTitle">{board.name}</span>
-        <p><MutedText>{board.description}</MutedText></p>
+
+        <ReactMarkdown
+          className="boardDescription"
+          disallowedElements={['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']}
+          unwrapDisallowed
+        >
+          {board.description}
+        </ReactMarkdown>
+
         {
           isLoggedIn ?
             <Button
