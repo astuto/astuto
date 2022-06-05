@@ -65,8 +65,6 @@ It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed,
 
 Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
 * Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch.
-* You can find a [todo list](https://github.com/riggraz/astuto/projects/1) of what we would like to work on right now.
-* You should take a look at the [contribution guidelines](https://github.com/riggraz/astuto/wiki/Contribution-Guidelines).
 * You should take a look at the [technologies](https://github.com/riggraz/astuto/wiki/Technologies) used to build Astuto.
 * You can run the test suite by typing `rspec` inside the `web` container. Before you can run `rspec`, you need to uncomment the Google Chrome installation lines in `docker/app/Dockerfile` and run `./script/docker-update-and-run.sh`.
 * If you just have some suggestions you can [create an issue](https://github.com/riggraz/astuto/issues), [email us directly](mailto:riccardo.graziosi97@gmail.com) or [text us in our Discord server](https://discord.gg/SrtUMRp).
