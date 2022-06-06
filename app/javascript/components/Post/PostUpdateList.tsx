@@ -1,6 +1,7 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
+import ReactMarkdown from 'react-markdown';
 import Gravatar from 'react-gravatar';
+import I18n from 'i18n-js';
 
 import { BoxTitleText, DangerText, CenteredMutedText, MutedText } from '../shared/CustomTexts';
 import Spinner from '../shared/Spinner';
@@ -46,9 +47,15 @@ const PostUpdateList = ({
               <span>{postUpdate.userFullName}</span>
             </div>
 
-            <p className="postUpdateListItemBody">
+            <div className="postUpdateListItemBody">
               { 'body' in postUpdate ?
-                  postUpdate.body
+                  <ReactMarkdown
+                    className="postUpdateBody"
+                    disallowedTypes={['heading', 'image', 'html']}
+                    unwrapDisallowed
+                  >
+                    {postUpdate.body}
+                  </ReactMarkdown>
                 :
                   <React.Fragment>
                     <i>{I18n.t('post.updates_box.status_change')}</i>&nbsp;
@@ -57,7 +64,7 @@ const PostUpdateList = ({
                     />
                   </React.Fragment>  
               }
-            </p>
+            </div>
 
             <MutedText>{friendlyDate(postUpdate.updatedAt)}</MutedText>
           </div>

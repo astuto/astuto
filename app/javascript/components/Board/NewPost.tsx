@@ -1,10 +1,10 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
 import NewPostForm from './NewPostForm';
 import Spinner from '../shared/Spinner';
 import {
-  MutedText,
   DangerText,
   SuccessText,
 } from '../shared/CustomTexts';
@@ -145,7 +145,15 @@ class NewPost extends React.Component<Props, State> {
     return (
       <div className="newPostContainer sidebarCard">
         <span className="boardTitle">{board.name}</span>
-        <p><MutedText>{board.description}</MutedText></p>
+
+        <ReactMarkdown
+          className="boardDescription"
+          disallowedTypes={['heading', 'image', 'html']}
+          unwrapDisallowed
+        >
+          {board.description}
+        </ReactMarkdown>
+
         {
           isLoggedIn ?
             <Button

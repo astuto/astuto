@@ -66,7 +66,7 @@
 
   .comment {
     @extend
-      .my-3;
+      .my-4;
 
     .commentHeader {
       @extend .titleText;
@@ -86,7 +86,9 @@
     }
 
     .commentBody {
-      @extend .my-1;
+      @extend .my-2;
+
+      p { @extend .m-0; }
     }
 
     .commentFooter {
