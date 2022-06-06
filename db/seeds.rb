@@ -10,7 +10,7 @@ admin = User.create(
 # Create some boards
 feature_board = Board.create(
   name: 'Feature Requests',
-  description: 'Let us know about new features you would like to see in our product!',
+  description: 'This is a **board**! You can create as many as you want from **site settings** and they can be *Markdown formatted*.',
   order: 0
 )
 bug_board = Board.create(

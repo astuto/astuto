@@ -5,7 +5,6 @@ import I18n from 'i18n-js';
 import NewPostForm from './NewPostForm';
 import Spinner from '../shared/Spinner';
 import {
-  MutedText,
   DangerText,
   SuccessText,
 } from '../shared/CustomTexts';
@@ -149,7 +148,7 @@ class NewPost extends React.Component<Props, State> {
 
         <ReactMarkdown
           className="boardDescription"
-          disallowedElements={['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']}
+          disallowedTypes={['heading', 'image', 'html']}
           unwrapDisallowed
         >
           {board.description}

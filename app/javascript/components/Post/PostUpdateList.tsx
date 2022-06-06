@@ -47,11 +47,11 @@ const PostUpdateList = ({
               <span>{postUpdate.userFullName}</span>
             </div>
 
-            <p className="postUpdateListItemBody">
+            <div className="postUpdateListItemBody">
               { 'body' in postUpdate ?
                   <ReactMarkdown
                     className="postUpdateBody"
-                    disallowedElements={['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']}
+                    disallowedTypes={['heading', 'image', 'html']}
                     unwrapDisallowed
                   >
                     {postUpdate.body}
@@ -64,7 +64,7 @@ const PostUpdateList = ({
                     />
                   </React.Fragment>  
               }
-            </p>
+            </div>
 
             <MutedText>{friendlyDate(postUpdate.updatedAt)}</MutedText>
           </div>
