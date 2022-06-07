@@ -16,6 +16,7 @@ import PostBoardLabel from '../shared/PostBoardLabel';
 import PostStatusLabel from '../shared/PostStatusLabel';
 import Comments from '../../containers/Comments';
 import { MutedText } from '../shared/CustomTexts';
+import Sidebar from '../shared/Sidebar';
 
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
@@ -101,8 +102,8 @@ class PostP extends React.Component<Props> {
     );
 
     return (
-      <div className="pageContainer">
-        <div className="sidebar">
+      <div className="postContainer">
+        <Sidebar>
           <PostUpdateList
             postUpdates={postUpdates}
             postStatuses={postStatuses}
@@ -122,10 +123,10 @@ class PostP extends React.Component<Props> {
 
             isLoggedIn={isLoggedIn}
           />
-        </div>
+        </Sidebar>
 
         <div className="postAndCommentsContainer">
-          <div className="postContainer">
+          <>
             <div className="postHeader">
             <LikeButton
               postId={post.id}
@@ -183,7 +184,7 @@ class PostP extends React.Component<Props> {
             </ReactMarkdown>
             
             <MutedText>{friendlyDate(post.createdAt)}</MutedText>
-          </div>
+          </>
 
           <Comments
             postId={this.props.postId}

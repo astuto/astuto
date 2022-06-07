@@ -1,14 +1,7 @@
 .boardContainer {
-  @extend
-    .d-flex,
-    .justify-content-between,
-    .align-items-start;
-
-  flex-direction: row;
+  @extend .multiColumnContainer;
 
   @include media-breakpoint-down(sm) {
-    flex-direction: column;
-
     .postStatusFilterContainer {
       flex-direction: row !important;
       flex-wrap: wrap;

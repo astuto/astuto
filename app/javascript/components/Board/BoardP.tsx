@@ -4,6 +4,7 @@ import NewPost from './NewPost';
 import SearchFilter from './SearchFilter';
 import PostStatusFilter from './PostStatusFilter';
 import PostList from './PostList';
+import Sidebar from '../shared/Sidebar';
 
 import IBoard from '../../interfaces/IBoard';
 
@@ -74,7 +75,7 @@ class BoardP extends React.Component<Props> {
 
     return (
       <div className="boardContainer">
-        <div className="sidebar">
+        <Sidebar>
           <NewPost
             board={board}
             isLoggedIn={isLoggedIn}
@@ -92,7 +93,7 @@ class BoardP extends React.Component<Props> {
             currentFilter={filters.postStatusId}
             handleFilterClick={handlePostStatusFilterChange}
           />
-        </div>
+        </Sidebar>
 
         <PostList
           posts={posts.items}

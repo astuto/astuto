@@ -37,8 +37,6 @@ a {
 
   @include media-breakpoint-down(sm) {
     flex-direction: column;
-
-    .postAndCommentsContainer { width: 100%; }
   }
 }
 
@@ -60,7 +58,7 @@ a {
   position: sticky;
   top: 79px;
 
-  .sidebarCard {
+  .sidebarBox {
     @extend
       .card,
       .d-flex,
@@ -116,7 +114,7 @@ a {
     width: 100%;
     top: 0;
 
-    .sidebarCard { width: 100%; }
+    .sidebarBox { width: 100%; }
   }
 }
 

@@ -3,9 +3,10 @@ import I18n from 'i18n-js';
 
 import PostStatusListItem from './PostStatusListItem';
 import Spinner from '../shared/Spinner';
-import { BoxTitleText, DangerText } from '../shared/CustomTexts';
+import { DangerText } from '../shared/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
+import SidebarBox from '../shared/SidebarBox';
 
 interface Props {
   postStatuses: Array<IPostStatus>;
@@ -24,8 +25,7 @@ const PostStatusFilter = ({
   handleFilterClick,
   currentFilter,
 }: Props) => (
-  <div className="postStatusFilterContainer sidebarCard">
-    <BoxTitleText>{I18n.t('board.filter_box.title')}</BoxTitleText>
+  <SidebarBox title={I18n.t('board.filter_box.title')} customClass="postStatusFilterContainer">
     {
       postStatuses.map((postStatus, i) => (
         <PostStatusListItem
@@ -42,7 +42,7 @@ const PostStatusFilter = ({
     }
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
-  </div>
+  </SidebarBox>
 );
 
 export default PostStatusFilter;
