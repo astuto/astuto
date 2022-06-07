@@ -140,3 +140,26 @@
 .gravatar {
   border-radius: 100%;
 }
+
+.checkboxSwitch {
+  @extend 
+    .custom-control,
+    .custom-switch;
+
+  & > input[type="checkbox"] {
+    @extend .custom-control-input;
+  }
+
+  & > label {
+    @extend .custom-control-label;
+
+    &::before {
+      transform: scale(1.2);
+    }
+  }
+
+  & > input:checked ~ label::before {
+    background-color: $astuto-black !important;
+    border-color: $astuto-black !important;
+  }
+}
