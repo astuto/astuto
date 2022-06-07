@@ -58,8 +58,6 @@
     position: relative;
     width: 100%;
     top: 0;
-
-    .sidebarBox { width: 100%; }
   }
 
   .sidebarBox {
@@ -76,6 +74,10 @@
 
     width: 280px;
     margin-right: 16px;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
   }
 }
 
