@@ -11,7 +11,7 @@ RSpec.describe 'header', type: :view do
   it 'renders a logo' do
     render_header
 
-    expect(rendered).to have_selector('.navbar-brand')
+    expect(rendered).to have_selector('.brand')
   end
 
   it 'renders a link for each board' do
