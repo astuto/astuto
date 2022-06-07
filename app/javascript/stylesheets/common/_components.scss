@@ -1,9 +1,3 @@
-a {
-  color: $astuto-black;
-
-  &:hover { color: inherit; }
-}
-
 .card {
   @extend .card;
 
@@ -60,6 +54,14 @@ a {
   position: sticky;
   top: 79px;
 
+  @include media-breakpoint-down(sm) {
+    position: relative;
+    width: 100%;
+    top: 0;
+
+    .sidebarBox { width: 100%; }
+  }
+
   .sidebarBox {
     @extend
       .card,
@@ -85,6 +87,8 @@ a {
     .text-center,
     .align-self-stretch;
 
+  a { color: $astuto-black; }
+
   .nav-link.active {
     background-color: $astuto-black;
   }
@@ -109,17 +113,6 @@ a {
   &:active { cursor: grabbing; }
 }
 
-
-@include media-breakpoint-down(sm) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    top: 0;
-
-    .sidebarBox { width: 100%; }
-  }
-}
-
 .badge {
   @extend
     .badge,
@@ -133,4 +126,17 @@ a {
   @extend .badge-light;
 
   background-color: $astuto-grey;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.turbolinks-progress-bar {
+  background-color: $astuto-black;
+  height: 2px;
+}
+
+.gravatar {
+  border-radius: 100%;
 }
