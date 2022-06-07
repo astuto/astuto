@@ -1,7 +1,7 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 
-import Button from '../../shared/Button';
+import Button from '../../common/Button';
 
 import padStart from '../../../helpers/padStart';
 

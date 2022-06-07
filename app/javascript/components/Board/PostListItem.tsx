@@ -2,8 +2,8 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import LikeButton from '../../containers/LikeButton';
-import CommentsNumber from '../shared/CommentsNumber';
-import PostStatusLabel from '../shared/PostStatusLabel';
+import CommentsNumber from '../common/CommentsNumber';
+import PostStatusLabel from '../common/PostStatusLabel';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 

@@ -3,16 +3,16 @@ import ReactMarkdown from 'react-markdown';
 import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
-import { DangerText, CenteredMutedText, MutedText } from '../shared/CustomTexts';
-import Spinner from '../shared/Spinner';
+import { DangerText, CenteredMutedText, MutedText } from '../common/CustomTexts';
+import Spinner from '../common/Spinner';
 
 import IComment from '../../interfaces/IComment';
 import IPostStatusChange from '../../interfaces/IPostStatusChange';
 import IPostStatus from '../../interfaces/IPostStatus';
 
 import friendlyDate from '../../helpers/datetime';
-import PostStatusLabel from '../shared/PostStatusLabel';
-import SidebarBox from '../shared/SidebarBox';
+import PostStatusLabel from '../common/PostStatusLabel';
+import SidebarBox from '../common/SidebarBox';
 
 interface Props {
   postUpdates: Array<IComment | IPostStatusChange>;

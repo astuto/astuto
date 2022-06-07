@@ -2,11 +2,11 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import PostStatusListItem from './PostStatusListItem';
-import Spinner from '../shared/Spinner';
-import { DangerText } from '../shared/CustomTexts';
+import Spinner from '../common/Spinner';
+import { DangerText } from '../common/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
-import SidebarBox from '../shared/SidebarBox';
+import SidebarBox from '../common/SidebarBox';
 
 interface Props {
   postStatuses: Array<IPostStatus>;

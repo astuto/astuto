@@ -5,10 +5,10 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import BoardEditable from './BoardEditable';
 import BoardForm from './BoardForm';
-import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
-import Spinner from '../../shared/Spinner';
+import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
+import Spinner from '../../common/Spinner';
 import { BoardsState } from '../../../reducers/boardsReducer';
-import { CenteredMutedText } from '../../shared/CustomTexts';
+import { CenteredMutedText } from '../../common/CustomTexts';
 import IBoard from '../../../interfaces/IBoard';
 
 interface Props {

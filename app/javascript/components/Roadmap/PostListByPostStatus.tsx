@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import PostList from './PostList';
-import { TitleText } from '../shared/CustomTexts';
+import { TitleText } from '../common/CustomTexts';
 
 import IPostStatus from '../../interfaces/IPostStatus';
 import IPostJSON from '../../interfaces/json/IPost';

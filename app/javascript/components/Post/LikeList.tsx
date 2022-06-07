@@ -3,12 +3,12 @@ import I18n from 'i18n-js';
 import Gravatar from 'react-gravatar';
 
 import ILike from '../../interfaces/ILike';
-import Spinner from '../shared/Spinner';
-import SidebarBox from '../shared/SidebarBox';
+import Spinner from '../common/Spinner';
+import SidebarBox from '../common/SidebarBox';
 import {
   DangerText,
   CenteredMutedText
-} from '../shared/CustomTexts';
+} from '../common/CustomTexts';
 
 interface Props {
   likes: Array<ILike>;

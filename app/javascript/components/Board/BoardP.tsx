@@ -4,7 +4,7 @@ import NewPost from './NewPost';
 import SearchFilter from './SearchFilter';
 import PostStatusFilter from './PostStatusFilter';
 import PostList from './PostList';
-import Sidebar from '../shared/Sidebar';
+import Sidebar from '../common/Sidebar';
 
 import IBoard from '../../interfaces/IBoard';
 

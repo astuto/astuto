@@ -4,8 +4,8 @@ import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
-import Separator from '../shared/Separator';
-import { MutedText } from '../shared/CustomTexts';
+import Separator from '../common/Separator';
+import { MutedText } from '../common/CustomTexts';
 
 import { ReplyFormState } from '../../reducers/replyFormReducer';
 

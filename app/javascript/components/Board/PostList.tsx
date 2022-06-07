@@ -3,11 +3,11 @@ import I18n from 'i18n-js';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import PostListItem from './PostListItem';
-import Spinner from '../shared/Spinner';
+import Spinner from '../common/Spinner';
 import {
   DangerText,
   CenteredMutedText,
-} from '../shared/CustomTexts';
+} from '../common/CustomTexts';
 
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';

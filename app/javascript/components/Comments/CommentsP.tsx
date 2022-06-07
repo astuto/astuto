@@ -3,12 +3,12 @@ import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
 import CommentList from './CommentList';
-import Spinner from '../shared/Spinner';
-import { DangerText } from '../shared/CustomTexts';
+import Spinner from '../common/Spinner';
+import { DangerText } from '../common/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
-import Separator from '../shared/Separator';
+import Separator from '../common/Separator';
 
 interface Props {
   postId: number;

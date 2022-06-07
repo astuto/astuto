@@ -5,11 +5,11 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import IPostStatus from '../../../interfaces/IPostStatus';
 
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
-import { CenteredMutedText } from '../../shared/CustomTexts';
-import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
+import { CenteredMutedText } from '../../common/CustomTexts';
+import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import PostStatusForm from './PostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
-import Spinner from '../../shared/Spinner';
+import Spinner from '../../common/Spinner';
 
 interface Props {
   authenticityToken: string;

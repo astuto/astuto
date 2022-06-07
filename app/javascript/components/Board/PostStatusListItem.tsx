@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import PostStatusLabel from '../shared/PostStatusLabel';
-import Button from '../shared/Button';
+import PostStatusLabel from '../common/PostStatusLabel';
+import Button from '../common/Button';
 
 interface Props {
   name: string;
