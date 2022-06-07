@@ -1,5 +1,5 @@
 .postContainer {
-  @extend .multiColumnContainer;
+  @extend .twoColumnsContainer;
 
   @include media-breakpoint-down(sm) {
     flex-direction: column;

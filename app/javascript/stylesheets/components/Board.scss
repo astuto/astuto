@@ -1,5 +1,5 @@
 .boardContainer {
-  @extend .multiColumnContainer;
+  @extend .twoColumnsContainer;
 
   @include media-breakpoint-down(sm) {
     .postStatusFilterContainer {

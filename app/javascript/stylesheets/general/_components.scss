@@ -27,7 +27,8 @@ a {
   }
 }
 
-.multiColumnContainer {
+// General container for pages with siderbar + main content
+.twoColumnsContainer {
   @extend
     .d-flex,
     .justify-content-between,
@@ -38,15 +39,16 @@ a {
   @include media-breakpoint-down(sm) {
     flex-direction: column;
   }
+
+  // Make the main content full width
+  & > div:nth-child(2) {
+    @extend
+      .flex-grow-1,
+      .w-100;
+  }
 }
 
-.multiRowContent {
-  @extend
-    .flex-grow-1,
-    .w-100;
-}
-
-.content {
+.box {
   @extend
     .card,
     .flex-grow-1,
