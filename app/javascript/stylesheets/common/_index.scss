@@ -4,7 +4,7 @@
   box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 1px 1px rgba(0,0,0,0.15);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
-  color: $astuto-black;
+  color: $primary-color;
 
   padding: 8px;
 }
@@ -87,10 +87,18 @@
     .text-center,
     .align-self-stretch;
 
-  a { color: $astuto-black; }
+  a {
+    color: $astuto-grey;
+    font-weight: 500;
+
+    &:hover {
+      color: $astuto-black;
+    }
+  }
 
   .nav-link.active {
-    background-color: $astuto-black;
+    color: $astuto-black;
+    background-color: $astuto-light-grey;
   }
 }
 
@@ -125,7 +133,7 @@
 .badgeLight {
   @extend .badge-light;
 
-  background-color: $astuto-grey;
+  background-color: $astuto-light-grey;
 }
 
 .container {
@@ -133,7 +141,7 @@
 }
 
 .turbolinks-progress-bar {
-  background-color: $astuto-black;
+  background-color: $primary-color;
   height: 2px;
 }
 
@@ -159,7 +167,7 @@
   }
 
   & > input:checked ~ label::before {
-    background-color: $astuto-black !important;
-    border-color: $astuto-black !important;
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
   }
 }
