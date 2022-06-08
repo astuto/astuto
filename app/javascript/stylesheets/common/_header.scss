@@ -34,6 +34,14 @@
     }
   }
 
+  .navbarToggler {
+    @extend .navbar-toggler;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   .boardsNav {
     @extend
       .navbar-nav,
@@ -50,10 +58,6 @@
 
     .nav-item.active {
       @extend .badgeLight;
-    }
-
-    @include media-breakpoint-down(sm) {
-      flex-direction: row;
     }
   }
 

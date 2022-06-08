@@ -9,36 +9,50 @@
       end
     %>
 
-    <ul class="boardsNav">
-      <%= render 'layouts/boards_nav_section', boards: @boards unless @boards.nil? %>
-    </ul>
+    <button
+      class="navbarToggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <ul class="profileNav">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
-            <span class="fullname"><%= current_user.full_name %></span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <% if current_user.power_user? %>
-              <%= link_to t('header.menu.site_settings'), site_settings_boards_path, class: 'dropdown-item' %>
-              <%= link_to t('header.menu.admin_panel'), admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="boardsNav">
+        <%= render 'layouts/boards_nav_section', boards: @boards unless @boards.nil? %>
+      </ul>
+
+      <ul class="profileNav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
+              <span class="fullname"><%= current_user.full_name %></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if current_user.power_user? %>
+                <%= link_to t('header.menu.site_settings'), site_settings_boards_path, class: 'dropdown-item' %>
+                <%= link_to t('header.menu.admin_panel'), admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
+                <div class="dropdown-divider"></div>
+              <% end %>
+
+              <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
+
               <div class="dropdown-divider"></div>
-            <% end %>
 
-            <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
-
-            <div class="dropdown-divider"></div>
-
-            <%= link_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to t('header.log_in'), new_user_session_path, class: 'nav-link' %>
-        </li>
-      <% end %>
-    </ul>
+              <%= link_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to t('header.log_in'), new_user_session_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
