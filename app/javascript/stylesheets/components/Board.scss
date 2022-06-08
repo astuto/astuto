@@ -1,14 +1,7 @@
 .boardContainer {
-  @extend
-    .d-flex,
-    .justify-content-between,
-    .align-items-start;
-
-  flex-direction: row;
+  @extend .twoColumnsContainer;
 
   @include media-breakpoint-down(sm) {
-    flex-direction: column;
-
     .postStatusFilterContainer {
       flex-direction: row !important;
       flex-wrap: wrap;
@@ -18,7 +11,7 @@
   }
 
   .newPostContainer {
-    background-color: $astuto-grey;
+    background-color: $astuto-light-grey;
     text-align: center;
 
     .boardTitle {
@@ -91,7 +84,7 @@
       .p-3;
 
     height: 140px;
-    color: $astuto-black;
+    color: $primary-color;
 
     @include media-breakpoint-down(sm) {
       height: auto;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 
-import { MutedText } from '../shared/CustomTexts';
+import { MutedText } from '../common/CustomTexts';
 
 interface Props {
   postUpdateFlagValue: boolean;

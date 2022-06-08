@@ -85,8 +85,7 @@ it:
       empty: 'Non ci sono mi piace per ora'
     action_box:
       title: 'Azioni'
-      follow_button: 'Segui'
-      unfollow_button: 'Non seguire più'
+      follow_button: 'Segui post'
       following_description: 'riceverai notifiche sugli aggiornamenti di questo post'
       not_following_description: 'non riceverai alcuna notifica riguardo questo post'
     comments:

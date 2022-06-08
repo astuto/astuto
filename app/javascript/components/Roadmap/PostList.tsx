@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import PostListItem from './PostListItem';
-import { CenteredMutedText } from '../shared/CustomTexts';
+import { CenteredMutedText } from '../common/CustomTexts';
 
 import IPostJSON from '../../interfaces/json/IPost';
 import IBoard from '../../interfaces/IBoard';

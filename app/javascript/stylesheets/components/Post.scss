@@ -1,10 +1,5 @@
-.pageContainer {
-  @extend
-    .d-flex,
-    .justify-content-between,
-    .align-items-start;
-
-  flex-direction: row;
+.postContainer {
+  @extend .twoColumnsContainer;
 
   @include media-breakpoint-down(sm) {
     flex-direction: column;
@@ -14,8 +9,6 @@
 
   .sidebar {
     .postUpdateListContainer {
-      @extend .sidebarCard;
-
       .postUpdateList {
         @extend
           .scroll-shadows,
@@ -63,8 +56,6 @@
     }
 
     .likeListContainer {
-      @extend .sidebarCard;
-
       .likeList {
         @extend
           .scroll-shadows,
@@ -86,14 +77,12 @@
     }
 
     .actionBoxContainer {
-      @extend
-        .sidebarCard,
-        .text-center;
+      @extend .text-center;
 
-      .btn {
+      .checkboxSwitch {
         @extend
-          .mt-3,
-          .mb-1;
+          .mt-1,
+          .mb-2;
       }
     }
   }
@@ -141,7 +130,7 @@
       @extend
         .my-3;
 
-      color: $astuto-black;
+      color: $primary-color;
     }
   }
 }

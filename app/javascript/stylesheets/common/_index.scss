@@ -1,16 +1,10 @@
-a {
-  color: $astuto-black;
-
-  &:hover { color: inherit; }
-}
-
 .card {
   @extend .card;
 
   box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 1px 1px rgba(0,0,0,0.15);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
-  color: $astuto-black;
+  color: $primary-color;
 
   padding: 8px;
 }
@@ -27,7 +21,8 @@ a {
   }
 }
 
-.multiColumnContainer {
+// General container for pages with siderbar + main content
+.twoColumnsContainer {
   @extend
     .d-flex,
     .justify-content-between,
@@ -37,18 +32,17 @@ a {
 
   @include media-breakpoint-down(sm) {
     flex-direction: column;
+  }
 
-    .postAndCommentsContainer { width: 100%; }
+  // Make the main content full width
+  & > div:nth-child(2) {
+    @extend
+      .flex-grow-1,
+      .w-100;
   }
 }
 
-.multiRowContent {
-  @extend
-    .flex-grow-1,
-    .w-100;
-}
-
-.content {
+.box {
   @extend
     .card,
     .flex-grow-1,
@@ -60,7 +54,13 @@ a {
   position: sticky;
   top: 79px;
 
-  .sidebarCard {
+  @include media-breakpoint-down(sm) {
+    position: relative;
+    width: 100%;
+    top: 0;
+  }
+
+  .sidebarBox {
     @extend
       .card,
       .d-flex,
@@ -74,6 +74,10 @@ a {
 
     width: 280px;
     margin-right: 16px;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
   }
 }
 
@@ -85,8 +89,18 @@ a {
     .text-center,
     .align-self-stretch;
 
+  a {
+    color: $astuto-grey;
+    font-weight: 500;
+
+    &:hover {
+      color: $astuto-black;
+    }
+  }
+
   .nav-link.active {
-    background-color: $astuto-black;
+    color: $astuto-black;
+    background-color: $astuto-light-grey;
   }
 }
 
@@ -109,17 +123,6 @@ a {
   &:active { cursor: grabbing; }
 }
 
-
-@include media-breakpoint-down(sm) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    top: 0;
-
-    .sidebarCard { width: 100%; }
-  }
-}
-
 .badge {
   @extend
     .badge,
@@ -132,5 +135,41 @@ a {
 .badgeLight {
   @extend .badge-light;
 
-  background-color: $astuto-grey;
+  background-color: $astuto-light-grey;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.turbolinks-progress-bar {
+  background-color: $primary-color;
+  height: 2px;
+}
+
+.gravatar {
+  border-radius: 100%;
+}
+
+.checkboxSwitch {
+  @extend 
+    .custom-control,
+    .custom-switch;
+
+  & > input[type="checkbox"] {
+    @extend .custom-control-input;
+  }
+
+  & > label {
+    @extend .custom-control-label;
+
+    &::before {
+      transform: scale(1.2);
+    }
+  }
+
+  & > input:checked ~ label::before {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
 }

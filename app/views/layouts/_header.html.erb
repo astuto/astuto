@@ -1,26 +1,35 @@
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="header">
   <div class="container">
     <%=
-      link_to root_path, class: 'navbar-brand' do
+      link_to root_path, class: 'brand' do
         app_name = content_tag :span, Rails.application.name
         logo = image_tag(asset_pack_path('media/images/logo.png'), class: 'logo')
 
         Rails.application.show_logo? ? logo + app_name : app_name
       end
     %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button
+      class="navbarToggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="boardsNav navbar-nav mr-auto">
-        <%= render 'layouts/boards_menu_section', boards: @boards unless @boards.nil? %>
+      <ul class="boardsNav">
+        <%= render 'layouts/boards_nav_section', boards: @boards unless @boards.nil? %>
       </ul>
-      <ul class="navbar-nav ml-auto">
+
+      <ul class="profileNav">
         <% if user_signed_in? %>
-          
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
               <span class="fullname"><%= current_user.full_name %></span>
             </a>
@@ -30,8 +39,11 @@
                 <%= link_to t('header.menu.admin_panel'), admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
                 <div class="dropdown-divider"></div>
               <% end %>
+
               <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
+
               <div class="dropdown-divider"></div>
+
               <%= link_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>

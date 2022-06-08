@@ -12,10 +12,11 @@ import ActionBox from './ActionBox';
 import LikeButton from '../../containers/LikeButton';
 import PostBoardSelect from './PostBoardSelect';
 import PostStatusSelect from './PostStatusSelect';
-import PostBoardLabel from '../shared/PostBoardLabel';
-import PostStatusLabel from '../shared/PostStatusLabel';
+import PostBoardLabel from '../common/PostBoardLabel';
+import PostStatusLabel from '../common/PostStatusLabel';
 import Comments from '../../containers/Comments';
-import { MutedText } from '../shared/CustomTexts';
+import { MutedText } from '../common/CustomTexts';
+import Sidebar from '../common/Sidebar';
 
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
@@ -101,8 +102,8 @@ class PostP extends React.Component<Props> {
     );
 
     return (
-      <div className="pageContainer">
-        <div className="sidebar">
+      <div className="postContainer">
+        <Sidebar>
           <PostUpdateList
             postUpdates={postUpdates}
             postStatuses={postStatuses}
@@ -122,10 +123,10 @@ class PostP extends React.Component<Props> {
 
             isLoggedIn={isLoggedIn}
           />
-        </div>
+        </Sidebar>
 
         <div className="postAndCommentsContainer">
-          <div className="postContainer">
+          <>
             <div className="postHeader">
             <LikeButton
               postId={post.id}
@@ -183,7 +184,7 @@ class PostP extends React.Component<Props> {
             </ReactMarkdown>
             
             <MutedText>{friendlyDate(post.createdAt)}</MutedText>
-          </div>
+          </>
 
           <Comments
             postId={this.props.postId}

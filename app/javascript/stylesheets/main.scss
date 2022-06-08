@@ -2,11 +2,11 @@
 
 @import 'constants/colors';
 
-@import 'general/components';
-@import 'general/custom_texts';
-@import 'general/form';
-@import 'general/header';
-@import 'general/index';
+@import 'common/index';
+@import 'common/custom_texts';
+@import 'common/form';
+@import 'common/header';
+@import 'common/scroll_shadows';
 
 /* Components */
 @import 'components/Board';

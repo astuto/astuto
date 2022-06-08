@@ -3,12 +3,12 @@ import I18n from 'i18n-js';
 import Gravatar from 'react-gravatar';
 
 import ILike from '../../interfaces/ILike';
-import Spinner from '../shared/Spinner';
+import Spinner from '../common/Spinner';
+import SidebarBox from '../common/SidebarBox';
 import {
-  BoxTitleText,
   DangerText,
   CenteredMutedText
-} from '../shared/CustomTexts';
+} from '../common/CustomTexts';
 
 interface Props {
   likes: Array<ILike>;
@@ -17,9 +17,7 @@ interface Props {
 }
 
 const LikeList = ({ likes, areLoading, error}: Props) => (
-  <div className="likeListContainer">
-    <BoxTitleText>{I18n.t('post.likes_box.title')}</BoxTitleText>
-
+  <SidebarBox title={I18n.t('post.likes_box.title')} customClass="likeListContainer">
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
 
@@ -34,7 +32,7 @@ const LikeList = ({ likes, areLoading, error}: Props) => (
         ))
       }
     </div>
-  </div>
+  </SidebarBox>
 );
 
 export default LikeList;

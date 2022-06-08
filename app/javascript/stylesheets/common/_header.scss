@@ -1,4 +1,9 @@
-.navbar {
+.header {
+  @extend
+    .navbar,
+    .navbar-expand-md,
+    .navbar-light;
+
   position: sticky;
   z-index: 1;
   top: 0px;
@@ -13,7 +18,9 @@
 
   margin-bottom: 1em;
 
-  .navbar-brand {
+  .brand {
+    @extend .navbar-brand;
+
     font-size: 18pt;
     font-weight: 700;
 
@@ -27,7 +34,19 @@
     }
   }
 
+  .navbarToggler {
+    @extend .navbar-toggler;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   .boardsNav {
+    @extend
+      .navbar-nav,
+      .mr-auto;
+
     .nav-item {
       @extend
         .badge,
@@ -42,25 +61,26 @@
     }
   }
 
-  .fullname {
-    vertical-align: middle;
+  .profileNav {
+    @extend
+      .navbar-nav,
+      .ml-auto;
 
-    color: $astuto-black;
-  }
+    .profileToggle {
+      @extend
+        .nav-link,
+        .dropdown-toggle;
 
-  .dropdown-toggle::after {
-    vertical-align: middle;
-  }
+      &::after { vertical-align: middle; }
+    }
 
-  .navbar-toggler:focus {
-    outline: none;
-  }
-
-  .navbar-toggler[aria-expanded="true"] {
-    background-color: $astuto-grey;
+    .fullname {
+      color: $astuto-black;
+      vertical-align: middle;
+    }
   }
 
   .dropdown-item:active {
-    background-color: $astuto-black;
+    background-color: $primary-color;
   }
 }

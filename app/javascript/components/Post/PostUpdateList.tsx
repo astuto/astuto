@@ -3,15 +3,16 @@ import ReactMarkdown from 'react-markdown';
 import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
-import { BoxTitleText, DangerText, CenteredMutedText, MutedText } from '../shared/CustomTexts';
-import Spinner from '../shared/Spinner';
+import { DangerText, CenteredMutedText, MutedText } from '../common/CustomTexts';
+import Spinner from '../common/Spinner';
 
 import IComment from '../../interfaces/IComment';
 import IPostStatusChange from '../../interfaces/IPostStatusChange';
 import IPostStatus from '../../interfaces/IPostStatus';
 
 import friendlyDate from '../../helpers/datetime';
-import PostStatusLabel from '../shared/PostStatusLabel';
+import PostStatusLabel from '../common/PostStatusLabel';
+import SidebarBox from '../common/SidebarBox';
 
 interface Props {
   postUpdates: Array<IComment | IPostStatusChange>;
@@ -26,9 +27,7 @@ const PostUpdateList = ({
   areLoading,
   error,
 }: Props) => (
-  <div className="postUpdateListContainer">
-    <BoxTitleText>{I18n.t('post.updates_box.title')}</BoxTitleText>
-
+  <SidebarBox title={I18n.t('post.updates_box.title')} customClass="postUpdateListContainer">
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
 
@@ -71,7 +70,7 @@ const PostUpdateList = ({
         ))
       }
     </div>
-  </div>
+  </SidebarBox>
 );
 
 export default PostUpdateList;

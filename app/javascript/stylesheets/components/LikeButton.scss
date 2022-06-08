@@ -15,13 +15,13 @@
     border-bottom: $like_button_size solid rgba(35,35,35,.2);
 
     &:hover {
-      border-bottom-color: $astuto-black;
+      border-bottom-color: $primary-color;
       cursor: pointer;
     }
   }
 
   .likeButton.liked {
-    border-bottom-color: $astuto-black;
+    border-bottom-color: $primary-color;
   }
 
   .likesCountLabel {

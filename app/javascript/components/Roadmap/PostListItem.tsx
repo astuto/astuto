@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TitleText, UppercaseText } from '../shared/CustomTexts';
+import { TitleText, UppercaseText } from '../common/CustomTexts';
 
 interface Props {
   id: number;

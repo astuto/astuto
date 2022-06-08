@@ -1,14 +1,15 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
-
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import BoardEditable from './BoardEditable';
 import BoardForm from './BoardForm';
-import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
-import Spinner from '../../shared/Spinner';
+import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
+import Spinner from '../../common/Spinner';
+import Box from '../../common/Box';
+import { CenteredMutedText } from '../../common/CustomTexts';
+
 import { BoardsState } from '../../../reducers/boardsReducer';
-import { CenteredMutedText } from '../../shared/CustomTexts';
 import IBoard from '../../../interfaces/IBoard';
 
 interface Props {
@@ -89,8 +90,8 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     } = this.props;
 
     return (
-      <React.Fragment>
-        <div className="content">
+      <>
+        <Box>
           <h2>{I18n.t('site_settings.boards.title')}</h2>
 
           {
@@ -124,16 +125,16 @@ class BoardsSiteSettingsP extends React.Component<Props> {
             :
               <CenteredMutedText>{I18n.t('site_settings.boards.empty')}</CenteredMutedText>
           }
-        </div>
+        </Box>
 
-        <div className="content">
+        <Box>
           <h2>{I18n.t('site_settings.boards.new')}</h2>
 
           <BoardForm mode='create' handleSubmit={this.handleSubmit} />
-        </div>
+        </Box>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || boards.areLoading} error={settingsError} />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -2,11 +2,11 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import { Draggable } from 'react-beautiful-dnd';
-import { DescriptionText } from '../../shared/CustomTexts';
+import { DescriptionText } from '../../common/CustomTexts';
 
-import DragZone from '../../shared/DragZone';
-import PostBoardLabel from '../../shared/PostBoardLabel';
-import Separator from '../../shared/Separator';
+import DragZone from '../../common/DragZone';
+import PostBoardLabel from '../../common/PostBoardLabel';
+import Separator from '../../common/Separator';
 import BoardForm from './BoardForm';
 
 interface Props {

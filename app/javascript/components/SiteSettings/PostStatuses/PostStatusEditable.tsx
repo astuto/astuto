@@ -3,9 +3,9 @@ import I18n from 'i18n-js';
 
 import { Draggable } from 'react-beautiful-dnd';
 
-import PostStatusLabel from "../../shared/PostStatusLabel";
-import DragZone from '../../shared/DragZone';
-import Separator from '../../shared/Separator';
+import PostStatusLabel from "../../common/PostStatusLabel";
+import DragZone from '../../common/DragZone';
+import Separator from '../../common/Separator';
 import PostStatusForm from './PostStatusForm';
 
 interface Props {

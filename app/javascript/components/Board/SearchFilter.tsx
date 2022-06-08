@@ -1,7 +1,7 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 
-import { BoxTitleText } from '../shared/CustomTexts';
+import SidebarBox from '../common/SidebarBox';
 
 interface Props {
   searchQuery: string;
@@ -9,9 +9,7 @@ interface Props {
 }
 
 const SearchFilter = ({ searchQuery, handleChange }: Props) => (
-  <div className="sidebarCard">
-    <BoxTitleText>{I18n.t('board.search_box.title')}</BoxTitleText>
-
+  <SidebarBox title={I18n.t('board.search_box.title')}>
     <input
       type="search"
       value={searchQuery}
@@ -19,7 +17,7 @@ const SearchFilter = ({ searchQuery, handleChange }: Props) => (
       id="searchPostInput"
       className="form-control"
     />
-  </div>
+  </SidebarBox>
 );
 
 export default SearchFilter;

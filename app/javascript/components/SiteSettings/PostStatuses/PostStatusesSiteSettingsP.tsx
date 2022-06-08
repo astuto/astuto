@@ -5,11 +5,12 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import IPostStatus from '../../../interfaces/IPostStatus';
 
 import { PostStatusesState } from "../../../reducers/postStatusesReducer";
-import { CenteredMutedText } from '../../shared/CustomTexts';
-import SiteSettingsInfoBox from '../../shared/SiteSettingsInfoBox';
+import { CenteredMutedText } from '../../common/CustomTexts';
+import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import PostStatusForm from './PostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
-import Spinner from '../../shared/Spinner';
+import Spinner from '../../common/Spinner';
+import Box from '../../common/Box';
 
 interface Props {
   authenticityToken: string;
@@ -84,8 +85,8 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
     const { postStatuses, settingsAreUpdating, settingsError } = this.props;
     
     return (
-      <React.Fragment>
-        <div className="content">
+      <>
+        <Box>
           <h2>{I18n.t('site_settings.post_statuses.title')}</h2>
 
           {
@@ -119,16 +120,16 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
             :
               <CenteredMutedText>{I18n.t('site_settings.post_statuses.empty')}</CenteredMutedText>
           }
-        </div>
+        </Box>
 
-        <div className="content">
+        <Box>
           <h2>{I18n.t('site_settings.post_statuses.new')}</h2>
 
           <PostStatusForm mode='create' handleSubmit={this.handleSubmit} />
-        </div>
+        </Box>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />
-      </React.Fragment>
+      </>
     );
   }
 }

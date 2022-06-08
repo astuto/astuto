@@ -2,6 +2,7 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import Spinner from './Spinner';
+import Box from './Box';
 
 interface Props {
   areUpdating: boolean;
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
-  <div className="content siteSettingsInfo">
+  <Box customClass="siteSettingsInfo">
   {
     areUpdating ?
       <Spinner />
@@ -21,7 +22,7 @@ const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
       :
         <span>{I18n.t('site_settings.info_box.up_to_date')}</span>
   }
-  </div>
+  </Box>
 );
 
 export default SiteSettingsInfoBox;

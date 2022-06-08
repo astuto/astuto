@@ -3,12 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
 import NewPostForm from './NewPostForm';
-import Spinner from '../shared/Spinner';
+import Spinner from '../common/Spinner';
 import {
   DangerText,
   SuccessText,
-} from '../shared/CustomTexts';
-import Button from '../shared/Button';
+} from '../common/CustomTexts';
+import Button from '../common/Button';
 
 import IBoard from '../../interfaces/IBoard';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
@@ -143,7 +143,7 @@ class NewPost extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <div className="newPostContainer sidebarCard">
+      <div className="newPostContainer sidebarBox">
         <span className="boardTitle">{board.name}</span>
 
         <ReactMarkdown

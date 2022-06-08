@@ -4,9 +4,9 @@ import Gravatar from 'react-gravatar';
 
 import NewCommentUpdateSection from './NewCommentUpdateSection';
 
-import Button from '../shared/Button';
-import Spinner from '../shared/Spinner';
-import { DangerText } from '../shared/CustomTexts';
+import Button from '../common/Button';
+import Spinner from '../common/Spinner';
+import { DangerText } from '../common/CustomTexts';
 
 interface Props {
   body: string;

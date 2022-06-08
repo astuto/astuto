@@ -85,8 +85,7 @@ en:
       empty: 'There are no likes yet'
     action_box:
       title: 'Actions'
-      follow_button: 'Follow'
-      unfollow_button: 'Unfollow'
+      follow_button: 'Follow post'
       following_description: "you're receiving notifications about new updates on this post"
       not_following_description: "you won't receive notifications about this post"
     comments:
