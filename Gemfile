@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.6'
 
 gem 'rails', '6.0.4.7'
-gem 'i18n-js'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -22,6 +21,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authentication
 gem 'devise', '4.7.3'
+
+# Authorization
+gem 'pundit', '2.2.0'
+
+# I18n (forward locales to JS)
+gem 'i18n-js'
 
 # Administration panel
 gem "administrate", '0.16.0'

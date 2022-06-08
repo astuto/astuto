@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:create, :update, :update_order, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :update_order, :destroy]
 
   def index
     boards = Board.order(order: :asc)
@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
 
   def create
     board = Board.new(board_params)
+    authorize board
 
     if board.save
       render json: board, status: :created
@@ -27,13 +28,12 @@ class BoardsController < ApplicationController
 
   def update
     board = Board.find(params[:id])
+    authorize board
     board.assign_attributes(board_params)
 
     if board.save
       render json: board, status: :ok
     else
-      print board.errors.full_messages
-      
       render json: {
         error: board.errors.full_messages
       }, status: :unprocessable_entity
@@ -42,6 +42,7 @@ class BoardsController < ApplicationController
 
   def destroy
     board = Board.find(params[:id])
+    authorize board
 
     if board.destroy
       render json: {
@@ -55,6 +56,8 @@ class BoardsController < ApplicationController
   end
 
   def update_order
+    authorize Board
+    
     workflow_output = ReorderWorkflow.new(
       entity_classname: Board,
       column_name: 'order',
