@@ -1,12 +1,13 @@
 {
-  "name": "app",
+  "name": "astuto",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
-    "@rails/actioncable": "^6.0.0-alpha",
-    "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/actioncable": "6.0.5",
+    "@rails/activestorage": "6.0.5",
+    "@rails/ujs": "6.0.5",
+    "@rails/webpacker": "4.3.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
@@ -30,9 +31,8 @@
     "turbolinks": "^5.2.0",
     "typescript": "^3.5.3"
   },
-  "version": "0.1.0",
   "devDependencies": {
     "@types/react-redux": "^7.1.3",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "3.11.0"
   }
 }

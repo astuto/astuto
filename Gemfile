@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-gem 'rails', '6.0.4.7'
+gem 'rails', '6.0.5'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -11,7 +11,7 @@ gem 'puma', '~> 4.3'
 gem 'sass-rails', '~> 5'
 gem 'sassc', '2.1.0' # temporarely, because 2.4.0 takes 5 minutes to install...
 
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '4.3.0'
 
 gem 'turbolinks', '~> 5'
 
