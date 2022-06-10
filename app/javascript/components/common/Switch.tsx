@@ -9,7 +9,7 @@ interface Props {
 
 const Switch = ({ label, onClick, checked, htmlId }: Props) => (
   <div className="checkboxSwitch">
-    <input type="checkbox" id={htmlId} onClick={onClick} checked={checked} />
+    <input type="checkbox" id={htmlId} onClick={onClick} checked={checked} onChange={() => null} />
     <label htmlFor={htmlId}>{label}</label>
   </div>
 );
