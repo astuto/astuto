@@ -1,7 +1,7 @@
 class PostStatusesController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_admin, only: [:create, :update, :update_order, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :update_order, :destroy]
 
   def index
     post_statuses = PostStatus.order(order: :asc)
@@ -11,6 +11,7 @@ class PostStatusesController < ApplicationController
 
   def create
     post_status = PostStatus.new(post_status_params)
+    authorize post_status
 
     if post_status.save
       render json: post_status, status: :created
@@ -23,6 +24,7 @@ class PostStatusesController < ApplicationController
 
   def update
     post_status = PostStatus.find(params[:id])
+    authorize post_status
     post_status.assign_attributes(post_status_params)
 
     if post_status.save
@@ -36,6 +38,7 @@ class PostStatusesController < ApplicationController
 
   def destroy
     post_status = PostStatus.find(params[:id])
+    authorize post_status
 
     if post_status.destroy
       render json: {
@@ -49,6 +52,8 @@ class PostStatusesController < ApplicationController
   end
 
   def update_order
+    authorize PostStatus
+    
     workflow_output = ReorderWorkflow.new(
       entity_classname: PostStatus,
       column_name: 'order',

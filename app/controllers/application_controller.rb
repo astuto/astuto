@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_boards
 
@@ -11,5 +15,13 @@ class ApplicationController < ActionController::Base
 
     def load_boards
       @boards = Board.select(:id, :name).order(order: :asc)
+    end
+
+  private
+
+    def user_not_authorized
+      render json: {
+        error: t('backend.errors.unauthorized')
+      }, status: :unauthorized
     end
 end

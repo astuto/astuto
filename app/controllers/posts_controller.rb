@@ -52,11 +52,7 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    
-    if !current_user.power_user? && current_user.id != post.user_id
-      render json: t('backend.errors.unauthorized'), status: :unauthorized
-      return
-    end
+    authorize post
 
     post.board_id = params[:post][:board_id] if params[:post].has_key?(:board_id)
     
@@ -91,7 +87,7 @@ class PostsController < ApplicationController
   private
   
     def filter_params
-      defaults = { board_id: Board.first.id }
+      defaults = Board.first ? { board_id: Board.first.id } : {}
 
       params
         .permit(:board_id, :post_status_id, :page, :search)
