@@ -87,7 +87,7 @@ class PostsController < ApplicationController
   private
   
     def filter_params
-      defaults = { board_id: Board.first.id }
+      defaults = Board.first ? { board_id: Board.first.id } : {}
 
       params
         .permit(:board_id, :post_status_id, :page, :search)
