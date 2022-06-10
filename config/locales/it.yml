@@ -103,6 +103,7 @@ it:
       title: 'Impostazioni sito'
       boards: 'Bacheche'
       post_statuses: 'Stati'
+      roadmap: 'Roadmap'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'

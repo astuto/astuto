@@ -35,5 +35,6 @@ Rails.application.routes.draw do
     get 'general'
     get 'boards'
     get 'post_statuses'
+    get 'roadmap'
   end
 end

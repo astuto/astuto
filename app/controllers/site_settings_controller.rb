@@ -11,4 +11,7 @@ class SiteSettingsController < ApplicationController
 
   def post_statuses
   end
+
+  def roadmap
+  end
 end
