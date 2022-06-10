@@ -41,11 +41,11 @@ const NewComment = ({
   isPowerUser,
   userEmail,
 }: Props) => (
-  <React.Fragment>
+  <>
     <div className="newCommentForm">
       {
         isLoggedIn ?
-          <React.Fragment>
+          <>
             <div className="commentBodyForm">
               <Gravatar email={userEmail} size={48} className="currentUserAvatar" />
               <textarea
@@ -69,7 +69,7 @@ const NewComment = ({
               :
                 null
             }
-          </React.Fragment>
+          </>
         :
           <a href="/users/sign_in" className="loginInfo">
             {I18n.t('post.new_comment.not_logged_in')}
@@ -78,7 +78,7 @@ const NewComment = ({
     </div>
 
     { error ? <DangerText>{error}</DangerText> : null }
-  </React.Fragment>
+  </>
 );
 
 export default NewComment;

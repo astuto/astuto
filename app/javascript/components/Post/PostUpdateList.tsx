@@ -56,12 +56,12 @@ const PostUpdateList = ({
                     {postUpdate.body}
                   </ReactMarkdown>
                 :
-                  <React.Fragment>
+                  <>
                     <i>{I18n.t('post.updates_box.status_change')}</i>&nbsp;
                     <PostStatusLabel
                       {...postStatuses.find(postStatus => postStatus.id === postUpdate.postStatusId)}
                     />
-                  </React.Fragment>  
+                  </>  
               }
             </div>
 

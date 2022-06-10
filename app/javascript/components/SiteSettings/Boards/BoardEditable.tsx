@@ -72,7 +72,7 @@ class BoardsEditable extends React.Component<Props, State> {
             <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
 
             { editMode === false ?
-              <React.Fragment>
+              <>
                 <div className="boardInfo">
                   <div className="boardName">
                     <PostBoardLabel name={name} />
@@ -94,9 +94,9 @@ class BoardsEditable extends React.Component<Props, State> {
                     {I18n.t('common.buttons.delete')}
                   </a>
                 </div>
-              </React.Fragment>
+              </>
             :
-              <React.Fragment>
+              <>
                 <BoardForm
                   mode='update'
                   id={id}
@@ -110,7 +110,7 @@ class BoardsEditable extends React.Component<Props, State> {
                   onClick={this.toggleEditMode}>
                   {I18n.t('common.buttons.cancel')}
                 </a>
-              </React.Fragment>
+              </>
             }
           </li>
         )}

@@ -36,7 +36,7 @@ const CommentList = ({
   isPowerUser,
   userEmail,
 }: Props) => (
-  <React.Fragment>
+  <>
     {comments.map((comment, i) => {
       if (comment.parentId === parentId) {
         return (
@@ -77,7 +77,7 @@ const CommentList = ({
         );
       } else return null;
     })}
-  </React.Fragment>
+  </>
 );
 
 export default CommentList;
