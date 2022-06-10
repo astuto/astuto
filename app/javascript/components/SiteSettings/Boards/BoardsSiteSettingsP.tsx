@@ -1,6 +1,6 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import I18n from 'i18n-js';
 
 import BoardEditable from './BoardEditable';
 import BoardForm from './BoardForm';
@@ -97,8 +97,8 @@ class BoardsSiteSettingsP extends React.Component<Props> {
           {
             boards.items.length > 0 ?
               <DragDropContext onDragEnd={this.handleDragEnd}>
-              <Droppable droppableId="boards">
-                {provided => (
+                <Droppable droppableId="boards">
+                  {provided => (
                     <ul ref={provided.innerRef} {...provided.droppableProps} className="boardsList">
                       {boards.items.map((board, i) => (
                         <BoardEditable
@@ -117,7 +117,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
                       {provided.placeholder}
                     </ul>
                   )}
-              </Droppable>
+                </Droppable>
             </DragDropContext>
           :
             boards.areLoading ?
