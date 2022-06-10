@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import IPostStatus from '../../interfaces/IPostStatus';
+import IPostStatusJSON from '../../interfaces/json/IPostStatus';
 
 import { State } from '../../reducers/rootReducer';
 
@@ -13,7 +13,7 @@ interface PostStatusesRequestStartAction {
 export const POST_STATUSES_REQUEST_SUCCESS = 'POST_STATUSES_REQUEST_SUCCESS';
 interface PostStatusesRequestSuccessAction {
   type: typeof POST_STATUSES_REQUEST_SUCCESS;
-  postStatuses: Array<IPostStatus>;
+  postStatuses: Array<IPostStatusJSON>;
 }
 
 export const POST_STATUSES_REQUEST_FAILURE = 'POST_STATUSES_REQUEST_FAILURE';
@@ -33,7 +33,7 @@ const postStatusesRequestStart = (): PostStatusesRequestActionTypes => ({
 });
 
 const postStatusesRequestSuccess = (
-  postStatuses: Array<IPostStatus>
+  postStatuses: Array<IPostStatusJSON>
 ): PostStatusesRequestActionTypes => ({
   type: POST_STATUSES_REQUEST_SUCCESS,
   postStatuses,

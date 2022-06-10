@@ -1,0 +1,28 @@
+.roadmapPostStatuses {
+  @extend
+    .d-flex,
+    .flex-row;
+
+  overflow-x: auto;
+
+  .roadmapPostStatus {
+    @extend
+      .card,
+      .m-2,
+      .p-0;
+
+    flex-basis: 250px;
+    
+    height: 150px;
+    background-color: $astuto-light-grey;
+
+    .roadmapPostStatusHeader {
+      @extend
+        .d-flex,
+        .flex-row,
+        .card-header;
+
+      color: white;
+    }
+  }
+}

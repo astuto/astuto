@@ -62,6 +62,7 @@ const postStatusesReducer = (
           id: postStatus.id,
           name: postStatus.name,
           color: postStatus.color,
+          showInRoadmap: postStatus.show_in_roadmap,
         })),
         areLoading: false,
         error: '',
@@ -85,7 +86,12 @@ const postStatusesReducer = (
         ...state,
         items: state.items.map(postStatus => {
           if (postStatus.id !== action.postStatus.id) return postStatus;
-          return {...postStatus, name: action.postStatus.name, color: action.postStatus.color};
+          return {
+            ...postStatus,
+            name: action.postStatus.name,
+            color: action.postStatus.color,
+            showInRoadmap: action.postStatus.show_in_roadmap,
+          };
         }),
       };
 
