@@ -120,6 +120,9 @@ en:
       new: 'New'
       form:
         name: 'Status name'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Not in roadmap'
   user_mailer:
     opening_greeting: 'Hello!'
     closing_greeting: 'Have a great day!'

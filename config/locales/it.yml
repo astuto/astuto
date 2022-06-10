@@ -120,6 +120,9 @@ it:
       new: 'Nuovo'
       form:
         name: 'Nome stato'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Non mostrati in roadmap'
   user_mailer:
     opening_greeting: 'Ciao!'
     closing_greeting: 'Buona giornata!'

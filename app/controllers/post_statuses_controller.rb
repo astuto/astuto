@@ -75,6 +75,6 @@ class PostStatusesController < ApplicationController
     def post_status_params
       params
         .require(:post_status)
-        .permit(:name, :color)
+        .permit(:name, :color, :show_in_roadmap)
     end
 end

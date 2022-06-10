@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+import RoadmapSiteSettings from '../../../containers/RoadmapSiteSettings';
 
 import createStoreHelper from '../../../helpers/createStore';
 import { State } from '../../../reducers/rootReducer';
@@ -21,7 +22,9 @@ class RoadmapSiteSettingsRoot extends React.Component<Props> {
   render() {
     return (
       <Provider store={this.store}>
-        <h1>Roadmap works!</h1>
+        <RoadmapSiteSettings
+          authenticityToken={this.props.authenticityToken}
+        />
       </Provider>
     );
   }
