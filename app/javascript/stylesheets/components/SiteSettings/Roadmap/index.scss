@@ -3,7 +3,12 @@
     .d-flex,
     .flex-row;
 
+  min-height: 200px;
   overflow-x: auto;
+
+  &.isDragging {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
 
   .roadmapPostStatus {
     @extend
@@ -11,10 +16,10 @@
       .m-2,
       .p-0;
 
-    flex-basis: 250px;
-    
+    flex: 0 0 175px;
     height: 150px;
     background-color: $astuto-light-grey;
+    overflow: hidden;
 
     .roadmapPostStatusHeader {
       @extend
@@ -23,6 +28,9 @@
         .card-header;
 
       color: white;
+      padding: 8px 4px;
+
+      .titleText { @extend .align-self-center; }
     }
   }
 }

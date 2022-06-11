@@ -23,11 +23,10 @@ const RoadmapPostStatus = ({
     {provided => (
       <div className="roadmapPostStatus" ref={provided.innerRef} {...provided.draggableProps}>
         <div className="roadmapPostStatusHeader" style={{backgroundColor: color}}>
-          <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
+          <DragZone color='white' dndProvided={provided} isDragDisabled={settingsAreUpdating} />
           <TitleText>{name}</TitleText>
         </div>
         <div className="roadmapPostStatusContent">
-          
         </div>
       </div>
     )}

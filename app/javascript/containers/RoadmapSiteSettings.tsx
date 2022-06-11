@@ -4,6 +4,7 @@ import RoadmapSiteSettingsP from "../components/SiteSettings/Roadmap/RoadmapSite
 
 import { requestPostStatuses } from "../actions/PostStatus/requestPostStatuses";
 import { State } from "../reducers/rootReducer";
+import { updatePostStatus } from "../actions/PostStatus/updatePostStatus";
 
 const mapStateToProps = (state: State) => ({
   postStatuses: state.postStatuses,
@@ -14,6 +15,10 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   requestPostStatuses() {
     dispatch(requestPostStatuses());
+  },
+
+  updatePostStatus(id: number, showInRoadmap: boolean, authenticityToken: string) {
+    dispatch(updatePostStatus({id, showInRoadmap, authenticityToken}));
   },
 });
 

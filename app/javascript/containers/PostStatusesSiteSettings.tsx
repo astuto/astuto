@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     onSuccess: Function,
     authenticityToken: string,
   ) {
-    dispatch(updatePostStatus(id, name, color, authenticityToken)).then(res => {
+    dispatch(updatePostStatus({id, name, color, authenticityToken})).then(res => {
       if (res && res.status === HttpStatus.OK) onSuccess();
     });
   },
