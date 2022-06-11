@@ -17,8 +17,10 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(requestPostStatuses());
   },
 
-  updatePostStatus(id: number, showInRoadmap: boolean, authenticityToken: string) {
-    dispatch(updatePostStatus({id, showInRoadmap, authenticityToken}));
+  updatePostStatus(id: number, showInRoadmap: boolean, onComplete: Function, authenticityToken: string) {
+    dispatch(updatePostStatus({id, showInRoadmap, authenticityToken})).then(() => {
+      onComplete();
+    });
   },
 });
 

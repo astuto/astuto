@@ -6,6 +6,7 @@ import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import RoadmapPostStatus from './RoadmapPostStatus';
+import IPostStatus from '../../../interfaces/IPostStatus';
 
 interface Props {
   authenticityToken: string,
@@ -17,12 +18,13 @@ interface Props {
   updatePostStatus(
     id: number,
     showInRoadmap: boolean,
+    onComplete: Function,
     authenticityToken: string,
   ): void;
 }
 
 interface State {
-  isDragging: boolean;
+  isDragging: number;
 }
 
 class RoadmapSiteSettingsP extends React.Component<Props, State> {
@@ -30,7 +32,7 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      isDragging: false,
+      isDragging: null,
     };
 
     this.handleDragStart = this.handleDragStart.bind(this);
@@ -41,29 +43,52 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
     this.props.requestPostStatuses();
   }
 
-  handleDragStart() {
-    this.setState({isDragging: true});
+  handleDragStart(result) {
+    this.setState({ isDragging: parseInt(result.draggableId) });
   }
 
   handleDragEnd(result) {
-    this.setState({isDragging: false});
-
-    if (result.destination == null || result.source.droppableId === result.destination.droppableId)
+    if (result.destination == null || result.source.droppableId === result.destination.droppableId) {
+      this.setState({ isDragging: null });
       return;
+    }
 
     this.props.updatePostStatus(
       result.draggableId,
       result.destination.droppableId === 'statusesInRoadmap',
+      () => this.setState({ isDragging: null }),
       this.props.authenticityToken,
     );
+  }
+
+  // Workaround needed because after dropping a post status, the state is not yet updated
+  // with the new showInRoadmap value (we need to wait POSTSTATUS_UPDATE_SUCCESS dispatch)
+  // and the UI would flicker, moving the poststatus back in its original spot
+  placeDraggingStatusDuringUpdate(statusesInRoadmap: IPostStatus[], statusesNotInRoadmap: IPostStatus[]) {
+    const { postStatuses } = this.props;
+    
+    const movedPostStatus = postStatuses.items.find(postStatus => postStatus.id === this.state.isDragging);
+    if (movedPostStatus.showInRoadmap) {
+      statusesInRoadmap = statusesInRoadmap.filter(postStatus => postStatus.id !== this.state.isDragging);
+      statusesNotInRoadmap.push(movedPostStatus);
+    } else {
+      statusesNotInRoadmap = statusesNotInRoadmap.filter(postStatus => postStatus.id !== this.state.isDragging);
+      statusesInRoadmap.push(movedPostStatus);
+    }
+
+    return [statusesInRoadmap, statusesNotInRoadmap];
   }
 
   render() {
     const { postStatuses, settingsAreUpdating, settingsError } = this.props;
     const { isDragging } = this.state;
 
-    const statusesInRoadmap = postStatuses.items.filter(postStatus => postStatus.showInRoadmap);
-    const statusesNotInRoadmap = postStatuses.items.filter(postStatus => !postStatus.showInRoadmap);
+    let statusesInRoadmap = postStatuses.items.filter(postStatus => postStatus.showInRoadmap);
+    let statusesNotInRoadmap = postStatuses.items.filter(postStatus => !postStatus.showInRoadmap);
+
+    if (settingsAreUpdating && this.state.isDragging) {
+      [statusesInRoadmap, statusesNotInRoadmap] = this.placeDraggingStatusDuringUpdate(statusesInRoadmap, statusesNotInRoadmap);
+    }
 
     return (
       <DragDropContext onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
