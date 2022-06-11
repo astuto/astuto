@@ -66,14 +66,16 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
   // and the UI would flicker, moving the poststatus back in its original spot
   placeDraggingStatusDuringUpdate(statusesInRoadmap: IPostStatus[], statusesNotInRoadmap: IPostStatus[]) {
     const { postStatuses } = this.props;
-    
     const movedPostStatus = postStatuses.items.find(postStatus => postStatus.id === this.state.isDragging);
+    
     if (movedPostStatus.showInRoadmap) {
       statusesInRoadmap = statusesInRoadmap.filter(postStatus => postStatus.id !== this.state.isDragging);
       statusesNotInRoadmap.push(movedPostStatus);
+      statusesNotInRoadmap.sort((ps1, ps2) => ps1.order - ps2.order);
     } else {
       statusesNotInRoadmap = statusesNotInRoadmap.filter(postStatus => postStatus.id !== this.state.isDragging);
       statusesInRoadmap.push(movedPostStatus);
+      statusesInRoadmap.sort((ps1, ps2) => ps1.order - ps2.order);
     }
 
     return [statusesInRoadmap, statusesNotInRoadmap];

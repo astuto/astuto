@@ -7,7 +7,7 @@
   overflow-x: auto;
   box-sizing: border-box;
   border: 2px dotted transparent;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   &.isDragging {
     border-color: black;

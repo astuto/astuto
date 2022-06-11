@@ -62,6 +62,7 @@ const postStatusesReducer = (
           id: postStatus.id,
           name: postStatus.name,
           color: postStatus.color,
+          order: postStatus.order,
           showInRoadmap: postStatus.show_in_roadmap,
         })),
         areLoading: false,
