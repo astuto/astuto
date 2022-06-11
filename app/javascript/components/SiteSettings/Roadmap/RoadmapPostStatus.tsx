@@ -20,8 +20,12 @@ const RoadmapPostStatus = ({
   settingsAreUpdating,
 }: Props) => (
   <Draggable key={id} draggableId={id.toString()} index={index} isDragDisabled={settingsAreUpdating}>
-    {provided => (
-      <div className="roadmapPostStatus" ref={provided.innerRef} {...provided.draggableProps}>
+    {(provided, snapshot) => (
+      <div
+        className={`roadmapPostStatus${snapshot.isDragging ? '' : ' notDragging'}`}
+        ref={provided.innerRef}
+        {...provided.draggableProps}
+      >
         <div className="roadmapPostStatusHeader" style={{backgroundColor: color}}>
           <DragZone color='white' dndProvided={provided} isDragDisabled={settingsAreUpdating} />
           <TitleText>{name}</TitleText>

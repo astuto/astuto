@@ -5,9 +5,16 @@
 
   min-height: 200px;
   overflow-x: auto;
+  box-sizing: border-box;
+  border: 2px dotted transparent;
+  border-radius: 8px;
 
   &.isDragging {
-    background-color: rgba(255, 255, 0, 0.2);
+    border-color: black;
+
+    &:hover {
+      background-color: rgba(255, 255, 0, 0.2);
+    }
   }
 
   .roadmapPostStatus {
@@ -20,6 +27,8 @@
     height: 150px;
     background-color: $astuto-light-grey;
     overflow: hidden;
+    
+    &.notDragging { transform: none !important; }
 
     .roadmapPostStatusHeader {
       @extend
