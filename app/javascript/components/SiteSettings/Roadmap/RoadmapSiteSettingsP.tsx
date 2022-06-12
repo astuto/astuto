@@ -138,6 +138,7 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
                     color={postStatus.color}
                     index={i}
                     settingsAreUpdating={settingsAreUpdating}
+                    headerOnly
 
                     key={postStatus.id}
                   />
