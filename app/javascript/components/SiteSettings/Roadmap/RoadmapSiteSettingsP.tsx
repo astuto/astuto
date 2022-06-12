@@ -98,10 +98,10 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
           <h2>{I18n.t('site_settings.roadmap.title')}</h2>
 
           <Droppable droppableId="statusesInRoadmap" direction="horizontal">
-            {provided => (
+            {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
-                className={`roadmapPostStatuses${isDragging ? ' isDragging' : ''}`}
+                className={`roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
                 {...provided.droppableProps}
               >
                 {statusesInRoadmap.map((postStatus, i) => (
@@ -125,10 +125,10 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
           <h2>{I18n.t('site_settings.roadmap.title2')}</h2>
 
           <Droppable droppableId="statusesNotInRoadmap" direction="horizontal">
-            {provided => (
+            {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
-                className={`roadmapPostStatuses${isDragging ? ' isDragging' : ''}`}
+                className={`roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
                 {...provided.droppableProps}
               >
                 {statusesNotInRoadmap.map((postStatus, i) => (
