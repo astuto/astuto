@@ -15,6 +15,11 @@ span.drag-icon::before {
   background-repeat: repeat-x;
 }
 
+span.drag-icon.drag-icon-white,
+span.drag-icon.drag-icon-white::before {
+  background-image: radial-gradient(white 40%, transparent 40%);
+}
+
 span.drag-icon::before {
   content: '';
   display: block;

@@ -103,6 +103,7 @@ en:
       title: 'Site settings'
       boards: 'Boards'
       post_statuses: 'Statuses'
+      roadmap: 'Roadmap'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -119,6 +120,11 @@ en:
       new: 'New'
       form:
         name: 'Status name'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Not in roadmap'
+      empty: 'The roadmap is empty.'
+      help: 'You can add new statuses to the roadmap by dragging them from the section below. If you want to add a new status or change their order, go to Site settings -> Statuses.'
   user_mailer:
     opening_greeting: 'Hello!'
     closing_greeting: 'Have a great day!'

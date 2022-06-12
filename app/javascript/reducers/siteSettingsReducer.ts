@@ -63,15 +63,18 @@ import {
 
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
+import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
 
 interface SiteSettingsState {
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
+  roadmap: SiteSettingsRoadmapState;
 }
 
 const initialState: SiteSettingsState = {
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
+  roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
 };
 
 const siteSettingsReducer = (
@@ -107,22 +110,28 @@ const siteSettingsReducer = (
         ...state,
         boards: siteSettingsBoardsReducer(state.boards, action),
       };
-      
+    
+    case POSTSTATUS_SUBMIT_START:
+    case POSTSTATUS_SUBMIT_SUCCESS:
+    case POSTSTATUS_SUBMIT_FAILURE:
     case POSTSTATUS_ORDER_UPDATE_START:
     case POSTSTATUS_ORDER_UPDATE_SUCCESS:
     case POSTSTATUS_ORDER_UPDATE_FAILURE:
     case POST_STATUS_DELETE_START:
     case POST_STATUS_DELETE_SUCCESS:
     case POST_STATUS_DELETE_FAILURE:
-    case POSTSTATUS_SUBMIT_START:
-    case POSTSTATUS_SUBMIT_SUCCESS:
-    case POSTSTATUS_SUBMIT_FAILURE:
+      return {
+        ...state,
+        postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action),
+      };
+
     case POSTSTATUS_UPDATE_START:
     case POSTSTATUS_UPDATE_SUCCESS:
     case POSTSTATUS_UPDATE_FAILURE:
       return {
         ...state,
         postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action),
+        roadmap: siteSettingsRoadmapReducer(state.roadmap, action),
       };
 
     default:

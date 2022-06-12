@@ -1,16 +1,16 @@
 import * as React from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import I18n from 'i18n-js';
 
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import IPostStatus from '../../../interfaces/IPostStatus';
-
-import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import { CenteredMutedText } from '../../common/CustomTexts';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import PostStatusForm from './PostStatusForm';
 import PostStatusEditable from './PostStatusEditable';
 import Spinner from '../../common/Spinner';
 import Box from '../../common/Box';
+
+import { PostStatusesState } from "../../../reducers/postStatusesReducer";
+import IPostStatus from '../../../interfaces/IPostStatus';
 
 interface Props {
   authenticityToken: string;
@@ -92,8 +92,8 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
           {
             postStatuses.items.length > 0 ?
               <DragDropContext onDragEnd={this.handleDragEnd}>
-              <Droppable droppableId="postStatuses">
-                {provided => (
+                <Droppable droppableId="postStatuses">
+                  {provided => (
                     <ul ref={provided.innerRef} {...provided.droppableProps} className="postStatusesList">
                       {postStatuses.items.map((postStatus, i) => (
                         <PostStatusEditable
@@ -112,13 +112,13 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
                       {provided.placeholder}
                     </ul>
                   )}
-              </Droppable>
-            </DragDropContext>
-          :
-            postStatuses.areLoading ?
-              <Spinner />
+                </Droppable>
+              </DragDropContext>
             :
-              <CenteredMutedText>{I18n.t('site_settings.post_statuses.empty')}</CenteredMutedText>
+              postStatuses.areLoading ?
+                <Spinner />
+              :
+                <CenteredMutedText>{I18n.t('site_settings.post_statuses.empty')}</CenteredMutedText>
           }
         </Box>
 

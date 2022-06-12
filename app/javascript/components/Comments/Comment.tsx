@@ -81,7 +81,7 @@ const Comment = ({
       </a>
       {
         isPowerUser ?
-          <React.Fragment>
+          <>
             <Separator />
             <a
               onClick={() => handleToggleIsCommentUpdate(id, isPostUpdate)}
@@ -103,7 +103,7 @@ const Comment = ({
                 {I18n.t('common.buttons.delete')}
             </a>
 
-          </React.Fragment>
+          </>
         :
           null
       }

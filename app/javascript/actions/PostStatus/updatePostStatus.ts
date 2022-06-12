@@ -43,24 +43,34 @@ const postStatusUpdateFailure = (error: string): PostStatusUpdateFailureAction =
   error,
 });
 
-export const updatePostStatus = (
-  id: number,
-  name: string,
-  color: string,
-  authenticityToken: string,
-): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
+interface UpdatePostStatusParams {
+  id: number;
+  name?: string;
+  color?: string;
+  showInRoadmap?: boolean;
+  authenticityToken: string;
+}
+
+export const updatePostStatus = ({
+  id,
+  name = null,
+  color = null,
+  showInRoadmap = null,
+  authenticityToken,
+}: UpdatePostStatusParams): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(postStatusUpdateStart());
+
+  const post_status = Object.assign({},
+    name !== null ? {name} : null,
+    color !== null ? {color} : null,
+    showInRoadmap !== null ? {show_in_roadmap: showInRoadmap} : null
+  );
 
   try {
     const res = await fetch(`/post_statuses/${id}`, {
       method: 'PATCH',
       headers: buildRequestHeaders(authenticityToken),
-      body: JSON.stringify({
-        post_status: {
-          name,
-          color,
-        },
-      }),
+      body: JSON.stringify({post_status}),
     });
     const json = await res.json();
 

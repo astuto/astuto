@@ -1,0 +1,52 @@
+.roadmapPostStatuses {
+  @extend
+    .d-flex,
+    .flex-row,
+    .flex-wrap;
+
+  min-height: 150px;
+  box-sizing: border-box;
+  border: 2px dotted transparent;
+  border-radius: 0.5rem;
+
+  &.isDraggingSomething {
+    border-color: black;
+  }
+
+  &.isDraggingOver {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
+
+  .roadmapPostStatus {
+    @extend
+      .card,
+      .m-2,
+      .p-0;
+
+    @include media-breakpoint-down(sm) {
+      flex: 0 0 100%;
+    }
+
+    box-sizing: border-box;
+    flex: 0 0 28%;
+    background-color: $astuto-light-grey;
+    overflow: hidden;
+    height: 150px;
+
+    &.headerOnly { height: fit-content; }
+    
+    &.notDragging { transform: none !important; }
+
+    .roadmapPostStatusHeader {
+      @extend
+        .d-flex,
+        .flex-row,
+        .card-header;
+
+      color: white;
+      padding: 8px 4px;
+
+      .titleText { @extend .align-self-center; }
+    }
+  }
+}

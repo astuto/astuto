@@ -103,6 +103,7 @@ it:
       title: 'Impostazioni sito'
       boards: 'Bacheche'
       post_statuses: 'Stati'
+      roadmap: 'Roadmap'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
@@ -119,6 +120,11 @@ it:
       new: 'Nuovo'
       form:
         name: 'Nome stato'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Non mostrati in roadmap'
+      empty: 'La roadmap è vuota.'
+      help: "Puoi aggiungere nuovi stati alla roadmap trascinandoli dalla sezione sottostante. Se vuoi aggiungere un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito -> Stati."
   user_mailer:
     opening_greeting: 'Ciao!'
     closing_greeting: 'Buona giornata!'

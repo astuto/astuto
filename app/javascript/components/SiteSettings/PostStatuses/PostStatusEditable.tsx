@@ -1,7 +1,6 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
-
 import { Draggable } from 'react-beautiful-dnd';
+import I18n from 'i18n-js';
 
 import PostStatusLabel from "../../common/PostStatusLabel";
 import DragZone from '../../common/DragZone';
@@ -71,7 +70,7 @@ class PostStatusEditable extends React.Component<Props, State> {
             <DragZone dndProvided={provided} isDragDisabled={settingsAreUpdating} />
 
             { editMode === false ?
-              <React.Fragment>
+              <>
                 <PostStatusLabel name={name} color={color} />
 
                 <div className="postStatusEditableActions">
@@ -86,9 +85,9 @@ class PostStatusEditable extends React.Component<Props, State> {
                     {I18n.t('common.buttons.delete')}
                   </a>
                 </div>
-              </React.Fragment>
+              </>
             :
-              <React.Fragment>
+              <>
                 <PostStatusForm
                   mode='update'
                   id={id}
@@ -102,7 +101,7 @@ class PostStatusEditable extends React.Component<Props, State> {
                   onClick={this.toggleEditMode}>
                   {I18n.t('common.buttons.cancel')}
                 </a>
-              </React.Fragment>
+              </>
             }
           </li>
         )}
