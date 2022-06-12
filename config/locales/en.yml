@@ -123,6 +123,8 @@ en:
     roadmap:
       title: 'Roadmap'
       title2: 'Not in roadmap'
+      empty: 'The roadmap is empty.'
+      help: 'You can add new statuses to the roadmap by dragging them from the section below. If you want to add a new status or change their order, go to Site settings -> Statuses.'
   user_mailer:
     opening_greeting: 'Hello!'
     closing_greeting: 'Have a great day!'

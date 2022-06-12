@@ -7,6 +7,7 @@ import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import RoadmapPostStatus from './RoadmapPostStatus';
 import IPostStatus from '../../../interfaces/IPostStatus';
+import { MutedText } from '../../common/CustomTexts';
 
 interface Props {
   authenticityToken: string,
@@ -119,6 +120,14 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
               </div>
             )}
           </Droppable>
+
+          {
+            statusesInRoadmap.length > 0 ?
+              null
+            :
+              <MutedText>{I18n.t('site_settings.roadmap.empty')}</MutedText>
+          }
+          <MutedText>{I18n.t('site_settings.roadmap.help')}</MutedText>
         </Box>
 
         <Box>
