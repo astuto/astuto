@@ -7,18 +7,8 @@
 </p>
 
 <h2 align="center"><a href="http://65.21.148.99:3000/">Try the demo out</a></h2>
+<h5 align="center">To login as administrator:</h5>
 <h5 align="center">email: admin@example.com | pass: password</h5>
-
----
-
-- [What is Astuto?](#what-is-astuto)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-  - [Using DockerHub image (fastest)](#using-dockerhub-image-fastest)
-  - [Manual (for development)](#manual-for-development)
-- [Post-installation notes](#post-installation-notes)
-- [Contributing](#contributing)
 
 ---
 
@@ -26,21 +16,15 @@
 
 Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users. It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
 
-If you want to try Astuto out there is a work-in-progress demo <a href="http://65.21.148.99:3000/">available here</a>.
-
 <img src="./images/featured-image.png" />
 
 ## Features
 
 * Collect and manage feedback
-* Boards, to divide different types of feedback
+* Boards and statuses, to better organize feedback
 * Roadmap, to let your users know what you're working on
-* Comments, to discuss with your customers
-* Notifications, to inform users of updates or comments
-* Markdown support, to style feedback proposals or board description
-* Feedback status, to inform about the state of a certain feedback
-* Completely customizable (i.e. you can add/edit/remove as many boards, feedback statuses as you want; you can configure the roadmap the way you want; etc.)
-* Unlimited administrators/moderators allowed
+* Email notifications, to inform users of updates or comments
+* Many more...
 
 ## Requirements
 
@@ -70,7 +54,7 @@ Coming soon!
 
 ## Contributing
 
-Astuto is licensed under the [GNU GPLv3](https://github.com/riggraz/astuto/blob/master/LICENSE) license. You are welcome to contribute:
+You are welcome to contribute:
 * Read our [Contributing guidelines](https://github.com/riggraz/astuto/blob/main/CONTRIBUTING.md)
 * Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch.
 
