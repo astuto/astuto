@@ -6,9 +6,8 @@
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=dark&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 </p>
 
-<h2 align="center"><a href="http://65.21.148.99:3000/">Try the demo out</a></h2>
-<h5 align="center">To login as administrator:</h5>
-<h5 align="center">email: admin@example.com | pass: password</h5>
+<h3 align="center"><a href="http://65.21.148.99:3000/">Try the demo out</a></h3>
+<h5 align="center">To login as administrator:<br />email: admin@example.com | pass: password</h5>
 
 ---
 
@@ -21,9 +20,8 @@ Astuto is a free, open source, self-hosted customer feedback tool. It helps you 
 ## Features
 
 * Collect and manage feedback
-* Boards and statuses, to better organize feedback
-* Roadmap, to let your users know what you're working on
-* Email notifications, to inform users of updates or comments
+* Create custom boards and statuses, to better organize feedback
+* Customize your roadmap, to let your users know what you're working on
 * Many more...
 
 ## Requirements
@@ -35,16 +33,16 @@ Astuto is a free, open source, self-hosted customer feedback tool. It helps you 
 
 **Note**: it is strongly suggested to run Astuto on Linux or macOS. As of today, Windows is likely to [cause problems](https://github.com/riggraz/astuto/wiki/Common-problems#standard_init_linuxgo211-exec-user-process-caused-no-such-file-or-directory). If you want to try anyway, follow along with the [Windows users installation guide](https://github.com/riggraz/astuto/wiki/Installation-for-Windows-users).
 
-### Using DockerHub image (fastest)
-
-Coming soon!
-
 ### Manual (for development)
 
 1. Clone this repository.
 2. In Astuto's root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this wiki page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
 3. Run `script/docker-update-and-run.sh`.
 4. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
+
+### Using DockerHub image (fastest)
+
+Coming soon!
 
 ## Post-installation notes
 
