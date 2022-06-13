@@ -17,7 +17,7 @@ If you still have any doubt, feel free to [join our Discord](https://discord.gg/
 
 ## Translations
 
-Locales are stored in `.yml` files under `config/locales`. Translations are splitted in 3 files:
+Locales are stored in YAML files under `config/locales`. Translations are splitted in 3 files:
 
 - `[lang].yml`: the main locale file. Contains translation strings for the frontend, backend, mailers, etc.
 - `activerecord/activerecord.[lang].yml`: contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
