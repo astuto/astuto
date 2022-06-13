@@ -8,12 +8,12 @@ We would like the Astuto community to be a welcoming environment for both season
 
 There are many ways to contribute to Astuto, not just coding. In this section we list the most common ones:
 
-- **Getting involved in the community**: we love to hear opinions about our product. Dropping a comment on an open issue or pull request or joining the discussion on the [Discord server](https://discord.gg/jTAgJvT8) is an easy yet impactful way to contribute.
+- **Getting involved in the community**: we love to hear opinions about our product. Dropping a comment on an open issue or pull request or joining the discussion on the [Discord server](https://discord.com/invite/SrtUMRp) is an easy yet impactful way to contribute.
 - **Reporting bugs or proposing features**:  [open a new issue](https://github.com/riggraz/astuto/issues/new) on GitHub. Before posting, check if a similar issue has already been reported. Try to be concise but also unambiguous.
 - **Translating Astuto into a new language**: we want Astuto to speak all languages and we need contributors to achieve this goal! Read [this issue](https://github.com/riggraz/astuto/issues/121) to see which locales are already available and which needs work. Also check out [this section](#translations) if you want to know more about how `yml` locales files are structured. 
 - **Coding**: [open a pull request](https://github.com/riggraz/astuto/pulls) with your bug fix or feature implementation. Before diving into coding, you may find [the coding and testing section](#coding-and-testing) useful.
 
-If you still have any doubt, feel free to [join our Discord](https://discord.gg/jTAgJvT8) and drop a message! And remember: there are no stupid questions 😉
+If you still have any doubt, feel free to [join our Discord](https://discord.com/invite/SrtUMRp) and drop a message! And remember: there are no stupid questions 😉
 
 ## Translations
 
