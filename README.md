@@ -52,7 +52,7 @@ Coming soon!
 
 You are welcome to contribute:
 * Read our [Contributing guidelines](https://github.com/riggraz/astuto/blob/main/CONTRIBUTING.md)
-* Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch.
+* Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch
 
 A huge thank you to all people who contributed:
 
