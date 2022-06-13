@@ -9,8 +9,6 @@
 <h3 align="center"><a href="http://65.21.148.99:3000/">Try the demo out</a></h3>
 <h5 align="center">To login as administrator:<br />email: admin@example.com | pass: password</h5>
 
----
-
 ## What is Astuto?
 
 Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users. It has been heavely inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the italian translation of the word "canny").
