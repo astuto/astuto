@@ -78,10 +78,7 @@ class PostStatusEditable extends React.Component<Props, State> {
 
                   <Separator />
 
-                  <a
-                    onClick={() => handleDelete(id)}
-                    data-confirm="Are you sure?"
-                  >
+                  <a onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}>
                     {I18n.t('common.buttons.delete')}
                   </a>
                 </div>
