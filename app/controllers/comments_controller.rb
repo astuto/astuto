@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new(comment_params)
+    comment = Comment.new(comment_create_params)
 
     if comment.save
       SendNotificationForCommentWorkflow.new(comment: comment).run
@@ -38,12 +38,26 @@ class CommentsController < ApplicationController
   def update
     comment = Comment.find(params[:id])
     authorize comment
-    comment.assign_attributes(comment_params)
 
-    if comment.save
+    if comment.update(comment_update_params)
       render json: comment.attributes.merge(
-        { user_full_name: current_user.full_name, user_email: current_user.email }
+        { user_full_name: comment.user.full_name, user_email: comment.user.email }
       )
+    else
+      render json: {
+        error: comment.errors.full_messages
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    authorize comment
+
+    if comment.destroy
+      render json: {
+        id: comment.id,
+      }, status: :accepted
     else
       render json: {
         error: comment.errors.full_messages
@@ -53,7 +67,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
+    def comment_create_params
       params
         .require(:comment)
         .permit(:body, :parent_id, :is_post_update)
@@ -61,5 +75,11 @@ class CommentsController < ApplicationController
           user_id: current_user.id,
           post_id: params[:post_id]
         )
+    end
+
+    def comment_update_params
+      params
+        .require(:comment)
+        .permit(:body, :is_post_update)
     end
 end

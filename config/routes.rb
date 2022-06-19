@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :follows, only: [:index]
     resource :likes, only: [:create, :destroy]
     resources :likes, only: [:index]
-    resources :comments, only: [:index, :create, :update]
+    resources :comments, only: [:index, :create, :update, :destroy]
     resources :post_status_changes, only: [:index]
   end
   
