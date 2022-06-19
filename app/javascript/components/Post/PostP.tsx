@@ -98,7 +98,7 @@ class PostP extends React.Component<Props> {
       ...postStatusChanges.items,
     ].sort(
       (a, b) =>
-      fromRailsStringToJavascriptDate(a.updatedAt) < fromRailsStringToJavascriptDate(b.updatedAt) ? 1 : -1
+      fromRailsStringToJavascriptDate(a.createdAt) < fromRailsStringToJavascriptDate(b.createdAt) ? 1 : -1
     );
 
     return (

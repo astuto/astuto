@@ -18,6 +18,7 @@ interface Props {
   isPostUpdate: boolean;
   userFullName: string;
   userEmail: string;
+  createdAt: string;
   updatedAt: string;
 
   replyForm: ReplyFormState;
@@ -45,8 +46,8 @@ class Comment extends React.Component<Props, State> {
 
     this.state = {
       editMode: false,
-      commentBody: props.body,
-      commentIsPostUpdate: props.isPostUpdate,
+      commentBody: '',
+      commentIsPostUpdate: false,
     };
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
@@ -55,6 +56,12 @@ class Comment extends React.Component<Props, State> {
   }
 
   toggleEditMode() {
+    if (this.state.editMode === false) {
+      this.setState({
+        commentBody: this.props.body,
+        commentIsPostUpdate: this.props.isPostUpdate,
+      });
+    }
     this.setState({editMode: !this.state.editMode});
   }
 
@@ -73,6 +80,7 @@ class Comment extends React.Component<Props, State> {
       isPostUpdate,
       userFullName,
       userEmail,
+      createdAt,
       updatedAt,
     
       replyForm,
@@ -157,7 +165,7 @@ class Comment extends React.Component<Props, State> {
                 }
               </a>
               {
-                isPowerUser ?
+                isPowerUser || currentUserEmail === userEmail ?
                   <>
                     <Separator />
                     <a onClick={this.toggleEditMode} className="commentLink">
@@ -175,7 +183,17 @@ class Comment extends React.Component<Props, State> {
                   null
               }
               <Separator />
-              <MutedText>{friendlyDate(updatedAt)}</MutedText>
+              <MutedText>{friendlyDate(createdAt)}</MutedText>
+
+              {
+                createdAt !== updatedAt ?
+                  <>
+                    <Separator />
+                    <MutedText>{ I18n.t('common.edited') }</MutedText>
+                  </>
+                :
+                  null
+              }
             </div>
             </>
         }

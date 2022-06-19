@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
         postStatusId: newPostStatusId,
         userFullName,
         userEmail,
-        updatedAt: fromJavascriptDateToRailsString(new Date()),
+        createdAt: fromJavascriptDateToRailsString(new Date()),
       }));
     });
   },

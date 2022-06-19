@@ -31,6 +31,7 @@ en:
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
+    edited: 'Edited'
     buttons:
       edit: 'Edit'
       delete: 'Delete'
