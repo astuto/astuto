@@ -8,6 +8,7 @@ import {
 } from '../actions/Comment/handleCommentReplies';
 import { toggleCommentIsUpdate } from '../actions/Comment/updateComment';
 import { submitComment } from '../actions/Comment/submitComment';
+import { deleteComment } from '../actions/Comment/deleteComment';
 
 import { State } from '../reducers/rootReducer';
 
@@ -54,6 +55,14 @@ const mapDispatchToProps = (dispatch) => ({
     authenticityToken: string,
   ) {
     dispatch(submitComment(postId, body, parentId, isPostUpdate, authenticityToken));
+  },
+
+  deleteComment(
+    postId: number,
+    commentId: number,
+    authenticityToken: string,
+  ) {
+    dispatch(deleteComment(postId, commentId, authenticityToken));
   },
 });
 

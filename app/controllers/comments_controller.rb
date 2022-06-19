@@ -8,13 +8,14 @@ class CommentsController < ApplicationController
         :body,
         :parent_id,
         :is_post_update,
+        :created_at,
         :updated_at,
         'users.full_name as user_full_name',
         'users.email as user_email',
       )
       .where(post_id: params[:post_id])
       .left_outer_joins(:user)
-      .order(updated_at: :desc)
+      .order(created_at: :desc)
 
     render json: comments
   end

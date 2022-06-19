@@ -32,11 +32,17 @@ interface Props {
     currentIsPostUpdate: boolean,
     authenticityToken: string,
   ): void;
+
   submitComment(
     postId: number,
     body: string,
     parentId: number,
     isPostUpdate: boolean,
+    authenticityToken: string,
+  ): void;
+  deleteComment(
+    postId: number,
+    commentId: number,
     authenticityToken: string,
   ): void;
 }
@@ -61,6 +67,14 @@ class CommentsP extends React.Component<Props> {
       body,
       parentId,
       isPostUpdate,
+      this.props.authenticityToken,
+    );
+  }
+
+  _handleDeleteComment = (commentId: number) => {
+    this.props.deleteComment(
+      this.props.postId,
+      commentId,
       this.props.authenticityToken,
     );
   }
@@ -120,6 +134,7 @@ class CommentsP extends React.Component<Props> {
           setCommentReplyBody={setCommentReplyBody}
           handleToggleIsCommentUpdate={this._handleToggleIsCommentUpdate}
           handleSubmitComment={this._handleSubmitComment}
+          handleDeleteComment={this._handleDeleteComment}
           parentId={null}
           level={1}
           isLoggedIn={isLoggedIn}

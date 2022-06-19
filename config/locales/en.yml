@@ -30,6 +30,7 @@ en:
       other: '%{count} comments'
     no_status: 'No status'
     loading: 'Loading...'
+    confirmation: 'Are you sure?'
     buttons:
       edit: 'Edit'
       delete: 'Delete'

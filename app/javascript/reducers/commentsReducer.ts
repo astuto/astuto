@@ -22,6 +22,11 @@ import {
 } from '../actions/Comment/submitComment';
 
 import {
+  CommentDeleteActionTypes,
+  COMMENT_DELETE_SUCCESS,
+} from '../actions/Comment/deleteComment';
+
+import {
   ToggleIsUpdateSuccessAction,
   TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
 } from '../actions/Comment/updateComment';
@@ -54,6 +59,7 @@ const commentsReducer = (
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes |
+    CommentDeleteActionTypes |
     ToggleIsUpdateSuccessAction
 ): CommentsState => {
   switch (action.type) {
@@ -101,6 +107,12 @@ const commentsReducer = (
         ...state,
         items: [commentReducer(undefined, commentRequestSuccess(action.comment)), ...state.items],
         replyForms: replyFormsReducer(state.replyForms, action),
+      };
+
+    case COMMENT_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(comment => comment.id !== action.commentId),
       };
 
     case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:

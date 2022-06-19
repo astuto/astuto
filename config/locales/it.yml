@@ -30,6 +30,7 @@ it:
       other: '%{count} commenti'
     no_status: 'Nessuno stato'
     loading: 'Caricamento...'
+    confirmation: 'Sei sicuro?'
     buttons:
       edit: 'Modifica'
       delete: 'Elimina'

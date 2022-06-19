@@ -24,6 +24,7 @@ interface Props {
   handleCommentReplyBodyChange(e: React.FormEvent): void;
   handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
   handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
+  handleDeleteComment(id: number): void;
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
@@ -43,6 +44,7 @@ const Comment = ({
   handleCommentReplyBodyChange,
   handleToggleIsCommentUpdate,
   handleSubmitComment,
+  handleDeleteComment,
 
   isLoggedIn,
   isPowerUser,
@@ -95,14 +97,10 @@ const Comment = ({
             </a>
             <Separator />
             <a
-              href={`/admin/comments/${id}`}
-              className="commentLink"
-              data-method="delete"
-              data-confirm="Are you sure?"
-              data-turbolinks="false">
+              onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteComment(id)}
+              className="commentLink">
                 {I18n.t('common.buttons.delete')}
             </a>
-
           </>
         :
           null

@@ -15,6 +15,7 @@ interface Props {
   setCommentReplyBody(commentId: number, body: string): void;
   handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
   handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
+  handleDeleteComment(id: number): void;
 
   isLoggedIn: boolean;
   isPowerUser: boolean;
@@ -31,6 +32,7 @@ const CommentList = ({
   setCommentReplyBody,
   handleToggleIsCommentUpdate,
   handleSubmitComment,
+  handleDeleteComment,
 
   isLoggedIn,
   isPowerUser,
@@ -51,6 +53,7 @@ const CommentList = ({
               }
               handleToggleIsCommentUpdate={handleToggleIsCommentUpdate}
               handleSubmitComment={handleSubmitComment}
+              handleDeleteComment={handleDeleteComment}
               {...comment}
 
               isLoggedIn={isLoggedIn}
@@ -68,6 +71,7 @@ const CommentList = ({
               setCommentReplyBody={setCommentReplyBody}
               handleToggleIsCommentUpdate={handleToggleIsCommentUpdate}
               handleSubmitComment={handleSubmitComment}
+              handleDeleteComment={handleDeleteComment}
 
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
