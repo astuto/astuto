@@ -189,7 +189,7 @@ class Comment extends React.Component<Props, State> {
                 createdAt !== updatedAt ?
                   <>
                     <Separator />
-                    <MutedText>{ I18n.t('common.edited') }</MutedText>
+                    <MutedText>{ I18n.t('common.edited').toLowerCase() }</MutedText>
                   </>
                 :
                   null
