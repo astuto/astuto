@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Box = ({ customClass, children }: Props) => (
-  <div className={`box ${customClass}`}>
+  <div className={`box${customClass ? ' ' + customClass : ''}`}>
     {children}
   </div>
 );
