@@ -54,8 +54,8 @@ import {
 } from '../actions/Comment/deleteComment';
 
 import {
-  ToggleIsUpdateSuccessAction,
-  TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
+  CommentUpdateActionTypes,
+  COMMENT_UPDATE_SUCCESS,
 } from '../actions/Comment/updateComment';
 
 import { FollowActionTypes, FOLLOW_SUBMIT_SUCCESS } from '../actions/Follow/submitFollow';
@@ -115,8 +115,8 @@ const currentPostReducer = (
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes |
+    CommentUpdateActionTypes |
     CommentDeleteActionTypes |
-    ToggleIsUpdateSuccessAction |
     FollowActionTypes |
     FollowRequestActionTypes |
     PostStatusChangesRequestActionTypes |
@@ -168,8 +168,8 @@ const currentPostReducer = (
     case COMMENT_SUBMIT_START:
     case COMMENT_SUBMIT_SUCCESS:
     case COMMENT_SUBMIT_FAILURE:
+    case COMMENT_UPDATE_SUCCESS:
     case COMMENT_DELETE_SUCCESS:
-    case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:
     case TOGGLE_COMMENT_IS_POST_UPDATE_FLAG:
       return {
         ...state,

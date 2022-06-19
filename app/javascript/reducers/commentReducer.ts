@@ -3,6 +3,11 @@ import {
   COMMENT_REQUEST_SUCCESS,
 } from '../actions/Comment/requestComment';
 
+import {
+  CommentUpdateActionTypes,
+  COMMENT_UPDATE_SUCCESS,
+} from '../actions/Comment/updateComment';
+
 import IComment from '../interfaces/IComment';
 
 const initialState: IComment = {
@@ -18,10 +23,11 @@ const initialState: IComment = {
 
 const commentReducer = (
   state = initialState,
-  action: CommentRequestSuccessAction,
+  action: CommentRequestSuccessAction | CommentUpdateActionTypes,
 ): IComment => {
   switch (action.type) {
     case COMMENT_REQUEST_SUCCESS:
+    case COMMENT_UPDATE_SUCCESS:
       return {
         id: action.comment.id,
         body: action.comment.body,

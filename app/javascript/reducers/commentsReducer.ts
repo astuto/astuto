@@ -27,8 +27,8 @@ import {
 } from '../actions/Comment/deleteComment';
 
 import {
-  ToggleIsUpdateSuccessAction,
-  TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
+  CommentUpdateActionTypes,
+  COMMENT_UPDATE_SUCCESS,
 } from '../actions/Comment/updateComment';
 
 import commentReducer from './commentReducer';
@@ -59,8 +59,8 @@ const commentsReducer = (
     CommentsRequestActionTypes |
     HandleCommentRepliesType |
     CommentSubmitActionTypes |
-    CommentDeleteActionTypes |
-    ToggleIsUpdateSuccessAction
+    CommentUpdateActionTypes |
+    CommentDeleteActionTypes
 ): CommentsState => {
   switch (action.type) {
     case COMMENTS_REQUEST_START:
@@ -115,17 +115,13 @@ const commentsReducer = (
         items: state.items.filter(comment => comment.id !== action.commentId),
       };
 
-    case TOGGLE_COMMENT_IS_UPDATE_SUCCESS:
+    case COMMENT_UPDATE_SUCCESS:
         return {
           ...state,
-          items:
-            state.items.map(comment => {
-              if (comment.id === action.commentId) {
-                comment.isPostUpdate = !comment.isPostUpdate;
-                return comment;
-              } else return comment;
-            })
-        }
+          items: state.items.map(comment => (
+            comment.id === action.comment.id ? commentReducer(comment, action) : comment
+          )),
+        };
 
     default:
       return state;

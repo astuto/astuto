@@ -13,8 +13,9 @@ interface Props {
 
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
-  handleToggleIsCommentUpdate(commentId: number, currentIsPostUpdate: boolean): void;
+
   handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
+  handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 
   isLoggedIn: boolean;
@@ -30,8 +31,8 @@ const CommentList = ({
 
   toggleCommentReply,
   setCommentReplyBody,
-  handleToggleIsCommentUpdate,
   handleSubmitComment,
+  handleUpdateComment,
   handleDeleteComment,
 
   isLoggedIn,
@@ -51,9 +52,11 @@ const CommentList = ({
                   setCommentReplyBody(comment.id, (e.target as HTMLTextAreaElement).value)
                 )
               }
-              handleToggleIsCommentUpdate={handleToggleIsCommentUpdate}
+
               handleSubmitComment={handleSubmitComment}
+              handleUpdateComment={handleUpdateComment}
               handleDeleteComment={handleDeleteComment}
+
               {...comment}
 
               isLoggedIn={isLoggedIn}
@@ -69,8 +72,9 @@ const CommentList = ({
 
               toggleCommentReply={toggleCommentReply}
               setCommentReplyBody={setCommentReplyBody}
-              handleToggleIsCommentUpdate={handleToggleIsCommentUpdate}
+
               handleSubmitComment={handleSubmitComment}
+              handleUpdateComment={handleUpdateComment}
               handleDeleteComment={handleDeleteComment}
 
               isLoggedIn={isLoggedIn}

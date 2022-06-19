@@ -1,43 +1,81 @@
-import { ThunkAction } from "redux-thunk";
-import { State } from "../../reducers/rootReducer";
 import { Action } from "redux";
+import { ThunkAction } from "redux-thunk";
 
+import HttpStatus from "../../constants/http_status";
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import ICommentJSON from "../../interfaces/json/IComment";
+import { State } from "../../reducers/rootReducer";
 
-export const TOGGLE_COMMENT_IS_UPDATE_SUCCESS = 'TOGGLE_COMMENT_IS_UPDATE_SUCCESS';
-export interface ToggleIsUpdateSuccessAction {
-  type: typeof TOGGLE_COMMENT_IS_UPDATE_SUCCESS;
-  commentId: number;
+export const COMMENT_UPDATE_START = 'COMMENT_UPDATE_START';
+interface CommentUpdateStartAction {
+  type: typeof COMMENT_UPDATE_START;
 }
 
-const toggleIsUpdateSuccess = (
-  commentId: number,
-): ToggleIsUpdateSuccessAction => ({
-  type: TOGGLE_COMMENT_IS_UPDATE_SUCCESS,
-  commentId,
+export const COMMENT_UPDATE_SUCCESS = 'COMMENT_UPDATE_SUCCESS';
+interface CommentUpdateSuccessAction {
+  type: typeof COMMENT_UPDATE_SUCCESS;
+  comment: ICommentJSON;
+}
+
+export const COMMENT_UPDATE_FAILURE = 'COMMENT_UPDATE_FAILURE';
+interface CommentUpdateFailureAction {
+  type: typeof COMMENT_UPDATE_FAILURE;
+  error: string;
+}
+
+export type CommentUpdateActionTypes =
+  CommentUpdateStartAction |
+  CommentUpdateSuccessAction |
+  CommentUpdateFailureAction;
+
+const commentUpdateStart = (): CommentUpdateStartAction => ({
+  type: COMMENT_UPDATE_START,
 });
 
-export const toggleCommentIsUpdate = (
+const commentUpdateSuccess = (
+  commentJSON: ICommentJSON,
+): CommentUpdateSuccessAction => ({
+  type: COMMENT_UPDATE_SUCCESS,
+  comment: commentJSON,
+});
+
+const commentUpdateFailure = (error: string): CommentUpdateFailureAction => ({
+  type: COMMENT_UPDATE_FAILURE,
+  error,
+});
+
+export const updateComment = (
   postId: number,
   commentId: number,
-  currentIsPostUpdate: boolean,
+  body: string,
+  isPostUpdate: boolean,
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
+  dispatch(commentUpdateStart());
+
   try {
-    const response = await fetch(`/posts/${postId}/comments/${commentId}`, {
+    const res = await fetch(`/posts/${postId}/comments/${commentId}`, {
       method: 'PATCH',
       headers: buildRequestHeaders(authenticityToken),
       body: JSON.stringify({
         comment: {
-          is_post_update: !currentIsPostUpdate,
+          body,
+          is_post_update: isPostUpdate,
         },
-      })
+      }),
     });
+    const json = await res.json();
 
-    if (response.status === 200) {
-      dispatch(toggleIsUpdateSuccess(commentId));
+    if (res.status === HttpStatus.OK) {
+      dispatch(commentUpdateSuccess(json));
+    } else {
+      dispatch(commentUpdateFailure(json.error));
     }
+
+    return Promise.resolve(res);
   } catch (e) {
-    console.log(e);
+    dispatch(commentUpdateFailure(e));
+    
+    return Promise.resolve(null);
   }
-}
+};

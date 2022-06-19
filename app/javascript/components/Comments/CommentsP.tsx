@@ -26,18 +26,20 @@ interface Props {
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
   toggleCommentIsPostUpdateFlag(): void;
-  toggleCommentIsPostUpdate(
-    postId: number,
-    commentId: number,
-    currentIsPostUpdate: boolean,
-    authenticityToken: string,
-  ): void;
 
   submitComment(
     postId: number,
     body: string,
     parentId: number,
     isPostUpdate: boolean,
+    authenticityToken: string,
+  ): void;
+  updateComment(
+    postId: number,
+    commentId: number,
+    body: string,
+    isPostUpdate: boolean,
+    onSuccess: Function,
     authenticityToken: string,
   ): void;
   deleteComment(
@@ -52,21 +54,23 @@ class CommentsP extends React.Component<Props> {
     this.props.requestComments(this.props.postId);
   }
 
-  _handleToggleIsCommentUpdate = (commentId: number, currentIsPostUpdate: boolean) => {
-    this.props.toggleCommentIsPostUpdate(
-      this.props.postId,
-      commentId,
-      currentIsPostUpdate,
-      this.props.authenticityToken,
-    );
-  }
-
   _handleSubmitComment = (body: string, parentId: number, isPostUpdate: boolean) => {
     this.props.submitComment(
       this.props.postId,
       body,
       parentId,
       isPostUpdate,
+      this.props.authenticityToken,
+    );
+  }
+
+  _handleUpdateComment = (commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function) => {
+    this.props.updateComment(
+      this.props.postId,
+      commentId,
+      body,
+      isPostUpdate,
+      onSuccess,
       this.props.authenticityToken,
     );
   }
@@ -132,8 +136,8 @@ class CommentsP extends React.Component<Props> {
           replyForms={replyForms}
           toggleCommentReply={toggleCommentReply}
           setCommentReplyBody={setCommentReplyBody}
-          handleToggleIsCommentUpdate={this._handleToggleIsCommentUpdate}
           handleSubmitComment={this._handleSubmitComment}
+          handleUpdateComment={this._handleUpdateComment}
           handleDeleteComment={this._handleDeleteComment}
           parentId={null}
           level={1}

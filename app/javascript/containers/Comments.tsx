@@ -6,13 +6,14 @@ import {
   setCommentReplyBody,
   toggleCommentIsPostUpdateFlag,
 } from '../actions/Comment/handleCommentReplies';
-import { toggleCommentIsUpdate } from '../actions/Comment/updateComment';
 import { submitComment } from '../actions/Comment/submitComment';
+import { updateComment } from '../actions/Comment/updateComment';
 import { deleteComment } from '../actions/Comment/deleteComment';
 
 import { State } from '../reducers/rootReducer';
 
 import CommentsP from '../components/Comments/CommentsP';
+import HttpStatus from '../constants/http_status';
 
 const mapStateToProps = (state: State) => ({
   comments: state.currentPost.comments.items,
@@ -38,15 +39,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(toggleCommentIsPostUpdateFlag(null));
   },
 
-  toggleCommentIsPostUpdate(
-    postId: number,
-    commentId: number,
-    currentIsPostUpdate: boolean,
-    authenticityToken: string,
-  ) {
-    dispatch(toggleCommentIsUpdate(postId, commentId, currentIsPostUpdate, authenticityToken));
-  },
-
   submitComment(
     postId: number,
     body: string,
@@ -55,6 +47,19 @@ const mapDispatchToProps = (dispatch) => ({
     authenticityToken: string,
   ) {
     dispatch(submitComment(postId, body, parentId, isPostUpdate, authenticityToken));
+  },
+
+  updateComment(
+    postId: number,
+    commentId: number,
+    body: string,
+    isPostUpdate: boolean,
+    onSuccess: Function,
+    authenticityToken: string,
+  ) {
+    dispatch(updateComment(postId, commentId, body, isPostUpdate, authenticityToken)).then(res => {
+      if (res && res.status === HttpStatus.OK) onSuccess();
+    });
   },
 
   deleteComment(
