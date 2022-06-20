@@ -14,6 +14,7 @@ import { State } from '../reducers/rootReducer';
 import PostP from '../components/Post/PostP';
 
 import { fromJavascriptDateToRailsString } from '../helpers/datetime';
+import { deletePost } from '../actions/Post/deletePost';
 
 const mapStateToProps = (state: State) => ({
   post: state.currentPost.item,
@@ -38,6 +39,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   requestPostStatusChanges(postId: number) {
     dispatch(requestPostStatusChanges(postId));
+  },
+
+  deletePost(postId: number, authenticityToken: string) {
+    return dispatch(deletePost(postId, authenticityToken));
   },
 
   changePostBoard(postId: number, newBoardId: number, authenticityToken: string) {

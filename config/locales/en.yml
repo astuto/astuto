@@ -76,6 +76,7 @@ en:
       empty: 'There are no posts'
   post:
     edit_button: 'Edit'
+    published_by: 'Published by'
     post_status_select:
       no_post_status: 'None'
     updates_box:

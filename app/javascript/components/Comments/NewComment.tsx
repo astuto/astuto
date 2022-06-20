@@ -1,6 +1,6 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
 import Gravatar from 'react-gravatar';
+import I18n from 'i18n-js';
 
 import NewCommentUpdateSection from './NewCommentUpdateSection';
 

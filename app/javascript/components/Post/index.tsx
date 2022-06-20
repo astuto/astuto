@@ -17,8 +17,8 @@ interface Props {
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
-  userFullName: string;
-  userEmail: string;
+  currentUserFullName: string;
+  currentUserEmail: string;
   authenticityToken: string;
 }
 
@@ -38,8 +38,8 @@ class PostRoot extends React.Component<Props> {
       postStatuses,
       isLoggedIn,
       isPowerUser,
-      userFullName,
-      userEmail,
+      currentUserFullName,
+      currentUserEmail,
       authenticityToken
     } = this.props;
 
@@ -52,8 +52,8 @@ class PostRoot extends React.Component<Props> {
 
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
-          userFullName={userFullName}
-          userEmail={userEmail}
+          currentUserFullName={currentUserFullName}
+          currentUserEmail={currentUserEmail}
           authenticityToken={authenticityToken}
         />
       </Provider>

@@ -132,5 +132,19 @@
 
       color: $primary-color;
     }
+
+    .postFooter {
+
+      .postAuthor {
+        .postAuthorAvatar { @extend .gravatar; }
+      }
+
+      a {
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }

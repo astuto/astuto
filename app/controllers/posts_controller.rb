@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
     posts = Post
@@ -25,21 +25,37 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    @post = Post.new
+    @post.assign_attributes(post_create_params)
 
-    if post.save
-      Follow.create(post_id: post.id, user_id: current_user.id)
+    if @post.save
+      Follow.create(post_id: @post.id, user_id: current_user.id)
       
-      render json: post, status: :created
+      render json: @post, status: :created
     else
       render json: {
-        error: post.errors.full_messages
+        error: @post.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post
+      .select(
+        :id,
+        :title,
+        :description,
+        :board_id,
+        :user_id,
+        :post_status_id,
+        :created_at,
+        :updated_at,
+        'users.email as user_email',
+        'users.full_name as user_full_name'
+      )
+      .joins(:user)
+      .find(params[:id])
+    
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
     @board = @post.board
 
@@ -51,35 +67,41 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    authorize post
-
-    post.board_id = params[:post][:board_id] if params[:post].has_key?(:board_id)
+    @post = Post.find(params[:id])
+    authorize @post
     
-    post_status_changed = false
-    
-    if params[:post].has_key?(:post_status_id) and
-       params[:post][:post_status_id] != post.post_status_id
-      
-      post_status_changed = true
-      post.post_status_id = params[:post][:post_status_id]
-    end
+    @post.assign_attributes(post_update_params)
 
-    if post.save
-      if post_status_changed
+    if @post.save
+      if @post.post_status_id_previously_changed?
         PostStatusChange.create(
           user_id: current_user.id,
-          post_id: post.id,
-          post_status_id: post.post_status_id
+          post_id: @post.id,
+          post_status_id: @post.post_status_id
         )
-
-        send_notifications(post)
+  
+        UserMailer.notify_followers_of_post_status_change(post: @post).deliver_later
       end
 
-      render json: post, status: :no_content
+      render json: @post, status: :no_content
     else
       render json: {
-        error: post.errors.full_messages
+        error: @post.errors.full_messages
+      }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    authorize @post
+
+    if @post.destroy
+      render json: {
+        id: @post.id,
+      }, status: :accepted
+    else
+      render json: {
+        error: @post.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -95,14 +117,16 @@ class PostsController < ApplicationController
         .except(:page, :search)
     end
     
-    def post_params
+    def post_create_params
       params
         .require(:post)
-        .permit(:title, :description, :board_id)
+        .permit(policy(@post).permitted_attributes_for_create)
         .merge(user_id: current_user.id)
     end
 
-    def send_notifications(post)
-      UserMailer.notify_followers_of_post_status_change(post: post).deliver_later
+    def post_update_params
+      params
+        .require(:post)
+        .permit(policy(@post).permitted_attributes_for_update)
     end
 end

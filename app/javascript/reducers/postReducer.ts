@@ -26,6 +26,8 @@ const initialState: IPost = {
   commentsCount: 0,
   hotness: 0,
   userId: 0,
+  userEmail: '',
+  userFullName: '',
   createdAt: '',
 };
 
@@ -49,6 +51,8 @@ const postReducer = (
         commentsCount: action.post.comments_count,
         hotness: action.post.hotness,
         userId: action.post.user_id,
+        userEmail: action.post.user_email,
+        userFullName: action.post.user_full_name,
         createdAt: action.post.created_at,
       };
 

@@ -76,6 +76,7 @@ it:
       empty: 'Non ci sono post'
   post:
     edit_button: 'Modifica'
+    published_by: 'Pubblicato da'
     post_status_select:
       no_post_status: 'Nessuno'
     updates_box:

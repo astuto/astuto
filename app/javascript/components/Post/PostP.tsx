@@ -1,6 +1,5 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import I18n from 'i18n-js';
 
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
@@ -15,14 +14,14 @@ import PostStatusSelect from './PostStatusSelect';
 import PostBoardLabel from '../common/PostBoardLabel';
 import PostStatusLabel from '../common/PostStatusLabel';
 import Comments from '../../containers/Comments';
-import { MutedText } from '../common/CustomTexts';
 import Sidebar from '../common/Sidebar';
 
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
 
-import friendlyDate, { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
+import { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
+import PostFooter from './PostFooter';
 
 interface Props {
   postId: number;
@@ -35,14 +34,17 @@ interface Props {
   postStatuses: Array<IPostStatus>;
   isLoggedIn: boolean;
   isPowerUser: boolean;
-  userFullName: string;
-  userEmail: string;
+  currentUserFullName: string;
+  currentUserEmail: string;
   authenticityToken: string;
 
   requestPost(postId: number): void;
   requestLikes(postId: number): void;
   requestFollow(postId: number): void;
   requestPostStatusChanges(postId: number): void;
+
+  deletePost(postId: number, authenticityToken: string): Promise<any>;
+
   changePostBoard(
     postId: number,
     newBoardId: number,
@@ -63,13 +65,26 @@ interface Props {
 }
 
 class PostP extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props);
+
+    this._handleDeletePost = this._handleDeletePost.bind(this);
+  }
+
   componentDidMount() {
-    const {postId} = this.props;
+    const { postId } = this.props;
 
     this.props.requestPost(postId);
     this.props.requestLikes(postId);
     this.props.requestFollow(postId);
     this.props.requestPostStatusChanges(postId);
+  }
+
+  _handleDeletePost() {
+    this.props.deletePost(
+      this.props.postId,
+      this.props.authenticityToken
+    ).then(() => window.location.href = '/');
   }
 
   render() {
@@ -84,8 +99,8 @@ class PostP extends React.Component<Props> {
 
       isLoggedIn,
       isPowerUser,
-      userFullName,
-      userEmail,
+      currentUserFullName,
+      currentUserEmail,
       authenticityToken,
 
       changePostBoard,
@@ -131,19 +146,12 @@ class PostP extends React.Component<Props> {
               <LikeButton
                 postId={post.id}
                 likesCount={likes.items.length}
-                liked={likes.items.find(like => like.email === userEmail) ? 1 : 0}
+                liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
                 isLoggedIn={isLoggedIn}
                 authenticityToken={authenticityToken}
               />
-              <h2>{post.title}</h2>
-              {
-                isPowerUser && post ?
-                  <a href={`/admin/posts/${post.id}`} data-turbolinks="false">
-                    {I18n.t('post.edit_button')}
-                  </a>
-                :
-                  null
-              }
+
+              <h3>{post.title}</h3>
             </div>
             {
               isPowerUser && post ?
@@ -160,7 +168,7 @@ class PostP extends React.Component<Props> {
                     selectedPostStatusId={post.postStatusId}
                     handleChange={
                       newPostStatusId =>
-                        changePostStatus(post.id, newPostStatusId, userFullName, userEmail, authenticityToken)
+                        changePostStatus(post.id, newPostStatusId, currentUserFullName, currentUserEmail, authenticityToken)
                     }
                   />
                 </div>
@@ -183,14 +191,23 @@ class PostP extends React.Component<Props> {
               {post.description}
             </ReactMarkdown>
             
-            <MutedText>{friendlyDate(post.createdAt)}</MutedText>
+
+            <PostFooter
+              createdAt={post.createdAt}
+              handleDeletePost={this._handleDeletePost}
+
+              isPowerUser={isPowerUser}
+              authorEmail={post.userEmail}
+              authorFullName={post.userFullName}
+              currentUserEmail={currentUserEmail}
+            />
           </>
 
           <Comments
             postId={this.props.postId}
             isLoggedIn={isLoggedIn}
             isPowerUser={isPowerUser}
-            userEmail={userEmail}
+            userEmail={currentUserEmail}
             authenticityToken={authenticityToken}
           />
         </div>

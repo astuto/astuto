@@ -14,6 +14,11 @@ import {
   POSTS_REQUEST_FAILURE,
 } from '../actions/Post/requestPosts';
 
+import {
+  PostDeleteActionTypes,
+  POST_DELETE_SUCCESS,
+} from '../actions/Post/deletePost';
+
 import { postRequestSuccess } from '../actions/Post/requestPost';
 
 import {
@@ -49,6 +54,7 @@ const postsReducer = (
   state = initialState,
   action:
     PostsRequestActionTypes |
+    PostDeleteActionTypes |
     ChangeFiltersActionTypes |
     LikeActionTypes,
 ): PostsState => {
@@ -77,6 +83,12 @@ const postsReducer = (
         ...state,
         areLoading: false,
         error: action.error,
+      };
+
+    case POST_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(post => post.id !== action.postId),
       };
 
     case SET_SEARCH_FILTER:
