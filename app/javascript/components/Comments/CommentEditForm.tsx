@@ -3,6 +3,7 @@ import I18n from 'i18n-js';
 import Button from '../common/Button';
 
 interface Props {
+  id: number;
   initialBody: string;
   initialIsPostUpdate: boolean;
 
@@ -46,7 +47,7 @@ class CommentEditForm extends React.Component<Props, State> {
   }
 
   render() {
-    const { isPowerUser, handleUpdateComment, toggleEditMode } = this.props;
+    const { id, isPowerUser, handleUpdateComment, toggleEditMode } = this.props;
     const { body, isPostUpdate } = this.state;
 
     return (
@@ -63,13 +64,15 @@ class CommentEditForm extends React.Component<Props, State> {
               isPowerUser ?
                 <>
                   <input
-                    id="isPostUpdateFlagUpdateForm"
+                    id={`isPostUpdateFlagComment${id}`}
                     type="checkbox"
                     onChange={e => this.handleCommentIsPostUpdateChange(e.target.checked)}
                     checked={isPostUpdate || false}
                   />
                   &nbsp;
-                  <label htmlFor="isPostUpdateFlagUpdateForm">{I18n.t('post.new_comment.is_post_update')}</label>
+                  <label htmlFor={`isPostUpdateFlagComment${id}`}>
+                    {I18n.t('post.new_comment.is_post_update')}
+                  </label>
                 </>
               :
                 null

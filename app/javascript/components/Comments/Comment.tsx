@@ -101,6 +101,7 @@ class Comment extends React.Component<Props, State> {
         {
           this.state.editMode ?
             <CommentEditForm
+              id={id}
               initialBody={body}
               initialIsPostUpdate={isPostUpdate}
 
