@@ -128,13 +128,13 @@ class PostP extends React.Component<Props> {
         <div className="postAndCommentsContainer">
           <>
             <div className="postHeader">
-            <LikeButton
-              postId={post.id}
-              likesCount={likes.items.length}
-              liked={likes.items.find(like => like.email === userEmail) ? 1 : 0}
-              isLoggedIn={isLoggedIn}
-              authenticityToken={authenticityToken}
-            />
+              <LikeButton
+                postId={post.id}
+                likesCount={likes.items.length}
+                liked={likes.items.find(like => like.email === userEmail) ? 1 : 0}
+                isLoggedIn={isLoggedIn}
+                authenticityToken={authenticityToken}
+              />
               <h2>{post.title}</h2>
               {
                 isPowerUser && post ?

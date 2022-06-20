@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
     comments = Comment
@@ -21,47 +21,48 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new(comment_create_params)
+    @comment = Comment.new
+    @comment.assign_attributes(comment_create_params)
 
-    if comment.save
-      SendNotificationForCommentWorkflow.new(comment: comment).run
+    if @comment.save
+      SendNotificationForCommentWorkflow.new(comment: @comment).run
 
-      render json: comment.attributes.merge(
+      render json: @comment.attributes.merge(
         { user_full_name: current_user.full_name, user_email: current_user.email }
       ), status: :created
     else
       render json: {
-        error: comment.errors.full_messages
+        error: @comment.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
 
   def update
-    comment = Comment.find(params[:id])
-    authorize comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
 
-    if comment.update(comment_update_params)
-      render json: comment.attributes.merge(
-        { user_full_name: comment.user.full_name, user_email: comment.user.email }
+    if @comment.update(comment_update_params)
+      render json: @comment.attributes.merge(
+        { user_full_name: @comment.user.full_name, user_email: @comment.user.email }
       )
     else
       render json: {
-        error: comment.errors.full_messages
+        error: @comment.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    authorize comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
 
-    if comment.destroy
+    if @comment.destroy
       render json: {
-        id: comment.id,
+        id: @comment.id,
       }, status: :accepted
     else
       render json: {
-        error: comment.errors.full_messages
+        error: @comment.errors.full_messages
       }, status: :unprocessable_entity
     end
   end
@@ -71,7 +72,7 @@ class CommentsController < ApplicationController
     def comment_create_params
       params
         .require(:comment)
-        .permit(:body, :parent_id, :is_post_update)
+        .permit(policy(@comment).permitted_attributes_for_create)
         .merge(
           user_id: current_user.id,
           post_id: params[:post_id]
@@ -81,6 +82,6 @@ class CommentsController < ApplicationController
     def comment_update_params
       params
         .require(:comment)
-        .permit(:body, :is_post_update)
+        .permit(policy(@comment).permitted_attributes_for_update)
     end
 end

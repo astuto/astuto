@@ -4,13 +4,11 @@ import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
-import Separator from '../common/Separator';
-import { MutedText } from '../common/CustomTexts';
 
 import { ReplyFormState } from '../../reducers/replyFormReducer';
 
-import friendlyDate from '../../helpers/datetime';
-import Button from '../common/Button';
+import CommentEditForm from './CommentEditForm';
+import CommentFooter from './CommentFooter';
 
 interface Props {
   id: number;
@@ -36,8 +34,6 @@ interface Props {
 
 interface State {
   editMode: boolean;
-  commentBody: string;
-  commentIsPostUpdate: boolean;
 }
 
 class Comment extends React.Component<Props, State> {
@@ -46,31 +42,23 @@ class Comment extends React.Component<Props, State> {
 
     this.state = {
       editMode: false,
-      commentBody: '',
-      commentIsPostUpdate: false,
     };
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.handleCommentBodyChange = this.handleCommentBodyChange.bind(this);
-    this.handleCommentIsPostUpdateChange = this.handleCommentIsPostUpdateChange.bind(this);
+    this._handleUpdateComment = this._handleUpdateComment.bind(this);
   }
 
   toggleEditMode() {
-    if (this.state.editMode === false) {
-      this.setState({
-        commentBody: this.props.body,
-        commentIsPostUpdate: this.props.isPostUpdate,
-      });
-    }
     this.setState({editMode: !this.state.editMode});
   }
 
-  handleCommentBodyChange(newCommentBody: string) {
-    this.setState({commentBody: newCommentBody});
-  }
-
-  handleCommentIsPostUpdateChange(newIsPostUpdate: boolean) {
-    this.setState({commentIsPostUpdate: newIsPostUpdate});
+  _handleUpdateComment(body: string, isPostUpdate: boolean) {
+    this.props.handleUpdateComment(
+      this.props.id,
+      body,
+      isPostUpdate,
+      this.toggleEditMode,
+    );
   }
 
   render() {
@@ -88,7 +76,6 @@ class Comment extends React.Component<Props, State> {
       handleCommentReplyBodyChange,
       
       handleSubmitComment,
-      handleUpdateComment,
       handleDeleteComment,
     
       isLoggedIn,
@@ -113,88 +100,38 @@ class Comment extends React.Component<Props, State> {
 
         {
           this.state.editMode ?
-            <div className="editCommentForm">
-              <textarea
-                value={this.state.commentBody}
-                onChange={e => this.handleCommentBodyChange(e.target.value)}
-                className="commentForm"
-              />
+            <CommentEditForm
+              initialBody={body}
+              initialIsPostUpdate={isPostUpdate}
 
-              <div>
-                <div>
-                  <input
-                    id="isPostUpdateFlagUpdateForm"
-                    type="checkbox"
-                    onChange={e => this.handleCommentIsPostUpdateChange(e.target.checked)}
-                    checked={this.state.commentIsPostUpdate || false}
-                  />
-                  &nbsp;
-                  <label htmlFor="isPostUpdateFlagUpdateForm">{I18n.t('post.new_comment.is_post_update')}</label>
-                </div>
+              isPowerUser={isPowerUser}
 
-                <div>
-                  <a className="commentLink" onClick={this.toggleEditMode}>
-                    { I18n.t('common.buttons.cancel') }
-                  </a>
-                  &nbsp;
-                  <Button
-                    onClick={() => handleUpdateComment(id, this.state.commentBody, this.state.commentIsPostUpdate, this.toggleEditMode)}
-                  >
-                    { I18n.t('common.buttons.update') }
-                  </Button>
-                </div>
-              </div>
-            </div>
+              handleUpdateComment={this._handleUpdateComment}
+              toggleEditMode={this.toggleEditMode}
+            />
           :
             <>
-            <ReactMarkdown
-              className="commentBody"
-              disallowedTypes={['heading', 'image', 'html']}
-              unwrapDisallowed
-            >
-              {body}
-            </ReactMarkdown>
+              <ReactMarkdown
+                className="commentBody"
+                disallowedTypes={['heading', 'image', 'html']}
+                unwrapDisallowed
+              >
+                {body}
+              </ReactMarkdown>
 
-            <div className="commentFooter">
-              <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
-                {
-                  replyForm.isOpen ?
-                    I18n.t('common.buttons.cancel')
-                  :
-                    I18n.t('post.comments.reply_button')
-                }
-              </a>
-              {
-                isPowerUser || currentUserEmail === userEmail ?
-                  <>
-                    <Separator />
-                    <a onClick={this.toggleEditMode} className="commentLink">
-                      {I18n.t('common.buttons.edit')}
-                    </a>
+              <CommentFooter
+                id={id}
+                createdAt={createdAt}
+                updatedAt={updatedAt}
+                replyForm={replyForm}
+                isPowerUser={isPowerUser}
+                currentUserEmail={currentUserEmail}
+                commentAuthorEmail={userEmail}
 
-                    <Separator />
-                    <a
-                      onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteComment(id)}
-                      className="commentLink">
-                        {I18n.t('common.buttons.delete')}
-                    </a>
-                  </>
-                :
-                  null
-              }
-              <Separator />
-              <MutedText>{friendlyDate(createdAt)}</MutedText>
-
-              {
-                createdAt !== updatedAt ?
-                  <>
-                    <Separator />
-                    <MutedText>{ I18n.t('common.edited').toLowerCase() }</MutedText>
-                  </>
-                :
-                  null
-              }
-            </div>
+                handleDeleteComment={handleDeleteComment}
+                handleToggleCommentReply={handleToggleCommentReply}
+                toggleEditMode={this.toggleEditMode}
+              />
             </>
         }
         {
