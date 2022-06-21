@@ -8,6 +8,7 @@ import Separator from '../common/Separator';
 
 interface Props {
   createdAt: string;
+  toggleEditMode(): void;
   handleDeletePost(): void;
   isPowerUser: boolean;
   authorEmail: string;
@@ -17,6 +18,7 @@ interface Props {
 
 const PostFooter = ({
   createdAt,
+  toggleEditMode,
   handleDeletePost,
   isPowerUser,
   authorEmail,
@@ -32,6 +34,10 @@ const PostFooter = ({
     {
       isPowerUser || authorEmail === currentUserEmail ?
         <>
+        <a onClick={toggleEditMode}>
+          { I18n.t('common.buttons.edit') }
+        </a>
+        <Separator />
         <a onClick={() => confirm(I18n.t('common.confirmation')) && handleDeletePost()}>
           { I18n.t('common.buttons.delete') }
         </a>

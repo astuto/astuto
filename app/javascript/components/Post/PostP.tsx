@@ -6,11 +6,11 @@ import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 
 import PostUpdateList from './PostUpdateList';
+import PostEditForm from './PostEditForm';
+import PostFooter from './PostFooter';
 import LikeList from './LikeList';
 import ActionBox from './ActionBox';
 import LikeButton from '../../containers/LikeButton';
-import PostBoardSelect from './PostBoardSelect';
-import PostStatusSelect from './PostStatusSelect';
 import PostBoardLabel from '../common/PostBoardLabel';
 import PostStatusLabel from '../common/PostStatusLabel';
 import Comments from '../../containers/Comments';
@@ -19,13 +19,16 @@ import Sidebar from '../common/Sidebar';
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import { PostStatusChangesState } from '../../reducers/postStatusChangesReducer';
+import { PostEditFormState } from '../../reducers/currentPostReducer';
 
 import { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
-import PostFooter from './PostFooter';
+import HttpStatus from '../../constants/http_status';
 
 interface Props {
   postId: number;
   post: IPost;
+  editMode: boolean;
+  editForm: PostEditFormState;
   likes: LikesState;
   followed: boolean;
   comments: CommentsState;
@@ -39,24 +42,33 @@ interface Props {
   authenticityToken: string;
 
   requestPost(postId: number): void;
+  updatePost(
+    postId: number,
+    title: string,
+    description: string,
+    boardId: number,
+    postStatusId: number,
+    authenticityToken: string,
+  ): Promise<any>;
+
   requestLikes(postId: number): void;
   requestFollow(postId: number): void;
   requestPostStatusChanges(postId: number): void;
 
+  toggleEditMode(): void;
+  handleChangeEditFormTitle(title: string): void;
+  handleChangeEditFormDescription(description: string): void;
+  handleChangeEditFormBoard(boardId: number): void;
+  handleChangeEditFormPostStatus(postStatusId: number): void;
+
   deletePost(postId: number, authenticityToken: string): Promise<any>;
 
-  changePostBoard(
-    postId: number,
-    newBoardId: number,
-    authenticityToken: string,
-  ): void;
-  changePostStatus(
-    postId: number,
+  postStatusChangeSubmitted(
     newPostStatusId: number,
     userFullName: string,
     userEmail: string,
-    authenticityToken: string,
   ): void;
+
   submitFollow(
     postId: number,
     isFollow: boolean,
@@ -68,6 +80,7 @@ class PostP extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    this._handleUpdatePost = this._handleUpdatePost.bind(this);
     this._handleDeletePost = this._handleDeletePost.bind(this);
   }
 
@@ -80,6 +93,39 @@ class PostP extends React.Component<Props> {
     this.props.requestPostStatusChanges(postId);
   }
 
+  _handleUpdatePost(title: string, description: string, boardId: number, postStatusId: number) {
+    const {
+      postId,
+      post,
+      currentUserFullName,
+      currentUserEmail,
+      authenticityToken,
+
+      updatePost,
+      postStatusChangeSubmitted,
+    } = this.props;
+
+    const oldPostStatusId = post.postStatusId;
+    
+    updatePost(
+      postId,
+      title,
+      description,
+      boardId,
+      postStatusId,
+      authenticityToken,
+    ).then(res => {
+      if (res?.status !== HttpStatus.OK) return;
+      if (postStatusId === oldPostStatusId) return;
+
+      postStatusChangeSubmitted(
+        postStatusId,
+        currentUserFullName,
+        currentUserEmail,
+      );
+    });
+  }
+
   _handleDeletePost() {
     this.props.deletePost(
       this.props.postId,
@@ -90,6 +136,8 @@ class PostP extends React.Component<Props> {
   render() {
     const {
       post,
+      editMode,
+      editForm,
       likes,
       followed,
       comments,
@@ -99,13 +147,15 @@ class PostP extends React.Component<Props> {
 
       isLoggedIn,
       isPowerUser,
-      currentUserFullName,
       currentUserEmail,
       authenticityToken,
 
-      changePostBoard,
-      changePostStatus,
       submitFollow,
+      toggleEditMode,
+      handleChangeEditFormTitle,
+      handleChangeEditFormDescription,
+      handleChangeEditFormBoard,
+      handleChangeEditFormPostStatus,
     } = this.props;
 
     const postUpdates = [
@@ -141,68 +191,67 @@ class PostP extends React.Component<Props> {
         </Sidebar>
 
         <div className="postAndCommentsContainer">
-          <>
-            <div className="postHeader">
-              <LikeButton
-                postId={post.id}
-                likesCount={likes.items.length}
-                liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
-                isLoggedIn={isLoggedIn}
-                authenticityToken={authenticityToken}
-              />
+        {
+          editMode ?
+            <PostEditForm
+              {...editForm}
 
-              <h3>{post.title}</h3>
-            </div>
-            {
-              isPowerUser && post ?
-                <div className="postSettings">
-                  <PostBoardSelect
-                    boards={boards}
-                    selectedBoardId={post.boardId}
-                    handleChange={
-                      newBoardId => changePostBoard(post.id, newBoardId, authenticityToken)
-                    }
-                  />
-                  <PostStatusSelect
-                    postStatuses={postStatuses}
-                    selectedPostStatusId={post.postStatusId}
-                    handleChange={
-                      newPostStatusId =>
-                        changePostStatus(post.id, newPostStatusId, currentUserFullName, currentUserEmail, authenticityToken)
-                    }
-                  />
-                </div>
-              :
-                <div className="postInfo">
-                  <PostBoardLabel
-                    {...boards.find(board => board.id === post.boardId)}
-                  />
-                  <PostStatusLabel
-                    {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
-                  />
-                </div>
-            }
-            
-            <ReactMarkdown
-              className="postDescription"
-              disallowedTypes={['heading', 'image', 'html']}
-              unwrapDisallowed
-            >
-              {post.description}
-            </ReactMarkdown>
-            
-
-            <PostFooter
-              createdAt={post.createdAt}
-              handleDeletePost={this._handleDeletePost}
+              handleChangeTitle={handleChangeEditFormTitle}
+              handleChangeDescription={handleChangeEditFormDescription}
+              handleChangeBoard={handleChangeEditFormBoard}
+              handleChangePostStatus={handleChangeEditFormPostStatus}
 
               isPowerUser={isPowerUser}
-              authorEmail={post.userEmail}
-              authorFullName={post.userFullName}
-              currentUserEmail={currentUserEmail}
-            />
-          </>
+              boards={boards}
+              postStatuses={postStatuses}
 
+              toggleEditMode={toggleEditMode}
+              handleUpdatePost={this._handleUpdatePost}
+            />
+          :
+            <>
+              <div className="postHeader">
+                <LikeButton
+                  postId={post.id}
+                  likesCount={likes.items.length}
+                  liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
+                  isLoggedIn={isLoggedIn}
+                  authenticityToken={authenticityToken}
+                />
+
+                <h3>{post.title}</h3>
+              </div>
+                
+              <div className="postInfo">
+                <PostBoardLabel
+                  {...boards.find(board => board.id === post.boardId)}
+                />
+                <PostStatusLabel
+                  {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
+                />
+              </div>
+                
+              <ReactMarkdown
+                className="postDescription"
+                disallowedTypes={['heading', 'image', 'html']}
+                unwrapDisallowed
+              >
+                {post.description}
+              </ReactMarkdown>
+
+              <PostFooter
+                createdAt={post.createdAt}
+                handleDeletePost={this._handleDeletePost}
+                toggleEditMode={toggleEditMode}
+
+                isPowerUser={isPowerUser}
+                authorEmail={post.userEmail}
+                authorFullName={post.userFullName}
+                currentUserEmail={currentUserEmail}
+              />
+            </>
+        }
+          
           <Comments
             postId={this.props.postId}
             isLoggedIn={isLoggedIn}

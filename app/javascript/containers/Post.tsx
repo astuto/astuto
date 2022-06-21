@@ -1,6 +1,15 @@
 import { connect } from 'react-redux';
 
 import { requestPost } from '../actions/Post/requestPost';
+import { deletePost } from '../actions/Post/deletePost';
+import { togglePostEditMode } from '../actions/Post/togglePostEditMode';
+import {
+  changePostEditFormBoard,
+  changePostEditFormDescription,
+  changePostEditFormPostStatus,
+  changePostEditFormTitle
+} from '../actions/Post/changePostEditForm';
+
 import { requestLikes } from '../actions/Like/requestLikes';
 import { changePostBoard } from '../actions/Post/changePostBoard';
 import { changePostStatus } from '../actions/Post/changePostStatus';
@@ -14,10 +23,12 @@ import { State } from '../reducers/rootReducer';
 import PostP from '../components/Post/PostP';
 
 import { fromJavascriptDateToRailsString } from '../helpers/datetime';
-import { deletePost } from '../actions/Post/deletePost';
+import { updatePost } from '../actions/Post/updatePost';
 
 const mapStateToProps = (state: State) => ({
   post: state.currentPost.item,
+  editMode: state.currentPost.editMode,
+  editForm: state.currentPost.editForm,
   likes: state.currentPost.likes,
   followed: state.currentPost.followed,
   comments: state.currentPost.comments,
@@ -27,6 +38,37 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = (dispatch) => ({
   requestPost(postId: number) {
     dispatch(requestPost(postId));
+  },
+
+  updatePost(
+    postId: number,
+    title: string,
+    description: string,
+    boardId: number,
+    postStatusId: number,
+    authenticityToken: string,
+  ) {
+    return dispatch(updatePost(postId, title, description, boardId, postStatusId, authenticityToken));
+  },
+
+  toggleEditMode() {
+    dispatch(togglePostEditMode());
+  },
+
+  handleChangeEditFormTitle(title: string) {
+    dispatch(changePostEditFormTitle(title));
+  },
+
+  handleChangeEditFormDescription(description: string) {
+    dispatch(changePostEditFormDescription(description));
+  },
+
+  handleChangeEditFormBoard(boardId: number) {
+    dispatch(changePostEditFormBoard(boardId));
+  },
+
+  handleChangeEditFormPostStatus(postStatusId: number) {
+    dispatch(changePostEditFormPostStatus(postStatusId));
   },
 
   requestLikes(postId: number) {
@@ -45,29 +87,17 @@ const mapDispatchToProps = (dispatch) => ({
     return dispatch(deletePost(postId, authenticityToken));
   },
 
-  changePostBoard(postId: number, newBoardId: number, authenticityToken: string) {
-    dispatch(changePostBoard(postId, newBoardId, authenticityToken));
-  },
-
-  changePostStatus(
-    postId: number,
+  postStatusChangeSubmitted(
     newPostStatusId: number,
     userFullName: string,
     userEmail: string,
-    authenticityToken: string
   ) {
-    if (isNaN(newPostStatusId)) newPostStatusId = null;
-
-    dispatch(changePostStatus(postId, newPostStatusId, authenticityToken)).then(res => {
-      if (res && res.status !== 204) return;
-
-      dispatch(postStatusChangeSubmitted({
-        postStatusId: newPostStatusId,
-        userFullName,
-        userEmail,
-        createdAt: fromJavascriptDateToRailsString(new Date()),
-      }));
-    });
+    dispatch(postStatusChangeSubmitted({
+      postStatusId: newPostStatusId,
+      userFullName,
+      userEmail,
+      createdAt: fromJavascriptDateToRailsString(new Date()),
+    }));
   },
 
   submitFollow(postId: number, isFollow: boolean, authenticityToken: string) {

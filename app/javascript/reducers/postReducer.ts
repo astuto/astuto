@@ -4,6 +4,11 @@ import {
 } from '../actions/Post/requestPost';
 
 import {
+  PostUpdateActionTypes,
+  POST_UPDATE_SUCCESS,
+} from '../actions/Post/updatePost';
+
+import {
   ChangePostBoardSuccessAction,
   CHANGE_POST_BOARD_SUCCESS,
 } from '../actions/Post/changePostBoard';
@@ -35,6 +40,7 @@ const postReducer = (
   state = initialState,
   action:
     PostRequestActionTypes |
+    PostUpdateActionTypes |
     ChangePostBoardSuccessAction |
     ChangePostStatusSuccessAction,
 ): IPost => {
@@ -54,6 +60,15 @@ const postReducer = (
         userEmail: action.post.user_email,
         userFullName: action.post.user_full_name,
         createdAt: action.post.created_at,
+      };
+
+    case POST_UPDATE_SUCCESS:
+      return {
+        ...state,
+        title: action.post.title,
+        description: action.post.description,
+        boardId: action.post.board_id,
+        postStatusId: action.post.post_status_id,
       };
 
     case CHANGE_POST_BOARD_SUCCESS:

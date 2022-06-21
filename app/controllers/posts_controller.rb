@@ -83,7 +83,7 @@ class PostsController < ApplicationController
         UserMailer.notify_followers_of_post_status_change(post: @post).deliver_later
       end
 
-      render json: @post, status: :no_content
+      render json: @post
     else
       render json: {
         error: @post.errors.full_messages
