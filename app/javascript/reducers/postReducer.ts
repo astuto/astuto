@@ -8,16 +8,6 @@ import {
   POST_UPDATE_SUCCESS,
 } from '../actions/Post/updatePost';
 
-import {
-  ChangePostBoardSuccessAction,
-  CHANGE_POST_BOARD_SUCCESS,
-} from '../actions/Post/changePostBoard';
-
-import {
-  ChangePostStatusSuccessAction,
-  CHANGE_POST_STATUS_SUCCESS,
-} from '../actions/Post/changePostStatus';
-
 import IPost from '../interfaces/IPost';
 
 const initialState: IPost = {
@@ -40,9 +30,7 @@ const postReducer = (
   state = initialState,
   action:
     PostRequestActionTypes |
-    PostUpdateActionTypes |
-    ChangePostBoardSuccessAction |
-    ChangePostStatusSuccessAction,
+    PostUpdateActionTypes
 ): IPost => {
   switch (action.type) {
     case POST_REQUEST_SUCCESS:
@@ -69,18 +57,6 @@ const postReducer = (
         description: action.post.description,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
-      };
-
-    case CHANGE_POST_BOARD_SUCCESS:
-      return {
-        ...state,
-        boardId: action.newBoardId,
-      };
-
-    case CHANGE_POST_STATUS_SUCCESS:
-      return {
-        ...state,
-        postStatusId: action.newPostStatusId,
       };
 
     default:

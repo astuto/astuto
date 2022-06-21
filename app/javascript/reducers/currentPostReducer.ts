@@ -23,16 +23,6 @@ import {
 } from '../actions/Post/changePostEditForm';
 
 import {
-  ChangePostBoardSuccessAction,
-  CHANGE_POST_BOARD_SUCCESS,
-} from '../actions/Post/changePostBoard';
-
-import {
-  ChangePostStatusSuccessAction,
-  CHANGE_POST_STATUS_SUCCESS,
-} from '../actions/Post/changePostStatus';
-
-import {
   LikesRequestActionTypes,
   LIKES_REQUEST_START,
   LIKES_REQUEST_SUCCESS,
@@ -149,8 +139,6 @@ const currentPostReducer = (
     PostUpdateActionTypes |
     PostToggleEditMode |
     ChangePostEditFormActionTypes |
-    ChangePostBoardSuccessAction |
-    ChangePostStatusSuccessAction |
     LikesRequestActionTypes |
     LikeActionTypes |
     CommentsRequestActionTypes |
@@ -246,13 +234,6 @@ const currentPostReducer = (
       return {
         ...state,
         editForm: { ...state.editForm, postStatusId: action.postStatusId },
-      };
-
-    case CHANGE_POST_BOARD_SUCCESS:
-    case CHANGE_POST_STATUS_SUCCESS:
-      return {
-        ...state,
-        item: postReducer(state.item, action),
       };
 
     case LIKES_REQUEST_START:

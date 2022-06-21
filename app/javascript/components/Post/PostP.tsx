@@ -130,7 +130,7 @@ class PostP extends React.Component<Props> {
     this.props.deletePost(
       this.props.postId,
       this.props.authenticityToken
-    ).then(() => window.location.href = '/');
+    ).then(() => window.location.href = `/boards/${this.props.post.boardId}`);
   }
 
   render() {

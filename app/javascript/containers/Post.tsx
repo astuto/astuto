@@ -11,8 +11,6 @@ import {
 } from '../actions/Post/changePostEditForm';
 
 import { requestLikes } from '../actions/Like/requestLikes';
-import { changePostBoard } from '../actions/Post/changePostBoard';
-import { changePostStatus } from '../actions/Post/changePostStatus';
 import { submitFollow } from '../actions/Follow/submitFollow';
 import { requestFollow } from '../actions/Follow/requestFollow';
 import { requestPostStatusChanges } from '../actions/PostStatusChange/requestPostStatusChanges';
