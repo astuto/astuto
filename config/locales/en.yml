@@ -30,6 +30,8 @@ en:
       other: '%{count} comments'
     no_status: 'No status'
     loading: 'Loading...'
+    confirmation: 'Are you sure?'
+    edited: 'Edited'
     buttons:
       edit: 'Edit'
       delete: 'Delete'
@@ -74,6 +76,7 @@ en:
       empty: 'There are no posts'
   post:
     edit_button: 'Edit'
+    published_by: 'Published by'
     post_status_select:
       no_post_status: 'None'
     updates_box:
@@ -124,7 +127,7 @@ en:
       title: 'Roadmap'
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
-      help: 'You can add new statuses to the roadmap by dragging them from the section below. If you want to add a new status or change their order, go to Site settings -> Statuses.'
+      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings -> Statuses.'
   user_mailer:
     opening_greeting: 'Hello!'
     closing_greeting: 'Have a great day!'

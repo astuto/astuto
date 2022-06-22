@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SidebarBox = ({ title, customClass, children }: Props) => (
-  <div className={`sidebarBox ${customClass}`}>
+  <div className={`sidebarBox${customClass ? ' ' + customClass : ''}`}>
     <BoxTitleText>{title}</BoxTitleText>
     {children}
   </div>

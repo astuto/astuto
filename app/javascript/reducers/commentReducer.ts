@@ -3,6 +3,11 @@ import {
   COMMENT_REQUEST_SUCCESS,
 } from '../actions/Comment/requestComment';
 
+import {
+  CommentUpdateActionTypes,
+  COMMENT_UPDATE_SUCCESS,
+} from '../actions/Comment/updateComment';
+
 import IComment from '../interfaces/IComment';
 
 const initialState: IComment = {
@@ -12,15 +17,17 @@ const initialState: IComment = {
   isPostUpdate: false,
   userFullName: '<Unknown user>',
   userEmail: 'example@example.com',
+  createdAt: undefined,
   updatedAt: undefined,
 };
 
 const commentReducer = (
   state = initialState,
-  action: CommentRequestSuccessAction,
+  action: CommentRequestSuccessAction | CommentUpdateActionTypes,
 ): IComment => {
   switch (action.type) {
     case COMMENT_REQUEST_SUCCESS:
+    case COMMENT_UPDATE_SUCCESS:
       return {
         id: action.comment.id,
         body: action.comment.body,
@@ -28,6 +35,7 @@ const commentReducer = (
         isPostUpdate: action.comment.is_post_update,
         userFullName: action.comment.user_full_name,
         userEmail: action.comment.user_email,
+        createdAt: action.comment.created_at,
         updatedAt: action.comment.updated_at,
       };
 

@@ -9,6 +9,8 @@ interface IPostJSON {
   comments_count: number;
   hotness: number;
   user_id: number;
+  user_email: string;
+  user_full_name: string;
   created_at: string;
 }
 

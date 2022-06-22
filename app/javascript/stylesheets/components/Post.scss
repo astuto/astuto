@@ -104,7 +104,8 @@
 
     .postHeader {
       @extend
-        .d-flex;
+        .d-flex,
+        .mb-3;
 
       a {
         @extend
@@ -128,9 +129,47 @@
 
     .postDescription {
       @extend
-        .my-3;
+        .my-4;
 
       color: $primary-color;
+
+      p:last-child {
+        @extend .mb-0;
+      }
+    }
+
+    .postFooter {
+      .postAuthor {
+        @extend
+          .mutedText,
+          .mb-2;
+
+        .postAuthorAvatar { @extend .gravatar; }
+      }
+
+      a {
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .postEditForm {
+      .form-control {
+        @extend .my-3;
+      }
+
+      .postEditFormButtons {
+        text-align: right;
+
+        a {
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }

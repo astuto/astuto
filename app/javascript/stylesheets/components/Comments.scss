@@ -1,6 +1,30 @@
 .commentsContainer {
   @extend .my-3;
 
+  a.commentLink {
+    color: $primary-color;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .commentForm {
+    @extend
+      .form-control,
+      .w-100,
+      .p-2,
+      .mr-2;
+
+    height: 80px;
+    
+    border: thin solid grey;
+    border-radius: 4px;
+
+    resize: none;
+  }
+
   .newCommentForm {
     @extend
       .d-flex,
@@ -27,21 +51,6 @@
         .mr-2;
     }
 
-    .newCommentBody {
-      @extend
-        .form-control,
-        .w-100,
-        .p-2,
-        .mr-2;
-
-      height: 80px;
-      
-      border: thin solid grey;
-      border-radius: 4px;
-
-      resize: none;
-    }
-
     .submitCommentButton {
       @extend
         .align-self-end;
@@ -49,6 +58,18 @@
       box-sizing: border-box;
       width: 120px;
       height: 40px;
+    }
+  }
+
+  .editCommentForm {
+    textarea {
+      @extend .my-2;
+    }
+
+    & > div {
+      @extend
+        .d-flex,
+        .justify-content-between;
     }
   }
 
@@ -93,15 +114,6 @@
 
     .commentFooter {
       font-size: 14px;
-
-      .commentLink {
-        color: $primary-color;
-
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
     }
   }
 }

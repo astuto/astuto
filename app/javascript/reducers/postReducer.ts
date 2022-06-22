@@ -4,14 +4,9 @@ import {
 } from '../actions/Post/requestPost';
 
 import {
-  ChangePostBoardSuccessAction,
-  CHANGE_POST_BOARD_SUCCESS,
-} from '../actions/Post/changePostBoard';
-
-import {
-  ChangePostStatusSuccessAction,
-  CHANGE_POST_STATUS_SUCCESS,
-} from '../actions/Post/changePostStatus';
+  PostUpdateActionTypes,
+  POST_UPDATE_SUCCESS,
+} from '../actions/Post/updatePost';
 
 import IPost from '../interfaces/IPost';
 
@@ -26,6 +21,8 @@ const initialState: IPost = {
   commentsCount: 0,
   hotness: 0,
   userId: 0,
+  userEmail: '',
+  userFullName: '',
   createdAt: '',
 };
 
@@ -33,8 +30,7 @@ const postReducer = (
   state = initialState,
   action:
     PostRequestActionTypes |
-    ChangePostBoardSuccessAction |
-    ChangePostStatusSuccessAction,
+    PostUpdateActionTypes
 ): IPost => {
   switch (action.type) {
     case POST_REQUEST_SUCCESS:
@@ -49,19 +45,18 @@ const postReducer = (
         commentsCount: action.post.comments_count,
         hotness: action.post.hotness,
         userId: action.post.user_id,
+        userEmail: action.post.user_email,
+        userFullName: action.post.user_full_name,
         createdAt: action.post.created_at,
       };
 
-    case CHANGE_POST_BOARD_SUCCESS:
+    case POST_UPDATE_SUCCESS:
       return {
         ...state,
-        boardId: action.newBoardId,
-      };
-
-    case CHANGE_POST_STATUS_SUCCESS:
-      return {
-        ...state,
-        postStatusId: action.newPostStatusId,
+        title: action.post.title,
+        description: action.post.description,
+        boardId: action.post.board_id,
+        postStatusId: action.post.post_status_id,
       };
 
     default:

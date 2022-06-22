@@ -2,7 +2,7 @@ interface IPostStatusChange {
   postStatusId: number;
   userFullName: string;
   userEmail: string;
-  updatedAt: string;
+  createdAt: string;
 }
 
 export default IPostStatusChange;
