@@ -1,6 +1,7 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 
+import UserEditable from './UserEditable';
 import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 
@@ -33,14 +34,14 @@ class UsersSiteSettingsP extends React.Component<Props> {
         <Box>
           <h2>{ I18n.t('site_settings.users.title') }</h2>
 
-          <ul>
+          <ul className="usersList">
             {
-              users.areLoading ?
-                <li>Loading</li>
-              :
-                users.items.map((user, i) => (
-                  <li key={i}>{user.email}, {user.fullName}, {user.role}, {user.status}</li>
-                ))
+              users.items.map((user, i) => (
+                <UserEditable
+                  user={user}
+                  key={i}
+                />
+              ))
             }
           </ul>
         </Box>

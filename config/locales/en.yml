@@ -131,6 +131,10 @@ en:
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings -> Statuses.'
     users:
       title: 'Users'
+      block: 'Block'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock: 'Unblock'
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
   user_mailer:
     opening_greeting: 'Hello!'
     closing_greeting: 'Have a great day!'

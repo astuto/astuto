@@ -1,0 +1,40 @@
+ul.usersList {
+  @extend
+    .pl-1;
+
+  list-style: none;
+
+  li.userEditable {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .my-2,
+      .py-2;
+
+    .userGravatar {
+      @extend .mr-3;
+    }
+
+    .userFullName {
+      font-size: 18px;
+    }
+
+    .userEditableActions {
+      a {
+        cursor: pointer;
+  
+        &:hover { text-decoration: underline; }
+      }
+
+      a.actionDisabled {
+        @extend .mutedText;
+
+        text-decoration: none;        
+        cursor: not-allowed;
+      }
+    }
+
+    .userStatusblocked { color: orange; }
+    .userStatusdeleted { color: red; }
+  }
+}

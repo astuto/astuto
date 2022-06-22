@@ -131,6 +131,10 @@ it:
       help: "Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito -> Stati."
     users:
       title: 'Utenti'
+      block: 'Blocca'
+      block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
+      unblock: 'Sblocca'
+      unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
   user_mailer:
     opening_greeting: 'Ciao!'
     closing_greeting: 'Buona giornata!'
