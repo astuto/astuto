@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
+  resources :users, only: [:index, :update]
 
   resources :posts, only: [:index, :create, :show, :update, :destroy] do
     resource :follows, only: [:create, :destroy]
