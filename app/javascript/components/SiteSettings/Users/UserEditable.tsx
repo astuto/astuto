@@ -4,7 +4,6 @@ import I18n from 'i18n-js';
 
 import IUser from "../../../interfaces/IUser";
 import Separator from "../../common/Separator";
-import { MutedText } from "../../common/CustomTexts";
 
 interface Props {
   user: IUser;
