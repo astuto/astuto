@@ -107,6 +107,7 @@ it:
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
+      users: 'Utenti'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
@@ -128,6 +129,8 @@ it:
       title2: 'Non mostrati in roadmap'
       empty: 'La roadmap è vuota.'
       help: "Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito -> Stati."
+    users:
+      title: 'Utenti'
   user_mailer:
     opening_greeting: 'Ciao!'
     closing_greeting: 'Buona giornata!'

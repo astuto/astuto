@@ -1,0 +1,13 @@
+<div class="twoColumnsContainer">
+  <%= render 'menu' %>
+  <div>
+    <%=
+      react_component(
+        'SiteSettings/Users',
+        {
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
+  </div>
+</div>

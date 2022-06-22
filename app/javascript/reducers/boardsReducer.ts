@@ -38,7 +38,7 @@ const initialState: BoardsState = {
   items: [],
   areLoading: false,
   error: '',
-}
+};
 
 const boardsReducer = (
   state = initialState,

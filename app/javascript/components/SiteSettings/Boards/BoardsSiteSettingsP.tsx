@@ -92,7 +92,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     return (
       <>
         <Box>
-          <h2>{I18n.t('site_settings.boards.title')}</h2>
+          <h2>{ I18n.t('site_settings.boards.title') }</h2>
 
           {
             boards.items.length > 0 ?

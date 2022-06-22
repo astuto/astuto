@@ -14,4 +14,7 @@ class SiteSettingsController < ApplicationController
 
   def roadmap
   end
+
+  def users
+  end
 end

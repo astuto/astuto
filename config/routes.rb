@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     get 'boards'
     get 'post_statuses'
     get 'roadmap'
+    get 'users'
   end
 end

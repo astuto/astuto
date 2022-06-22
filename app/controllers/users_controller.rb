@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     @users = User
       .all
-      .order_by(role: :desc)
+      .order(role: :desc)
 
     render json: @users
   end

@@ -1,4 +1,4 @@
-class PostPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   def permitted_attributes_for_update
     if user.admin?
       [:role, :status]
