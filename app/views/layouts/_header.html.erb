@@ -35,12 +35,15 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.power_user? %>
-                <%= link_to t('header.menu.site_settings'), site_settings_boards_path, class: 'dropdown-item' %>
+                <%=
+                  link_to t('header.menu.site_settings'),
+                    current_user.admin? ? site_settings_boards_path : site_settings_users_path,
+                    class: 'dropdown-item'
+                %>
                 <div class="dropdown-divider"></div>
               <% end %>
 
               <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
-
               <div class="dropdown-divider"></div>
 
               <%= link_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
