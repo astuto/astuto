@@ -48,6 +48,10 @@ class User < ApplicationRecord
     role == 'moderator'
   end
 
+  def user?
+    role == 'user'
+  end
+
   def active?
     status == 'active'
   end

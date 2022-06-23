@@ -14,6 +14,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.role > record.role or user.admin?
+    if user.admin?
+      true
+    elsif user.moderator?
+      record.user?
+    else
+      false
+    end
   end
 end

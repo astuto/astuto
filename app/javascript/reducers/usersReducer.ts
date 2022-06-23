@@ -5,6 +5,11 @@ import {
   USERS_REQUEST_FAILURE,
 } from '../actions/User/requestUsers';
 
+import {
+  UserUpdateActionTypes,
+  USER_UPDATE_SUCCESS,
+} from '../actions/User/updateUser';
+
 import IUser from "../interfaces/IUser";
 
 export interface UsersState {
@@ -21,7 +26,7 @@ const initialState: UsersState = {
 
 const usersReducer = (
   state = initialState,
-  action: UsersRequestActionTypes,
+  action: UsersRequestActionTypes | UserUpdateActionTypes,
 ) => {
   switch (action.type) {
     case USERS_REQUEST_START:
@@ -49,6 +54,17 @@ const usersReducer = (
         ...state,
         areLoading: false,
         error: action.error,
+      };
+
+    case USER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(user => {
+          return (user.id === action.user.id) ?
+            {...user, role: action.user.role, status: action.user.status}
+          :
+            user;
+        }),
       };
     
     default:

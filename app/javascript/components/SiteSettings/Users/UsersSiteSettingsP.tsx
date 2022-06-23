@@ -6,6 +6,8 @@ import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 
 import { UsersState } from '../../../reducers/usersReducer';
+import { UserRoles, USER_STATUS_ACTIVE, USER_STATUS_BLOCKED } from '../../../interfaces/IUser';
+import HttpStatus from '../../../constants/http_status';
 
 interface Props {
   users: UsersState;
@@ -13,13 +15,51 @@ interface Props {
   settingsError: string;
 
   requestUsers(): void;
+  updateUserRole(
+    id: number,
+    role: UserRoles,
+    authenticityToken: string,
+  ): Promise<any>;
+  updateUserStatus(
+    id: number,
+    status: typeof USER_STATUS_ACTIVE | typeof USER_STATUS_BLOCKED,
+    authenticityToken: string,
+  ): void;
 
+  currentUserRole: UserRoles;
   authenticityToken: string;
 }
 
 class UsersSiteSettingsP extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props);
+
+    this._handleUpdateUserRole = this._handleUpdateUserRole.bind(this);
+    this._handleUpdateUserStatus = this._handleUpdateUserStatus.bind(this);
+  }
+
   componentDidMount() {
     this.props.requestUsers();
+  }
+
+  _handleUpdateUserRole(id: number, role: UserRoles, closeEditMode: Function) {
+    this.props.updateUserRole(
+      id,
+      role,
+      this.props.authenticityToken,
+    ).then(res => {
+      if (res?.status !== HttpStatus.OK) return;
+
+      closeEditMode();
+    });
+  }
+
+  _handleUpdateUserStatus(id: number, status: typeof USER_STATUS_ACTIVE | typeof USER_STATUS_BLOCKED) {
+    this.props.updateUserStatus(
+      id,
+      status,
+      this.props.authenticityToken,
+    );
   }
 
   render() {
@@ -27,6 +67,7 @@ class UsersSiteSettingsP extends React.Component<Props> {
       users,
       settingsAreUpdating,
       settingsError,
+      currentUserRole,
     } = this.props;
 
     return (
@@ -39,6 +80,10 @@ class UsersSiteSettingsP extends React.Component<Props> {
               users.items.map((user, i) => (
                 <UserEditable
                   user={user}
+                  updateUserRole={this._handleUpdateUserRole}
+                  updateUserStatus={this._handleUpdateUserStatus}
+
+                  currentUserRole={currentUserRole}
                   key={i}
                 />
               ))

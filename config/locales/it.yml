@@ -132,9 +132,16 @@ it:
     users:
       title: 'Utenti'
       block: 'Blocca'
-      block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock: 'Sblocca'
+      block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
+      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di %{name}. Sei sicuro?"
+      role_user: 'Utente'
+      role_moderator: 'Moderatore'
+      role_admin: 'Amministratore'
+      status_active: 'Attivo'
+      status_blocked: 'Bloccato'
+      status_deleted: 'Eliminato'
   user_mailer:
     opening_greeting: 'Ciao!'
     closing_greeting: 'Buona giornata!'

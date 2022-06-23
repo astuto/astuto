@@ -5,9 +5,11 @@ import { Store } from 'redux';
 import UsersSiteSettings from '../../../containers/UsersSiteSettings';
 
 import createStoreHelper from '../../../helpers/createStore';
+import { UserRoles } from '../../../interfaces/IUser';
 import { State } from '../../../reducers/rootReducer';
 
 interface Props {
+  currentUserRole: UserRoles;
   authenticityToken: string;
 }
 
@@ -24,6 +26,7 @@ class UsersSiteSettingsRoot extends React.Component<Props> {
     return (
       <Provider store={this.store}>
         <UsersSiteSettings
+          currentUserRole={this.props.currentUserRole}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>

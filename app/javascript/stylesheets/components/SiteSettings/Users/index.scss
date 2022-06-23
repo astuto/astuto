@@ -19,19 +19,21 @@ ul.usersList {
       font-size: 18px;
     }
 
-    .userEditableActions {
-      a {
-        cursor: pointer;
-  
-        &:hover { text-decoration: underline; }
-      }
+    a {
+      cursor: pointer;
 
-      a.actionDisabled {
-        @extend .mutedText;
+      &:hover { text-decoration: underline; }
+    }
 
-        text-decoration: none;        
-        cursor: not-allowed;
-      }
+    a.actionDisabled {
+      @extend .mutedText;
+
+      text-decoration: none;        
+      cursor: not-allowed;
+    }
+
+    .updateUserButton {
+      margin-left: 16px;
     }
 
     .userStatusblocked { color: orange; }
