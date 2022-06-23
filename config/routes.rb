@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :users
   end
   
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   resources :users, only: [:index, :update]
 
   resources :posts, only: [:index, :create, :show, :update, :destroy] do

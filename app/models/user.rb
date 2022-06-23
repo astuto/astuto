@@ -24,6 +24,14 @@ class User < ApplicationRecord
     self.status ||= :active
   end
 
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    active? ? super : :blocked_or_deleted
+  end
+
   def skip_confirmation
     return if Rails.application.email_confirmation?
     skip_confirmation!
