@@ -52,7 +52,6 @@ en:
   header:
     menu:
       site_settings: 'Site settings'
-      admin_panel: 'Admin panel (deprecated)'
       profile_settings: 'Profile settings'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'

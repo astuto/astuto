@@ -36,7 +36,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.power_user? %>
                 <%= link_to t('header.menu.site_settings'), site_settings_boards_path, class: 'dropdown-item' %>
-                <%= link_to t('header.menu.admin_panel'), admin_root_path, class: 'dropdown-item', 'data-turbolinks': 'false' %>
                 <div class="dropdown-divider"></div>
               <% end %>
 

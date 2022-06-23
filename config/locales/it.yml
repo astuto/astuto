@@ -52,7 +52,6 @@ it:
   header:
     menu:
       site_settings: 'Impostazioni sito'
-      admin_panel: 'Admin panel (deprecato)'
       profile_settings: 'Impostazioni profilo'
       sign_out: 'Esci'
     log_in: 'Accedi / Registrati'
