@@ -4,7 +4,6 @@ import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
 import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_MODERATOR, USER_ROLE_USER } from '../../../interfaces/IUser';
-import Separator from '../../common/Separator';
 
 interface Props {
   user: IUser;
@@ -41,32 +40,33 @@ class UserForm extends React.Component<Props, State> {
 
     return (
       <div className="userForm">
-        <Gravatar email={user.email} size={32} className="gravatar userGravatar" />
+        <Gravatar email={user.email} size={42} className="gravatar userGravatar" />
 
-        <input type="text" disabled value={user.fullName}></input>
-        <Separator />
+        <div className="userFullNameRoleForm">
+          <span className="userFullName">{ user.fullName }</span>
 
-        <select
-          value={selectedRole || 'Loading...'}
-          onChange={
-            (e: React.FormEvent) => {
-              this.setState({role: (e.target as HTMLSelectElement).value as UserRoles});
-          }}
-          id="selectPickerUserRole"
-          className="selectPicker"
-        >
-          <optgroup label="Roles">
-            <option value={USER_ROLE_USER}>
-              { I18n.t(`site_settings.users.role_${USER_ROLE_USER}`) }
-            </option>
-            <option value={USER_ROLE_MODERATOR}>
-              { I18n.t(`site_settings.users.role_${USER_ROLE_MODERATOR}`) }
-            </option>
-            <option value={USER_ROLE_ADMIN}>
-              { I18n.t(`site_settings.users.role_${USER_ROLE_ADMIN}`) }
-            </option>
-          </optgroup>
-        </select>
+          <select
+            value={selectedRole || 'Loading...'}
+            onChange={
+              (e: React.FormEvent) => {
+                this.setState({role: (e.target as HTMLSelectElement).value as UserRoles});
+            }}
+            id="selectPickerUserRole"
+            className="selectPicker"
+          >
+            <optgroup label="Roles">
+              <option value={USER_ROLE_USER}>
+                { I18n.t(`site_settings.users.role_${USER_ROLE_USER}`) }
+              </option>
+              <option value={USER_ROLE_MODERATOR}>
+                { I18n.t(`site_settings.users.role_${USER_ROLE_MODERATOR}`) }
+              </option>
+              <option value={USER_ROLE_ADMIN}>
+                { I18n.t(`site_settings.users.role_${USER_ROLE_ADMIN}`) }
+              </option>
+            </optgroup>
+          </select>
+        </div>
 
         <Button onClick={() => this._handleUpdateUserRole(selectedRole)} className="updateUserButton">
           { I18n.t('common.buttons.update') }

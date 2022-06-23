@@ -5,6 +5,7 @@ import I18n from 'i18n-js';
 import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_USER, USER_STATUS_ACTIVE, USER_STATUS_BLOCKED, USER_STATUS_DELETED } from "../../../interfaces/IUser";
 import Separator from "../../common/Separator";
 import UserForm from "./UserForm";
+import { MutedText } from "../../common/CustomTexts";
 
 interface Props {
   user: IUser;
@@ -84,25 +85,29 @@ class UserEditable extends React.Component<Props, State> {
           editMode === false ?
           <>
             <div className="userInfo">
-              <Gravatar email={user.email} size={32} className="gravatar userGravatar" />
+              <Gravatar email={user.email} size={42} className="gravatar userGravatar" />
 
-              <span className="userFullName">{ user.fullName }</span>
-              <Separator />
-              <span>
-                { I18n.t(`site_settings.users.role_${user.role}`) }
-              </span>
-
-              {
-                user.status !== USER_STATUS_ACTIVE ?
-                  <>
-                  <Separator />
-                  <span className={`userStatus userStatus${user.status}`}>
-                  { I18n.t(`site_settings.users.status_${user.status}`) }
+              <div className="userFullNameRoleStatus">
+                <span className="userFullName">{ user.fullName }</span>
+                
+                <div className="userRoleStatus">
+                  <span>
+                    <MutedText>{ I18n.t(`site_settings.users.role_${user.role}`) }</MutedText>
                   </span>
-                  </>
-                :
-                  null
-              }
+
+                  {
+                    user.status !== USER_STATUS_ACTIVE ?
+                      <>
+                      <Separator />
+                      <span className={`userStatus userStatus${user.status}`}>
+                      { I18n.t(`site_settings.users.status_${user.status}`) }
+                      </span>
+                      </>
+                    :
+                      null
+                  }
+                </div>
+              </div>
             </div>
 
             <div className="userEditableActions">
@@ -131,7 +136,7 @@ class UserEditable extends React.Component<Props, State> {
           :
             <>
             <UserForm user={user} updateUserRole={this._handleUpdateUserRole} />
-            <a onClick={this.toggleEditMode}>
+            <a onClick={this.toggleEditMode} className="userEditCancelButton">
               { I18n.t('common.buttons.cancel') }
             </a>
             </>
