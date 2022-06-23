@@ -68,6 +68,13 @@ import {
   USERS_REQUEST_FAILURE,
 } from '../actions/User/requestUsers';
 
+import {
+  UserUpdateActionTypes,
+  USER_UPDATE_START,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAILURE,
+} from '../actions/User/updateUser';
+
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
@@ -99,7 +106,8 @@ const siteSettingsReducer = (
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
     PostStatusUpdateActionTypes |
-    UsersRequestActionTypes
+    UsersRequestActionTypes |
+    UserUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case BOARDS_REQUEST_START:
@@ -148,6 +156,9 @@ const siteSettingsReducer = (
     case USERS_REQUEST_START:
     case USERS_REQUEST_SUCCESS:
     case USERS_REQUEST_FAILURE:
+    case USER_UPDATE_START:
+    case USER_UPDATE_SUCCESS:
+    case USER_UPDATE_FAILURE:
       return {
         ...state,
         users: siteSettingsUsersReducer(state.users, action),
