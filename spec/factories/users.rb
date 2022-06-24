@@ -22,4 +22,20 @@ FactoryBot.define do
     password { 'password' }
     role { 'admin' }
   end
+
+  factory :blocked, class: User do
+    sequence(:email) { |n| "admin#{n}@example.com" }
+
+    full_name { 'First Last' }
+    password { 'password' }
+    status { 'blocked' }
+  end
+
+  factory :deleted, class: User do
+    sequence(:email) { |n| "admin#{n}@example.com" }
+
+    full_name { 'First Last' }
+    password { 'password' }
+    status { 'deleted' }
+  end
 end

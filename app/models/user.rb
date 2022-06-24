@@ -8,13 +8,28 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   enum role: [:user, :moderator, :admin]
+  enum status: [:active, :blocked, :deleted]
+
   after_initialize :set_default_role, if: :new_record?
+  after_initialize :set_default_status, if: :new_record?
   after_initialize :skip_confirmation, if: :new_record?
 
   validates :full_name, presence: true, length: { in: 2..32 }
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def set_default_status
+    self.status ||= :active
+  end
+
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    active? ? super : :blocked_or_deleted
   end
 
   def skip_confirmation
@@ -35,5 +50,21 @@ class User < ApplicationRecord
 
   def admin?
     role == 'admin'
+  end
+
+  def moderator?
+    role == 'moderator'
+  end
+
+  def user?
+    role == 'user'
+  end
+
+  def active?
+    status == 'active'
+  end
+
+  def blocked?
+    status == 'blocked'
   end
 end

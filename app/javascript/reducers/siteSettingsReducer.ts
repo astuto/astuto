@@ -61,20 +61,37 @@ import {
   POSTSTATUS_UPDATE_FAILURE,
 } from '../actions/PostStatus/updatePostStatus';
 
+import {
+  UsersRequestActionTypes,
+  USERS_REQUEST_START,
+  USERS_REQUEST_SUCCESS,
+  USERS_REQUEST_FAILURE,
+} from '../actions/User/requestUsers';
+
+import {
+  UserUpdateActionTypes,
+  USER_UPDATE_START,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAILURE,
+} from '../actions/User/updateUser';
+
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
+import siteSettingsUsersReducer, { SiteSettingsUsersState } from './SiteSettings/usersReducer';
 
 interface SiteSettingsState {
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
+  users: SiteSettingsUsersState;
 }
 
 const initialState: SiteSettingsState = {
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
+  users: siteSettingsUsersReducer(undefined, {} as any),
 };
 
 const siteSettingsReducer = (
@@ -88,7 +105,9 @@ const siteSettingsReducer = (
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
-    PostStatusUpdateActionTypes
+    PostStatusUpdateActionTypes |
+    UsersRequestActionTypes |
+    UserUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case BOARDS_REQUEST_START:
@@ -132,6 +151,17 @@ const siteSettingsReducer = (
         ...state,
         postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action),
         roadmap: siteSettingsRoadmapReducer(state.roadmap, action),
+      };
+
+    case USERS_REQUEST_START:
+    case USERS_REQUEST_SUCCESS:
+    case USERS_REQUEST_FAILURE:
+    case USER_UPDATE_START:
+    case USER_UPDATE_SUCCESS:
+    case USER_UPDATE_FAILURE:
+      return {
+        ...state,
+        users: siteSettingsUsersReducer(state.users, action),
       };
 
     default:

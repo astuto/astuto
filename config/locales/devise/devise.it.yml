@@ -20,6 +20,7 @@ it:
       timeout: "La tua sessione è scaduta, accedi nuovamente per continuare."
       unauthenticated: "Devi accedere o registrarti per continuare."
       unconfirmed: "Devi confermare il tuo indirizzo email per continuare."
+      blocked_or_deleted: "Non puoi accedere al tuo account perché è stato bloccato o eliminato."
     mailer:
       confirmation_instructions:
         subject: "Istruzioni per la conferma"

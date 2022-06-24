@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :notifications_enabled])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :notifications_enabled])
+      additional_permitted_parameters = [:full_name, :notifications_enabled]
+
+      devise_parameter_sanitizer.permit(:sign_up, keys: additional_permitted_parameters)
+      devise_parameter_sanitizer.permit(:account_update, keys: additional_permitted_parameters)
     end
 
     def load_boards

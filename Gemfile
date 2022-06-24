@@ -8,8 +8,8 @@ gem 'rails', '6.0.5'
 gem 'pg', '>= 0.18', '< 2.0'
 
 gem 'puma', '~> 4.3'
+
 gem 'sass-rails', '~> 5'
-gem 'sassc', '2.1.0' # temporarely, because 2.4.0 takes 5 minutes to install...
 
 gem 'webpacker', '4.3.0'
 
@@ -27,9 +27,6 @@ gem 'pundit', '2.2.0'
 
 # I18n (forward locales to JS)
 gem 'i18n-js'
-
-# Administration panel
-gem "administrate", '0.16.0'
 
 # React
 gem 'react-rails', '~> 2.6.0'

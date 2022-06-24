@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it 'creates a user with role "user" by default' do
+  it 'has role "user" by default' do
     expect(User.new.role).to eq('user')
   end
 
@@ -21,6 +21,24 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
     expect(moderator).to be_valid
     expect(admin).to be_valid
+  end
+
+  it 'has status "active" by default' do
+    expect(User.new.status).to eq('active')
+  end
+
+  it 'can have the following statuses: "active", "blocked" and "deleted"' do
+    active = user
+    blocked = FactoryBot.build(:blocked)
+    deleted = FactoryBot.build(:deleted)
+
+    expect(user.status).to eq('active')
+    expect(blocked.status).to eq('blocked')
+    expect(deleted.status).to eq('deleted')
+
+    expect(user).to be_valid
+    expect(blocked).to be_valid
+    expect(deleted).to be_valid
   end
 
   it 'has a non-nil and non-empty full name' do
@@ -53,5 +71,12 @@ RSpec.describe User, type: :model do
     expect(user).not_to be_a_power_user
     expect(moderator).to be_a_power_user
     expect(admin).to be_a_power_user
+  end
+
+  it 'knows if it is active or blocked' do
+    expect(user).to be_active
+
+    blocked = FactoryBot.build(:blocked)
+    expect(blocked).to be_blocked
   end
 end

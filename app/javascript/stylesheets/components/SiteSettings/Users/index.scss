@@ -1,0 +1,68 @@
+ul.usersList {
+  @extend
+    .pl-1;
+
+  list-style: none;
+
+  li.userEditable {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .my-2,
+      .p-3;
+
+    .userGravatar {
+      @extend .mr-3, .align-self-center;
+    }
+
+    .userFullName {
+      font-size: 18px;
+    }
+
+    .userInfo {
+      @extend .d-flex;
+
+      .userFullNameRoleStatus {
+        @extend
+          .d-flex,
+          .flex-column;
+      }
+    }
+
+    .userEditableActions {
+      @extend .align-self-center;
+    }
+
+    .userForm {
+      @extend .d-flex;
+
+      .userFullNameRoleForm {
+        @extend .d-flex, .flex-column;
+      }
+    }
+
+    .updateUserButton { @extend .align-self-center; }
+
+    .userEditCancelButton { @extend .align-self-center; }
+
+    a {
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    a.actionDisabled {
+      @extend .mutedText;
+
+      text-decoration: none;        
+      cursor: not-allowed;
+    }
+
+    .updateUserButton {
+      margin-left: 16px;
+    }
+
+    .userStatusblocked { color: orange; }
+    .userStatusdeleted { color: red; }
+  }
+}

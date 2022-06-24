@@ -173,3 +173,8 @@
     border-color: $primary-color !important;
   }
 }
+
+.selectPicker {
+  @extend
+    .custom-select;
+}
