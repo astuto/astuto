@@ -26,6 +26,7 @@ interface Props {
     authenticityToken: string,
   ): void;
 
+  currentUserEmail: string;
   currentUserRole: UserRoles;
   authenticityToken: string;
 }
@@ -68,6 +69,7 @@ class UsersSiteSettingsP extends React.Component<Props> {
       settingsAreUpdating,
       settingsError,
       currentUserRole,
+      currentUserEmail,
     } = this.props;
 
     return (
@@ -83,6 +85,7 @@ class UsersSiteSettingsP extends React.Component<Props> {
                   updateUserRole={this._handleUpdateUserRole}
                   updateUserStatus={this._handleUpdateUserStatus}
 
+                  currentUserEmail={currentUserEmail}
                   currentUserRole={currentUserRole}
                   key={i}
                 />

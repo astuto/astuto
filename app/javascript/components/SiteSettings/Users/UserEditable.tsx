@@ -20,6 +20,7 @@ interface Props {
   ): void;
 
   currentUserRole: UserRoles;
+  currentUserEmail: string;
 }
 
 interface State {
@@ -73,11 +74,18 @@ class UserEditable extends React.Component<Props, State> {
   }
 
   render() {
-    const { user, currentUserRole } = this.props;
+    const { user, currentUserRole, currentUserEmail } = this.props;
     const { editMode } = this.state;
 
-    const editEnabled = user.status === USER_STATUS_ACTIVE && currentUserRole === USER_ROLE_ADMIN;
-    const blockEnabled = user.status !== USER_STATUS_DELETED && (currentUserRole === USER_ROLE_ADMIN || user.role === USER_ROLE_USER);
+    const editEnabled =
+      user.status === USER_STATUS_ACTIVE &&
+      currentUserRole === USER_ROLE_ADMIN &&
+      currentUserEmail !== user.email;
+
+    const blockEnabled =
+      user.status !== USER_STATUS_DELETED &&
+      (currentUserRole === USER_ROLE_ADMIN || user.role === USER_ROLE_USER) &&
+      currentUserEmail !== user.email;
 
     return (
       <li className="userEditable">

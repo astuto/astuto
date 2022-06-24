@@ -15,7 +15,7 @@ class UserPolicy < ApplicationPolicy
 
   def update?
     if user.admin?
-      true
+      record.id != user.id
     elsif user.moderator?
       record.user?
     else

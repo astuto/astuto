@@ -9,6 +9,7 @@ import { UserRoles } from '../../../interfaces/IUser';
 import { State } from '../../../reducers/rootReducer';
 
 interface Props {
+  currentUserEmail: string;
   currentUserRole: UserRoles;
   authenticityToken: string;
 }
@@ -26,6 +27,7 @@ class UsersSiteSettingsRoot extends React.Component<Props> {
     return (
       <Provider store={this.store}>
         <UsersSiteSettings
+          currentUserEmail={this.props.currentUserEmail}
           currentUserRole={this.props.currentUserRole}
           authenticityToken={this.props.authenticityToken}
         />
