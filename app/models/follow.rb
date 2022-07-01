@@ -1,4 +1,6 @@
 class Follow < ApplicationRecord
+  include TenantOwnable
+  
   belongs_to :user
   belongs_to :post
 

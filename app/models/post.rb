@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include TenantOwnable
+  
   belongs_to :board
   belongs_to :user
   belongs_to :post_status, optional: true

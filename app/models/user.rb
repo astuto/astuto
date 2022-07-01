@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include TenantOwnable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
@@ -15,6 +17,7 @@ class User < ApplicationRecord
   after_initialize :skip_confirmation, if: :new_record?
 
   validates :full_name, presence: true, length: { in: 2..32 }
+  validates :email, presence: true, uniqueness: { scope: :tenant_id }
 
   def set_default_role
     self.role ||= :user

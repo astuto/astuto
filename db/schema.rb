@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_092039) do
+ActiveRecord::Schema.define(version: 2022_07_01_091256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order", null: false
-    t.index ["name"], name: "index_boards_on_name", unique: true
+    t.bigint "tenant_id", null: false
+    t.index ["name", "tenant_id"], name: "index_boards_on_name_and_tenant_id", unique: true
+    t.index ["tenant_id"], name: "index_boards_on_tenant_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -32,8 +34,10 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_post_update", default: false, null: false
+    t.bigint "tenant_id", null: false
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["tenant_id"], name: "index_comments_on_tenant_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -42,7 +46,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tenant_id", null: false
     t.index ["post_id"], name: "index_follows_on_post_id"
+    t.index ["tenant_id"], name: "index_follows_on_tenant_id"
     t.index ["user_id", "post_id"], name: "index_follows_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
@@ -52,7 +58,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tenant_id", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["tenant_id"], name: "index_likes_on_tenant_id"
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -63,8 +71,10 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.bigint "post_status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tenant_id", null: false
     t.index ["post_id"], name: "index_post_status_changes_on_post_id"
     t.index ["post_status_id"], name: "index_post_status_changes_on_post_status_id"
+    t.index ["tenant_id"], name: "index_post_status_changes_on_tenant_id"
     t.index ["user_id"], name: "index_post_status_changes_on_user_id"
   end
 
@@ -75,7 +85,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order", null: false
     t.boolean "show_in_roadmap", default: false, null: false
-    t.index ["name"], name: "index_post_statuses_on_name", unique: true
+    t.bigint "tenant_id", null: false
+    t.index ["name", "tenant_id"], name: "index_post_statuses_on_name_and_tenant_id", unique: true
+    t.index ["tenant_id"], name: "index_post_statuses_on_tenant_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -86,9 +98,21 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.bigint "post_status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tenant_id", null: false
     t.index ["board_id"], name: "index_posts_on_board_id"
     t.index ["post_status_id"], name: "index_posts_on_post_status_id"
+    t.index ["tenant_id"], name: "index_posts_on_tenant_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.string "site_name", null: false
+    t.string "site_logo"
+    t.string "subdomain", null: false
+    t.string "locale", default: "en"
+    t.string "custom_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -107,22 +131,32 @@ ActiveRecord::Schema.define(version: 2022_06_22_092039) do
     t.string "full_name"
     t.boolean "notifications_enabled", default: true, null: false
     t.integer "status"
+    t.bigint "tenant_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email", "tenant_id"], name: "index_users_on_email_and_tenant_id", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["tenant_id"], name: "index_users_on_tenant_id"
   end
 
+  add_foreign_key "boards", "tenants"
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "tenants"
   add_foreign_key "comments", "users"
   add_foreign_key "follows", "posts"
+  add_foreign_key "follows", "tenants"
   add_foreign_key "follows", "users"
   add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "tenants"
   add_foreign_key "likes", "users"
   add_foreign_key "post_status_changes", "post_statuses"
   add_foreign_key "post_status_changes", "posts"
+  add_foreign_key "post_status_changes", "tenants"
   add_foreign_key "post_status_changes", "users"
+  add_foreign_key "post_statuses", "tenants"
   add_foreign_key "posts", "boards"
   add_foreign_key "posts", "post_statuses"
+  add_foreign_key "posts", "tenants"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "tenants"
 end
