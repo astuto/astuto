@@ -36,6 +36,14 @@
   a { color: $primary-color; }
 }
 
+.formGroup {
+  @extend .form-group;
+
+  .formControl {
+    @extend .form-control;
+  }
+}
+
 .switch {
   @extend
     .custom-control-input;

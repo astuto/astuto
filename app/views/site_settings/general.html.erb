@@ -1,8 +1,13 @@
 <div class="twoColumnsContainer">
   <%= render 'menu' %>
-
-  <div class="content">
-    <h2>General</h2>
-    <p>Under construction</p>
+  <div>
+    <%=
+      react_component(
+        'SiteSettings/General',
+        {
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
   </div>
 </div>

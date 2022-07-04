@@ -1,4 +1,11 @@
 import {
+  TenantRequestActionTypes,
+  TENANT_REQUEST_START,
+  TENANT_REQUEST_SUCCESS,
+  TENANT_REQUEST_FAILURE,
+} from '../actions/Tenant/requestTenant';
+
+import {
   BoardsRequestActionTypes,
   BOARDS_REQUEST_START,
   BOARDS_REQUEST_SUCCESS,
@@ -75,12 +82,14 @@ import {
   USER_UPDATE_FAILURE,
 } from '../actions/User/updateUser';
 
+import siteSettingsGeneralReducer, { SiteSettingsGeneralState } from './SiteSettings/generalReducer';
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
 import siteSettingsUsersReducer, { SiteSettingsUsersState } from './SiteSettings/usersReducer';
 
 interface SiteSettingsState {
+  general: SiteSettingsGeneralState;
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
@@ -88,6 +97,7 @@ interface SiteSettingsState {
 }
 
 const initialState: SiteSettingsState = {
+  general: siteSettingsGeneralReducer(undefined, {} as any),
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
@@ -97,6 +107,7 @@ const initialState: SiteSettingsState = {
 const siteSettingsReducer = (
   state = initialState,
   action:
+    TenantRequestActionTypes |
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
     BoardUpdateActionTypes |
@@ -110,6 +121,14 @@ const siteSettingsReducer = (
     UserUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
+    case TENANT_REQUEST_START:
+    case TENANT_REQUEST_SUCCESS:
+    case TENANT_REQUEST_FAILURE:
+      return {
+        ...state,
+        general: siteSettingsGeneralReducer(state.general, action),
+      };
+      
     case BOARDS_REQUEST_START:
     case BOARDS_REQUEST_SUCCESS:
     case BOARDS_REQUEST_FAILURE:

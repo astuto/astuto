@@ -103,6 +103,7 @@ en:
   site_settings:
     menu:
       title: 'Site settings'
+      general: 'General'
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
@@ -110,6 +111,11 @@ en:
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
+    general:
+      title: 'General'
+      site_name: 'Site name'
+      site_logo: 'Site logo'
+      locale: 'Language'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'

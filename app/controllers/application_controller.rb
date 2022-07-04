@@ -30,9 +30,12 @@ class ApplicationController < ActionController::Base
       return unless current_tenant
       Current.tenant = current_tenant
 
-      # Load tenants data
+      # Load tenant data
       @tenant = Current.tenant_or_raise!
       @boards = Board.select(:id, :name).order(order: :asc)
+
+      # Setup locale
+      I18n.locale = @tenant.locale
     end
 
   private

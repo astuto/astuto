@@ -103,6 +103,7 @@ it:
   site_settings:
     menu:
       title: 'Impostazioni sito'
+      general: 'Generali'
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
@@ -110,6 +111,11 @@ it:
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
+    general:
+      title: 'Generale'
+      site_name: 'Nome del sito'
+      site_logo: 'Logo del sito'
+      locale: 'Lingua'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
