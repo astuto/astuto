@@ -4,7 +4,7 @@ class Current < ActiveSupport::CurrentAttributes
   class MissingCurrentTenant < StandardError; end
 
   def tenant_or_raise!
-    #raise MissingCurrentTenant, "Current tenant is not set" unless tenant
+    raise MissingCurrentTenant, "Current tenant is not set" unless tenant
 
     tenant
   end

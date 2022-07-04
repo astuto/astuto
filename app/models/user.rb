@@ -2,8 +2,7 @@ class User < ApplicationRecord
   include TenantOwnable
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
+         :recoverable, :rememberable, :confirmable
   
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -17,7 +16,12 @@ class User < ApplicationRecord
   after_initialize :skip_confirmation, if: :new_record?
 
   validates :full_name, presence: true, length: { in: 2..32 }
-  validates :email, presence: true, uniqueness: { scope: :tenant_id }
+  validates :email,
+    presence: true,
+    uniqueness: { scope: :tenant_id, case_sensitive: false },
+    format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password, allow_blank: true, length: { in: 6..128 }
+  validates :password, presence: true, on: :create
 
   def set_default_role
     self.role ||= :user

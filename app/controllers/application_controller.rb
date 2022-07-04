@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :load_tenant_data
+  prepend_before_action :load_tenant_data
 
   protected
 
@@ -18,9 +18,10 @@ class ApplicationController < ActionController::Base
     def load_tenant_data
       return unless request.subdomain.present?
 
-      puts("\n\n\n" + request.subdomain + "\n\n\n")
-
+      # Load the current tenant based on subdomain
       Current.tenant = Tenant.find_by(subdomain: request.subdomain)
+
+      # Load tenants data
       @boards = Board.select(:id, :name).order(order: :asc)
     end
 

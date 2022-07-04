@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     root to: 'static_pages#roadmap'
     get '/roadmap', to: 'static_pages#roadmap'
     
-    devise_for :users, :controllers => { :registrations => 'registrations' }
+    devise_for :users, :controllers => {
+      :registrations => 'registrations',
+      :sessions => 'sessions'
+    }
+    
     resources :users, only: [:index, :update]
   
     resources :posts, only: [:index, :create, :show, :update, :destroy] do
