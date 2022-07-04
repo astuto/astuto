@@ -1,4 +1,10 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :load_tenant_data, only: [:showcase]
+
+  def showcase
+    render html: 'Showcase home page.'
+  end
+
   def roadmap
     @post_statuses = PostStatus
       .find_roadmap

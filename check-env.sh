@@ -15,9 +15,6 @@ env_vars=(
 	"POSTGRES_USER" \
 	"POSTGRES_PASSWORD" \
 	"EMAIL_CONFIRMATION" \
-	"APP_NAME" \
-	"SHOW_LOGO" \
-	"POSTS_PER_PAGE" \
 )
 
 # Check each one

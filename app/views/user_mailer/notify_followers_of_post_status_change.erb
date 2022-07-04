@@ -6,5 +6,5 @@
 </p>
 
 <p>
-  <%= link_to I18n.t('user_mailer.learn_more'), post_url(@post) %>
+  <%= link_to I18n.t('user_mailer.learn_more'), post_url(@post, subdomain: @tenant.subdomain) %>
 </p>

@@ -2,6 +2,8 @@ class UserMailer < ApplicationMailer
   layout 'user_mailer'
 
   def notify_post_owner(comment:)
+    @tenant = comment.tenant
+    Current.tenant = @tenant
     @comment = comment
     @user = comment.post.user
 
@@ -12,6 +14,8 @@ class UserMailer < ApplicationMailer
   end
 
   def notify_comment_owner(comment:)
+    @tenant = comment.tenant
+    Current.tenant = @tenant
     @comment = comment
     @user = comment.parent.user
 
@@ -22,6 +26,8 @@ class UserMailer < ApplicationMailer
   end
 
   def notify_followers_of_post_update(comment:)
+    @tenant = comment.tenant
+    Current.tenant = @tenant
     @comment = comment
 
     mail(
@@ -31,6 +37,8 @@ class UserMailer < ApplicationMailer
   end
 
   def notify_followers_of_post_status_change(post:)
+    @tenant = post.tenant
+    Current.tenant = @tenant
     @post = post
 
     mail(
@@ -42,6 +50,6 @@ class UserMailer < ApplicationMailer
   private
 
     def app_name
-      ENV.fetch('APP_NAME')
+      Current.tenant_or_raise!.site_name
     end
 end

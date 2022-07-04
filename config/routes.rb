@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  if Rails.application.multi_tenancy?
+    constraints subdomain: 'showcase' do
+      root to: 'static_pages#showcase', as: :showcase
+    end
+  end
+
   constraints subdomain: /.*/ do
     root to: 'static_pages#roadmap'
     get '/roadmap', to: 'static_pages#roadmap'

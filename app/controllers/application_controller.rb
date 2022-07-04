@@ -16,12 +16,22 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
-      return unless request.subdomain.present?
+      if Rails.application.multi_tenancy?
+        # Load the current tenant based on subdomain
+        current_tenant = Tenant.find_by(subdomain: request.subdomain)
 
-      # Load the current tenant based on subdomain
-      Current.tenant = Tenant.find_by(subdomain: request.subdomain)
+        redirect_to showcase_url unless current_tenant
+      else
+        # Load the one and only tenant
+        current_tenant = Tenant.first
+        # redirect_to tenant_sign_up_path unless current_tenant.present?
+      end
+
+      return unless current_tenant
+      Current.tenant = current_tenant
 
       # Load tenants data
+      @tenant = Current.tenant_or_raise!
       @boards = Board.select(:id, :name).order(order: :asc)
     end
 

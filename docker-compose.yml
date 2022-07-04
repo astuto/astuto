@@ -18,9 +18,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - EMAIL_CONFIRMATION
-      - APP_NAME
-      - SHOW_LOGO
-      - POSTS_PER_PAGE
+      - MULTI_TENANCY
     volumes:
       - .:/astuto
     ports:

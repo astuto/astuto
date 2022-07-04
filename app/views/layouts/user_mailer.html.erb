@@ -11,7 +11,12 @@
     <p><%= t('user_mailer.closing_greeting') %></p>
 
     <footer>
-      <%= link_to(t('user_mailer.unsubscribe'), edit_user_registration_url) %>.
+      <%=
+        link_to(
+          t('user_mailer.unsubscribe'),
+          edit_user_registration_url(subdomain: Current.tenant_or_raise!.subdomain)
+        )
+      %>.
     </footer>
   </body>
 </html>

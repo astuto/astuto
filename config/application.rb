@@ -16,20 +16,16 @@ module App
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    def name
-      ENV["APP_NAME"]
+    def multi_tenancy?
+      ENV["MULTI_TENANCY"] == "true"
     end
 
     def email_confirmation?
       ENV["EMAIL_CONFIRMATION"] == "yes"
     end
 
-    def show_logo?
-      ENV["SHOW_LOGO"] == "yes"
-    end
-
     def posts_per_page
-      ENV["POSTS_PER_PAGE"].to_i
+      15
     end
   end
 end
