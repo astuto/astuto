@@ -14,6 +14,7 @@ import {
 } from '../../../interfaces/ITenant';
 
 interface Props {
+  originForm: ISiteSettingsGeneralForm;
   authenticityToken: string;
 
   form: ISiteSettingsGeneralForm;
@@ -65,6 +66,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
 
   render() {
     const {
+      originForm,
       form,
       areDirty,
       areUpdating,
@@ -87,7 +89,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                 <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
                 <input
                   type="text"
-                  value={form.siteName || ''}
+                  value={form.siteName || originForm.siteName}
                   onChange={e => handleChangeSiteName(e.target.value)}
                   id="siteName"
                   className="formControl"
@@ -98,7 +100,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                 <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
                 <input
                   type="text"
-                  value={form.siteLogo || ''}
+                  value={form.siteLogo || originForm.siteLogo}
                   onChange={e => handleChangeSiteLogo(e.target.value)}
                   id="siteLogo"
                   className="formControl"
@@ -108,7 +110,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
               <div className="formGroup col-4">
                 <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
                 <select
-                  value={form.brandDisplaySetting || 'Loading...'}
+                  value={form.brandDisplaySetting || originForm.brandDisplaySetting}
                   onChange={e => handleChangeBrandDisplaySetting(e.target.value)}
                   id="brandSetting"
                   className="selectPicker"
@@ -132,7 +134,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
             <div className="formGroup">
               <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
               <select
-                value={form.locale || 'Loading...'}
+                value={form.locale || originForm.locale}
                 onChange={e => handleChangeLocale(e.target.value)}
                 id="locale"
                 className="selectPicker"

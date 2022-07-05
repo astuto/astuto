@@ -5,8 +5,10 @@ import { Store } from 'redux';
 import GeneralSiteSettings from '../../../containers/GeneralSiteSettings';
 import createStoreHelper from '../../../helpers/createStore';
 import { State } from '../../../reducers/rootReducer';
+import { ISiteSettingsGeneralForm } from '../../../reducers/SiteSettings/generalReducer';
 
 interface Props {
+  originForm: ISiteSettingsGeneralForm;
   authenticityToken: string;
 }
 
@@ -23,6 +25,7 @@ class GeneralSiteSettingsRoot extends React.Component<Props> {
     return (
       <Provider store={this.store}>
         <GeneralSiteSettings
+          originForm={this.props.originForm}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>
