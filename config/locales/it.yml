@@ -111,6 +111,7 @@ it:
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
+      dirty: 'Modifiche non salvate'
     general:
       title: 'Generale'
       site_name: 'Nome del sito'

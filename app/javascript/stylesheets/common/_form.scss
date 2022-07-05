@@ -36,6 +36,10 @@
   a { color: $primary-color; }
 }
 
+.formRow {
+  @extend .form-row;
+}
+
 .formGroup {
   @extend .form-group;
 

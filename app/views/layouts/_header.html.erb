@@ -3,7 +3,7 @@
     <%=
       link_to root_path, class: 'brand' do
         app_name = content_tag :span, @tenant.site_name
-        logo = image_tag(asset_pack_path('media/images/logo.png'), class: 'logo')
+        logo = image_tag(@tenant.site_logo, class: 'logo')
 
         logo + app_name
       end
@@ -37,7 +37,7 @@
               <% if current_user.power_user? %>
                 <%=
                   link_to t('header.menu.site_settings'),
-                    current_user.admin? ? site_settings_boards_path : site_settings_users_path,
+                    current_user.admin? ? site_settings_general_path : site_settings_users_path,
                     class: 'dropdown-item'
                 %>
                 <div class="dropdown-divider"></div>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       :sessions => 'sessions'
     }
     
-    resources :tenants, only: [:show]
+    resources :tenants, only: [:show, :update]
     resources :users, only: [:index, :update]
   
     resources :posts, only: [:index, :create, :show, :update, :destroy] do

@@ -111,6 +111,7 @@ en:
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
+      dirty: 'Changes not saved'
     general:
       title: 'General'
       site_name: 'Site name'

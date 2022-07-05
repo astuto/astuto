@@ -5,6 +5,20 @@ import {
   TENANT_REQUEST_FAILURE,
 } from "../../actions/Tenant/requestTenant";
 
+import {
+  TenantUpdateActionTypes,
+  TENANT_UPDATE_START,
+  TENANT_UPDATE_SUCCESS,
+  TENANT_UPDATE_FAILURE,
+} from '../../actions/Tenant/updateTenant';
+
+import {
+  ChangeSiteSettingsGeneralFormActionTypes,
+  SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_NAME,
+  SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_LOGO,
+  SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE,
+} from '../../actions/changeSiteSettingsGeneralForm';
+
 export interface ISiteSettingsGeneralForm {
   siteName: string;
   siteLogo: string;
@@ -31,16 +45,21 @@ const initialState: SiteSettingsGeneralState = {
 
 const siteSettingsGeneralReducer = (
   state = initialState,
-  action: TenantRequestActionTypes
+  action:
+    TenantRequestActionTypes |
+    TenantUpdateActionTypes |
+    ChangeSiteSettingsGeneralFormActionTypes
 ) => {
   switch (action.type) {
     case TENANT_REQUEST_START:
+    case TENANT_UPDATE_START:
       return {
         ...state,
         areUpdating: true,
       };
 
     case TENANT_REQUEST_SUCCESS:
+    case TENANT_UPDATE_SUCCESS:
       return {
         ...state,
         form: {
@@ -54,10 +73,32 @@ const siteSettingsGeneralReducer = (
       };
 
     case TENANT_REQUEST_FAILURE:
+    case TENANT_UPDATE_FAILURE:
       return {
         ...state,
         areUpdating: false,
         error: action.error,
+      };
+
+    case SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_NAME:
+      return {
+        ...state,
+        form: { ...state.form, siteName: action.siteName },
+        areDirty: true,
+      };
+
+    case SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_LOGO:
+      return {
+        ...state,
+        form: { ...state.form, siteLogo: action.siteLogo },
+        areDirty: true,
+      };
+
+    case SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE:
+      return {
+        ...state,
+        form: { ...state.form, locale: action.locale },
+        areDirty: true,
       };
     
     default:
