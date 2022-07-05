@@ -4,16 +4,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
   <body>
-    <p><%= t('user_mailer.opening_greeting') %></p>
+    <p><%= t('mailers.user.opening_greeting') %></p>
 
     <div><%= yield %></div>
     
-    <p><%= t('user_mailer.closing_greeting') %></p>
+    <p><%= t('mailers.user.closing_greeting') %></p>
 
     <footer>
       <%=
         link_to(
-          t('user_mailer.unsubscribe'),
+          t('mailers.user.unsubscribe'),
           edit_user_registration_url(subdomain: Current.tenant_or_raise!.subdomain)
         )
       %>.
