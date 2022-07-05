@@ -139,7 +139,7 @@ it:
       title: 'Roadmap'
       title2: 'Non mostrati in roadmap'
       empty: 'La roadmap è vuota.'
-      help: "Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito -> Stati."
+      help: "Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito > Stati."
     users:
       title: 'Utenti'
       block: 'Blocca'

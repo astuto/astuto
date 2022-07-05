@@ -139,7 +139,7 @@ en:
       title: 'Roadmap'
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
-      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings -> Statuses.'
+      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     users:
       title: 'Users'
       block: 'Block'
