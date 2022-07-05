@@ -116,6 +116,11 @@ en:
       title: 'General'
       site_name: 'Site name'
       site_logo: 'Site logo'
+      brand_setting: 'Display'
+      brand_setting_both: 'Both name and logo'
+      brand_setting_name: 'Name only'
+      brand_setting_logo: 'Logo only'
+      brand_setting_none: 'None'
       locale: 'Language'
     boards:
       title: 'Boards'

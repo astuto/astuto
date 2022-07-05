@@ -28,6 +28,21 @@ export const changeSiteSettingsGeneralFormSiteLogo = (
   siteLogo,
 });
 
+// brandDisplaySetting
+export const SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING = 'SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING';
+
+interface SiteSettingsChangeGeneralFormBrandSetting {
+  type: typeof SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING,
+  brandDisplaySetting: string,
+}
+
+export const changeSiteSettingsGeneralFormBrandSetting = (
+  brandDisplaySetting: string
+): SiteSettingsChangeGeneralFormBrandSetting => ({
+  type: SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING,
+  brandDisplaySetting,
+});
+
 // locale
 export const SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE = 'SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE';
 
@@ -46,4 +61,5 @@ export const changeSiteSettingsGeneralFormLocale = (
 export type ChangeSiteSettingsGeneralFormActionTypes =
   SiteSettingsChangeGeneralFormSiteName |
   SiteSettingsChangeGeneralFormSiteLogo |
+  SiteSettingsChangeGeneralFormBrandSetting |
   SiteSettingsChangeGeneralFormLocale;

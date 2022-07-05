@@ -6,6 +6,12 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import { ISiteSettingsGeneralForm } from '../../../reducers/SiteSettings/generalReducer';
 import Button from '../../common/Button';
 import HttpStatus from '../../../constants/http_status';
+import {
+  TENANT_BRAND_NAME_AND_LOGO,
+  TENANT_BRAND_NAME_ONLY,
+  TENANT_BRAND_LOGO_ONLY,
+  TENANT_BRAND_NONE,
+} from '../../../interfaces/ITenant';
 
 interface Props {
   authenticityToken: string;
@@ -19,12 +25,14 @@ interface Props {
   updateTenant(
     siteName: string,
     siteLogo: string,
+    brandDisplaySetting: string,
     locale: string,
     authenticityToken: string
   ): Promise<any>;
 
   handleChangeSiteName(siteName: string): void;
   handleChangeSiteLogo(siteLogo: string): void;
+  handleChangeBrandDisplaySetting(brandDisplaySetting: string)
   handleChangeLocale(locale: string): void;
 }
 
@@ -40,11 +48,12 @@ class GeneralSiteSettingsP extends React.Component<Props> {
   }
 
   _handleUpdateTenant() {
-    const { siteName, siteLogo, locale } = this.props.form;
+    const { siteName, siteLogo, brandDisplaySetting, locale } = this.props.form;
 
     this.props.updateTenant(
       siteName,
       siteLogo,
+      brandDisplaySetting,
       locale,
       this.props.authenticityToken,
     ).then(res => {
@@ -63,6 +72,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
 
       handleChangeSiteName,
       handleChangeSiteLogo,
+      handleChangeBrandDisplaySetting,
       handleChangeLocale,
     } = this.props;
 
@@ -73,7 +83,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
 
           <form>
             <div className="formRow">
-              <div className="formGroup col-6">
+              <div className="formGroup col-4">
                 <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
                 <input
                   type="text"
@@ -84,7 +94,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                 />
               </div>
 
-              <div className="formGroup col-6">
+              <div className="formGroup col-4">
                 <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
                 <input
                   type="text"
@@ -94,14 +104,37 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                   className="formControl"
                 />
               </div>
+
+              <div className="formGroup col-4">
+                <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
+                <select
+                  value={form.brandDisplaySetting || 'Loading...'}
+                  onChange={e => handleChangeBrandDisplaySetting(e.target.value)}
+                  id="brandSetting"
+                  className="selectPicker"
+                >
+                  <option value={TENANT_BRAND_NAME_AND_LOGO}>
+                    { I18n.t('site_settings.general.brand_setting_both') }
+                  </option>
+                  <option value={TENANT_BRAND_NAME_ONLY}>
+                    { I18n.t('site_settings.general.brand_setting_name') }
+                  </option>
+                  <option value={TENANT_BRAND_LOGO_ONLY}>
+                    { I18n.t('site_settings.general.brand_setting_logo') }
+                  </option>
+                  <option value={TENANT_BRAND_NONE}>
+                    { I18n.t('site_settings.general.brand_setting_none') }
+                  </option>
+                </select>
+              </div>
             </div>
 
             <div className="formGroup">
-              <label htmlFor="selectPickerLocale">{ I18n.t('site_settings.general.locale') }</label>
+              <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
               <select
                 value={form.locale || 'Loading...'}
                 onChange={e => handleChangeLocale(e.target.value)}
-                id="selectPickerLocale"
+                id="locale"
                 className="selectPicker"
               >
                 <option value="en">🇬🇧 English</option>

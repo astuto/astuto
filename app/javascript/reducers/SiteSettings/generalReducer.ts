@@ -16,12 +16,14 @@ import {
   ChangeSiteSettingsGeneralFormActionTypes,
   SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_NAME,
   SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_LOGO,
+  SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING,
   SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE,
 } from '../../actions/changeSiteSettingsGeneralForm';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
   siteLogo: string;
+  brandDisplaySetting: string;
   locale: string;
 }
 
@@ -36,6 +38,7 @@ const initialState: SiteSettingsGeneralState = {
   form: {
     siteName: '',
     siteLogo: '',
+    brandDisplaySetting: '',
     locale: '',
   },
   areDirty: false,
@@ -65,6 +68,7 @@ const siteSettingsGeneralReducer = (
         form: {
           siteName: action.tenant.site_name,
           siteLogo: action.tenant.site_logo,
+          brandDisplaySetting: action.tenant.brand_display_setting,
           locale: action.tenant.locale,
         },
         areDirty: false,
@@ -91,6 +95,13 @@ const siteSettingsGeneralReducer = (
       return {
         ...state,
         form: { ...state.form, siteLogo: action.siteLogo },
+        areDirty: true,
+      };
+
+    case SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING:
+      return {
+        ...state,
+        form: { ...state.form, brandDisplaySetting: action.brandDisplaySetting },
         areDirty: true,
       };
 

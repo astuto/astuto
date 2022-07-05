@@ -47,6 +47,7 @@ const tenantUpdateFailure = (error: string): TenantUpdateFailureAction => ({
 interface UpdateTenantParams {
   siteName?: string;
   siteLogo?: string;
+  brandDisplaySetting?: string;
   locale?: string;
   authenticityToken: string;
 }
@@ -54,6 +55,7 @@ interface UpdateTenantParams {
 export const updateTenant = ({
   siteName = null,
   siteLogo = null,
+  brandDisplaySetting = null,
   locale = null,
   authenticityToken,
 }: UpdateTenantParams): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
@@ -62,6 +64,7 @@ export const updateTenant = ({
   const tenant = Object.assign({},
     siteName !== null ? { site_name: siteName } : null,
     siteLogo !== null ? { site_logo: siteLogo } : null,
+    brandDisplaySetting !== null ? { brand_display_setting: brandDisplaySetting } : null,
     locale !== null ? { locale } : null
   );
 

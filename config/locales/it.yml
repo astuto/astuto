@@ -116,6 +116,11 @@ it:
       title: 'Generale'
       site_name: 'Nome del sito'
       site_logo: 'Logo del sito'
+      brand_setting: 'Mostra'
+      brand_setting_both: 'Sia nome che logo'
+      brand_setting_name: 'Solo nome'
+      brand_setting_logo: 'Solo logo'
+      brand_setting_none: 'Nessuno'
       locale: 'Lingua'
     boards:
       title: 'Bacheche'

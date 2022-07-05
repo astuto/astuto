@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 
 import { requestTenant } from "../actions/Tenant/requestTenant";
 import {
+  changeSiteSettingsGeneralFormBrandSetting,
   changeSiteSettingsGeneralFormLocale,
   changeSiteSettingsGeneralFormSiteLogo,
   changeSiteSettingsGeneralFormSiteName
@@ -25,12 +26,14 @@ const mapDispatchToProps = (dispatch: any) => ({
   updateTenant(
     siteName: string,
     siteLogo: string,
+    brandDisplaySetting: string,
     locale: string,
     authenticityToken: string
   ): Promise<any> {
     return dispatch(updateTenant({
       siteName,
       siteLogo,
+      brandDisplaySetting,
       locale,
       authenticityToken,
     }));
@@ -42,6 +45,10 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   handleChangeSiteLogo(siteLogo: string) {
     dispatch(changeSiteSettingsGeneralFormSiteLogo(siteLogo));
+  },
+
+  handleChangeBrandDisplaySetting(brandDisplaySetting: string) {
+    dispatch(changeSiteSettingsGeneralFormBrandSetting(brandDisplaySetting));
   },
 
   handleChangeLocale(locale: string) {
