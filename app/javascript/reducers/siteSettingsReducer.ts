@@ -56,6 +56,13 @@ import {
 } from '../actions/Board/deleteBoard';
 
 import {
+  PostStatusesRequestActionTypes,
+  POST_STATUSES_REQUEST_START,
+  POST_STATUSES_REQUEST_SUCCESS,
+  POST_STATUSES_REQUEST_FAILURE,
+} from '../actions/PostStatus/requestPostStatuses';
+
+import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
   POSTSTATUS_ORDER_UPDATE_SUCCESS,
@@ -130,6 +137,7 @@ const siteSettingsReducer = (
     BoardUpdateActionTypes |
     BoardOrderUpdateActionTypes |
     BoardDeleteActionTypes |
+    PostStatusesRequestActionTypes |
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
@@ -173,6 +181,9 @@ const siteSettingsReducer = (
         boards: siteSettingsBoardsReducer(state.boards, action),
       };
     
+    case POST_STATUSES_REQUEST_START:
+    case POST_STATUSES_REQUEST_SUCCESS:
+    case POST_STATUSES_REQUEST_FAILURE:
     case POSTSTATUS_SUBMIT_START:
     case POSTSTATUS_SUBMIT_SUCCESS:
     case POSTSTATUS_SUBMIT_FAILURE:
