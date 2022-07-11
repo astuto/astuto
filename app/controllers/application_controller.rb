@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
 
     def load_tenant_data
       if Rails.application.multi_tenancy?
+        return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
+
         # Load the current tenant based on subdomain
         current_tenant = Tenant.find_by(subdomain: request.subdomain)
 

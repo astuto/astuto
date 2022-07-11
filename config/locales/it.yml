@@ -2,7 +2,7 @@ it:
   common:
     forms:
       auth:
-        email: 'Indirizzo email'
+        email: 'Email'
         full_name: 'Nome e cognome'
         password: 'Password'
         password_confirmation: 'Conferma password'
@@ -38,6 +38,7 @@ it:
       cancel: 'Annulla'
       create: 'Crea'
       update: 'Salva'
+      confirm: 'Conferma'
     datetime:
       now: 'adesso'
       minutes:
@@ -49,6 +50,13 @@ it:
       days:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
+  signup:
+    page_title: 'Crea il tuo spazio di feedback'
+    step1:
+      title: '1. Crea account utente'
+      email_auth: 'Registrati con indirizzo email'
+    step2:
+      title: '2. Crea spazio di feedback'
   header:
     menu:
       site_settings: 'Impostazioni sito'

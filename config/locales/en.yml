@@ -2,7 +2,7 @@ en:
   common:
     forms:
       auth:
-        email: 'Email address'
+        email: 'Email'
         full_name: 'Full name'
         password: 'Password'
         password_confirmation: 'Password confirmation'
@@ -38,6 +38,7 @@ en:
       cancel: 'Cancel'
       create: 'Create'
       update: 'Save'
+      confirm: 'Confirm'
     datetime:
       now: 'just now'
       minutes:
@@ -49,6 +50,13 @@ en:
       days:
         one: '1 day ago'
         other: '%{count} days ago'
+  signup:
+    page_title: 'Create your feedback space'
+    step1:
+      title: '1. Create user account'
+      email_auth: 'Register with email'
+    step2:
+      title: '2. Create feedback space'
   header:
     menu:
       site_settings: 'Site settings'

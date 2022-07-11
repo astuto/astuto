@@ -3,6 +3,10 @@ class TenantsController < ApplicationController
 
   before_action :authenticate_admin, only: [:show, :update]
 
+  def new
+    @page_title = t('signup.page_title')
+  end
+
   def show
     render json: Current.tenant_or_raise!
   end

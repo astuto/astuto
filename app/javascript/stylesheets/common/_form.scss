@@ -38,13 +38,19 @@
 
 .formRow {
   @extend .form-row;
+
+  margin-top: 10px;
 }
 
 .formGroup {
   @extend .form-group;
+}
 
-  .formControl {
-    @extend .form-control;
+.formControl {
+  @extend .form-control;
+
+  &.invalid {
+    border-color: red;
   }
 }
 

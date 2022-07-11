@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     constraints subdomain: 'showcase' do
       root to: 'static_pages#showcase', as: :showcase
     end
+
+    constraints subdomain: 'login' do
+      get '/signup', to: 'tenants#new'
+    end
   end
 
   constraints subdomain: /.*/ do
