@@ -19,6 +19,8 @@ interface Props {
   handleUserFormConfirm(): void;
 
   tenantForm: TenantSignUpTenantFormState;
+  handleChangeTenantSiteName(siteName: string): void;
+  handleChangeTenantSubdomain(subdomain: string): void;
 }
 
 class TenantSignUpP extends React.Component<Props> {
@@ -36,6 +38,8 @@ class TenantSignUpP extends React.Component<Props> {
       handleUserFormConfirm,
 
       tenantForm,
+      handleChangeTenantSiteName,
+      handleChangeTenantSubdomain,
     } = this.props;
 
     return (
@@ -56,7 +60,11 @@ class TenantSignUpP extends React.Component<Props> {
 
         {
           currentStep === 2 ?
-            <TenantSignUpForm />
+            <TenantSignUpForm
+              tenantForm={tenantForm}
+              handleChangeTenantSiteName={handleChangeTenantSiteName}
+              handleChangeTenantSubdomain={handleChangeTenantSubdomain}
+            />
           :
             null
         }

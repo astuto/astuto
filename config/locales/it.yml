@@ -57,6 +57,9 @@ it:
       email_auth: 'Registrati con indirizzo email'
     step2:
       title: '2. Crea spazio di feedback'
+      site_name: 'Nome del sito'
+      subdomain: 'Sottodominio'
+      create_button: 'Crea spazio feedback'
   header:
     menu:
       site_settings: 'Impostazioni sito'

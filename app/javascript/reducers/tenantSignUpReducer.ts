@@ -6,6 +6,8 @@ import {
   TENANT_SIGN_UP_CHANGE_USER_PASSWORD,
   TENANT_SIGN_UP_CHANGE_USER_PASSWORD_CONFIRMATION,
   TENANT_SIGN_UP_CONFIRM_USER_FORM,
+  TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME,
+  TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN,
 } from '../actions/Tenant/tenantSignUpFormActions';
 
 export interface TenantSignUpUserFormState {
@@ -89,6 +91,18 @@ const tenantSignUpReducer = (
       return {
         ...state,
         currentStep: 2,
+      };
+
+    case TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME:
+      return {
+        ...state,
+        tenantForm: { ...state.tenantForm, siteName: action.siteName },
+      };
+
+    case TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN:
+      return {
+        ...state,
+        tenantForm: { ...state.tenantForm, subdomain: action.subdomain },
       };
 
     default:

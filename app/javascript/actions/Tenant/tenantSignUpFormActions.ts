@@ -82,6 +82,36 @@ export const confirmUserFormTenantSignUp = (): TenantSignUpConfirmUserForm => ({
   type: TENANT_SIGN_UP_CONFIRM_USER_FORM,
 });
 
+// Tenant site name
+export const TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME = 'TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME';
+
+interface TenantSignUpChangeTenantSiteName {
+  type: typeof TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME,
+  siteName: string,
+}
+
+export const changeTenantSiteNameTenantSignUp = (
+  siteName: string
+): TenantSignUpChangeTenantSiteName => ({
+  type: TENANT_SIGN_UP_CHANGE_TENANT_SITE_NAME,
+  siteName,
+});
+
+// Tenant site name
+export const TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN = 'TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN';
+
+interface TenantSignUpChangeTenantSubdomain {
+  type: typeof TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN,
+  subdomain: string,
+}
+
+export const changeTenantSubdomainTenantSignUp = (
+  subdomain: string
+): TenantSignUpChangeTenantSubdomain => ({
+  type: TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN,
+  subdomain,
+});
+
 
 export type TenantSignUpFormActions =
   TenantSignUpToggleEmailAuth |
@@ -89,4 +119,6 @@ export type TenantSignUpFormActions =
   TenantSignUpChangeUserEmail |
   TenantSignUpChangeUserPassword |
   TenantSignUpChangeUserPasswordConfirmation |
-  TenantSignUpConfirmUserForm;
+  TenantSignUpConfirmUserForm |
+  TenantSignUpChangeTenantSiteName |
+  TenantSignUpChangeTenantSubdomain;

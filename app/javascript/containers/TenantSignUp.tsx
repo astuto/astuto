@@ -4,6 +4,8 @@ import TenantSignUpP from "../components/TenantSignUp/TenantSignUpP";
 
 import { State } from "../reducers/rootReducer";
 import {
+  changeTenantSiteNameTenantSignUp,
+  changeTenantSubdomainTenantSignUp,
   changeUserEmailTenantSignUp,
   changeUserFullNameTenantSignUp,
   changeUserPasswordConfirmationTenantSignUp,
@@ -42,6 +44,14 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   handleUserFormConfirm() {
     dispatch(confirmUserFormTenantSignUp());
+  },
+
+  handleChangeTenantSiteName(siteName: string) {
+    dispatch(changeTenantSiteNameTenantSignUp(siteName));
+  },
+
+  handleChangeTenantSubdomain(subdomain: string) {
+    dispatch(changeTenantSubdomainTenantSignUp(subdomain));
   },
 });
 
