@@ -1,0 +1,8 @@
+files:
+  - source: /config/locales/en.yml
+    ignore:
+      - activerecord
+      - devise
+    translation: /config/locales/%two_letters_code%.yml
+  - source: /config/locales/devise/devise.en.yml
+    translation: /config/locales/devise/devise.%two_letters_code%.yml
