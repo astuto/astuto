@@ -1,8 +1,18 @@
-files:
-  - source: /config/locales/en.yml
-    ignore:
-      - activerecord
-      - devise
-    translation: /config/locales/%two_letters_code%.yml
-  - source: /config/locales/devise/devise.en.yml
-    translation: /config/locales/devise/devise.%two_letters_code%.yml
+"project_id": "1"
+"preserve_hierarchy": true
+"base_url": "https://astuto.crowdin.com"
+
+"files": [
+  {
+    "source": "/config/locales/en.yml",
+    "ignore": [
+      "/config/locales/activerecord",
+      "/config/locales/devise"
+    ],
+    "translation": "/config/locales/%two_letters_code%.yml"
+  },
+  {
+    "source": "/config/locales/devise/devise.en.yml",
+    "translation": "/config/locales/devise/devise.%two_letters_code%.yml"
+  }
+]
