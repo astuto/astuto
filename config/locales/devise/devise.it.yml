@@ -1,9 +1,4 @@
-# Italian translation for Devise 4.2
-# Date: 2016-08-01
-# Author: epistrephein, iwan
-# Note: Thanks to xpepper (https://gist.github.com/xpepper/8052632)
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
+#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 it:
   devise:
     confirmations:
@@ -28,10 +23,12 @@ it:
         subject: "Istruzioni per reimpostare la password"
       unlock_instructions:
         subject: "Istruzioni per sbloccare l'account"
+      email_changed:
+        subject: "Email Changed"
       password_change:
         subject: "Password reimpostata"
     omniauth_callbacks:
-      failure: 'Non è stato possibile autenticarti come %{kind} perché "%{reason}".'
+      failure: "Non è stato possibile autenticarti come %{kind} perché \"%{reason}\"."
       success: "Autenticato con successo dall'account %{kind}."
     passwords:
       no_token: "Non è possibile accedere a questa pagina se non provieni da una e-mail di ripristino della password. Se provieni da una e-mail di ripristino della password, assicurarti di utilizzare l'URL completo."
@@ -47,6 +44,7 @@ it:
       signed_up_but_unconfirmed: "Ti sei registrato correttamente. Un messaggio con il link per confermare il tuo account è stato inviato al tuo indirizzo email."
       update_needs_confirmation: "Il tuo account è stato aggiornato, tuttavia è necessario verificare il tuo nuovo indirizzo email. Entro qualche minuto riceverai un messaggio email con le istruzioni per confermare il tuo nuovo indirizzo email."
       updated: "Il tuo account è stato aggiornato."
+      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
     sessions:
       signed_in: "Accesso effettuato con successo."
       signed_out: "Sei uscito correttamente."
