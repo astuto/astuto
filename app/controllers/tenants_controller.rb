@@ -11,6 +11,28 @@ class TenantsController < ApplicationController
     render json: Current.tenant_or_raise!
   end
 
+  def create
+    @tenant = Tenant.new
+    @tenant.assign_attributes(tenant_create_params)
+    authorize @tenant
+
+    ActiveRecord::Base.transaction do
+      @tenant.save!
+      Current.tenant = @tenant
+      
+      @user = User.create!(
+        full_name: params[:user][:full_name],
+        email: params[:user][:email],
+        password: params[:user][:password]
+      )
+      
+      render json: @tenant, status: :created
+
+    rescue ActiveRecord::RecordInvalid => exception
+      render json: { error: exception }, status: :unprocessable_entity
+    end
+  end
+
   def update
     @tenant = Current.tenant_or_raise!
     authorize @tenant
@@ -25,6 +47,12 @@ class TenantsController < ApplicationController
   end
 
   private
+
+    def tenant_create_params
+      params
+        .require(:tenant)
+        .permit(policy(@tenant).permitted_attributes_for_create)
+    end
 
     def tenant_update_params
       params

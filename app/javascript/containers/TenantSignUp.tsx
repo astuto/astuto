@@ -13,10 +13,13 @@ import {
   confirmUserFormTenantSignUp,
   toggleEmailAuthTenantSignUp
 } from "../actions/Tenant/tenantSignUpFormActions";
+import { submitTenant } from "../actions/Tenant/submitTenant";
 
 const mapStateToProps = (state: State) => ({
   currentStep: state.tenantSignUp.currentStep,
   emailAuth: state.tenantSignUp.emailAuth,
+  isSubmitting: state.tenantSignUp.isSubmitting,
+  error: state.tenantSignUp.error,
   userForm: state.tenantSignUp.userForm,
   tenantForm: state.tenantSignUp.tenantForm,
 });
@@ -53,6 +56,24 @@ const mapDispatchToProps = (dispatch: any) => ({
   handleChangeTenantSubdomain(subdomain: string) {
     dispatch(changeTenantSubdomainTenantSignUp(subdomain));
   },
+
+  handleSubmit(
+    userFullName: string,
+    userEmail: string,
+    userPassword: string,
+    siteName: string,
+    subdomain: string,
+    authenticityToken: string,
+  ) {
+    dispatch(submitTenant(
+      userFullName,
+      userEmail,
+      userPassword,
+      siteName,
+      subdomain,
+      authenticityToken,
+    ));
+  }
 });
 
 export default connect(

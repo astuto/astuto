@@ -4,11 +4,17 @@ import I18n from 'i18n-js';
 import Box from '../common/Box';
 import { TenantSignUpTenantFormState } from '../../reducers/tenantSignUpReducer';
 import Button from '../common/Button';
+import Spinner from '../common/Spinner';
+import { DangerText } from '../common/CustomTexts';
 
 interface Props {
   tenantForm: TenantSignUpTenantFormState;
   handleChangeTenantSiteName(siteName: string): void;
   handleChangeTenantSubdomain(subdomain: string): void;
+  
+  isSubmitting: boolean;
+  error: string;
+  handleSubmit(): void;
 }
 
 class TenantSignUpForm extends React.Component<Props> {
@@ -25,6 +31,10 @@ class TenantSignUpForm extends React.Component<Props> {
       tenantForm,
       handleChangeTenantSiteName,
       handleChangeTenantSubdomain,
+
+      isSubmitting,
+      error,
+      handleSubmit,
     } = this.props;
 
     return (
@@ -63,11 +73,16 @@ class TenantSignUpForm extends React.Component<Props> {
           </div>
 
           <Button
-            onClick={() => null}
+            onClick={e => {
+              e.preventDefault();
+              handleSubmit();
+            }}
             className="tenantConfirm"
           >
-            { I18n.t('signup.step2.create_button') }
+            { isSubmitting ? <Spinner /> : I18n.t('signup.step2.create_button') }
           </Button>
+
+          { error !== '' && <DangerText>{ error }</DangerText> }
         </form>
       </Box>
     );

@@ -11,6 +11,14 @@ class Tenant < ApplicationRecord
     :no_name_no_logo
   ]
 
+  enum status: [:active, :pending, :blocked]
+
+  after_initialize :set_default_status, if: :new_record?
+
   validates :site_name, presence: true
   validates :subdomain, presence: true, uniqueness: true
+
+  def set_default_status
+    self.status ||= :pending
+  end
 end

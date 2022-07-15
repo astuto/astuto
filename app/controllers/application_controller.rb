@@ -22,6 +22,16 @@ class ApplicationController < ActionController::Base
         # Load the current tenant based on subdomain
         current_tenant = Tenant.find_by(subdomain: request.subdomain)
 
+        if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
+          render html: 'Verify your email address to access your new feedback space.'
+          return
+        end
+
+        if current_tenant.status == "blocked"
+          render html: 'This feedback space has been blocked and cannot be accessed.'
+          return
+        end
+
         redirect_to showcase_url unless current_tenant
       else
         # Load the one and only tenant

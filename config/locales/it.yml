@@ -60,6 +60,9 @@ it:
       site_name: 'Nome del sito'
       subdomain: 'Sottodominio'
       create_button: 'Crea spazio feedback'
+    step3:
+      title: 'Hai quasi finito!'
+      message_html: "Controlla la tua email <b>%{email}</b> per attivare il tuo nuovo spazio di feedback <b>%{subdomain}</b>!"
   header:
     menu:
       site_settings: 'Impostazioni sito'

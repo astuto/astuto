@@ -10,6 +10,13 @@ import {
   TENANT_SIGN_UP_CHANGE_TENANT_SUBDOMAIN,
 } from '../actions/Tenant/tenantSignUpFormActions';
 
+import {
+  TenantSubmitActionTypes,
+  TENANT_SUBMIT_START,
+  TENANT_SUBMIT_SUCCESS,
+  TENANT_SUBMIT_FAILURE,
+} from '../actions/Tenant/submitTenant';
+
 export interface TenantSignUpUserFormState {
   fullName: string;
   email: string;
@@ -26,6 +33,8 @@ export interface TenantSignUpTenantFormState {
 export interface TenantSignUpState {
   currentStep: number;
   emailAuth: boolean;
+  isSubmitting: boolean;
+  error: string;
 
   userForm: TenantSignUpUserFormState;
   tenantForm: TenantSignUpTenantFormState;
@@ -34,6 +43,8 @@ export interface TenantSignUpState {
 const initialState: TenantSignUpState = {
   currentStep: 1,
   emailAuth: false,
+  isSubmitting: false,
+  error: '',
 
   userForm: {
     fullName: '',
@@ -50,7 +61,7 @@ const initialState: TenantSignUpState = {
 
 const tenantSignUpReducer = (
   state = initialState,
-  action: TenantSignUpFormActions,
+  action: TenantSignUpFormActions | TenantSubmitActionTypes,
 ) => {
   switch (action.type) {
     case TENANT_SIGN_UP_TOGGLE_EMAIL_AUTH:
@@ -103,6 +114,27 @@ const tenantSignUpReducer = (
       return {
         ...state,
         tenantForm: { ...state.tenantForm, subdomain: action.subdomain },
+      };
+
+    case TENANT_SUBMIT_START:
+      return {
+        ...state,
+        isSubmitting: true,
+      };
+
+    case TENANT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        currentStep: 3,
+        isSubmitting: false,
+        error: '',
+      };
+
+    case TENANT_SUBMIT_FAILURE:
+      return {
+        ...state,
+        isSubmitting: false,
+        error: action.error,
       };
 
     default:

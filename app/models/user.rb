@@ -39,6 +39,17 @@ class User < ApplicationRecord
     active? ? super : :blocked_or_deleted
   end
 
+  # Override Devise::Confirmable#after_confirmation
+  # Used to change tenant status from pending to active on owner email confirmation
+  def after_confirmation
+    tenant = self.tenant
+
+    if tenant.status == "pending" and tenant.users.count == 1
+      tenant.status = "active"
+      tenant.save
+    end
+  end
+
   def skip_confirmation
     return if Rails.application.email_confirmation?
     skip_confirmation!
