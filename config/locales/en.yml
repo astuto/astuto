@@ -62,7 +62,7 @@ en:
       create_button: 'Create feedback space'
     step3:
       title: "You're almost done!"
-      message_html: "Check your email <b>%{email}</b> to activate your new feedback space <b>%{subdomain}</b>!"
+      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
   header:
     menu:
       site_settings: 'Site settings'

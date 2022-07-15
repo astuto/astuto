@@ -23,7 +23,8 @@ class TenantsController < ApplicationController
       @user = User.create!(
         full_name: params[:user][:full_name],
         email: params[:user][:email],
-        password: params[:user][:password]
+        password: params[:user][:password],
+        role: "admin"
       )
       
       render json: @tenant, status: :created

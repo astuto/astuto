@@ -14,7 +14,7 @@ const ConfirmSignUpPage = ({
   <Box>
     <h3>{ I18n.t('signup.step3.title') }</h3>
 
-    <p>{ I18n.t('signup.step3.message_html', { email: userEmail, subdomain: `${subdomain}.astuto.io` }) }</p>
+    <p>{ I18n.t('signup.step3.message', { email: userEmail, subdomain: `${subdomain}.astuto.io` }) }</p>
   </Box>
 );
 
