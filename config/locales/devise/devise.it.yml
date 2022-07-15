@@ -24,7 +24,7 @@ it:
       unlock_instructions:
         subject: "Istruzioni per sbloccare l'account"
       email_changed:
-        subject: "Email Changed"
+        subject: "Email modificata"
       password_change:
         subject: "Password reimpostata"
     omniauth_callbacks:
@@ -44,7 +44,7 @@ it:
       signed_up_but_unconfirmed: "Ti sei registrato correttamente. Un messaggio con il link per confermare il tuo account è stato inviato al tuo indirizzo email."
       update_needs_confirmation: "Il tuo account è stato aggiornato, tuttavia è necessario verificare il tuo nuovo indirizzo email. Entro qualche minuto riceverai un messaggio email con le istruzioni per confermare il tuo nuovo indirizzo email."
       updated: "Il tuo account è stato aggiornato."
-      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+      updated_but_not_signed_in: "Il tuo account è stato aggiornato correttamente, ma dato che la tua password è stata modificata, devi accedere di nuovo"
     sessions:
       signed_in: "Accesso effettuato con successo."
       signed_out: "Sei uscito correttamente."
