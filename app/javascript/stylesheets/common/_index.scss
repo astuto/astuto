@@ -142,6 +142,11 @@
   max-width: 960px;
 }
 
+.smallContainer {
+  max-width: 540px;
+  margin: 16px auto;
+}
+
 .turbolinks-progress-bar {
   background-color: $primary-color;
   height: 2px;

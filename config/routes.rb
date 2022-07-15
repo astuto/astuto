@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   constraints subdomain: /.*/ do
     root to: 'static_pages#roadmap'
+    
     get '/roadmap', to: 'static_pages#roadmap'
+    get '/pending-tenant', to: 'static_pages#pending_tenant'
+    get '/blocked-tenant', to: 'static_pages#blocked_tenant'
     
     devise_for :users, :controllers => {
       :registrations => 'registrations',

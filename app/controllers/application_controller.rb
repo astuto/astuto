@@ -23,20 +23,17 @@ class ApplicationController < ActionController::Base
         current_tenant = Tenant.find_by(subdomain: request.subdomain)
 
         if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
-          render html: 'Verify your email address to access your new feedback space.'
-          return
+          redirect_to pending_tenant_path; return
         end
 
         if current_tenant.status == "blocked"
-          render html: 'This feedback space has been blocked and cannot be accessed.'
-          return
+          redirect_to blocked_tenant_path; return
         end
 
         redirect_to showcase_url unless current_tenant
       else
         # Load the one and only tenant
         current_tenant = Tenant.first
-        # redirect_to tenant_sign_up_path unless current_tenant.present?
       end
 
       return unless current_tenant

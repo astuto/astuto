@@ -1,6 +1,3 @@
 .tenantSignUpContainer {
-  @extend .my-4;
-
-  max-width: 540px;
-  margin: 0 auto;
+  @extend .smallContainer;
 }

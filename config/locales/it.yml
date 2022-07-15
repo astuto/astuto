@@ -71,6 +71,11 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
+  pending_tenant:
+    title: 'Verifica il tuo indirizzo email'
+    message: 'Abbiamo mandato una email con un link di attivazione all''indirizzo email che hai specificato in fase di registrazione. Clicca su quel link per attivare questo spazio di feedback!'
+  blocked_tenant:
+    title: 'This feedback space has been blocked'
   board:
     new_post:
       submit_button: 'Invia feedback'
