@@ -10,22 +10,22 @@ There are many ways to contribute to Astuto, not just coding. In this section we
 
 - **Getting involved in the community**: we love to hear opinions about our product. Dropping a comment on an open issue or pull request or joining the discussion on the [Discord server](https://discord.com/invite/SrtUMRp) is an easy yet impactful way to contribute.
 - **Reporting bugs or proposing features**:  [open a new issue](https://github.com/riggraz/astuto/issues/new) on GitHub. Before posting, check if a similar issue has already been reported. Try to be concise but also unambiguous.
-- **Translating Astuto into a new language**: we want Astuto to speak all languages and we need contributors to achieve this goal! Read [this issue](https://github.com/riggraz/astuto/issues/121) to see which locales are already available and which needs work. Also check out [this section](#translations) if you want to know more about how locales files are organized. 
+- **Translating Astuto into a new language**: we want Astuto to speak all languages and we need contributors to achieve this goal! If you're interested, join [our Crowdin project](https://crwd.in/astuto), the platform we use to manage translations.
 - **Coding**: [open a pull request](https://github.com/riggraz/astuto/pulls) with your bug fix or feature implementation. Before diving into coding, you may find [the coding and testing section](#coding-and-testing) useful.
 
 If you still have any doubt, feel free to [join our Discord](https://discord.com/invite/SrtUMRp) and drop a message! And remember: there are no stupid questions 😉
 
 ## Translations
 
+If you're interested in translating, we suggest to visit and register to [our Crowdin project](https://crwd.in/astuto), the place where we manage translations. If the language you want to contribute is not present in Crowdin, just open an issue on GitHub and let us know!
+
+### Translations structure
+
 Locales are stored in YAML files under `config/locales`. Translations are splitted in 3 files:
 
 - `[lang].yml`: the main locale file. Contains translation strings for the frontend, backend, mailers, etc.
 - `activerecord/activerecord.[lang].yml`: contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
 - `devise/devise.[lang].yml`: contains translations for the authentication system (which is based on Devise gem). It is likely that you'll find ready-made translations for your language at [this page](https://github.com/heartcombo/devise/wiki/I18n), so this step usually consist in a simple copy-paste!
-
-### Translate
-
-You can visit and register on [our Crowdin project](https://crwd.in/astuto), where we manage the translations...
 
 ## Coding and testing
 
