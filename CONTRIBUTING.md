@@ -23,6 +23,10 @@ Locales are stored in YAML files under `config/locales`. Translations are splitt
 - `activerecord/activerecord.[lang].yml`: contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
 - `devise/devise.[lang].yml`: contains translations for the authentication system (which is based on Devise gem). It is likely that you'll find ready-made translations for your language at [this page](https://github.com/heartcombo/devise/wiki/I18n), so this step usually consist in a simple copy-paste!
 
+### Translate
+
+You can visit and register on our Crwodin project, where we manage the translations...
+
 ## Coding and testing
 
 First of all, you need to follow [the installation instructions](https://github.com/riggraz/astuto#installation) to have a working local instance of Astuto.
