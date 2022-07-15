@@ -1,6 +1,6 @@
-"project_id": "1"
+"project_id": "527056"
 "preserve_hierarchy": true
-"base_url": "https://astuto.crowdin.com"
+"base_url": "https://api.crowdin.com"
 
 "files": [
   {
@@ -14,5 +14,9 @@
   {
     "source": "/config/locales/devise/devise.en.yml",
     "translation": "/config/locales/devise/devise.%two_letters_code%.yml"
+  },
+  {
+    "source": "/config/locales/activerecord/activerecord.en.yml",
+    "translation": "/config/locales/activerecord/activerecord.%two_letters_code%.yml"
   }
 ]
