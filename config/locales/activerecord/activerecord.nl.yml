@@ -1,0 +1,43 @@
+nl:
+  activerecord:
+    attributes:
+      board:
+        name: 'Name'
+        description: 'Description'
+        order: 'Order'
+      comment:
+        body: 'Body'
+        is_post_update: 'Post update'
+        user_id: 'Author'
+        post_id: 'Post'
+        parent_id: 'Parent comment'
+      follow:
+        user_id: 'User'
+        post_id: 'Post'
+      like:
+        user_id: 'User'
+        post_id: 'Post'
+      post_status:
+        name: 'Name'
+        color: 'Color'
+        order: 'Order'
+        show_in_roadmap: 'Show in roadmap'
+      post:
+        title: 'Title'
+        description: 'Description'
+        board_id: 'Post board'
+        user_id: 'Post author'
+        post_status_id: 'Post status'
+      user:
+        email: 'Email'
+        full_name: 'Name and surname'
+        role: 'Role'
+        notifications_enabled: 'Notifications enabled'
+    errors:
+      messages:
+        invalid: 'is invalid'
+        required: 'is mandatory'
+        blank: 'cannot be blank'
+        taken: 'is already in use'
+        too_short: 'is too short (minimum %{count} characters)'
+        too_long: 'is too long (maximum ${count} characters)'
