@@ -18,8 +18,8 @@ it:
         update_profile: 'Aggiorna profilo'
         cancel_account: 'Cancella account'
         forgot_password: 'Password dimenticata?'
-        confirmation_instructions_not_received: 'Non hai ricevuto le istruzioni di conferma?'
-        unlock_instructions_not_received: 'Non hai ricevuto le istruzioni di sblocco?'
+        confirmation_instructions_not_received: "Non hai ricevuto le istruzioni di conferma?"
+        unlock_instructions_not_received: "Non hai ricevuto le istruzioni di sblocco?"
         send_reset_password_instructions: 'Invia istruzioni per reset password'
         resend_confirmation_instructions: 'Invia istruzioni di conferma'
         resend_unlock_instructions: 'Invia istruzioni di sblocco'
@@ -88,8 +88,8 @@ it:
     action_box:
       title: 'Azioni'
       follow_button: 'Segui post'
-      following_description: 'riceverai notifiche sugli aggiornamenti di questo post'
-      not_following_description: 'non riceverai alcuna notifica riguardo questo post'
+      following_description: "riceverai notifiche sugli aggiornamenti di questo post"
+      not_following_description: "non riceverai alcuna notifica riguardo questo post"
     comments:
       title: 'Attività'
       post_update_badge: 'Aggiornamento'
@@ -127,7 +127,7 @@ it:
       title: 'Roadmap'
       title2: 'Non mostrati in roadmap'
       empty: 'La roadmap è vuota.'
-      help: "Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l'ordine, vai in Impostazioni sito -> Stati."
+      help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
     users:
       title: 'Utenti'
       block: 'Blocca'
@@ -161,7 +161,7 @@ it:
   backend:
     errors:
       unauthorized: 'Non sei autorizzato'
-      not_logged_in: "Devi effettuare l'accesso per visualizzare questa pagina"
+      not_logged_in: 'Devi effettuare l''accesso per visualizzare questa pagina'
       not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
       board:
         update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
