@@ -20,7 +20,7 @@ it:
         forgot_password: 'Password dimenticata?'
         confirmation_instructions_not_received: "Non hai ricevuto le istruzioni di conferma?"
         unlock_instructions_not_received: "Non hai ricevuto le istruzioni di sblocco?"
-        send_reset_password_instructions: 'Invia istruzioni per reset password'
+        send_reset_password_instructions: 'Invia istruzioni per reimpostare password'
         resend_confirmation_instructions: 'Invia istruzioni di conferma'
         resend_unlock_instructions: 'Invia istruzioni di sblocco'
         change_password: 'Cambia password'
@@ -99,7 +99,7 @@ it:
       submit_button: 'Invia'
       is_post_update: 'Contrassegna come aggiornamento'
       user_notification: 'Gli utenti che seguono questo post saranno notificati'
-      not_logged_in: 'Devi effettuare il log in per commentare'
+      not_logged_in: 'Devi effettuare l''accesso per commentare'
   site_settings:
     menu:
       title: 'Impostazioni sito'
@@ -125,7 +125,7 @@ it:
         name: 'Nome stato'
     roadmap:
       title: 'Roadmap'
-      title2: 'Non mostrati in roadmap'
+      title2: 'Non nella roadmap'
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
     users:
@@ -154,7 +154,7 @@ it:
       body: '%{user} ha risposto al tuo commento nel post %{post}'
     notify_followers_of_post_update:
       subject: '[%{app_name}] Nuovo aggiornamento per il post %{post}'
-      body: "There is a new update on the post you're following %{post}"
+      body: "C'è un nuovo aggiornamento sul post che stai seguendo %{post}"
     notify_followers_of_post_status_change:
       subject: '[%{app_name}] Aggiornamento stato per il post %{post}'
       body: "Il post che segui %{post} ha un nuovo stato"
