@@ -1,0 +1,165 @@
+ja:
+  common:
+    forms:
+      auth:
+        email: 'Email address'
+        full_name: 'Full name'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        new_password: 'New password'
+        new_password_confirmation: 'New password confirmation'
+        current_password: 'Current password'
+        notifications_enabled: 'Notifications enabled'
+        notifications_enabled_help: "if disabled, you won't receive any notification"
+        remember_me: 'Remember me'
+        log_in: 'Log in'
+        sign_up: 'Sign up'
+        profile_settings: 'Profile settings'
+        update_profile: 'Update profile'
+        cancel_account: 'Cancel account'
+        forgot_password: 'Forgot your password?'
+        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
+        unlock_instructions_not_received: "Didn't receive unlock instructions?"
+        send_reset_password_instructions: 'Send me reset password instructions'
+        resend_confirmation_instructions: 'Resend confirmation instructions'
+        resend_unlock_instructions: 'Resend unlock instructions'
+        change_password: 'Change password'
+        password_help: '%{count} characters minimum'
+    comments_number:
+      other: '%{count} comments'
+    no_status: 'No status'
+    loading: 'Loading...'
+    confirmation: 'Are you sure?'
+    edited: 'Edited'
+    buttons:
+      edit: 'Edit'
+      delete: 'Delete'
+      cancel: 'Cancel'
+      create: 'Create'
+      update: 'Save'
+    datetime:
+      now: 'just now'
+      minutes:
+        other: '%{count} minutes ago'
+      hours:
+        other: '%{count} hours ago'
+      days:
+        other: '%{count} days ago'
+  header:
+    menu:
+      site_settings: 'Site settings'
+      profile_settings: 'Profile settings'
+      sign_out: 'Sign out'
+    log_in: 'Log in / Sign up'
+  roadmap:
+    title: 'Roadmap'
+  board:
+    new_post:
+      submit_button: 'Submit feedback'
+      cancel_button: 'Cancel'
+      login_button: 'Log in / Sign up'
+      title: 'Title'
+      description: 'Description (optional)'
+      no_title: 'Title field is mandatory'
+      submit_success: 'Feedback published! You will be redirected soon...'
+      submit_error: 'An unknown error occurred, try again'
+    search_box:
+      title: 'Search'
+    filter_box:
+      title: 'Filter by status'
+    posts_list:
+      empty: 'There are no posts'
+  post:
+    edit_button: 'Edit'
+    published_by: 'Published by'
+    post_status_select:
+      no_post_status: 'None'
+    updates_box:
+      title: 'Updates'
+      empty: 'There are no updates yet'
+      status_change: 'changed status to'
+    likes_box:
+      title: 'Likes'
+      empty: 'There are no likes yet'
+    action_box:
+      title: 'Actions'
+      follow_button: 'Follow post'
+      following_description: "you're receiving notifications about new updates on this post"
+      not_following_description: "you won't receive notifications about this post"
+    comments:
+      title: 'Activity'
+      post_update_badge: 'Update'
+      reply_button: 'Reply'
+    new_comment:
+      body_placeholder: 'Leave a comment'
+      submit_button: 'Submit'
+      is_post_update: 'Mark as update'
+      user_notification: 'Users that follow this post will be notified'
+      not_logged_in: 'You need to log in to post comments'
+  site_settings:
+    menu:
+      title: 'Site settings'
+      boards: 'Boards'
+      post_statuses: 'Statuses'
+      roadmap: 'Roadmap'
+      users: 'Users'
+    info_box:
+      up_to_date: 'All changes saved'
+      error: 'An error occurred: %{message}'
+    boards:
+      title: 'Boards'
+      empty: 'There are no boards. Create one below!'
+      new: 'New'
+      form:
+        name: 'Board name'
+        description: 'Board description (optional)'
+    post_statuses:
+      title: 'Statuses'
+      empty: 'There are no statuses. Create one below!'
+      new: 'New'
+      form:
+        name: 'Status name'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Not in roadmap'
+      empty: 'The roadmap is empty.'
+      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings -> Statuses.'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
+  user_mailer:
+    opening_greeting: 'Hello!'
+    closing_greeting: 'Have a great day!'
+    learn_more: 'Click here to learn more'
+    unsubscribe: 'Annoyed? You can turn off notifications here'
+    notify_post_owner:
+      subject: '[%{app_name}] New comment on %{post}'
+      body: 'There is a new comment by %{user} on your post %{post}'
+    notify_comment_owner:
+      subject: '[%{app_name}] New reply on your comment from %{post}'
+      body: 'There is a new reply by %{user} on your comment from post %{post}'
+    notify_followers_of_post_update:
+      subject: '[%{app_name}] New update for post %{post}'
+      body: "There is a new update on the post you're following %{post}"
+    notify_followers_of_post_status_change:
+      subject: '[%{app_name}] Status change on post %{post}'
+      body: "The post you're following %{post} has a new status"
+  backend:
+    errors:
+      unauthorized: 'You are not authorized'
+      not_logged_in: 'You must be logged in to access this page'
+      not_enough_privileges: 'You do not have the privilegies to access this page'
+      board:
+        update_order: 'There was an error in reordering boards'
+      post_status:
+        update_order: 'There was an error in reordering statuses'
