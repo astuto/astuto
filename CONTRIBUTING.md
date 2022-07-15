@@ -25,7 +25,7 @@ Locales are stored in YAML files under `config/locales`. Translations are splitt
 
 ### Translate
 
-You can visit and register on our Crwodin project, where we manage the translations...
+You can visit and register on [our Crowdin project](https://crwd.in/astuto), where we manage the translations...
 
 ## Coding and testing
 
