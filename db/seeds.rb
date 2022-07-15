@@ -1,7 +1,8 @@
 # Create tenant
 tenant = Tenant.create(
   site_name: 'Default site name',
-  subdomain: 'default'
+  subdomain: 'default',
+  status: 'active'
 )
 Current.tenant = tenant
 
