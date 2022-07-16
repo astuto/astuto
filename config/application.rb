@@ -21,7 +21,7 @@ module App
     end
 
     def email_confirmation?
-      ENV["EMAIL_CONFIRMATION"] == "yes"
+      ENV["EMAIL_CONFIRMATION"] == "true"
     end
 
     def posts_per_page

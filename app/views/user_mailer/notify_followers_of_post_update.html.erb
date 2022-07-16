@@ -1,0 +1,11 @@
+<p>
+  <%= t('mailers.user.notify_followers_of_post_update.body', { user: @comment.user.full_name, post: @comment.post.title }) %>
+</p>
+
+<p>
+  <i><%= @comment.body %></i>
+</p>
+
+<p>
+  <%= link_to t('mailers.user.learn_more'), post_url(@comment.post, subdomain: @tenant.subdomain) %>
+</p>

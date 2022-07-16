@@ -4,6 +4,6 @@
 
 <p>
   <%= link_to t('mailers.devise.confirmation_instructions.action'),
-    confirmation_url(@resource, confirmation_token: @token, subdomain: Current.tenant_or_raise!.subdomain)
+    add_subdomain_to(method(:confirmation_url), @resource, { confirmation_token: @token })
   %>
 </p>
