@@ -87,12 +87,13 @@ class PostStatusForm extends React.Component<Props, State> {
     const {name, color} = this.state;
 
     return (
-      <div className="postStatusForm">
+      <form className="postStatusForm">
         <input
           type="text"
           placeholder={I18n.t('site_settings.post_statuses.form.name')}
           value={name}
           onChange={e => this.onNameChange(e.target.value)}
+          autoFocus
           className="form-control"
         />
         
@@ -104,7 +105,10 @@ class PostStatusForm extends React.Component<Props, State> {
         />
 
         <Button
-          onClick={this.onSubmit}
+          onClick={e => {
+            e.preventDefault();
+            this.onSubmit();
+          }}
           className="newPostStatusButton"
           disabled={!this.isFormValid()}
         >
@@ -115,7 +119,7 @@ class PostStatusForm extends React.Component<Props, State> {
                 I18n.t('common.buttons.update')
             }
         </Button>
-      </div>
+      </form>
     );
   }
 }

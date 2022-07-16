@@ -26,6 +26,7 @@
 .postStatusForm {
   @extend
     .d-flex,
+    .flex-grow-1,
     .m-2;
 
   column-gap: 8px;
