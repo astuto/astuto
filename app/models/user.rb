@@ -12,7 +12,8 @@ class User < ApplicationRecord
 
   after_initialize :set_default_role, if: :new_record?
   after_initialize :set_default_status, if: :new_record?
-  after_initialize :skip_confirmation, if: :new_record?
+
+  before_save :skip_confirmation
 
   validates :full_name, presence: true, length: { in: 2..32 }
 
