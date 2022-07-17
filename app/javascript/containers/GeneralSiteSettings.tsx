@@ -14,6 +14,7 @@ import { updateTenant } from "../actions/Tenant/updateTenant";
 const mapStateToProps = (state: State) => ({
   form: state.siteSettings.general.form,
   areDirty: state.siteSettings.general.areDirty,
+  areLoading: state.siteSettings.general.areLoading,
   areUpdating: state.siteSettings.general.areUpdating,
   error: state.siteSettings.general.error,
 });

@@ -30,6 +30,7 @@ export interface ISiteSettingsGeneralForm {
 export interface SiteSettingsGeneralState {
   form: ISiteSettingsGeneralForm,
   areDirty: boolean;
+  areLoading: boolean;
   areUpdating: boolean;
   error: string;
 }
@@ -42,6 +43,7 @@ const initialState: SiteSettingsGeneralState = {
     locale: '',
   },
   areDirty: false,
+  areLoading: false,
   areUpdating: false,
   error: '',
 };
@@ -55,6 +57,11 @@ const siteSettingsGeneralReducer = (
 ) => {
   switch (action.type) {
     case TENANT_REQUEST_START:
+      return {
+        ...state,
+        areLoading: true,
+      };
+
     case TENANT_UPDATE_START:
       return {
         ...state,
@@ -62,7 +69,6 @@ const siteSettingsGeneralReducer = (
       };
 
     case TENANT_REQUEST_SUCCESS:
-    case TENANT_UPDATE_SUCCESS:
       return {
         ...state,
         form: {
@@ -72,11 +78,25 @@ const siteSettingsGeneralReducer = (
           locale: action.tenant.locale,
         },
         areDirty: false,
+        areLoading: false,
+        error: '',
+      };
+
+    case TENANT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        areDirty: false,
         areUpdating: false,
         error: '',
       };
 
     case TENANT_REQUEST_FAILURE:
+      return {
+        ...state,
+        areLoading: false,
+        error: action.error,
+      };
+
     case TENANT_UPDATE_FAILURE:
       return {
         ...state,

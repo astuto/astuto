@@ -19,6 +19,7 @@ interface Props {
 
   form: ISiteSettingsGeneralForm;
   areDirty: boolean;
+  areLoading: boolean;
   areUpdating: boolean;
   error: string;
 
@@ -69,6 +70,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
       originForm,
       form,
       areDirty,
+      areLoading,
       areUpdating,
       error,
 
@@ -89,7 +91,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                 <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
                 <input
                   type="text"
-                  value={form.siteName || originForm.siteName}
+                  value={areLoading ? originForm.siteName : form.siteName}
                   onChange={e => handleChangeSiteName(e.target.value)}
                   id="siteName"
                   className="formControl"
@@ -100,7 +102,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
                 <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
                 <input
                   type="text"
-                  value={form.siteLogo || originForm.siteLogo}
+                  value={areLoading ? originForm.siteLogo : form.siteLogo}
                   onChange={e => handleChangeSiteLogo(e.target.value)}
                   id="siteLogo"
                   className="formControl"
@@ -155,7 +157,7 @@ class GeneralSiteSettingsP extends React.Component<Props> {
           </Button>
         </Box>
 
-        <SiteSettingsInfoBox areUpdating={areUpdating} error={error} areDirty={areDirty} />
+        <SiteSettingsInfoBox areUpdating={areLoading || areUpdating} error={error} areDirty={areDirty} />
       </>
     );
   }
