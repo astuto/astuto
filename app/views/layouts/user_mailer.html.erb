@@ -14,7 +14,7 @@
       <%=
         link_to(
           t('mailers.user.unsubscribe'),
-          edit_user_registration_url(subdomain: Current.tenant_or_raise!.subdomain)
+          add_subdomain_to(method(:edit_user_registration_url))
         )
       %>.
     </footer>

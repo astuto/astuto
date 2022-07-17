@@ -7,5 +7,5 @@
 </p>
 
 <p>
-  <%= link_to t('mailers.user.learn_more'), post_url(@comment.post, subdomain: @tenant.subdomain) %>
+  <%= link_to t('mailers.user.learn_more'), add_subdomain_to(method(:post_url), @comment.post) %>
 </p>
