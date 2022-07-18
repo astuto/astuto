@@ -2,7 +2,7 @@ it:
   common:
     forms:
       auth:
-        email: 'Indirizzo email'
+        email: 'E-mail'
         full_name: 'Nome e cognome'
         password: 'Password'
         password_confirmation: 'Conferma password'
@@ -38,6 +38,7 @@ it:
       cancel: 'Annulla'
       create: 'Crea'
       update: 'Salva'
+      confirm: 'Confirm'
     datetime:
       now: 'adesso'
       minutes:
@@ -49,6 +50,19 @@ it:
       days:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
+  signup:
+    page_title: 'Create your feedback space'
+    step1:
+      title: '1. Create user account'
+      email_auth: 'Register with email'
+    step2:
+      title: '2. Create feedback space'
+      site_name: 'Site name'
+      subdomain: 'Subdomain'
+      create_button: 'Create feedback space'
+    step3:
+      title: "You're almost done!"
+      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
   header:
     menu:
       site_settings: 'Impostazioni sito'
@@ -57,6 +71,11 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
+  pending_tenant:
+    title: 'Verify your email address'
+    message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
+  blocked_tenant:
+    title: 'This feedback space has been blocked'
   board:
     new_post:
       submit_button: 'Invia feedback'
@@ -103,6 +122,7 @@ it:
   site_settings:
     menu:
       title: 'Impostazioni sito'
+      general: 'General'
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
@@ -110,6 +130,17 @@ it:
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
+      dirty: 'Changes not saved'
+    general:
+      title: 'General'
+      site_name: 'Site name'
+      site_logo: 'Site logo'
+      brand_setting: 'Display'
+      brand_setting_both: 'Both name and logo'
+      brand_setting_name: 'Name only'
+      brand_setting_logo: 'Logo only'
+      brand_setting_none: 'Nessuno'
+      locale: 'Language'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
@@ -127,7 +158,7 @@ it:
       title: 'Roadmap'
       title2: 'Non nella roadmap'
       empty: 'La roadmap è vuota.'
-      help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
+      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     users:
       title: 'Utenti'
       block: 'Blocca'
@@ -141,23 +172,40 @@ it:
       status_active: 'Attivo'
       status_blocked: 'Bloccato'
       status_deleted: 'Eliminato'
-  user_mailer:
-    opening_greeting: 'Ciao!'
-    closing_greeting: 'Buona giornata!'
-    learn_more: 'Clicca qui per saperne di più'
-    unsubscribe: 'Non vuoi più ricevere notifiche? Clicca qui'
-    notify_post_owner:
-      subject: '[%{app_name}] Nuovo commento al tuo post %{post}'
-      body: '%{user} ha commentato il tuo post %{post}'
-    notify_comment_owner:
-      subject: '[%{app_name}] Risposta al tuo commento nel post %{post}'
-      body: '%{user} ha risposto al tuo commento nel post %{post}'
-    notify_followers_of_post_update:
-      subject: '[%{app_name}] Nuovo aggiornamento per il post %{post}'
-      body: "C'è un nuovo aggiornamento sul post che stai seguendo %{post}"
-    notify_followers_of_post_status_change:
-      subject: '[%{app_name}] Aggiornamento stato per il post %{post}'
-      body: "Il post che segui %{post} ha un nuovo stato"
+  mailers:
+    devise:
+      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
+      opening_greeting: 'Hello %{email}!'
+      confirmation_instructions:
+        body: 'You can confirm your account email through the link below:'
+        action: 'Confirm my account'
+      email_changed:
+        body: "We're contacting you to notify you that your email is being changed to %{email}."
+        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+      password_change:
+        body: "We're contacting you to notify you that your password has been changed."
+      reset_password:
+        body: 'Someone has requested a link to change your password. You can do this through the link below.'
+        body2: "If you didn't request this, please ignore this email."
+        body3: "Your password won't change until you access the link above and create a new one."
+        action: 'Change my password'
+    user:
+      opening_greeting: 'Hello!'
+      closing_greeting: 'Have a great day!'
+      learn_more: 'Click here to learn more'
+      unsubscribe: 'Annoyed? You can turn off notifications here'
+      notify_post_owner:
+        subject: '[%{app_name}] New comment on %{post}'
+        body: 'There is a new comment by %{user} on your post %{post}'
+      notify_comment_owner:
+        subject: '[%{app_name}] New reply on your comment from %{post}'
+        body: 'There is a new reply by %{user} on your comment from post %{post}'
+      notify_followers_of_post_update:
+        subject: '[%{app_name}] New update for post %{post}'
+        body: "There is a new update on the post you're following %{post}"
+      notify_followers_of_post_status_change:
+        subject: '[%{app_name}] Status change on post %{post}'
+        body: "The post you're following %{post} has a new status"
   backend:
     errors:
       unauthorized: 'Non sei autorizzato'
