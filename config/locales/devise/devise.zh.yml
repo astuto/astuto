@@ -1,64 +1,64 @@
 #Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-zh-TW:
+zh-CN:
   devise:
     confirmations:
-      confirmed: "您的帳號已通過驗證，現在您已成功登入。"
-      send_instructions: "您將在幾分鐘後收到一封電子郵件，內有驗證帳號的步驟說明。"
-      send_paranoid_instructions: "如果我們有您的信箱，您將會收到一封驗證您的帳號的電子郵件。"
+      confirmed: "成功验证您的帐号。您现已登录。"
+      send_instructions: "您的电子邮箱将在几分钟后收到一封帐号确认邮件。"
+      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封确认帐号的邮件。"
     failure:
-      already_authenticated: "您已經登入。"
-      inactive: "您的帳號尚未被啟用。"
-      invalid: "信箱或密碼是無效的。"
-      locked: "您的帳號已被鎖定。"
-      last_attempt: "您還有最後一次嘗試機會，再次失敗您的帳號將會被鎖定。"
-      not_found_in_database: "信箱或密碼是無效的。"
-      timeout: "您的登入時效過期，請重新登入。"
-      unauthenticated: "您需要先登入或註冊後才能繼續。"
-      unconfirmed: "您的帳號需需要經過驗證後，才能繼續。"
+      already_authenticated: "您已经登录。"
+      inactive: "您还没有激活帐户。"
+      invalid: "邮箱或密码错误。"
+      locked: "您的帐号已被锁定。"
+      last_attempt: "您还有最后一次尝试机会，再次失败您的帐号将被锁定。"
+      not_found_in_database: "邮箱或密码错误。"
+      timeout: "您已登录超时，请重新登录。"
+      unauthenticated: "继续操作前请注册或者登录。"
+      unconfirmed: "继续操作前请先确认您的帐号。"
       blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
-        subject: "帳號驗證步驟"
+        subject: "帐户确认信息"
       reset_password_instructions:
-        subject: "密碼重設步驟"
+        subject: "重置密码信息"
       unlock_instructions:
-        subject: "帳號解鎖步驟"
+        subject: "帐户解锁信息"
       email_changed:
-        subject: "信箱已被修改"
+        subject: "电邮已被修改"
       password_change:
-        subject: "密碼已被修改"
+        subject: "密码已被重置"
     omniauth_callbacks:
-      failure: "無法從 %{kind} 驗證，因為「%{reason}」。"
-      success: "成功從 %{kind} 驗證。"
+      failure: "由于%{reason}，无法从%{kind}获得授权。"
+      success: "成功地从%{kind}获得授权。"
     passwords:
-      no_token: "這是密碼重設頁面，僅能透過密碼重設信件進入。如果您是透過重設信件進入的，請確認您的網址是完整的。"
-      send_instructions: "您將在幾分鐘後收到一封電子郵件，內有重新設定密碼的步驟說明。"
-      send_paranoid_instructions: "如果我們有您的信箱，您將會收到一封內含可重新設定密碼連結的電子郵件。"
-      updated: "您的密碼已被修改，您現在已經登入。"
-      updated_not_active: "您的密碼已被修改。"
+      no_token: "无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入的URL完整的。"
+      send_instructions: "几分钟后，您将收到重置密码的电子邮件。"
+      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。"
+      updated: "您的密码已修改成功，您现在已登录。"
+      updated_not_active: "您的密码已修改成功。"
     registrations:
-      destroyed: "再會！您的帳號已被取消。有緣再會。"
-      signed_up: "註冊成功，歡迎！"
-      signed_up_but_inactive: "您已註冊成功。然而因為您的帳號尚未啓動，暫時無法登入，抱歉！"
-      signed_up_but_locked: "您已註冊成功。 然而因為您的帳號已被鎖定，暫時無法登入，抱歉！"
-      signed_up_but_unconfirmed: "確認信件已送至您的 Email 信箱，請點擊信件內連結以啓動您的帳號。"
-      update_needs_confirmation: "您已經成功的更新帳號資訊，但我們仍需確認您的電子信箱，請至新信箱收信並點擊連結以確認您的新電子郵件帳號。"
-      updated: "您已經成功的更新帳號資訊。"
-      updated_but_not_signed_in: "您已經成功的更新帳號資訊。但因為您變更了密碼，請重新登入。"
+      destroyed: "再见！您的帐户已成功注销。我们希望很快可以再见到您。"
+      signed_up: "欢迎！您已注册成功。"
+      signed_up_but_inactive: "您已注册，但尚未激活帐号。"
+      signed_up_but_locked: "您已注册，但帐号被锁定了。"
+      signed_up_but_unconfirmed: "一封带有确认链接的邮件已经发送至您的邮箱，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。"
+      update_needs_confirmation: "信息更新成功，但我们需要验证您的新电子邮件地址，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。"
+      updated: "帐号资料更新成功。"
+      updated_but_not_signed_in: "帐号资料更新成功。由于密码已修改，请重新登录。"
     sessions:
-      signed_in: "成功登入了。"
-      signed_out: "成功登出了。"
-      already_signed_out: "成功登出了。"
+      signed_in: "登录成功。"
+      signed_out: "退出成功。"
+      already_signed_out: "已经退出成功。"
     unlocks:
-      send_instructions: "您將在幾分鐘後收到一封電子郵件，內有將帳號解除鎖定的步驟說明。"
-      send_paranoid_instructions: "如果您的帳號已存在，您的電子信箱將會收到如何解鎖帳號的指示。"
-      unlocked: "您的帳號已被解鎖，現在已經登入。"
+      send_instructions: "几分钟后，您将收到一封解锁帐号的邮件。"
+      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封解锁帐号的邮件。"
+      unlocked: "您的帐号已成功解锁，您现在已登录。"
   errors:
     messages:
-      already_confirmed: "已經驗證，請直接登入。"
-      confirmation_period_expired: "必須在 %{period} 內驗證，請重新申請。"
-      expired: "已經過期，請重新申請。"
+      already_confirmed: "已经确认，请重新登录。"
+      confirmation_period_expired: "注册帐号后须在%{period}以内确认。请重新注册。"
+      expired: "邮件确认已过期，请重新注册。"
       not_found: "找不到。"
-      not_locked: "並未被鎖定。"
+      not_locked: "未锁定。"
       not_saved:
-        other: "有 %{count} 個錯誤導致 %{resource} 不能被儲存："
+        other: "发生%{count}个错误，导致%{resource}保存失败："
