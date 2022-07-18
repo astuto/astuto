@@ -56,7 +56,7 @@ rejected_post_status = PostStatus.create(
 # Create some posts
 post1 = Post.create(
   title: 'Users can submit feedback by publishing posts!',
-  description: 'You can assign a **status** to each post: this one, for example, is marked as "Planned". When you change the status of a post, the change is recorded and shown in the updates box on the left! Remember that you can customise post statuses from Site settings > Statuses',
+  description: 'You can assign a **status** to each post: this one, for example, is marked as "Planned". Remember that you can customise post statuses from Site settings > Statuses',
   board_id: feature_board.id,
   user_id: admin.id,
   post_status_id: planned_post_status.id
@@ -78,12 +78,6 @@ post2 = Post.create(
 post1.comments.create(
   body: 'Users can comment to express their opinions! As with posts and board descriptions, comments can be *Markdown* **formatted**',
   user_id: admin.id
-)
-
-post1.comments.create(
-  body: 'Moderators and admins can publish post updates to notify users about progress they made!',
-  user_id: admin.id,
-  is_post_update: true
 )
 
 # Let the user know how to log in with admin account
