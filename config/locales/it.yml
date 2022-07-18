@@ -38,7 +38,7 @@ it:
       cancel: 'Annulla'
       create: 'Crea'
       update: 'Salva'
-      confirm: 'Confirm'
+      confirm: 'Conferma'
     datetime:
       now: 'adesso'
       minutes:
@@ -51,18 +51,18 @@ it:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
   signup:
-    page_title: 'Create your feedback space'
+    page_title: 'Crea il tuo spazio di feedback'
     step1:
-      title: '1. Create user account'
-      email_auth: 'Register with email'
+      title: '1. Crea un account utente'
+      email_auth: 'Registrati tramite email'
     step2:
       title: '2. Create feedback space'
-      site_name: 'Site name'
-      subdomain: 'Subdomain'
+      site_name: 'Nome sito'
+      subdomain: 'Sottodominio'
       create_button: 'Create feedback space'
     step3:
-      title: "You're almost done!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
+      title: "Ci sei quasi!"
+      message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
   header:
     menu:
       site_settings: 'Impostazioni sito'
@@ -72,7 +72,7 @@ it:
   roadmap:
     title: 'Roadmap'
   pending_tenant:
-    title: 'Verify your email address'
+    title: 'Verifica il tuo indirizzo email'
     message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
   blocked_tenant:
     title: 'This feedback space has been blocked'
@@ -132,15 +132,15 @@ it:
       error: 'Si è verificato un errore: %{message}'
       dirty: 'Changes not saved'
     general:
-      title: 'General'
-      site_name: 'Site name'
-      site_logo: 'Site logo'
-      brand_setting: 'Display'
+      title: 'Generale'
+      site_name: 'Nome sito'
+      site_logo: 'Logo del sito'
+      brand_setting: 'Visualizzazione'
       brand_setting_both: 'Both name and logo'
-      brand_setting_name: 'Name only'
-      brand_setting_logo: 'Logo only'
+      brand_setting_name: 'Solo nome'
+      brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
-      locale: 'Language'
+      locale: 'Lingua'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
@@ -158,7 +158,7 @@ it:
       title: 'Roadmap'
       title2: 'Non nella roadmap'
       empty: 'La roadmap è vuota.'
-      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
     users:
       title: 'Utenti'
       block: 'Blocca'
@@ -175,7 +175,7 @@ it:
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      opening_greeting: 'Ciao %{email}!'
       confirmation_instructions:
         body: 'You can confirm your account email through the link below:'
         action: 'Confirm my account'
@@ -190,10 +190,10 @@ it:
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      opening_greeting: 'Ciao!'
+      closing_greeting: 'Buona giornata!'
+      learn_more: 'Clicca qui per saperne di più'
+      unsubscribe: 'Infastidito? Puoi disattivare le notifiche qui'
       notify_post_owner:
         subject: '[%{app_name}] New comment on %{post}'
         body: 'There is a new comment by %{user} on your post %{post}'
