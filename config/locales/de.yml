@@ -2,98 +2,98 @@ de:
   common:
     forms:
       auth:
-        email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        new_password: 'New password'
-        new_password_confirmation: 'New password confirmation'
-        current_password: 'Current password'
-        notifications_enabled: 'Notifications enabled'
+        email: 'E-Mail'
+        full_name: 'Voller Name'
+        password: 'Passwort'
+        password_confirmation: 'Passwort Bestätigung'
+        new_password: 'Neues Passwort'
+        new_password_confirmation: 'Neues Passwort bestätigen'
+        current_password: 'Jetziges Passwort'
+        notifications_enabled: 'Benachrichtigungen aktiviert'
         notifications_enabled_help: "if disabled, you won't receive any notification"
-        remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
-        cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
-        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
-        unlock_instructions_not_received: "Didn't receive unlock instructions?"
-        send_reset_password_instructions: 'Send me reset password instructions'
-        resend_confirmation_instructions: 'Resend confirmation instructions'
-        resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
-        password_help: '%{count} characters minimum'
+        remember_me: 'Eingeloggt bleiben'
+        log_in: 'Einloggen'
+        sign_up: 'Registrieren'
+        profile_settings: 'Profileinstellungen'
+        update_profile: 'Profil aktualisieren'
+        cancel_account: 'Konto entfernen'
+        forgot_password: 'Passwort vergessen?'
+        confirmation_instructions_not_received: "Keine Anweisungen zur Bestätigung erhalten?"
+        unlock_instructions_not_received: "Keine Anweisungen zum Entsperren erhalten?"
+        send_reset_password_instructions: 'Anweisungen zum Zurücksetzen des Passworts an mich senden'
+        resend_confirmation_instructions: 'Bestätigungsanweisungen erneut senden'
+        resend_unlock_instructions: 'Anweisungen zum Entsperren erneut senden'
+        change_password: 'Passwort ändern'
+        password_help: 'Mindestens %{count} Zeichen'
     comments_number:
-      one: '1 comment'
-      other: '%{count} comments'
-    no_status: 'No status'
-    loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    edited: 'Edited'
+      one: '1 Kommentar'
+      other: '%{count} Kommentare'
+    no_status: 'Kein Status'
+    loading: 'Laden...'
+    confirmation: 'Sicher?'
+    edited: 'Bearbeitet'
     buttons:
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
+      edit: 'Bearbeiten'
+      delete: 'Löschen'
+      cancel: 'Abbrechen'
+      create: 'Erstellen'
+      update: 'Speichern'
+      confirm: 'Bestätigen'
     datetime:
-      now: 'just now'
+      now: 'gerade eben'
       minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
+        one: 'vor 1 Minute'
+        other: 'vor %{count} Minuten'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: 'vor 1 Stunde'
+        other: 'vor %{count} Stunden'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: 'vor 1 Tag'
+        other: 'vor %{count} Tagen'
   signup:
     page_title: 'Create your feedback space'
     step1:
-      title: '1. Create user account'
-      email_auth: 'Register with email'
+      title: '1. Benutzerkonto erstellen'
+      email_auth: 'Mit E-Mail registrieren'
     step2:
-      title: '2. Create feedback space'
-      site_name: 'Site name'
+      title: '2. Feedbackraum erstellen'
+      site_name: 'Seitenname'
       subdomain: 'Subdomain'
-      create_button: 'Create feedback space'
+      create_button: 'Feedbackraum erstellen'
     step3:
-      title: "You're almost done!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
+      title: "Fast fertig!"
+      message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
   header:
     menu:
-      site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      site_settings: 'Seiteneinstellungen'
+      profile_settings: 'Profileinstellungen'
+      sign_out: 'Abmelden'
+    log_in: 'Einloggen / Registrieren'
   roadmap:
     title: 'Roadmap'
   pending_tenant:
-    title: 'Verify your email address'
-    message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
+    title: 'E-Mail-Adresse verifizieren'
+    message: 'Wir haben eine E-Mail mit einem Aktivierungslink an die E-Mail gesendet, die bei der Registrierung angegeben wurde. Um diesen Feedbackbereich zu aktivieren, muss auf dessen Link geklickt werden!'
   blocked_tenant:
-    title: 'This feedback space has been blocked'
+    title: 'Dieser Feedbackbereich wurde blockiert'
   board:
     new_post:
-      submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
-      login_button: 'Log in / Sign up'
-      title: 'Title'
-      description: 'Description (optional)'
+      submit_button: 'Feedback senden'
+      cancel_button: 'Abbrechen'
+      login_button: 'Einloggen / Registrieren'
+      title: 'Titel'
+      description: 'Beschreibung (optional)'
       no_title: 'Title field is mandatory'
       submit_success: 'Feedback published! You will be redirected soon...'
       submit_error: 'An unknown error occurred, try again'
     search_box:
-      title: 'Search'
+      title: 'Suchen'
     filter_box:
       title: 'Filter by status'
     posts_list:
       empty: 'There are no posts'
   post:
-    edit_button: 'Edit'
+    edit_button: 'Bearbeiten'
     published_by: 'Published by'
     post_status_select:
       no_post_status: 'None'
@@ -111,47 +111,47 @@ de:
       not_following_description: "you won't receive notifications about this post"
     comments:
       title: 'Activity'
-      post_update_badge: 'Update'
-      reply_button: 'Reply'
+      post_update_badge: 'Aktualisierung'
+      reply_button: 'Antworten'
     new_comment:
-      body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
+      body_placeholder: 'Einen Kommentar hinterlassen'
+      submit_button: 'Senden'
       is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
       not_logged_in: 'You need to log in to post comments'
   site_settings:
     menu:
-      title: 'Site settings'
+      title: 'Seiteneinstellungen'
       general: 'General'
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      users: 'Users'
+      users: 'Benutzer'
     info_box:
-      up_to_date: 'All changes saved'
+      up_to_date: 'Alle Änderungen gespeichert'
       error: 'An error occurred: %{message}'
-      dirty: 'Changes not saved'
+      dirty: 'Änderungen nicht gespeichert'
     general:
       title: 'General'
-      site_name: 'Site name'
-      site_logo: 'Site logo'
+      site_name: 'Seitenname'
+      site_logo: 'Seitenlogo'
       brand_setting: 'Display'
       brand_setting_both: 'Both name and logo'
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
-      locale: 'Language'
+      locale: 'Sprache'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
-      new: 'New'
+      new: 'Neu'
       form:
         name: 'Board name'
         description: 'Board description (optional)'
     post_statuses:
       title: 'Statuses'
       empty: 'There are no statuses. Create one below!'
-      new: 'New'
+      new: 'Neu'
       form:
         name: 'Status name'
     roadmap:
@@ -160,7 +160,7 @@ de:
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     users:
-      title: 'Users'
+      title: 'Benutzer'
       block: 'Block'
       unblock: 'Unblock'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
