@@ -2,7 +2,7 @@ it:
   common:
     forms:
       auth:
-        email: 'Email'
+        email: 'E-mail'
         full_name: 'Nome e cognome'
         password: 'Password'
         password_confirmation: 'Conferma password'
@@ -61,7 +61,7 @@ it:
       subdomain: 'Sottodominio'
       create_button: 'Crea spazio feedback'
     step3:
-      title: 'Hai quasi finito!'
+      title: "Hai quasi finito!"
       message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
   header:
     menu:
@@ -75,7 +75,7 @@ it:
     title: 'Verifica il tuo indirizzo email'
     message: 'Abbiamo mandato una email con un link di attivazione all''indirizzo email che hai specificato in fase di registrazione. Clicca su quel link per attivare questo spazio di feedback!'
   blocked_tenant:
-    title: 'This feedback space has been blocked'
+    title: 'Questo spazio di feedback è stato bloccato'
   board:
     new_post:
       submit_button: 'Invia feedback'
