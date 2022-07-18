@@ -20,7 +20,7 @@ module Orderable
     def set_order_to_last
       return unless new_record?
       return unless order.nil?
-      
+
       order_last = self.class.maximum(:order) || -1
       self.order = order_last + 1
     end

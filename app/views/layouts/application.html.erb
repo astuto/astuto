@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= Rails.application.name %></title>
+    <title><%= @tenant ? @tenant.site_name : @page_title %></title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,7 +18,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if @tenant %>
+      <%= render 'layouts/header' %>
+    <% end %>
+    
     <%= render 'layouts/alerts' %>
     
     <div class="container">

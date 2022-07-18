@@ -80,18 +80,22 @@ class BoardForm extends React.Component<Props, State> {
     const {name, description} = this.state;
 
     return (
-      <div className="boardForm">
+      <form className="boardForm">
         <div className="boardMandatoryForm">
           <input
             type="text"
             placeholder={I18n.t('site_settings.boards.form.name')}
             value={name}
             onChange={e => this.onNameChange(e.target.value)}
+            autoFocus
             className="form-control"
           />
 
           <Button
-            onClick={this.onSubmit}
+            onClick={e => {
+              e.preventDefault();
+              this.onSubmit();
+            }}
             className="newBoardButton"
             disabled={!this.isFormValid()}
           >
@@ -110,7 +114,7 @@ class BoardForm extends React.Component<Props, State> {
           onChange={e => this.onDescriptionChange(e.target.value)}
           className="form-control"
         />
-      </div>
+      </form>
     );
   }
 }

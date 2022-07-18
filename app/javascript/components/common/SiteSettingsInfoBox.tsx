@@ -7,9 +7,10 @@ import Box from './Box';
 interface Props {
   areUpdating: boolean;
   error: string;
+  areDirty?: boolean;
 }
 
-const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
+const SiteSettingsInfoBox = ({ areUpdating, error, areDirty = false }: Props) => (
   <Box customClass="siteSettingsInfo">
   {
     areUpdating ?
@@ -17,10 +18,13 @@ const SiteSettingsInfoBox = ({ areUpdating, error }: Props) => (
     :
       error ?
         <span className="error">
-          {I18n.t('site_settings.info_box.error', { message: JSON.stringify(error) })}
+          { I18n.t('site_settings.info_box.error', { message: JSON.stringify(error) }) }
         </span>
       :
-        <span>{I18n.t('site_settings.info_box.up_to_date')}</span>
+        areDirty ?
+          <span className="warning">{ I18n.t('site_settings.info_box.dirty') }</span>
+        :
+          <span>{ I18n.t('site_settings.info_box.up_to_date') }</span>
   }
   </Box>
 );

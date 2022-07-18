@@ -65,6 +65,10 @@ The project is broadly structured as follows:
   - `schema.rb`: database schema
 - `spec`: RSpec tests
 
+### Rails console
+
+If you need to work with the Rails console, just attach a shell to the `web` container. From there, type `rails c` to run the console. You may notice that every query you run (e.g. `Post.all`) fails with error `Current::MissingCurrentTenant (Current tenant is not set)`: that's because Astuto implements multi tenancy at the database level. In order to fix this error, supposing you're in single tenant mode, just run `Current.tenant = Tenant.first` as the first command inside the Rails console. After that, everything should work as expected.
+
 ### Specs (tests)
 
 Tests are done using RSpec, a testing framework for Ruby on Rails:

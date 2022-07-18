@@ -1,4 +1,6 @@
 class Like < ApplicationRecord
+  include TenantOwnable
+  
   belongs_to :user
   belongs_to :post
 

@@ -22,7 +22,7 @@
   <% if devise_mapping.rememberable? %>
     <div class="form-group form-check">
       <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label t('common.forms.auth.remember_me'), class: "form-check-label" %>
+      <%= f.label :remember_me, t('common.forms.auth.remember_me'), class: "form-check-label" %>
     </div>
   <% end %>
 

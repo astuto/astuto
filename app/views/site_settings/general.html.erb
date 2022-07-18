@@ -1,8 +1,19 @@
 <div class="twoColumnsContainer">
   <%= render 'menu' %>
-
-  <div class="content">
-    <h2>General</h2>
-    <p>Under construction</p>
+  <div>
+    <%=
+      react_component(
+        'SiteSettings/General',
+        {
+          originForm: {
+            siteName: @tenant.site_name,
+            siteLogo: @tenant.site_logo,
+            brandDisplaySetting: @tenant.brand_display_setting,
+            locale: @tenant.locale
+          },
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
   </div>
 </div>
