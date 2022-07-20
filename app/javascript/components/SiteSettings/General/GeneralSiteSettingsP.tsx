@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
-import { ISiteSettingsGeneralForm } from '../../../reducers/SiteSettings/generalReducer';
 import Button from '../../common/Button';
 import HttpStatus from '../../../constants/http_status';
 import {
@@ -13,17 +13,20 @@ import {
   TENANT_BRAND_NONE,
 } from '../../../interfaces/ITenant';
 
+export interface ISiteSettingsGeneralForm {
+  siteName: string;
+  siteLogo: string;
+  brandDisplaySetting: string;
+  locale: string;
+}
+
 interface Props {
   originForm: ISiteSettingsGeneralForm;
   authenticityToken: string;
 
-  form: ISiteSettingsGeneralForm;
-  areDirty: boolean;
-  areLoading: boolean;
   areUpdating: boolean;
   error: string;
 
-  requestTenant(): void;
   updateTenant(
     siteName: string,
     siteLogo: string,
@@ -31,136 +34,108 @@ interface Props {
     locale: string,
     authenticityToken: string
   ): Promise<any>;
-
-  handleChangeSiteName(siteName: string): void;
-  handleChangeSiteLogo(siteLogo: string): void;
-  handleChangeBrandDisplaySetting(brandDisplaySetting: string)
-  handleChangeLocale(locale: string): void;
 }
 
-class GeneralSiteSettingsP extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
+const GeneralSiteSettingsP = ({
+  originForm,
+  authenticityToken,
 
-    this._handleUpdateTenant = this._handleUpdateTenant.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.requestTenant();
-  }
-
-  _handleUpdateTenant() {
-    const { siteName, siteLogo, brandDisplaySetting, locale } = this.props.form;
-
-    this.props.updateTenant(
-      siteName,
-      siteLogo,
-      brandDisplaySetting,
-      locale,
-      this.props.authenticityToken,
+  areUpdating,
+  error,
+  updateTenant,
+}: Props) => {
+  const { register, handleSubmit, formState: { isDirty } } = useForm<ISiteSettingsGeneralForm>();
+  
+  const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
+    updateTenant(
+      data.siteName,
+      data.siteLogo,
+      data.brandDisplaySetting,
+      data.locale,
+      authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
-
       window.location.reload();
     });
-  }
+  };
 
-  render() {
-    const {
-      originForm,
-      form,
-      areDirty,
-      areLoading,
-      areUpdating,
-      error,
+  return (
+    <>
+      <Box>
+        <h2>{ I18n.t('site_settings.general.title') }</h2>
 
-      handleChangeSiteName,
-      handleChangeSiteLogo,
-      handleChangeBrandDisplaySetting,
-      handleChangeLocale,
-    } = this.props;
-
-    return (
-      <>
-        <Box>
-          <h2>{ I18n.t('site_settings.general.title') }</h2>
-
-          <form>
-            <div className="formRow">
-              <div className="formGroup col-4">
-                <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
-                <input
-                  type="text"
-                  value={areLoading ? originForm.siteName : form.siteName}
-                  onChange={e => handleChangeSiteName(e.target.value)}
-                  id="siteName"
-                  className="formControl"
-                />
-              </div>
-
-              <div className="formGroup col-4">
-                <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
-                <input
-                  type="text"
-                  value={areLoading ? originForm.siteLogo : form.siteLogo}
-                  onChange={e => handleChangeSiteLogo(e.target.value)}
-                  id="siteLogo"
-                  className="formControl"
-                />
-              </div>
-
-              <div className="formGroup col-4">
-                <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
-                <select
-                  value={form.brandDisplaySetting || originForm.brandDisplaySetting}
-                  onChange={e => handleChangeBrandDisplaySetting(e.target.value)}
-                  id="brandSetting"
-                  className="selectPicker"
-                >
-                  <option value={TENANT_BRAND_NAME_AND_LOGO}>
-                    { I18n.t('site_settings.general.brand_setting_both') }
-                  </option>
-                  <option value={TENANT_BRAND_NAME_ONLY}>
-                    { I18n.t('site_settings.general.brand_setting_name') }
-                  </option>
-                  <option value={TENANT_BRAND_LOGO_ONLY}>
-                    { I18n.t('site_settings.general.brand_setting_logo') }
-                  </option>
-                  <option value={TENANT_BRAND_NONE}>
-                    { I18n.t('site_settings.general.brand_setting_none') }
-                  </option>
-                </select>
-              </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="formRow">
+            <div className="formGroup col-4">
+              <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
+              <input
+                {...register('siteName')}
+                type="text"
+                defaultValue={originForm.siteName}
+                id="siteName"
+                className="formControl"
+              />
             </div>
 
-            <div className="formGroup">
-              <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
+            <div className="formGroup col-4">
+              <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
+              <input
+                {...register('siteLogo')}
+                type="text"
+                defaultValue={originForm.siteLogo}
+                id="siteLogo"
+                className="formControl"
+              />
+            </div>
+
+            <div className="formGroup col-4">
+              <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
               <select
-                value={form.locale || originForm.locale}
-                onChange={e => handleChangeLocale(e.target.value)}
-                id="locale"
+                {...register('brandDisplaySetting')}
+                defaultValue={originForm.brandDisplaySetting}
+                id="brandSetting"
                 className="selectPicker"
               >
-                <option value="en">🇬🇧 English</option>
-                <option value="it">🇮🇹 Italiano</option>
+                <option value={TENANT_BRAND_NAME_AND_LOGO}>
+                  { I18n.t('site_settings.general.brand_setting_both') }
+                </option>
+                <option value={TENANT_BRAND_NAME_ONLY}>
+                  { I18n.t('site_settings.general.brand_setting_name') }
+                </option>
+                <option value={TENANT_BRAND_LOGO_ONLY}>
+                  { I18n.t('site_settings.general.brand_setting_logo') }
+                </option>
+                <option value={TENANT_BRAND_NONE}>
+                  { I18n.t('site_settings.general.brand_setting_none') }
+                </option>
               </select>
             </div>
-          </form>
+          </div>
+
+          <div className="formGroup">
+            <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
+            <select
+              {...register('locale')}
+              defaultValue={originForm.locale}
+              id="locale"
+              className="selectPicker"
+            >
+              <option value="en">🇬🇧 English</option>
+              <option value="it">🇮🇹 Italiano</option>
+            </select>
+          </div>
 
           <br />
 
-          <Button
-            onClick={this._handleUpdateTenant}
-            disabled={!areDirty}
-          >
-            { I18n.t('common.buttons.update') }
+          <Button onClick={() => null}>
+            {I18n.t('common.buttons.update')}
           </Button>
-        </Box>
+        </form>
+      </Box>
 
-        <SiteSettingsInfoBox areUpdating={areLoading || areUpdating} error={error} areDirty={areDirty} />
-      </>
-    );
-  }
+      <SiteSettingsInfoBox areUpdating={areUpdating} error={error} areDirty={isDirty} />
+    </>
+  );
 }
 
 export default GeneralSiteSettingsP;
