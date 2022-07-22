@@ -1,147 +1,115 @@
 import * as React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Box from '../common/Box';
 import Button from '../common/Button';
-import { TenantSignUpUserFormState } from '../../reducers/tenantSignUpReducer';
+import { ITenantSignUpUserForm } from './TenantSignUpP';
+import { DangerText } from '../common/CustomTexts';
 
 interface Props {
   currentStep: number;
+  setCurrentStep(step: number): void;
   emailAuth: boolean;
-  toggleEmailAuth(): void;
-  userForm: TenantSignUpUserFormState;
-
-  handleChangeUserFullName(fullName: string): void;
-  handleChangeUserEmail(email: string): void;
-  handleChangeUserPassword(password: string): void;
-  handleChangeUserPasswordConfirmation(passwordConfirmation: string): void;
-  handleUserFormConfirm(): void;
+  setEmailAuth(enabled: boolean): void;
+  userData: ITenantSignUpUserForm;
+  setUserData({}: ITenantSignUpUserForm): void;
 }
 
-class UserSignUpForm extends React.Component<Props> {
-  form: any;
+const UserSignUpForm = ({
+  currentStep,
+  setCurrentStep,
+  emailAuth,
+  setEmailAuth,
+  userData,
+  setUserData,
+}: Props) => {
+  const { register, handleSubmit, setError, formState: { errors } } = useForm<ITenantSignUpUserForm>();
+  const onSubmit: SubmitHandler<ITenantSignUpUserForm> = data => {
+    if (data.password !== data.passwordConfirmation) {
+      setError('passwordConfirmation', I18n.t('signup.step1.validations.password_mismatch'));
+      return;
+    }
 
-  constructor(props: Props) {
-    super(props);
-
-    this.form = React.createRef();
+    setUserData({...data});
+    setCurrentStep(currentStep + 1);
   }
 
-  validateUserForm(): boolean {
-    let isValid: boolean = this.form.current.reportValidity();
-    if (this.validateUserPasswordConfirmation() === false)
-      isValid = false;
+  return (
+    <Box customClass="tenantSignUpStep1">
+      <h3>{ I18n.t('signup.step1.title') }</h3>
 
-    return isValid;
-  }
+      {
+        currentStep === 1 && !emailAuth && 
+        <Button className="emailAuth" onClick={() => setEmailAuth(true)}>
+          { I18n.t('signup.step1.email_auth') }
+        </Button>
+      }
 
-  validateUserPasswordConfirmation(): boolean {
-    const isValid = this.props.userForm.password === this.props.userForm.passwordConfirmation;
-    return isValid;
-  }
+      {
+        currentStep === 1 && emailAuth &&
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="formRow">
+            <input
+              {...register('fullName', { required: true, minLength: 2 })}
+              autoFocus
+              placeholder={I18n.t('common.forms.auth.full_name')}
+              id="userFullName"
+              className="formControl"
+            />
+            <DangerText>{ errors.fullName && I18n.t('signup.step1.validations.full_name') }</DangerText>
+          </div>
 
-  render() {
-    const {
-      currentStep,
-      emailAuth,
-      toggleEmailAuth,
-      userForm,
-    
-      handleChangeUserFullName,
-      handleChangeUserEmail,
-      handleChangeUserPassword,
-      handleChangeUserPasswordConfirmation,
-      handleUserFormConfirm,
-    } = this.props;
+          <div className="formRow">
+            <input
+              {...register('email', { required: true, pattern: /(.+)@(.+){2,}\.(.+){2,}/ })}
+              type="email"
+              placeholder={I18n.t('common.forms.auth.email')}
+              id="userEmail"
+              className="formControl"
+            />
+            <DangerText>{ errors.email && I18n.t('signup.step1.validations.email') }</DangerText>
+          </div>
 
-    return (
-      <Box customClass="tenantSignUpStep1">
-        <h3>{ I18n.t('signup.step1.title') }</h3>
+          <div className="formRow">
+            <div className="formGroup col-6">
+              <input
+                {...register('password', { required: true, minLength: 6, maxLength: 128 })}
+                type="password"
+                placeholder={I18n.t('common.forms.auth.password')}
+                id="userPassword"
+                className="formControl"
+              />
+              <DangerText>{ errors.password && I18n.t('signup.step1.validations.password', { n: 6 }) }</DangerText>
+            </div>
 
-        {
-          currentStep === 1 && !emailAuth && 
-          <Button className="emailAuth" onClick={toggleEmailAuth}>
-            { I18n.t('signup.step1.email_auth') }
+            <div className="formGroup col-6">
+              <input
+                {...register('passwordConfirmation')}
+                type="password"
+                placeholder={I18n.t('common.forms.auth.password_confirmation')}
+                id="userPasswordConfirmation"
+                className="formControl"
+              />
+              <DangerText>{ errors.passwordConfirmation && I18n.t('signup.step1.validations.password_mismatch') }</DangerText>
+            </div>
+          </div>
+
+          <Button
+            onClick={() => null}
+            className="userConfirm"
+          >
+            { I18n.t('common.buttons.confirm') }
           </Button>
-        }
+        </form>
+      }
 
-        {
-          currentStep === 1 && emailAuth &&
-          <form ref={this.form}>
-            <div className="formRow">
-              <input
-                type="text"
-                autoFocus
-                value={userForm.fullName}
-                onChange={e => handleChangeUserFullName(e.target.value)}
-                placeholder={I18n.t('common.forms.auth.full_name')}
-                required
-                id="userFullName"
-                className="formControl"
-              />
-            </div>
-
-            <div className="formRow">
-              <input
-                type="email"
-                value={userForm.email}
-                onChange={e => handleChangeUserEmail(e.target.value)}
-                placeholder={I18n.t('common.forms.auth.email')}
-                required
-                id="userEmail"
-                className="formControl"
-              />
-            </div>
-
-            <div className="formRow">
-              <div className="formGroup col-6">
-                <input
-                  type="password"
-                  value={userForm.password}
-                  onChange={e => handleChangeUserPassword(e.target.value)}
-                  placeholder={I18n.t('common.forms.auth.password')}
-                  required
-                  minLength={6}
-                  maxLength={128}
-                  id="userPassword"
-                  className="formControl"
-                />
-              </div>
-
-              <div className="formGroup col-6">
-                <input
-                  type="password"
-                  value={userForm.passwordConfirmation}
-                  onChange={e => handleChangeUserPasswordConfirmation(e.target.value)}
-                  placeholder={I18n.t('common.forms.auth.password_confirmation')}
-                  required
-                  minLength={6}
-                  maxLength={128}
-                  id="userPasswordConfirmation"
-                  className={`formControl${userForm.passwordConfirmationError ? ' invalid' : ''}`}
-                />
-              </div>
-            </div>
-
-            <Button
-              onClick={e => {
-                e.preventDefault();
-                this.validateUserForm() && handleUserFormConfirm();
-              }}
-              className="userConfirm"
-            >
-              { I18n.t('common.buttons.confirm') }
-            </Button>
-          </form>
-        }
-
-        {
-          currentStep === 2 &&
-          <p><b>{userForm.fullName}</b> ({userForm.email})</p>
-        }
-      </Box>
-    );
-  }
+      {
+        currentStep === 2 &&
+        <p><b>{userData.fullName}</b> ({userData.email})</p>
+      }
+    </Box>
+  );
 }
 
 export default UserSignUpForm;

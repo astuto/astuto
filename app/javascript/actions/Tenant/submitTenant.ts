@@ -76,7 +76,11 @@ export const submitTenant = (
     } else {
       dispatch(tenantSubmitFailure(json.error));
     }
+
+    return Promise.resolve(res);
   } catch (e) {
     dispatch(tenantSubmitFailure(e));
+
+    return Promise.resolve(e);
   }
 };

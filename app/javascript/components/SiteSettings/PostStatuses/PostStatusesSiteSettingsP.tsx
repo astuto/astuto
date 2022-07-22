@@ -125,7 +125,7 @@ class PostStatusesSiteSettingsP extends React.Component<Props> {
         <Box>
           <h2>{I18n.t('site_settings.post_statuses.new')}</h2>
 
-          <PostStatusForm mode='create' handleSubmit={this.handleSubmit} />
+          <PostStatusForm mode='create' handleCreate={this.handleSubmit} />
         </Box>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />

@@ -130,7 +130,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
         <Box>
           <h2>{I18n.t('site_settings.boards.new')}</h2>
 
-          <BoardForm mode='create' handleSubmit={this.handleSubmit} />
+          <BoardForm mode='create' handleCreate={this.handleSubmit} />
         </Box>
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || boards.areLoading} error={settingsError} />

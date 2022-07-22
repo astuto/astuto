@@ -13,14 +13,6 @@ import {
 } from '../actions/Tenant/updateTenant';
 
 import {
-  ChangeSiteSettingsGeneralFormActionTypes,
-  SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_NAME,
-  SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_LOGO,
-  SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING,
-  SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE,
-} from '../actions/changeSiteSettingsGeneralForm';
-
-import {
   BoardsRequestActionTypes,
   BOARDS_REQUEST_START,
   BOARDS_REQUEST_SUCCESS,
@@ -131,7 +123,6 @@ const siteSettingsReducer = (
   action:
     TenantRequestActionTypes |
     TenantUpdateActionTypes |
-    ChangeSiteSettingsGeneralFormActionTypes |
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
     BoardUpdateActionTypes |
@@ -146,16 +137,9 @@ const siteSettingsReducer = (
     UserUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
-    case TENANT_REQUEST_START:
-    case TENANT_REQUEST_SUCCESS:
-    case TENANT_REQUEST_FAILURE:
     case TENANT_UPDATE_START:
     case TENANT_UPDATE_SUCCESS:
     case TENANT_UPDATE_FAILURE:
-    case SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_NAME:
-    case SITE_SETTINGS_CHANGE_GENERAL_FORM_SITE_LOGO:
-    case SITE_SETTINGS_CHANGE_GENERAL_FORM_BRAND_SETTING:
-    case SITE_SETTINGS_CHANGE_GENERAL_FORM_LOCALE:
       return {
         ...state,
         general: siteSettingsGeneralReducer(state.general, action),

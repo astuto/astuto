@@ -5,7 +5,7 @@ import { Store } from 'redux';
 import GeneralSiteSettings from '../../../containers/GeneralSiteSettings';
 import createStoreHelper from '../../../helpers/createStore';
 import { State } from '../../../reducers/rootReducer';
-import { ISiteSettingsGeneralForm } from '../../../reducers/SiteSettings/generalReducer';
+import { ISiteSettingsGeneralForm } from './GeneralSiteSettingsP';
 
 interface Props {
   originForm: ISiteSettingsGeneralForm;

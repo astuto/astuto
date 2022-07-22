@@ -1,30 +1,14 @@
 import * as React from 'react';
-import { TenantSignUpTenantFormState, TenantSignUpUserFormState } from '../../reducers/tenantSignUpReducer';
+import { useState } from 'react';
+import HttpStatus from '../../constants/http_status';
 import ConfirmSignUpPage from './ConfirmSignUpPage';
 
 import TenantSignUpForm from './TenantSignUpForm';
 import UserSignUpForm from './UserSignUpForm';
 
 interface Props {
-  authenticityToken: string;
-
-  currentStep: number;
-  emailAuth: boolean;
   isSubmitting: boolean;
   error: string;
-
-  toggleEmailAuth(): void;
-
-  userForm: TenantSignUpUserFormState;
-  handleChangeUserFullName(fullName: string): void;
-  handleChangeUserEmail(email: string): void;
-  handleChangeUserPassword(password: string): void;
-  handleChangeUserPasswordConfirmation(passwordConfirmation: string): void;
-  handleUserFormConfirm(): void;
-
-  tenantForm: TenantSignUpTenantFormState;
-  handleChangeTenantSiteName(siteName: string): void;
-  handleChangeTenantSubdomain(subdomain: string): void;
 
   handleSubmit(
     userFullName: string,
@@ -33,92 +17,92 @@ interface Props {
     siteName: string,
     subdomain: string,
     authenticityToken: string,
-  ): void;
+  ): Promise<any>;
+
+  authenticityToken: string;
 }
 
-class TenantSignUpP extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
+export interface ITenantSignUpUserForm {
+  fullName: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
 
-    this._handleSubmit = this._handleSubmit.bind(this);
-  }
+export interface ITenantSignUpTenantForm {
+  siteName: string;
+  subdomain: string;
+}
 
-  _handleSubmit() {
-    const { userForm, tenantForm, handleSubmit } = this.props;
+const TenantSignUpP = ({
+  isSubmitting,
+  error,
+  handleSubmit,
+  authenticityToken
+}: Props) => {
+  const [userData, setUserData] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  });
 
+  const [tenantData, setTenantData] = useState({
+    siteName: '',
+    subdomain: '',
+  });
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [emailAuth, setEmailAuth] = useState(false);
+
+  const handleSignUpSubmit = (siteName: string, subdomain: string) => {
     handleSubmit(
-      userForm.fullName,
-      userForm.email,
-      userForm.password,
-      tenantForm.siteName,
-      tenantForm.subdomain,
-      this.props.authenticityToken,
-    );
+      userData.fullName,
+      userData.email,
+      userData.password,
+      siteName,
+      subdomain,
+      authenticityToken,
+    ).then(res => {
+      if (res?.status !== HttpStatus.Created) return;
+
+      setTenantData({ siteName, subdomain });
+      setCurrentStep(currentStep + 1);
+    });
   }
 
-  render() {
-    const {
-      currentStep,
-      emailAuth,
-      toggleEmailAuth,
+  return (
+    <div className="tenantSignUpContainer">
+      {
+        (currentStep === 1 || currentStep === 2) &&
+          <UserSignUpForm
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+            emailAuth={emailAuth}
+            setEmailAuth={setEmailAuth}
+            userData={userData}
+            setUserData={setUserData}
+          />
+      }
 
-      userForm,
-      handleChangeUserFullName,
-      handleChangeUserEmail,
-      handleChangeUserPassword,
-      handleChangeUserPasswordConfirmation,
-      handleUserFormConfirm,
+      {
+        currentStep === 2 &&
+          <TenantSignUpForm
+            isSubmitting={isSubmitting}
+            error={error}
+            handleSignUpSubmit={handleSignUpSubmit}
+          />
+      }
 
-      tenantForm,
-      handleChangeTenantSiteName,
-      handleChangeTenantSubdomain,
-
-      isSubmitting,
-      error,
-    } = this.props;
-
-    return (
-      <div className="tenantSignUpContainer">
-        {
-          (currentStep === 1 || currentStep === 2) &&
-            <UserSignUpForm
-              currentStep={currentStep}
-    
-              emailAuth={emailAuth}
-              toggleEmailAuth={toggleEmailAuth}
-              userForm={userForm}
-    
-              handleChangeUserFullName={handleChangeUserFullName}
-              handleChangeUserEmail={handleChangeUserEmail}
-              handleChangeUserPassword={handleChangeUserPassword}
-              handleChangeUserPasswordConfirmation={handleChangeUserPasswordConfirmation}
-              handleUserFormConfirm={handleUserFormConfirm}
-            />
-        }
-
-        {
-          currentStep === 2 &&
-            <TenantSignUpForm
-              tenantForm={tenantForm}
-              handleChangeTenantSiteName={handleChangeTenantSiteName}
-              handleChangeTenantSubdomain={handleChangeTenantSubdomain}
-
-              isSubmitting={isSubmitting}
-              error={error}
-              handleSubmit={this._handleSubmit}
-            />
-        }
-
-        {
-          currentStep === 3 &&
-            <ConfirmSignUpPage
-              subdomain={tenantForm.subdomain}
-              userEmail={userForm.email}
-            />
-        }
-      </div>
-    );
-  }
+      {
+        currentStep === 3 &&
+          <ConfirmSignUpPage
+            subdomain={tenantData.subdomain}
+            userEmail={userData.email}
+          />
+      }
+    </div>
+  );
 }
 
 export default TenantSignUpP;
