@@ -36,6 +36,7 @@ const TenantSignUpForm = ({
             autoFocus
             placeholder={I18n.t('signup.step2.site_name')}
             id="tenantSiteName"
+            className="formControl"
           />
           <DangerText>{errors.siteName && I18n.t('signup.step2.validations.site_name')}</DangerText>
         </div>
@@ -52,6 +53,7 @@ const TenantSignUpForm = ({
               })}
               placeholder={I18n.t('signup.step2.subdomain')}
               id="tenantSubdomain"
+              className="formControl"
             />
             <div className="input-group-append">
               <div className="input-group-text">.astuto.io</div>

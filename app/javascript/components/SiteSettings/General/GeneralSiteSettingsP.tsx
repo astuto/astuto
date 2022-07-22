@@ -83,6 +83,7 @@ const GeneralSiteSettingsP = ({
               <input
                 {...register('siteName', { required: true })}
                 id="siteName"
+                className="formControl"
               />
               <DangerText>{errors.siteName && I18n.t('site_settings.general.validations.site_name')}</DangerText>
             </div>
@@ -92,6 +93,7 @@ const GeneralSiteSettingsP = ({
               <input
                 {...register('siteLogo')}
                 id="siteLogo"
+                className="formControl"
               />
             </div>
 

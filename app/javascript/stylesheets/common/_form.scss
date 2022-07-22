@@ -47,7 +47,7 @@
   @extend .form-group;
 }
 
-input {
+.formControl {
   @extend .form-control;
 
   &.invalid {

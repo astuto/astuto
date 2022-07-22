@@ -55,6 +55,7 @@ const UserSignUpForm = ({
               autoFocus
               placeholder={I18n.t('common.forms.auth.full_name')}
               id="userFullName"
+              className="formControl"
             />
             <DangerText>{ errors.fullName && I18n.t('signup.step1.validations.full_name') }</DangerText>
           </div>
@@ -65,6 +66,7 @@ const UserSignUpForm = ({
               type="email"
               placeholder={I18n.t('common.forms.auth.email')}
               id="userEmail"
+              className="formControl"
             />
             <DangerText>{ errors.email && I18n.t('signup.step1.validations.email') }</DangerText>
           </div>
@@ -76,6 +78,7 @@ const UserSignUpForm = ({
                 type="password"
                 placeholder={I18n.t('common.forms.auth.password')}
                 id="userPassword"
+                className="formControl"
               />
               <DangerText>{ errors.password && I18n.t('signup.step1.validations.password', { n: 6 }) }</DangerText>
             </div>
@@ -86,6 +89,7 @@ const UserSignUpForm = ({
                 type="password"
                 placeholder={I18n.t('common.forms.auth.password_confirmation')}
                 id="userPasswordConfirmation"
+                className="formControl"
               />
               <DangerText>{ errors.passwordConfirmation && I18n.t('signup.step1.validations.password_mismatch') }</DangerText>
             </div>
