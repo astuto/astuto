@@ -55,11 +55,20 @@ de:
     step1:
       title: '1. Benutzerkonto erstellen'
       email_auth: 'Mit E-Mail registrieren'
+      validations:
+        full_name: 'Full name is required'
+        email: 'Email is invalid'
+        password: 'Password must have at least %{n} characters'
+        password_mismatch: 'Password and password confirmation must match'
     step2:
       title: '2. Feedbackbereich erstellen'
       site_name: 'Seitenname'
       subdomain: 'Subdomain'
       create_button: 'Feedbackbereich erstellen'
+      validations:
+        site_name: 'Site name is required'
+        subdomain: 'Subdomain is required'
+        subdomain_already_taken: 'Sorry, this subdomain is not available'
     step3:
       title: "Fast fertig!"
       message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
@@ -141,6 +150,8 @@ de:
       brand_setting_logo: 'Nur Logo'
       brand_setting_none: 'Nichts'
       locale: 'Sprache'
+      validations:
+        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'Es existieren keine Boards. Erstelle unten eines!'
