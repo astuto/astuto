@@ -7,6 +7,7 @@ import Button from '../common/Button';
 import Spinner from '../common/Spinner';
 import { DangerText } from '../common/CustomTexts';
 import { ITenantSignUpTenantForm } from './TenantSignUpP';
+import HttpStatus from '../../constants/http_status';
 
 interface Props {
   isSubmitting: boolean;
@@ -19,7 +20,7 @@ const TenantSignUpForm = ({
   error,
   handleSignUpSubmit,
 }: Props) => {
-  const { register, handleSubmit } = useForm<ITenantSignUpTenantForm>();
+  const { register, handleSubmit, formState: { errors } } = useForm<ITenantSignUpTenantForm>();
   const onSubmit: SubmitHandler<ITenantSignUpTenantForm> = data => {
     handleSignUpSubmit(data.siteName, data.subdomain);
   }
@@ -32,27 +33,36 @@ const TenantSignUpForm = ({
         <div className="formRow">
           <input
             {...register('siteName', { required: true })}
-            type="text"
             autoFocus
             placeholder={I18n.t('signup.step2.site_name')}
             id="tenantSiteName"
-            className="formControl"
           />
+          <DangerText>{errors.siteName && I18n.t('signup.step2.validations.site_name')}</DangerText>
         </div>
 
         <div className="formRow">
           <div className="input-group">
             <input
-              {...register('subdomain', { required: true })}
-              type="text"
+              {...register('subdomain', {
+                required: true,
+                validate: async (newSubdomain) => {
+                  const res = await fetch(`/is_available?new_subdomain=${newSubdomain}`);
+                  return res.status === HttpStatus.OK;
+                },
+              })}
               placeholder={I18n.t('signup.step2.subdomain')}
               id="tenantSubdomain"
-              className="formControl"
             />
             <div className="input-group-append">
               <div className="input-group-text">.astuto.io</div>
             </div>
           </div>
+          <DangerText>
+            {errors.subdomain?.type === 'required' && I18n.t('signup.step2.validations.subdomain')}
+          </DangerText>
+          <DangerText>
+            {errors.subdomain?.type === 'validate' && I18n.t('signup.step2.validations.subdomain_already_taken')}
+          </DangerText>
         </div>
 
         <Button

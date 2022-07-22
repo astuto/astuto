@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     constraints subdomain: 'login' do
       get '/signup', to: 'tenants#new'
+      get '/is_available', to: 'tenants#is_available'
+      
       resource :tenants, only: [:create]
     end
   end

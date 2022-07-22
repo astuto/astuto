@@ -47,6 +47,18 @@ class TenantsController < ApplicationController
     end
   end
 
+  # Given a new_subdomain
+  # Returns true if it is available, false otherwise
+  def is_available
+    subdomain = params[:new_subdomain]
+
+    return unless subdomain.present?
+    return if RESERVED_SUBDOMAINS.include?(subdomain)
+    return if Tenant.exists?(subdomain: subdomain)
+
+    render json: { is_available: 'true' }
+  end
+
   private
 
     def tenant_create_params
