@@ -59,7 +59,7 @@ const PostStatusForm = ({
       handleCreate(
         data.name,
         data.color,
-        () => reset({ name: '', color: getRandomColor()})
+        () => reset({ name: '', color: getRandomColor() })
       );
     } else {
       handleUpdate(id, data.name, data.color);
