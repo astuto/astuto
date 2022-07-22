@@ -12,6 +12,7 @@ import {
   TENANT_BRAND_LOGO_ONLY,
   TENANT_BRAND_NONE,
 } from '../../../interfaces/ITenant';
+import { DangerText } from '../../common/CustomTexts';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
@@ -44,7 +45,18 @@ const GeneralSiteSettingsP = ({
   error,
   updateTenant,
 }: Props) => {
-  const { register, handleSubmit, formState: { isDirty } } = useForm<ISiteSettingsGeneralForm>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, isSubmitSuccessful, errors }
+  } = useForm<ISiteSettingsGeneralForm>({
+    defaultValues: {
+      siteName: originForm.siteName,
+      siteLogo: originForm.siteLogo,
+      brandDisplaySetting: originForm.brandDisplaySetting,
+      locale: originForm.locale,
+    },
+  });
   
   const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
     updateTenant(
@@ -69,22 +81,17 @@ const GeneralSiteSettingsP = ({
             <div className="formGroup col-4">
               <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
               <input
-                {...register('siteName')}
-                type="text"
-                defaultValue={originForm.siteName}
+                {...register('siteName', { required: true })}
                 id="siteName"
-                className="formControl"
               />
+              <DangerText>{errors.siteName && I18n.t('site_settings.general.validations.site_name')}</DangerText>
             </div>
 
             <div className="formGroup col-4">
               <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
               <input
                 {...register('siteLogo')}
-                type="text"
-                defaultValue={originForm.siteLogo}
                 id="siteLogo"
-                className="formControl"
               />
             </div>
 
@@ -92,7 +99,6 @@ const GeneralSiteSettingsP = ({
               <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
               <select
                 {...register('brandDisplaySetting')}
-                defaultValue={originForm.brandDisplaySetting}
                 id="brandSetting"
                 className="selectPicker"
               >
@@ -116,7 +122,6 @@ const GeneralSiteSettingsP = ({
             <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
             <select
               {...register('locale')}
-              defaultValue={originForm.locale}
               id="locale"
               className="selectPicker"
             >
@@ -127,13 +132,17 @@ const GeneralSiteSettingsP = ({
 
           <br />
 
-          <Button onClick={() => null}>
+          <Button onClick={() => null} disabled={!isDirty}>
             {I18n.t('common.buttons.update')}
           </Button>
         </form>
       </Box>
 
-      <SiteSettingsInfoBox areUpdating={areUpdating} error={error} areDirty={isDirty} />
+      <SiteSettingsInfoBox
+        areUpdating={areUpdating}
+        error={error}
+        areDirty={isDirty && !isSubmitSuccessful}
+      />
     </>
   );
 }

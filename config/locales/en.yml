@@ -141,6 +141,8 @@ en:
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
       locale: 'Language'
+      validations:
+        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
