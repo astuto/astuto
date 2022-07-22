@@ -7,7 +7,7 @@ de:
       send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst."
     failure:
       already_authenticated: "Du bist bereits angemeldet."
-      inactive: "Dein Konto ist nicht aktiv."
+      inactive: "Dein Konto ist noch nicht aktiviert."
       invalid: "%{authentication_keys} oder Passwort ungültig."
       locked: "Dein Konto ist gesperrt."
       last_attempt: "Du hast noch einen Versuch, bis Dein Konto gesperrt wird."
