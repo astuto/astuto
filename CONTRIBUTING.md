@@ -8,10 +8,10 @@ We would like the Astuto community to be a welcoming environment for both season
 
 There are many ways to contribute to Astuto, not just coding. In this section we list the most common ones:
 
-- **Getting involved in the community**: we love to hear opinions about our product. Dropping a comment on an open issue or pull request or joining the discussion on the [Discord server](https://discord.com/invite/SrtUMRp) is an easy yet impactful way to contribute.
-- **Reporting bugs or proposing features**:  [open a new issue](https://github.com/riggraz/astuto/issues/new) on GitHub. Before posting, check if a similar issue has already been reported. Try to be concise but also unambiguous.
-- **Translating Astuto into a new language**: we want Astuto to speak all languages and we need contributors to achieve this goal! If you're interested, join [our Crowdin project](https://crwd.in/astuto), the platform we use to manage translations.
-- **Coding**: [open a pull request](https://github.com/riggraz/astuto/pulls) with your bug fix or feature implementation. Before diving into coding, you may find [the coding and testing section](#coding-and-testing) useful.
+- **Getting involved in the community**: We love to hear opinions about our product. Dropping a comment on an open issue or pull request or joining the discussion on the [Discord server](https://discord.com/invite/SrtUMRp) is an easy yet impactful way to contribute.
+- **Reporting bugs or proposing features**: [Open a new issue](https://github.com/riggraz/astuto/issues/new) on GitHub. Before posting, check if a similar issue has already been reported. Try to be concise but also unambiguous.
+- **Translating Astuto into a new language**: We want Astuto to speak all languages and we need contributors to achieve this goal! If you're interested, join [our Crowdin project](https://crwd.in/astuto), the platform we use to manage translations.
+- **Coding**: [Open a pull request](https://github.com/riggraz/astuto/pulls) with your bug fix or feature implementation. Before diving into coding, you may find [the coding and testing section](#coding-and-testing) useful.
 
 If you still have any doubt, feel free to [join our Discord](https://discord.com/invite/SrtUMRp) and drop a message! And remember: there are no stupid questions 😉
 
@@ -23,9 +23,9 @@ If you're interested in translating, we suggest to visit and register to [our Cr
 
 Locales are stored in YAML files under `config/locales`. Translations are splitted in 3 files:
 
-- `[lang].yml`: the main locale file. Contains translation strings for the frontend, backend, mailers, etc.
-- `activerecord/activerecord.[lang].yml`: contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
-- `devise/devise.[lang].yml`: contains translations for the authentication system (which is based on Devise gem). It is likely that you'll find ready-made translations for your language at [this page](https://github.com/heartcombo/devise/wiki/I18n), so this step usually consist in a simple copy-paste!
+- `[lang].yml`: The main locale file. Contains translation strings for the frontend, backend, mailers, etc.
+- `activerecord/activerecord.[lang].yml`: Contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
+- `devise/devise.[lang].yml`: Contains translations for the authentication system (which is based on Devise gem). It is likely that you'll find ready-made translations for your language at [this page](https://github.com/heartcombo/devise/wiki/I18n), so this step usually consist in a simple copy-paste!
 
 ## Coding and testing
 
@@ -35,10 +35,10 @@ First of all, you need to follow [the installation instructions](https://github.
 
 Depending on the task you're working on, you need to know one or more of these technologies:
 
-- [Ruby on Rails](https://rubyonrails.org/): Ruby framework for the backend
-- [React](https://reactjs.org/): UI library used for most of the frontend views
-- [Redux](https://redux.js.org/): state management library for React
-- [TypeScript](https://www.typescriptlang.org/)
+- [Ruby on Rails](https://rubyonrails.org): Ruby framework for the backend
+- [React](https://reactjs.org): UI library used for most of the frontend views
+- [Redux](https://redux.js.org): State management library for React
+- [TypeScript](https://www.typescriptlang.org)
 
 ### Project structure
 
@@ -53,16 +53,16 @@ The project is broadly structured as follows:
     - `components`: React components
     - `containers`: React components that connect to Redux state. See [this article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) to learn more.
     - `reducers`: Redux reducers
-    - `stylesheets`: all CSS files are stored here
-  - `mailers`: mail templates that are sent to notify users
-  - `workflows`: classes that contains some complex logic. Usually that logic was originally in a controller, but has been refactored and delegated to a workflow. In fact, workflows are usually called inside controllers.
-  - `policies`: policies used by [Pundit](https://github.com/varvet/pundit) for resource authorization
+    - `stylesheets`: All CSS files are stored here
+  - `mailers`: Mail templates that are sent to notify users
+  - `workflows`: Classes that contains some complex logic. Usually that logic was originally in a controller, but has been refactored and delegated to a workflow. In fact, workflows are usually called inside controllers.
+  - `policies`: Policies used by [Pundit](https://github.com/varvet/pundit) for resource authorization
 - `config`
-  - `locales`: locales files for internationalization. See [this section](#translations) for additional information.
-  - `routes.rb`: backend routes, i.e. mapping requests to controller actions
+  - `locales`: Locales files for internationalization. See [this section](#translations) for additional information.
+  - `routes.rb`: Backend routes, i.e. mapping requests to controller actions
 - `db`
-  - `migrate`: contains migration files
-  - `schema.rb`: database schema
+  - `migrate`: Contains migration files
+  - `schema.rb`: Database schema
 - `spec`: RSpec tests
 
 ### Rails console
