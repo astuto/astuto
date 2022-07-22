@@ -15,7 +15,7 @@ de:
       timeout: "Deine Sitzung ist abgelaufen, bitte melde Dich erneut an."
       unauthenticated: "Du musst Dich anmelden oder registrieren, bevor Du fortfahren kannst."
       unconfirmed: "Du musst Dein Konto bestätigen, bevor Du fortfahren kannst."
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
+      blocked_or_deleted: "Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde."
     mailer:
       confirmation_instructions:
         subject: "Anleitung zur Bestätigung Deines Kontos"
@@ -37,14 +37,14 @@ de:
       updated: "Dein Passwort wurde geändert. Du bist jetzt angemeldet."
       updated_not_active: "Dein Passwort wurde geändert."
     registrations:
-      destroyed: "Dein Konto wurde gelöscht."
+      destroyed: "Wiedersehen! Dein Konto wurde erfolgreich gelöscht. Wir hoffen, dich bald wiederzusehen."
       signed_up: "Du hast Dich erfolgreich registriert."
       signed_up_but_inactive: "Du hast Dich erfolgreich registriert. Wir konnten Dich jedoch nicht anmelden, weil Dein Konto noch nicht aktiviert ist."
       signed_up_but_locked: "Du hast Dich erfolgreich registriert. Wir konnten Dich jedoch nicht anmelden, weil Dein Konto gesperrt ist."
       signed_up_but_unconfirmed: "Du erhältst in wenigen Minuten eine E-Mail mit einem Link für die Bestätigung der Registrierung. Klicke auf den Link um Dein Konto zu aktivieren."
       update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
       updated: "Deine Daten wurden aktualisiert."
-      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+      updated_but_not_signed_in: "Dein Konto wurde erfolgreich aktualisiert, da Dein Passwort geändert wurde, musst Du Dich erneut anmelden"
     sessions:
       signed_in: "Erfolgreich angemeldet."
       signed_out: "Erfolgreich abgemeldet."
