@@ -10,7 +10,7 @@ de:
         new_password_confirmation: 'Neues Passwort bestätigen'
         current_password: 'Jetziges Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
-        notifications_enabled_help: "if disabled, you won't receive any notification"
+        notifications_enabled_help: "Wenn deaktiviert, erhältst Du keine Benachrichtigung"
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -83,46 +83,46 @@ de:
       login_button: 'Einloggen / Registrieren'
       title: 'Titel'
       description: 'Beschreibung (optional)'
-      no_title: 'Title field is mandatory'
+      no_title: 'Titelfeld ist obligatorisch'
       submit_success: 'Feedback published! You will be redirected soon...'
       submit_error: 'An unknown error occurred, try again'
     search_box:
       title: 'Suchen'
     filter_box:
-      title: 'Filter by status'
+      title: 'Nach Status filtern'
     posts_list:
-      empty: 'There are no posts'
+      empty: 'Es existieren keine Beiträge'
   post:
     edit_button: 'Bearbeiten'
-    published_by: 'Published by'
+    published_by: 'Herausgegeben von'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Nichts'
     updates_box:
-      title: 'Updates'
-      empty: 'There are no updates yet'
+      title: 'Aktualisierungen'
+      empty: 'Es existieren noch keine Aktualisierungen'
       status_change: 'changed status to'
     likes_box:
       title: 'Likes'
       empty: 'There are no likes yet'
     action_box:
-      title: 'Actions'
-      follow_button: 'Follow post'
+      title: 'Aktionen'
+      follow_button: 'Beitrag folgen'
       following_description: "you're receiving notifications about new updates on this post"
       not_following_description: "you won't receive notifications about this post"
     comments:
-      title: 'Activity'
+      title: 'Aktivität'
       post_update_badge: 'Aktualisierung'
       reply_button: 'Antworten'
     new_comment:
       body_placeholder: 'Einen Kommentar hinterlassen'
       submit_button: 'Senden'
-      is_post_update: 'Mark as update'
-      user_notification: 'Users that follow this post will be notified'
-      not_logged_in: 'You need to log in to post comments'
+      is_post_update: 'Als Aktualisierung markieren'
+      user_notification: 'Benutzer, die diesem Beitrag folgen, werden benachrichtigt'
+      not_logged_in: 'Du musst Dich anmelden, um Kommentare zu posten'
   site_settings:
     menu:
       title: 'Seiteneinstellungen'
-      general: 'General'
+      general: 'Generell'
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
@@ -132,22 +132,22 @@ de:
       error: 'An error occurred: %{message}'
       dirty: 'Änderungen nicht gespeichert'
     general:
-      title: 'General'
+      title: 'Generell'
       site_name: 'Seitenname'
       site_logo: 'Seitenlogo'
       brand_setting: 'Display'
-      brand_setting_both: 'Both name and logo'
-      brand_setting_name: 'Name only'
-      brand_setting_logo: 'Logo only'
-      brand_setting_none: 'None'
+      brand_setting_both: 'Sowohl Name als auch Logo'
+      brand_setting_name: 'Nur Name'
+      brand_setting_logo: 'Nur Logo'
+      brand_setting_none: 'Nichts'
       locale: 'Sprache'
     boards:
       title: 'Boards'
-      empty: 'There are no boards. Create one below!'
+      empty: 'Es existieren keine Boards. Erstelle unten eines!'
       new: 'Neu'
       form:
-        name: 'Board name'
-        description: 'Board description (optional)'
+        name: 'Boardname'
+        description: 'Boardbeschreibung (optional)'
     post_statuses:
       title: 'Statuses'
       empty: 'There are no statuses. Create one below!'
@@ -166,12 +166,12 @@ de:
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
       role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
-      role_user: 'User'
+      role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      status_active: 'Aktiv'
+      status_blocked: 'Gesperrt'
+      status_deleted: 'Gelöscht'
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
@@ -180,12 +180,12 @@ de:
         body: 'You can confirm your account email through the link below:'
         action: 'Confirm my account'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wird."
+        body2: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wurde."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
+        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
         body2: "If you didn't request this, please ignore this email."
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
@@ -205,13 +205,13 @@ de:
         body: "There is a new update on the post you're following %{post}"
       notify_followers_of_post_status_change:
         subject: '[%{app_name}] Status change on post %{post}'
-        body: "The post you're following %{post} has a new status"
+        body: "Der Beitrag, dem Sie folgen %{post} hat einen neuen Status"
   backend:
     errors:
-      unauthorized: 'You are not authorized'
-      not_logged_in: 'You must be logged in to access this page'
-      not_enough_privileges: 'You do not have the privilegies to access this page'
+      unauthorized: 'Du bist nicht autorisiert'
+      not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
+      not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
       board:
-        update_order: 'There was an error in reordering boards'
+        update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
       post_status:
-        update_order: 'There was an error in reordering statuses'
+        update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
