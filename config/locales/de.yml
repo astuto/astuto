@@ -51,15 +51,15 @@ de:
         one: 'vor 1 Tag'
         other: 'vor %{count} Tagen'
   signup:
-    page_title: 'Create your feedback space'
+    page_title: 'Deinen Feedbackbereich erstellen'
     step1:
       title: '1. Benutzerkonto erstellen'
       email_auth: 'Mit E-Mail registrieren'
     step2:
-      title: '2. Feedbackraum erstellen'
+      title: '2. Feedbackbereich erstellen'
       site_name: 'Seitenname'
       subdomain: 'Subdomain'
-      create_button: 'Feedbackraum erstellen'
+      create_button: 'Feedbackbereich erstellen'
     step3:
       title: "Fast fertig!"
       message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
@@ -84,8 +84,8 @@ de:
       title: 'Titel'
       description: 'Beschreibung (optional)'
       no_title: 'Titelfeld ist obligatorisch'
-      submit_success: 'Feedback published! You will be redirected soon...'
-      submit_error: 'An unknown error occurred, try again'
+      submit_success: 'Feedback veröffentlicht! Du wirst gleich weitergeleitet...'
+      submit_error: 'Ein unbekannter Fehler ist aufgetreten, versuche es erneut'
     search_box:
       title: 'Suchen'
     filter_box:
@@ -100,15 +100,15 @@ de:
     updates_box:
       title: 'Aktualisierungen'
       empty: 'Es existieren noch keine Aktualisierungen'
-      status_change: 'changed status to'
+      status_change: 'Status geändert zu'
     likes_box:
       title: 'Likes'
-      empty: 'There are no likes yet'
+      empty: 'Es existieren noch keine Likes'
     action_box:
       title: 'Aktionen'
       follow_button: 'Beitrag folgen'
-      following_description: "you're receiving notifications about new updates on this post"
-      not_following_description: "you won't receive notifications about this post"
+      following_description: "Du erhältst Benachrichtigungen über neue Updates zu diesem Beitrag"
+      not_following_description: "Du erhältst keine Benachrichtigungen zu diesem Beitrag"
     comments:
       title: 'Aktivität'
       post_update_badge: 'Aktualisierung'
@@ -124,18 +124,18 @@ de:
       title: 'Seiteneinstellungen'
       general: 'Generell'
       boards: 'Boards'
-      post_statuses: 'Statuses'
+      post_statuses: 'Status'
       roadmap: 'Roadmap'
       users: 'Benutzer'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
-      error: 'An error occurred: %{message}'
+      error: 'Ein Fehler ist aufgetreten: %{message}'
       dirty: 'Änderungen nicht gespeichert'
     general:
       title: 'Generell'
       site_name: 'Seitenname'
       site_logo: 'Seitenlogo'
-      brand_setting: 'Display'
+      brand_setting: 'Anzeigen'
       brand_setting_both: 'Sowohl Name als auch Logo'
       brand_setting_name: 'Nur Name'
       brand_setting_logo: 'Nur Logo'
@@ -149,23 +149,23 @@ de:
         name: 'Boardname'
         description: 'Boardbeschreibung (optional)'
     post_statuses:
-      title: 'Statuses'
-      empty: 'There are no statuses. Create one below!'
+      title: 'Status'
+      empty: 'Es existiert kein Status. Erstelle unten eine!'
       new: 'Neu'
       form:
-        name: 'Status name'
+        name: 'Statusname'
     roadmap:
       title: 'Roadmap'
-      title2: 'Not in roadmap'
-      empty: 'The roadmap is empty.'
-      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      title2: 'Nicht in der Roadmap'
+      empty: 'Die Roadmap ist leer.'
+      help: 'Du kannst der Roadmap Status hinzufügen, indem Du sie aus dem Abschnitt unten ziehst. Wenn Du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
     users:
       title: 'Benutzer'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      block: 'Sperren'
+      unblock: 'Entsperren'
+      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist Du Dir sicher?"
+      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist Du Dir sicher?"
+      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie Du, sodass sie Dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn Du %{name} wirklich vertraust. Bist Du Dir sicher?"
       role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
@@ -174,11 +174,11 @@ de:
       status_deleted: 'Gelöscht'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
+      opening_greeting: 'Hallo %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'Du kannst Deine Konto-E-Mail über den folgenden Link bestätigen:'
+        action: 'Mein Konto bestätigen'
       email_changed:
         body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wird."
         body2: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wurde."
@@ -186,26 +186,26 @@ de:
         body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
       reset_password:
         body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body2: "Wenn Du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        body3: "Dein Passwort ändert sich erst, wenn Du auf den obigen Link zugreifst und ein neues erstellst."
+        action: 'Mein Passwort ändern'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      opening_greeting: 'Hallo!'
+      closing_greeting: 'Habe einen schönen Tag!'
+      learn_more: 'Klick hier um mehr zu erfahren'
+      unsubscribe: 'Verärgert? Du kannst Benachrichtigungen hier deaktivieren'
       notify_post_owner:
-        subject: '[%{app_name}] New comment on %{post}'
-        body: 'There is a new comment by %{user} on your post %{post}'
+        subject: '[%{app_name}] Neuer Kommentar zu %{post}'
+        body: 'Es existiert ein neuer Kommentar von %{user} zu Deinem Beitrag %{post}'
       notify_comment_owner:
-        subject: '[%{app_name}] New reply on your comment from %{post}'
-        body: 'There is a new reply by %{user} on your comment from post %{post}'
+        subject: '[%{app_name}] Neue Antwort auf Deinen Kommentar von %{post}'
+        body: 'Es existiert eine neue Antwort von %{user} auf Deinem Kommentar von Beitrag %{post}'
       notify_followers_of_post_update:
-        subject: '[%{app_name}] New update for post %{post}'
-        body: "There is a new update on the post you're following %{post}"
+        subject: '[%{app_name}] Neues Update für Beitrag %{post}'
+        body: "Es existiert ein neues Update für den Beitrag, dem Du folgst %{post}"
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Status change on post %{post}'
-        body: "Der Beitrag, dem Sie folgen %{post} hat einen neuen Status"
+        subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
+        body: "Der Beitrag, dem Du folgst %{post} hat einen neuen Status"
   backend:
     errors:
       unauthorized: 'Du bist nicht autorisiert'
