@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
@@ -12,7 +13,7 @@ interface Props {
   name?: string;
   color?: string;
 
-  handleSubmit?(
+  handleCreate?(
     name: string,
     color: string,
     onSuccess: Function,
@@ -24,104 +25,76 @@ interface Props {
   ): void;
 }
 
-interface State {
+interface IPostStatusForm {
   name: string;
   color: string;
 }
 
-class PostStatusForm extends React.Component<Props, State> {
-  initialState: State = {
-    name: '',
-    color: this.getRandomColor(),
-  };
+const PostStatusForm = ({
+  mode,
+  id,
+  name,
+  color,
+  handleCreate,
+  handleUpdate,
+}: Props) => {
+  const getRandomColor = () => 
+    '#' + padStart((Math.random() * 0xFFFFFF << 0).toString(16), 6, '0');
 
-  constructor(props: Props) {
-    super(props);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<IPostStatusForm>({
+    mode: 'onChange',
+    defaultValues: {
+      name: name || '',
+      color: color || getRandomColor(),
+    },
+  });
 
-    this.state = this.props.mode === 'create' ?
-      this.initialState
-      :
-      {
-        name: this.props.name,
-        color: this.props.color,
-      };
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  getRandomColor() {
-    return '#' + padStart((Math.random() * 0xFFFFFF << 0).toString(16), 6, '0');
-  }
-
-  isFormValid() {
-    return this.state.name && this.state.name.length > 0 &&
-      this.state.color && this.state.color.length === 7;
-  }
-
-  onNameChange(nameText: string) {
-    this.setState({
-      name: nameText,
-    });
-  }
-
-  onColorChange(colorText: string) {
-    this.setState({
-      color: colorText,
-    });
-  }
-
-  onSubmit() {
-    if (this.props.mode === 'create') {
-      this.props.handleSubmit(
-        this.state.name,
-        this.state.color,
-        () => this.setState({...this.initialState, color: this.getRandomColor()}),
+  const onSubmit: SubmitHandler<IPostStatusForm> = data => {
+    if (mode === 'create') {
+      handleCreate(
+        data.name,
+        data.color,
+        () => reset({ name: '', color: getRandomColor()})
       );
     } else {
-      this.props.handleUpdate(this.props.id, this.state.name, this.state.color);
+      handleUpdate(id, data.name, data.color);
     }
   }
 
-  render() {
-    const {mode} = this.props;
-    const {name, color} = this.state;
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="postStatusForm">
+      <input
+        {...register('name', { required: true })}
+        placeholder={I18n.t('site_settings.post_statuses.form.name')}
+        autoFocus
+        className="formControl"
+      />
+      
+      <input
+        {...register('color', { required: true })}
+        type="color"
+        className="formControl postStatusColorInput"
+      />
 
-    return (
-      <form className="postStatusForm">
-        <input
-          type="text"
-          placeholder={I18n.t('site_settings.post_statuses.form.name')}
-          value={name}
-          onChange={e => this.onNameChange(e.target.value)}
-          autoFocus
-          className="form-control"
-        />
-        
-        <input
-          type="color"
-          value={color}
-          onChange={e => this.onColorChange(e.target.value)}
-          className="form-control postStatusColorInput"
-        />
-
-        <Button
-          onClick={e => {
-            e.preventDefault();
-            this.onSubmit();
-          }}
-          className="newPostStatusButton"
-          disabled={!this.isFormValid()}
-        >
-          {
-              mode === 'create' ?
-                I18n.t('common.buttons.create')
-              :
-                I18n.t('common.buttons.update')
-            }
-        </Button>
-      </form>
-    );
-  }
+      <Button
+        onClick={() => null}
+        className="newPostStatusButton"
+        disabled={!isValid}
+      >
+        {
+          mode === 'create' ?
+            I18n.t('common.buttons.create')
+          :
+            I18n.t('common.buttons.update')
+        }
+      </Button>
+    </form>
+  );
 }
 
 export default PostStatusForm;
