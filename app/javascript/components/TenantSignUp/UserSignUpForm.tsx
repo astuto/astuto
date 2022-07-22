@@ -51,7 +51,7 @@ const UserSignUpForm = ({
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="formRow">
             <input
-              {...register('fullName', { required: true })}
+              {...register('fullName', { required: true, minLength: 2 })}
               autoFocus
               placeholder={I18n.t('common.forms.auth.full_name')}
               id="userFullName"
