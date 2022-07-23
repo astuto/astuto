@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def inactive_message
-    active? ? super : :blocked_or_deleted
+    active? ? super : I18n.t('errors.user_blocked_or_deleted')
   end
 
   # Override Devise::Confirmable#after_confirmation

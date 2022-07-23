@@ -66,7 +66,7 @@ class PostStatusesController < ApplicationController
       render json: workflow_output
     else
       render json: {
-        error: t("backend.errors.post_status.update_order")
+        error: t("errors.post_status.update_order")
       }, status: :unprocessable_entity
     end
   end
