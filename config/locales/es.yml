@@ -55,11 +55,20 @@ es:
     step1:
       title: '1. Create user account'
       email_auth: 'Register with email'
+      validations:
+        full_name: 'Full name is required'
+        email: 'Email is invalid'
+        password: 'Password must have at least %{n} characters'
+        password_mismatch: 'Password and password confirmation must match'
     step2:
       title: '2. Create feedback space'
       site_name: 'Site name'
       subdomain: 'Subdomain'
       create_button: 'Create feedback space'
+      validations:
+        site_name: 'Site name is required'
+        subdomain: 'Subdomain is required'
+        subdomain_already_taken: 'Sorry, this subdomain is not available'
     step3:
       title: "You're almost done!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
@@ -141,6 +150,8 @@ es:
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
       locale: 'Language'
+      validations:
+        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'

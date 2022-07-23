@@ -10,12 +10,12 @@ de:
         is_post_update: 'Beitragsdatum'
         user_id: 'Autor'
         post_id: 'Beitrag'
-        parent_id: 'Parent comment'
+        parent_id: 'Übergeordneter Kommentar'
       follow:
-        user_id: 'User'
+        user_id: 'Benutzer'
         post_id: 'Beitrag'
       like:
-        user_id: 'User'
+        user_id: 'Benutzer'
         post_id: 'Beitrag'
       post_status:
         name: 'Name'
@@ -25,7 +25,7 @@ de:
       post:
         title: 'Titel'
         description: 'Beschreibung'
-        board_id: 'Post board'
+        board_id: 'Board posten'
         user_id: 'Beitragsautor'
         post_status_id: 'Beitragsstatus'
       user:
