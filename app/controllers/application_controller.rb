@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
     def user_not_authorized
       render json: {
-        error: t('backend.errors.unauthorized')
+        error: t('errors.unauthorized')
       }, status: :unauthorized
     end
 end

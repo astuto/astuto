@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 de:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ de:
       timeout: "Deine Sitzung ist abgelaufen, bitte melde Dich erneut an."
       unauthenticated: "Du musst Dich anmelden oder registrieren, bevor Du fortfahren kannst."
       unconfirmed: "Du musst Dein Konto bestätigen, bevor Du fortfahren kannst."
-      blocked_or_deleted: "Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde."
     mailer:
       confirmation_instructions:
         subject: "Anleitung zur Bestätigung Deines Kontos"

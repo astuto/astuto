@@ -1,7 +1,7 @@
 module ApplicationHelper
   def check_user_signed_in
     unless user_signed_in?
-      flash[:alert] = t('backend.errors.not_logged_in')
+      flash[:alert] = t('errors.not_logged_in')
       redirect_to new_user_session_path
       
       return false
@@ -12,7 +12,7 @@ module ApplicationHelper
     return if check_user_signed_in == false
 
     unless current_user.admin?
-      flash[:alert] = t('backend.errors.not_enough_privileges')
+      flash[:alert] = t('errors.not_enough_privileges')
       redirect_to root_path
       return
     end
@@ -22,7 +22,7 @@ module ApplicationHelper
     return if check_user_signed_in == false
 
     unless current_user.admin? or current_user.moderator?
-      flash[:alert] = t('backend.errors.not_enough_privileges')
+      flash[:alert] = t('errors.not_enough_privileges')
       redirect_to root_path
       return
     end
