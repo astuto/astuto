@@ -1,0 +1,86 @@
+de:
+  errors:
+    unauthorized: 'Du bist nicht autorisiert'
+    not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
+    not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
+    user_blocked_or_deleted: 'Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
+    board:
+      update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
+    post_status:
+      update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
+  mailers:
+    devise:
+      welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
+      opening_greeting: 'Hallo %{email}!'
+      confirmation_instructions:
+        body: 'Du kannst Deine Konto-E-Mail über den folgenden Link bestätigen:'
+        action: 'Mein Konto bestätigen'
+      email_changed:
+        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wird."
+        body2: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wurde."
+      password_change:
+        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
+      reset_password:
+        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
+        body2: "Wenn Du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        body3: "Dein Passwort ändert sich erst, wenn Du auf den obigen Link zugreifst und ein neues erstellst."
+        action: 'Mein Passwort ändern'
+    user:
+      opening_greeting: 'Hallo!'
+      closing_greeting: 'Habe einen schönen Tag!'
+      learn_more: 'Klick hier um mehr zu erfahren'
+      unsubscribe: 'Verärgert? Du kannst Benachrichtigungen hier deaktivieren'
+      notify_post_owner:
+        subject: '[%{app_name}] Neuer Kommentar zu %{post}'
+        body: 'Es existiert ein neuer Kommentar von %{user} zu Deinem Beitrag %{post}'
+      notify_comment_owner:
+        subject: '[%{app_name}] Neue Antwort auf Deinen Kommentar von %{post}'
+        body: 'Es existiert eine neue Antwort von %{user} auf Deinem Kommentar von Beitrag %{post}'
+      notify_followers_of_post_update:
+        subject: '[%{app_name}] Neues Update für Beitrag %{post}'
+        body: "Es existiert ein neues Update für den Beitrag, dem Du folgst %{post}"
+      notify_followers_of_post_status_change:
+        subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
+        body: "Der Beitrag, dem Du folgst %{post} hat einen neuen Status"
+  activerecord:
+    attributes:
+      board:
+        name: 'Name'
+        description: 'Beschreibung'
+        order: 'Sortierung'
+      comment:
+        body: 'Body'
+        is_post_update: 'Beitragsdatum'
+        user_id: 'Autor'
+        post_id: 'Beitrag'
+        parent_id: 'Übergeordneter Kommentar'
+      follow:
+        user_id: 'Benutzer'
+        post_id: 'Beitrag'
+      like:
+        user_id: 'Benutzer'
+        post_id: 'Beitrag'
+      post_status:
+        name: 'Name'
+        color: 'Farbe'
+        order: 'Sortierung'
+        show_in_roadmap: 'In Roadmap anzeigen'
+      post:
+        title: 'Titel'
+        description: 'Beschreibung'
+        board_id: 'Board posten'
+        user_id: 'Beitragsautor'
+        post_status_id: 'Beitragsstatus'
+      user:
+        email: 'E-Mail'
+        full_name: 'Vor- und Nachname'
+        role: 'Rolle'
+        notifications_enabled: 'Benachrichtigungen aktiviert'
+    errors:
+      messages:
+        invalid: 'ist gültig'
+        required: 'ist obligatorisch'
+        blank: 'darf nicht leer sein'
+        taken: 'wird bereits verwendet'
+        too_short: 'ist zu kurz (mindestens %{count} Zeichen)'
+        too_long: 'ist zu lang (maximal ${count} Zeichen)'
