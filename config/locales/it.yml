@@ -55,11 +55,20 @@ it:
     step1:
       title: '1. Crea account utente'
       email_auth: 'Registrati con indirizzo email'
+      validations:
+        full_name: 'Nome è obbligatorio'
+        email: 'Email non valida'
+        password: 'La password deve contenere almeno %{n} caratteri'
+        password_mismatch: 'Password e conferma password devono corrispondere'
     step2:
       title: '2. Crea spazio di feedback'
       site_name: 'Nome del sito'
       subdomain: 'Sottodominio'
       create_button: 'Crea spazio feedback'
+      validations:
+        site_name: 'Nome del sito è obbligatorio'
+        subdomain: 'Sottodominio è obbligatorio'
+        subdomain_already_taken: 'Siamo spiacenti, questo sottodominio non è disponibile'
     step3:
       title: "Hai quasi finito!"
       message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
@@ -141,6 +150,8 @@ it:
       brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
       locale: 'Lingua'
+      validations:
+        site_name: 'Nome del sito è obbligatorio'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
