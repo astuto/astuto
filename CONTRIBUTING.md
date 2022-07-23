@@ -23,9 +23,9 @@ If you're interested in translating, we suggest to visit and register to [our Cr
 
 Locales are stored in YAML files under `config/locales`. Translations are splitted in 3 files:
 
-- `[lang].yml`: the main locale file. Contains translation strings for the frontend, backend, mailers, etc.
-- `activerecord/activerecord.[lang].yml`: contains Rails ActiveRecord translations, i.e. translations for model names, properties and validation error messages.
-- `devise/devise.[lang].yml`: contains translations for the authentication system (which is based on Devise gem). It is likely that you'll find ready-made translations for your language at [this page](https://github.com/heartcombo/devise/wiki/I18n), so this step usually consist in a simple copy-paste!
+- `[lang].yml`: contains frontend translations
+- `backend/backend.[lang].yml`: contains backend translations, e.g. mailers, error messages, entity names
+- `devise/devise.[lang].yml`: contains translations for the authentication system (which is based on [Devise](https://github.com/heartcombo/devise) gem). Usually, this file is not manually translated, because ready-made translations are already available at [this page](https://github.com/heartcombo/devise/wiki/I18n).
 
 ## Coding and testing
 
