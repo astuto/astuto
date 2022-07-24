@@ -9,38 +9,38 @@ fr:
         new_password: 'Nouveau mot de passe'
         new_password_confirmation: 'Confirmer le nouveau mot de passe'
         current_password: 'Mot de passe actuel'
-        notifications_enabled: 'Notifications enabled'
-        notifications_enabled_help: "if disabled, you won't receive any notification"
-        remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
-        cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
-        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
-        unlock_instructions_not_received: "Didn't receive unlock instructions?"
-        send_reset_password_instructions: 'Send me reset password instructions'
-        resend_confirmation_instructions: 'Resend confirmation instructions'
-        resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
-        password_help: '%{count} characters minimum'
+        notifications_enabled: 'Notifications activées'
+        notifications_enabled_help: "si désactivé, vous ne recevrez aucune notification"
+        remember_me: 'Se souvenir de moi'
+        log_in: 'Se connecter'
+        sign_up: 'S''inscrire'
+        profile_settings: 'Paramètres du profil'
+        update_profile: 'Mettre à jour le profil'
+        cancel_account: 'Annuler le compte'
+        forgot_password: 'Mot de passe oublié ?'
+        confirmation_instructions_not_received: "Vous n'avez pas reçu le mail de confirmation ?"
+        unlock_instructions_not_received: "Vous n'avez pas reçu le mail de déverrouillage ?"
+        send_reset_password_instructions: 'Envoyez-moi les instructions de réinitialisation du mot de passe'
+        resend_confirmation_instructions: 'Renvoyer les instructions de confirmation'
+        resend_unlock_instructions: 'Renvoyer les instructions de déverrouillage'
+        change_password: 'Changer le mot de passe'
+        password_help: '%{count} caractères minimum'
     comments_number:
-      one: '1 comment'
-      other: '%{count} comments'
-    no_status: 'No status'
-    loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    edited: 'Edited'
+      one: '1 commentaire'
+      other: '%{count} commentaires'
+    no_status: 'Pas de statut'
+    loading: 'Chargement ...'
+    confirmation: 'Vous êtes sûr ?'
+    edited: 'Modifié'
     buttons:
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
+      edit: 'Modifier'
+      delete: 'Supprimer'
+      cancel: 'Annuler'
+      create: 'Créer'
+      update: 'Sauvegarder'
+      confirm: 'Confirmer'
     datetime:
-      now: 'just now'
+      now: 'à l’instant'
       minutes:
         one: '1 minute ago'
         other: '%{count} minutes ago'
@@ -75,7 +75,7 @@ fr:
   header:
     menu:
       site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
+      profile_settings: 'Paramètres du profil'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'
   roadmap:
@@ -88,7 +88,7 @@ fr:
   board:
     new_post:
       submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
+      cancel_button: 'Annuler'
       login_button: 'Log in / Sign up'
       title: 'Title'
       description: 'Description (optional)'
@@ -102,7 +102,7 @@ fr:
     posts_list:
       empty: 'There are no posts'
   post:
-    edit_button: 'Edit'
+    edit_button: 'Modifier'
     published_by: 'Published by'
     post_status_select:
       no_post_status: 'None'
