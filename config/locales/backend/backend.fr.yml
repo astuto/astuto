@@ -55,10 +55,10 @@ fr:
         post_id: 'Publication'
         parent_id: 'Commentaire parent'
       follow:
-        user_id: 'User'
+        user_id: 'Utilisateur'
         post_id: 'Publication'
       like:
-        user_id: 'User'
+        user_id: 'Utilisateur'
         post_id: 'Publication'
       post_status:
         name: 'Nom'
@@ -66,7 +66,7 @@ fr:
         order: 'Ordre'
         show_in_roadmap: 'Voir dans la feuille de route'
       post:
-        title: 'Title'
+        title: 'Titre'
         description: 'Description'
         board_id: 'Tableau des publications'
         user_id: 'Auteur de la publication'
