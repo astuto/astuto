@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 nl:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ nl:
       timeout: "De sessie is verlopen. Log opnieuw in."
       unauthenticated: "Log eerst in of maak een account."
       unconfirmed: "Bevestig eerst je e-mailadres."
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
         subject: "Bevestig je e-mailadres om je account te activeren."
