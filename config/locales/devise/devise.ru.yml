@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 ru:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ ru:
       timeout: "Ваш сеанс закончился. Пожалуйста, войдите в систему снова."
       unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
       unconfirmed: "Вы должны подтвердить вашу учётную запись."
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
         subject: "Инструкции по подтверждению учётной записи."
