@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 es:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ es:
       timeout: "Tu sesión ha expirado. Inicia sesión nuevamente."
       unauthenticated: "Tienes que registrarte o iniciar sesión antes de continuar."
       unconfirmed: "Tienes que confirmar tu cuenta antes de continuar."
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de confirmación"

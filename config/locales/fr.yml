@@ -3,226 +3,183 @@ fr:
     forms:
       auth:
         email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        new_password: 'New password'
-        new_password_confirmation: 'New password confirmation'
-        current_password: 'Current password'
-        notifications_enabled: 'Notifications enabled'
-        notifications_enabled_help: "if disabled, you won't receive any notification"
-        remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
-        cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
-        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
-        unlock_instructions_not_received: "Didn't receive unlock instructions?"
-        send_reset_password_instructions: 'Send me reset password instructions'
-        resend_confirmation_instructions: 'Resend confirmation instructions'
-        resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
-        password_help: '%{count} characters minimum'
+        full_name: 'Nom complet'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmer le mot de passe'
+        new_password: 'Nouveau mot de passe'
+        new_password_confirmation: 'Confirmer le nouveau mot de passe'
+        current_password: 'Mot de passe actuel'
+        notifications_enabled: 'Notifications activées'
+        notifications_enabled_help: "si désactivé, vous ne recevrez aucune notification"
+        remember_me: 'Se souvenir de moi'
+        log_in: 'Se connecter'
+        sign_up: 'S''inscrire'
+        profile_settings: 'Paramètres du profil'
+        update_profile: 'Mettre à jour le profil'
+        cancel_account: 'Annuler le compte'
+        forgot_password: 'Mot de passe oublié ?'
+        confirmation_instructions_not_received: "Vous n'avez pas reçu le mail de confirmation ?"
+        unlock_instructions_not_received: "Vous n'avez pas reçu le mail de déverrouillage ?"
+        send_reset_password_instructions: 'Envoyez-moi les instructions de réinitialisation du mot de passe'
+        resend_confirmation_instructions: 'Renvoyer les instructions de confirmation'
+        resend_unlock_instructions: 'Renvoyer les instructions de déverrouillage'
+        change_password: 'Changer le mot de passe'
+        password_help: '%{count} caractères minimum'
     comments_number:
-      one: '1 comment'
-      other: '%{count} comments'
-    no_status: 'No status'
-    loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    edited: 'Edited'
+      one: '1 commentaire'
+      other: '%{count} commentaires'
+    no_status: 'Pas de statut'
+    loading: 'Chargement ...'
+    confirmation: 'Vous êtes sûr ?'
+    edited: 'Modifié'
     buttons:
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
+      edit: 'Modifier'
+      delete: 'Supprimer'
+      cancel: 'Annuler'
+      create: 'Créer'
+      update: 'Sauvegarder'
+      confirm: 'Confirmer'
     datetime:
-      now: 'just now'
+      now: 'à l’instant'
       minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
+        one: 'Il y a 1 minute'
+        other: 'Il y a %{count} minutes'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: 'Il y a 1 heure'
+        other: 'Il y a %{count} heures'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: 'Il y a 1 jour'
+        other: 'il y a %{count} jours'
   signup:
-    page_title: 'Create your feedback space'
+    page_title: 'Créez votre espace de feedback'
     step1:
-      title: '1. Create user account'
-      email_auth: 'Register with email'
+      title: '1. Créer un compte utilisateur'
+      email_auth: 'S´inscrire avec une adresse e-mail'
       validations:
-        full_name: 'Full name is required'
-        email: 'Email is invalid'
-        password: 'Password must have at least %{n} characters'
-        password_mismatch: 'Password and password confirmation must match'
+        full_name: 'Le prénom et le nom de famille sont obligatoires'
+        email: 'L''e-mail n''est pas valide'
+        password: 'Le mot de passe doit contenir au minimum %{n} caractères'
+        password_mismatch: 'Le mot de passe et la confirmation du mot de passe doivent concorder'
     step2:
-      title: '2. Create feedback space'
-      site_name: 'Site name'
-      subdomain: 'Subdomain'
-      create_button: 'Create feedback space'
+      title: '2. Créer un espace de feedback'
+      site_name: 'Nom du site'
+      subdomain: 'Sous-domaine'
+      create_button: 'Créer un espace de feedback'
       validations:
-        site_name: 'Site name is required'
-        subdomain: 'Subdomain is required'
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
+        site_name: 'Le nom du site est obligatoire'
+        subdomain: 'Le sous-domaine est requis'
+        subdomain_already_taken: 'Désolé, ce sous-domaine n''est pas disponible'
     step3:
-      title: "You're almost done!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
+      title: "Vous avez presque terminé !"
+      message: "Vérifiez votre e-mail %{email} pour activer votre nouvel espace de feedback %{subdomain}!"
   header:
     menu:
-      site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      site_settings: 'Paramètres du site'
+      profile_settings: 'Paramètres du profil'
+      sign_out: 'Déconnexion'
+    log_in: 'Se connecter / S''inscrire'
   roadmap:
-    title: 'Roadmap'
+    title: 'Feuille de route'
   pending_tenant:
-    title: 'Verify your email address'
-    message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
+    title: 'Confirmez votre adresse e-mail'
+    message: 'Nous avons envoyé un e-mail avec un lien d''activation à l''e-mail que vous avez fourni lors de votre inscription. Cliquez sur ce lien pour activer cet espace de feedback !'
   blocked_tenant:
-    title: 'This feedback space has been blocked'
+    title: 'Cet espace de feedback a été bloqué'
   board:
     new_post:
-      submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
-      login_button: 'Log in / Sign up'
-      title: 'Title'
-      description: 'Description (optional)'
-      no_title: 'Title field is mandatory'
-      submit_success: 'Feedback published! You will be redirected soon...'
-      submit_error: 'An unknown error occurred, try again'
+      submit_button: 'Soumettre un retour'
+      cancel_button: 'Annuler'
+      login_button: 'Se connecter / S''inscrire'
+      title: 'Titre'
+      description: 'Description (optionnel)'
+      no_title: 'Le champ Titre est obligatoire'
+      submit_success: 'Feedback publié ! Vous allez bientôt être redirigé ...'
+      submit_error: 'Une erreur inconnue s''est produite, réessayez'
     search_box:
-      title: 'Search'
+      title: 'Recherche'
     filter_box:
-      title: 'Filter by status'
+      title: 'Filtrer par statut'
     posts_list:
-      empty: 'There are no posts'
+      empty: 'Il n''y a pas de publications'
   post:
-    edit_button: 'Edit'
-    published_by: 'Published by'
+    edit_button: 'Modifier'
+    published_by: 'Publié par'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Aucun'
     updates_box:
-      title: 'Updates'
-      empty: 'There are no updates yet'
-      status_change: 'changed status to'
+      title: 'Mises à jour'
+      empty: 'Il n''y a pas encore de mise à jour'
+      status_change: 'a changé le statut en'
     likes_box:
-      title: 'Likes'
-      empty: 'There are no likes yet'
+      title: 'J''aime'
+      empty: 'Il n''y a pas encore de j''aime'
     action_box:
-      title: 'Actions'
-      follow_button: 'Follow post'
-      following_description: "you're receiving notifications about new updates on this post"
-      not_following_description: "you won't receive notifications about this post"
+      title: 'Options'
+      follow_button: 'S''abonner à la publication'
+      following_description: "vous recevez des notifications sur les nouvelles mises à jour de ce poste"
+      not_following_description: "vous ne recevrez pas de notifications concernant cette publication"
     comments:
-      title: 'Activity'
-      post_update_badge: 'Update'
-      reply_button: 'Reply'
+      title: 'Activité'
+      post_update_badge: 'Mettre à jour'
+      reply_button: 'Répondre'
     new_comment:
-      body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
-      is_post_update: 'Mark as update'
-      user_notification: 'Users that follow this post will be notified'
-      not_logged_in: 'You need to log in to post comments'
+      body_placeholder: 'Laisser un commentaire'
+      submit_button: 'Soumettre'
+      is_post_update: 'Marquer comme mise à jour'
+      user_notification: 'Les utilisateurs qui suivent cette publication seront avertis'
+      not_logged_in: 'Vous devez être connecté pour poster des commentaires'
   site_settings:
     menu:
-      title: 'Site settings'
-      general: 'General'
-      boards: 'Boards'
-      post_statuses: 'Statuses'
-      roadmap: 'Roadmap'
-      users: 'Users'
+      title: 'Paramètres du site'
+      general: 'Général'
+      boards: 'Tableaux'
+      post_statuses: 'Statuts'
+      roadmap: 'Feuille de route'
+      users: 'Utilisateur·rice·s'
     info_box:
-      up_to_date: 'All changes saved'
-      error: 'An error occurred: %{message}'
-      dirty: 'Changes not saved'
+      up_to_date: 'Toutes les modifications ont été enregistrées'
+      error: 'Une erreur s''est produite : %{message}'
+      dirty: 'Modifications non enregistrées'
     general:
-      title: 'General'
-      site_name: 'Site name'
-      site_logo: 'Site logo'
-      brand_setting: 'Display'
-      brand_setting_both: 'Both name and logo'
-      brand_setting_name: 'Name only'
-      brand_setting_logo: 'Logo only'
-      brand_setting_none: 'None'
-      locale: 'Language'
+      title: 'Général'
+      site_name: 'Nom du site'
+      site_logo: 'Logo du site'
+      brand_setting: 'Afficher'
+      brand_setting_both: 'Le nom et le logo'
+      brand_setting_name: 'Nom seulement'
+      brand_setting_logo: 'Logo uniquement'
+      brand_setting_none: 'Aucun'
+      locale: 'Langue'
       validations:
-        site_name: 'Site name is required'
+        site_name: 'Le nom du site est obligatoire'
     boards:
-      title: 'Boards'
-      empty: 'There are no boards. Create one below!'
-      new: 'New'
+      title: 'Tableaux'
+      empty: 'Il n''y a pas de tableaux. Créez en un ci-dessous!'
+      new: 'Nouveau'
       form:
-        name: 'Board name'
-        description: 'Board description (optional)'
+        name: 'Nom du tableau'
+        description: 'Description de du tableau (facultatif)'
     post_statuses:
-      title: 'Statuses'
-      empty: 'There are no statuses. Create one below!'
-      new: 'New'
+      title: 'Statuts'
+      empty: 'Il n''y a pas de statuts. Créez en un ci-dessous!'
+      new: 'Nouveau'
       form:
-        name: 'Status name'
+        name: 'Nom du statut'
     roadmap:
-      title: 'Roadmap'
-      title2: 'Not in roadmap'
-      empty: 'The roadmap is empty.'
-      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      title: 'Feuille de route'
+      title2: 'Pas dans la feuille de route'
+      empty: 'La feuille de route est vide.'
+      help: 'Vous pouvez ajouter des statuts à la feuille de route en les faisant glisser depuis la section ci-dessous. Si vous voulez plutôt créer un nouveau statut ou modifier leur commande, allez dans Paramètres du site > Statuts.'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
-  mailers:
-    devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
-      confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
-      email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
-      password_change:
-        body: "We're contacting you to notify you that your password has been changed."
-      reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
-    user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
-      notify_post_owner:
-        subject: '[%{app_name}] New comment on %{post}'
-        body: 'There is a new comment by %{user} on your post %{post}'
-      notify_comment_owner:
-        subject: '[%{app_name}] New reply on your comment from %{post}'
-        body: 'There is a new reply by %{user} on your comment from post %{post}'
-      notify_followers_of_post_update:
-        subject: '[%{app_name}] New update for post %{post}'
-        body: "There is a new update on the post you're following %{post}"
-      notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Status change on post %{post}'
-        body: "The post you're following %{post} has a new status"
-  backend:
-    errors:
-      unauthorized: 'You are not authorized'
-      not_logged_in: 'You must be logged in to access this page'
-      not_enough_privileges: 'You do not have the privilegies to access this page'
-      board:
-        update_order: 'There was an error in reordering boards'
-      post_status:
-        update_order: 'There was an error in reordering statuses'
+      title: 'Utilisateur·rice·s'
+      block: 'Bloquer'
+      unblock: 'Débloquer'
+      block_confirmation: "%{name} ne pourra pas se connecter tant qu'il ne sera pas débloqué. Êtes-vous sûr(e) ?"
+      unblock_confirmation: "%{name} sera en mesure de se connecter et de soumettre des commentaires. Vous êtes sûr ?"
+      role_to_admin_confirmation: "%{name} aura les mêmes privilèges que vous, et pourra même vous rétrograder ou vous bloquer. Ne continuez que si vous avez vraiment confiance en %{name}. Vous êtes sûr ?"
+      role_user: 'Utilisateur'
+      role_moderator: 'Modérateur'
+      role_admin: 'Administrateur'
+      status_active: 'Actif'
+      status_blocked: 'Bloqué'
+      status_deleted: 'Supprimé'

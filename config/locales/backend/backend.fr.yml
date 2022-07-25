@@ -1,43 +1,86 @@
 fr:
+  errors:
+    unauthorized: 'Vous n’êtes pas autorisé'
+    not_logged_in: 'Vous devez être connecté pour accéder à cette page'
+    not_enough_privileges: 'Vous n''avez pas les privilèges pour accéder à cette page'
+    user_blocked_or_deleted: 'Vous ne pouvez pas accéder à votre compte parce qu''il a été bloqué ou supprimé.'
+    board:
+      update_order: 'Il y a eu une erreur dans la réorganisation des panneaux'
+    post_status:
+      update_order: 'Il y a eu une erreur dans la réorganisation des statuts'
+  mailers:
+    devise:
+      welcome_greeting: 'Bienvenue sur %{site_name}, %{email} !'
+      opening_greeting: 'Bonjour %{email} !'
+      confirmation_instructions:
+        body: 'Vous pouvez confirmer l''email de votre compte en cliquant sur le lien ci-dessous :'
+        action: 'Confirmer mon compte'
+      email_changed:
+        body: "Nous vous contactons pour vous informer que votre adresse e-mail va être changée en %{email}."
+        body2: "Nous vous contactons pour vous informer que votre adresse électronique a été changée en %{email}."
+      password_change:
+        body: "Nous vous contactons pour vous informer que votre mot de passe a été modifié."
+      reset_password:
+        body: 'Quelqu''un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire en cliquant sur le lien ci-dessous.'
+        body2: "Si vous ne l'avez pas demandé, veuillez ignorer cet e-mail."
+        body3: "Votre mot de passe ne changera pas tant que vous n'aurez pas accédé au lien ci-dessus et créé un nouveau mot de passe."
+        action: 'Changer mon mot de passe'
+    user:
+      opening_greeting: 'Bonjour !'
+      closing_greeting: 'Passez une bonne journée !'
+      learn_more: 'Cliquez ici pour en savoir plus'
+      unsubscribe: 'Inutile ? Vous pouvez désactiver les notifications ici'
+      notify_post_owner:
+        subject: '%{app_name} Nouveau commentaire sur %{post}'
+        body: 'Il y a un nouveau commentaire de %{user} sur votre publication %{post}'
+      notify_comment_owner:
+        subject: '%{app_name} Nouvelle réponse à votre commentaire de %{post}'
+        body: 'Il y a une nouvelle réponse de %{user} sur votre commentaire du post %{post}'
+      notify_followers_of_post_update:
+        subject: '%{app_name} Nouvelle mise à jour pour la publication %{post}'
+        body: "Il y a une nouvelle mise à jour sur la publication que vous suivez %{post}"
+      notify_followers_of_post_status_change:
+        subject: '[%{app_name}] Changement de statut sur la publication %{post}'
+        body: "La publication que vous suivez %{post} a un nouveau statut"
   activerecord:
     attributes:
       board:
-        name: 'Name'
+        name: 'Nom'
         description: 'Description'
-        order: 'Order'
+        order: 'Ordre'
       comment:
-        body: 'Body'
-        is_post_update: 'Post update'
-        user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        body: 'Corps'
+        is_post_update: 'Publication mise à jour'
+        user_id: 'Auteur'
+        post_id: 'Publication'
+        parent_id: 'Commentaire parent'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Utilisateur'
+        post_id: 'Publication'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Utilisateur'
+        post_id: 'Publication'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: 'Nom'
+        color: 'Couleur '
+        order: 'Ordre'
+        show_in_roadmap: 'Voir dans la feuille de route'
       post:
-        title: 'Title'
+        title: 'Titre'
         description: 'Description'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        board_id: 'Tableau des publications'
+        user_id: 'Auteur de la publication'
+        post_status_id: 'Statut de la publication'
       user:
         email: 'Email'
-        full_name: 'Name and surname'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        full_name: 'Prénom et nom'
+        role: 'Rôle'
+        notifications_enabled: 'Notifications activées'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
-        too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum ${count} characters)'
+        invalid: 'est invalide'
+        required: 'est obligatoire'
+        blank: 'ne peut pas être vide'
+        taken: 'est déjà utilisé'
+        too_short: 'est trop court (au moins %{count} caractères)'
+        too_long: 'est trop long (pas plus de ${count} caractères)'

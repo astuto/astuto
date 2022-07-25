@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 ja:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ ja:
       timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
       unauthenticated: "ログインもしくはアカウント登録してください。"
       unconfirmed: "メールアドレスの本人確認が必要です。"
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
         subject: "メールアドレス確認メール"

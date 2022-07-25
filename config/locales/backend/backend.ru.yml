@@ -1,4 +1,47 @@
 ru:
+  errors:
+    unauthorized: 'You are not authorized'
+    not_logged_in: 'You must be logged in to access this page'
+    not_enough_privileges: 'You do not have the privilegies to access this page'
+    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
+    board:
+      update_order: 'There was an error in reordering boards'
+    post_status:
+      update_order: 'There was an error in reordering statuses'
+  mailers:
+    devise:
+      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
+      opening_greeting: 'Hello %{email}!'
+      confirmation_instructions:
+        body: 'You can confirm your account email through the link below:'
+        action: 'Confirm my account'
+      email_changed:
+        body: "We're contacting you to notify you that your email is being changed to %{email}."
+        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+      password_change:
+        body: "We're contacting you to notify you that your password has been changed."
+      reset_password:
+        body: 'Someone has requested a link to change your password. You can do this through the link below.'
+        body2: "If you didn't request this, please ignore this email."
+        body3: "Your password won't change until you access the link above and create a new one."
+        action: 'Change my password'
+    user:
+      opening_greeting: 'Hello!'
+      closing_greeting: 'Have a great day!'
+      learn_more: 'Click here to learn more'
+      unsubscribe: 'Annoyed? You can turn off notifications here'
+      notify_post_owner:
+        subject: '[%{app_name}] New comment on %{post}'
+        body: 'There is a new comment by %{user} on your post %{post}'
+      notify_comment_owner:
+        subject: '[%{app_name}] New reply on your comment from %{post}'
+        body: 'There is a new reply by %{user} on your comment from post %{post}'
+      notify_followers_of_post_update:
+        subject: '[%{app_name}] New update for post %{post}'
+        body: "There is a new update on the post you're following %{post}"
+      notify_followers_of_post_status_change:
+        subject: '[%{app_name}] Status change on post %{post}'
+        body: "The post you're following %{post} has a new status"
   activerecord:
     attributes:
       board:

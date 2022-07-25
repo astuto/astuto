@@ -1,4 +1,3 @@
-#Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 zh-CN:
   devise:
     confirmations:
@@ -15,7 +14,6 @@ zh-CN:
       timeout: "您已登录超时，请重新登录。"
       unauthenticated: "继续操作前请注册或者登录。"
       unconfirmed: "继续操作前请先确认您的帐号。"
-      blocked_or_deleted: "You cannot access your account because it has been blocked or deleted."
     mailer:
       confirmation_instructions:
         subject: "帐户确认信息"
