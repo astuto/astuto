@@ -60,6 +60,18 @@ en:
       like:
         user_id: 'User'
         post_id: 'Post'
+      o_auth:
+        name: 'Name'
+        logo: 'Logo'
+        is_enabled: 'Enabled'
+        client_id: 'Client ID'
+        client_secret: 'Client secret'
+        authorize_url: 'Authorize URL'
+        token_url: 'Token URL'
+        profile_url: 'Profile URL'
+        scope: 'Scope'
+        json_user_name_path: 'JSON path to user name'
+        json_user_email_path: 'JSON path to user email'
       post_status:
         name: 'Name'
         color: 'Color'
