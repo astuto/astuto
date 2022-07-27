@@ -1,5 +1,7 @@
 en:
   common:
+    validations:
+      required: '%{attribute} is required'
     forms:
       auth:
         email: 'Email'
@@ -33,12 +35,14 @@ en:
     confirmation: 'Are you sure?'
     edited: 'Edited'
     buttons:
+      new: 'New'
       edit: 'Edit'
       delete: 'Delete'
       cancel: 'Cancel'
       create: 'Create'
       update: 'Save'
       confirm: 'Confirm'
+      back: 'Back'
     datetime:
       now: 'just now'
       minutes:
@@ -136,6 +140,7 @@ en:
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
       users: 'Users'
+      authentication: 'Authentication'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -183,3 +188,19 @@ en:
       status_active: 'Active'
       status_blocked: 'Blocked'
       status_deleted: 'Deleted'
+    authentication:
+      title: 'Authentication'
+      oauth_subtitle: 'OAuth providers'
+      form:
+        title_new: 'New OAuth provider'
+        title_edit: 'Edit OAuth provider'
+        name: 'Name'
+        logo: 'Logo'
+        clientId: 'Client ID'
+        clientSecret: 'Client secret'
+        authorizeUrl: 'Authorize URL'
+        tokenUrl: 'Token URL'
+        scope: 'Scope'
+        profileUrl: 'Profile URL'
+        jsonUserEmailPath: 'JSON path for user email'
+        jsonUserNamePath: 'JSON path for user name'

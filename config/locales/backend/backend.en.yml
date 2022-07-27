@@ -95,4 +95,4 @@ en:
         blank: 'cannot be blank'
         taken: 'is already in use'
         too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum ${count} characters)'
+        too_long: 'is too long (maximum %{count} characters)'

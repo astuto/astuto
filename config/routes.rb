@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     
     resources :tenants, only: [:show, :update]
     resources :users, only: [:index, :update]
+    resources :o_auths, only: [:index, :create, :update, :destroy]
   
     resources :posts, only: [:index, :create, :show, :update, :destroy] do
       resource :follows, only: [:create, :destroy]
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
       get 'post_statuses'
       get 'roadmap'
       get 'users'
+      get 'authentication'
     end
   end
 end

@@ -1,0 +1,18 @@
+.authenticationIndexPage {
+  .oauthProvidersTitle {
+    @extend .d-flex;
+
+    button {
+      @extend .ml-2;
+
+      height: min-content;
+    }
+  }
+}
+
+.authenticationFormPage {
+  a.backButton {
+    cursor: pointer;
+    &:hover { text-decoration: underline; }
+  }
+}
