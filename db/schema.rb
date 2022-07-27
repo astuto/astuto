@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_15_092725) do
+ActiveRecord::Schema.define(version: 2022_07_27_094200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,25 @@ ActiveRecord::Schema.define(version: 2022_07_15_092725) do
     t.index ["tenant_id"], name: "index_likes_on_tenant_id"
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "o_auths", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "logo"
+    t.boolean "is_enabled", default: false, null: false
+    t.string "client_id", null: false
+    t.string "client_secret", null: false
+    t.string "authorize_url", null: false
+    t.string "token_url", null: false
+    t.string "profile_url", null: false
+    t.string "scope", null: false
+    t.string "json_user_name_path"
+    t.string "json_user_email_path", null: false
+    t.bigint "tenant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "tenant_id"], name: "index_o_auths_on_name_and_tenant_id", unique: true
+    t.index ["tenant_id"], name: "index_o_auths_on_tenant_id"
   end
 
   create_table "post_status_changes", force: :cascade do |t|
@@ -151,6 +170,7 @@ ActiveRecord::Schema.define(version: 2022_07_15_092725) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "tenants"
   add_foreign_key "likes", "users"
+  add_foreign_key "o_auths", "tenants"
   add_foreign_key "post_status_changes", "post_statuses"
   add_foreign_key "post_status_changes", "posts"
   add_foreign_key "post_status_changes", "tenants"
