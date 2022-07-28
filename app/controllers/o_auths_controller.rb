@@ -24,7 +24,7 @@ class OAuthsController < ApplicationController
   end
 
   def update
-    @o_auth = OAuth.find(id: params[:id])
+    @o_auth = OAuth.find(params[:id])
     authorize @o_auth
 
     if @o_auth.update(o_auth_params)
@@ -37,7 +37,7 @@ class OAuthsController < ApplicationController
   end
 
   def destroy
-    @o_auth = OAuth.find(id: params[:id])
+    @o_auth = OAuth.find(params[:id])
     authorize @o_auth
 
     if @o_auth.destroy

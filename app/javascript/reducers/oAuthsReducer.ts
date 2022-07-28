@@ -10,6 +10,11 @@ import {
   OAUTH_SUBMIT_SUCCESS,
 } from '../actions/OAuth/submitOAuth';
 
+import {
+  OAuthUpdateActionTypes,
+  OAUTH_UPDATE_SUCCESS,
+} from '../actions/OAuth/updateOAuth';
+
 import { IOAuth, oAuthJSON2JS } from '../interfaces/IOAuth';
 
 export interface OAuthsState {
@@ -26,7 +31,10 @@ const initialState: OAuthsState = {
 
 const oAuthsReducer = (
   state = initialState,
-  action: OAuthsRequestActionTypes | OAuthSubmitActionTypes,
+  action:
+    OAuthsRequestActionTypes |
+    OAuthSubmitActionTypes |
+    OAuthUpdateActionTypes,
 ) => {
   switch (action.type) {
     case OAUTHS_REQUEST_START:
@@ -55,6 +63,15 @@ const oAuthsReducer = (
         ...state,
         items: [...state.items, oAuthJSON2JS(action.oAuth)],
       };
+
+    case OAUTH_UPDATE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(oAuth => {
+          if (oAuth.id !== parseInt(action.oAuth.id)) return oAuth;
+          return oAuthJSON2JS(action.oAuth);
+        })
+      }
 
     default:
       return state;

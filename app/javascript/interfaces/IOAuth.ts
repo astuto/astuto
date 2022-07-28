@@ -44,7 +44,7 @@ export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON) => ({
 });
 
 export const oAuthJS2JSON = (oAuth: IOAuth) => ({
-  id: oAuth.id.toString(),
+  id: oAuth.id?.toString(),
   name: oAuth.name,
   logo: oAuth.logo,
   is_enabled: oAuth.isEnabled,

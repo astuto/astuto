@@ -8,12 +8,14 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 
 interface Props {
   oAuth: IOAuth;
+  handleToggleEnabledOAuth(id: number, enabled: boolean): void;
   setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
   setSelectedOAuth: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const OAuthProviderItem = ({
   oAuth,
+  handleToggleEnabledOAuth,
   setPage,
   setSelectedOAuth,
 }: Props) => (
@@ -26,7 +28,7 @@ const OAuthProviderItem = ({
         <div className="oAuthIsEnabled">
           <Switch
             label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
-            onClick={() => null}
+            onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
             checked={oAuth.isEnabled}
             htmlId={`oAuth${oAuth.name}EnabledSwitch`}
           />
@@ -36,7 +38,6 @@ const OAuthProviderItem = ({
 
     <div className="oAuthActions">
       <a onClick={() => {
-        console.log(oAuth);
         setSelectedOAuth(oAuth.id);
         setPage('edit');
       }}>

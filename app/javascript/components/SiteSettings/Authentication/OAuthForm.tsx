@@ -12,9 +12,10 @@ interface Props {
   selectedOAuth: IOAuth;
   page: AuthenticationPages;
   handleSubmitOAuth(oAuth: IOAuth): void;
+  handleUpdateOAuth(id: number, form: ISiteSettingsOAuthForm): void;
 }
 
-interface ISiteSettingsOAuthForm {
+export interface ISiteSettingsOAuthForm {
   name: string;
   logo: string;
   clientId: string;
@@ -31,6 +32,7 @@ const OAuthForm = ({
   selectedOAuth,
   page,
   handleSubmitOAuth,
+  handleUpdateOAuth,
 }: Props) => {
   const {
     register,
@@ -64,7 +66,12 @@ const OAuthForm = ({
 
   const onSubmit: SubmitHandler<ISiteSettingsOAuthForm> = data => {
     const oAuth = { ...data, isEnabled: false };
-    handleSubmitOAuth(oAuth);
+
+    if (page === 'new') {
+      handleSubmitOAuth(oAuth);
+    } else if (page === 'edit') {
+      handleUpdateOAuth(selectedOAuth.id, oAuth as ISiteSettingsOAuthForm);
+    }
   };
 
   return (

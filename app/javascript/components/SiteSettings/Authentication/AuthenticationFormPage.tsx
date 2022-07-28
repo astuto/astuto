@@ -3,13 +3,14 @@ import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
-import OAuthForm from './OAuthForm';
+import OAuthForm, { ISiteSettingsOAuthForm } from './OAuthForm';
 import Spinner from '../../common/Spinner';
 import { DangerText } from '../../common/CustomTexts';
 import { IOAuth } from '../../../interfaces/IOAuth';
 
 interface Props {
   handleSubmitOAuth(oAuth: IOAuth): void;
+  handleUpdateOAuth(id: number, form: ISiteSettingsOAuthForm): void;
   isSubmitting: boolean;
   submitError: string;
   selectedOAuth: IOAuth;
@@ -19,6 +20,7 @@ interface Props {
 
 const AuthenticationFormPage = ({
   handleSubmitOAuth,
+  handleUpdateOAuth,
   isSubmitting,
   submitError,
   selectedOAuth,
@@ -33,9 +35,10 @@ const AuthenticationFormPage = ({
       <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
 
       <OAuthForm
+        handleSubmitOAuth={handleSubmitOAuth}
+        handleUpdateOAuth={handleUpdateOAuth}
         selectedOAuth={selectedOAuth}
         page={page}
-        handleSubmitOAuth={handleSubmitOAuth}
       />
 
       { isSubmitting && <Spinner /> }
