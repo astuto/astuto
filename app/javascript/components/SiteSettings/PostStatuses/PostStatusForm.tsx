@@ -71,7 +71,7 @@ const PostStatusForm = ({
       <input
         {...register('name', { required: true })}
         placeholder={I18n.t('site_settings.post_statuses.form.name')}
-        autoFocus
+        autoFocus={mode === 'update'}
         className="formControl"
       />
       
