@@ -1,4 +1,16 @@
-import IOAuth from "../interfaces/IOAuth";
+import {
+  OAuthsRequestActionTypes,
+  OAUTHS_REQUEST_START,
+  OAUTHS_REQUEST_SUCCESS,
+  OAUTHS_REQUEST_FAILURE,
+} from '../actions/OAuth/requestOAuths';
+
+import {
+  OAuthSubmitActionTypes,
+  OAUTH_SUBMIT_SUCCESS,
+} from '../actions/OAuth/submitOAuth';
+
+import { IOAuth, oAuthJSON2JS } from '../interfaces/IOAuth';
 
 export interface OAuthsState {
   items: Array<IOAuth>;
@@ -12,23 +24,41 @@ const initialState: OAuthsState = {
   error: '',
 };
 
-// const oAuthsReducer = (
-//   state = initialState,
-//   action: ,
-// ) => {
-//   switch (action.type) {
-//     case OAUTH_REQUEST_START:
-//       return {
-//         ...state,
-//         areLoading: true,
-//       };
+const oAuthsReducer = (
+  state = initialState,
+  action: OAuthsRequestActionTypes | OAuthSubmitActionTypes,
+) => {
+  switch (action.type) {
+    case OAUTHS_REQUEST_START:
+      return {
+        ...state,
+        areLoading: true,
+      };
 
-//     case OAUTH_REQUEST_SUCCESS:
-//       return {
-//         ...state,
-//         areLoading: false,
-//         error: '',
-//         items: action.oAuth.
-//       }
-//   }
-// }
+    case OAUTHS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        areLoading: false,
+        error: '',
+        items: action.oAuths.map<IOAuth>(oAuthJson => oAuthJSON2JS(oAuthJson)),
+      };
+
+    case OAUTHS_REQUEST_FAILURE:
+      return {
+        ...state,
+        areLoading: false,
+        error: action.error,
+      };
+
+    case OAUTH_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        items: [...state.items, oAuthJSON2JS(action.oAuth)],
+      };
+
+    default:
+      return state;
+  }
+}
+
+export default oAuthsReducer;

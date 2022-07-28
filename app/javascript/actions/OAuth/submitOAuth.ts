@@ -3,8 +3,7 @@ import { ThunkAction } from "redux-thunk";
 
 import HttpStatus from "../../constants/http_status";
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
-import IOAuth from "../../interfaces/IOAuth";
-import IOAuthJSON from "../../interfaces/json/IOAuth";
+import { IOAuth, IOAuthJSON, oAuthJS2JSON } from "../../interfaces/IOAuth";
 import { State } from "../../reducers/rootReducer";
 
 export const OAUTH_SUBMIT_START = 'OAUTH_SUBMIT_START';
@@ -57,17 +56,8 @@ export const submitOAuth = (
       headers: buildRequestHeaders(authenticityToken),
       body: JSON.stringify({
         o_auth: {
-          name: oAuth.name,
-          logo: oAuth.logo,
+          ...oAuthJS2JSON(oAuth),
           is_enabled: false,
-          client_id: oAuth.clientId,
-          client_secret: oAuth.clientSecret,
-          authorize_url: oAuth.authorizeUrl,
-          token_url: oAuth.tokenUrl,
-          profile_url: oAuth.profileUrl,
-          scope: oAuth.scope,
-          json_user_email_path: oAuth.jsonUserEmailPath,
-          json_user_name_path: oAuth.jsonUserNamePath,
         },
       }),
     });

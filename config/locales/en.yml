@@ -36,6 +36,8 @@ en:
     loading: 'Loading...'
     confirmation: 'Are you sure?'
     edited: 'Edited'
+    enabled: 'Enabled'
+    disabled: 'Disabled'
     buttons:
       new: 'New'
       edit: 'Edit'

@@ -5,9 +5,12 @@ import { DangerText } from '../../common/CustomTexts';
 import getValidationMessage from '../../../helpers/getValidationMessage';
 import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
-import IOAuth from '../../../interfaces/IOAuth';
+import { IOAuth } from '../../../interfaces/IOAuth';
+import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 
 interface Props {
+  selectedOAuth: IOAuth;
+  page: AuthenticationPages;
   handleSubmitOAuth(oAuth: IOAuth): void;
 }
 
@@ -25,6 +28,8 @@ interface ISiteSettingsOAuthForm {
 }
 
 const OAuthForm = ({
+  selectedOAuth,
+  page,
   handleSubmitOAuth,
 }: Props) => {
   const {
@@ -32,7 +37,7 @@ const OAuthForm = ({
     handleSubmit,
     formState: { errors }
   } = useForm<ISiteSettingsOAuthForm>({
-    defaultValues: {
+    defaultValues: page === 'new' ? {
       name: '',
       logo: '',
       clientId: '',
@@ -43,6 +48,17 @@ const OAuthForm = ({
       scope: '',
       jsonUserEmailPath: '',
       jsonUserNamePath: '',
+    } : {
+      name: selectedOAuth.name,
+      logo: selectedOAuth.logo,
+      clientId: selectedOAuth.clientId,
+      clientSecret: selectedOAuth.clientSecret,
+      authorizeUrl: selectedOAuth.authorizeUrl,
+      tokenUrl: selectedOAuth.tokenUrl,
+      profileUrl: selectedOAuth.profileUrl,
+      scope: selectedOAuth.scope,
+      jsonUserEmailPath: selectedOAuth.jsonUserEmailPath,
+      jsonUserNamePath: selectedOAuth.jsonUserNamePath,
     },
   });
 

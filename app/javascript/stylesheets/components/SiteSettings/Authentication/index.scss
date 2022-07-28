@@ -1,4 +1,6 @@
 .authenticationIndexPage {
+  h2 { @extend .mb-3; }
+
   .oauthProvidersTitle {
     @extend .d-flex;
 
@@ -8,11 +10,42 @@
       height: min-content;
     }
   }
+
+  .oAuthsList {
+    @extend .pl-1;
+
+    list-style: none;
+
+    .oAuthListItem {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .my-2,
+        .p-3;
+
+      .oAuthInfo {
+        @extend .d-flex;
+
+        column-gap: 32px;
+
+        .oAuthLogo { border-radius: 100%; align-self: center; }
+
+        .oAuthName { font-size: 18px; }
+      }
+      
+      .oAuthActions {
+        align-self: center;
+
+        a {
+          @extend .link;
+        }
+      }
+    }
+  }
 }
 
 .authenticationFormPage {
   a.backButton {
-    cursor: pointer;
-    &:hover { text-decoration: underline; }
+    @extend .link;
   }
 }

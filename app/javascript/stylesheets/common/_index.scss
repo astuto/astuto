@@ -183,3 +183,8 @@
   @extend
     .custom-select;
 }
+
+.link {
+  cursor: pointer;
+  &:hover { text-decoration: underline; }
+}
