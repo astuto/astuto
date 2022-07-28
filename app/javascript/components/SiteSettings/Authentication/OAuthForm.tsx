@@ -5,9 +5,10 @@ import { DangerText } from '../../common/CustomTexts';
 import getValidationMessage from '../../../helpers/getValidationMessage';
 import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
+import IOAuth from '../../../interfaces/IOAuth';
 
 interface Props {
-
+  handleSubmitOAuth(oAuth: IOAuth): void;
 }
 
 interface ISiteSettingsOAuthForm {
@@ -24,7 +25,7 @@ interface ISiteSettingsOAuthForm {
 }
 
 const OAuthForm = ({
-
+  handleSubmitOAuth,
 }: Props) => {
   const {
     register,
@@ -46,7 +47,8 @@ const OAuthForm = ({
   });
 
   const onSubmit: SubmitHandler<ISiteSettingsOAuthForm> = data => {
-    console.log(data);
+    const oAuth = { ...data, isEnabled: false };
+    handleSubmitOAuth(oAuth);
   };
 
   return (

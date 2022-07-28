@@ -96,14 +96,23 @@ import {
   USER_UPDATE_FAILURE,
 } from '../actions/User/updateUser';
 
+import {
+  OAuthSubmitActionTypes,
+  OAUTH_SUBMIT_START,
+  OAUTH_SUBMIT_SUCCESS,
+  OAUTH_SUBMIT_FAILURE,
+} from '../actions/OAuth/submitOAuth';
+
 import siteSettingsGeneralReducer, { SiteSettingsGeneralState } from './SiteSettings/generalReducer';
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
 import siteSettingsUsersReducer, { SiteSettingsUsersState } from './SiteSettings/usersReducer';
+import siteSettingsAuthenticationReducer, { SiteSettingsAuthenticationState } from './SiteSettings/authenticationReducer';
 
 interface SiteSettingsState {
   general: SiteSettingsGeneralState;
+  authentication: SiteSettingsAuthenticationState;
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
@@ -112,6 +121,7 @@ interface SiteSettingsState {
 
 const initialState: SiteSettingsState = {
   general: siteSettingsGeneralReducer(undefined, {} as any),
+  authentication: siteSettingsAuthenticationReducer(undefined, {} as any),
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
@@ -123,6 +133,7 @@ const siteSettingsReducer = (
   action:
     TenantRequestActionTypes |
     TenantUpdateActionTypes |
+    OAuthSubmitActionTypes |
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
     BoardUpdateActionTypes |
@@ -143,6 +154,14 @@ const siteSettingsReducer = (
       return {
         ...state,
         general: siteSettingsGeneralReducer(state.general, action),
+      };
+
+    case OAUTH_SUBMIT_START:
+    case OAUTH_SUBMIT_SUCCESS:
+    case OAUTH_SUBMIT_FAILURE:
+      return {
+        ...state,
+        authentication: siteSettingsAuthenticationReducer(state.authentication, action),
       };
       
     case BOARDS_REQUEST_START:
