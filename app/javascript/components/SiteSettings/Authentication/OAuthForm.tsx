@@ -11,6 +11,8 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 interface Props {
   selectedOAuth: IOAuth;
   page: AuthenticationPages;
+  setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
+
   handleSubmitOAuth(oAuth: IOAuth): void;
   handleUpdateOAuth(id: number, form: ISiteSettingsOAuthForm): void;
 }
@@ -31,13 +33,15 @@ export interface ISiteSettingsOAuthForm {
 const OAuthForm = ({
   selectedOAuth,
   page,
+  setPage,
+
   handleSubmitOAuth,
   handleUpdateOAuth,
 }: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isDirty }
   } = useForm<ISiteSettingsOAuthForm>({
     defaultValues: page === 'new' ? {
       name: '',
@@ -75,6 +79,18 @@ const OAuthForm = ({
   };
 
   return (
+    <>
+    <a
+      onClick={() => {
+        let confirmation = true;
+        if (isDirty)
+          confirmation = confirm(I18n.t('common.unsaved_changes') + ' ' + I18n.t('common.confirmation'));
+        if (confirmation) setPage('index');
+      }}
+      className="backButton">
+      ← { I18n.t('common.buttons.back') }
+    </a>
+    <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="formRow">
         <div className="formGroup col-6">
@@ -189,8 +205,16 @@ const OAuthForm = ({
         </div>
       </div>
 
-      <Button onClick={() => null}>{I18n.t('common.buttons.create')}</Button>
+      <Button onClick={() => null}>
+        {
+          page === 'new' ?
+            I18n.t('common.buttons.create')
+          :
+            I18n.t('common.buttons.update')
+        }
+      </Button>
     </form>
+    </>
   );
 }
 

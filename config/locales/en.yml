@@ -35,6 +35,7 @@ en:
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
+    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
     edited: 'Edited'
     enabled: 'Enabled'
     disabled: 'Disabled'

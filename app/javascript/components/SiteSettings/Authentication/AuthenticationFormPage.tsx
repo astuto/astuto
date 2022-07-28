@@ -29,16 +29,12 @@ const AuthenticationFormPage = ({
 }: Props) => (
   <>
     <Box customClass="authenticationFormPage">
-      <a onClick={() => setPage('index')} className="backButton">
-        ← { I18n.t('common.buttons.back') }
-      </a>
-      <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
-
       <OAuthForm
         handleSubmitOAuth={handleSubmitOAuth}
         handleUpdateOAuth={handleUpdateOAuth}
         selectedOAuth={selectedOAuth}
         page={page}
+        setPage={setPage}
       />
 
       { isSubmitting && <Spinner /> }

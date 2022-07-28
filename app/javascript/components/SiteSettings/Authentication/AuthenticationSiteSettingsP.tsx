@@ -42,17 +42,13 @@ const AuthenticationSiteSettingsP = ({
 
   const handleSubmitOAuth = (oAuth: IOAuth) => {
     onSubmitOAuth(oAuth, authenticityToken).then(res => {
-      if (res?.status !== HttpStatus.Created) return;
-
-      setPage('index');
+      if (res?.status === HttpStatus.Created) setPage('index');
     });
   };
 
   const handleUpdateOAuth = (id: number, form: ISiteSettingsOAuthForm) => {
     onUpdateOAuth(id, form, authenticityToken).then(res => {
-      if (res?.status !== HttpStatus.OK) return;
-
-      setPage('index');
+      if (res?.status === HttpStatus.OK) setPage('index');
     });
   };
 

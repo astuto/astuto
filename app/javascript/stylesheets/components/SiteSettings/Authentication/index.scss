@@ -46,6 +46,8 @@
 
 .authenticationFormPage {
   a.backButton {
-    @extend .link;
+    @extend .link, .mb-2;
+
+    font-size: 18px;
   }
 }
