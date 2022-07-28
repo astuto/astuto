@@ -9,6 +9,7 @@ import OAuthProviderItem from './OAuthProviderItem';
 interface Props {
   oAuths: Array<IOAuth>;
   handleToggleEnabledOAuth(id: number, enabled: boolean): void;
+  handleDeleteOAuth(id: number): void;
   setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
   setSelectedOAuth: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -16,6 +17,7 @@ interface Props {
 const OAuthProvidersList = ({
   oAuths,
   handleToggleEnabledOAuth,
+  handleDeleteOAuth,
   setPage,
   setSelectedOAuth,
 }: Props) => (
@@ -33,6 +35,7 @@ const OAuthProvidersList = ({
           <OAuthProviderItem
             oAuth={oAuth}
             handleToggleEnabledOAuth={handleToggleEnabledOAuth}
+            handleDeleteOAuth={handleDeleteOAuth}
             setPage={setPage}
             setSelectedOAuth={setSelectedOAuth}
             key={i}

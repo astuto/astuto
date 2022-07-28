@@ -12,6 +12,13 @@ import {
   OAUTH_UPDATE_FAILURE,
 } from '../../actions/OAuth/updateOAuth';
 
+import {
+  OAuthDeleteActionTypes,
+  OAUTH_DELETE_START,
+  OAUTH_DELETE_SUCCESS,
+  OAUTH_DELETE_FAILURE,
+} from '../../actions/OAuth/deleteOAuth';
+
 export interface SiteSettingsAuthenticationState {
   isSubmitting: boolean;
   error: string;
@@ -26,11 +33,13 @@ const siteSettingsAuthenticationReducer = (
   state = initialState,
   action:
     OAuthSubmitActionTypes |
-    OAuthUpdateActionTypes,
+    OAuthUpdateActionTypes |
+    OAuthDeleteActionTypes,
 ) => {
   switch (action.type) {
     case OAUTH_SUBMIT_START:
     case OAUTH_UPDATE_START:
+    case OAUTH_DELETE_START:
       return {
         ...state,
         isSubmitting: true,
@@ -38,6 +47,7 @@ const siteSettingsAuthenticationReducer = (
 
     case OAUTH_SUBMIT_SUCCESS:
     case OAUTH_UPDATE_SUCCESS:
+    case OAUTH_DELETE_SUCCESS:
       return {
         ...state,
         isSubmitting: false,
@@ -46,6 +56,7 @@ const siteSettingsAuthenticationReducer = (
 
     case OAUTH_SUBMIT_FAILURE:
     case OAUTH_UPDATE_FAILURE:
+    case OAUTH_DELETE_FAILURE:
       return {
         ...state,
         isSubmitting: false,

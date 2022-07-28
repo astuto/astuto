@@ -9,6 +9,7 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 interface Props {
   oAuth: IOAuth;
   handleToggleEnabledOAuth(id: number, enabled: boolean): void;
+  handleDeleteOAuth(id: number): void;
   setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
   setSelectedOAuth: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -16,6 +17,7 @@ interface Props {
 const OAuthProviderItem = ({
   oAuth,
   handleToggleEnabledOAuth,
+  handleDeleteOAuth,
   setPage,
   setSelectedOAuth,
 }: Props) => (
@@ -44,7 +46,7 @@ const OAuthProviderItem = ({
         { I18n.t('common.buttons.edit') }
       </a>
       <Separator />
-      <a onClick={() => null}>
+      <a onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}>
         { I18n.t('common.buttons.delete') }
       </a>
     </div>

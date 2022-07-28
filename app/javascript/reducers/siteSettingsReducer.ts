@@ -110,6 +110,13 @@ import {
   OAUTH_UPDATE_FAILURE,
 } from '../actions/OAuth/updateOAuth';
 
+import {
+  OAuthDeleteActionTypes,
+  OAUTH_DELETE_START,
+  OAUTH_DELETE_SUCCESS,
+  OAUTH_DELETE_FAILURE,
+} from '../actions/OAuth/deleteOAuth';
+
 import siteSettingsGeneralReducer, { SiteSettingsGeneralState } from './SiteSettings/generalReducer';
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
@@ -142,6 +149,7 @@ const siteSettingsReducer = (
     TenantUpdateActionTypes |
     OAuthSubmitActionTypes |
     OAuthUpdateActionTypes |
+    OAuthDeleteActionTypes |
     BoardsRequestActionTypes |
     BoardSubmitActionTypes |
     BoardUpdateActionTypes |
@@ -170,6 +178,9 @@ const siteSettingsReducer = (
     case OAUTH_UPDATE_START:
     case OAUTH_UPDATE_SUCCESS:
     case OAUTH_UPDATE_FAILURE:
+    case OAUTH_DELETE_START:
+    case OAUTH_DELETE_SUCCESS:
+    case OAUTH_DELETE_FAILURE:
       return {
         ...state,
         authentication: siteSettingsAuthenticationReducer(state.authentication, action),

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { deleteOAuth } from "../actions/OAuth/deleteOAuth";
 import { requestOAuths } from "../actions/OAuth/requestOAuths";
 import { submitOAuth } from "../actions/OAuth/submitOAuth";
 import { updateOAuth } from "../actions/OAuth/updateOAuth";
@@ -30,6 +31,10 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   onToggleEnabledOAuth(id: number, isEnabled: boolean, authenticityToken: string) {
     dispatch(updateOAuth({id, isEnabled, authenticityToken}));
+  },
+
+  onDeleteOAuth(id: number, authenticityToken: string) {
+    dispatch(deleteOAuth(id, authenticityToken));
   },
 });
 

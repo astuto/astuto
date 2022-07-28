@@ -16,6 +16,7 @@ interface Props {
   onSubmitOAuth(oAuth: IOAuth, authenticityToken: string): Promise<any>;
   onUpdateOAuth(id: number, form: ISiteSettingsOAuthForm, authenticityToken: string): Promise<any>;
   onToggleEnabledOAuth(id: number, isEnabled: boolean, authenticityToken: string): void;
+  onDeleteOAuth(id: number, authenticityToken: string): void;
 
   isSubmitting: boolean;
   submitError: string;
@@ -31,6 +32,7 @@ const AuthenticationSiteSettingsP = ({
   onSubmitOAuth,
   onUpdateOAuth,
   onToggleEnabledOAuth,
+  onDeleteOAuth,
   isSubmitting,
   submitError,
   authenticityToken,
@@ -56,11 +58,16 @@ const AuthenticationSiteSettingsP = ({
     onToggleEnabledOAuth(id, enabled, authenticityToken);
   };
 
+  const handleDeleteOAuth = (id: number) => {
+    onDeleteOAuth(id, authenticityToken);
+  };
+
   return (
     page === 'index' ?
       <AuthenticationIndexPage
         oAuths={oAuths}
         handleToggleEnabledOAuth={handleToggleEnabledOAuth}
+        handleDeleteOAuth={handleDeleteOAuth}
         setPage={setPage}
         setSelectedOAuth={setSelectedOAuth}
         isSubmitting={isSubmitting}

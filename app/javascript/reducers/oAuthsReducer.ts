@@ -15,6 +15,11 @@ import {
   OAUTH_UPDATE_SUCCESS,
 } from '../actions/OAuth/updateOAuth';
 
+import {
+  OAuthDeleteActionTypes,
+  OAUTH_DELETE_SUCCESS,
+} from '../actions/OAuth/deleteOAuth';
+
 import { IOAuth, oAuthJSON2JS } from '../interfaces/IOAuth';
 
 export interface OAuthsState {
@@ -34,7 +39,8 @@ const oAuthsReducer = (
   action:
     OAuthsRequestActionTypes |
     OAuthSubmitActionTypes |
-    OAuthUpdateActionTypes,
+    OAuthUpdateActionTypes |
+    OAuthDeleteActionTypes,
 ) => {
   switch (action.type) {
     case OAUTHS_REQUEST_START:
@@ -71,7 +77,13 @@ const oAuthsReducer = (
           if (oAuth.id !== parseInt(action.oAuth.id)) return oAuth;
           return oAuthJSON2JS(action.oAuth);
         })
-      }
+      };
+
+    case OAUTH_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(oAuth => oAuth.id !== action.id),
+      };
 
     default:
       return state;

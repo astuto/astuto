@@ -9,20 +9,26 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 
 interface Props {
   oAuths: OAuthsState;
-  handleToggleEnabledOAuth(id: number, enabled: boolean): void;
-  setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
-  setSelectedOAuth: React.Dispatch<React.SetStateAction<number>>;
   isSubmitting: boolean;
   submitError: string;
+
+  handleToggleEnabledOAuth(id: number, enabled: boolean): void;
+  handleDeleteOAuth(id: number): void;
+
+  setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
+  setSelectedOAuth: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AuthenticationIndexPage = ({
   oAuths,
-  handleToggleEnabledOAuth,
-  setPage,
-  setSelectedOAuth,
   isSubmitting,
   submitError,
+
+  handleToggleEnabledOAuth,
+  handleDeleteOAuth,
+
+  setPage,
+  setSelectedOAuth,
 }: Props) => (
   <>
     <Box customClass="authenticationIndexPage">
@@ -31,6 +37,7 @@ const AuthenticationIndexPage = ({
       <OAuthProvidersList
         oAuths={oAuths.items}
         handleToggleEnabledOAuth={handleToggleEnabledOAuth}
+        handleDeleteOAuth={handleDeleteOAuth}
         setPage={setPage}
         setSelectedOAuth={setSelectedOAuth}
       />
