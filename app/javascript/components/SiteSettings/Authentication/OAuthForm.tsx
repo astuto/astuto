@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { DangerText } from '../../common/CustomTexts';
 import getValidationMessage from '../../../helpers/getValidationMessage';
 import Button from '../../common/Button';
+import { URL_REGEX } from '../../../constants/regex';
 
 interface Props {
 
@@ -98,21 +99,23 @@ const OAuthForm = ({
         <div className="formGroup col-6">
           <label htmlFor="authorizeUrl">{ I18n.t('site_settings.authentication.form.authorizeUrl') }</label>
           <input
-            {...register('authorizeUrl', { required: true })}
+            {...register('authorizeUrl', { required: true, pattern: URL_REGEX })}
             id="authorizeUrl"
             className="formControl"
           />
-          <DangerText>{errors.authorizeUrl && getValidationMessage(errors.authorizeUrl.type, 'o_auth', 'authorize_url')}</DangerText>
+          <DangerText>{errors.authorizeUrl?.type === 'required' && getValidationMessage(errors.authorizeUrl.type, 'o_auth', 'authorize_url')}</DangerText>
+          <DangerText>{errors.authorizeUrl?.type === 'pattern' && I18n.t('common.validations.url')}</DangerText>
         </div>
 
         <div className="formGroup col-6">
           <label htmlFor="tokenUrl">{ I18n.t('site_settings.authentication.form.tokenUrl') }</label>
           <input
-            {...register('tokenUrl', { required: true })}
+            {...register('tokenUrl', { required: true, pattern: URL_REGEX })}
             id="tokenUrl"
             className="formControl"
           />
-          <DangerText>{errors.tokenUrl && getValidationMessage(errors.tokenUrl.type, 'o_auth', 'token_url')}</DangerText>
+          <DangerText>{errors.tokenUrl?.type === 'required' && getValidationMessage(errors.tokenUrl.type, 'o_auth', 'token_url')}</DangerText>
+          <DangerText>{errors.tokenUrl?.type === 'pattern' && I18n.t('common.validations.url')}</DangerText>
         </div>
       </div>
 
@@ -130,11 +133,12 @@ const OAuthForm = ({
       <div className="formGroup">
         <label htmlFor="profileUrl">{ I18n.t('site_settings.authentication.form.profileUrl') }</label>
         <input
-          {...register('profileUrl', { required: true })}
+          {...register('profileUrl', { required: true, pattern: URL_REGEX })}
           id="profileUrl"
           className="formControl"
         />
-        <DangerText>{errors.profileUrl && getValidationMessage(errors.profileUrl.type, 'o_auth', 'profile_url')}</DangerText>
+        <DangerText>{errors.profileUrl?.type === 'required' && getValidationMessage(errors.profileUrl.type, 'o_auth', 'profile_url')}</DangerText>
+        <DangerText>{errors.profileUrl?.type === 'pattern' && I18n.t('common.validations.url')}</DangerText>
       </div>
 
       <div className="formRow">

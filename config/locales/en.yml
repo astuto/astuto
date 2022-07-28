@@ -2,6 +2,8 @@ en:
   common:
     validations:
       required: '%{attribute} is required'
+      email: 'Invalid email'
+      url: 'Invalid URL'
     forms:
       auth:
         email: 'Email'
@@ -60,8 +62,6 @@ en:
       title: '1. Create user account'
       email_auth: 'Register with email'
       validations:
-        full_name: 'Full name is required'
-        email: 'Email is invalid'
         password: 'Password must have at least %{n} characters'
         password_mismatch: 'Password and password confirmation must match'
     step2:

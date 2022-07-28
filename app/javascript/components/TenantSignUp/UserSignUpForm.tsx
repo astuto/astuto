@@ -6,6 +6,8 @@ import Box from '../common/Box';
 import Button from '../common/Button';
 import { ITenantSignUpUserForm } from './TenantSignUpP';
 import { DangerText } from '../common/CustomTexts';
+import getValidationMessage from '../../helpers/getValidationMessage';
+import { EMAIL_REGEX } from '../../constants/regex';
 
 interface Props {
   currentStep: number;
@@ -24,7 +26,13 @@ const UserSignUpForm = ({
   userData,
   setUserData,
 }: Props) => {
-  const { register, handleSubmit, setError, formState: { errors } } = useForm<ITenantSignUpUserForm>();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    getValues,
+    formState: { errors }
+  } = useForm<ITenantSignUpUserForm>();
   const onSubmit: SubmitHandler<ITenantSignUpUserForm> = data => {
     if (data.password !== data.passwordConfirmation) {
       setError('passwordConfirmation', I18n.t('signup.step1.validations.password_mismatch'));
@@ -57,18 +65,21 @@ const UserSignUpForm = ({
               id="userFullName"
               className="formControl"
             />
-            <DangerText>{ errors.fullName && I18n.t('signup.step1.validations.full_name') }</DangerText>
+            <DangerText>{ errors.fullName &&  getValidationMessage('required', 'user', 'full_name')}</DangerText>
           </div>
 
           <div className="formRow">
             <input
-              {...register('email', { required: true, pattern: /(.+)@(.+){2,}\.(.+){2,}/ })}
+              {...register('email', { required: true, pattern: EMAIL_REGEX })}
               type="email"
               placeholder={I18n.t('common.forms.auth.email')}
               id="userEmail"
               className="formControl"
             />
-            <DangerText>{ errors.email && I18n.t('signup.step1.validations.email') }</DangerText>
+            <DangerText>{errors.email?.type === 'required' && getValidationMessage('required', 'user', 'email')}</DangerText>
+            <DangerText>
+              {errors.email?.type === 'pattern' && I18n.t('common.validations.email')}
+            </DangerText>
           </div>
 
           <div className="formRow">
