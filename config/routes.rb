@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     resources :tenants, only: [:show, :update]
     resources :users, only: [:index, :update]
     resources :o_auths, only: [:index, :create, :update, :destroy]
-    get '/o_auths/:id/callback', to: 'o_auths#callback'
+    get '/o_auths/:id/start', to: 'o_auths#start', as: :o_auth_start
+    get '/o_auths/:id/callback', to: 'o_auths#callback', as: :o_auth_callback
   
     resources :posts, only: [:index, :create, :show, :update, :destroy] do
       resource :follows, only: [:create, :destroy]

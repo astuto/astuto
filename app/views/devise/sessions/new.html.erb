@@ -27,9 +27,8 @@
   <% end %>
 
   <% if not @o_auths.empty? %>
-    <p>Okay, ci sono strategie OAuth</p>
     <% @o_auths.each do |o_auth| %>
-      <p><%= link_to o_auth.name, o_auth.authorize_url_with_query_params %></p>
+      <p><%= link_to o_auth.name, o_auth_start_path(o_auth) %></p>
     <% end %>
   <% end %>
 

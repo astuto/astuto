@@ -1,16 +1,33 @@
 class OAuthsController < ApplicationController
-  include ApplicationHelper
   include HTTParty
+  include ApplicationHelper
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
 
+  # [subdomain.]base_url/o_auths/:id/start
+  # Generates authorize url with required parameters and redirects to provider
+  def start
+    @o_auth = OAuth.find(params[:id])
+    return unless @o_auth.is_enabled?
+
+    # Generate random state + other query params
+    token_state = Devise.friendly_token(30)
+    session[:token_state] = token_state
+    @o_auth.state = token_state
+    @o_auth.redirect_uri = o_auth_callback_url(@o_auth.id, subdomain: Current.tenant.subdomain)
+
+    redirect_to @o_auth.authorize_url_with_query_params
+  end
+
   # [subdomain.]base_url/o_auths/:id/callback
+  # Exchange authorization code for access token, fetch user info and sign in/up
   def callback
     return unless session[:token_state] == params[:state]
 
     o_auth = OAuth.find(params[:id])
     return unless o_auth.is_enabled?
 
+    # Exchange authorization code for access token
     token_request_params = {
       code: params[:code],
       client_id: o_auth.client_id,
@@ -22,10 +39,12 @@ class OAuthsController < ApplicationController
     token_response = HTTParty.post(o_auth.token_url, body: token_request_params)
     access_token = token_response['access_token']
 
+    # Exchange access token for profile info
     profile_response = HTTParty.get("#{o_auth.profile_url}?access_token=#{access_token}")
     email = profile_response['email']
     full_name = profile_response['name']
 
+    # Sign in or sign up user by email
     @user = User.find_by(email: email)
 
     if @user.nil?
@@ -38,6 +57,8 @@ class OAuthsController < ApplicationController
     flash[:notice] = I18n.t('devise.sessions.signed_in')
     redirect_to root_path
   end
+
+  ### CRUD actions below ###
 
   def index
     authorize OAuth
