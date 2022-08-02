@@ -1,5 +1,6 @@
 class Tenant < ApplicationRecord
   has_many :boards
+  has_many :o_auths
   has_many :post_statuses
   has_many :posts
   has_many :users

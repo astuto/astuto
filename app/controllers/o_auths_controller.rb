@@ -1,7 +1,43 @@
 class OAuthsController < ApplicationController
   include ApplicationHelper
+  include HTTParty
 
-  before_action :authenticate_admin
+  before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
+
+  # [subdomain.]base_url/o_auths/:id/callback
+  def callback
+    return unless session[:token_state] == params[:state]
+
+    o_auth = OAuth.find(params[:id])
+    return unless o_auth.is_enabled?
+
+    token_request_params = {
+      code: params[:code],
+      client_id: o_auth.client_id,
+      client_secret: o_auth.client_secret,
+      grant_type: 'authorization_code',
+      redirect_uri: "http://default.lvh.me:3000/o_auths/#{o_auth.id}/callback"
+    }
+    
+    token_response = HTTParty.post(o_auth.token_url, body: token_request_params)
+    access_token = token_response['access_token']
+
+    profile_response = HTTParty.get("#{o_auth.profile_url}?access_token=#{access_token}")
+    email = profile_response['email']
+    full_name = profile_response['name']
+
+    @user = User.find_by(email: email)
+
+    if @user.nil?
+      @user = User.new(email: email, full_name: full_name, password: Devise.friendly_token, status: 'active')
+      @user.skip_confirmation!
+      @user.save
+    end
+    
+    sign_in @user
+    flash[:notice] = I18n.t('devise.sessions.signed_in')
+    redirect_to root_path
+  end
 
   def index
     authorize OAuth

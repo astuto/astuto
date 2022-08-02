@@ -26,6 +26,13 @@
     </div>
   <% end %>
 
+  <% if not @o_auths.empty? %>
+    <p>Okay, ci sono strategie OAuth</p>
+    <% @o_auths.each do |o_auth| %>
+      <p><%= link_to o_auth.name, o_auth.authorize_url_with_query_params %></p>
+    <% end %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t('common.forms.auth.log_in'), class: "btn btn-dark btn-block" %>
   </div>

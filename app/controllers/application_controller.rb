@@ -47,6 +47,15 @@ class ApplicationController < ActionController::Base
       I18n.locale = @tenant.locale
     end
 
+    def load_oauths
+      @o_auths = Current.tenant_or_raise!.o_auths.where(is_enabled: true)
+      return if @o_auths.empty?
+
+      token_state = Devise.friendly_token
+      session[:token_state] = token_state
+      @o_auths.each { |o_auth| o_auth.state = token_state }
+    end
+
   private
 
     def user_not_authorized

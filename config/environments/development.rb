@@ -1,8 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.hosts << "lvh.me"
+  config.hosts << "default.lvh.me"
+
   # For subdomains in localhost
-  config.action_dispatch.tld_length = 0
+  config.action_dispatch.tld_length = 1
 
   # For Devise
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
