@@ -1,5 +1,6 @@
 class OAuthsController < ApplicationController
   include HTTParty
+  include OAuthsHelper
   include ApplicationHelper
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
@@ -24,30 +25,39 @@ class OAuthsController < ApplicationController
   def callback
     return unless session[:token_state] == params[:state]
 
-    o_auth = OAuth.find(params[:id])
-    return unless o_auth.is_enabled?
+    @o_auth = OAuth.find(params[:id])
+    return unless @o_auth.is_enabled?
 
     # Exchange authorization code for access token
     token_request_params = {
       code: params[:code],
-      client_id: o_auth.client_id,
-      client_secret: o_auth.client_secret,
+      client_id: @o_auth.client_id,
+      client_secret: @o_auth.client_secret,
       grant_type: 'authorization_code',
-      redirect_uri: "http://default.lvh.me:3000/o_auths/#{o_auth.id}/callback"
+      redirect_uri: o_auth_callback_url(@o_auth.id, subdomain: Current.tenant.subdomain)
     }
     
-    token_response = HTTParty.post(o_auth.token_url, body: token_request_params)
+    token_response = HTTParty.post(@o_auth.token_url, body: token_request_params)
     access_token = token_response['access_token']
 
     # Exchange access token for profile info
-    profile_response = HTTParty.get("#{o_auth.profile_url}?access_token=#{access_token}")
-    email = profile_response['email']
-    full_name = profile_response['name']
+    profile_response = HTTParty.get(
+      "#{@o_auth.profile_url}?access_token=#{access_token}",
+      format: :json
+    ).parsed_response
+    
+    email = query_path_from_hash(profile_response, @o_auth.json_user_email_path)
 
     # Sign in or sign up user by email
     @user = User.find_by(email: email)
 
     if @user.nil?
+      if @o_auth.json_user_name_path.blank?
+        full_name = I18n.t('defaults.user_full_name')
+      else
+        full_name = query_path_from_hash(profile_response, @o_auth.json_user_name_path)
+      end
+
       @user = User.new(email: email, full_name: full_name, password: Devise.friendly_token, status: 'active')
       @user.skip_confirmation!
       @user.save

@@ -8,6 +8,8 @@ en:
       update_order: 'There was an error in reordering boards'
     post_status:
       update_order: 'There was an error in reordering statuses'
+  defaults:
+    user_full_name: 'Anonymous User'
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
