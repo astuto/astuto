@@ -13,6 +13,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
     environment:
       - UPDATE=0
+      - BASE_URL
       - ENVIRONMENT
       - SECRET_KEY_BASE
       - POSTGRES_USER

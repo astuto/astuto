@@ -1,14 +1,13 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.hosts << "lvh.me"
-  config.hosts << "default.lvh.me"
+  config.hosts << ".localhost:3000"
+  config.hosts << ".lvh.me:3000"
 
-  # For subdomains in localhost
   config.action_dispatch.tld_length = 1
 
   # For Devise
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: Rails.application.base_url }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

@@ -30,6 +30,7 @@ module ApplicationHelper
 
   def add_subdomain_to(url_helper, resource=nil, options={})
     options[:subdomain] = Current.tenant_or_raise!.subdomain if Rails.application.multi_tenancy?
+    options[:host] = Rails.application.base_url
 
     resource ? url_helper.call(resource, options) : url_helper.call(options)
   end

@@ -16,6 +16,10 @@ module App
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    def base_url
+      ENV["BASE_URL"]
+    end
+
     def multi_tenancy?
       ENV["MULTI_TENANCY"] == "true"
     end

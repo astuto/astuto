@@ -4,7 +4,7 @@ en:
     not_logged_in: 'You must be logged in to access this page'
     not_enough_privileges: 'You do not have the privilegies to access this page'
     user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact an administrator or try a different provider.'
+    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
     board:
       update_order: 'There was an error in reordering boards'
     post_status:

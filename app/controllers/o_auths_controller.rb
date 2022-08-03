@@ -1,6 +1,5 @@
 class OAuthsController < ApplicationController
   include HTTParty
-  include OAuthsHelper
   include ApplicationHelper
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
@@ -15,7 +14,6 @@ class OAuthsController < ApplicationController
     token_state = Devise.friendly_token(30)
     session[:token_state] = token_state
     @o_auth.state = token_state
-    @o_auth.redirect_uri = add_subdomain_to(method(:o_auth_callback_url), @o_auth.id)
 
     redirect_to @o_auth.authorize_url_with_query_params
   end
@@ -26,52 +24,25 @@ class OAuthsController < ApplicationController
     return unless session[:token_state] == params[:state]
 
     @o_auth = OAuth.find(params[:id])
-    return unless @o_auth.is_enabled?
 
-    # Exchange authorization code for access token
-    token_request_params = {
-      code: params[:code],
-      client_id: @o_auth.client_id,
-      client_secret: @o_auth.client_secret,
-      grant_type: 'authorization_code',
-      redirect_uri: add_subdomain_to(method(:o_auth_callback_url), @o_auth.id)
-    }
+    user_profile = OAuthExchangeAuthCodeForProfile.new(
+      authorization_code: params[:code],
+      o_auth: @o_auth
+    ).run
     
-    token_response = HTTParty.post(@o_auth.token_url, body: token_request_params)
-    access_token = token_response['access_token']
+    user = OAuthSignInUser.new(
+      user_profile: user_profile,
+      o_auth: @o_auth
+    ).run
 
-    # Exchange access token for profile info
-    profile_response = HTTParty.get(
-      "#{@o_auth.profile_url}?access_token=#{access_token}",
-      format: :json
-    ).parsed_response
-    
-    email = query_path_from_hash(profile_response, @o_auth.json_user_email_path)
-
-    if email.nil?
+    if user
+      sign_in user
+      flash[:notice] = I18n.t('devise.sessions.signed_in')
+      redirect_to root_path
+    else
       flash[:alert] = I18n.t('errors.o_auth_login_error', { name: @o_auth.name })
       redirect_to new_user_session_path
-      return
     end
-
-    # Sign in or sign up user by email
-    @user = User.find_by(email: email)
-
-    if @user.nil?
-      if not @o_auth.json_user_name_path.blank?
-        full_name = query_path_from_hash(profile_response, @o_auth.json_user_name_path)
-      end
-
-      full_name ||= I18n.t('defaults.user_full_name')
-
-      @user = User.new(email: email, full_name: full_name, password: Devise.friendly_token, status: 'active')
-      @user.skip_confirmation!
-      @user.save
-    end
-    
-    sign_in @user
-    flash[:notice] = I18n.t('devise.sessions.signed_in')
-    redirect_to root_path
   end
 
   ### CRUD actions below ###
