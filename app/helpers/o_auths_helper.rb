@@ -1,7 +1,7 @@
 module OAuthsHelper
-  class HashPathNotFound < StandardError; end
-
   def query_path_from_hash(hash, path)
+    return nil unless hash.class == Hash and path.class == String
+
     path_array = path
       .split(Regexp.union([ '.', '[', ']' ]))     # split by . and []
       .filter { |v| not v.blank? }                # remove possible blank values
@@ -20,7 +20,6 @@ module OAuthsHelper
 
       hash = hash[selector]
     end
-    raise HashPathNotFound, "Json path #{path} not found" if hash == nil
 
     hash
   end

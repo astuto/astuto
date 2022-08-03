@@ -48,15 +48,21 @@ class OAuthsController < ApplicationController
     
     email = query_path_from_hash(profile_response, @o_auth.json_user_email_path)
 
+    if email.nil?
+      flash[:alert] = I18n.t('errors.o_auth_login_error', { name: @o_auth.name })
+      redirect_to new_user_session_path
+      return
+    end
+
     # Sign in or sign up user by email
     @user = User.find_by(email: email)
 
     if @user.nil?
-      if @o_auth.json_user_name_path.blank?
-        full_name = I18n.t('defaults.user_full_name')
-      else
+      if not @o_auth.json_user_name_path.blank?
         full_name = query_path_from_hash(profile_response, @o_auth.json_user_name_path)
       end
+
+      full_name ||= I18n.t('defaults.user_full_name')
 
       @user = User.new(email: email, full_name: full_name, password: Devise.friendly_token, status: 'active')
       @user.skip_confirmation!
