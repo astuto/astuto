@@ -15,7 +15,7 @@ class OAuthsController < ApplicationController
     token_state = Devise.friendly_token(30)
     session[:token_state] = token_state
     @o_auth.state = token_state
-    @o_auth.redirect_uri = o_auth_callback_url(@o_auth.id, subdomain: Current.tenant.subdomain)
+    @o_auth.redirect_uri = add_subdomain_to(method(:o_auth_callback_url), @o_auth.id)
 
     redirect_to @o_auth.authorize_url_with_query_params
   end
@@ -34,7 +34,7 @@ class OAuthsController < ApplicationController
       client_id: @o_auth.client_id,
       client_secret: @o_auth.client_secret,
       grant_type: 'authorization_code',
-      redirect_uri: o_auth_callback_url(@o_auth.id, subdomain: Current.tenant.subdomain)
+      redirect_uri: add_subdomain_to(method(:o_auth_callback_url), @o_auth.id)
     }
     
     token_response = HTTParty.post(@o_auth.token_url, body: token_request_params)
