@@ -42,7 +42,8 @@ class OAuthExchangeAuthCodeForProfile
       ).parsed_response
 
       return profile_response
-    rescue
+    rescue => error
+      print(error)
       return nil
     end
   end
