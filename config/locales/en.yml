@@ -196,6 +196,14 @@ en:
       title: 'Authentication'
       oauth_subtitle: 'OAuth providers'
       copy_url: 'Copy URL'
+      test_page:
+        title: '%{name} OAuth test results'
+        fetched_user_data: 'Fetched user data'
+        found: 'Found'
+        summary: 'Summary'
+        valid_configuration: 'This OAuth provider is configured correctly!'
+        warning_configuration: 'This OAuth provider if configured correctly, but a default name for users (%{name}) will be used.'
+        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
       form:
         title_new: 'New OAuth provider'
         title_edit: 'Edit OAuth provider'

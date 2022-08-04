@@ -45,6 +45,12 @@ const OAuthProviderItem = ({
         textToCopy={oAuth.callbackUrl}
       />
       <Separator />
+      <a onClick={() =>
+        window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
+      }>
+        Test
+      </a>
+      <Separator />
       <a onClick={() => {
         setSelectedOAuth(oAuth.id);
         setPage('edit');

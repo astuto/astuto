@@ -28,7 +28,7 @@
 
   <% if not @o_auths.empty? %>
     <% @o_auths.each do |o_auth| %>
-      <p><%= link_to "Log in with #{o_auth.name}", o_auth_start_path(o_auth) %></p>
+      <p><%= link_to "Log in with #{o_auth.name}", o_auth_start_path(o_auth, reason: 'user') %></p>
     <% end %>
   <% end %>
 

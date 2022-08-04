@@ -1,5 +1,6 @@
 en:
   errors:
+    unknown: 'An unknown error occurred'
     unauthorized: 'You are not authorized'
     not_logged_in: 'You must be logged in to access this page'
     not_enough_privileges: 'You do not have the privilegies to access this page'
