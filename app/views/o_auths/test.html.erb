@@ -9,7 +9,7 @@
   <div>
     <h2><%= t('site_settings.authentication.test_page.fetched_user_data') %></h2>
 
-    <code><%= JSON.pretty_generate(@user_profile) %></code>
+    <pre><%= JSON.pretty_generate(@user_profile, { indent: "  ", object_nl: "\n" }) %></pre>
   </div>
 
   <div>

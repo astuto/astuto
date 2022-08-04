@@ -54,7 +54,7 @@ class OAuthsController < ApplicationController
         return
       end
 
-      @user_profile = user_profile.to_json
+      @user_profile = user_profile
       @user_email = query_path_from_hash(user_profile, @o_auth.json_user_email_path)
       @user_name = query_path_from_hash(user_profile, @o_auth.json_user_name_path)
 
