@@ -40,6 +40,17 @@
   <div class="actions">
     <%= f.submit t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
   </div>
+
+  <hr />
+  
+  <% if not @o_auths.empty? %>
+    <% @o_auths.each do |o_auth| %>
+      <p>
+        <%= link_to t('common.forms.auth.sign_up_with', { o_auth: o_auth.name }),
+          o_auth_start_path(o_auth, reason: 'user') %>
+      </p>
+    <% end %>
+  <% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>

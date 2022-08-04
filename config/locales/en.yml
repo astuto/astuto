@@ -18,6 +18,8 @@ en:
         remember_me: 'Remember me'
         log_in: 'Log in'
         sign_up: 'Sign up'
+        log_in_with: 'Log in with %{o_auth}'
+        sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Profile settings'
         update_profile: 'Update profile'
         cancel_account: 'Cancel account'
