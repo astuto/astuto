@@ -113,7 +113,7 @@ const OAuthForm = ({
         </div>
       </div>
 
-      <h5>OAuth configuration</h5>
+      <h5>{ I18n.t('site_settings.authentication.form.subtitle_oauth_config') }</h5>
       <div className="formRow">
         <div className="formGroup col-6">
           <label htmlFor="clientId">{ I18n.t('site_settings.authentication.form.clientId') }</label>
@@ -170,7 +170,7 @@ const OAuthForm = ({
         <DangerText>{errors.scope && getValidationMessage(errors.scope.type, 'o_auth', 'scope')}</DangerText>
       </div>
 
-      <h5>User profile configuration</h5>
+      <h5>{ I18n.t('site_settings.authentication.form.subtitle_user_profile_config') }</h5>
       <div className="formGroup">
         <label htmlFor="profileUrl">{ I18n.t('site_settings.authentication.form.profileUrl') }</label>
         <input

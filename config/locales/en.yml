@@ -207,6 +207,8 @@ en:
       form:
         title_new: 'New OAuth provider'
         title_edit: 'Edit OAuth provider'
+        subtitle_oauth_config: 'OAuth configuration'
+        subtitle_user_profile_config: 'User profile configuration'
         name: 'Name'
         logo: 'Logo'
         clientId: 'Client ID'
