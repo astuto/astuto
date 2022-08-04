@@ -34,10 +34,11 @@ class OAuthExchangeAuthCodeForProfile
       
       token_response = HTTParty.post(@o_auth.token_url, body: token_request_params)
       access_token = token_response['access_token']
-
+      
       # Exchange access token for profile info
       profile_response = HTTParty.get(
-        "#{@o_auth.profile_url}?access_token=#{access_token}",
+        @o_auth.profile_url,
+        headers: { "Authorization": "Bearer #{access_token}" },
         format: :json
       ).parsed_response
 
