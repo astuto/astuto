@@ -50,7 +50,9 @@ class OAuthsController < ApplicationController
   def index
     authorize OAuth
 
-    render json: OAuth.order(created_at: :asc)
+    @o_auths = OAuth.order(created_at: :asc)
+
+    render json: @o_auths.as_json(methods: :callback_url)
   end
 
   def create
@@ -59,7 +61,7 @@ class OAuthsController < ApplicationController
     authorize @o_auth
 
     if @o_auth.save
-      render json: @o_auth, status: :created
+      render json: @o_auth.as_json(methods: :callback_url), status: :created
     else
       render json: {
         error: @o_auth.errors.full_messages
@@ -72,7 +74,7 @@ class OAuthsController < ApplicationController
     authorize @o_auth
 
     if @o_auth.update(o_auth_params)
-      render json: @o_auth
+      render json: @o_auth.as_json(methods: :callback_url)
     else
       render json: {
         error: @o_auth.errors.full_messages

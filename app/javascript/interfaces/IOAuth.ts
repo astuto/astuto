@@ -11,6 +11,8 @@ export interface IOAuth {
   scope: string;
   jsonUserEmailPath: string;
   jsonUserNamePath?: string;
+
+  callbackUrl?: string;
 }
 
 export interface IOAuthJSON {
@@ -26,6 +28,8 @@ export interface IOAuthJSON {
   scope: string;
   json_user_email_path: string;
   json_user_name_path?: string;
+
+  callback_url?: string;
 }
 
 export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON) => ({
@@ -40,7 +44,9 @@ export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON) => ({
   scope: oAuthJSON.scope,
   profileUrl: oAuthJSON.profile_url,
   jsonUserEmailPath: oAuthJSON.json_user_email_path,
-  jsonUserNamePath: oAuthJSON.json_user_name_path
+  jsonUserNamePath: oAuthJSON.json_user_name_path,
+
+  callbackUrl: oAuthJSON.callback_url,
 });
 
 export const oAuthJS2JSON = (oAuth: IOAuth) => ({
@@ -56,4 +62,6 @@ export const oAuthJS2JSON = (oAuth: IOAuth) => ({
   scope: oAuth.scope,
   json_user_email_path: oAuth.jsonUserEmailPath,
   json_user_name_path: oAuth.jsonUserNamePath,
+
+  callback_url: oAuth.callbackUrl,
 });

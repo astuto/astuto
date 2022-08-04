@@ -5,6 +5,7 @@ import { IOAuth } from '../../../interfaces/IOAuth';
 import Switch from '../../common/Switch';
 import Separator from '../../common/Separator';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
+import CopyToClipboardButton from '../../common/CopyToClipboardButton';
 
 interface Props {
   oAuth: IOAuth;
@@ -39,6 +40,11 @@ const OAuthProviderItem = ({
     </div>
 
     <div className="oAuthActions">
+      <CopyToClipboardButton
+        label={I18n.t('site_settings.authentication.copy_url')}
+        textToCopy={oAuth.callbackUrl}
+      />
+      <Separator />
       <a onClick={() => {
         setSelectedOAuth(oAuth.id);
         setPage('edit');

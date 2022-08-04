@@ -39,6 +39,7 @@ en:
     edited: 'Edited'
     enabled: 'Enabled'
     disabled: 'Disabled'
+    copied: 'Copied!'
     buttons:
       new: 'New'
       edit: 'Edit'
@@ -194,6 +195,7 @@ en:
     authentication:
       title: 'Authentication'
       oauth_subtitle: 'OAuth providers'
+      copy_url: 'Copy URL'
       form:
         title_new: 'New OAuth provider'
         title_edit: 'Edit OAuth provider'
