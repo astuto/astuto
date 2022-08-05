@@ -5,7 +5,6 @@ import {
   TENANT_UPDATE_FAILURE,
 } from '../../actions/Tenant/updateTenant';
 
-
 export interface SiteSettingsGeneralState {
   areUpdating: boolean;
   error: string;

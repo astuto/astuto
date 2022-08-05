@@ -1,23 +1,9 @@
 import {
-  TenantRequestActionTypes,
-  TENANT_REQUEST_START,
-  TENANT_REQUEST_SUCCESS,
-  TENANT_REQUEST_FAILURE,
-} from '../actions/Tenant/requestTenant';
-
-import {
   TenantUpdateActionTypes,
   TENANT_UPDATE_START,
   TENANT_UPDATE_SUCCESS,
   TENANT_UPDATE_FAILURE,
 } from '../actions/Tenant/updateTenant';
-
-import {
-  BoardsRequestActionTypes,
-  BOARDS_REQUEST_START,
-  BOARDS_REQUEST_SUCCESS,
-  BOARDS_REQUEST_FAILURE,
-} from '../actions/Board/requestBoards';
 
 import {
   BoardSubmitActionTypes,
@@ -48,13 +34,6 @@ import {
 } from '../actions/Board/deleteBoard';
 
 import {
-  PostStatusesRequestActionTypes,
-  POST_STATUSES_REQUEST_START,
-  POST_STATUSES_REQUEST_SUCCESS,
-  POST_STATUSES_REQUEST_FAILURE,
-} from '../actions/PostStatus/requestPostStatuses';
-
-import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
   POSTSTATUS_ORDER_UPDATE_SUCCESS,
@@ -81,13 +60,6 @@ import {
   POSTSTATUS_UPDATE_SUCCESS,
   POSTSTATUS_UPDATE_FAILURE,
 } from '../actions/PostStatus/updatePostStatus';
-
-import {
-  UsersRequestActionTypes,
-  USERS_REQUEST_START,
-  USERS_REQUEST_SUCCESS,
-  USERS_REQUEST_FAILURE,
-} from '../actions/User/requestUsers';
 
 import {
   UserUpdateActionTypes,
@@ -145,22 +117,18 @@ const initialState: SiteSettingsState = {
 const siteSettingsReducer = (
   state = initialState,
   action:
-    TenantRequestActionTypes |
     TenantUpdateActionTypes |
     OAuthSubmitActionTypes |
     OAuthUpdateActionTypes |
     OAuthDeleteActionTypes |
-    BoardsRequestActionTypes |
     BoardSubmitActionTypes |
     BoardUpdateActionTypes |
     BoardOrderUpdateActionTypes |
     BoardDeleteActionTypes |
-    PostStatusesRequestActionTypes |
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
     PostStatusUpdateActionTypes |
-    UsersRequestActionTypes |
     UserUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
@@ -186,9 +154,6 @@ const siteSettingsReducer = (
         authentication: siteSettingsAuthenticationReducer(state.authentication, action),
       };
       
-    case BOARDS_REQUEST_START:
-    case BOARDS_REQUEST_SUCCESS:
-    case BOARDS_REQUEST_FAILURE:
     case BOARD_SUBMIT_START:
     case BOARD_SUBMIT_SUCCESS:
     case BOARD_SUBMIT_FAILURE:
@@ -206,9 +171,6 @@ const siteSettingsReducer = (
         boards: siteSettingsBoardsReducer(state.boards, action),
       };
     
-    case POST_STATUSES_REQUEST_START:
-    case POST_STATUSES_REQUEST_SUCCESS:
-    case POST_STATUSES_REQUEST_FAILURE:
     case POSTSTATUS_SUBMIT_START:
     case POSTSTATUS_SUBMIT_SUCCESS:
     case POSTSTATUS_SUBMIT_FAILURE:
@@ -232,9 +194,6 @@ const siteSettingsReducer = (
         roadmap: siteSettingsRoadmapReducer(state.roadmap, action),
       };
 
-    case USERS_REQUEST_START:
-    case USERS_REQUEST_SUCCESS:
-    case USERS_REQUEST_FAILURE:
     case USER_UPDATE_START:
     case USER_UPDATE_SUCCESS:
     case USER_UPDATE_FAILURE:

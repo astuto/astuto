@@ -1,11 +1,4 @@
 import {
-  PostStatusesRequestActionTypes,
-  POST_STATUSES_REQUEST_START,
-  POST_STATUSES_REQUEST_SUCCESS,
-  POST_STATUSES_REQUEST_FAILURE,
-} from '../../actions/PostStatus/requestPostStatuses';
-
-import {
   PostStatusOrderUpdateActionTypes,
   POSTSTATUS_ORDER_UPDATE_START,
   POSTSTATUS_ORDER_UPDATE_SUCCESS,
@@ -46,14 +39,12 @@ const initialState: SiteSettingsPostStatusesState = {
 const siteSettingsPostStatusesReducer = (
   state = initialState,
   action:
-    PostStatusesRequestActionTypes |
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
     PostStatusUpdateActionTypes
 ): SiteSettingsPostStatusesState => {
   switch (action.type) {
-    case POST_STATUSES_REQUEST_START:
     case POSTSTATUS_SUBMIT_START:
     case POSTSTATUS_UPDATE_START:
     case POSTSTATUS_ORDER_UPDATE_START:
@@ -63,7 +54,6 @@ const siteSettingsPostStatusesReducer = (
         areUpdating: true,
       };
 
-    case POST_STATUSES_REQUEST_SUCCESS:
     case POSTSTATUS_SUBMIT_SUCCESS:
     case POSTSTATUS_UPDATE_SUCCESS:
     case POSTSTATUS_ORDER_UPDATE_SUCCESS:
@@ -74,7 +64,6 @@ const siteSettingsPostStatusesReducer = (
         error: '',
       };
 
-    case POST_STATUSES_REQUEST_FAILURE:
     case POSTSTATUS_SUBMIT_FAILURE:
     case POSTSTATUS_UPDATE_FAILURE:
     case POSTSTATUS_ORDER_UPDATE_FAILURE:
