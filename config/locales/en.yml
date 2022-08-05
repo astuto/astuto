@@ -4,6 +4,8 @@ en:
       required: '%{attribute} is required'
       email: 'Invalid email'
       url: 'Invalid URL'
+      password: 'Password must have at least %{n} characters'
+      password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
         email: 'Email'
@@ -67,17 +69,10 @@ en:
     step1:
       title: '1. Create user account'
       email_auth: 'Register with email'
-      validations:
-        password: 'Password must have at least %{n} characters'
-        password_mismatch: 'Password and password confirmation must match'
     step2:
       title: '2. Create feedback space'
-      site_name: 'Site name'
-      subdomain: 'Subdomain'
       create_button: 'Create feedback space'
       validations:
-        site_name: 'Site name is required'
-        subdomain: 'Subdomain is required'
         subdomain_already_taken: 'Sorry, this subdomain is not available'
     step3:
       title: "You're almost done!"
@@ -153,16 +148,10 @@ en:
       dirty: 'Changes not saved'
     general:
       title: 'General'
-      site_name: 'Site name'
-      site_logo: 'Site logo'
-      brand_setting: 'Display'
       brand_setting_both: 'Both name and logo'
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
-      locale: 'Language'
-      validations:
-        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
@@ -211,13 +200,3 @@ en:
         title_edit: 'Edit OAuth provider'
         subtitle_oauth_config: 'OAuth configuration'
         subtitle_user_profile_config: 'User profile configuration'
-        name: 'Name'
-        logo: 'Logo'
-        clientId: 'Client ID'
-        clientSecret: 'Client secret'
-        authorizeUrl: 'Authorize URL'
-        tokenUrl: 'Token URL'
-        scope: 'Scope'
-        profileUrl: 'Profile URL'
-        jsonUserEmailPath: 'JSON path for user email'
-        jsonUserNamePath: 'JSON path for user name'

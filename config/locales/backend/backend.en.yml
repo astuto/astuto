@@ -87,9 +87,17 @@ en:
         board_id: 'Post board'
         user_id: 'Post author'
         post_status_id: 'Post status'
+      tenant:
+        site_name: 'Site name'
+        site_logo: 'Site logo'
+        subdomain: 'Subdomain'
+        locale: 'Language'
+        brand_setting: 'Display'
       user:
         email: 'Email'
-        full_name: 'Name and surname'
+        full_name: 'Full name'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
         role: 'Role'
         notifications_enabled: 'Notifications enabled'
     errors:

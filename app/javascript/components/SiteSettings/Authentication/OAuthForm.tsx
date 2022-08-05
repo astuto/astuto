@@ -2,7 +2,7 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { DangerText } from '../../common/CustomTexts';
-import getValidationMessage from '../../../helpers/getValidationMessage';
+import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
 import { IOAuth } from '../../../interfaces/IOAuth';
@@ -94,7 +94,7 @@ const OAuthForm = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="formRow">
         <div className="formGroup col-6">
-          <label htmlFor="name">{ I18n.t('site_settings.authentication.form.name') }</label>
+          <label htmlFor="name">{ getLabel('o_auth', 'name') }</label>
           <input
             {...register('name', { required: true })}
             id="name"
@@ -104,7 +104,7 @@ const OAuthForm = ({
         </div>
 
         <div className="formGroup col-6">
-          <label htmlFor="logo">{ I18n.t('site_settings.authentication.form.logo') }</label>
+          <label htmlFor="logo">{ getLabel('o_auth', 'logo') }</label>
           <input
             {...register('logo')}
             id="logo"
@@ -116,7 +116,7 @@ const OAuthForm = ({
       <h5>{ I18n.t('site_settings.authentication.form.subtitle_oauth_config') }</h5>
       <div className="formRow">
         <div className="formGroup col-6">
-          <label htmlFor="clientId">{ I18n.t('site_settings.authentication.form.clientId') }</label>
+          <label htmlFor="clientId">{ getLabel('o_auth', 'client_id') }</label>
           <input
             {...register('clientId', { required: true })}
             id="clientId"
@@ -126,7 +126,7 @@ const OAuthForm = ({
         </div>
 
         <div className="formGroup col-6">
-          <label htmlFor="clientSecret">{ I18n.t('site_settings.authentication.form.clientSecret') }</label>
+          <label htmlFor="clientSecret">{ getLabel('o_auth', 'client_secret') }</label>
           <input
             {...register('clientSecret', { required: true })}
             id="clientSecret"
@@ -138,7 +138,7 @@ const OAuthForm = ({
 
       <div className="formRow">
         <div className="formGroup col-6">
-          <label htmlFor="authorizeUrl">{ I18n.t('site_settings.authentication.form.authorizeUrl') }</label>
+          <label htmlFor="authorizeUrl">{ getLabel('o_auth', 'authorize_url') }</label>
           <input
             {...register('authorizeUrl', { required: true, pattern: URL_REGEX })}
             id="authorizeUrl"
@@ -149,7 +149,7 @@ const OAuthForm = ({
         </div>
 
         <div className="formGroup col-6">
-          <label htmlFor="tokenUrl">{ I18n.t('site_settings.authentication.form.tokenUrl') }</label>
+          <label htmlFor="tokenUrl">{ getLabel('o_auth', 'token_url') }</label>
           <input
             {...register('tokenUrl', { required: true, pattern: URL_REGEX })}
             id="tokenUrl"
@@ -161,7 +161,7 @@ const OAuthForm = ({
       </div>
 
       <div className="formGroup">
-        <label htmlFor="scope">{ I18n.t('site_settings.authentication.form.scope') }</label>
+        <label htmlFor="scope">{ getLabel('o_auth', 'scope') }</label>
         <input
           {...register('scope', { required: true })}
           id="scope"
@@ -172,7 +172,7 @@ const OAuthForm = ({
 
       <h5>{ I18n.t('site_settings.authentication.form.subtitle_user_profile_config') }</h5>
       <div className="formGroup">
-        <label htmlFor="profileUrl">{ I18n.t('site_settings.authentication.form.profileUrl') }</label>
+        <label htmlFor="profileUrl">{ getLabel('o_auth', 'profile_url') }</label>
         <input
           {...register('profileUrl', { required: true, pattern: URL_REGEX })}
           id="profileUrl"
@@ -184,7 +184,7 @@ const OAuthForm = ({
 
       <div className="formRow">
         <div className="formGroup col-6">
-          <label htmlFor="jsonUserEmailPath">{ I18n.t('site_settings.authentication.form.jsonUserEmailPath') }</label>
+          <label htmlFor="jsonUserEmailPath">{ getLabel('o_auth', 'json_user_email_path') }</label>
           <input
             {...register('jsonUserEmailPath', { required: true })}
             id="jsonUserEmailPath"
@@ -196,7 +196,7 @@ const OAuthForm = ({
         </div>
 
         <div className="formGroup col-6">
-          <label htmlFor="jsonUserNamePath">{ I18n.t('site_settings.authentication.form.jsonUserNamePath') }</label>
+          <label htmlFor="jsonUserNamePath">{ getLabel('o_auth', 'json_user_name_path') }</label>
           <input
             {...register('jsonUserNamePath')}
             id="jsonUserNamePath"

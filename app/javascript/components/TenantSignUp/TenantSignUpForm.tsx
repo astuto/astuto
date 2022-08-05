@@ -8,6 +8,7 @@ import Spinner from '../common/Spinner';
 import { DangerText } from '../common/CustomTexts';
 import { ITenantSignUpTenantForm } from './TenantSignUpP';
 import HttpStatus from '../../constants/http_status';
+import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 
 interface Props {
   isSubmitting: boolean;
@@ -34,11 +35,11 @@ const TenantSignUpForm = ({
           <input
             {...register('siteName', { required: true })}
             autoFocus
-            placeholder={I18n.t('signup.step2.site_name')}
+            placeholder={getLabel('tenant', 'site_name')}
             id="tenantSiteName"
             className="formControl"
           />
-          <DangerText>{errors.siteName && I18n.t('signup.step2.validations.site_name')}</DangerText>
+          <DangerText>{errors.siteName?.type === 'required' && getValidationMessage('required', 'tenant', 'site_name')}</DangerText>
         </div>
 
         <div className="formRow">
@@ -51,7 +52,7 @@ const TenantSignUpForm = ({
                   return res.status === HttpStatus.OK;
                 },
               })}
-              placeholder={I18n.t('signup.step2.subdomain')}
+              placeholder={getLabel('tenant', 'subdomain')}
               id="tenantSubdomain"
               className="formControl"
             />
@@ -60,7 +61,7 @@ const TenantSignUpForm = ({
             </div>
           </div>
           <DangerText>
-            {errors.subdomain?.type === 'required' && I18n.t('signup.step2.validations.subdomain')}
+            {errors.subdomain?.type === 'required' && getValidationMessage('required', 'tenant', 'subdomain')}
           </DangerText>
           <DangerText>
             {errors.subdomain?.type === 'validate' && I18n.t('signup.step2.validations.subdomain_already_taken')}

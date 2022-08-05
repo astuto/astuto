@@ -6,7 +6,7 @@ import Box from '../common/Box';
 import Button from '../common/Button';
 import { ITenantSignUpUserForm } from './TenantSignUpP';
 import { DangerText } from '../common/CustomTexts';
-import getValidationMessage from '../../helpers/getValidationMessage';
+import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
 
 interface Props {
@@ -61,18 +61,18 @@ const UserSignUpForm = ({
             <input
               {...register('fullName', { required: true, minLength: 2 })}
               autoFocus
-              placeholder={I18n.t('common.forms.auth.full_name')}
+              placeholder={getLabel('user', 'full_name')}
               id="userFullName"
               className="formControl"
             />
-            <DangerText>{ errors.fullName &&  getValidationMessage('required', 'user', 'full_name')}</DangerText>
+            <DangerText>{errors.fullName &&  getValidationMessage('required', 'user', 'full_name')}</DangerText>
           </div>
 
           <div className="formRow">
             <input
               {...register('email', { required: true, pattern: EMAIL_REGEX })}
               type="email"
-              placeholder={I18n.t('common.forms.auth.email')}
+              placeholder={getLabel('user', 'email')}
               id="userEmail"
               className="formControl"
             />
@@ -87,22 +87,22 @@ const UserSignUpForm = ({
               <input
                 {...register('password', { required: true, minLength: 6, maxLength: 128 })}
                 type="password"
-                placeholder={I18n.t('common.forms.auth.password')}
+                placeholder={getLabel('user', 'password')}
                 id="userPassword"
                 className="formControl"
               />
-              <DangerText>{ errors.password && I18n.t('signup.step1.validations.password', { n: 6 }) }</DangerText>
+              <DangerText>{ errors.password && I18n.t('common.validations.password', { n: 6 }) }</DangerText>
             </div>
 
             <div className="formGroup col-6">
               <input
                 {...register('passwordConfirmation')}
                 type="password"
-                placeholder={I18n.t('common.forms.auth.password_confirmation')}
+                placeholder={getLabel('user', 'password_confirmation')}
                 id="userPasswordConfirmation"
                 className="formControl"
               />
-              <DangerText>{ errors.passwordConfirmation && I18n.t('signup.step1.validations.password_mismatch') }</DangerText>
+              <DangerText>{ errors.passwordConfirmation && I18n.t('common.validations.password_mismatch') }</DangerText>
             </div>
           </div>
 

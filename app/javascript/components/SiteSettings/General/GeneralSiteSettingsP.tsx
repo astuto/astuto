@@ -13,6 +13,7 @@ import {
   TENANT_BRAND_NONE,
 } from '../../../interfaces/ITenant';
 import { DangerText } from '../../common/CustomTexts';
+import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
@@ -79,17 +80,17 @@ const GeneralSiteSettingsP = ({
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="formRow">
             <div className="formGroup col-4">
-              <label htmlFor="siteName">{ I18n.t('site_settings.general.site_name') }</label>
+              <label htmlFor="siteName">{ getLabel('tenant', 'site_name') }</label>
               <input
                 {...register('siteName', { required: true })}
                 id="siteName"
                 className="formControl"
               />
-              <DangerText>{errors.siteName && I18n.t('site_settings.general.validations.site_name')}</DangerText>
+              <DangerText>{errors.siteName && getValidationMessage(errors.siteName.type, 'tenant', 'site_name')}</DangerText>
             </div>
 
             <div className="formGroup col-4">
-              <label htmlFor="siteLogo">{ I18n.t('site_settings.general.site_logo') }</label>
+              <label htmlFor="siteLogo">{ getLabel('tenant', 'site_logo') }</label>
               <input
                 {...register('siteLogo')}
                 id="siteLogo"
@@ -98,7 +99,7 @@ const GeneralSiteSettingsP = ({
             </div>
 
             <div className="formGroup col-4">
-              <label htmlFor="brandSetting">{ I18n.t('site_settings.general.brand_setting') }</label>
+              <label htmlFor="brandSetting">{ getLabel('tenant', 'brand_setting') }</label>
               <select
                 {...register('brandDisplaySetting')}
                 id="brandSetting"
@@ -121,7 +122,7 @@ const GeneralSiteSettingsP = ({
           </div>
 
           <div className="formGroup">
-            <label htmlFor="locale">{ I18n.t('site_settings.general.locale') }</label>
+            <label htmlFor="locale">{ getLabel('tenant', 'locale') }</label>
             <select
               {...register('locale')}
               id="locale"
