@@ -29,7 +29,7 @@ class OAuthSignInUser
       # Attempts to get email from user_profile Hash
       email = query_path_from_hash(@user_profile, @o_auth.json_user_email_path)
       
-      return nil if email.nil?
+      return nil if email.nil? or not URI::MailTo::EMAIL_REGEXP.match?(email)
 
       # Select existing / create new user
       user = User.find_by(email: email)

@@ -20,7 +20,7 @@ class OAuthExchangeAuthCodeForProfile
   end
 
   def run
-    return nil unless @o_auth and @o_auth.class == OAuth and @o_auth.is_enabled?
+    return nil unless @o_auth and @o_auth.class == OAuth
     return nil unless @authorization_code and @authorization_code.class == String
 
     begin
@@ -33,7 +33,11 @@ class OAuthExchangeAuthCodeForProfile
         redirect_uri: @o_auth.callback_url
       }
       
-      token_response = HTTParty.post(@o_auth.token_url, body: token_request_params)
+      token_response = HTTParty.post(
+        @o_auth.token_url,
+        headers: { "Accept": "application/json" },
+        body: token_request_params
+      )
       access_token = token_response['access_token']
       
       # Exchange access token for profile info

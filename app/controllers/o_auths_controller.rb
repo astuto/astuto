@@ -9,7 +9,7 @@ class OAuthsController < ApplicationController
   # Generates authorize url with required parameters and redirects to provider
   def start
     @o_auth = OAuth.find(params[:id])
-    return unless @o_auth.is_enabled?
+    return if params[:reason] == 'user' and not @o_auth.is_enabled?
 
     # Generate random state + other query params
     token_state = "#{params[:reason]}|#{Devise.friendly_token(30)}"
@@ -56,7 +56,9 @@ class OAuthsController < ApplicationController
 
       @user_profile = user_profile
       @user_email = query_path_from_hash(user_profile, @o_auth.json_user_email_path)
+      @email_valid = URI::MailTo::EMAIL_REGEXP.match?(@user_email)
       @user_name = query_path_from_hash(user_profile, @o_auth.json_user_name_path)
+      @name_valid = !@user_name.nil?
 
       render 'o_auths/test', layout: false
     else
