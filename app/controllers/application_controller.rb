@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
     def load_oauths
       @o_auths = Current.tenant_or_raise!.o_auths
         .where(is_enabled: true)
+        .order(created_at: :asc)
     end
 
   private

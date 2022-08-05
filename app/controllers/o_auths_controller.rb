@@ -72,7 +72,7 @@ class OAuthsController < ApplicationController
 
     @o_auths = OAuth.order(created_at: :asc)
 
-    render json: @o_auths.as_json(methods: :callback_url)
+    render json: to_json_custom(@o_auths)
   end
 
   def create
@@ -81,7 +81,7 @@ class OAuthsController < ApplicationController
     authorize @o_auth
 
     if @o_auth.save
-      render json: @o_auth.as_json(methods: :callback_url), status: :created
+      render json: to_json_custom(@o_auth), status: :created
     else
       render json: {
         error: @o_auth.errors.full_messages
@@ -94,7 +94,7 @@ class OAuthsController < ApplicationController
     authorize @o_auth
 
     if @o_auth.update(o_auth_params)
-      render json: @o_auth.as_json(methods: :callback_url)
+      render json: to_json_custom(@o_auth)
     else
       render json: {
         error: @o_auth.errors.full_messages
@@ -118,6 +118,13 @@ class OAuthsController < ApplicationController
   end
 
   private
+
+    def to_json_custom(o_auth)
+      o_auth.as_json(
+        methods: :callback_url,
+        except: [:client_secret]
+      )
+    end
 
     def o_auth_params
       params

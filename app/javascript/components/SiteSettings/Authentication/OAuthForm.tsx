@@ -7,6 +7,8 @@ import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
 import { IOAuth } from '../../../interfaces/IOAuth';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
+import { useState } from 'react';
+import Separator from '../../common/Separator';
 
 interface Props {
   selectedOAuth: IOAuth;
@@ -38,6 +40,8 @@ const OAuthForm = ({
   handleSubmitOAuth,
   handleUpdateOAuth,
 }: Props) => {
+  const [editClientSecret, setEditClientSecret] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -74,6 +78,10 @@ const OAuthForm = ({
     if (page === 'new') {
       handleSubmitOAuth(oAuth);
     } else if (page === 'edit') {
+      if (editClientSecret === false) {
+        delete oAuth.clientSecret;
+      }
+
       handleUpdateOAuth(selectedOAuth.id, oAuth as ISiteSettingsOAuthForm);
     }
   };
@@ -87,7 +95,7 @@ const OAuthForm = ({
           confirmation = confirm(I18n.t('common.unsaved_changes') + ' ' + I18n.t('common.confirmation'));
         if (confirmation) setPage('index');
       }}
-      className="backButton">
+      className="backButton link">
       ← { I18n.t('common.buttons.back') }
     </a>
     <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
@@ -128,10 +136,28 @@ const OAuthForm = ({
         <div className="formGroup col-6">
           <label htmlFor="clientSecret">{ getLabel('o_auth', 'client_secret') }</label>
           <input
-            {...register('clientSecret', { required: true })}
+            {...register('clientSecret', { required: page === 'new' || (page === 'edit' && editClientSecret) })}
             id="clientSecret"
             className="formControl"
+            disabled={page === 'edit' && editClientSecret === false}
           />
+          {
+            page === 'edit' &&
+              <>
+                <small>
+                  {I18n.t('site_settings.authentication.form.client_secret_help') + "\t"}
+                </small>
+                <Separator />
+                {
+                  editClientSecret ?
+                    <a onClick={() => setEditClientSecret(false)} className="link">{I18n.t('common.buttons.cancel')}</a>
+                  :
+                    <a onClick={() => setEditClientSecret(true)} className="link">{I18n.t('common.buttons.edit')}</a>
+                }
+                <br />
+              </>
+              
+          }
           <DangerText>{errors.clientSecret && getValidationMessage(errors.clientSecret.type, 'o_auth', 'client_secret')}</DangerText>
         </div>
       </div>

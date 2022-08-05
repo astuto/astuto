@@ -4,7 +4,7 @@ export interface IOAuth {
   logo?: string;
   isEnabled: boolean;
   clientId: string;
-  clientSecret: string;
+  clientSecret?: string;
   authorizeUrl: string;
   tokenUrl: string;
   profileUrl: string;
@@ -21,7 +21,7 @@ export interface IOAuthJSON {
   logo?: string;
   is_enabled: boolean;
   client_id: string;
-  client_secret: string;
+  client_secret?: string;
   authorize_url: string;
   token_url: string;
   profile_url: string;
