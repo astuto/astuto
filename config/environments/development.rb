@@ -5,7 +5,7 @@ Rails.application.configure do
   config.hosts << ".lvh.me:3000" # used to test oauth strategies in development
 
   # 0 if using localhost, 1 if using lvh.me
-  config.action_dispatch.tld_length = 1
+  config.action_dispatch.tld_length = 0
 
   # For Devise
   config.action_mailer.default_url_options = { host: Rails.application.base_url }
