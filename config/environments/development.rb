@@ -2,8 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts << ".localhost:3000"
-  config.hosts << ".lvh.me:3000"
+  config.hosts << ".lvh.me:3000" # used to test oauth strategies in development
 
+  # 0 if using localhost, 1 if using lvh.me
   config.action_dispatch.tld_length = 1
 
   # For Devise
