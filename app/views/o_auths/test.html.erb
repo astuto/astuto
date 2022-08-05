@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t('site_settings.authentication.test_page.title', { name: @o_auth.name }) %></title>
+</head>
+<body>
+  <h1><%= t('site_settings.authentication.test_page.title', { name: @o_auth.name }) %></h1>
+
+  <div>
+    <h2><%= t('site_settings.authentication.test_page.fetched_user_data') %></h2>
+
+    <pre><%= JSON.pretty_generate(@user_profile, { indent: "  ", object_nl: "\n" }) %></pre>
+  </div>
+
+  <div>
+    <h2><%= t('activerecord.attributes.user.email') %> <%= @email_valid ? "✅" : "❌" %></h2>
+    <ul>
+      <li><b><%= t('site_settings.authentication.form.jsonUserEmailPath') %>:</b> <%= @o_auth.json_user_email_path %></li>
+      <li><b><%= t('site_settings.authentication.test_page.found') %>:</b> <%= @user_email %></li>
+    </ul>
+  </div>
+
+  <div>
+    <h2><%= t('activerecord.attributes.user.full_name') %> <%= @name_valid ? "✅" : "⚠️" %></h2>
+    <ul>
+      <li><b><%= t('site_settings.authentication.form.jsonUserNamePath') %>:</b> <%= @o_auth.json_user_name_path %></li>
+      <li><b><%= t('site_settings.authentication.test_page.found') %>:</b> <%= @user_name %></li>
+    </ul>
+  </div>
+
+  <div>
+    <h2><%= t('site_settings.authentication.test_page.summary') %> <%=  !@email_valid ? "❌" : !@name_valid ? "⚠️" : "✅" %></h2>
+
+    <% if @email_valid and @name_valid %>
+      <p><%= t('site_settings.authentication.test_page.valid_configuration') %></p>
+    <% end %>
+
+    <% if @email_valid and not @name_valid %>
+      <p><%= t('site_settings.authentication.test_page.warning_configuration', { name: t('defaults.user_full_name') }) %></p>
+    <% end %>
+
+    <% if not @email_valid %>
+      <p><%= t('site_settings.authentication.test_page.invalid_configuration') %></p>
+    <% end %>
+  </div>
+</body>
+</html>

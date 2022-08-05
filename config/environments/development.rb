@@ -1,11 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # For subdomains in localhost
+  config.hosts << ".localhost:3000"
+  config.hosts << ".lvh.me:3000" # used to test oauth strategies in development
+
+  # 0 if using localhost, 1 if using lvh.me
   config.action_dispatch.tld_length = 0
 
   # For Devise
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: Rails.application.base_url }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

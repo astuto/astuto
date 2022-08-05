@@ -5,6 +5,7 @@
     <div class="verticalNavigation" role="tablist" aria-orientation="vertical">
       <% if current_user.admin? %>
         <%= render 'menu_link', label: t('site_settings.menu.general'), path: site_settings_general_path %>
+        <%= render 'menu_link', label: t('site_settings.menu.authentication'), path: site_settings_authentication_path %>
         <%= render 'menu_link', label: t('site_settings.menu.boards'), path: site_settings_boards_path %>
         <%= render 'menu_link', label: t('site_settings.menu.post_statuses'), path: site_settings_post_statuses_path %>
         <%= render 'menu_link', label: t('site_settings.menu.roadmap'), path: site_settings_roadmap_path %>

@@ -1,11 +1,4 @@
 import {
-  UsersRequestActionTypes,
-  USERS_REQUEST_START,
-  USERS_REQUEST_SUCCESS,
-  USERS_REQUEST_FAILURE,
-} from '../../actions/User/requestUsers';
-
-import {
   UserUpdateActionTypes,
   USER_UPDATE_START,
   USER_UPDATE_SUCCESS,
@@ -24,17 +17,15 @@ const initialState: SiteSettingsUsersState = {
 
 const siteSettingsUsersReducer = (
   state = initialState,
-  action: UsersRequestActionTypes | UserUpdateActionTypes,
+  action: UserUpdateActionTypes,
 ) => {
   switch (action.type) {
-    case USERS_REQUEST_START:
     case USER_UPDATE_START:
       return {
         ...state,
         areUpdating: true,
       };
 
-    case USERS_REQUEST_SUCCESS:
     case USER_UPDATE_SUCCESS:
       return {
         ...state,
@@ -42,7 +33,6 @@ const siteSettingsUsersReducer = (
         error: '',
       };
 
-    case USERS_REQUEST_FAILURE:
     case USER_UPDATE_FAILURE:
       return {
         ...state,

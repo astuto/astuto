@@ -8,6 +8,7 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import { UsersState } from '../../../reducers/usersReducer';
 import { UserRoles, USER_STATUS_ACTIVE, USER_STATUS_BLOCKED } from '../../../interfaces/IUser';
 import HttpStatus from '../../../constants/http_status';
+import Spinner from '../../common/Spinner';
 
 interface Props {
   users: UsersState;
@@ -79,17 +80,20 @@ class UsersSiteSettingsP extends React.Component<Props> {
 
           <ul className="usersList">
             {
-              users.items.map((user, i) => (
-                <UserEditable
-                  user={user}
-                  updateUserRole={this._handleUpdateUserRole}
-                  updateUserStatus={this._handleUpdateUserStatus}
+              users.areLoading === false ?
+                users.items.map((user, i) => (
+                  <UserEditable
+                    user={user}
+                    updateUserRole={this._handleUpdateUserRole}
+                    updateUserStatus={this._handleUpdateUserStatus}
 
-                  currentUserEmail={currentUserEmail}
-                  currentUserRole={currentUserRole}
-                  key={i}
-                />
-              ))
+                    currentUserEmail={currentUserEmail}
+                    currentUserRole={currentUserRole}
+                    key={i}
+                  />
+                ))
+              :
+                <Spinner />
             }
           </ul>
         </Box>
