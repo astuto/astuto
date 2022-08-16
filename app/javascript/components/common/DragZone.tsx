@@ -1,11 +1,22 @@
 import * as React from 'react';
+import { MdDragIndicator } from 'react-icons/md';
 
-const DragZone = ({dndProvided, isDragDisabled, color = 'black'}) => (
+interface Props {
+  dndProvided: any;
+  isDragDisabled: boolean;
+  color?: 'black' | 'white';
+}
+
+const DragZone = ({
+  dndProvided,
+  isDragDisabled,
+  color = 'black',
+}: Props) => (
   <span
     className={`drag-zone${isDragDisabled ? ' drag-zone-disabled' : ''}`}
     {...dndProvided.dragHandleProps}
   >
-    <span className={`drag-icon${color === 'white' ? ' drag-icon-white' : ''}`}></span>
+    <MdDragIndicator color={color} size={18} />
   </span>
 );
 

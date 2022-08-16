@@ -9,6 +9,8 @@ import { IOAuth } from '../../../interfaces/IOAuth';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import { useState } from 'react';
 import Separator from '../../common/Separator';
+import ActionLink from '../../common/ActionLink';
+import { BackIcon } from '../../common/Icons';
 
 interface Props {
   selectedOAuth: IOAuth;
@@ -88,16 +90,18 @@ const OAuthForm = ({
 
   return (
     <>
-    <a
+    <ActionLink
       onClick={() => {
         let confirmation = true;
         if (isDirty)
           confirmation = confirm(I18n.t('common.unsaved_changes') + ' ' + I18n.t('common.confirmation'));
         if (confirmation) setPage('index');
       }}
-      className="backButton link">
-      ← { I18n.t('common.buttons.back') }
-    </a>
+      icon={<BackIcon />}
+      customClass="backButton"
+    >
+      {I18n.t('common.buttons.back')}
+    </ActionLink>
     <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="formRow">

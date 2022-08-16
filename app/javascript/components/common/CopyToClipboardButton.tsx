@@ -1,6 +1,8 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 import { useState } from 'react';
+import ActionLink from './ActionLink';
+import { CopyIcon, DoneIcon } from './Icons';
 
 interface Props {
   label: string;
@@ -20,7 +22,7 @@ const CopyToClipboardButton = ({
 
   return (
     ready ?
-      <a
+      <ActionLink
         onClick={() => {
           if (navigator.clipboard) {
             navigator.clipboard.writeText(textToCopy).then(() => {
@@ -32,11 +34,14 @@ const CopyToClipboardButton = ({
             alertError();
           }
         }}
+        icon={<CopyIcon />}
       >
         {label}
-      </a>
+      </ActionLink>
     :
-      <span>{copiedLabel}</span>
+      <span style={{display: 'flex', marginRight: 12}}>
+        {copiedLabel}
+      </span>
   );
 };
 

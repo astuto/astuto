@@ -53,6 +53,7 @@ en:
       update: 'Save'
       confirm: 'Confirm'
       back: 'Back'
+      test: 'Test'
     datetime:
       now: 'just now'
       minutes:

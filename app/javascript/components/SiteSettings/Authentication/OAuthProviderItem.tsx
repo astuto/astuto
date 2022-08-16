@@ -6,6 +6,8 @@ import Switch from '../../common/Switch';
 import Separator from '../../common/Separator';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import CopyToClipboardButton from '../../common/CopyToClipboardButton';
+import ActionLink from '../../common/ActionLink';
+import { DeleteIcon, EditIcon, TestIcon } from '../../common/Icons';
 
 interface Props {
   oAuth: IOAuth;
@@ -44,23 +46,32 @@ const OAuthProviderItem = ({
         label={I18n.t('site_settings.authentication.copy_url')}
         textToCopy={oAuth.callbackUrl}
       />
-      <Separator />
-      <a onClick={() =>
-        window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
-      }>
-        Test
-      </a>
-      <Separator />
-      <a onClick={() => {
-        setSelectedOAuth(oAuth.id);
-        setPage('edit');
-      }}>
-        { I18n.t('common.buttons.edit') }
-      </a>
-      <Separator />
-      <a onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}>
-        { I18n.t('common.buttons.delete') }
-      </a>
+      
+      <ActionLink
+        onClick={() =>
+          window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
+        }
+        icon={<TestIcon />}
+      >
+        {I18n.t('common.buttons.test')}
+      </ActionLink>
+      
+      <ActionLink
+        onClick={() => {
+          setSelectedOAuth(oAuth.id);
+          setPage('edit');
+        }}
+        icon={<EditIcon />}
+      >
+        {I18n.t('common.buttons.edit')}
+      </ActionLink>
+      
+      <ActionLink
+        onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
+        icon={<DeleteIcon />}
+      >
+        {I18n.t('common.buttons.delete')}
+      </ActionLink>
     </div>
   </li>
 );

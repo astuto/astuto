@@ -34,11 +34,9 @@
       }
       
       .oAuthActions {
-        align-self: center;
+        @extend .d-flex;
 
-        a {
-          @extend .link;
-        }
+        align-self: center;
       }
     }
   }
@@ -46,12 +44,8 @@
 
 .authenticationFormPage {
   a.backButton {
-    @extend .mb-2;
+    @extend .mb-2, .align-self-start;
 
     font-size: 18px;
-  }
-
-  a.link {
-    @extend .link;
   }
 }
