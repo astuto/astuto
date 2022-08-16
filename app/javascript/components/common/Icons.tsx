@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { BsReply } from 'react-icons/bs';
 import { FiEdit, FiDelete } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
@@ -22,4 +23,6 @@ export const TestIcon = () => <GrTest />;
 
 export const DoneIcon = () => <MdDone />;
 
-export const BackIcon = () => <MdOutlineArrowBack />
+export const BackIcon = () => <MdOutlineArrowBack />;
+
+export const ReplyIcon = () => <BsReply />;

@@ -5,6 +5,8 @@ import Separator from '../common/Separator';
 import { MutedText } from '../common/CustomTexts';
 import friendlyDate from '../../helpers/datetime';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
+import ActionLink from '../common/ActionLink';
+import { CancelIcon, DeleteIcon, EditIcon, ReplyIcon } from '../common/Icons';
 
 interface Props {
   id: number;
@@ -34,43 +36,43 @@ const CommentFooter = ({
   toggleEditMode,
 }: Props) => (
   <div className="commentFooter">
-    <a className="commentReplyButton commentLink" onClick={handleToggleCommentReply}>
+    <ActionLink
+      onClick={handleToggleCommentReply}
+      icon={replyForm.isOpen ? <CancelIcon /> : <ReplyIcon />}
+    >
       {
         replyForm.isOpen ?
           I18n.t('common.buttons.cancel')
         :
           I18n.t('post.comments.reply_button')
       }
-    </a>
+    </ActionLink>
     {
       isPowerUser || currentUserEmail === commentAuthorEmail ?
         <>
-          <Separator />
-          <a onClick={toggleEditMode} className="commentLink">
+          <ActionLink onClick={toggleEditMode} icon={<EditIcon />}>
             {I18n.t('common.buttons.edit')}
-          </a>
+          </ActionLink>
 
-          <Separator />
-          <a
+          <ActionLink
             onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteComment(id)}
-            className="commentLink">
-              {I18n.t('common.buttons.delete')}
-          </a>
+            icon={<DeleteIcon />}
+          >
+            {I18n.t('common.buttons.delete')}
+          </ActionLink>
         </>
       :
         null
     }
-    <Separator />
+    
     <MutedText>{friendlyDate(createdAt)}</MutedText>
 
     {
-      createdAt !== updatedAt ?
+      createdAt !== updatedAt &&
         <>
           <Separator />
           <MutedText>{ I18n.t('common.edited').toLowerCase() }</MutedText>
         </>
-      :
-        null
     }
   </div>
 );

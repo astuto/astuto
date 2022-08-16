@@ -1,6 +1,9 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 import Button from '../common/Button';
+import Switch from '../common/Switch';
+import ActionLink from '../common/ActionLink';
+import { CancelIcon } from '../common/Icons';
 
 interface Props {
   id: number;
@@ -61,34 +64,23 @@ class CommentEditForm extends React.Component<Props, State> {
         <div>
           <div>
             {
-              isPowerUser ?
-                <>
-                  <input
-                    id={`isPostUpdateFlagComment${id}`}
-                    type="checkbox"
-                    onChange={e => this.handleCommentIsPostUpdateChange(e.target.checked)}
-                    checked={isPostUpdate || false}
-                  />
-                  &nbsp;
-                  <label htmlFor={`isPostUpdateFlagComment${id}`}>
-                    {I18n.t('post.new_comment.is_post_update')}
-                  </label>
-                </>
-              :
-                null
+              isPowerUser &&
+                <Switch
+                  htmlId={`isPostUpdateFlagComment${id}`}
+                  onClick={e => this.handleCommentIsPostUpdateChange(!isPostUpdate)}
+                  checked={isPostUpdate || false}
+                  label={I18n.t('post.new_comment.is_post_update')}
+                />
             }
-            
           </div>
 
-          <div>
-            <a className="commentLink" onClick={toggleEditMode}>
-              { I18n.t('common.buttons.cancel') }
-            </a>
+          <div className="editCommentFormActions">
+            <ActionLink onClick={toggleEditMode} icon={<CancelIcon />}>
+              {I18n.t('common.buttons.cancel')}
+            </ActionLink>
             &nbsp;
-            <Button
-              onClick={() => handleUpdateComment(body, isPostUpdate)}
-            >
-              { I18n.t('common.buttons.update') }
+            <Button onClick={() => handleUpdateComment(body, isPostUpdate)}>
+              {I18n.t('common.buttons.update')}
             </Button>
           </div>
         </div>
