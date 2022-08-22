@@ -8,6 +8,8 @@ import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 import Button from '../common/Button';
 import Spinner from '../common/Spinner';
+import ActionLink from '../common/ActionLink';
+import { CancelIcon } from '../common/Icons';
 
 interface Props {
   title: string;
@@ -93,9 +95,9 @@ const PostEditForm = ({
     />
 
     <div className="postEditFormButtons">
-      <a onClick={toggleEditMode}>
-        { I18n.t('common.buttons.cancel') }
-      </a>
+      <ActionLink onClick={toggleEditMode} icon={<CancelIcon />}>
+        {I18n.t('common.buttons.cancel')}
+      </ActionLink>
       &nbsp;
       <Button onClick={() => handleUpdatePost(title, description, boardId, postStatusId)}>
         { isUpdating ? <Spinner /> : I18n.t('common.buttons.update') }

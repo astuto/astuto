@@ -2,6 +2,7 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import { MutedText } from '../common/CustomTexts';
+import Switch from '../common/Switch';
 
 interface Props {
   postUpdateFlagValue: boolean;
@@ -13,21 +14,15 @@ const NewCommentUpdateSection = ({
   handlePostUpdateFlag,
 }: Props) => (
   <div className="commentIsUpdateForm">
-    <div>
-      <input
-        id="isPostUpdateFlag"
-        type="checkbox"
-        onChange={handlePostUpdateFlag}
-        checked={postUpdateFlagValue || false}
-      />
-      &nbsp;
-      <label htmlFor="isPostUpdateFlag">{I18n.t('post.new_comment.is_post_update')}</label>
-    </div>
+    <Switch
+      htmlId="isPostUpdateFlag"
+      onClick={handlePostUpdateFlag}
+      checked={postUpdateFlagValue || false}
+      label={I18n.t('post.new_comment.is_post_update')}
+    />
     {
-      postUpdateFlagValue ?
+      postUpdateFlagValue &&
         <MutedText>{I18n.t('post.new_comment.user_notification')}</MutedText>
-      :
-        null
     }
   </div>
 );

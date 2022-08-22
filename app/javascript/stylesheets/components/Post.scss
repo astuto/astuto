@@ -141,12 +141,7 @@
         .postAuthorAvatar { @extend .gravatar; }
       }
 
-      a {
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      }
+      .postFooterActions { @extend .d-flex; }
     }
 
     .postEditForm {
@@ -155,14 +150,7 @@
       }
 
       .postEditFormButtons {
-        text-align: right;
-
-        a {
-          &:hover {
-            cursor: pointer;
-            text-decoration: underline;
-          }
-        }
+        @extend .d-flex, .justify-content-end;
       }
     }
   }

@@ -68,6 +68,7 @@ const BoardForm = ({
           {...register('name', { required: true })}
           placeholder={I18n.t('site_settings.boards.form.name')}
           autoFocus={mode === 'update'}
+          autoComplete={'off'}
           className="formControl"
         />
 

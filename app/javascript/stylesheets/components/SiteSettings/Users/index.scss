@@ -30,7 +30,7 @@ ul.usersList {
     }
 
     .userEditableActions {
-      @extend .align-self-center;
+      @extend .d-flex, .align-self-center;
     }
 
     .userForm {
@@ -41,24 +41,8 @@ ul.usersList {
       }
     }
 
-    .updateUserButton { @extend .align-self-center; }
-
-    .userEditCancelButton { @extend .align-self-center; }
-
-    a {
-      cursor: pointer;
-
-      &:hover { text-decoration: underline; }
-    }
-
-    a.actionDisabled {
-      @extend .mutedText;
-
-      text-decoration: none;        
-      cursor: not-allowed;
-    }
-
     .updateUserButton {
+      @extend .align-self-center;
       margin-left: 16px;
     }
 

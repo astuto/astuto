@@ -8,6 +8,8 @@ import DragZone from '../../common/DragZone';
 import PostBoardLabel from '../../common/PostBoardLabel';
 import Separator from '../../common/Separator';
 import BoardForm from './BoardForm';
+import ActionLink from '../../common/ActionLink';
+import { CancelIcon, DeleteIcon, EditIcon } from '../../common/Icons';
 
 interface Props {
   id: number;
@@ -83,13 +85,16 @@ class BoardsEditable extends React.Component<Props, State> {
                 </div>
 
                 <div className="boardEditableActions">
-                  <a onClick={this.toggleEditMode}>{I18n.t('common.buttons.edit')}</a>
+                  <ActionLink onClick={this.toggleEditMode} icon={<EditIcon />}>
+                    {I18n.t('common.buttons.edit')}
+                  </ActionLink>
 
-                  <Separator />
-
-                  <a onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}>
+                  <ActionLink
+                    onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}
+                    icon={<DeleteIcon />}
+                  >
                     {I18n.t('common.buttons.delete')}
-                  </a>
+                  </ActionLink>
                 </div>
               </>
             :
@@ -102,11 +107,12 @@ class BoardsEditable extends React.Component<Props, State> {
                   handleUpdate={this.handleUpdate}
                 />
 
-                <a
-                  className="boardFormCancelButton"
-                  onClick={this.toggleEditMode}>
+                <ActionLink
+                  onClick={this.toggleEditMode}
+                  icon={<CancelIcon />}
+                >
                   {I18n.t('common.buttons.cancel')}
-                </a>
+                </ActionLink>
               </>
             }
           </li>

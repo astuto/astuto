@@ -1,15 +1,6 @@
 .commentsContainer {
   @extend .my-3;
 
-  a.commentLink {
-    color: $primary-color;
-
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-
   .commentForm {
     @extend
       .form-control,
@@ -41,7 +32,7 @@
         .justify-content-between,
         .mt-3;
 
-      margin-left: 48px;
+      margin-left: 58px;
     }
 
     .currentUserAvatar {
@@ -71,6 +62,8 @@
         .d-flex,
         .justify-content-between;
     }
+
+    .editCommentFormActions { @extend .d-flex; }
   }
 
   .commentsTitle {
@@ -113,7 +106,9 @@
     }
 
     .commentFooter {
-      font-size: 14px;
+      @extend .d-flex;
+
+      font-size: 13px;
     }
   }
 }

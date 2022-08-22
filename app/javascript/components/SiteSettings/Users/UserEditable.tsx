@@ -6,6 +6,8 @@ import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_USER, USER_STATUS_ACTIVE, 
 import Separator from "../../common/Separator";
 import UserForm from "./UserForm";
 import { MutedText } from "../../common/CustomTexts";
+import { BlockIcon, CancelIcon, EditIcon, UnblockIcon } from "../../common/Icons";
+import ActionLink from "../../common/ActionLink";
 
 interface Props {
   user: IUser;
@@ -119,18 +121,18 @@ class UserEditable extends React.Component<Props, State> {
             </div>
 
             <div className="userEditableActions">
-              <a
+              <ActionLink
                 onClick={() => editEnabled && this.toggleEditMode()}
-                className={editEnabled ? '' : 'actionDisabled'}
+                icon={<EditIcon />}
+                disabled={!editEnabled}
               >
                 { I18n.t('common.buttons.edit') }
-              </a>
+              </ActionLink>
 
-              <Separator />
-
-              <a
+              <ActionLink
                 onClick={() => blockEnabled && this._handleUpdateUserStatus()}
-                className={blockEnabled ? '' : 'actionDisabled'}
+                icon={user.status !== USER_STATUS_BLOCKED ? <BlockIcon /> : <UnblockIcon />}
+                disabled={!blockEnabled}
               >
                 {
                   user.status !== USER_STATUS_BLOCKED ?
@@ -138,15 +140,15 @@ class UserEditable extends React.Component<Props, State> {
                   :
                     I18n.t('site_settings.users.unblock')
                 }
-              </a>
+              </ActionLink>
             </div>
           </>
           :
             <>
             <UserForm user={user} updateUserRole={this._handleUpdateUserRole} />
-            <a onClick={this.toggleEditMode} className="userEditCancelButton">
-              { I18n.t('common.buttons.cancel') }
-            </a>
+            <ActionLink onClick={this.toggleEditMode} icon={<CancelIcon />}>
+              {I18n.t('common.buttons.cancel')}
+            </ActionLink>
             </>
         }
       </li>

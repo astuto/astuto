@@ -13,12 +13,6 @@
 
     column-gap: 32px;
 
-    a {
-      cursor: pointer;
-
-      &:hover { text-decoration: underline; }
-    }
-
     .boardInfo {
       @extend
         .d-flex,
@@ -30,8 +24,8 @@
       .boardDescription { @extend .text-center; }
     }
 
-    .boardEditableActions, .boardFormCancelButton {
-      @extend .align-self-center;
+    .boardEditableActions {
+      @extend .d-flex, .align-self-center;
     }
   }
 }

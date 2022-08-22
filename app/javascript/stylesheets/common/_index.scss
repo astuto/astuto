@@ -188,3 +188,24 @@
   cursor: pointer;
   &:hover { text-decoration: underline; }
 }
+
+.actionLink {
+  display: flex;
+  cursor: pointer;
+  align-self: center;
+  margin-right: 12px;
+  
+  &:hover { text-decoration: underline !important; }
+
+  svg {
+    margin-right: 4px;
+    align-self: center;
+  }
+
+  &.actionLinkDisabled {
+    color: $astuto-grey !important;
+  
+    text-decoration: none !important;
+    cursor: not-allowed;
+  }
+}
