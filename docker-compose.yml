@@ -17,8 +17,8 @@ services:
       - POSTGRES_PASSWORD
       - EMAIL_CONFIRMATION
       - MULTI_TENANCY
-    volumes:
-      - .:/astuto
+    # volumes:
+    #   - .:/astuto
     ports:
       - "3000:3000"
     depends_on:

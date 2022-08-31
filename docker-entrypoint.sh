@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Exit immediately if a command exits with a non-zero status
 set -e
@@ -32,7 +32,7 @@ echo "Database prepared."
 echo "Environment is: $ENVIRONMENT"
 export RAILS_ENV="$ENVIRONMENT"
 export NODE_ENV="$ENVIRONMENT"
-if [ $ENVIRONMENT == "development" ]; then
+if [ "$ENVIRONMENT" -eq "development" ]; then
   # Launch Rails server and webpack-dev-server using Foreman
   yarn install --check-files # To avoid "webpack-dev-server not found" error
   foreman start -p 3000
