@@ -31,16 +31,48 @@ Astuto is a free, open source, self-hosted customer feedback tool. It helps you 
 
 **Note**: it is strongly suggested to run Astuto on Linux or macOS. As of today, Windows is likely to [cause problems](https://github.com/riggraz/astuto/wiki/Common-problems#standard_init_linuxgo211-exec-user-process-caused-no-such-file-or-directory). If you want to try anyway, follow along with the [Windows users installation guide](https://github.com/riggraz/astuto/wiki/Installation-for-Windows-users).
 
-### Manual (for development)
+### DockerHub image (fastest, for production)
 
-1. Clone this repository.
+1. Create an empty folder
+2. Inside that folder, create a `docker-compose.yml` file with the following content:
+```
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=yourpostgresusername
+      - POSTGRES_PASSWORD=yourpostgrespassword
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+  web:
+    image: riggraz/astuto:latest
+    environment:
+      - BASE_URL=http://yourwebsite.com
+      - ENVIRONMENT=production
+      - SECRET_KEY_BASE=yoursecretkeybase
+      - POSTGRES_USER=yourpostgresusername
+      - POSTGRES_PASSWORD=yourpostgrespassword
+      - EMAIL_CONFIRMATION=false
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    
+volumes:
+  dbdata:
+```
+3. Run `docker-compose pull`
+4. Run `docker-compose up`
+5. You should now have a running instance of Astuto listening at port 3000. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
+
+### Cloning repository (for development)
+
+1. Clone this repository
 2. In Astuto's root directory, create a file named `.env` and fill it with the required environment variables (see `.env-example` for an example and check [this wiki page](https://github.com/riggraz/astuto/wiki/Required-environment-variables) for an explanation of the variables).
-3. Run `script/docker-update-and-run.sh`.
-4. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
-
-### Using DockerHub image (fastest)
-
-Coming soon!
+3. Run `docker-compose build`
+4. Run `docker-compose up`
+5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ## Post-installation notes
 

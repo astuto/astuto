@@ -8,11 +8,8 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
-    build:
-      context: .
-      dockerfile: ./docker/app/Dockerfile
+    build: .
     environment:
-      - UPDATE=0
       - BASE_URL
       - ENVIRONMENT
       - SECRET_KEY_BASE
