@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
   db:
     image: postgres
@@ -8,7 +8,10 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # target: dev
     environment:
       - BASE_URL
       - ENVIRONMENT
