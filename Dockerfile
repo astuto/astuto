@@ -6,6 +6,7 @@ FROM ruby:2.6.6 AS builder
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN npm install -g yarn
+RUN gem install bundler -v 2.3
 
 ENV APP_ROOT /astuto
 WORKDIR ${APP_ROOT}
@@ -40,7 +41,9 @@ RUN export NODE_ENV=production
 
 # Copy Gemfile and install gems
 COPY Gemfile Gemfile.lock ${APP_ROOT}/
-RUN bundle install --deployment
+RUN bundle config set deployment true --local
+RUN bundle config set without development test --local
+RUN bundle install
 
 # Copy package.json and install packages
 COPY package.json yarn.lock ${APP_ROOT}/
@@ -50,8 +53,8 @@ RUN yarn install --check-files --production
 COPY . ${APP_ROOT}/
 
 # Compile assets
-# RUN rm -rf ${APP_ROOT}/public/packs/
-# RUN bundle exec rake webpacker:compile
+RUN rm -rf ${APP_ROOT}/public/packs/
+RUN bundle exec rake webpacker:compile
 
 ###
 ### Production stage ###
@@ -65,6 +68,8 @@ RUN apt-get update -qq && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
   truncate -s 0 /var/log/*log
+
+RUN gem install bundler -v 2.3
 
 ENV APP_ROOT /astuto
 WORKDIR ${APP_ROOT}
@@ -87,6 +92,7 @@ COPY --from=prod-builder ${APP_ROOT}/Gemfile.lock ${APP_ROOT}/
 COPY --from=prod-builder ${APP_ROOT}/.ruby-version ${APP_ROOT}/
 COPY --from=prod-builder ${APP_ROOT}/config.ru ${APP_ROOT}/
 COPY --from=prod-builder ${APP_ROOT}/Rakefile ${APP_ROOT}/
+COPY --from=prod-builder /usr/local/bundle/config /usr/local/bundle/config
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 

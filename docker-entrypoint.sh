@@ -38,5 +38,5 @@ if [ "$ENVIRONMENT" = "development" ]; then
   foreman start -p 3000
 else # production
   # Launch Rails server in production
-  rails server -e production
+  bundle exec rails server -e production
 fi
