@@ -3,23 +3,23 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+      - POSTGRES_USER=astuto
+      - POSTGRES_PASSWORD=dbpass
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
     build:
       context: .
       dockerfile: Dockerfile
-      # target: dev
+      target: prod
     environment:
-      - BASE_URL
-      - ENVIRONMENT
-      - SECRET_KEY_BASE
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - EMAIL_CONFIRMATION
-      - MULTI_TENANCY
+      - BASE_URL=http://localhost:3000
+      - ENVIRONMENT=production
+      - SECRET_KEY_BASE=secretkeybasehere
+      - POSTGRES_USER=astuto
+      - POSTGRES_PASSWORD=dbpass
+      - EMAIL_CONFIRMATION=true
+      - MULTI_TENANCY=false
     # volumes:
     #   - .:/astuto
     ports:

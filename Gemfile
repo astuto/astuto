@@ -10,8 +10,6 @@ gem 'pg', '1.3.5'
 
 gem 'puma', '4.3.12'
 
-gem 'sass-rails', '5.1.0'
-
 gem 'webpacker', '4.3.0'
 
 gem 'turbolinks', '5.2.1'
