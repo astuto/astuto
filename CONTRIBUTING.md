@@ -29,7 +29,13 @@ Locales are stored in YAML files under `config/locales`. Translations are splitt
 
 ## Coding and testing
 
-First of all, you need to follow [the installation instructions](https://github.com/riggraz/astuto#installation) to have a working local instance of Astuto.
+First of all, you need to install and run Astuto in development mode:
+
+1. Clone this repository
+2. Edit `docker-compose.yml` if you want to change the value of some environment variables. Note that this `docker-compose.yml` is already configured to run Astuto in development mode (`target: dev`).
+3. Run `docker-compose build`
+4. Run `docker-compose up`
+5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ### Technologies
 

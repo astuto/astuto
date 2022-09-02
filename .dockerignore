@@ -1,2 +1,4 @@
 **/node_modules
 .git
+public/packs
+public/packs-test

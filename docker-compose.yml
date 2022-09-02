@@ -14,7 +14,6 @@ services:
       target: dev
     environment:
       - BASE_URL=http://localhost:3000
-      - ENVIRONMENT=development
       - SECRET_KEY_BASE=secretkeybasehere
       - POSTGRES_USER=astuto
       - POSTGRES_PASSWORD=dbpass
