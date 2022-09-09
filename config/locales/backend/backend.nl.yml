@@ -1,13 +1,17 @@
 nl:
   errors:
+    unknown: 'An unknown error occurred'
     unauthorized: 'You are not authorized'
     not_logged_in: 'You must be logged in to access this page'
     not_enough_privileges: 'You do not have the privilegies to access this page'
     user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
+    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
     board:
       update_order: 'There was an error in reordering boards'
     post_status:
       update_order: 'There was an error in reordering statuses'
+  defaults:
+    user_full_name: 'Anonymous User'
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
@@ -60,6 +64,18 @@ nl:
       like:
         user_id: 'User'
         post_id: 'Post'
+      o_auth:
+        name: 'Name'
+        logo: 'Logo'
+        is_enabled: 'Enabled'
+        client_id: 'Client ID'
+        client_secret: 'Client secret'
+        authorize_url: 'Authorize URL'
+        token_url: 'Token URL'
+        profile_url: 'Profile URL'
+        scope: 'Scope'
+        json_user_name_path: 'JSON path to user name'
+        json_user_email_path: 'JSON path to user email'
       post_status:
         name: 'Name'
         color: 'Color'
@@ -71,9 +87,17 @@ nl:
         board_id: 'Post board'
         user_id: 'Post author'
         post_status_id: 'Post status'
+      tenant:
+        site_name: 'Site name'
+        site_logo: 'Site logo'
+        subdomain: 'Subdomain'
+        locale: 'Language'
+        brand_setting: 'Display'
       user:
         email: 'Email'
-        full_name: 'Name and surname'
+        full_name: 'Full name'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
         role: 'Role'
         notifications_enabled: 'Notifications enabled'
     errors:
@@ -83,4 +107,4 @@ nl:
         blank: 'cannot be blank'
         taken: 'is already in use'
         too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum ${count} characters)'
+        too_long: 'is too long (maximum %{count} characters)'
