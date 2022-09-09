@@ -1,86 +1,110 @@
 ru:
   errors:
-    unauthorized: 'You are not authorized'
-    not_logged_in: 'You must be logged in to access this page'
-    not_enough_privileges: 'You do not have the privilegies to access this page'
-    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
+    unknown: 'Произошла неизвестная ошибка'
+    unauthorized: 'Вы не авторизованы'
+    not_logged_in: 'Вы должны войти для просмотра этой страницы'
+    not_enough_privileges: 'У вас нет разрешения на доступ к этой странице'
+    user_blocked_or_deleted: 'Вы не можете получить доступ к вашей учетной записи, потому что она была заблокирована или удалена.'
+    o_auth_login_error: 'Произошла ошибка при входе с логина %{name}. Пожалуйста, свяжитесь с администратором сайта или попробуйте другого провайдера.'
     board:
-      update_order: 'There was an error in reordering boards'
+      update_order: 'Произошла ошибка при изменении порядка досок'
     post_status:
-      update_order: 'There was an error in reordering statuses'
+      update_order: 'Произошла ошибка при изменении порядка досок'
+  defaults:
+    user_full_name: 'Анонимный пользователь'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Добро пожаловать на %{site_name}, %{email}!'
+      opening_greeting: 'Привет, %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'Вы можете подтвердить ваш адрес электронной почты через ссылку ниже:'
+        action: 'Подтвердить аккаунт'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "Мы связываемся с Вами, чтобы уведомить Вас, что ваш адрес электронной почты изменен на %{email}."
+        body2: "Мы связываемся с Вами, чтобы уведомить Вас, что ваш адрес электронной почты изменен на %{email}."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Мы связываемся с Вами, чтобы уведомить Вас, что ваш адрес электронной почты изменен."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body: 'Кто-то запросил ссылку на изменение пароля. Вы можете сделать это через ссылку ниже.'
+        body2: "Если вы не просили об этом, пожалуйста, игнорируйте это письмо."
+        body3: "Ваш пароль не изменится, пока вы не откроете ссылку выше и не создадите новый пароль."
+        action: 'Изменить мой пароль'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      opening_greeting: 'Привет!'
+      closing_greeting: 'Отличного дня!'
+      learn_more: 'Нажми сюда, чтобы узнать подробности.'
+      unsubscribe: 'Вы можете отключить уведомления здесь'
       notify_post_owner:
-        subject: '[%{app_name}] New comment on %{post}'
-        body: 'There is a new comment by %{user} on your post %{post}'
+        subject: '[%{app_name}] Новы комментарий на %{post}'
+        body: 'Новый комментарий пользователем %{user} на ваш пост %{post}'
       notify_comment_owner:
-        subject: '[%{app_name}] New reply on your comment from %{post}'
-        body: 'There is a new reply by %{user} on your comment from post %{post}'
+        subject: '[%{app_name}] Новый ответ на Ваш комментарий %{post}'
+        body: 'Новый ответ пользователем %{user} на ваш пост %{post}'
       notify_followers_of_post_update:
-        subject: '[%{app_name}] New update for post %{post}'
-        body: "There is a new update on the post you're following %{post}"
+        subject: '[%{app_name}] Новое обновление на пост %{post}'
+        body: "Есть новое обновление на сообщение, которое вы подписаны на %{post}"
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Status change on post %{post}'
-        body: "The post you're following %{post} has a new status"
+        subject: '[%{app_name}] Статус изменен на пост %{post}'
+        body: "На публикацию, которые вы подписаны %{post} новый статус"
   activerecord:
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
-        order: 'Order'
+        name: 'Имя'
+        description: 'Описание'
+        order: 'Порядок'
       comment:
-        body: 'Body'
-        is_post_update: 'Post update'
-        user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        body: 'Тело письма'
+        is_post_update: 'Обновление поста'
+        user_id: 'Автор'
+        post_id: 'Публикация'
+        parent_id: 'Родительский комментарий'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Пользователь'
+        post_id: 'Публикация'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Пользователь'
+        post_id: 'Публикация'
+      o_auth:
+        name: 'Имя'
+        logo: 'Логотип'
+        is_enabled: 'Включено'
+        client_id: 'Client ID'
+        client_secret: 'Client secret'
+        authorize_url: 'Authorize URL'
+        token_url: 'Token URL'
+        profile_url: 'URL профиля'
+        scope: 'Область'
+        json_user_name_path: 'Путь к имени пользователя JSON'
+        json_user_email_path: 'Путь JSON к электронной почте пользователя'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: 'Имя'
+        color: 'Цвет'
+        order: 'Порядок'
+        show_in_roadmap: 'Показать в дорожной карте'
       post:
-        title: 'Title'
-        description: 'Description'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        title: 'Заголовок'
+        description: 'Описание'
+        board_id: 'Выложить доску'
+        user_id: 'Автор сообщения'
+        post_status_id: 'Статус сообщения'
+      tenant:
+        site_name: 'Имя сайта'
+        site_logo: 'Логотип сайта'
+        subdomain: 'Поддомен'
+        locale: 'Язык'
+        brand_setting: 'Отображение'
       user:
         email: 'Email'
-        full_name: 'Name and surname'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        full_name: 'Полное имя'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        role: 'Роль'
+        notifications_enabled: 'Уведомления включены'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
-        too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum ${count} characters)'
+        invalid: 'неверно'
+        required: 'обязателен'
+        blank: 'не может быть пустым'
+        taken: 'уже используется'
+        too_short: 'слишком короткое (минимум %{count} символов)'
+        too_long: 'слишком длинное (максимум — %{count} знаков)'
