@@ -1,13 +1,17 @@
 fr:
   errors:
+    unknown: 'An unknown error occurred'
     unauthorized: 'Vous n’êtes pas autorisé'
     not_logged_in: 'Vous devez être connecté pour accéder à cette page'
     not_enough_privileges: 'Vous n''avez pas les privilèges pour accéder à cette page'
     user_blocked_or_deleted: 'Vous ne pouvez pas accéder à votre compte parce qu''il a été bloqué ou supprimé.'
+    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
     board:
       update_order: 'Il y a eu une erreur dans la réorganisation des panneaux'
     post_status:
       update_order: 'Il y a eu une erreur dans la réorganisation des statuts'
+  defaults:
+    user_full_name: 'Anonymous User'
   mailers:
     devise:
       welcome_greeting: 'Bienvenue sur %{site_name}, %{email} !'
@@ -60,6 +64,18 @@ fr:
       like:
         user_id: 'Utilisateur'
         post_id: 'Publication'
+      o_auth:
+        name: 'Nom'
+        logo: 'Logo'
+        is_enabled: 'Enabled'
+        client_id: 'Client ID'
+        client_secret: 'Client secret'
+        authorize_url: 'Authorize URL'
+        token_url: 'Token URL'
+        profile_url: 'Profile URL'
+        scope: 'Scope'
+        json_user_name_path: 'JSON path to user name'
+        json_user_email_path: 'JSON path to user email'
       post_status:
         name: 'Nom'
         color: 'Couleur '
@@ -71,9 +87,17 @@ fr:
         board_id: 'Tableau des publications'
         user_id: 'Auteur de la publication'
         post_status_id: 'Statut de la publication'
+      tenant:
+        site_name: 'Nom du site'
+        site_logo: 'Logo du site'
+        subdomain: 'Sous-domaine'
+        locale: 'Langue'
+        brand_setting: 'Afficher'
       user:
         email: 'Email'
-        full_name: 'Prénom et nom'
+        full_name: 'Nom complet'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmer le mot de passe'
         role: 'Rôle'
         notifications_enabled: 'Notifications activées'
     errors:
@@ -83,4 +107,4 @@ fr:
         blank: 'ne peut pas être vide'
         taken: 'est déjà utilisé'
         too_short: 'est trop court (au moins %{count} caractères)'
-        too_long: 'est trop long (pas plus de ${count} caractères)'
+        too_long: 'is too long (maximum %{count} characters)'
