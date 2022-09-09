@@ -1,5 +1,11 @@
 zh-CN:
   common:
+    validations:
+      required: '%{attribute} is required'
+      email: 'Invalid email'
+      url: 'Invalid URL'
+      password: 'Password must have at least %{n} characters'
+      password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
         email: 'Email'
@@ -14,6 +20,8 @@ zh-CN:
         remember_me: 'Remember me'
         log_in: 'Log in'
         sign_up: 'Sign up'
+        log_in_with: 'Log in with %{o_auth}'
+        sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Profile settings'
         update_profile: 'Update profile'
         cancel_account: 'Cancel account'
@@ -30,14 +38,21 @@ zh-CN:
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
+    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
     edited: 'Edited'
+    enabled: 'Enabled'
+    disabled: 'Disabled'
+    copied: 'Copied!'
     buttons:
+      new: 'New'
       edit: 'Edit'
       delete: 'Delete'
       cancel: 'Cancel'
       create: 'Create'
       update: 'Save'
       confirm: 'Confirm'
+      back: 'Back'
+      test: 'Test'
     datetime:
       now: 'just now'
       minutes:
@@ -51,19 +66,10 @@ zh-CN:
     step1:
       title: '1. Create user account'
       email_auth: 'Register with email'
-      validations:
-        full_name: 'Full name is required'
-        email: 'Email is invalid'
-        password: 'Password must have at least %{n} characters'
-        password_mismatch: 'Password and password confirmation must match'
     step2:
       title: '2. Create feedback space'
-      site_name: 'Site name'
-      subdomain: 'Subdomain'
       create_button: 'Create feedback space'
       validations:
-        site_name: 'Site name is required'
-        subdomain: 'Subdomain is required'
         subdomain_already_taken: 'Sorry, this subdomain is not available'
     step3:
       title: "You're almost done!"
@@ -132,22 +138,17 @@ zh-CN:
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
       users: 'Users'
+      authentication: 'Authentication'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
       dirty: 'Changes not saved'
     general:
       title: 'General'
-      site_name: 'Site name'
-      site_logo: 'Site logo'
-      brand_setting: 'Display'
       brand_setting_both: 'Both name and logo'
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
-      locale: 'Language'
-      validations:
-        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
@@ -179,3 +180,21 @@ zh-CN:
       status_active: 'Active'
       status_blocked: 'Blocked'
       status_deleted: 'Deleted'
+    authentication:
+      title: 'Authentication'
+      oauth_subtitle: 'OAuth providers'
+      copy_url: 'Copy URL'
+      test_page:
+        title: '%{name} OAuth test results'
+        fetched_user_data: 'Fetched user data'
+        found: 'Found'
+        summary: 'Summary'
+        valid_configuration: 'This OAuth provider is configured correctly!'
+        warning_configuration: 'This OAuth provider if configured correctly, but a default name for users (%{name}) will be used.'
+        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+      form:
+        title_new: 'New OAuth provider'
+        title_edit: 'Edit OAuth provider'
+        subtitle_oauth_config: 'OAuth configuration'
+        subtitle_user_profile_config: 'User profile configuration'
+        client_secret_help: 'hidden for security purposes'
