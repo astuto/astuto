@@ -1,5 +1,11 @@
 it:
   common:
+    validations:
+      required: '%{attribute} is required'
+      email: 'Invalid email'
+      url: 'Invalid URL'
+      password: 'Password must have at least %{n} characters'
+      password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
         email: 'E-mail'
@@ -14,6 +20,8 @@ it:
         remember_me: 'Ricordami'
         log_in: 'Accedi'
         sign_up: 'Registrati'
+        log_in_with: 'Log in with %{o_auth}'
+        sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Impostazioni profilo'
         update_profile: 'Aggiorna profilo'
         cancel_account: 'Cancella account'
@@ -31,14 +39,21 @@ it:
     no_status: 'Nessuno stato'
     loading: 'Caricamento...'
     confirmation: 'Sei sicuro?'
+    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
     edited: 'Modificato'
+    enabled: 'Enabled'
+    disabled: 'Disabled'
+    copied: 'Copied!'
     buttons:
+      new: 'Nuova'
       edit: 'Modifica'
       delete: 'Elimina'
       cancel: 'Annulla'
       create: 'Crea'
       update: 'Salva'
       confirm: 'Conferma'
+      back: 'Back'
+      test: 'Test'
     datetime:
       now: 'adesso'
       minutes:
@@ -55,19 +70,10 @@ it:
     step1:
       title: '1. Crea account utente'
       email_auth: 'Registrati con indirizzo email'
-      validations:
-        full_name: 'Nome è obbligatorio'
-        email: 'Email non valida'
-        password: 'La password deve contenere almeno %{n} caratteri'
-        password_mismatch: 'Password e conferma password devono corrispondere'
     step2:
       title: '2. Crea spazio di feedback'
-      site_name: 'Nome del sito'
-      subdomain: 'Sottodominio'
       create_button: 'Crea spazio feedback'
       validations:
-        site_name: 'Nome del sito è obbligatorio'
-        subdomain: 'Sottodominio è obbligatorio'
         subdomain_already_taken: 'Siamo spiacenti, questo sottodominio non è disponibile'
     step3:
       title: "Hai quasi finito!"
@@ -136,22 +142,17 @@ it:
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
       users: 'Utenti'
+      authentication: 'Authentication'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
       dirty: 'Modifiche non salvate'
     general:
       title: 'Generale'
-      site_name: 'Nome del sito'
-      site_logo: 'Logo del sito'
-      brand_setting: 'Mostra'
       brand_setting_both: 'Sia nome che logo'
       brand_setting_name: 'Solo nome'
       brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
-      locale: 'Lingua'
-      validations:
-        site_name: 'Nome del sito è obbligatorio'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
@@ -183,3 +184,21 @@ it:
       status_active: 'Attivo'
       status_blocked: 'Bloccato'
       status_deleted: 'Eliminato'
+    authentication:
+      title: 'Authentication'
+      oauth_subtitle: 'OAuth providers'
+      copy_url: 'Copy URL'
+      test_page:
+        title: '%{name} OAuth test results'
+        fetched_user_data: 'Fetched user data'
+        found: 'Found'
+        summary: 'Summary'
+        valid_configuration: 'This OAuth provider is configured correctly!'
+        warning_configuration: 'This OAuth provider if configured correctly, but a default name for users (%{name}) will be used.'
+        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+      form:
+        title_new: 'New OAuth provider'
+        title_edit: 'Edit OAuth provider'
+        subtitle_oauth_config: 'OAuth configuration'
+        subtitle_user_profile_config: 'User profile configuration'
+        client_secret_help: 'hidden for security purposes'
