@@ -56,7 +56,7 @@ FROM ruby:2.6.6-slim AS prod
 
 RUN apt-get update -qq && \
   apt-get install -yq  \
-  postgresql-client=11+200+deb10u4 \
+  postgresql-client \
   nodejs && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \

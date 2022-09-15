@@ -39,18 +39,17 @@ services:
   db:
     image: postgres:14.5
     environment:
-      - POSTGRES_USER=yourpostgresusername
-      - POSTGRES_PASSWORD=yourpostgrespassword
+      POSTGRES_USER: yourpostgresusername
+      POSTGRES_PASSWORD: yourpostgrespassword
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
     image: riggraz/astuto:latest
     environment:
-      - BASE_URL=http://yourwebsite.com
-      - SECRET_KEY_BASE=yoursecretkeybase
-      - POSTGRES_USER=yourpostgresusername
-      - POSTGRES_PASSWORD=yourpostgrespassword
-      - EMAIL_CONFIRMATION=false
+      POSTGRES_USER: yourpostgresusername
+      POSTGRES_PASSWORD: yourpostgrespassword
+      BASE_URL: http://yourwebsite.com
+      SECRET_KEY_BASE: yoursecretkeybase
     ports:
       - "3000:3000"
     depends_on:
