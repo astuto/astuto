@@ -1,25 +1,22 @@
-version: '3'
+version: '3.4'
 services:
   db:
-    image: postgres
+    image: postgres:14.5
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+      POSTGRES_USER: astuto
+      POSTGRES_PASSWORD: dbpass
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
     build:
       context: .
-      dockerfile: ./docker/app/Dockerfile
+      dockerfile: Dockerfile
+      target: dev
     environment:
-      - UPDATE=0
-      - BASE_URL
-      - ENVIRONMENT
-      - SECRET_KEY_BASE
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - EMAIL_CONFIRMATION
-      - MULTI_TENANCY
+      POSTGRES_USER: astuto
+      POSTGRES_PASSWORD: dbpass
+      BASE_URL: http://localhost:3000
+      SECRET_KEY_BASE: secretkeybasehere
     volumes:
       - .:/astuto
     ports:

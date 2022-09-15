@@ -11,7 +11,7 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: ['app/assets']
+  resolved_paths: []
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
@@ -54,7 +54,7 @@ default: &default
 
 development:
   <<: *default
-  compile: true
+  compile: false
 
   # Verifies that correct packages and versions are installed by inspecting package.json, yarn.lock, and node_modules
   check_yarn_integrity: false
@@ -81,7 +81,7 @@ development:
 
 test:
   <<: *default
-  compile: true
+  compile: false
 
   # Compile test packs to a separate directory
   public_output_path: packs-test
