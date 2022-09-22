@@ -1,5 +1,11 @@
 de:
   common:
+    validations:
+      required: '%{attribute} is required'
+      email: 'Invalid email'
+      url: 'Invalid URL'
+      password: 'Password must have at least %{n} characters'
+      password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
         email: 'E-Mail'
@@ -14,6 +20,8 @@ de:
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
+        log_in_with: 'Log in with %{o_auth}'
+        sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Profileinstellungen'
         update_profile: 'Profil aktualisieren'
         cancel_account: 'Konto entfernen'
@@ -31,14 +39,21 @@ de:
     no_status: 'Kein Status'
     loading: 'Laden...'
     confirmation: 'Sicher?'
+    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
     edited: 'Bearbeitet'
+    enabled: 'Enabled'
+    disabled: 'Disabled'
+    copied: 'Copied!'
     buttons:
+      new: 'Neu'
       edit: 'Bearbeiten'
       delete: 'Löschen'
       cancel: 'Abbrechen'
       create: 'Erstellen'
       update: 'Speichern'
       confirm: 'Bestätigen'
+      back: 'Back'
+      test: 'Test'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -55,20 +70,11 @@ de:
     step1:
       title: '1. Benutzerkonto erstellen'
       email_auth: 'Mit E-Mail registrieren'
-      validations:
-        full_name: 'Full name is required'
-        email: 'Email is invalid'
-        password: 'Password must have at least %{n} characters'
-        password_mismatch: 'Password and password confirmation must match'
     step2:
       title: '2. Feedbackbereich erstellen'
-      site_name: 'Seitenname'
-      subdomain: 'Subdomain'
       create_button: 'Feedbackbereich erstellen'
       validations:
-        site_name: 'Site name is required'
-        subdomain: 'Subdomain is required'
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_already_taken: 'Diese Subdomain ist leider nicht verfügbar'
     step3:
       title: "Fast fertig!"
       message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
@@ -136,22 +142,17 @@ de:
       post_statuses: 'Status'
       roadmap: 'Roadmap'
       users: 'Benutzer'
+      authentication: 'Authentication'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
       error: 'Ein Fehler ist aufgetreten: %{message}'
       dirty: 'Änderungen nicht gespeichert'
     general:
       title: 'Generell'
-      site_name: 'Seitenname'
-      site_logo: 'Seitenlogo'
-      brand_setting: 'Anzeigen'
       brand_setting_both: 'Sowohl Name als auch Logo'
       brand_setting_name: 'Nur Name'
       brand_setting_logo: 'Nur Logo'
       brand_setting_none: 'Nichts'
-      locale: 'Sprache'
-      validations:
-        site_name: 'Site name is required'
     boards:
       title: 'Boards'
       empty: 'Es existieren keine Boards. Erstelle unten eines!'
@@ -183,3 +184,21 @@ de:
       status_active: 'Aktiv'
       status_blocked: 'Gesperrt'
       status_deleted: 'Gelöscht'
+    authentication:
+      title: 'Authentication'
+      oauth_subtitle: 'OAuth providers'
+      copy_url: 'Copy URL'
+      test_page:
+        title: '%{name} OAuth test results'
+        fetched_user_data: 'Fetched user data'
+        found: 'Found'
+        summary: 'Summary'
+        valid_configuration: 'This OAuth provider is configured correctly!'
+        warning_configuration: 'This OAuth provider if configured correctly, but a default name for users (%{name}) will be used.'
+        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+      form:
+        title_new: 'New OAuth provider'
+        title_edit: 'Edit OAuth provider'
+        subtitle_oauth_config: 'OAuth configuration'
+        subtitle_user_profile_config: 'User profile configuration'
+        client_secret_help: 'hidden for security purposes'
