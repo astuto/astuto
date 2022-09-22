@@ -1,17 +1,17 @@
 it:
   errors:
-    unknown: 'An unknown error occurred'
+    unknown: 'Si è verificato un errore sconosciuto'
     unauthorized: 'Non sei autorizzato'
     not_logged_in: 'Devi effettuare l''accesso per visualizzare questa pagina'
     not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
     user_blocked_or_deleted: 'Non puoi accedere al tuo account perché è stato bloccato o eliminato.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    o_auth_login_error: 'Si è verificato un errore di accesso con %{name}. Si prega di contattare l''amministratore del sito o provare un altro provider di accesso.'
     board:
       update_order: 'Si è verificato un errore durante il riordinamento delle bacheche'
     post_status:
       update_order: 'Si è verificato un errore durante il riordinamento degli stati'
   defaults:
-    user_full_name: 'Anonymous User'
+    user_full_name: 'Utente Anonimo'
   mailers:
     devise:
       welcome_greeting: 'Benvenuto su %{site_name}, %{email}!'
@@ -67,15 +67,15 @@ it:
       o_auth:
         name: 'Nome'
         logo: 'Logo'
-        is_enabled: 'Enabled'
+        is_enabled: 'Abilitato'
         client_id: 'Client ID'
         client_secret: 'Client secret'
         authorize_url: 'Authorize URL'
         token_url: 'Token URL'
-        profile_url: 'Profile URL'
+        profile_url: 'URL profilo utente'
         scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        json_user_name_path: 'Percorso JSON nome utente'
+        json_user_email_path: 'Percorso JSON email utente'
       post_status:
         name: 'Nome'
         color: 'Colore'
@@ -107,4 +107,4 @@ it:
         blank: 'non può essere vuoto'
         taken: 'è già in uso'
         too_short: 'è troppo corto (almeno %{count} caratteri)'
-        too_long: 'is too long (maximum %{count} characters)'
+        too_long: 'è troppo lungo (massimo %{count} caratteri)'
