@@ -1,17 +1,17 @@
 de:
   errors:
-    unknown: 'An unknown error occurred'
+    unknown: 'Ein unbekannter Fehler ist aufgetreten'
     unauthorized: 'Du bist nicht autorisiert'
     not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
     not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
     user_blocked_or_deleted: 'Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wenden Sie sich an den Administrator oder versuchen Sie einen anderen Anbieter.'
     board:
       update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
     post_status:
       update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
   defaults:
-    user_full_name: 'Anonymous User'
+    user_full_name: 'Anonymer Benutzer'
   mailers:
     devise:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
@@ -67,15 +67,15 @@ de:
       o_auth:
         name: 'Name'
         logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
-        authorize_url: 'Authorize URL'
-        token_url: 'Token URL'
-        profile_url: 'Profile URL'
-        scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        is_enabled: 'Aktiviert'
+        client_id: 'Client-ID'
+        client_secret: 'Client-Secret'
+        authorize_url: 'URL autorisieren'
+        token_url: 'Token-URL'
+        profile_url: 'Profil-URL'
+        scope: 'Gültigkeitsbereich'
+        json_user_name_path: 'JSON-Pfad zum Benutzernamen'
+        json_user_email_path: 'JSON-Pfad zur E-Mail-Adresse'
       post_status:
         name: 'Name'
         color: 'Farbe'
@@ -107,4 +107,4 @@ de:
         blank: 'darf nicht leer sein'
         taken: 'wird bereits verwendet'
         too_short: 'ist zu kurz (mindestens %{count} Zeichen)'
-        too_long: 'is too long (maximum %{count} characters)'
+        too_long: 'ist zu lang (maximal %{count} Zeichen)'

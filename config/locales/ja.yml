@@ -190,7 +190,7 @@ ja:
         found: 'Found'
         summary: 'Summary'
         valid_configuration: 'This OAuth provider is configured correctly!'
-        warning_configuration: 'This OAuth provider if configured correctly, but a default name for users (%{name}) will be used.'
+        warning_configuration: 'This OAuth provider is configured correctly, but a default name for users (%{name}) will be used.'
         invalid_configuration: 'This OAuth provider is NOT configured correctly.'
       form:
         title_new: 'New OAuth provider'
