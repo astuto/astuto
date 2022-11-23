@@ -14,9 +14,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # Set tenant before all test suite runs
-  config.before(:all) do
-    Current.tenant = Tenant.first
+  ENV["RAILS_ENV"] = "test"
+
+  # Set tenant before each test
+  config.before(:each) do
+    Current.reset
+    Current.tenant = Tenant.first_or_create(site_name: 'test', subdomain: 'test')
   end
 
   # rspec-expectations config goes here. You can use an alternate
