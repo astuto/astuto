@@ -14,14 +14,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # Reset Current instance and delete all tenants from test db
-  # Create a new default tenant and set Current.tenant
+  ENV["RAILS_ENV"] = "test"
+
+  # Set tenant before each test
   config.before(:all) do
-    Current.reset
-    Tenant.delete_all
-    
-    tenant = FactoryBot.create(:tenant)
-    Current.tenant = tenant
+    # Current.reset
+    Current.tenant = Tenant.first_or_create(site_name: 'test', subdomain: 'test')
   end
 
   # rspec-expectations config goes here. You can use an alternate
