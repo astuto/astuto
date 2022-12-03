@@ -17,8 +17,8 @@ RSpec.configure do |config|
   ENV["RAILS_ENV"] = "test"
 
   # Set tenant before each test
-  config.before(:each) do
-    Current.reset
+  config.before(:all) do
+    # Current.reset
     Current.tenant = Tenant.first_or_create(site_name: 'test', subdomain: 'test')
   end
 
