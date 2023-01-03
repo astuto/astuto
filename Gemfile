@@ -19,7 +19,7 @@ gem 'jbuilder', '2.11.5'
 gem 'bootsnap', '1.12.0', require: false
 
 # HTTP requests
-gem 'httparty', '0.18.0'
+gem 'httparty', '0.21.0'
 
 # Authentication
 gem 'devise', '4.7.3'
