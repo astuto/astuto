@@ -177,10 +177,11 @@ en:
       unblock: 'Unblock'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, except they cannot demote you. Are you sure?"
       role_user: 'User'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
+      role_owner: 'Owner'
       status_active: 'Active'
       status_blocked: 'Blocked'
       status_deleted: 'Deleted'

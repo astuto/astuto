@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  enum role: [:user, :moderator, :admin]
+  enum role: [:user, :moderator, :admin, :owner]
   enum status: [:active, :blocked, :deleted]
 
   after_initialize :set_default_role, if: :new_record?
@@ -63,20 +63,16 @@ class User < ApplicationRecord
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
 
-  def power_user?
-    role == 'admin' || role == 'moderator'
+  def owner?
+    role == 'owner'
   end
 
   def admin?
-    role == 'admin'
+    owner? || role == 'admin'
   end
 
   def moderator?
-    role == 'moderator'
-  end
-
-  def user?
-    role == 'user'
+    admin? || role == 'moderator'
   end
 
   def active?

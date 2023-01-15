@@ -10,14 +10,16 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    user.power_user?
+    user.moderator?
   end
 
   def update?
-    if user.admin?
+    if user.owner?
       record.id != user.id
+    elsif user.admin?
+      record.role == 'moderator' || record.role == 'user'
     elsif user.moderator?
-      record.user?
+      record.role == 'user'
     else
       false
     end
