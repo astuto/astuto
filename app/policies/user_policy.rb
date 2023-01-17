@@ -15,7 +15,7 @@ class UserPolicy < ApplicationPolicy
 
   def update?
     if user.owner?
-      record.id != user.id
+      true
     elsif user.admin?
       record.role == 'moderator' || record.role == 'user'
     elsif user.moderator?
