@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 
     @user.assign_attributes user_update_params
 
+    # Handle special case: trying to set user role to 'owner'
+    raise Pundit::NotAuthorizedError if @user.owner?
+
     if @user.save
       render json: @user
     else

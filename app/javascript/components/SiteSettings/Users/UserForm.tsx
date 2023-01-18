@@ -23,12 +23,15 @@ class UserForm extends React.Component<Props, State> {
     this._handleUpdateUserRole = this._handleUpdateUserRole.bind(this);
   }
 
-  _handleUpdateUserRole(selectedRole: UserRoles) {
+  _handleUpdateUserRole(selectedRole: UserRoles, currentRole: UserRoles) {
     const { user, updateUserRole } = this.props;
     let confirmation = true;
 
-    if (selectedRole === 'admin') {
-      confirmation = confirm(I18n.t('site_settings.users.role_to_admin_confirmation', { name: user.fullName }));
+    if (selectedRole !== currentRole) {
+      if (selectedRole === 'moderator')
+        confirmation = confirm(I18n.t('site_settings.users.role_to_moderator_confirmation', { name: user.fullName }));
+      else if (selectedRole === 'admin')
+        confirmation = confirm(I18n.t('site_settings.users.role_to_admin_confirmation', { name: user.fullName }));
     }
 
     if (confirmation) updateUserRole(selectedRole);
@@ -68,7 +71,7 @@ class UserForm extends React.Component<Props, State> {
           </select>
         </div>
 
-        <Button onClick={() => this._handleUpdateUserRole(selectedRole)} className="updateUserButton">
+        <Button onClick={() => this._handleUpdateUserRole(selectedRole, user.role)} className="updateUserButton">
           { I18n.t('common.buttons.update') }
         </Button>
       </div>
