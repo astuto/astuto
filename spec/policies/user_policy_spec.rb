@@ -3,14 +3,6 @@ require 'rails_helper'
 RSpec.describe UserPolicy do
   subject { UserPolicy.new(user, record) }
 
-  # context 'being a visitor' do
-  #   let(:user) { nil }
-  #   let(:record) { FactoryBot.build(:user) }
-
-  #   it { should_not permit(:index) }
-  #   it { should_not permit(:edit) }
-  # end
-
   context 'being a user' do
     let(:user) { FactoryBot.build(:user) }
     let(:record) { FactoryBot.build(:user) }
