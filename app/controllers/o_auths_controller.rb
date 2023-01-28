@@ -5,6 +5,8 @@ class OAuthsController < ApplicationController
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
 
+  TOKEN_STATE_SEPARATOR = '-'
+
   # [subdomain.]base_url/o_auths/:id/start?reason=user|test
   # Generates authorize url with required parameters and redirects to provider
   def start
@@ -12,7 +14,7 @@ class OAuthsController < ApplicationController
     return if params[:reason] == 'user' and not @o_auth.is_enabled?
 
     # Generate random state + other query params
-    token_state = "#{params[:reason]}|#{Devise.friendly_token(30)}"
+    token_state = "#{params[:reason]}#{TOKEN_STATE_SEPARATOR}#{Devise.friendly_token(30)}"
     session[:token_state] = token_state
     @o_auth.state = token_state
 
@@ -22,7 +24,7 @@ class OAuthsController < ApplicationController
   # [subdomain.]base_url/o_auths/:id/callback
   # Exchange authorization code for access token, fetch user info and sign in/up
   def callback
-    reason, token_state = params[:state].split('|')
+    reason, token_state = params[:state].split(TOKEN_STATE_SEPARATOR, 2)
 
     return unless session[:token_state] == params[:state]
 
@@ -67,7 +69,7 @@ class OAuthsController < ApplicationController
     end
   end
 
-  ### CRUD actions below ###
+  ### CRUD actions ###
 
   def index
     authorize OAuth
