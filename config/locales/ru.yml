@@ -185,10 +185,12 @@ ru:
       unblock: 'Разблокировать'
       block_confirmation: "%{name} не сможет войти, пока он не будет разблокирован. Вы уверены?"
       unblock_confirmation: "%{name} сможет войти и отправить отзыв. Вы уверены?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} будет обладать теми же привилегиями, что и вы, так что они могут даже понизить или заблокировать вас. Продолжайте только если вы действительно доверяете %{name}. Вы уверены?"
       role_user: 'Пользователь'
       role_moderator: 'Модератор'
       role_admin: 'Администратор'
+      role_owner: 'Owner'
       status_active: 'Активный'
       status_blocked: 'Заблокированный'
       status_deleted: 'Удаленный'
