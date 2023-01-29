@@ -177,10 +177,12 @@ de:
       unblock: 'Entsperren'
       block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist Du Dir sicher?"
       unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist Du Dir sicher?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie Du, sodass sie Dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn Du %{name} wirklich vertraust. Bist Du Dir sicher?"
       role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
+      role_owner: 'Owner'
       status_active: 'Aktiv'
       status_blocked: 'Gesperrt'
       status_deleted: 'Gelöscht'
