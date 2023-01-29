@@ -177,10 +177,12 @@ it:
       unblock: 'Sblocca'
       block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di %{name}. Sei sicuro?"
       role_user: 'Utente'
       role_moderator: 'Moderatore'
       role_admin: 'Amministratore'
+      role_owner: 'Owner'
       status_active: 'Attivo'
       status_blocked: 'Bloccato'
       status_deleted: 'Eliminato'
