@@ -24,7 +24,7 @@ class TenantsController < ApplicationController
         full_name: params[:user][:full_name],
         email: params[:user][:email],
         password: params[:user][:password],
-        role: "admin"
+        role: "owner"
       )
       
       render json: @tenant, status: :created
