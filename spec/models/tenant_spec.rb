@@ -35,4 +35,9 @@ RSpec.describe Tenant, type: :model do
     tenant.subdomain = tenant2.subdomain
     expect(tenant).to be_invalid
   end
+
+  it 'creates a tenant_setting when created' do
+    tenant.save
+    expect(tenant.tenant_setting).to be_valid
+  end
 end
