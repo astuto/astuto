@@ -38,14 +38,6 @@ class TenantsController < ApplicationController
     @tenant = Current.tenant_or_raise!
     authorize @tenant
 
-    # I permitted params funzionano, il problema sta nell'assegnamento qua sotto
-    # Non posso assegnare a tenant_setting direttamente l'hash tenant_setting ricevuto
-    # Vedi nested params:
-    # https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html
-    # https://www.pluralsight.com/guides/ruby-on-rails-nested-attributes
-
-    @tenant.tenant_setting.assign_attributes(tenant_update_params[:tenant_setting])
-
     if @tenant.update(tenant_update_params)
       render json: @tenant
     else
@@ -82,8 +74,8 @@ class TenantsController < ApplicationController
           policy(@tenant)
           .permitted_attributes_for_update
           .concat([{
-            tenant_setting: policy(@tenant.tenant_setting).permitted_attributes_for_update
-          }])
+            tenant_setting_attributes: policy(@tenant.tenant_setting).permitted_attributes_for_update
+          }]) # in order to permit nested attributes for tenant_setting
         )
     end
 end

@@ -75,7 +75,7 @@ export const updateTenant = ({
     const body = JSON.stringify({
       tenant: {
         ...tenant,
-        tenant_setting: tenantSetting,
+        tenant_setting_attributes: tenantSetting,
       },
     });
 

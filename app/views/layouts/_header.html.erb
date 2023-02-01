@@ -5,11 +5,11 @@
         app_name = content_tag :span, @tenant.site_name
         logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo')
 
-        if @tenant.tenant_setting.brand_display == "name_and_logo"
+        if @tenant_setting.brand_display == "name_and_logo"
           logo + app_name
-        elsif @tenant.tenant_setting.brand_display == "name_only"
+        elsif @tenant_setting.brand_display == "name_only"
           app_name
-        elsif @tenant.tenant_setting.brand_display == "logo_only"
+        elsif @tenant_setting.brand_display == "logo_only"
           logo
         end
       end

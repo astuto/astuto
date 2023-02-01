@@ -1,4 +1,6 @@
 class TenantSetting < ApplicationRecord
+  include TenantOwnable
+  
   belongs_to :tenant
 
   enum brand_display: [
