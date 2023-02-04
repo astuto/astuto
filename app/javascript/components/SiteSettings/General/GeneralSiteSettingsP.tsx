@@ -7,11 +7,11 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import Button from '../../common/Button';
 import HttpStatus from '../../../constants/http_status';
 import {
-  TENANT_BRAND_NAME_AND_LOGO,
-  TENANT_BRAND_NAME_ONLY,
-  TENANT_BRAND_LOGO_ONLY,
-  TENANT_BRAND_NONE,
-} from '../../../interfaces/ITenant';
+  TENANT_SETTING_BRAND_DISPLAY_NAME_AND_LOGO,
+  TENANT_SETTING_BRAND_DISPLAY_NAME_ONLY,
+  TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY,
+  TENANT_SETTING_BRAND_DISPLAY_NONE,
+} from '../../../interfaces/ITenantSetting';
 import { DangerText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 
@@ -105,16 +105,16 @@ const GeneralSiteSettingsP = ({
                 id="brandSetting"
                 className="selectPicker"
               >
-                <option value={TENANT_BRAND_NAME_AND_LOGO}>
+                <option value={TENANT_SETTING_BRAND_DISPLAY_NAME_AND_LOGO}>
                   { I18n.t('site_settings.general.brand_setting_both') }
                 </option>
-                <option value={TENANT_BRAND_NAME_ONLY}>
+                <option value={TENANT_SETTING_BRAND_DISPLAY_NAME_ONLY}>
                   { I18n.t('site_settings.general.brand_setting_name') }
                 </option>
-                <option value={TENANT_BRAND_LOGO_ONLY}>
+                <option value={TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY}>
                   { I18n.t('site_settings.general.brand_setting_logo') }
                 </option>
-                <option value={TENANT_BRAND_NONE}>
+                <option value={TENANT_SETTING_BRAND_DISPLAY_NONE}>
                   { I18n.t('site_settings.general.brand_setting_none') }
                 </option>
               </select>
