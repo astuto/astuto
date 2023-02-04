@@ -104,9 +104,9 @@ const postsReducer = (
         items: state.items.map(post => {
           if (action.postId === post.id) {
             return action.isLike ?
-              { ...post, likesCount: post.likesCount + 1, liked: 1 }
+              { ...post, likeCount: post.likeCount + 1, liked: 1 }
               :
-              { ...post, likesCount: post.likesCount - 1, liked: 0 }
+              { ...post, likeCount: post.likeCount - 1, liked: 0 }
           } else return post;
         }),
       };

@@ -15,13 +15,19 @@ const mapDispatchToProps = (dispatch: any) => ({
     siteName: string,
     siteLogo: string,
     brandDisplaySetting: TenantSettingBrandDisplay,
+    showVoteCount: boolean,
+    showVoteButtonInBoard: boolean,
     locale: string,
     authenticityToken: string
   ): Promise<any> {
     return dispatch(updateTenant({
       siteName,
       siteLogo,
-      tenantSetting: { brand_display: brandDisplaySetting },
+      tenantSetting: {
+        brand_display: brandDisplaySetting,
+        show_vote_count: showVoteCount,
+        show_vote_button_in_board: showVoteButtonInBoard,
+      },
       locale,
       authenticityToken,
     }));

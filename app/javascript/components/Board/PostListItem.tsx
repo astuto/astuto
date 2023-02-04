@@ -12,7 +12,9 @@ interface Props {
   title: string;
   description?: string;
   postStatus: IPostStatus;
-  likesCount: number;
+  likeCount: number;
+  showLikeCount: boolean;
+  showLikeButtons: boolean;
   liked: number;
   commentsCount: number;
 
@@ -25,7 +27,9 @@ const PostListItem = ({
   title,
   description,
   postStatus,
-  likesCount,
+  likeCount,
+  showLikeCount,
+  showLikeButtons,
   liked,
   commentsCount,
 
@@ -35,7 +39,9 @@ const PostListItem = ({
   <div onClick={() => window.location.href = `/posts/${id}`} className="postListItem">
     <LikeButton
       postId={id}
-      likesCount={likesCount}
+      likeCount={likeCount}
+      showLikeCount={showLikeCount}
+      showLikeButton={showLikeButtons}
       liked={liked}
       isLoggedIn={isLoggedIn}
       authenticityToken={authenticityToken}

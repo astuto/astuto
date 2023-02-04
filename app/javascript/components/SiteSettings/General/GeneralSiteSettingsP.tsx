@@ -12,13 +12,15 @@ import {
   TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY,
   TENANT_SETTING_BRAND_DISPLAY_NONE,
 } from '../../../interfaces/ITenantSetting';
-import { DangerText } from '../../common/CustomTexts';
+import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
   siteLogo: string;
   brandDisplaySetting: string;
+  showVoteCount: boolean;
+  showVoteButtonInBoard: boolean;
   locale: string;
 }
 
@@ -33,6 +35,8 @@ interface Props {
     siteName: string,
     siteLogo: string,
     brandDisplaySetting: string,
+    showVoteCount: boolean,
+    showVoteButtonInBoard: boolean,
     locale: string,
     authenticityToken: string
   ): Promise<any>;
@@ -55,6 +59,8 @@ const GeneralSiteSettingsP = ({
       siteName: originForm.siteName,
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
+      showVoteCount: originForm.showVoteCount,
+      showVoteButtonInBoard: originForm.showVoteButtonInBoard,
       locale: originForm.locale,
     },
   });
@@ -64,6 +70,8 @@ const GeneralSiteSettingsP = ({
       data.siteName,
       data.siteLogo,
       data.brandDisplaySetting,
+      data.showVoteCount,
+      data.showVoteButtonInBoard,
       data.locale,
       authenticityToken,
     ).then(res => {
@@ -99,7 +107,7 @@ const GeneralSiteSettingsP = ({
             </div>
 
             <div className="formGroup col-4">
-              <label htmlFor="brandSetting">{ getLabel('tenant', 'brand_setting') }</label>
+              <label htmlFor="brandSetting">{ getLabel('tenant_setting', 'brand_display') }</label>
               <select
                 {...register('brandDisplaySetting')}
                 id="brandSetting"
@@ -134,6 +142,30 @@ const GeneralSiteSettingsP = ({
               <option value="fr">🇫🇷 Français</option>
               <option value="ru">🇷🇺 Русский</option>
             </select>
+          </div>
+
+          <br />
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showVoteCount')} type="checkbox" id="show_vote_count_checkbox" />
+              <label htmlFor="show_vote_count_checkbox">{ getLabel('tenant_setting', 'show_vote_count') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.show_vote_count_help') }
+              </SmallMutedText>
+            </div>
+          </div>
+
+          <br />
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showVoteButtonInBoard')} type="checkbox" id="show_vote_button_in_board_checkbox" />
+              <label htmlFor="show_vote_button_in_board_checkbox">{ getLabel('tenant_setting', 'show_vote_button_in_board') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.show_vote_button_in_board_help') }
+              </SmallMutedText>
+            </div>
           </div>
 
           <br />

@@ -19,4 +19,12 @@ RSpec.describe TenantSetting, type: :model do
     tenant_setting.brand_display = 'no_name_no_logo'
     expect(tenant_setting).to be_valid
   end
+
+  it 'has a setting to show vote count' do
+    expect(tenant_setting.show_vote_count).to be_falsy
+  end
+
+  it 'has a setting to show vote button in board view' do
+    expect(tenant_setting.show_vote_button_in_board).to be_falsy
+  end
 end

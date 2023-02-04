@@ -7,6 +7,7 @@ import PostList from './PostList';
 import Sidebar from '../common/Sidebar';
 
 import IBoard from '../../interfaces/IBoard';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 import { PostsState } from '../../reducers/postsReducer';
 import { PostStatusesState } from '../../reducers/postStatusesReducer';
@@ -14,6 +15,8 @@ import { PostStatusesState } from '../../reducers/postStatusesReducer';
 interface Props {
   board: IBoard;
   isLoggedIn: boolean;
+  isPowerUser: boolean;
+  tenantSetting: ITenantSetting;
   authenticityToken: string;
   posts: PostsState;
   postStatuses: PostStatusesState;
@@ -63,6 +66,8 @@ class BoardP extends React.Component<Props> {
     const {
       board,
       isLoggedIn,
+      isPowerUser,
+      tenantSetting,
       authenticityToken,
       posts,
       postStatuses,
@@ -97,6 +102,8 @@ class BoardP extends React.Component<Props> {
 
         <PostList
           posts={posts.items}
+          showLikeCount={isPowerUser || tenantSetting.show_vote_count}
+          showLikeButtons={tenantSetting.show_vote_button_in_board}
           postStatuses={postStatuses.items}
           areLoading={posts.areLoading}
           error={posts.error}

@@ -12,6 +12,8 @@ export type TenantSettingBrandDisplay =
 
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
+  show_vote_count?: boolean;
+  show_vote_button_in_board?: boolean;
 }
 
 export default ITenantSetting;
