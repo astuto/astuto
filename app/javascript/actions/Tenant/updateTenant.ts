@@ -3,6 +3,7 @@ import { ThunkAction } from "redux-thunk";
 
 import HttpStatus from "../../constants/http_status";
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
+import ITenantSetting from "../../interfaces/ITenantSetting";
 import ITenantJSON from "../../interfaces/json/ITenant";
 import { State } from "../../reducers/rootReducer";
 
@@ -47,7 +48,7 @@ const tenantUpdateFailure = (error: string): TenantUpdateFailureAction => ({
 interface UpdateTenantParams {
   siteName?: string;
   siteLogo?: string;
-  brandDisplaySetting?: string;
+  tenantSetting?: ITenantSetting;
   locale?: string;
   authenticityToken: string;
 }
@@ -55,7 +56,7 @@ interface UpdateTenantParams {
 export const updateTenant = ({
   siteName = null,
   siteLogo = null,
-  brandDisplaySetting = null,
+  tenantSetting = null,
   locale = null,
   authenticityToken,
 }: UpdateTenantParams): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
@@ -65,10 +66,6 @@ export const updateTenant = ({
     siteName !== null ? { site_name: siteName } : null,
     siteLogo !== null ? { site_logo: siteLogo } : null,
     locale !== null ? { locale } : null
-  );
-  
-  const tenantSetting = Object.assign({},
-    brandDisplaySetting !== null ? { brand_display: brandDisplaySetting } : null,
   );
 
   try {
