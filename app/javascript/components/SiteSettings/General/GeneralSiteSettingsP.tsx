@@ -14,18 +14,21 @@ import {
 } from '../../../interfaces/ITenantSetting';
 import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
+import IBoardJSON from '../../../interfaces/json/IBoard';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
   siteLogo: string;
   brandDisplaySetting: string;
+  locale: string;
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
-  locale: string;
+  rootBoardId?: number;
 }
 
 interface Props {
   originForm: ISiteSettingsGeneralForm;
+  boards: IBoardJSON[];
   authenticityToken: string;
 
   areUpdating: boolean;
@@ -35,15 +38,17 @@ interface Props {
     siteName: string,
     siteLogo: string,
     brandDisplaySetting: string,
+    locale: string,
+    rootBoardId: number,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
-    locale: string,
     authenticityToken: string
   ): Promise<any>;
 }
 
 const GeneralSiteSettingsP = ({
   originForm,
+  boards,
   authenticityToken,
 
   areUpdating,
@@ -59,9 +64,10 @@ const GeneralSiteSettingsP = ({
       siteName: originForm.siteName,
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
+      locale: originForm.locale,
       showVoteCount: originForm.showVoteCount,
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
-      locale: originForm.locale,
+      rootBoardId: originForm.rootBoardId,
     },
   });
   
@@ -70,9 +76,10 @@ const GeneralSiteSettingsP = ({
       data.siteName,
       data.siteLogo,
       data.brandDisplaySetting,
+      data.locale,
+      data.rootBoardId,
       data.showVoteCount,
       data.showVoteButtonInBoard,
-      data.locale,
       authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
@@ -141,6 +148,22 @@ const GeneralSiteSettingsP = ({
               <option value="de">🇩🇪 Deutsch</option>
               <option value="fr">🇫🇷 Français</option>
               <option value="ru">🇷🇺 Русский</option>
+            </select>
+          </div>
+
+          <div className="formGroup">
+            <label htmlFor="rootBoardId">{ getLabel('tenant_setting', 'root_board_id') }</label>
+            <select
+              {...register('rootBoardId')}
+              id="rootBoardId"
+              className="selectPicker"
+            >
+              <option value="0">Roadmap</option>
+              <optgroup label="Boards">
+                {boards.map((board, i) => (
+                  <option value={board.id} key={i}>{board.name}</option>
+                ))}
+              </optgroup>
             </select>
           </div>
 
