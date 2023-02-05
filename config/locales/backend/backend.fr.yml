@@ -47,6 +47,28 @@ fr:
         subject: '[%{app_name}] Changement de statut sur la publication %{post}'
         body: "La publication que vous suivez %{post} a un nouveau statut"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Comment'
+        other: 'Comments'
+      like:
+        one: 'Vote'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        other: 'Posts'
+      user:
+        one: 'User'
+        other: 'Users'
     attributes:
       board:
         name: 'Nom'
@@ -92,7 +114,11 @@ fr:
         site_logo: 'Logo du site'
         subdomain: 'Sous-domaine'
         locale: 'Langue'
-        brand_setting: 'Afficher'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
       user:
         email: 'Email'
         full_name: 'Nom complet'
