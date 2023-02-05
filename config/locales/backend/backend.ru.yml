@@ -47,6 +47,42 @@ ru:
         subject: '[%{app_name}] Статус изменен на пост %{post}'
         body: "На публикацию, которые вы подписаны %{post} новый статус"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        few: 'Boards'
+        many: 'Boards'
+        other: 'Boards'
+      comment:
+        one: 'Comment'
+        few: 'Comments'
+        many: 'Comments'
+        other: 'Comments'
+      like:
+        one: 'Vote'
+        few: 'Votes'
+        many: 'Votes'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        few: 'OAuths'
+        many: 'OAuths'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        few: 'Statuses'
+        many: 'Statuses'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        few: 'Posts'
+        many: 'Posts'
+        other: 'Posts'
+      user:
+        one: 'User'
+        few: 'Users'
+        many: 'Users'
+        other: 'Users'
     attributes:
       board:
         name: 'Имя'
@@ -92,7 +128,11 @@ ru:
         site_logo: 'Логотип сайта'
         subdomain: 'Поддомен'
         locale: 'Язык'
-        brand_setting: 'Отображение'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
       user:
         email: 'Email'
         full_name: 'Полное имя'
