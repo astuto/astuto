@@ -47,6 +47,21 @@ zh-CN:
         subject: '[%{app_name}] Status change on post %{post}'
         body: "The post you're following %{post} has a new status"
   activerecord:
+    models:
+      board:
+        other: 'Boards'
+      comment:
+        other: 'Comments'
+      like:
+        other: 'Votes'
+      o_auth:
+        other: 'OAuths'
+      post_status:
+        other: 'Statuses'
+      post:
+        other: 'Posts'
+      user:
+        other: 'Users'
     attributes:
       board:
         name: 'Name'
@@ -92,7 +107,11 @@ zh-CN:
         site_logo: 'Site logo'
         subdomain: 'Subdomain'
         locale: 'Language'
-        brand_setting: 'Display'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
       user:
         email: 'Email'
         full_name: 'Full name'
