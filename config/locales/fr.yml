@@ -153,6 +153,8 @@ fr:
       brand_setting_name: 'Nom seulement'
       brand_setting_logo: 'Logo uniquement'
       brand_setting_none: 'Aucun'
+      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
+      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
       title: 'Tableaux'
       empty: 'Il n''y a pas de tableaux. Créez en un ci-dessous!'
