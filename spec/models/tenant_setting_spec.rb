@@ -27,4 +27,8 @@ RSpec.describe TenantSetting, type: :model do
   it 'has a setting to show vote button in board view' do
     expect(tenant_setting.show_vote_button_in_board).to be_falsy
   end
+
+  it 'has a setting that contains the board id of the root page' do
+    expect(tenant_setting.root_board_id).to eq(0)
+  end
 end

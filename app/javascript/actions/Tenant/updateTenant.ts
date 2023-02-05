@@ -76,8 +76,6 @@ export const updateTenant = ({
       },
     });
 
-    console.log(body)
-
     const res = await fetch(`/tenants/0`, {
       method: 'PATCH',
       headers: buildRequestHeaders(authenticityToken),

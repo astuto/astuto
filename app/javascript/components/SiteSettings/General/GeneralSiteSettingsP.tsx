@@ -23,7 +23,7 @@ export interface ISiteSettingsGeneralForm {
   locale: string;
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
-  rootBoardId?: number;
+  rootBoardId?: string;
 }
 
 interface Props {
@@ -77,7 +77,7 @@ const GeneralSiteSettingsP = ({
       data.siteLogo,
       data.brandDisplaySetting,
       data.locale,
-      data.rootBoardId,
+      Number(data.rootBoardId),
       data.showVoteCount,
       data.showVoteButtonInBoard,
       authenticityToken,
