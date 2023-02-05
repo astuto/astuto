@@ -10,7 +10,7 @@ feature 'likes', type: :system, js: true do
   let(:post_header_selector) { '.postHeader' }
   let(:like_button_container_selector) { '.likeButtonContainer' }
   let(:like_button_selector) { '.likeButton' }
-  let(:likes_count_label_selector) { '.likesCountLabel' }
+  let(:likes_count_label_selector) { '.likeCountLabel' }
   let(:like_list_container_selector) { '.likeListContainer' }
 
   before(:each) do

@@ -4,11 +4,13 @@ import { Store } from 'redux';
 
 import GeneralSiteSettings from '../../../containers/GeneralSiteSettings';
 import createStoreHelper from '../../../helpers/createStore';
+import IBoardJSON from '../../../interfaces/json/IBoard';
 import { State } from '../../../reducers/rootReducer';
 import { ISiteSettingsGeneralForm } from './GeneralSiteSettingsP';
 
 interface Props {
   originForm: ISiteSettingsGeneralForm;
+  boards: IBoardJSON[];
   authenticityToken: string;
 }
 
@@ -26,6 +28,7 @@ class GeneralSiteSettingsRoot extends React.Component<Props> {
       <Provider store={this.store}>
         <GeneralSiteSettings
           originForm={this.props.originForm}
+          boards={this.props.boards}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>

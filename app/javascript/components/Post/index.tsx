@@ -10,6 +10,7 @@ import IPostStatus from '../../interfaces/IPostStatus';
 
 import { Store } from 'redux';
 import { State } from '../../reducers/rootReducer';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   postId: number;
@@ -19,6 +20,7 @@ interface Props {
   isPowerUser: boolean;
   currentUserFullName: string;
   currentUserEmail: string;
+  tenantSetting: ITenantSetting;
   authenticityToken: string;
 }
 
@@ -40,6 +42,7 @@ class PostRoot extends React.Component<Props> {
       isPowerUser,
       currentUserFullName,
       currentUserEmail,
+      tenantSetting,
       authenticityToken
     } = this.props;
 
@@ -54,6 +57,7 @@ class PostRoot extends React.Component<Props> {
           isPowerUser={isPowerUser}
           currentUserFullName={currentUserFullName}
           currentUserEmail={currentUserEmail}
+          tenantSetting={tenantSetting}
           authenticityToken={authenticityToken}
         />
       </Provider>

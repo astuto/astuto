@@ -9,8 +9,12 @@
             siteName: @tenant.site_name,
             siteLogo: @tenant.site_logo,
             brandDisplaySetting: @tenant_setting.brand_display,
+            showVoteCount: @tenant_setting.show_vote_count,
+            showVoteButtonInBoard: @tenant_setting.show_vote_button_in_board,
+            rootBoardId: @tenant_setting.root_board_id.to_s,
             locale: @tenant.locale
           },
+          boards: @tenant.boards.order(order: :asc),
           authenticityToken: form_authenticity_token
         }
       )

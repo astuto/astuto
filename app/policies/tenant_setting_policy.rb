@@ -1,7 +1,7 @@
 class TenantSettingPolicy < ApplicationPolicy
   def permitted_attributes_for_update
     if user.admin?
-      [:brand_display]
+      [:brand_display, :root_board_id, :show_vote_count, :show_vote_button_in_board]
     else
       []
     end

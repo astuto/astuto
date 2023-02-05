@@ -12,18 +12,23 @@ import {
   TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY,
   TENANT_SETTING_BRAND_DISPLAY_NONE,
 } from '../../../interfaces/ITenantSetting';
-import { DangerText } from '../../common/CustomTexts';
+import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
+import IBoardJSON from '../../../interfaces/json/IBoard';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
   siteLogo: string;
   brandDisplaySetting: string;
   locale: string;
+  showVoteCount: boolean;
+  showVoteButtonInBoard: boolean;
+  rootBoardId?: string;
 }
 
 interface Props {
   originForm: ISiteSettingsGeneralForm;
+  boards: IBoardJSON[];
   authenticityToken: string;
 
   areUpdating: boolean;
@@ -34,12 +39,16 @@ interface Props {
     siteLogo: string,
     brandDisplaySetting: string,
     locale: string,
+    rootBoardId: number,
+    showVoteCount: boolean,
+    showVoteButtonInBoard: boolean,
     authenticityToken: string
   ): Promise<any>;
 }
 
 const GeneralSiteSettingsP = ({
   originForm,
+  boards,
   authenticityToken,
 
   areUpdating,
@@ -56,6 +65,9 @@ const GeneralSiteSettingsP = ({
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
+      showVoteCount: originForm.showVoteCount,
+      showVoteButtonInBoard: originForm.showVoteButtonInBoard,
+      rootBoardId: originForm.rootBoardId,
     },
   });
   
@@ -65,6 +77,9 @@ const GeneralSiteSettingsP = ({
       data.siteLogo,
       data.brandDisplaySetting,
       data.locale,
+      Number(data.rootBoardId),
+      data.showVoteCount,
+      data.showVoteButtonInBoard,
       authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
@@ -99,7 +114,7 @@ const GeneralSiteSettingsP = ({
             </div>
 
             <div className="formGroup col-4">
-              <label htmlFor="brandSetting">{ getLabel('tenant', 'brand_setting') }</label>
+              <label htmlFor="brandSetting">{ getLabel('tenant_setting', 'brand_display') }</label>
               <select
                 {...register('brandDisplaySetting')}
                 id="brandSetting"
@@ -134,6 +149,48 @@ const GeneralSiteSettingsP = ({
               <option value="fr">🇫🇷 Français</option>
               <option value="ru">🇷🇺 Русский</option>
             </select>
+          </div>
+
+          <div className="formGroup">
+            <label htmlFor="rootBoardId">{ getLabel('tenant_setting', 'root_board_id') }</label>
+            <select
+              {...register('rootBoardId')}
+              id="rootBoardId"
+              className="selectPicker"
+            >
+              <option value="0">
+                {I18n.t('roadmap.title')}
+              </option>
+              <optgroup label={getLabel('board')}>
+                {boards.map((board, i) => (
+                  <option value={board.id} key={i}>{board.name}</option>
+                ))}
+              </optgroup>
+            </select>
+          </div>
+
+          <br />
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showVoteCount')} type="checkbox" id="show_vote_count_checkbox" />
+              <label htmlFor="show_vote_count_checkbox">{ getLabel('tenant_setting', 'show_vote_count') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.show_vote_count_help') }
+              </SmallMutedText>
+            </div>
+          </div>
+
+          <br />
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showVoteButtonInBoard')} type="checkbox" id="show_vote_button_in_board_checkbox" />
+              <label htmlFor="show_vote_button_in_board_checkbox">{ getLabel('tenant_setting', 'show_vote_button_in_board') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.show_vote_button_in_board_help') }
+              </SmallMutedText>
+            </div>
           </div>
 
           <br />
