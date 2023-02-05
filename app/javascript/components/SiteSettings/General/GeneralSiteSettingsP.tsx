@@ -158,8 +158,10 @@ const GeneralSiteSettingsP = ({
               id="rootBoardId"
               className="selectPicker"
             >
-              <option value="0">Roadmap</option>
-              <optgroup label="Boards">
+              <option value="0">
+                {I18n.t('roadmap.title')}
+              </option>
+              <optgroup label={getLabel('board')}>
                 {boards.map((board, i) => (
                   <option value={board.id} key={i}>{board.name}</option>
                 ))}

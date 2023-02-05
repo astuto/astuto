@@ -4,6 +4,7 @@ import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
 import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_MODERATOR, USER_ROLE_USER } from '../../../interfaces/IUser';
+import { getLabel } from '../../../helpers/formUtils';
 
 interface Props {
   user: IUser;
@@ -57,7 +58,7 @@ class UserForm extends React.Component<Props, State> {
             id="selectPickerUserRole"
             className="selectPicker"
           >
-            <optgroup label="Roles">
+            <optgroup label={getLabel('user', 'role')}>
               <option value={USER_ROLE_USER}>
                 { I18n.t(`site_settings.users.role_${USER_ROLE_USER}`) }
               </option>
