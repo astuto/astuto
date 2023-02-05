@@ -47,6 +47,28 @@ de:
         subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
         body: "Der Beitrag, dem Du folgst %{post} hat einen neuen Status"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Comment'
+        other: 'Comments'
+      like:
+        one: 'Vote'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        other: 'Posts'
+      user:
+        one: 'User'
+        other: 'Users'
     attributes:
       board:
         name: 'Name'
@@ -92,7 +114,11 @@ de:
         site_logo: 'Seitenlogo'
         subdomain: 'Subdomain'
         locale: 'Sprache'
-        brand_setting: 'Anzeigen'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
       user:
         email: 'E-Mail'
         full_name: 'Voller Name'
