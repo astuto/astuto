@@ -24,6 +24,7 @@ export interface ISiteSettingsGeneralForm {
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
   rootBoardId?: string;
+  showRoadmapInHeader: boolean;
 }
 
 interface Props {
@@ -40,6 +41,7 @@ interface Props {
     brandDisplaySetting: string,
     locale: string,
     rootBoardId: number,
+    showRoadmapInHeader: boolean,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
     authenticityToken: string
@@ -68,6 +70,7 @@ const GeneralSiteSettingsP = ({
       showVoteCount: originForm.showVoteCount,
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
       rootBoardId: originForm.rootBoardId,
+      showRoadmapInHeader: originForm.showRoadmapInHeader,
     },
   });
   
@@ -78,9 +81,10 @@ const GeneralSiteSettingsP = ({
       data.brandDisplaySetting,
       data.locale,
       Number(data.rootBoardId),
+      data.showRoadmapInHeader,
       data.showVoteCount,
       data.showVoteButtonInBoard,
-      authenticityToken,
+      authenticityToken
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
       window.location.reload();
@@ -170,6 +174,17 @@ const GeneralSiteSettingsP = ({
           </div>
 
           <br />
+          <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>
+          
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showRoadmapInHeader')} type="checkbox" id="show_roadmap_in_header" />
+              <label htmlFor="show_roadmap_in_header">{ getLabel('tenant_setting', 'show_roadmap_in_header') }</label>
+            </div>
+          </div>
+
+          <br />
+          <h4>{ I18n.t('site_settings.general.subtitle_visibility') }</h4>
 
           <div className="formGroup">
             <div className="checkboxSwitch">

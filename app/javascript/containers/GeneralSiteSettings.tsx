@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
     rootBoardId: number,
+    showRoadmapInHeader: boolean,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
     authenticityToken: string
@@ -29,6 +30,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         show_vote_count: showVoteCount,
         show_vote_button_in_board: showVoteButtonInBoard,
         root_board_id: rootBoardId,
+        show_roadmap_in_header: showRoadmapInHeader,
       },
       locale,
       authenticityToken,

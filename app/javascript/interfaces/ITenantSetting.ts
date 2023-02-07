@@ -15,6 +15,7 @@ interface ITenantSetting {
   root_board_id?: number;
   show_vote_count?: boolean;
   show_vote_button_in_board?: boolean;
+  show_roadmap_in_header?: boolean;
 }
 
 export default ITenantSetting;
