@@ -119,6 +119,8 @@ fr:
         show_vote_count: 'Show vote count to users'
         show_vote_button_in_board: 'Show vote buttons in board page'
         root_board_id: 'Root page'
+        show_roadmap_in_header: 'Show roadmap link in header'
+        collapse_boards_in_header: 'Collapse boards in header'
       user:
         email: 'Email'
         full_name: 'Nom complet'
