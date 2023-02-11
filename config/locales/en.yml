@@ -153,6 +153,10 @@ en:
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
+      subtitle_header: 'Header'
+      collapse_boards_in_header_no_collapse: 'Never'
+      collapse_boards_in_header_always_collapse: 'Always'
+      subtitle_visibility: 'Visibility'
       show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:

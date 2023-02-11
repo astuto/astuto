@@ -29,6 +29,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="boardsNav">
+        <% if @tenant_setting.show_roadmap_in_header %>
+          <li class="nav-item<%= current_page?(roadmap_path) ? ' active' : '' %>">
+            <%= link_to "Roadmap", roadmap_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+        
         <%= render 'layouts/boards_nav_section', boards: @boards unless @boards.nil? %>
       </ul>
 

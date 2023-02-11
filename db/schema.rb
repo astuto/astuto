@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_04_171748) do
+ActiveRecord::Schema.define(version: 2023_02_11_095500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 2023_02_04_171748) do
     t.boolean "show_vote_count", default: false, null: false
     t.boolean "show_vote_button_in_board", default: false, null: false
     t.integer "root_board_id", default: 0, null: false
+    t.boolean "show_roadmap_in_header", default: true, null: false
+    t.integer "collapse_boards_in_header", default: 0, null: false
     t.index ["tenant_id"], name: "index_tenant_settings_on_tenant_id"
   end
 
