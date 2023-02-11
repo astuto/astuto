@@ -11,6 +11,8 @@ import {
   TENANT_SETTING_BRAND_DISPLAY_NAME_ONLY,
   TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY,
   TENANT_SETTING_BRAND_DISPLAY_NONE,
+  TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE,
+  TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE,
 } from '../../../interfaces/ITenantSetting';
 import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
@@ -25,6 +27,7 @@ export interface ISiteSettingsGeneralForm {
   showVoteButtonInBoard: boolean;
   rootBoardId?: string;
   showRoadmapInHeader: boolean;
+  collapseBoardsInHeader: string;
 }
 
 interface Props {
@@ -42,6 +45,7 @@ interface Props {
     locale: string,
     rootBoardId: number,
     showRoadmapInHeader: boolean,
+    collapseBoardsInHeader: string,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
     authenticityToken: string
@@ -71,6 +75,7 @@ const GeneralSiteSettingsP = ({
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
       rootBoardId: originForm.rootBoardId,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
+      collapseBoardsInHeader: originForm.collapseBoardsInHeader,
     },
   });
   
@@ -82,6 +87,7 @@ const GeneralSiteSettingsP = ({
       data.locale,
       Number(data.rootBoardId),
       data.showRoadmapInHeader,
+      data.collapseBoardsInHeader,
       data.showVoteCount,
       data.showVoteButtonInBoard,
       authenticityToken
@@ -181,6 +187,23 @@ const GeneralSiteSettingsP = ({
               <input {...register('showRoadmapInHeader')} type="checkbox" id="show_roadmap_in_header" />
               <label htmlFor="show_roadmap_in_header">{ getLabel('tenant_setting', 'show_roadmap_in_header') }</label>
             </div>
+          </div>
+          
+          <br />
+          <div className="formGroup">
+            <label htmlFor="collapseBoardsInHeader">{ getLabel('tenant_setting', 'collapse_boards_in_header') }</label>
+              <select
+                {...register('collapseBoardsInHeader')}
+                id="collapseBoardsInHeader"
+                className="selectPicker"
+              >
+                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE}>
+                  { I18n.t('site_settings.general.collapse_boards_in_header_no_collapse') }
+                </option>
+                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE}>
+                  { I18n.t('site_settings.general.collapse_boards_in_header_always_collapse') }
+                </option>
+              </select>
           </div>
 
           <br />

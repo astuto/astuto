@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import GeneralSiteSettingsP from "../components/SiteSettings/General/GeneralSiteSettingsP";
 import { updateTenant } from "../actions/Tenant/updateTenant";
 import { State } from "../reducers/rootReducer";
-import { TenantSettingBrandDisplay } from "../interfaces/ITenantSetting";
+import { TenantSettingBrandDisplay, TenantSettingCollapseBoardsInHeader } from "../interfaces/ITenantSetting";
 
 const mapStateToProps = (state: State) => ({
   areUpdating: state.siteSettings.general.areUpdating,
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     locale: string,
     rootBoardId: number,
     showRoadmapInHeader: boolean,
+    collapseBoardsInHeader: TenantSettingCollapseBoardsInHeader,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
     authenticityToken: string
@@ -31,6 +32,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         show_vote_button_in_board: showVoteButtonInBoard,
         root_board_id: rootBoardId,
         show_roadmap_in_header: showRoadmapInHeader,
+        collapse_boards_in_header: collapseBoardsInHeader,
       },
       locale,
       authenticityToken,
