@@ -77,6 +77,7 @@ COPY --from=builder ${APP_ROOT}/app/ ${APP_ROOT}/app/
 COPY --from=builder ${APP_ROOT}/bin/ ${APP_ROOT}/bin/
 COPY --from=builder ${APP_ROOT}/config/ ${APP_ROOT}/config/
 COPY --from=builder ${APP_ROOT}/db/ ${APP_ROOT}/db/
+COPY --from=builder ${APP_ROOT}/spec/ ${APP_ROOT}/spec/
 
 # Copy scripts and configuration files
 COPY --from=builder ${APP_ROOT}/docker-entrypoint.sh ${APP_ROOT}/
