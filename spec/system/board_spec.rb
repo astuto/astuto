@@ -110,7 +110,7 @@ feature 'board', type: :system, js: true do
 
     expect(Post.count).to eq(post_count + 1)
 
-
+    # Check if created post is displayed in the board
     expect(page).to have_content(/#{post_title}/i)
     expect(page).to have_content(/#{post_description}/i)
   end
@@ -168,16 +168,16 @@ feature 'board', type: :system, js: true do
   def assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
     # puts "tot: #{n_of_posts_in_board}, perpage: #{n_of_posts_per_page}, page: #{page_number}"
     within board_container do
-      if n_of_posts_in_board < n_of_posts_per_page * page_number
-        expect(page).to have_selector(post_list_item, count: n_of_posts_in_board)
-      else
+      if n_of_posts_per_page * page_number < n_of_posts_in_board
         expect(page).to have_selector(post_list_item, count: n_of_posts_per_page * page_number)
+      else
+        expect(page).to have_selector(post_list_item, count: n_of_posts_in_board)
       end
     end
   end
 
   it 'autoloads new posts with infinite scroll' do
-    40.times { FactoryBot.create(:post, board: board) }
+    41.times { FactoryBot.create(:post, board: board) }
     n_of_posts_in_board = Post.where(board_id: board.id).count
 
     visit board_path(board)
