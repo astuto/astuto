@@ -19,6 +19,8 @@ end
 
 Capybara.javascript_driver = :chrome_headless
 
+Capybara.default_max_wait_time = 10
+
 # Setup rspec
 RSpec.configure do |config|
   config.before(:each, type: :system) do

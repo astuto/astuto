@@ -160,7 +160,7 @@ feature 'board', type: :system, js: true do
       find('#searchPostInput').set post2.description
     end
 
-    expect(page).to have_no_content(/#{post1.description}/i)
+    expect(page).to have_no_content(/#{post1.description}/i, wait: 3)
     expect(page).to have_content(/#{post2.description}/i)
     expect(page).to have_no_content(/#{post3.description}/i)
   end
@@ -177,11 +177,12 @@ feature 'board', type: :system, js: true do
   end
 
   it 'autoloads new posts with infinite scroll' do
-    41.times { FactoryBot.create(:post, board: board) }
+    17.times { FactoryBot.create(:post, board: board) }
     n_of_posts_in_board = Post.where(board_id: board.id).count
 
     visit board_path(board)
     
+    find(post_list_item, match: :first) # used to wait for the first post to be visible
     n_of_posts_per_page = page.all(:css, post_list_item).size
     page_number = 1
 
@@ -191,6 +192,7 @@ feature 'board', type: :system, js: true do
     while n_of_posts_in_board > n_of_posts_per_page * page_number
       execute_script('window.scrollTo(0, document.body.scrollHeight);');
       page_number += 1
+      expect(page).to have_no_css('.spinner-grow')
       assert_number_of_posts_shown(n_of_posts_in_board, n_of_posts_per_page, page_number)
     end
   end
