@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign up', type: :system do
+feature 'sign up', type: :system, js: true do
   let(:user) { FactoryBot.build(:user) }
 
   def sign_up_as(user)

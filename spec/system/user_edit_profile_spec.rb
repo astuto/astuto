@@ -1,7 +1,7 @@
 require 'rails_helper'
 # require 'bcrypt'
 
-feature 'edit user profile settings', type: :system do
+feature 'edit user profile settings', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   before(:each) do
