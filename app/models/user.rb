@@ -3,6 +3,8 @@ class User < ApplicationRecord
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :confirmable
+    
+  validates_confirmation_of :password
   
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
