@@ -7,10 +7,6 @@ feature 'edit user profile settings', type: :system do
   before(:each) do
     user.confirm # devise helper to confirm user account
     sign_in user # devise helper to login user
-
-    # check that user is confirmed and saved in the db
-    expect(user.confirmed_at).not_to be_nil
-    expect(User.count).to eq(1)
   end
 
   scenario 'edit full name field' do
@@ -23,9 +19,8 @@ feature 'edit user profile settings', type: :system do
     fill_in 'Current password', with: user.password
     click_button 'Update profile'
 
-    user.reload
-    expect(user.full_name).to eq(new_full_name)
     expect(page).to have_css('.notice')
+    expect(user.reload.full_name).to eq(new_full_name)
   end
 
   scenario 'edit email field' do
@@ -38,10 +33,10 @@ feature 'edit user profile settings', type: :system do
     fill_in 'Current password', with: user.password
     click_button 'Update profile'
 
-    user.reload
-    user.confirm
-    expect(user.email).to eq(new_email)
     expect(page).to have_css('.notice')
+    user.reload; user.confirm
+    expect(user.email).to eq(new_email)
+    
   end
 
   scenario 'turns on notifications' do
@@ -52,8 +47,8 @@ feature 'edit user profile settings', type: :system do
     fill_in 'Current password', with: user.password
     click_button 'Update profile'
 
-    user.reload
-    expect(user.notifications_enabled).to eq(true)
+    expect(page).to have_css('.notice')
+    expect(user.reload.notifications_enabled).to eq(true)
   end
 
   scenario 'turns off notifications' do
@@ -64,8 +59,8 @@ feature 'edit user profile settings', type: :system do
     fill_in 'Current password', with: user.password
     click_button 'Update profile'
 
-    user.reload
-    expect(user.notifications_enabled).to eq(false)
+    expect(page).to have_css('.notice')
+    expect(user.reload.notifications_enabled).to eq(false)
   end
 
   # Remember that 'password' is just a virtual attribute (i.e. it is not stored in the db)
@@ -90,9 +85,8 @@ feature 'edit user profile settings', type: :system do
     # Because the previous line does not work, I decided to use this
     # expectation, which is weaker (it just checks that the
     # encrypted password is different after updating the profile)
-    user.reload
-    expect(user.encrypted_password).not_to eq(encrypted_password)
     expect(page).to have_css('.notice')
+    expect(user.reload.encrypted_password).not_to eq(encrypted_password)
   end
 
   scenario 'edit field with invalid current password' do
@@ -103,21 +97,20 @@ feature 'edit user profile settings', type: :system do
     # do not fill current password textbox
     click_button 'Update profile'
 
-    user.reload
-    expect(user.full_name).to eq(full_name)
     expect(page).to have_css('#error_explanation')
     expect(page).to have_css('.field_with_errors')
+    expect(user.reload.full_name).to eq(full_name)
   end
 
   scenario 'cancel account', js: true do
-    user_count = User.count
+    expect(user.status).to eq('active')
 
     visit edit_user_registration_path
-    click_button 'Cancel my account'
+    click_button 'Cancel account'
     page.driver.browser.switch_to.alert.accept # accepts js pop up
 
     expect(page).to have_current_path(root_path)
-    expect(User.count).to eq(user_count - 1)
     expect(page).to have_css('.notice')
+    expect(user.reload.status).to eq('deleted')
   end
 end
