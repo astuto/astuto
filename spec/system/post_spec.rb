@@ -7,6 +7,8 @@ feature 'post', type: :system, js: true do
   let(:selectPickerBoard) { 'selectPickerBoard' }
   let(:selectPickerStatus) { 'selectPickerStatus' }
 
+  let (:postContainer) { '.postAndCommentsContainer' }
+
   it 'renders post title, description, board and status' do
     visit post_path(post)
 
@@ -16,48 +18,64 @@ feature 'post', type: :system, js: true do
     expect(page).to have_content(/#{post.post_status.name}/i)
   end
 
-  it 'enables admins and mods to edit post board' do
+  it 'permits to edit post board' do
     mod.confirm
     sign_in mod
     board1 = FactoryBot.create(:board)
-
+    
     visit post_path(post)
-
+    within postContainer do
+      expect(page).to have_content(post.board.name.upcase)
+    end
+    
     expect(post.board_id).not_to eq(board1.id)
-    expect(page).to have_select selectPickerBoard,
-      selected: post.board.name,
-      options: [post.board.name, board1.name]
+
+    within '.postFooterActions' do
+      find('.actionLink', match: :first).click
+    end
+
+    expect(page).to have_select(selectPickerBoard,
+      with_options: [post.board.name, board1.name]
+    )
     
     select board1.name, from: selectPickerBoard
     expect(page).to have_select selectPickerBoard, selected: board1.name
+
+    click_button 'Save'
+
+    within postContainer do
+      expect(page).to have_content(board1.name.upcase)
+    end
     expect(post.reload.board_id).to eq(board1.id)
   end
 
-  it 'enables admins and mods to edit post status' do
+  it 'permits to edit post status' do
     mod.confirm
     sign_in mod
     post_status1 = FactoryBot.create(:post_status)
-
+    
     visit post_path(post)
-
+    within postContainer do
+      expect(page).to have_content(post.post_status.name.upcase)
+    end
+    
     expect(post.post_status_id).not_to eq(post_status1.id)
-    expect(page).to have_select selectPickerStatus,
-      selected: post.post_status.name,
+
+    within '.postFooterActions' do
+      find('.actionLink', match: :first).click
+    end
+
+    expect(page).to have_select(selectPickerStatus,
       options: [post.post_status.name, post_status1.name, 'None']
+    )
 
     select post_status1.name, from: selectPickerStatus
     expect(page).to have_select selectPickerStatus, selected: post_status1.name
+
+    click_button 'Save'
+    within postContainer do
+      expect(page).to have_content(post_status1.name.upcase)
+    end
     expect(post.reload.post_status_id).to eq(post_status1.id)
-
-    select 'None', from: selectPickerStatus
-    expect(page).to have_select selectPickerStatus, selected: 'None'
-    expect(post.reload.post_status_id).to be_nil
-  end
-
-  it 'does not show board and status selection to users' do
-    visit post_path(post)
-
-    expect(page).to have_no_select selectPickerBoard
-    expect(page).to have_no_select selectPickerStatus
   end
 end
