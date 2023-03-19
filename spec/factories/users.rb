@@ -5,6 +5,7 @@ FactoryBot.define do
     full_name { 'First Last' }
     notifications_enabled { true }
     password { 'password' }
+    role { 'user' }
   end
 
   factory :moderator, class: User do

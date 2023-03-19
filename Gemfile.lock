@@ -268,9 +268,9 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (= 1.12.0)
   byebug
-  capybara (>= 2.15)
+  capybara (= 3.36.0)
   devise (= 4.7.3)
-  factory_bot_rails (~> 5.0.2)
+  factory_bot_rails (= 5.0.2)
   httparty (= 0.18.0)
   i18n-js (= 3.9.2)
   jbuilder (= 2.11.5)
@@ -282,14 +282,14 @@ DEPENDENCIES
   rails (= 6.0.5)
   rake (= 12.3.3)
   react-rails (= 2.6.2)
-  rspec-rails (~> 3.8.2)
-  selenium-webdriver
+  rspec-rails (= 3.8.3)
+  selenium-webdriver (= 4.1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (= 5.2.1)
   tzinfo-data
   web-console (>= 3.3.0)
-  webdrivers
+  webdrivers (= 5.0.0)
   webpacker (= 4.3.0)
 
 RUBY VERSION

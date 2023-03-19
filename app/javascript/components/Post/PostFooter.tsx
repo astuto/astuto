@@ -38,13 +38,14 @@ const PostFooter = ({
     {
       isPowerUser || authorEmail === currentUserEmail ?
         <div className="postFooterActions">
-          <ActionLink onClick={toggleEditMode} icon={<EditIcon />}>
+          <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
             {I18n.t('common.buttons.edit')}
           </ActionLink>
           
           <ActionLink
             onClick={() => confirm(I18n.t('common.confirmation')) && handleDeletePost()}
             icon={<DeleteIcon />}
+            customClass='deleteAction'
           >
             {I18n.t('common.buttons.delete')}
           </ActionLink>
