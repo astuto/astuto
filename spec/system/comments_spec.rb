@@ -86,7 +86,7 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
 
     page.all(:css, comment_selector).each do |comment|
-      # expect(comment).to have_selector(comment_reply_btn_selector)
+      expect(comment).to have_selector(comment_reply_btn_selector)
       expect(comment).to have_content(/#{'Reply'}/i)
     end
   end
