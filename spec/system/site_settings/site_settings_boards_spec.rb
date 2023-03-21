@@ -68,8 +68,7 @@ feature 'site settings: boards', type: :system, js: true do
       expect(page).not_to have_content(/#{edited_board_description}/i)
 
       within board_list_item_selector, match: :first do
-        edit_link = find('.actionLink', match: :first) # it'd good to find by 'editAction' class, but it doesn't work
-        edit_link.click
+        find('.editAction').click
         fill_in 'name', with: edited_board_name
         fill_in 'description', with: edited_board_description
         click_button 'Save'
@@ -87,8 +86,7 @@ feature 'site settings: boards', type: :system, js: true do
       expect(page).to have_selector(board_list_item_selector, count: n_of_boards)
 
       within board_list_item_selector, match: :first do
-        delete_link = all('.actionLink')[1] # it'd good to find by 'deleteAction' class, but it doesn't work
-        delete_link.click
+        find('.deleteAction').click
 
         alert = page.driver.browser.switch_to.alert
         expect(alert.text).to eq('Are you sure?')

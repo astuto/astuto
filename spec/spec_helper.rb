@@ -21,6 +21,13 @@ RSpec.configure do |config|
     Current.tenant = FactoryBot.create(:tenant)
   end
 
+  # Compile fresh assets before js system specs
+  # For now, to recompile assets for system specs, run: ./script/rspec-compile-assets.sh
+  # config.before(:all, type: :system, js: true) do
+  #   Rails.application.load_tasks
+  #   Rake::Task["webpacker:compile"].invoke
+  # end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
