@@ -160,7 +160,7 @@ feature 'board', type: :system, js: true do
       find('#searchPostInput').set post2.description
     end
 
-    expect(page).to have_no_content(/#{post1.description}/i, wait: 3)
+    expect(page).to have_no_content(/#{post1.description}/i)
     expect(page).to have_content(/#{post2.description}/i)
     expect(page).to have_no_content(/#{post3.description}/i)
   end
