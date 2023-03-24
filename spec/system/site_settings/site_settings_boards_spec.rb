@@ -57,17 +57,26 @@ feature 'site settings: boards', type: :system, js: true do
     end
 
     expect(Board.count).to eq(n_of_boards + 1)
+    
+    new_board = Board.last
+    expect(new_board.name).to eq(new_board_name)
+    expect(new_board.description).to eq(new_board_description)
   end
 
   it 'lets edit existing boards' do
+    board_to_edit = Board.first
+
     edited_board_name = 'My edited board'
     edited_board_description = 'My edited board description'
+
+    expect(board_to_edit.name).not_to eq(edited_board_name)
+    expect(board_to_edit.description).not_to eq(edited_board_description)
 
     within boards_list_selector do
       expect(page).not_to have_content(/#{edited_board_name}/i)
       expect(page).not_to have_content(/#{edited_board_description}/i)
 
-      within board_list_item_selector, match: :first do
+      within board_list_item_selector, text: /#{board_to_edit.name}/i do
         find('.editAction').click
         fill_in 'name', with: edited_board_name
         fill_in 'description', with: edited_board_description
@@ -77,15 +86,20 @@ feature 'site settings: boards', type: :system, js: true do
       expect(page).to have_content(/#{edited_board_name}/i)
       expect(page).to have_content(/#{edited_board_description}/i)
     end
+
+    board_to_edit.reload
+    expect(board_to_edit.name).to eq(edited_board_name)
+    expect(board_to_edit.description).to eq(edited_board_description)
   end
 
   it 'lets delete existing boards' do
+    board_to_delete = Board.first
     n_of_boards = Board.count
 
     within boards_list_selector do
       expect(page).to have_selector(board_list_item_selector, count: n_of_boards)
 
-      within board_list_item_selector, match: :first do
+      within board_list_item_selector, text: /#{board_to_delete.name}/i do
         find('.deleteAction').click
 
         alert = page.driver.browser.switch_to.alert
@@ -97,5 +111,6 @@ feature 'site settings: boards', type: :system, js: true do
     end
 
     expect(Board.count).to eq(n_of_boards - 1)
+    expect(Board.find_by(id: board_to_delete.id)).to be_nil
   end
 end

@@ -51,15 +51,20 @@ feature 'site settings: post statuses', type: :system, js: true do
     end
 
     expect(PostStatus.count).to eq(n_of_post_statuses + 1)
+
+    new_post_status = PostStatus.last
+    expect(new_post_status.name).to eq(new_post_status_name)
   end
 
   it 'lets edit existing post statuses' do
+    post_status_to_edit = PostStatus.first
+
     edited_post_status_name = 'My edited post status'
 
     within post_statuses_list_selector do
       expect(page).not_to have_content(/#{edited_post_status_name}/i)
 
-      within post_status_list_item_selector, match: :first do
+      within post_status_list_item_selector, text: /#{post_status_to_edit.name}/i do
         find('.editAction').click
         fill_in 'name', with: edited_post_status_name
         click_button 'Save'
@@ -67,15 +72,18 @@ feature 'site settings: post statuses', type: :system, js: true do
 
       expect(page).to have_content(/#{edited_post_status_name}/i)
     end
+
+    expect(post_status_to_edit.reload.name).to eq(edited_post_status_name)
   end
 
   it 'lets delete existing post statuses' do
+    post_status_to_delete = PostStatus.first
     n_of_post_statuses = PostStatus.count
 
     within post_statuses_list_selector do
       expect(page).to have_selector(post_status_list_item_selector, count: n_of_post_statuses)
 
-      within post_status_list_item_selector, match: :first do
+      within post_status_list_item_selector, text: /#{post_status_to_delete.name}/i do
         find('.deleteAction').click
 
         alert = page.driver.browser.switch_to.alert
@@ -87,5 +95,6 @@ feature 'site settings: post statuses', type: :system, js: true do
     end
 
     expect(PostStatus.count).to eq(n_of_post_statuses - 1)
+    expect(PostStatus.find_by(id: post_status_to_delete.id)).to be_nil
   end
 end
