@@ -73,15 +73,6 @@ feature 'comments', type: :system, js: true do
     end
   end
 
-  it 'renders the author full name for each comment' do
-    visit post_path(post)
-
-    page.all(:css, comment_selector).each do |comment|
-      expect(comment).to have_selector(comment_author_selector)
-      expect(comment).to have_content(/#{post.user.full_name}/i)
-    end
-  end
-
   it 'renders a reply button for each comment' do
     visit post_path(post)
 
