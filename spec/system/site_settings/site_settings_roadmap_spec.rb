@@ -26,14 +26,14 @@ feature 'site settings: roadmap', type: :system, js: true do
     expect(post_status_not_in_roadmap.show_in_roadmap).to eq(false)
 
     within in_roadmap_post_statuses_selector do
-      expect(page).to have_selector(post_status_selector, count: 1)
+      expect(page).to have_css(post_status_selector, count: 1)
       
       expect(page).to have_content(/#{post_status_in_roadmap.name}/i)
       expect(page).not_to have_content(/#{post_status_not_in_roadmap.name}/i)
     end
 
     within not_in_roadmap_post_statuses_selector do
-      expect(page).to have_selector(post_status_selector, count: 1)
+      expect(page).to have_css(post_status_selector, count: 1)
       
       expect(page).not_to have_content(/#{post_status_in_roadmap.name}/i)
       expect(page).to have_content(/#{post_status_not_in_roadmap.name}/i)

@@ -21,7 +21,7 @@ feature 'site settings: boards', type: :system, js: true do
   
   it 'lets view existing boards' do
     within boards_list_selector do
-      expect(page).to have_selector(board_list_item_selector, count: Board.count)
+      expect(page).to have_css(board_list_item_selector, count: Board.count)
 
       expect(page).to have_content(/#{board1.name}/i)
       expect(page).to have_content(/#{board1.description}/i)
@@ -37,7 +37,7 @@ feature 'site settings: boards', type: :system, js: true do
     new_board_description = 'My new board description'
 
     within boards_list_selector do
-      expect(page).to have_selector(board_list_item_selector, count: n_of_boards)
+      expect(page).to have_css(board_list_item_selector, count: n_of_boards)
 
       expect(page).not_to have_content(/#{new_board_name}/i)
       expect(page).not_to have_content(/#{new_board_description}/i)
@@ -50,7 +50,7 @@ feature 'site settings: boards', type: :system, js: true do
     end
 
     within boards_list_selector do
-      expect(page).to have_selector(board_list_item_selector, count: n_of_boards + 1)
+      expect(page).to have_css(board_list_item_selector, count: n_of_boards + 1)
 
       expect(page).to have_content(/#{new_board_name}/i)
       expect(page).to have_content(/#{new_board_description}/i)
@@ -97,7 +97,7 @@ feature 'site settings: boards', type: :system, js: true do
     n_of_boards = Board.count
 
     within boards_list_selector do
-      expect(page).to have_selector(board_list_item_selector, count: n_of_boards)
+      expect(page).to have_css(board_list_item_selector, count: n_of_boards)
 
       within board_list_item_selector, text: /#{board_to_delete.name}/i do
         find('.deleteAction').click
@@ -107,7 +107,7 @@ feature 'site settings: boards', type: :system, js: true do
         alert.accept
       end
 
-      expect(page).to have_selector(board_list_item_selector, count: n_of_boards - 1)
+      expect(page).to have_css(board_list_item_selector, count: n_of_boards - 1)
     end
 
     expect(Board.count).to eq(n_of_boards - 1)

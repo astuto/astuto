@@ -20,7 +20,7 @@ feature 'site settings: authentication', type: :system, js: true do
 
   it 'lets view existing oauths' do
     within o_auths_list_selector do
-      expect(page).to have_selector(o_auth_list_item_selector, count: OAuth.count)
+      expect(page).to have_css(o_auth_list_item_selector, count: OAuth.count)
 
       expect(page).to have_content(/#{o_auth.name}/i)
     end
@@ -31,7 +31,7 @@ feature 'site settings: authentication', type: :system, js: true do
     new_o_auth_name = 'My new oauth'
 
     within o_auths_list_selector do
-      expect(page).to have_selector(o_auth_list_item_selector, count: n_of_o_auths)
+      expect(page).to have_css(o_auth_list_item_selector, count: n_of_o_auths)
 
       expect(page).not_to have_content(/#{new_o_auth_name}/i)
     end
@@ -58,7 +58,7 @@ feature 'site settings: authentication', type: :system, js: true do
     end
 
     within o_auths_list_selector do
-      expect(page).to have_selector(o_auth_list_item_selector, count: n_of_o_auths + 1)
+      expect(page).to have_css(o_auth_list_item_selector, count: n_of_o_auths + 1)
 
       expect(page).to have_content(/#{new_o_auth_name}/i)
     end

@@ -19,7 +19,7 @@ feature 'site settings: users', type: :system, js: true do
 
   it 'lets view existing users' do
     within users_list_selector do
-      expect(page).to have_selector(user_list_item_selector, count: User.count)
+      expect(page).to have_css(user_list_item_selector, count: User.count)
 
       expect(page).to have_content(/#{admin.full_name}/i)
       expect(page).to have_content(/#{admin.role}/i)
@@ -67,20 +67,20 @@ feature 'site settings: users', type: :system, js: true do
 
     within users_list_selector do
       within find(user_list_item_selector, text: /#{user_to_edit.full_name}/i) do
-        expect(page).to have_selector('.blockAction')
+        expect(page).to have_css('.blockAction')
 
         find('.blockAction').click
         page.driver.browser.switch_to.alert.accept
 
-        expect(page).not_to have_selector('.blockAction')
-        expect(page).to have_selector('.unblockAction')
+        expect(page).not_to have_css('.blockAction')
+        expect(page).to have_css('.unblockAction')
         expect(user_to_edit.reload.status).to eq('blocked')
 
         find('.unblockAction').click
         page.driver.browser.switch_to.alert.accept
 
-        expect(page).to have_selector('.blockAction')
-        expect(page).not_to have_selector('.unblockAction')
+        expect(page).to have_css('.blockAction')
+        expect(page).not_to have_css('.unblockAction')
         expect(user_to_edit.reload.status).to eq('active')
       end
     end

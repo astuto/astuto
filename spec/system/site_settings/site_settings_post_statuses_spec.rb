@@ -21,7 +21,7 @@ feature 'site settings: post statuses', type: :system, js: true do
 
   it 'lets view existing post statuses' do
     within post_statuses_list_selector do
-      expect(page).to have_selector(post_status_list_item_selector, count: PostStatus.count)
+      expect(page).to have_css(post_status_list_item_selector, count: PostStatus.count)
 
       expect(page).to have_content(/#{post_status1.name}/i)
 
@@ -34,7 +34,7 @@ feature 'site settings: post statuses', type: :system, js: true do
     new_post_status_name = 'My new post status'
 
     within post_statuses_list_selector do
-      expect(page).to have_selector(post_status_list_item_selector, count: n_of_post_statuses)
+      expect(page).to have_css(post_status_list_item_selector, count: n_of_post_statuses)
 
       expect(page).not_to have_content(/#{new_post_status_name}/i)
     end
@@ -45,7 +45,7 @@ feature 'site settings: post statuses', type: :system, js: true do
     end
 
     within post_statuses_list_selector do
-      expect(page).to have_selector(post_status_list_item_selector, count: n_of_post_statuses + 1)
+      expect(page).to have_css(post_status_list_item_selector, count: n_of_post_statuses + 1)
 
       expect(page).to have_content(/#{new_post_status_name}/i)
     end
@@ -81,7 +81,7 @@ feature 'site settings: post statuses', type: :system, js: true do
     n_of_post_statuses = PostStatus.count
 
     within post_statuses_list_selector do
-      expect(page).to have_selector(post_status_list_item_selector, count: n_of_post_statuses)
+      expect(page).to have_css(post_status_list_item_selector, count: n_of_post_statuses)
 
       within post_status_list_item_selector, text: /#{post_status_to_delete.name}/i do
         find('.deleteAction').click
@@ -91,7 +91,7 @@ feature 'site settings: post statuses', type: :system, js: true do
         alert.accept
       end
 
-      expect(page).to have_selector(post_status_list_item_selector, count: n_of_post_statuses - 1)
+      expect(page).to have_css(post_status_list_item_selector, count: n_of_post_statuses - 1)
     end
 
     expect(PostStatus.count).to eq(n_of_post_statuses - 1)

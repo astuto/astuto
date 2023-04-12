@@ -33,7 +33,7 @@ feature 'comments', type: :system, js: true do
   it 'renders correctly' do
     visit post_path(post)
 
-    expect(page).to have_selector(comments_selector, count: 1)
+    expect(page).to have_css(comments_selector, count: 1)
   end
 
   it 'renders a new comment form and replies form if logged in' do
@@ -41,8 +41,8 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
     comments_count = Comment.where(post_id: post.id).count
 
-    expect(page).to have_selector(new_comment_form_selector, count: 1, visible: true)
-    expect(page).to have_selector(new_comment_body_selector, count: 1, visible: true)
+    expect(page).to have_css(new_comment_form_selector, count: 1, visible: true)
+    expect(page).to have_css(new_comment_body_selector, count: 1, visible: true)
   end
 
   it 'does not render a new comment form if not logged in' do
@@ -55,7 +55,7 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
 
     within comments_selector do
-      expect(page).to have_selector(comment_selector, count: 3)
+      expect(page).to have_css(comment_selector, count: 3)
       expect(page).to have_content(/#{comment1.body}/i)
       expect(page).to have_content(/#{comment2.body}/i)
       expect(page).to have_content(/#{comment3.body}/i)
@@ -66,7 +66,7 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
 
     within comments_selector do
-      expect(page).to have_selector(
+      expect(page).to have_css(
         "#{comment_list_selector} #{comment_list_selector}",
         count: 1
       ) # one nested comment
@@ -77,7 +77,7 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
 
     page.all(:css, comment_selector).each do |comment|
-      expect(comment).to have_selector(comment_reply_btn_selector)
+      expect(comment).to have_css(comment_reply_btn_selector)
       expect(comment).to have_content(/#{'Reply'}/i)
     end
   end
@@ -87,14 +87,14 @@ feature 'comments', type: :system, js: true do
     visit post_path(post)
 
     comments_count = Comment.where(post_id: post.id).count
-    expect(page).to have_selector(comment_selector, count: comments_count)
+    expect(page).to have_css(comment_selector, count: comments_count)
 
     comment_body = 'this is a comment!'
 
     find(new_comment_body_selector).fill_in with: comment_body
     click_button 'Submit'
 
-    expect(page).to have_selector(comment_selector, count: comments_count + 1)
+    expect(page).to have_css(comment_selector, count: comments_count + 1)
     expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
   end
 end
