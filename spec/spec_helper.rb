@@ -26,10 +26,7 @@ RSpec.configure do |config|
   # and use ./script/rspec-compile-assets.sh only when needed
   config.before(:all, type: :system, js: true) do
     Rails.application.load_tasks
-
-    puts("Compiling assets for system specs...")
     Rake::Task["assets:precompile"].invoke("--silent")
-    puts("Done.")
   end
 
   # rspec-expectations config goes here. You can use an alternate
