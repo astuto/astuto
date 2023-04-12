@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 feature 'site settings: authentication', type: :system, js: true do
+  let(:admin) { FactoryBot.create(:admin) }
+  
   let(:o_auth) { FactoryBot.create(:o_auth) }
 
   let(:o_auths_list_selector) { '.oAuthsList' }
@@ -10,7 +12,9 @@ feature 'site settings: authentication', type: :system, js: true do
   before(:each) do
     o_auth
 
-    sign_in FactoryBot.create(:admin)
+    admin.confirm
+    sign_in admin
+    
     visit site_settings_authentication_path
   end
 

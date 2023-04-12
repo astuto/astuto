@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 feature 'site settings: general', type: :system, js: true do
+  let(:admin) { FactoryBot.create(:admin) }
+
 
   before(:each) do
-    sign_in FactoryBot.create(:admin)
+    admin.confirm
+    sign_in admin
+    
     visit site_settings_general_path
   end
 
