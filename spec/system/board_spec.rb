@@ -35,15 +35,15 @@ feature 'board', type: :system, js: true do
     visit board_path(board)
 
     expect(page).to have_content(/#{board.name}/i)
-    expect(page).to have_selector(board_container, count: 1)
-    expect(page).to have_selector(sidebar)
+    expect(page).to have_css(board_container, count: 1)
+    expect(page).to have_css(sidebar)
   end
 
   it 'renders posts of that board' do
     visit board_path(board)
 
     within board_container do
-      expect(page).to have_selector(post_list_item, count: 3)
+      expect(page).to have_css(post_list_item, count: 3)
       expect(page).to have_content(/#{post1.title}/i)
       expect(page).to have_content(/#{post1.description}/i)
       expect(page).to have_no_content(/#{post4.title}/i)
@@ -81,7 +81,7 @@ feature 'board', type: :system, js: true do
       
       click_button 'Submit feedback' # open submit form
 
-      expect(page).to have_selector(new_post_form)
+      expect(page).to have_css(new_post_form)
       expect(page).to have_content(/Title/i)
       expect(page).to have_content(/Description/i)
     end
@@ -160,7 +160,7 @@ feature 'board', type: :system, js: true do
       find('#searchPostInput').set post2.description
     end
 
-    expect(page).to have_no_content(/#{post1.description}/i, wait: 3)
+    expect(page).to have_no_content(/#{post1.description}/i)
     expect(page).to have_content(/#{post2.description}/i)
     expect(page).to have_no_content(/#{post3.description}/i)
   end
@@ -169,9 +169,9 @@ feature 'board', type: :system, js: true do
     # puts "tot: #{n_of_posts_in_board}, perpage: #{n_of_posts_per_page}, page: #{page_number}"
     within board_container do
       if n_of_posts_per_page * page_number < n_of_posts_in_board
-        expect(page).to have_selector(post_list_item, count: n_of_posts_per_page * page_number)
+        expect(page).to have_css(post_list_item, count: n_of_posts_per_page * page_number)
       else
-        expect(page).to have_selector(post_list_item, count: n_of_posts_in_board)
+        expect(page).to have_css(post_list_item, count: n_of_posts_in_board)
       end
     end
   end

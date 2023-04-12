@@ -30,9 +30,9 @@ feature 'likes', type: :system, js: true do
       visit board_path(board)
 
       within board_container do
-        expect(page).to have_selector(like_button_container_selector, count: 2)
-        expect(page).to have_selector(like_button_selector, count: 2)
-        # expect(page).to have_selector(likes_count_label_selector, count: 2)
+        expect(page).to have_css(like_button_container_selector, count: 2)
+        expect(page).to have_css(like_button_selector, count: 2)
+        # expect(page).to have_css(likes_count_label_selector, count: 2)
       end
     end
 
@@ -72,9 +72,9 @@ feature 'likes', type: :system, js: true do
     it 'renders correctly' do
       visit post_path(post1)
 
-      expect(page).to have_selector(like_button_container_selector)
-      expect(page).to have_selector(like_button_selector)
-      # expect(page).to have_selector(likes_count_label_selector)
+      expect(page).to have_css(like_button_container_selector)
+      expect(page).to have_css(like_button_selector)
+      # expect(page).to have_css(likes_count_label_selector)
     end
 
     # Don't know why it doesn't work...

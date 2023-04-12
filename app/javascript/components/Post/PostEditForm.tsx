@@ -65,7 +65,7 @@ const PostEditForm = ({
         type="text"
         value={title}
         onChange={e => handleChangeTitle(e.target.value)}
-        className="form-control"
+        className="postTitle form-control"
       />
     </div>
 
@@ -91,7 +91,7 @@ const PostEditForm = ({
       value={description}
       onChange={e => handleChangeDescription(e.target.value)}
       rows={5}
-      className="form-control"
+      className="postDescription form-control"
     />
 
     <div className="postEditFormButtons">

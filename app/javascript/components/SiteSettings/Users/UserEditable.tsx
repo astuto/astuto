@@ -124,6 +124,7 @@ class UserEditable extends React.Component<Props, State> {
                 onClick={() => editEnabled && this.toggleEditMode()}
                 icon={<EditIcon />}
                 disabled={!editEnabled}
+                customClass="editAction"
               >
                 { I18n.t('common.buttons.edit') }
               </ActionLink>
@@ -132,6 +133,7 @@ class UserEditable extends React.Component<Props, State> {
                 onClick={() => blockEnabled && this._handleUpdateUserStatus()}
                 icon={user.status !== USER_STATUS_BLOCKED ? <BlockIcon /> : <UnblockIcon />}
                 disabled={!blockEnabled}
+                customClass={user.status !== USER_STATUS_BLOCKED ? "blockAction" : "unblockAction"}
               >
                 {
                   user.status !== USER_STATUS_BLOCKED ?
