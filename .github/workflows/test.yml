@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker production image
-        run: docker compose build --build-arg ENVIRONMENT=production
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
       - name: Run Docker containers
-        run: docker compose up --detach
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
 
       - name: Check public folder
         run: docker compose exec web ls -la public
