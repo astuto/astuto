@@ -18,6 +18,9 @@ jobs:
       - name: Run Docker containers
         run: docker compose up --detach
 
+      - name: Check public folder
+        run: docker compose exec web ls -la public
+
       - name: Install required packages in 'web' container
         run: |
           docker compose exec web apt-get update
@@ -36,9 +39,11 @@ jobs:
           docker compose exec web dpkg -i google-chrome-stable_current_amd64.deb || true
           docker compose exec web apt-get -fy install
 
+      - name: Check public folder pt2
+        run: docker compose exec web ls -la public
+
       - name: Copy assets for tests in 'web' container
         run: |
-          docker compose exec web bundle exec rake assets:precompile
           docker compose exec web cp -r public/packs/ public/packs-test/
         
       - name: Run tests in 'web' container
