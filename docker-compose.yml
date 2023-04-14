@@ -11,7 +11,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: dev
+      target: prod
     environment:
       POSTGRES_USER: astuto
       POSTGRES_PASSWORD: dbpass
