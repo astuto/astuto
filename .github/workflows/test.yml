@@ -38,7 +38,10 @@ jobs:
 
       - name: Copy assets for tests in 'web' container
         run: |
-          docker compose exec web cp -r public/packs/ public/packs-test/
+          docker compose exec web ls -la
+          docker compose exec web ls -la public/
+          docker compose exec web ls -la /astuto
+          docker compose exec web cp -r /astuto/public/packs/ /astuto/public/packs-test/
         
       - name: Run tests in 'web' container
         run: |
