@@ -1,0 +1,45 @@
+name: Run RSpec tests on the production Docker image
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker production image
+        run: docker build . --target prod --build-arg ENVIRONMENT=production
+
+      - name: Run Docker containers
+        run: docker compose up --detach
+
+      - name: Install required packages in 'web' container
+        run: |
+          docker compose exec web apt-get update
+          docker compose exec web apt-get install -y --no-install-recommends apt-utils
+          docker compose exec web apt-get install -y build-essential wget
+
+      - name: Install RSpec and other required gems in 'web' container
+        run: |
+          docker compose exec web bundle config set --local without development
+          docker compose exec web bundle config set deployment false --local
+          docker compose exec web bundle install
+
+      - name: Install Google Chrome in 'web' container
+        run: |
+          docker compose exec web wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          docker compose exec web dpkg -i google-chrome-stable_current_amd64.deb || true
+          docker compose exec web apt-get -fy install
+
+      - name: Copy assets for tests in 'web' container
+        run: |
+          docker compose exec web cp -r public/packs/ public/packs-test/
+        
+      - name: Run tests in 'web' container
+        run: |
+          docker compose exec web bundle exec rspec

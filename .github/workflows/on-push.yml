@@ -1,0 +1,11 @@
+name: Run tests and push Docker image to Docker Hub
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/workflows/test.yml
