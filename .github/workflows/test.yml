@@ -38,7 +38,8 @@ jobs:
 
       - name: Copy assets for tests in 'web' container
         run: |
-          docker compose exec web RAILS_ENV="test" bundle exec rake assets:precompile
+          docker compose exec web bundle exec rake assets:precompile
+          docker compose exec web cp -r public/packs/ public/packs-test/
         
       - name: Run tests in 'web' container
         run: |
