@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./.github/workflows/test.yml
+      - uses: astuto/astuto/.github/workflows/test.yml@add-gh-actions
