@@ -5,7 +5,4 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: astuto/astuto/.github/workflows/test.yml@add-gh-actions
+    uses: astuto/astuto/.github/workflows/test.yml@add-gh-actions
