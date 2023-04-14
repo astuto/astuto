@@ -24,17 +24,17 @@ jobs:
           docker compose exec web apt-get install -y --no-install-recommends apt-utils
           docker compose exec web apt-get install -y build-essential wget
 
-      - name: Install RSpec and other required gems in 'web' container
-        run: |
-          docker compose exec web bundle config set --local without development
-          docker compose exec web bundle config set deployment false --local
-          docker compose exec web bundle install
-
       - name: Install Google Chrome in 'web' container
         run: |
           docker compose exec web wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           docker compose exec web dpkg -i google-chrome-stable_current_amd64.deb || true
           docker compose exec web apt-get -fy install
+
+      - name: Install RSpec and other required gems in 'web' container
+        run: |
+          docker compose exec web bundle config set --local without development
+          docker compose exec web bundle config set deployment false --local
+          docker compose exec web bundle install
 
       - name: Copy assets for tests in 'web' container
         run: |
