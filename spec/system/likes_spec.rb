@@ -1,29 +1,34 @@
 require 'rails_helper'
 
 feature 'likes', type: :system, js: true do
-  # let(:board) { FactoryBot.create(:board) }
-  # let(:post1) { FactoryBot.create(:post, board: board) }
-  # let(:post2) { FactoryBot.create(:post, board: board) }
-  # let(:user) { FactoryBot.create(:user) }
+  let(:board) { FactoryBot.create(:board) }
+  let(:post1) { FactoryBot.create(:post, board: board) }
+  let(:post2) { FactoryBot.create(:post, board: board) }
+  let(:user) { FactoryBot.create(:user) }
 
-  # let(:board_container) { '.boardContainer' }
-  # let(:post_header_selector) { '.postHeader' }
-  # let(:like_button_container_selector) { '.likeButtonContainer' }
-  # let(:like_button_selector) { '.likeButton' }
-  # let(:likes_count_label_selector) { '.likeCountLabel' }
-  # let(:like_list_container_selector) { '.likeListContainer' }
+  let(:board_container) { '.boardContainer' }
+  let(:post_header_selector) { '.postHeader' }
+  let(:like_button_container_selector) { '.likeButtonContainer' }
+  let(:like_button_selector) { '.likeButton' }
+  let(:likes_count_label_selector) { '.likeCountLabel' }
+  let(:like_list_container_selector) { '.likeListContainer' }
 
-  # before(:each) do
-  #   # Enable like count and like button in tenant setting
-  #   tenant_setting = TenantSetting.first_or_create
-  #   tenant_setting.update!(show_vote_count: true)
-  #   tenant_setting.update!(show_vote_button_in_board: true)
-  #   Current.tenant.update!(tenant_setting: tenant_setting)
+  before(:each) do
+    # Enable like count and like button in tenant setting
+    tenant_setting = TenantSetting.first_or_create
+    tenant_setting.update!(show_vote_count: true)
+    tenant_setting.update!(show_vote_button_in_board: true)
+    Current.tenant.update!(tenant_setting: tenant_setting)
 
-  #   board
-  #   post1
-  #   post2
-  # end
+    board
+    post1
+    post2
+  end
+
+  # NOTE
+  # For some weird reason, all these tests fails when
+  # runned on GitHub Actions runners. They pass locally,
+  # but I'll leave them commented out for now.
 
   # context 'in post list of Board component' do
   #   it 'renders correctly for each post' do
