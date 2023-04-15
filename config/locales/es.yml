@@ -1,24 +1,24 @@
 es:
   common:
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
-      password: 'Password must have at least %{n} characters'
-      password_mismatch: 'Password and password confirmation must match'
+      required: '%{attribute} es obligatorio'
+      email: 'Email invalido'
+      url: 'URL no válida'
+      password: 'La contraseña debe tener al menos %{n} caracteres'
+      password_mismatch: 'Las contraseñas no coinciden'
     forms:
       auth:
         email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
+        full_name: 'Nombre completo'
+        password: 'Contraseña'
         password_confirmation: 'Password confirmation'
-        new_password: 'New password'
+        new_password: 'Nueva contraseña'
         new_password_confirmation: 'New password confirmation'
-        current_password: 'Current password'
+        current_password: 'Contraseña actual'
         notifications_enabled: 'Notifications enabled'
         notifications_enabled_help: "if disabled, you won't receive any notification"
         remember_me: 'Remember me'
-        log_in: 'Log in'
+        log_in: 'Iniciar sesión'
         sign_up: 'Sign up'
         log_in_with: 'Log in with %{o_auth}'
         sign_up_with: 'Sign up with %{o_auth}'
@@ -57,8 +57,8 @@ es:
     datetime:
       now: 'just now'
       minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
+        one: 'Hace 1 minuto'
+        other: 'Hace %{count} minutos'
       hours:
         one: '1 hour ago'
         other: '%{count} hours ago'
@@ -96,9 +96,9 @@ es:
       submit_button: 'Submit feedback'
       cancel_button: 'Cancel'
       login_button: 'Log in / Sign up'
-      title: 'Title'
-      description: 'Description (optional)'
-      no_title: 'Title field is mandatory'
+      title: 'Título'
+      description: 'Descripción (opcional)'
+      no_title: 'El campo Título es obligatorio'
       submit_success: 'Feedback published! You will be redirected soon...'
       submit_error: 'An unknown error occurred, try again'
     search_box:
