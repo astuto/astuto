@@ -1,8 +1,0 @@
-name: Run tests and push Docker image to Docker Hub
-
-on:
-  push:
-
-jobs:
-  test:
-    uses: astuto/astuto/.github/workflows/test.yml@add-gh-actions
