@@ -26,6 +26,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: .
+          file: ./Dockerfile
           target: prod
           build-args: |
             ENVIRONMENT=production
