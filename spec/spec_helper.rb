@@ -22,12 +22,11 @@ RSpec.configure do |config|
   end
 
   # Compile fresh assets before system specs (needed to get the changes)
-  # If you're in development and this slows you down, comment it out
-  # and use ./script/rspec-compile-assets.sh only when needed
-  config.before(:all, type: :system, js: true) do
-    Rails.application.load_tasks
-    Rake::Task["assets:precompile"].invoke("--silent")
-  end
+  # Uncomment lines below, or use ./script/rspec-compile-assets.sh only when needed
+  # config.before(:all, type: :system, js: true) do
+  #   Rails.application.load_tasks
+  #   Rake::Task["assets:precompile"].invoke("--silent")
+  # end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

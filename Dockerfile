@@ -35,7 +35,7 @@ COPY . ${APP_ROOT}/
 
 # Compile assets if production
 # SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
-RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development bundle exec rake webpacker:compile; fi
+RUN if [ "$ENVIRONMENT" = "production" ]; then SECRET_KEY_BASE=1 RAILS_ENV=production bundle exec rake assets:precompile; fi
 
 ###
 ### Dev stage ###
