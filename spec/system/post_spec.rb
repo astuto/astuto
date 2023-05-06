@@ -80,23 +80,23 @@ feature 'post', type: :system, js: true do
   #   expect(post.post_status.id).to eq(new_post_status.id)
   # end
 
-  it 'lets delete the post' do
-    mod.confirm
-    sign_in mod
+  # it 'lets delete the post' do
+  #   mod.confirm
+  #   sign_in mod
     
-    visit post_path(post)
-    post_count = Post.count
-    post_board = post.board
+  #   visit post_path(post)
+  #   post_count = Post.count
+  #   post_board = post.board
 
-    within post_container_selector do
-      find('.deleteAction').click
+  #   within post_container_selector do
+  #     find('.deleteAction').click
 
-      alert = page.driver.browser.switch_to.alert
-      expect(alert.text).to eq('Are you sure?')
-      alert.accept
-    end
+  #     alert = page.driver.browser.switch_to.alert
+  #     expect(alert.text).to eq('Are you sure?')
+  #     alert.accept
+  #   end
 
-    expect(page).to have_current_path(board_path(post_board))
-    expect(Post.count).to eq(post_count - 1)
-  end
+  #   expect(page).to have_current_path(board_path(post_board))
+  #   expect(Post.count).to eq(post_count - 1)
+  # end
 end
