@@ -25,81 +25,76 @@ feature 'likes', type: :system, js: true do
     post2
   end
 
-  # NOTE
-  # For some weird reason, all these tests fails when
-  # runned on GitHub Actions runners. They pass locally,
-  # but I'll leave them commented out for now.
+  context 'in post list of Board component' do
+    it 'renders correctly for each post' do
+      visit board_path(board)
 
-  # context 'in post list of Board component' do
-  #   it 'renders correctly for each post' do
-  #     visit board_path(board)
+      within board_container do
+        expect(page).to have_css(like_button_container_selector, count: 2)
+        expect(page).to have_css(like_button_selector, count: 2)
+        # expect(page).to have_css(likes_count_label_selector, count: 2)
+      end
+    end
 
-  #     within board_container do
-  #       expect(page).to have_css(like_button_container_selector, count: 2)
-  #       expect(page).to have_css(like_button_selector, count: 2)
-  #       # expect(page).to have_css(likes_count_label_selector, count: 2)
-  #     end
-  #   end
+    it 'redirects when user not logged in' do
+      visit board_path(board)
 
-  #   it 'redirects when user not logged in' do
-  #     visit board_path(board)
+      within board_container do
+        find(like_button_selector, match: :first).click
+        expect(page.current_path).to eq(new_user_session_path)
+      end
+    end
 
-  #     within board_container do
-  #       find(like_button_selector, match: :first).click
-  #       expect(page.current_path).to eq(new_user_session_path)
-  #     end
-  #   end
+    it 'likes and unlikes' do
+      user.confirm
+      sign_in user
+      visit board_path(board)
 
-  #   it 'likes and unlikes' do
-  #     user.confirm
-  #     sign_in user
-  #     visit board_path(board)
+      within board_container do
+        first_like_button = find(like_button_selector, match: :first)
+        like_container = find(like_button_container_selector, match: :first)
 
-  #     within board_container do
-  #       first_like_button = find(like_button_selector, match: :first)
-  #       like_container = find(like_button_container_selector, match: :first)
+        # starts at zero likes
+        expect(like_container).to have_content(0)
 
-  #       # starts at zero likes
-  #       expect(like_container).to have_content(0)
+        # like
+        first_like_button.click
+        expect(like_container).to have_content(1)
 
-  #       # like
-  #       first_like_button.click
-  #       expect(like_container).to have_content(1)
+        # unlike
+        first_like_button.click
+        expect(like_container).to have_content(0)
+      end
+    end
+  end
 
-  #       # unlike
-  #       first_like_button.click
-  #       expect(like_container).to have_content(0)
-  #     end
-  #   end
-  # end
+  context 'in Post component' do
+    it 'renders correctly' do
+      visit post_path(post1)
 
-  # context 'in Post component' do
-  #   it 'renders correctly' do
-  #     visit post_path(post1)
+      expect(page).to have_css(like_button_container_selector)
+      expect(page).to have_css(like_button_selector)
+      # expect(page).to have_css(likes_count_label_selector)
+    end
 
-  #     expect(page).to have_css(like_button_container_selector)
-  #     expect(page).to have_css(like_button_selector)
-  #     # expect(page).to have_css(likes_count_label_selector)
-  #   end
+    # Don't know why it doesn't work...
+    # it 'likes and unlikes' do
+    #   user.confirm
+    #   sign_in user
+    #   visit post_path(post1)
 
-  #   # Don't know why it doesn't work...
-  #   # it 'likes and unlikes' do
-  #   #   user.confirm
-  #   #   sign_in user
-  #   #   visit post_path(post1)
+    #   within like_button_container_selector do
+    #     # starts at zero likes
+    #     expect(page).to have_content(0)
 
-  #   #   within like_button_container_selector do
-  #   #     # starts at zero likes
-  #   #     expect(page).to have_content(0)
+    #     # like
+    #     find(like_button_selector).click
+    #     expect(page).to have_content(1)
 
-  #   #     # like
-  #   #     find(like_button_selector).click
-  #   #     expect(page).to have_content(1)
-
-  #   #     # unlike
-  #   #     find(like_button_selector).click
-  #   #     expect(page).to have_content(0)
-  #   #   end
-  #   # end
-  # end
+    #     # unlike
+    #     find(like_button_selector).click
+    #     expect(page).to have_content(0)
+    #   end
+    # end
+  end
 end
