@@ -8,10 +8,13 @@ import IBoard from '../../interfaces/IBoard';
 
 import { Store } from 'redux';
 import { State } from '../../reducers/rootReducer';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   board: IBoard;
   isLoggedIn: boolean;
+  isPowerUser: boolean;
+  tenantSetting: ITenantSetting;
   authenticityToken: string;
 }
 
@@ -25,13 +28,21 @@ class BoardRoot extends React.Component<Props> {
   }
 
   render() {
-    const { board, isLoggedIn, authenticityToken } = this.props;
+    const {
+      board,
+      isLoggedIn,
+      isPowerUser,
+      tenantSetting,
+      authenticityToken,
+    } = this.props;
 
     return (
       <Provider store={this.store}>
         <Board
           board={board}
           isLoggedIn={isLoggedIn}
+          isPowerUser={isPowerUser}
+          tenantSetting={tenantSetting}
           authenticityToken={authenticityToken}
         />
       </Provider>

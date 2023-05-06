@@ -17,10 +17,16 @@ RSpec.configure do |config|
   ENV["RAILS_ENV"] = "test"
 
   # Set tenant before each test
-  config.before(:all) do
-    # Current.reset
-    Current.tenant = Tenant.first_or_create(site_name: 'test', subdomain: 'test')
+  config.before(:each) do
+    Current.tenant = FactoryBot.create(:tenant)
   end
+
+  # Compile fresh assets before system specs (needed to get the changes)
+  # Uncomment lines below, or use ./script/rspec-compile-assets.sh only when needed
+  # config.before(:all, type: :system, js: true) do
+  #   Rails.application.load_tasks
+  #   Rake::Task["assets:precompile"].invoke("--silent")
+  # end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

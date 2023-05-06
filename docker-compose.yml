@@ -17,8 +17,6 @@ services:
       POSTGRES_PASSWORD: dbpass
       BASE_URL: http://localhost:3000
       SECRET_KEY_BASE: secretkeybasehere
-    volumes:
-      - .:/astuto
     ports:
       - "3000:3000"
     depends_on:

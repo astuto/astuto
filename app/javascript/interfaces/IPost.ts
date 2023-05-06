@@ -4,7 +4,7 @@ interface IPost {
   description?: string;
   boardId: number;
   postStatusId?: number;
-  likesCount: number;
+  likeCount: number;
   liked: number;
   commentsCount: number;
   hotness: number;

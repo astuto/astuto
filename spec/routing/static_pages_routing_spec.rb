@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'static pages routing', :aggregate_failures, type: :routing do
   it 'routes roadmap' do
     expect(get: '/').to route_to(
-      controller: 'static_pages', action: 'roadmap'
+      controller: 'static_pages', action: 'root'
     )
     
     expect(get: '/roadmap').to route_to(

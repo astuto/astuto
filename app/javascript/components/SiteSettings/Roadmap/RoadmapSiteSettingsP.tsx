@@ -102,7 +102,7 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
             {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
-                className={`roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
+                className={`inRoadmapPostStatuses roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
                 {...provided.droppableProps}
               >
                 {statusesInRoadmap.map((postStatus, i) => (
@@ -137,7 +137,7 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
             {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
-                className={`roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
+                className={`notInRoadmapPostStatuses roadmapPostStatuses${isDragging ? ' isDraggingSomething' : ''}${snapshot.isDraggingOver ? ' isDraggingOver' : ''}`}
                 {...provided.droppableProps}
               >
                 {statusesNotInRoadmap.map((postStatus, i) => (

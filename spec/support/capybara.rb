@@ -19,6 +19,12 @@ end
 
 Capybara.javascript_driver = :chrome_headless
 
+# Max wait time for a match to be found by capybara selectors
+Capybara.default_max_wait_time = 10
+
+# Remove whitespaces characters (\n, etc...) from "page" variable
+Capybara.default_normalize_ws = true
+
 # Setup rspec
 RSpec.configure do |config|
   config.before(:each, type: :system) do
