@@ -96,7 +96,7 @@ feature 'post', type: :system, js: true do
       alert.accept
     end
 
-    # expect(page).to have_current_path(board_path(post_board))
+    expect(page).to have_current_path(board_path(post_board))
     expect(Post.count).to eq(post_count - 1)
   end
 end
