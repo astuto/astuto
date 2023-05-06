@@ -86,6 +86,7 @@ feature 'post', type: :system, js: true do
     
     visit post_path(post)
     post_count = Post.count
+    post_board = post.board
 
     within post_container_selector do
       find('.deleteAction').click
@@ -95,7 +96,7 @@ feature 'post', type: :system, js: true do
       alert.accept
     end
 
-    expect(page).to have_current_path(board_path(post.board))
+    expect(page).to have_current_path(board_path(post_board))
     expect(Post.count).to eq(post_count - 1)
   end
 end
