@@ -1,6 +1,11 @@
 RESERVED_SUBDOMAINS = [
-  'showcase',
   'login',
+  'docs',
+  'feedback',
+  'demo',
+  'astuto',
+  'playground',
+  'showcase',
   'help',
-  'playground'
+  'admin'
 ]

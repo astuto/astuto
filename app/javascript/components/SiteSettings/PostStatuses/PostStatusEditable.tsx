@@ -76,13 +76,18 @@ class PostStatusEditable extends React.Component<Props, State> {
                 <PostStatusLabel name={name} color={color} />
 
                 <div className="postStatusEditableActions">
-                  <ActionLink onClick={this.toggleEditMode} icon={<EditIcon />}>
+                  <ActionLink
+                    onClick={this.toggleEditMode}
+                    icon={<EditIcon />}
+                    customClass="editAction"
+                  >
                     {I18n.t('common.buttons.edit')}
                   </ActionLink>
 
                   <ActionLink
                     onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}
                     icon={<DeleteIcon />}
+                    customClass="deleteAction"
                   >
                     {I18n.t('common.buttons.delete')}
                   </ActionLink>

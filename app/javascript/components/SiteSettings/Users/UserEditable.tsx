@@ -2,7 +2,7 @@ import * as React from "react";
 import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
-import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_USER, USER_STATUS_ACTIVE, USER_STATUS_BLOCKED, USER_STATUS_DELETED } from "../../../interfaces/IUser";
+import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_MODERATOR, USER_ROLE_OWNER, USER_ROLE_USER, USER_STATUS_ACTIVE, USER_STATUS_BLOCKED, USER_STATUS_DELETED } from "../../../interfaces/IUser";
 import Separator from "../../common/Separator";
 import UserForm from "./UserForm";
 import { MutedText } from "../../common/CustomTexts";
@@ -79,15 +79,14 @@ class UserEditable extends React.Component<Props, State> {
     const { user, currentUserRole, currentUserEmail } = this.props;
     const { editMode } = this.state;
 
-    const editEnabled =
-      user.status === USER_STATUS_ACTIVE &&
-      currentUserRole === USER_ROLE_ADMIN &&
+    const hasPrivilege = user.role !== USER_ROLE_OWNER &&
+      (currentUserRole === USER_ROLE_OWNER ||
+      (currentUserRole === USER_ROLE_ADMIN && (user.role === USER_ROLE_MODERATOR || user.role === USER_ROLE_USER)) ||
+      (currentUserRole === USER_ROLE_MODERATOR && user.role === USER_ROLE_USER)) &&
       currentUserEmail !== user.email;
 
-    const blockEnabled =
-      user.status !== USER_STATUS_DELETED &&
-      (currentUserRole === USER_ROLE_ADMIN || user.role === USER_ROLE_USER) &&
-      currentUserEmail !== user.email;
+    const editEnabled = hasPrivilege && user.status === USER_STATUS_ACTIVE;
+    const blockEnabled = hasPrivilege && user.status !== USER_STATUS_DELETED;
 
     return (
       <li className="userEditable">
@@ -125,6 +124,7 @@ class UserEditable extends React.Component<Props, State> {
                 onClick={() => editEnabled && this.toggleEditMode()}
                 icon={<EditIcon />}
                 disabled={!editEnabled}
+                customClass="editAction"
               >
                 { I18n.t('common.buttons.edit') }
               </ActionLink>
@@ -133,6 +133,7 @@ class UserEditable extends React.Component<Props, State> {
                 onClick={() => blockEnabled && this._handleUpdateUserStatus()}
                 icon={user.status !== USER_STATUS_BLOCKED ? <BlockIcon /> : <UnblockIcon />}
                 disabled={!blockEnabled}
+                customClass={user.status !== USER_STATUS_BLOCKED ? "blockAction" : "unblockAction"}
               >
                 {
                   user.status !== USER_STATUS_BLOCKED ?

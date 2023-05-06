@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: /.*/ do
-    root to: 'static_pages#roadmap'
+    root to: 'static_pages#root'
     
     get '/roadmap', to: 'static_pages#roadmap'
     get '/pending-tenant', to: 'static_pages#pending_tenant'

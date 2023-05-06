@@ -14,6 +14,8 @@ import IPostStatus from '../../interfaces/IPostStatus';
 
 interface Props {
   posts: Array<IPost>;
+  showLikeCount: boolean;
+  showLikeButtons: boolean;
   postStatuses: Array<IPostStatus>;
   areLoading: boolean;
   error: string;
@@ -27,6 +29,8 @@ interface Props {
 
 const PostList = ({
   posts,
+  showLikeCount,
+  showLikeButtons,
   postStatuses,
   areLoading,
   error,
@@ -53,7 +57,9 @@ const PostList = ({
               title={post.title}
               description={post.description}
               postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
-              likesCount={post.likesCount}
+              likeCount={post.likeCount}
+              showLikeCount={showLikeCount}
+              showLikeButtons={showLikeButtons}
               liked={post.liked}
               commentsCount={post.commentsCount}
 
