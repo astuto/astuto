@@ -4,7 +4,7 @@ class SiteSettingsController < ApplicationController
   before_action :authenticate_admin,
     only: [:general, :boards, :post_statuses, :roadmap, :authentication]
 
-  before_action :authenticate_power_user,
+  before_action :authenticate_moderator,
     only: [:users]
   
   def general

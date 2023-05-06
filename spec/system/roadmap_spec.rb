@@ -34,18 +34,18 @@ feature 'roadmap', type: :system, js: true do
     post3
   end
 
-  it 'has a title' do
-    visit root_path
+  it 'renders correctly' do
+    visit roadmap_path
 
     expect(page).to have_content('Roadmap')
   end
 
   it 'shows a colum for each post status with show_in_roadmap set to true' do
-    visit root_path
+    visit roadmap_path
 
     within roadmap_columns do
-      expect(page).to have_selector(roadmap_column, count: 2)
-      expect(page).to have_selector(column_header, count: 2)
+      expect(page).to have_css(roadmap_column, count: 2)
+      expect(page).to have_css(column_header, count: 2)
       expect(page).to have_content(/#{post_status_1.name}/i)
       expect(page).to have_content(/#{post_status_2.name}/i)
       expect(page).not_to have_content(/#{post_status_3.name}/i)
@@ -53,10 +53,10 @@ feature 'roadmap', type: :system, js: true do
   end
 
   it 'shows posts for each post status' do
-    visit root_path
+    visit roadmap_path
 
     within roadmap_columns do
-      expect(page).to have_selector(post_link, count: 2)
+      expect(page).to have_css(post_link, count: 2)
       expect(page).to have_content(/#{post1.title}/)
       expect(page).to have_content(/#{post2.title}/)
       expect(page).not_to have_content(/#{post3.title}/)
@@ -64,7 +64,7 @@ feature 'roadmap', type: :system, js: true do
   end
 
   it 'shows board name for each post' do
-    visit root_path
+    visit roadmap_path
 
     within roadmap_columns do
       expect(page).to have_content(/#{post1.board.name}/i)

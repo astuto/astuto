@@ -28,10 +28,10 @@ class OAuthPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? and user.tenant_id == record.tenant_id
+    user.admin?
   end
 
   def destroy?
-    user.admin? and user.tenant_id == record.tenant_id
+    user.admin?
   end
 end

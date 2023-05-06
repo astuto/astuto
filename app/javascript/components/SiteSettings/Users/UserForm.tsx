@@ -4,6 +4,7 @@ import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
 import IUser, { UserRoles, USER_ROLE_ADMIN, USER_ROLE_MODERATOR, USER_ROLE_USER } from '../../../interfaces/IUser';
+import { getLabel } from '../../../helpers/formUtils';
 
 interface Props {
   user: IUser;
@@ -23,12 +24,15 @@ class UserForm extends React.Component<Props, State> {
     this._handleUpdateUserRole = this._handleUpdateUserRole.bind(this);
   }
 
-  _handleUpdateUserRole(selectedRole: UserRoles) {
+  _handleUpdateUserRole(selectedRole: UserRoles, currentRole: UserRoles) {
     const { user, updateUserRole } = this.props;
     let confirmation = true;
 
-    if (selectedRole === 'admin') {
-      confirmation = confirm(I18n.t('site_settings.users.role_to_admin_confirmation', { name: user.fullName }));
+    if (selectedRole !== currentRole) {
+      if (selectedRole === 'moderator')
+        confirmation = confirm(I18n.t('site_settings.users.role_to_moderator_confirmation', { name: user.fullName }));
+      else if (selectedRole === 'admin')
+        confirmation = confirm(I18n.t('site_settings.users.role_to_admin_confirmation', { name: user.fullName }));
     }
 
     if (confirmation) updateUserRole(selectedRole);
@@ -54,7 +58,7 @@ class UserForm extends React.Component<Props, State> {
             id="selectPickerUserRole"
             className="selectPicker"
           >
-            <optgroup label="Roles">
+            <optgroup label={getLabel('user', 'role')}>
               <option value={USER_ROLE_USER}>
                 { I18n.t(`site_settings.users.role_${USER_ROLE_USER}`) }
               </option>
@@ -68,7 +72,7 @@ class UserForm extends React.Component<Props, State> {
           </select>
         </div>
 
-        <Button onClick={() => this._handleUpdateUserRole(selectedRole)} className="updateUserButton">
+        <Button onClick={() => this._handleUpdateUserRole(selectedRole, user.role)} className="updateUserButton">
           { I18n.t('common.buttons.update') }
         </Button>
       </div>

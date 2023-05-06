@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 import PostUpdateList from './PostUpdateList';
 import PostEditForm from './PostEditForm';
@@ -39,6 +40,7 @@ interface Props {
   isPowerUser: boolean;
   currentUserFullName: string;
   currentUserEmail: string;
+  tenantSetting: ITenantSetting;
   authenticityToken: string;
 
   requestPost(postId: number): void;
@@ -148,6 +150,7 @@ class PostP extends React.Component<Props> {
       isLoggedIn,
       isPowerUser,
       currentUserEmail,
+      tenantSetting,
       authenticityToken,
 
       submitFollow,
@@ -176,11 +179,14 @@ class PostP extends React.Component<Props> {
             error={comments.error}
           />
 
-          <LikeList
-            likes={likes.items}
-            areLoading={likes.areLoading}
-            error={likes.error}
-          />
+          {
+            isPowerUser &&
+              <LikeList
+                likes={likes.items}
+                areLoading={likes.areLoading}
+                error={likes.error}
+              />
+          }
 
           <ActionBox
             followed={followed}
@@ -213,7 +219,8 @@ class PostP extends React.Component<Props> {
               <div className="postHeader">
                 <LikeButton
                   postId={post.id}
-                  likesCount={likes.items.length}
+                  likeCount={likes.items.length}
+                  showLikeCount={isPowerUser || tenantSetting.show_vote_count}
                   liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
                   isLoggedIn={isLoggedIn}
                   authenticityToken={authenticityToken}

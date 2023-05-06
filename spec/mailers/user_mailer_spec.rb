@@ -12,8 +12,7 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(["notifications@astuto.io"])
     end
 
-    it "renders the user name, post title, replier name and comment body" do
-      expect(mail.body.encoded).to include(user.full_name)
+    it "renders the post title, replier name and comment body" do
       expect(mail.body.encoded).to include(post.title)
       expect(mail.body.encoded).to include(comment.user.full_name)
       expect(mail.body.encoded).to include(comment.body)

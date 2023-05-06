@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   let(:user) { FactoryBot.build(:user) }
   let(:moderator) { FactoryBot.build(:moderator) }
   let(:admin) { FactoryBot.build(:admin) }
+  let(:owner) { FactoryBot.build(:owner) }
 
   it 'should be valid' do
     expect(user).to be_valid
@@ -13,14 +14,16 @@ RSpec.describe User, type: :model do
     expect(User.new.role).to eq('user')
   end
 
-  it 'can have the following roles: "user", "moderator" and "admin"' do
+  it 'can have the following roles: "user", "moderator", "admin" and "owner"' do
     expect(user.role).to eq('user')
     expect(moderator.role).to eq('moderator')
     expect(admin.role).to eq('admin')
+    expect(owner.role).to eq('owner')
 
     expect(user).to be_valid
     expect(moderator).to be_valid
     expect(admin).to be_valid
+    expect(owner).to be_valid
   end
 
   it 'has status "active" by default' do
@@ -67,10 +70,25 @@ RSpec.describe User, type: :model do
     expect(invalid_email_user).to be_invalid
   end
 
-  it 'knows if it is a power user' do
-    expect(user).not_to be_a_power_user
-    expect(moderator).to be_a_power_user
-    expect(admin).to be_a_power_user
+  it 'knows if it has moderator privileges' do
+    expect(user).not_to be_a_moderator
+    expect(moderator).to be_a_moderator
+    expect(admin).to be_a_moderator
+    expect(owner).to be_a_moderator
+  end
+
+  it 'knows if it has admin privileges' do
+    expect(user).not_to be_a_admin
+    expect(moderator).not_to be_a_admin
+    expect(admin).to be_a_admin
+    expect(owner).to be_a_admin
+  end
+
+  it 'knows if it has owner privileges' do
+    expect(user).not_to be_a_owner
+    expect(moderator).not_to be_a_owner
+    expect(admin).not_to be_a_owner
+    expect(owner).to be_a_owner
   end
 
   it 'knows if it is active or blocked' do

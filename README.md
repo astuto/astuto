@@ -24,8 +24,10 @@ Astuto is a free, open source, self-hosted customer feedback tool. It helps you 
 
 ## Requirements
 
-* Docker ([installation instructions](https://docs.docker.com/install/))
-* Docker Compose ([installation instructions](https://docs.docker.com/compose/install/))
+* Docker
+* Docker Compose
+
+You can install [Docker Desktop](https://docs.docker.com/desktop/) which includes everything you need to run Astuto. If you are on Linux, you may instead install Docker Engine, Docker CLI and then install the [Docker Compose Plugin](https://docs.docker.com/compose/install/).
 
 ## Installation
 
@@ -59,9 +61,11 @@ volumes:
   dbdata:
 ```
 3. Edit the environment variables to fit your needs
-4. Run `docker-compose pull`
-5. Run `docker-compose up`
+4. Run `docker compose pull`
+5. Run `docker compose up`
 6. You should now have a running instance of Astuto on port 3000. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
+
+**Note**: if you are on Linux and you encounter permission denied errors when running Docker commands, try to run them as administrator.
 
 ### GitHub repository (for development)
 

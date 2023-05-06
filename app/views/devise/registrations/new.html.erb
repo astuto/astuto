@@ -41,7 +41,7 @@
     <%= f.submit t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
   </div>
   
-  <% if not @o_auths.empty? %>
+  <% if not @o_auths.blank? %>
     <hr />
     <% @o_auths.each do |o_auth| %>
       <p>

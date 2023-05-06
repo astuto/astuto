@@ -52,6 +52,7 @@ const OAuthProviderItem = ({
           window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
         }
         icon={<TestIcon />}
+        customClass='testAction'
       >
         {I18n.t('common.buttons.test')}
       </ActionLink>
@@ -62,6 +63,7 @@ const OAuthProviderItem = ({
           setPage('edit');
         }}
         icon={<EditIcon />}
+        customClass='editAction'
       >
         {I18n.t('common.buttons.edit')}
       </ActionLink>
@@ -69,6 +71,7 @@ const OAuthProviderItem = ({
       <ActionLink
         onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
         icon={<DeleteIcon />}
+        customClass='deleteAction'
       >
         {I18n.t('common.buttons.delete')}
       </ActionLink>

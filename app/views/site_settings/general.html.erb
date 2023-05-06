@@ -8,9 +8,15 @@
           originForm: {
             siteName: @tenant.site_name,
             siteLogo: @tenant.site_logo,
-            brandDisplaySetting: @tenant.brand_display_setting,
+            brandDisplaySetting: @tenant_setting.brand_display,
+            showVoteCount: @tenant_setting.show_vote_count,
+            showVoteButtonInBoard: @tenant_setting.show_vote_button_in_board,
+            rootBoardId: @tenant_setting.root_board_id.to_s,
+            showRoadmapInHeader: @tenant_setting.show_roadmap_in_header,
+            collapseBoardsInHeader: @tenant_setting.collapse_boards_in_header,
             locale: @tenant.locale
           },
+          boards: @tenant.boards.order(order: :asc),
           authenticityToken: form_authenticity_token
         }
       )

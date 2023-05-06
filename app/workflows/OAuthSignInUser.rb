@@ -32,7 +32,7 @@ class OAuthSignInUser
       return nil if email.nil? or not URI::MailTo::EMAIL_REGEXP.match?(email)
 
       # Select existing / create new user
-      user = User.find_by(email: email)
+      user = User.find_for_authentication(email: email)
       
       if user.nil?
         if not @o_auth.json_user_name_path.blank?

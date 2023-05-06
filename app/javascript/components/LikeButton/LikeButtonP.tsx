@@ -2,7 +2,9 @@ import * as React from 'react';
 
 interface Props {
   postId: number;
-  likesCount: number;
+  likeCount: number;
+  showLikeCount?: boolean;
+  showLikeButton?: boolean;
   liked: number;
   handleLikeSubmit(
     postId: number,
@@ -15,7 +17,9 @@ interface Props {
 
 const LikeButtonP = ({
   postId,
-  likesCount,
+  likeCount,
+  showLikeCount = true,
+  showLikeButton = true,
   liked,
   handleLikeSubmit,
   authenticityToken,
@@ -29,9 +33,10 @@ const LikeButtonP = ({
       else window.location.href = `/users/sign_in`;
       }}
       className={`likeButton${liked ? ' liked' : ''}`}
+      hidden={!showLikeButton}
     >
     </div>
-    <span className="likesCountLabel">{likesCount}</span>
+    { showLikeCount && <span className="likeCountLabel">{likeCount}</span> }
   </div>
 );
 
