@@ -3,9 +3,12 @@ import I18n from 'i18n-js';
 
 export const getLabel = (
   entity: string,
-  attribute: string,
+  attribute: string = undefined,
 ) => (
-  I18n.t(`activerecord.attributes.${entity}.${attribute}`)
+  attribute ?
+    I18n.t(`activerecord.attributes.${entity}.${attribute}`)
+  :
+    I18n.t(`activerecord.models.${entity}.one`)
 );
 
 export const getValidationMessage = (

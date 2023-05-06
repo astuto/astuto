@@ -2,6 +2,7 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import IPostStatus from '../../interfaces/IPostStatus';
+import { getLabel } from '../../helpers/formUtils';
 
 const NO_POST_STATUS_VALUE = 'none';
 
@@ -28,16 +29,16 @@ const PostStatusSelect = ({
     id="selectPickerStatus"
     className="selectPicker"
   >
-    <optgroup label="Post statuses">
+    <optgroup label={getLabel('post_status')}>
       {postStatuses.map((postStatus, i) => (
         <option value={postStatus.id} key={i}>
           {postStatus.name}
         </option>
       ))}
     </optgroup>
-    <optgroup label="No post status">
-      <option value={NO_POST_STATUS_VALUE}>{I18n.t('post.post_status_select.no_post_status')}</option>
-    </optgroup>
+    <option value={NO_POST_STATUS_VALUE}>
+      {I18n.t('post.post_status_select.no_post_status')}
+    </option>
   </select>
 );
 

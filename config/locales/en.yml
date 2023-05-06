@@ -153,6 +153,12 @@ en:
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
+      subtitle_header: 'Header'
+      collapse_boards_in_header_no_collapse: 'Never'
+      collapse_boards_in_header_always_collapse: 'Always'
+      subtitle_visibility: 'Visibility'
+      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
+      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
@@ -177,10 +183,12 @@ en:
       unblock: 'Unblock'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
       role_user: 'User'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
+      role_owner: 'Owner'
       status_active: 'Active'
       status_blocked: 'Blocked'
       status_deleted: 'Deleted'

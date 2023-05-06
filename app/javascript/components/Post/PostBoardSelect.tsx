@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getLabel } from '../../helpers/formUtils';
 
 import IBoard from '../../interfaces/IBoard';
 
@@ -25,7 +26,7 @@ const PostBoardSelect = ({
     id="selectPickerBoard"
     className="selectPicker"
   >
-    <optgroup label="Boards">
+    <optgroup label={getLabel('board')}>
       {boards.map((board, i) => (
         <option value={board.id} key={i}>
           {board.name}

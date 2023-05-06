@@ -24,7 +24,7 @@ class TenantsController < ApplicationController
         full_name: params[:user][:full_name],
         email: params[:user][:email],
         password: params[:user][:password],
-        role: "admin"
+        role: "owner"
       )
       
       render json: @tenant, status: :created
@@ -70,6 +70,12 @@ class TenantsController < ApplicationController
     def tenant_update_params
       params
         .require(:tenant)
-        .permit(policy(@tenant).permitted_attributes_for_update)
+        .permit(
+          policy(@tenant)
+          .permitted_attributes_for_update
+          .concat([{
+            tenant_setting_attributes: policy(@tenant.tenant_setting).permitted_attributes_for_update
+          }]) # in order to permit nested attributes for tenant_setting
+        )
     end
 end
