@@ -278,6 +278,7 @@ DEPENDENCIES
   rake (= 12.3.3)
   react-rails (= 2.6.2)
   rspec-rails (= 3.8.3)
+  rubyzip (~> 2.3.0)
   selenium-webdriver (= 4.1.0)
   spring (= 2.1.1)
   spring-watcher-listen (= 2.0.1)
@@ -288,7 +289,7 @@ DEPENDENCIES
   webpacker (= 4.3.0)
 
 RUBY VERSION
-   ruby 2.7.8p225
+   ruby 3.0.6p216
 
 BUNDLED WITH
    2.3.0
