@@ -1,7 +1,7 @@
 ###
 ### Build stage ###
 ###
-FROM ruby:2.6.6 AS builder
+FROM ruby:2.7.8 AS builder
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
@@ -56,7 +56,7 @@ EXPOSE 3000
 ###
 ### Prod stage ###
 ###
-FROM ruby:2.6.6-slim AS prod
+FROM ruby:2.7.8-slim AS prod
 
 RUN apt-get update -qq && \
   apt-get install -yq  \

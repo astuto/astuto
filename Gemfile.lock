@@ -267,8 +267,8 @@ DEPENDENCIES
   byebug
   capybara (= 3.36.0)
   devise (= 4.7.3)
-  httparty (= 0.21.0)
   factory_bot_rails (= 5.0.2)
+  httparty (= 0.21.0)
   i18n-js (= 3.9.2)
   jbuilder (= 2.11.5)
   kaminari (= 1.2.2)
@@ -290,7 +290,7 @@ DEPENDENCIES
   webpacker (= 4.3.0)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.8p225
 
 BUNDLED WITH
    2.3.0
