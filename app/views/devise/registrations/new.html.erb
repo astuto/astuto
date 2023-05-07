@@ -45,7 +45,7 @@
     <hr />
     <% @o_auths.each do |o_auth| %>
       <p>
-        <%= link_to t('common.forms.auth.sign_up_with', { o_auth: o_auth.name }),
+        <%= link_to t('common.forms.auth.sign_up_with', o_auth: o_auth.name),
           o_auth_start_path(o_auth, reason: 'user') %>
       </p>
     <% end %>
