@@ -56,7 +56,7 @@ EXPOSE 3000
 ###
 ### Prod stage ###
 ###
-FROM ruby:3.0.6 AS prod
+FROM ruby:3.0.6-slim AS prod
 
 RUN apt-get update -qq && \
   apt-get install -yq  \
