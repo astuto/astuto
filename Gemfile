@@ -46,8 +46,8 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '2.1.1'
+  gem 'spring-watcher-listen', '2.0.1'
 end
 
 group :test do
@@ -59,7 +59,7 @@ group :test do
 end
 
 # If not bundled, webpack compilation in production fails
-gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'listen', '3.5.1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
