@@ -8,7 +8,7 @@ class ReorderWorkflow
   #   column_name: the name of the db column that contains the order information, e.g. 'order'
   #   entity_id: the id of the entity being reordered
   #   src_index: the current order of the entity
-  #   dst_index = the new order of the entity
+  #   dst_index: the new order of the entity
   #
   # The workflow reorders the record with id <entity_id> of entity <entity_classname>
   # from <src_index> to <dst_index> using <column_name> as the db column that keeps the ordering
