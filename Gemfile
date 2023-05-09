@@ -40,7 +40,7 @@ gem 'kaminari', '1.2.2'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  gem 'rspec-rails', '3.8.3'
+  gem 'rspec-rails', '4.0.2'
   gem 'factory_bot_rails', '5.0.2'
 end
 
