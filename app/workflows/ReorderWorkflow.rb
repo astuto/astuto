@@ -51,14 +51,13 @@ class ReorderWorkflow
 
     # save all changes in a single transaction
     entity_classname.transaction do
-      begin
-        entity_records.each(&:save!)
-
-        return entity_records
-      rescue
-        return nil
-      end
+      entity_records.each(&:save!)
     end
+
+    return entity_records
+
+  rescue
+    return nil
   end
 
   def convert_indexes_to_i
