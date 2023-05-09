@@ -15,7 +15,7 @@
 
     <% if @minimum_password_length %>
       <small id="passwordHelp" class="form-text text-muted">
-        (<%= t('common.forms.auth.password_help', { count: @minimum_password_length }) %>)
+        (<%= t('common.forms.auth.password_help', count: @minimum_password_length) %>)
       </small>
     <% end %>
   </div>

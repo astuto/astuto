@@ -46,7 +46,7 @@ class OAuthsController < ApplicationController
         flash[:notice] = I18n.t('devise.sessions.signed_in')
         redirect_to root_path
       else
-        flash[:alert] = I18n.t('errors.o_auth_login_error', { name: @o_auth.name })
+        flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
         redirect_to new_user_session_path
       end
     elsif reason == 'test'
