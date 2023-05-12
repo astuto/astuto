@@ -8,6 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+// i18n-js translations
+require('translations/index.js.erb')
+
 require("./bootstrap_custom")
 require("../stylesheets/main")
 require("../images/favicon.png")
@@ -23,5 +26,3 @@ require("../images/logo.png")
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
-
-import I18n from 'translations/index.js.erb'
