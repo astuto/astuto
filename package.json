@@ -8,7 +8,7 @@
     "@rails/actioncable": "6.1.7-3",
     "@rails/activestorage": "6.1.7-3",
     "@rails/ujs": "6.1.7-3",
-    "@rails/webpacker": "5.1.0",
+    "@rails/webpacker": "5.4.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
