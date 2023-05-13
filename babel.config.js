@@ -41,6 +41,13 @@ module.exports = function(api) {
           development: isDevelopmentEnv || isTestEnv,
           useBuiltIns: true
         }
+      ],
+      [
+        '@babel/preset-typescript',
+        {
+          'allExtensions': true,
+          'isTSX': true
+        }
       ]
     ].filter(Boolean),
     plugins: [
@@ -48,6 +55,18 @@ module.exports = function(api) {
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),
       require('@babel/plugin-transform-destructuring').default,
+      [
+        require('@babel/plugin-proposal-private-methods').default,
+        {
+          loose: true
+        }
+      ],
+      [
+        require('@babel/plugin-proposal-private-property-in-object').default,
+        {
+          loose: true
+        }
+      ],
       [
         require('@babel/plugin-proposal-class-properties').default,
         {

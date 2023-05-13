@@ -11,7 +11,7 @@ gem 'pg', '1.3.5'
 
 gem 'puma', '4.3.12'
 
-gem 'webpacker', '4.3.0'
+gem 'webpacker', '5.4.4'
 
 gem 'turbolinks', '5.2.1'
 

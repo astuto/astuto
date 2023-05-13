@@ -6,7 +6,6 @@ import { DescriptionText } from '../../common/CustomTexts';
 
 import DragZone from '../../common/DragZone';
 import PostBoardLabel from '../../common/PostBoardLabel';
-import Separator from '../../common/Separator';
 import BoardForm from './BoardForm';
 import ActionLink from '../../common/ActionLink';
 import { CancelIcon, DeleteIcon, EditIcon } from '../../common/Icons';
