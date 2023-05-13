@@ -56,6 +56,18 @@ module.exports = function(api) {
       isTestEnv && require('babel-plugin-dynamic-import-node'),
       require('@babel/plugin-transform-destructuring').default,
       [
+        require('@babel/plugin-proposal-private-methods').default,
+        {
+          loose: true
+        }
+      ],
+      [
+        require('@babel/plugin-proposal-private-property-in-object').default,
+        {
+          loose: true
+        }
+      ],
+      [
         require('@babel/plugin-proposal-class-properties').default,
         {
           loose: true
