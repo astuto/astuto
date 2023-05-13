@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="boardsNav">
         <% if @tenant_setting.show_roadmap_in_header %>
-          <li class="nav-item<%= current_page?(roadmap_path) ? ' active' : '' %>">
+          <li class="nav-item<%= (current_page?(roadmap_path) or (@tenant_setting.root_board_id == 0 and current_page?(root_path))) ? ' active' : '' %>">
             <%= link_to "Roadmap", roadmap_path, class: 'nav-link' %>
           </li>
         <% end %>
