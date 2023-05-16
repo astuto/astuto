@@ -42,13 +42,6 @@ RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development bundle exec
 ###
 FROM builder AS dev
 
-# Install Foreman to launch multiple processes from Procfile
-RUN gem install foreman
-
-# Install Google Chrome to run system specs
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
-
 ENTRYPOINT ["./docker-entrypoint-dev.sh"]
 
 EXPOSE 3000
