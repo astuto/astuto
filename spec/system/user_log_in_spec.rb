@@ -38,7 +38,7 @@ feature 'log in', type: :system, js: true do
 
     visit root_path
     find('#navbarDropdown').click # open dropdown menu
-    click_link 'Sign out'
+    click_button 'Sign out'
     
     expect(page).to have_current_path(root_path)
     expect(page).to have_content('Log in / Sign up')
