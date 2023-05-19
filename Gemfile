@@ -17,7 +17,10 @@ gem 'jbuilder', '2.11.5'
 
 gem 'bootsnap', '1.12.0', require: false
 
-# Webpack for Rails
+# CSS
+gem "cssbundling-rails", '1.1.2'
+
+# JavaScript
 gem 'jsbundling-rails', '1.1.1'
 
 # HTTP requests

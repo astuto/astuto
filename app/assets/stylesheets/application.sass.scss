@@ -1,7 +1,12 @@
+// Entry point for your Sass build
+
+/* Booststrap */
 @import 'vendors/bootstrap_custom';
 
+/* Constants */
 @import 'constants/colors';
 
+/* Common */
 @import 'common/index';
 @import 'common/custom_texts';
 @import 'common/form';

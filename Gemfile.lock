@@ -85,6 +85,8 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.2.5)
     crass (1.0.6)
+    cssbundling-rails (1.1.2)
+      railties (>= 6.0.0)
     date (3.3.3)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -277,6 +279,7 @@ DEPENDENCIES
   bootsnap (= 1.12.0)
   byebug
   capybara (= 3.36.0)
+  cssbundling-rails (= 1.1.2)
   devise (= 4.7.3)
   factory_bot_rails (= 5.0.2)
   httparty (= 0.21.0)

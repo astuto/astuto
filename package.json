@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "webpack --config ./config/webpack/webpack.config.js"
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:js": "webpack --config ./config/webpack/webpack.config.js"
   },
   "babel": {
     "presets": [
@@ -42,6 +43,7 @@
     "react_ujs": "2.6.0",
     "redux": "4.0.4",
     "redux-thunk": "2.3.0",
+    "sass": "^1.62.1",
     "turbolinks": "5.2.0",
     "typescript": "4.3.2",
     "webpack": "^5.82.1",
