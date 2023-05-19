@@ -4,8 +4,8 @@ set -e
 
 sh docker-entrypoint.sh
 
-# Needed to avoid "webpack-dev-server not found" error
+# Needed to run .bin/dev
 yarn install --check-files
 
-# Launch Rails server and webpack-dev-server using Foreman
-foreman start -p 3000
+# Launch Rails server + yarn build:css + yarn build
+./bin/dev

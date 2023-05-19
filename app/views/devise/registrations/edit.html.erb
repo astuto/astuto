@@ -59,7 +59,7 @@
   
   <%= button_to t('common.forms.auth.cancel_account'),
     registration_path(resource_name),
-    data: { confirm: "Are you sure?" },
+    onclick: "return confirm('#{t('common.confirmation')}')",
     method: :delete,
     class: "btn btn-danger btn-block" %>
 </div>

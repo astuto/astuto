@@ -40,9 +40,6 @@ jobs:
           docker compose exec web wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           docker compose exec web dpkg -i google-chrome-stable_current_amd64.deb || true
           docker compose exec web apt-get -fy install
-
-      - name: Prepare assets for test environment
-        run: docker compose exec web cp -r public/packs/ public/packs-test/
         
       - name: Run tests
         run: docker compose exec web bundle exec rspec

@@ -11,13 +11,17 @@ gem 'pg', '1.3.5'
 
 gem 'puma', '4.3.12'
 
-gem 'webpacker', '5.4.4'
-
 gem 'turbolinks', '5.2.1'
 
 gem 'jbuilder', '2.11.5'
 
 gem 'bootsnap', '1.12.0', require: false
+
+# CSS
+gem "cssbundling-rails", '1.1.2'
+
+# JavaScript
+gem 'jsbundling-rails', '1.1.1'
 
 # HTTP requests
 gem 'httparty', '0.21.0'

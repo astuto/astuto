@@ -35,19 +35,12 @@ COPY . ${APP_ROOT}/
 
 # Compile assets if production
 # SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
-RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development bundle exec rake webpacker:compile; fi
+RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development ./bin/rails assets:precompile; fi
 
 ###
 ### Dev stage ###
 ###
 FROM builder AS dev
-
-# Install Foreman to launch multiple processes from Procfile
-RUN gem install foreman
-
-# Install Google Chrome to run system specs
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 ENTRYPOINT ["./docker-entrypoint-dev.sh"]
 
