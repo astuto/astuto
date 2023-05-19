@@ -15,9 +15,5 @@ require('bootstrap/js/dist/collapse');
 require('bootstrap/js/dist/dropdown');
 require('bootstrap/js/dist/util');
 
-// Images
-// require('../images/favicon.png');
-// require('../images/logo.png');
-
 // i18n-js translations
 require('./translations/index.js.erb');
