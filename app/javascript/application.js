@@ -1,7 +1,7 @@
 // Entry point for the build script in your package.json
 
 // turbolinks
-require("turbolinks").start();
+require.ensure("turbolinks").start();
 
 // react-rails
 var componentRequireContext = require.context("./components", true);
