@@ -11,6 +11,7 @@ ReactRailsUJS.useContext(componentRequireContext);
 // bootstrap (js only)
 require('bootstrap/js/dist/util');
 require('bootstrap/js/dist/dropdown');
+require('bootstrap/js/dist/collapse');
 
 // i18n-js translations
 require('./translations/index.js.erb');
