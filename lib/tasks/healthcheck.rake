@@ -12,7 +12,11 @@ task :healthcheck, [:port] do |t, args|
   
   # Print and return exit code
   exit_code = response.is_a?(Net::HTTPSuccess) ? 0 : 1
-  puts "Healthcheck returned: #{exit_code.to_s}"
 
+rescue
+  exit_code = 1
+  
+ensure
+  puts "Healthcheck returned: #{exit_code.to_s}"
   exit(exit_code)
 end
