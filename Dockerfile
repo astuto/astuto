@@ -84,6 +84,7 @@ COPY --from=builder ${APP_ROOT}/Gemfile.lock ${APP_ROOT}/
 COPY --from=builder ${APP_ROOT}/.ruby-version ${APP_ROOT}/
 COPY --from=builder ${APP_ROOT}/config.ru ${APP_ROOT}/
 COPY --from=builder ${APP_ROOT}/Rakefile ${APP_ROOT}/
+COPY --from=builder ${APP_ROOT}/lib/tasks/ ${APP_ROOT}/lib/tasks/
 COPY --from=builder /usr/local/bundle/config /usr/local/bundle/config
 
 ENTRYPOINT ["./docker-entrypoint-prod.sh"]
