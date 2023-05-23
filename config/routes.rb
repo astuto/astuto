@@ -56,4 +56,10 @@ Rails.application.routes.draw do
       get 'authentication'
     end
   end
+
+  # Healthcheck endpoint
+  get '/health', to: proc {
+    Tenant.first # to make sure db works
+    [200, {}, ['success']]
+  }
 end
