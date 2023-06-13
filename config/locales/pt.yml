@@ -1,91 +1,91 @@
 pt:
   common:
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
-      password: 'Password must have at least %{n} characters'
-      password_mismatch: 'Password and password confirmation must match'
+      required: '%{attribute} não pode ficar em branco'
+      email: 'E-mail inválido'
+      url: 'URL inválida'
+      password: 'A senha deve ter pelo menos %{n} caracteres'
+      password_mismatch: 'Senha e confirmação de senha devem corresponder'
     forms:
       auth:
-        email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        new_password: 'New password'
-        new_password_confirmation: 'New password confirmation'
-        current_password: 'Current password'
-        notifications_enabled: 'Notifications enabled'
-        notifications_enabled_help: "if disabled, you won't receive any notification"
-        remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        log_in_with: 'Log in with %{o_auth}'
-        sign_up_with: 'Sign up with %{o_auth}'
-        profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
-        cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
-        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
-        unlock_instructions_not_received: "Didn't receive unlock instructions?"
-        send_reset_password_instructions: 'Send me reset password instructions'
-        resend_confirmation_instructions: 'Resend confirmation instructions'
-        resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
-        password_help: '%{count} characters minimum'
+        email: 'E-mail'
+        full_name: 'Nome completo'
+        password: 'Senha'
+        password_confirmation: 'Confirmação da senha'
+        new_password: 'Nova senha'
+        new_password_confirmation: 'Confirmação da nova senha'
+        current_password: 'Senha atual'
+        notifications_enabled: 'Notificações ativadas'
+        notifications_enabled_help: "se desativado, você não receberá nenhuma notificação"
+        remember_me: 'Manter sessão iniciada'
+        log_in: 'Entrar'
+        sign_up: 'Cadastre-se'
+        log_in_with: 'Entrar com %{o_auth}'
+        sign_up_with: 'Cadastre-se com %{o_auth}'
+        profile_settings: 'Configurações do perfil'
+        update_profile: 'Atulizar perfil'
+        cancel_account: 'Cancelar conta'
+        forgot_password: 'Esqueceu a senha?'
+        confirmation_instructions_not_received: "Não recebeu instruções de confirmação?"
+        unlock_instructions_not_received: "Não recebeu instruções de confirmação?"
+        send_reset_password_instructions: 'Envie-me as instruções de redefinição de senha'
+        resend_confirmation_instructions: 'Reenviar instruções de confirmação'
+        resend_unlock_instructions: 'Reenviar instruções de desbloqueio'
+        change_password: 'Alterar senha'
+        password_help: 'Mínimo de %{count} caracteres'
     comments_number:
       one: '1 comment'
-      other: '%{count} comments'
-    no_status: 'No status'
-    loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
-    edited: 'Edited'
-    enabled: 'Enabled'
-    disabled: 'Disabled'
-    copied: 'Copied!'
+      other: '%{count} comentários'
+    no_status: 'Nenhum status'
+    loading: 'Carregando...'
+    confirmation: 'Tem certeza?'
+    unsaved_changes: 'As alterações não salvas serão perdidas se você sair da página.'
+    edited: 'Editado'
+    enabled: 'Habilitado'
+    disabled: 'Desabilitado'
+    copied: 'Copiado!'
     buttons:
-      new: 'New'
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
-      back: 'Back'
-      test: 'Test'
+      new: 'Novo'
+      edit: 'Editar'
+      delete: 'Apagar'
+      cancel: 'Cancelar'
+      create: 'Criar'
+      update: 'Salvar'
+      confirm: 'Confirmar'
+      back: 'Voltar'
+      test: 'Testar'
     datetime:
-      now: 'just now'
+      now: 'agora mesmo'
       minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
+        one: '1 minuto atrás'
+        other: 'Há %{count} minutos'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: '1 hora atrás'
+        other: '%{count} horas atrás'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: '1 dia atrás'
+        other: '%{count} dias atrás'
   signup:
-    page_title: 'Create your feedback space'
+    page_title: 'Crie seu espaço de comentário'
     step1:
-      title: '1. Create user account'
-      email_auth: 'Register with email'
+      title: 'Criar conta de usuário'
+      email_auth: 'Cadastrar com e-mail'
     step2:
-      title: '2. Create feedback space'
-      create_button: 'Create feedback space'
+      title: '2. Criar espaço de feedback'
+      create_button: 'Criar espaço de feedback'
       validations:
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_already_taken: 'Desculpe, este subdomínio não é válido'
     step3:
-      title: "You're almost done!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
+      title: "Você está quase lá!"
+      message: "Verifique o seu e-mail %{email} para ativar o seu novo espaço de feedback %{subdomain}!"
   header:
     menu:
-      site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      site_settings: 'Configurações do site'
+      profile_settings: 'Configurações do perfil'
+      sign_out: 'Sair'
+    log_in: 'Entrar / Cadastrar'
   roadmap:
-    title: 'Roadmap'
+    title: 'Mapa'
   pending_tenant:
     title: 'Verify your email address'
     message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
@@ -154,34 +154,34 @@ pt:
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
       subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
-      collapse_boards_in_header_always_collapse: 'Always'
-      subtitle_visibility: 'Visibility'
-      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
-      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      collapse_boards_in_header_no_collapse: 'Nunca'
+      collapse_boards_in_header_always_collapse: 'Sempre'
+      subtitle_visibility: 'Visibilidade'
+      show_vote_count_help: 'Se você habilitar essa configuração, os usuários poderão ver a contagem de votos das postagens. Isso pode incentivar os usuários a votar em postagens já populares, levando a um efeito de bola de neve.'
+      show_vote_button_in_board_help: 'Se você habilitar esta configuração, os usuários poderão votar nas postagens da página do fórum. Isso pode incentivar os usuários a votar em mais postagens, levando a um número maior de votos, mas de menor significância.'
     boards:
-      title: 'Boards'
-      empty: 'There are no boards. Create one below!'
-      new: 'New'
+      title: 'Quadros'
+      empty: 'Não há quadros. Crie um abaixo!'
+      new: 'Novo'
       form:
-        name: 'Board name'
-        description: 'Board description (optional)'
+        name: 'Nome do quadro'
+        description: 'Descrição do quadro (opcional)'
     post_statuses:
-      title: 'Statuses'
-      empty: 'There are no statuses. Create one below!'
-      new: 'New'
+      title: 'Status'
+      empty: 'Não há nenhum status. Crie um abaixo!'
+      new: 'Novo'
       form:
-        name: 'Status name'
+        name: 'Nome do status'
     roadmap:
-      title: 'Roadmap'
-      title2: 'Not in roadmap'
-      empty: 'The roadmap is empty.'
-      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      title: 'Mapa'
+      title2: 'Não está no mapa'
+      empty: 'O mapa está vazio.'
+      help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      title: 'Usuários'
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
+      block_confirmation: "%{name} não poderá acessar até que seja desbloqueado. Tem certeza?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
