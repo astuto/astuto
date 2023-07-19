@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :board
   belongs_to :user
   belongs_to :post_status, optional: true
+  belongs_to :post_setting, optional: true
 
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
