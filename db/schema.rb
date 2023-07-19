@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_11_095500) do
+ActiveRecord::Schema.define(version: 2023_07_19_214348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 2023_02_11_095500) do
     t.index ["tenant_id"], name: "index_o_auths_on_tenant_id"
   end
 
+  create_table "post_settings", force: :cascade do |t|
+    t.integer "archive_after", default: 0, null: false
+    t.bigint "tenant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tenant_id"], name: "index_post_settings_on_tenant_id"
+  end
+
   create_table "post_status_changes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -118,7 +126,9 @@ ActiveRecord::Schema.define(version: 2023_02_11_095500) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tenant_id", null: false
+    t.bigint "post_settings_id"
     t.index ["board_id"], name: "index_posts_on_board_id"
+    t.index ["post_settings_id"], name: "index_posts_on_post_settings_id"
     t.index ["post_status_id"], name: "index_posts_on_post_status_id"
     t.index ["tenant_id"], name: "index_posts_on_tenant_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -183,6 +193,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_095500) do
   add_foreign_key "likes", "tenants"
   add_foreign_key "likes", "users"
   add_foreign_key "o_auths", "tenants"
+  add_foreign_key "post_settings", "tenants"
   add_foreign_key "post_status_changes", "post_statuses"
   add_foreign_key "post_status_changes", "posts"
   add_foreign_key "post_status_changes", "tenants"
