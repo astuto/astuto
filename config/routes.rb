@@ -47,10 +47,13 @@ Rails.application.routes.draw do
       patch 'update_order', on: :collection
     end
   
+    resources :post_settings, only: [:index, :show, :create, :update, :destroy]
+  
     namespace :site_settings do
       get 'general'
       get 'boards'
       get 'post_statuses'
+      get 'post_settings'
       get 'roadmap'
       get 'users'
       get 'authentication'
