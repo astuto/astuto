@@ -13,6 +13,9 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+RSpec::Matchers.define_negated_matcher :not_change, :change
+
 RSpec.configure do |config|
   ENV["RAILS_ENV"] = "test"
 
