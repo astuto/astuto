@@ -96,6 +96,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     execjs (2.8.1)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
@@ -103,6 +105,9 @@ GEM
       factory_bot (~> 5.0.2)
       railties (>= 4.2.0)
     ffi (1.15.5)
+    fugit (1.8.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
     httparty (0.21.0)
@@ -168,6 +173,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
+    raabro (1.4.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-test (2.1.0)
@@ -208,6 +214,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.8.1)
     regexp_parser (2.5.0)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -235,6 +242,14 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sidekiq (6.5.9)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
+    sidekiq-cron (1.10.1)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -296,6 +311,8 @@ DEPENDENCIES
   react-rails (= 2.6.2)
   rspec-rails (= 4.0.2)
   selenium-webdriver (= 4.1.0)
+  sidekiq
+  sidekiq-cron
   spring (= 2.1.1)
   spring-watcher-listen (= 2.0.1)
   turbolinks (= 5.2.1)

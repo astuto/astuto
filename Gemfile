@@ -41,6 +41,10 @@ gem 'react-rails', '2.6.2'
 # Pagination
 gem 'kaminari', '1.2.2'
 
+# Asynchronous workers
+gem 'sidekiq'
+gem 'sidekiq-cron'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
