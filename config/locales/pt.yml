@@ -34,7 +34,7 @@ pt:
         change_password: 'Alterar senha'
         password_help: 'Mínimo de %{count} caracteres'
     comments_number:
-      one: '1 comment'
+      one: '1 (um) comentário'
       other: '%{count} comentários'
     no_status: 'Nenhum status'
     loading: 'Carregando...'
@@ -60,7 +60,7 @@ pt:
         one: '1 minuto atrás'
         other: 'Há %{count} minutos'
       hours:
-        one: '1 hora atrás'
+        one: '1h (uma hora) atrás'
         other: '%{count} horas atrás'
       days:
         one: '1 dia atrás'
@@ -87,73 +87,73 @@ pt:
   roadmap:
     title: 'Mapa'
   pending_tenant:
-    title: 'Verify your email address'
-    message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
+    title: 'Verifique seu endereço de correio eletrônico'
+    message: 'Enviamos uma mensagem com um linque de ativação para o endereço eletrônico que você forneceu durante o registro. Clique nesse linque para ativar este espaço de comentário!'
   blocked_tenant:
-    title: 'This feedback space has been blocked'
+    title: 'Este espaço de comentários foi bloqueado'
   board:
     new_post:
-      submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
-      login_button: 'Log in / Sign up'
-      title: 'Title'
-      description: 'Description (optional)'
-      no_title: 'Title field is mandatory'
-      submit_success: 'Feedback published! You will be redirected soon...'
-      submit_error: 'An unknown error occurred, try again'
+      submit_button: 'Enviar comentário'
+      cancel_button: 'Cancelar'
+      login_button: 'Autentique-se ou cadastre-se'
+      title: 'Título'
+      description: 'Descrição (opcional)'
+      no_title: 'O campo "título" é de preenchimento necessário'
+      submit_success: 'Comentário publicado! Você será redirecionada(o) em breve...'
+      submit_error: 'Aconteceu um erro inesperado, por favor tente novamente.'
     search_box:
-      title: 'Search'
+      title: 'Procurar'
     filter_box:
-      title: 'Filter by status'
+      title: 'Filtrar por estado atual'
     posts_list:
-      empty: 'There are no posts'
+      empty: 'Não existem postagens ainda'
   post:
-    edit_button: 'Edit'
-    published_by: 'Published by'
+    edit_button: 'Alterar'
+    published_by: 'Publicado por'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Nenhuma mensagem publicada'
     updates_box:
-      title: 'Updates'
-      empty: 'There are no updates yet'
-      status_change: 'changed status to'
+      title: 'Atualizações'
+      empty: 'Não há atualizações ainda'
+      status_change: 'Mudou de estado para'
     likes_box:
-      title: 'Likes'
-      empty: 'There are no likes yet'
+      title: 'Gostaram'
+      empty: 'Nenhuma pessoa demonstrou gostar até então'
     action_box:
-      title: 'Actions'
-      follow_button: 'Follow post'
-      following_description: "you're receiving notifications about new updates on this post"
-      not_following_description: "you won't receive notifications about this post"
+      title: 'Ações'
+      follow_button: 'Seguir publicação'
+      following_description: "você está recebendo notificações sobre novas atualizações nesta publicação"
+      not_following_description: "você não receberá as atualizações desta publicação"
     comments:
-      title: 'Activity'
-      post_update_badge: 'Update'
-      reply_button: 'Reply'
+      title: 'Atividades recentes'
+      post_update_badge: 'Atualizar'
+      reply_button: 'Responder'
     new_comment:
-      body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
-      is_post_update: 'Mark as update'
-      user_notification: 'Users that follow this post will be notified'
-      not_logged_in: 'You need to log in to post comments'
+      body_placeholder: 'Deixe seu comentário'
+      submit_button: 'Enviar'
+      is_post_update: 'Marcar como atualizado'
+      user_notification: 'Os usuários que seguem esta publicação serão notificados'
+      not_logged_in: 'Você precisa se autenticar para comentar'
   site_settings:
     menu:
-      title: 'Site settings'
-      general: 'General'
-      boards: 'Boards'
-      post_statuses: 'Statuses'
-      roadmap: 'Roadmap'
-      users: 'Users'
-      authentication: 'Authentication'
+      title: 'Configurações do site'
+      general: 'Geral'
+      boards: 'Painéis'
+      post_statuses: 'Estado atual'
+      roadmap: 'Rotas'
+      users: 'Usuária(e/o)s'
+      authentication: 'Autenticação'
     info_box:
-      up_to_date: 'All changes saved'
-      error: 'An error occurred: %{message}'
-      dirty: 'Changes not saved'
+      up_to_date: 'Todas as alterações foram salvas'
+      error: 'Ocorreu um erro: %{message}'
+      dirty: 'As mudanças não foram salvas'
     general:
-      title: 'General'
-      brand_setting_both: 'Both name and logo'
-      brand_setting_name: 'Name only'
-      brand_setting_logo: 'Logo only'
-      brand_setting_none: 'None'
-      subtitle_header: 'Header'
+      title: 'Geral'
+      brand_setting_both: 'Nome e logotipo'
+      brand_setting_name: 'Apenas nome'
+      brand_setting_logo: 'Logotipo apenas'
+      brand_setting_none: 'Nada salvo'
+      subtitle_header: 'Cabeçalho'
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilidade'
@@ -182,31 +182,31 @@ pt:
       block: 'Bloquear'
       unblock: 'Desbloquear'
       block_confirmation: "%{name} não poderá acessar até que seja desbloqueado. Tem certeza?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      unblock_confirmation: "%{name} poderá se autenticar e enviar comentário. Tem certeza?"
+      role_to_moderator_confirmation: "%{name} poderá gerenciar postagens e usuários. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
+      role_to_admin_confirmation: "%{name} poderá gerenciar painéis, postagens, estados, usuários e muito mais. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
+      role_user: 'Usuária(e/o)s'
+      role_moderator: 'Moderador(e/a)'
+      role_admin: 'Administrador(e/a)'
+      role_owner: 'Responsável'
+      status_active: 'Ativa(e/o)'
+      status_blocked: 'Bloqueada(e/o)'
+      status_deleted: 'Excluída(e/o)'
     authentication:
-      title: 'Authentication'
-      oauth_subtitle: 'OAuth providers'
-      copy_url: 'Copy URL'
+      title: 'Autenticação'
+      oauth_subtitle: 'Provedores de identidade OAuth'
+      copy_url: 'Copiar URL'
       test_page:
-        title: '%{name} OAuth test results'
-        fetched_user_data: 'Fetched user data'
-        found: 'Found'
-        summary: 'Summary'
-        valid_configuration: 'This OAuth provider is configured correctly!'
-        warning_configuration: 'This OAuth provider is configured correctly, but a default name for users (%{name}) will be used.'
-        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+        title: '%{name} resultados do teste OAuth'
+        fetched_user_data: 'Dados de usuária(e/o) obtidos'
+        found: 'Encontrada(e/o)'
+        summary: 'Resumo'
+        valid_configuration: 'Este provedor de identidade OAuth está configurado corretamente!'
+        warning_configuration: 'Este provedor OAuth está configurado corretamente, mas um nome padrão para usuária(e/o)s (%{name}) será usado.'
+        invalid_configuration: 'Este provedor de identidade OAuth NÃO está configurado corretamente.'
       form:
-        title_new: 'New OAuth provider'
-        title_edit: 'Edit OAuth provider'
-        subtitle_oauth_config: 'OAuth configuration'
-        subtitle_user_profile_config: 'User profile configuration'
-        client_secret_help: 'hidden for security purposes'
+        title_new: 'Novo provedor de identidade OAuth'
+        title_edit: 'Editar provedor de identidade OAuth'
+        subtitle_oauth_config: 'Configuração de servidor de identidade OAuth'
+        subtitle_user_profile_config: 'Configuração do perfil do usuária(e/o)'
+        client_secret_help: 'ocultado por motivos de segurança'
