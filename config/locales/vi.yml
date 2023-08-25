@@ -32,7 +32,7 @@ vi:
         resend_confirmation_instructions: 'Gửi lại hướng dẫn xác nhận'
         resend_unlock_instructions: 'Gửi lại hướng dẫn mở khóa'
         change_password: 'Đổi mật khẩu'
-        password_help: 'It nhất %{count} ký từ'
+        password_help: 'Ít nhất %{count} ký từ'
     comments_number:
       one: '1 bình luận'
       other: '%{count} bình luận'
@@ -50,12 +50,12 @@ vi:
       delete: 'Xóa'
       cancel: 'Huỷ bỏ'
       create: 'Tạo mới'
-      update: 'Cạp nhật'
+      update: 'Cập nhật'
       confirm: 'Xác nhận'
       back: 'Quay lại'
-      test: 'Kiẻm tra'
+      test: 'Kiểm tra'
     datetime:
-      now: 'Vùa xong'
+      now: 'Vừa xong'
       minutes:
         one: '1 phút trước'
         other: '%{count} phút trước'
