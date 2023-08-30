@@ -16,7 +16,7 @@ de:
         new_password_confirmation: 'Neues Passwort bestätigen'
         current_password: 'Jetziges Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
-        notifications_enabled_help: "Wenn deaktiviert, erhältst Du keine Benachrichtigung"
+        notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigung"
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -39,7 +39,7 @@ de:
     no_status: 'Kein Status'
     loading: 'Laden...'
     confirmation: 'Sicher?'
-    unsaved_changes: 'Ungespeicherte Änderungen gehen verloren, wenn Sie die Seite verlassen.'
+    unsaved_changes: 'Ungespeicherte Änderungen gehen verloren, wenn du die Seite verlässt.'
     edited: 'Bearbeitet'
     enabled: 'Aktiviert'
     disabled: 'Deaktiviert'
@@ -99,7 +99,7 @@ de:
       title: 'Titel'
       description: 'Beschreibung (optional)'
       no_title: 'Titelfeld ist obligatorisch'
-      submit_success: 'Feedback veröffentlicht! Du wirst gleich weitergeleitet...'
+      submit_success: 'Feedback veröffentlicht! du wirst gleich weitergeleitet...'
       submit_error: 'Ein unbekannter Fehler ist aufgetreten, versuche es erneut'
     search_box:
       title: 'Suchen'
@@ -176,15 +176,15 @@ de:
       title: 'Roadmap'
       title2: 'Nicht in der Roadmap'
       empty: 'Die Roadmap ist leer.'
-      help: 'Du kannst der Roadmap Status hinzufügen, indem Du sie aus dem Abschnitt unten ziehst. Wenn Du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
+      help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
     users:
       title: 'Benutzer'
       block: 'Sperren'
       unblock: 'Entsperren'
-      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist Du Dir sicher?"
-      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist Du Dir sicher?"
+      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du Dir sicher?"
+      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du Dir sicher?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie Du, sodass sie Dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn Du %{name} wirklich vertraust. Bist Du Dir sicher?"
+      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie Dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du Dir sicher?"
       role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
