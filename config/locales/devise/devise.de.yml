@@ -2,7 +2,7 @@ de:
   devise:
     confirmations:
       confirmed: "Deine E-Mail-Adresse wurde erfolgreich bestätigt."
-      send_instructions: "Du erhältst in wenigen Minuten eine E-Mail, mit der du Deine Registrierung bestätigen kannst."
+      send_instructions: "Du erhältst in wenigen Minuten eine E-Mail, mit der du deine Registrierung bestätigen kannst."
       send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst du in wenigen Minuten eine E-Mail, mit der du Deine Registrierung bestätigen kannst."
     failure:
       already_authenticated: "Du bist bereits angemeldet."
