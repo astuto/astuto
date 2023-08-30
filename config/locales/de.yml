@@ -99,7 +99,7 @@ de:
       title: 'Titel'
       description: 'Beschreibung (optional)'
       no_title: 'Titelfeld ist obligatorisch'
-      submit_success: 'Feedback veröffentlicht! du wirst gleich weitergeleitet...'
+      submit_success: 'Feedback veröffentlicht! Du wirst gleich weitergeleitet...'
       submit_error: 'Ein unbekannter Fehler ist aufgetreten, versuche es erneut'
     search_box:
       title: 'Suchen'
@@ -181,10 +181,10 @@ de:
       title: 'Benutzer'
       block: 'Sperren'
       unblock: 'Entsperren'
-      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du Dir sicher?"
-      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du Dir sicher?"
+      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du dir sicher?"
+      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du dir sicher?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie Dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du Dir sicher?"
+      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du dir sicher?"
       role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
