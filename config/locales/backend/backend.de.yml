@@ -5,7 +5,7 @@ de:
     not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
     not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
     user_blocked_or_deleted: 'Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
-    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wenden Sie sich an den Administrator oder versuchen Sie einen anderen Anbieter.'
+    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wende dich an den Administrator oder versuche einen anderen Anbieter.'
     board:
       update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
     post_status:
@@ -25,15 +25,15 @@ de:
       password_change:
         body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
       reset_password:
-        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
-        body2: "Wenn Du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
-        body3: "Dein Passwort ändert sich erst, wenn Du auf den obigen Link zugreifst und ein neues erstellst."
+        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. du kannst dies über den unten stehenden Link tun.'
+        body2: "Wenn du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        body3: "Dein Passwort ändert sich erst, wenn du auf den obigen Link zugreifst und ein neues erstellst."
         action: 'Mein Passwort ändern'
     user:
       opening_greeting: 'Hallo!'
       closing_greeting: 'Habe einen schönen Tag!'
       learn_more: 'Klick hier um mehr zu erfahren'
-      unsubscribe: 'Verärgert? Du kannst Benachrichtigungen hier deaktivieren'
+      unsubscribe: 'Verärgert? du kannst Benachrichtigungen hier deaktivieren'
       notify_post_owner:
         subject: '[%{app_name}] Neuer Kommentar zu %{post}'
         body: 'Es existiert ein neuer Kommentar von %{user} zu Deinem Beitrag %{post}'
@@ -42,10 +42,10 @@ de:
         body: 'Es existiert eine neue Antwort von %{user} auf Deinem Kommentar von Beitrag %{post}'
       notify_followers_of_post_update:
         subject: '[%{app_name}] Neues Update für Beitrag %{post}'
-        body: "Es existiert ein neues Update für den Beitrag, dem Du folgst %{post}"
+        body: "Es existiert ein neues Update für den Beitrag, dem du folgst %{post}"
       notify_followers_of_post_status_change:
         subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
-        body: "Der Beitrag, dem Du folgst %{post} hat einen neuen Status"
+        body: "Der Beitrag, dem du folgst %{post} hat einen neuen Status"
   activerecord:
     models:
       board:
