@@ -8,25 +8,25 @@ es:
       password_mismatch: 'Las contraseñas no coinciden'
     forms:
       auth:
-        email: 'Email'
+        email: 'Correo electrónico'
         full_name: 'Nombre completo'
         password: 'Contraseña'
-        password_confirmation: 'Password confirmation'
+        password_confirmation: 'Confirmar contraseña'
         new_password: 'Nueva contraseña'
-        new_password_confirmation: 'New password confirmation'
+        new_password_confirmation: 'Confirmación de nueva contraseña'
         current_password: 'Contraseña actual'
-        notifications_enabled: 'Notifications enabled'
-        notifications_enabled_help: "if disabled, you won't receive any notification"
-        remember_me: 'Remember me'
+        notifications_enabled: 'Notificaciones habilitadas'
+        notifications_enabled_help: "si está desactivado, no recibirás ninguna notificación"
+        remember_me: 'Recordar mis datos'
         log_in: 'Iniciar sesión'
         sign_up: 'Sign up'
         log_in_with: 'Log in with %{o_auth}'
         sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
-        cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
-        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
+        update_profile: 'Actualizar perfil'
+        cancel_account: 'Cancelar cuenta'
+        forgot_password: '¿Olvidó su contraseña?'
+        confirmation_instructions_not_received: "¿No has recibido las instrucciones de confirmación?"
         unlock_instructions_not_received: "Didn't receive unlock instructions?"
         send_reset_password_instructions: 'Send me reset password instructions'
         resend_confirmation_instructions: 'Resend confirmation instructions'
@@ -38,8 +38,8 @@ es:
       other: '%{count} comments'
     no_status: 'No status'
     loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
+    confirmation: '¿Está seguro?'
+    unsaved_changes: 'Los cambios se perderán si abandona esta página.'
     edited: 'Edited'
     enabled: 'Enabled'
     disabled: 'Disabled'
@@ -60,11 +60,11 @@ es:
         one: 'Hace 1 minuto'
         other: 'Hace %{count} minutos'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: 'hace 1 hora'
+        other: 'Hace %{count} horas'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: 'Hace 1 día'
+        other: 'hace %{count} días'
   signup:
     page_title: 'Create your feedback space'
     step1:
@@ -80,7 +80,7 @@ es:
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
   header:
     menu:
-      site_settings: 'Site settings'
+      site_settings: 'Configuración del sitio'
       profile_settings: 'Profile settings'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'
@@ -104,28 +104,28 @@ es:
     search_box:
       title: 'Search'
     filter_box:
-      title: 'Filter by status'
+      title: 'Filtrar por estado'
     posts_list:
-      empty: 'There are no posts'
+      empty: 'Aún no hay publicaciones'
   post:
-    edit_button: 'Edit'
-    published_by: 'Published by'
+    edit_button: 'Editar'
+    published_by: 'Publicado por'
     post_status_select:
       no_post_status: 'None'
     updates_box:
       title: 'Updates'
-      empty: 'There are no updates yet'
+      empty: 'Aún no hay ninguna actualización'
       status_change: 'changed status to'
     likes_box:
       title: 'Likes'
-      empty: 'There are no likes yet'
+      empty: 'Todavía no hay "Me gusta"'
     action_box:
       title: 'Actions'
-      follow_button: 'Follow post'
-      following_description: "you're receiving notifications about new updates on this post"
-      not_following_description: "you won't receive notifications about this post"
+      follow_button: 'Seguir la publicación'
+      following_description: "estás recibiendo notificaciones sobre nuevas actualizaciones en esta publicación"
+      not_following_description: "no recibirás notificaciones sobre esta publicación"
     comments:
-      title: 'Activity'
+      title: 'Actividad'
       post_update_badge: 'Update'
       reply_button: 'Reply'
     new_comment:
@@ -146,13 +146,13 @@ es:
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
-      dirty: 'Changes not saved'
+      dirty: 'No se han guardado los cambios'
     general:
       title: 'General'
-      brand_setting_both: 'Both name and logo'
-      brand_setting_name: 'Name only'
-      brand_setting_logo: 'Logo only'
-      brand_setting_none: 'None'
+      brand_setting_both: 'Nombre y logotipo'
+      brand_setting_name: 'Solo el nombre'
+      brand_setting_logo: 'Sólo Logo'
+      brand_setting_none: 'Ninguno'
       subtitle_header: 'Header'
       collapse_boards_in_header_no_collapse: 'Never'
       collapse_boards_in_header_always_collapse: 'Always'
