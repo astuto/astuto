@@ -41,7 +41,7 @@ fr:
     confirmation: 'Vous êtes sûr ?'
     unsaved_changes: 'Les modifications apportées seront perdues si vous quittez cette page.'
     edited: 'Modifié'
-    enabled: 'Enabled'
+    enabled: 'Activé'
     disabled: 'Désactivé'
     copied: 'Copié !'
     buttons:
@@ -122,7 +122,7 @@ fr:
     action_box:
       title: 'Options'
       follow_button: 'S''abonner à la publication'
-      following_description: "vous recevez des notifications sur les nouvelles mises à jour de ce poste"
+      following_description: "vous recevez des notifications sur les nouvelles mises à jour de cette publication"
       not_following_description: "vous ne recevrez pas de notifications concernant cette publication"
     comments:
       title: 'Activité'
@@ -153,11 +153,11 @@ fr:
       brand_setting_name: 'Nom seulement'
       brand_setting_logo: 'Logo uniquement'
       brand_setting_none: 'Aucun'
-      subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
-      collapse_boards_in_header_always_collapse: 'Always'
-      subtitle_visibility: 'Visibility'
-      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
+      subtitle_header: 'En-tête'
+      collapse_boards_in_header_no_collapse: 'Jamais'
+      collapse_boards_in_header_always_collapse: 'Toujours'
+      subtitle_visibility: 'Visibilité'
+      show_vote_count_help: 'Si vous activez ce paramètre, les utilisateurs pourront voir le nombre de votes sur les publications. Cela peut inciter les utilisateurs à voter sur des publications déjà populaires, ce qui peut entraîner un effet boule de neige.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
       title: 'Tableaux'
@@ -183,17 +183,17 @@ fr:
       unblock: 'Débloquer'
       block_confirmation: "%{name} ne pourra pas se connecter tant qu'il ne sera pas débloqué. Êtes-vous sûr(e) ?"
       unblock_confirmation: "%{name} sera en mesure de se connecter et de soumettre des commentaires. Vous êtes sûr ?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_moderator_confirmation: "%{name} sera en mesure de gérer les messages et les utilisateurs. Ne continuez que si vous avez confiance en cette personne. Êtes-vous sûr ?"
       role_to_admin_confirmation: "%{name} aura les mêmes privilèges que vous, et pourra même vous rétrograder ou vous bloquer. Ne continuez que si vous avez vraiment confiance en %{name}. Vous êtes sûr ?"
       role_user: 'Utilisateur'
       role_moderator: 'Modérateur'
       role_admin: 'Administrateur'
-      role_owner: 'Owner'
+      role_owner: 'Propriétaire'
       status_active: 'Actif'
       status_blocked: 'Bloqué'
       status_deleted: 'Supprimé'
     authentication:
-      title: 'Authentication'
+      title: 'Authentification'
       oauth_subtitle: 'Fournisseurs OAuth'
       copy_url: 'Copier l''URL'
       test_page:
