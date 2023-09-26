@@ -50,25 +50,25 @@ fr:
     models:
       board:
         one: 'Board'
-        other: 'Boards'
+        other: 'Tableaux'
       comment:
         one: 'Comment'
-        other: 'Comments'
+        other: 'Commentaires'
       like:
         one: 'Vote'
         other: 'Votes'
       o_auth:
         one: 'OAuth'
-        other: 'OAuths'
+        other: 'OAuth'
       post_status:
         one: 'Status'
-        other: 'Statuses'
+        other: 'Statuts'
       post:
         one: 'Post'
-        other: 'Posts'
+        other: 'Publications'
       user:
         one: 'User'
-        other: 'Users'
+        other: 'Utilisateurs'
     attributes:
       board:
         name: 'Nom'
