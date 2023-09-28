@@ -14,9 +14,9 @@ de:
         password_confirmation: 'Passwort Bestätigung'
         new_password: 'Neues Passwort'
         new_password_confirmation: 'Neues Passwort bestätigen'
-        current_password: 'Jetziges Passwort'
+        current_password: 'Aktuelles Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
-        notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigung"
+        notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigungen"
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -37,7 +37,7 @@ de:
       one: '1 Kommentar'
       other: '%{count} Kommentare'
     no_status: 'Kein Status'
-    loading: 'Laden...'
+    loading: 'Lädt...'
     confirmation: 'Sicher?'
     unsaved_changes: 'Ungespeicherte Änderungen gehen verloren, wenn du die Seite verlässt.'
     edited: 'Bearbeitet'
@@ -156,7 +156,7 @@ de:
       subtitle_header: 'Header'
       collapse_boards_in_header_no_collapse: 'Never'
       collapse_boards_in_header_always_collapse: 'Always'
-      subtitle_visibility: 'Visibility'
+      subtitle_visibility: 'Sichtbarkeit'
       show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
