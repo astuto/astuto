@@ -17,15 +17,15 @@ de:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
       opening_greeting: 'Hallo %{email}!'
       confirmation_instructions:
-        body: 'Du kannst Deine Konto-E-Mail über den folgenden Link bestätigen:'
+        body: 'Du kannst deine Konto-E-Mail über den folgenden Link bestätigen:'
         action: 'Mein Konto bestätigen'
       email_changed:
-        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wird."
-        body2: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wurde."
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wird."
+        body2: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wurde."
       password_change:
-        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass dein Passwort geändert wurde."
       reset_password:
-        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. du kannst dies über den unten stehenden Link tun.'
+        body: 'Jemand hat einen Link angefordert, um dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
         body2: "Wenn du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
         body3: "Dein Passwort ändert sich erst, wenn du auf den obigen Link zugreifst und ein neues erstellst."
         action: 'Mein Passwort ändern'
@@ -36,39 +36,39 @@ de:
       unsubscribe: 'Verärgert? du kannst Benachrichtigungen hier deaktivieren'
       notify_post_owner:
         subject: '[%{app_name}] Neuer Kommentar zu %{post}'
-        body: 'Es existiert ein neuer Kommentar von %{user} zu Deinem Beitrag %{post}'
+        body: 'Es existiert ein neuer Kommentar von %{user} zu deinem Beitrag %{post}'
       notify_comment_owner:
-        subject: '[%{app_name}] Neue Antwort auf Deinen Kommentar von %{post}'
-        body: 'Es existiert eine neue Antwort von %{user} auf Deinem Kommentar von Beitrag %{post}'
+        subject: '[%{app_name}] Neue Antwort auf deinen Kommentar von %{post}'
+        body: 'Es existiert eine neue Antwort von %{user} auf deinen Kommentar von Beitrag %{post}'
       notify_followers_of_post_update:
         subject: '[%{app_name}] Neues Update für Beitrag %{post}'
         body: "Es existiert ein neues Update für den Beitrag, dem du folgst %{post}"
       notify_followers_of_post_status_change:
         subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
-        body: "Der Beitrag, dem du folgst %{post} hat einen neuen Status"
+        body: "Der Beitrag %{post}, dem du folgst, hat einen neuen Status"
   activerecord:
     models:
       board:
         one: 'Board'
         other: 'Boards'
       comment:
-        one: 'Comment'
-        other: 'Comments'
+        one: 'Kommentar'
+        other: 'Kommentare'
       like:
-        one: 'Vote'
-        other: 'Votes'
+        one: 'Stimme'
+        other: 'Stimmen'
       o_auth:
         one: 'OAuth'
         other: 'OAuths'
       post_status:
         one: 'Status'
-        other: 'Statuses'
+        other: 'Status'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Eintrag'
+        other: 'Einträge'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Nutzer/in'
+        other: 'Nutzer/innen'
     attributes:
       board:
         name: 'Name'
@@ -81,7 +81,7 @@ de:
         post_id: 'Beitrag'
         parent_id: 'Übergeordneter Kommentar'
       follow:
-        user_id: 'Benutzer'
+        user_id: 'Benutzer/in'
         post_id: 'Beitrag'
       like:
         user_id: 'Benutzer'
@@ -115,12 +115,12 @@ de:
         subdomain: 'Subdomain'
         locale: 'Sprache'
       tenant_setting:
-        brand_display: 'Display'
-        show_vote_count: 'Show vote count to users'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
+        brand_display: 'Anzeige'
+        show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
+        show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
+        root_board_id: 'Root-Page'
+        show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
+        collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
       user:
         email: 'E-Mail'
         full_name: 'Voller Name'
