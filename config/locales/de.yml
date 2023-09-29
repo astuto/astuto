@@ -66,7 +66,7 @@ de:
         one: 'vor 1 Tag'
         other: 'vor %{count} Tagen'
   signup:
-    page_title: 'Deinen Feedbackbereich erstellen'
+    page_title: 'Deinen Feedback-Bereich erstellen'
     step1:
       title: '1. Benutzerkonto erstellen'
       email_auth: 'Mit E-Mail registrieren'
@@ -90,7 +90,7 @@ de:
     title: 'E-Mail-Adresse verifizieren'
     message: 'Wir haben eine E-Mail mit einem Aktivierungslink an die E-Mail gesendet, die bei der Registrierung angegeben wurde. Um diesen Feedbackbereich zu aktivieren, muss auf dessen Link geklickt werden!'
   blocked_tenant:
-    title: 'Dieser Feedbackbereich wurde blockiert'
+    title: 'Dieser Feedback-Bereich wurde blockiert'
   board:
     new_post:
       submit_button: 'Feedback senden'
@@ -158,7 +158,7 @@ de:
       collapse_boards_in_header_always_collapse: 'immer'
       subtitle_visibility: 'Sichtbarkeit'
       show_vote_count_help: 'Wird diese Einstellung aktiviert, können Nutzer*innen sehen, wie oft für einen Post gevotet wurde. Das kann Nutzer*innen dazu anregen, ebenfalls für beliebte Posts zu stimmen – das würde einem Schneeballeffekt entsprechen.'
-      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      show_vote_button_in_board_help: 'Wenn Sie diese Einstellung aktivieren, können Nutzer*innen Beiträge von der Board-Seite bewerten. Dies kann Nutzer*innen dazu veranlassen, über mehr Beiträge abzustimmen, was zu einer höheren Anzahl von Stimmen führt – die Bedeutung indes verringert sich.'
     boards:
       title: 'Boards'
       empty: 'Es existieren keine Boards. Erstelle unten eines!'
@@ -173,7 +173,7 @@ de:
       form:
         name: 'Statusname'
     roadmap:
-      title: 'Roadmap'
+      title: 'Übersicht'
       title2: 'Nicht in der Roadmap'
       empty: 'Die Roadmap ist leer.'
       help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
@@ -183,12 +183,12 @@ de:
       unblock: 'Entsperren'
       block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du dir sicher?"
       unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du dir sicher?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_moderator_confirmation: "%{name} wird Posts und Nutzer*innen verwalten können. Fahre nur fort, wenn du dieser Person vertraust. Bist du dir sicher?"
       role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du dir sicher?"
-      role_user: 'Benutzer'
+      role_user: 'Benutzer/in'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
-      role_owner: 'Owner'
+      role_owner: 'Besitzer'
       status_active: 'Aktiv'
       status_blocked: 'Gesperrt'
       status_deleted: 'Gelöscht'
