@@ -20,17 +20,17 @@ es:
         remember_me: 'Recordar mis datos'
         log_in: 'Iniciar sesión'
         sign_up: 'Sign up'
-        log_in_with: 'Log in with %{o_auth}'
+        log_in_with: 'Iniciar sesión con %{o_auth}'
         sign_up_with: 'Sign up with %{o_auth}'
-        profile_settings: 'Profile settings'
+        profile_settings: 'Configuración de perfil'
         update_profile: 'Actualizar perfil'
         cancel_account: 'Cancelar cuenta'
         forgot_password: '¿Olvidó su contraseña?'
         confirmation_instructions_not_received: "¿No has recibido las instrucciones de confirmación?"
-        unlock_instructions_not_received: "Didn't receive unlock instructions?"
-        send_reset_password_instructions: 'Send me reset password instructions'
-        resend_confirmation_instructions: 'Resend confirmation instructions'
-        resend_unlock_instructions: 'Resend unlock instructions'
+        unlock_instructions_not_received: "¿No has recibido las instrucciones de desbloqueo?"
+        send_reset_password_instructions: 'Envíame las instrucciones para restablecer la contraseña'
+        resend_confirmation_instructions: 'Reenviar instrucciones de confirmación'
+        resend_unlock_instructions: 'Reenviar las instrucciones de desbloqueo'
         change_password: 'Cambiar contraseña'
         password_help: '%{count} caracteres como mínimo'
     comments_number:
@@ -52,7 +52,7 @@ es:
       create: 'Crear'
       update: 'Save'
       confirm: 'Confirmar'
-      back: 'Back'
+      back: 'Atrás'
       test: 'Test'
     datetime:
       now: 'just now'
@@ -76,18 +76,18 @@ es:
       validations:
         subdomain_already_taken: 'Sorry, this subdomain is not available'
     step3:
-      title: "You're almost done!"
+      title: "¡Casi hemos terminado!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
   header:
     menu:
       site_settings: 'Configuración del sitio'
-      profile_settings: 'Profile settings'
+      profile_settings: 'Configuración de perfil'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'
   roadmap:
     title: 'Roadmap'
   pending_tenant:
-    title: 'Verify your email address'
+    title: 'Verifica tu correo electrónico'
     message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
   blocked_tenant:
     title: 'This feedback space has been blocked'
@@ -111,7 +111,7 @@ es:
     edit_button: 'Editar'
     published_by: 'Publicado por'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Ninguno'
     updates_box:
       title: 'Updates'
       empty: 'Aún no hay ninguna actualización'
@@ -129,23 +129,23 @@ es:
       post_update_badge: 'Update'
       reply_button: 'Reply'
     new_comment:
-      body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
+      body_placeholder: 'Deja un comentario'
+      submit_button: 'Enviar'
       is_post_update: 'Mark as update'
-      user_notification: 'Users that follow this post will be notified'
-      not_logged_in: 'You need to log in to post comments'
+      user_notification: 'Se notificará a los usuarios que sigan esta publicación'
+      not_logged_in: 'Necesitas iniciar sesión para publicar comentarios'
   site_settings:
     menu:
-      title: 'Site settings'
+      title: 'Configuración del sitio'
       general: 'General'
-      boards: 'Boards'
+      boards: 'Tableros'
       post_statuses: 'Statuses'
-      roadmap: 'Roadmap'
-      users: 'Users'
-      authentication: 'Authentication'
+      roadmap: 'Hoja de ruta'
+      users: 'Usuarios'
+      authentication: 'Autenticación'
     info_box:
-      up_to_date: 'All changes saved'
-      error: 'An error occurred: %{message}'
+      up_to_date: 'Se han guardado todos los cambios'
+      error: 'Se ha producido un error: %{message}'
       dirty: 'No se han guardado los cambios'
     general:
       title: 'General'
@@ -154,59 +154,59 @@ es:
       brand_setting_logo: 'Sólo Logo'
       brand_setting_none: 'Ninguno'
       subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
-      collapse_boards_in_header_always_collapse: 'Always'
-      subtitle_visibility: 'Visibility'
+      collapse_boards_in_header_no_collapse: 'Nunca'
+      collapse_boards_in_header_always_collapse: 'Siempre'
+      subtitle_visibility: 'Visibilidad'
       show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
-      title: 'Boards'
-      empty: 'There are no boards. Create one below!'
-      new: 'New'
+      title: 'Tableros'
+      empty: 'No hay tableros. ¡Crea uno abajo!'
+      new: 'Nuevo'
       form:
-        name: 'Board name'
-        description: 'Board description (optional)'
+        name: 'Nombre del tablero'
+        description: 'Descripción del tablero (opcional)'
     post_statuses:
       title: 'Statuses'
       empty: 'There are no statuses. Create one below!'
-      new: 'New'
+      new: 'Nuevo'
       form:
-        name: 'Status name'
+        name: 'Nombre del estado'
     roadmap:
-      title: 'Roadmap'
-      title2: 'Not in roadmap'
-      empty: 'The roadmap is empty.'
+      title: 'Hoja de ruta'
+      title2: 'No está en la hoja de ruta'
+      empty: 'La hoja de ruta está vacía.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
+      title: 'Usuarios'
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      role_user: 'Usuario'
+      role_moderator: 'Moderador'
+      role_admin: 'Administrador'
+      role_owner: 'Propietario'
+      status_active: 'Activo'
+      status_blocked: 'Bloqueado'
+      status_deleted: 'Eliminado'
     authentication:
-      title: 'Authentication'
-      oauth_subtitle: 'OAuth providers'
-      copy_url: 'Copy URL'
+      title: 'Autenticación'
+      oauth_subtitle: 'Proveedores de OAuth'
+      copy_url: 'Copiar URL'
       test_page:
         title: '%{name} OAuth test results'
         fetched_user_data: 'Fetched user data'
         found: 'Found'
         summary: 'Summary'
-        valid_configuration: 'This OAuth provider is configured correctly!'
+        valid_configuration: '¡Este proveedor de OAuth está configurado correctamente!'
         warning_configuration: 'This OAuth provider is configured correctly, but a default name for users (%{name}) will be used.'
         invalid_configuration: 'This OAuth provider is NOT configured correctly.'
       form:
-        title_new: 'New OAuth provider'
-        title_edit: 'Edit OAuth provider'
-        subtitle_oauth_config: 'OAuth configuration'
-        subtitle_user_profile_config: 'User profile configuration'
-        client_secret_help: 'hidden for security purposes'
+        title_new: 'Nuevo proveedor OAuth'
+        title_edit: 'Editar proveedor OAuth'
+        subtitle_oauth_config: 'Configuración OAuth'
+        subtitle_user_profile_config: 'Configuración de Perfil de usuario'
+        client_secret_help: 'oculto por motivos de seguridad'
