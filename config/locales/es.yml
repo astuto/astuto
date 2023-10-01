@@ -19,9 +19,9 @@ es:
         notifications_enabled_help: "si está desactivado, no recibirás ninguna notificación"
         remember_me: 'Recordar mis datos'
         log_in: 'Iniciar sesión'
-        sign_up: 'Sign up'
+        sign_up: 'Registrarse'
         log_in_with: 'Iniciar sesión con %{o_auth}'
-        sign_up_with: 'Sign up with %{o_auth}'
+        sign_up_with: 'Registrarse con %{o_auth}'
         profile_settings: 'Configuración de perfil'
         update_profile: 'Actualizar perfil'
         cancel_account: 'Cancelar cuenta'
@@ -41,8 +41,8 @@ es:
     confirmation: '¿Está seguro?'
     unsaved_changes: 'Los cambios se perderán si abandona esta página.'
     edited: 'Editado'
-    enabled: 'Enabled'
-    disabled: 'Disabled'
+    enabled: 'Habilitado'
+    disabled: 'Deshabilitado'
     copied: '¡Copiado!'
     buttons:
       new: 'Nuevo'
@@ -50,12 +50,12 @@ es:
       delete: 'Borrar'
       cancel: 'Cancelar'
       create: 'Crear'
-      update: 'Save'
+      update: 'Guardar'
       confirm: 'Confirmar'
       back: 'Atrás'
       test: 'Test'
     datetime:
-      now: 'just now'
+      now: 'ahora mismo'
       minutes:
         one: 'Hace 1 minuto'
         other: 'Hace %{count} minutos'
@@ -69,12 +69,12 @@ es:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Register with email'
+      email_auth: 'Registrar con e-mail'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
       validations:
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_already_taken: 'Lo siento, este subdominio no está disponible'
     step3:
       title: "¡Casi hemos terminado!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
@@ -82,10 +82,10 @@ es:
     menu:
       site_settings: 'Configuración del sitio'
       profile_settings: 'Configuración de perfil'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      sign_out: 'Cerrar sesión'
+    log_in: 'Iniciar sesión / Registrarse'
   roadmap:
-    title: 'Roadmap'
+    title: 'Hoja de ruta'
   pending_tenant:
     title: 'Verifica tu correo electrónico'
     message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
@@ -94,15 +94,15 @@ es:
   board:
     new_post:
       submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
-      login_button: 'Log in / Sign up'
+      cancel_button: 'Cancelar'
+      login_button: 'Iniciar sesión / Registrarse'
       title: 'Título'
       description: 'Descripción (opcional)'
       no_title: 'El campo Título es obligatorio'
-      submit_success: 'Feedback published! You will be redirected soon...'
-      submit_error: 'An unknown error occurred, try again'
+      submit_success: '¡Comentarios publicados! Serás redirigido pronto...'
+      submit_error: 'Se ha producido un error desconocido, por favor vuelve a intentarlo'
     search_box:
-      title: 'Search'
+      title: 'Buscar'
     filter_box:
       title: 'Filtrar por estado'
     posts_list:
@@ -115,7 +115,7 @@ es:
     updates_box:
       title: 'Updates'
       empty: 'Aún no hay ninguna actualización'
-      status_change: 'changed status to'
+      status_change: 'estado cambiado a'
     likes_box:
       title: 'Likes'
       empty: 'Todavía no hay "Me gusta"'
@@ -127,7 +127,7 @@ es:
     comments:
       title: 'Actividad'
       post_update_badge: 'Update'
-      reply_button: 'Reply'
+      reply_button: 'Responder'
     new_comment:
       body_placeholder: 'Deja un comentario'
       submit_button: 'Enviar'
