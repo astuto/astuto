@@ -75,7 +75,7 @@ Rails.application.configure do
       user_name:            ENV.fetch("EMAIL_SMTP_USER"),
       password:             ENV.fetch("EMAIL_SMTP_PASS"),
       authentication:       ENV.fetch("EMAIL_SMTP_AUTH", "plain"),
-      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_AUTH", "true")) 
+      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "true")),
     }
     config.action_mailer.default_options = {
       from: ENV.fetch("EMAIL_MAIL_FROM"),
