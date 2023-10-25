@@ -37,7 +37,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  if ENV['EMAIL_SMTP_HOST'].present?
+  if ENV['EMAIL_DELIVERY_METHOD'] == "smtp"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       address:              ENV['EMAIL_SMTP_HOST'],
