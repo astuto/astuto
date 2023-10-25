@@ -79,6 +79,9 @@ Rails.application.configure do
       openssl_verify_mode:  ENV["EMAIL_SMTP_OPENSSL_VERIFY_MODE"],
       tls:                  ENV["EMAIL_SMTP_TLS"]
     }
+  end
+
+  if ENV['EMAIL_CONFIRMATION']
     config.action_mailer.default_options = {
       from: ENV.fetch("EMAIL_MAIL_FROM"),
       reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM"))
