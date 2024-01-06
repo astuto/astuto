@@ -1,7 +1,7 @@
 es:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
+    unknown: 'Se ha producido un error desconocido'
+    unauthorized: 'No estás autorizado'
     not_logged_in: 'You must be logged in to access this page'
     not_enough_privileges: 'You do not have the privilegies to access this page'
     user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
@@ -15,7 +15,7 @@ es:
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      opening_greeting: 'Hola %{email}!'
       confirmation_instructions:
         body: 'You can confirm your account email through the link below:'
         action: 'Confirm my account'
@@ -30,9 +30,9 @@ es:
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
+      opening_greeting: '¡Hola!'
+      closing_greeting: '¡Que tengas un buen día!'
+      learn_more: 'Haga clic aquí para saber más'
       unsubscribe: 'Annoyed? You can turn off notifications here'
       notify_post_owner:
         subject: '[%{app_name}] New comment on %{post}'
@@ -47,22 +47,44 @@ es:
         subject: '[%{app_name}] Status change on post %{post}'
         body: "The post you're following %{post} has a new status"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Comentario'
+        other: 'Comentarios'
+      like:
+        one: 'Voto'
+        other: 'Votos'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        other: 'Posts'
+      user:
+        one: 'User'
+        other: 'Users'
     attributes:
       board:
         name: 'Name'
-        description: 'Description'
-        order: 'Order'
+        description: 'Descripción'
+        order: 'Orden'
       comment:
         body: 'Body'
         is_post_update: 'Post update'
-        user_id: 'Author'
+        user_id: 'Autor'
         post_id: 'Post'
         parent_id: 'Parent comment'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Usuario'
+        post_id: 'Publicación'
       like:
-        user_id: 'User'
+        user_id: 'Usuario'
         post_id: 'Post'
       o_auth:
         name: 'Name'
@@ -82,29 +104,35 @@ es:
         order: 'Order'
         show_in_roadmap: 'Show in roadmap'
       post:
-        title: 'Title'
-        description: 'Description'
+        title: 'Título'
+        description: 'Descripción'
         board_id: 'Post board'
-        user_id: 'Post author'
+        user_id: 'Autor de la publicación'
         post_status_id: 'Post status'
       tenant:
-        site_name: 'Site name'
-        site_logo: 'Site logo'
-        subdomain: 'Subdomain'
-        locale: 'Language'
-        brand_setting: 'Display'
+        site_name: 'Nombre del sitio'
+        site_logo: 'Logo del Sitio'
+        subdomain: 'Subdominio'
+        locale: 'Idioma'
+      tenant_setting:
+        brand_display: 'Mostrar'
+        show_vote_count: 'Mostrar el número de votos a los usuarios'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
+        show_roadmap_in_header: 'Show roadmap link in header'
+        collapse_boards_in_header: 'Collapse boards in header'
       user:
         email: 'Email'
         full_name: 'Full name'
         password: 'Password'
-        password_confirmation: 'Password confirmation'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        password_confirmation: 'Confirmar contraseña'
+        role: 'Rol'
+        notifications_enabled: 'Notificaciones activadas'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
+        invalid: 'no es válido'
+        required: 'es obligatorio'
+        blank: 'no puede estar vacío'
+        taken: 'ya está en uso'
         too_short: 'is too short (minimum %{count} characters)'
         too_long: 'is too long (maximum %{count} characters)'

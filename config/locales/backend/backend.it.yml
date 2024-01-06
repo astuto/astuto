@@ -47,6 +47,28 @@ it:
         subject: '[%{app_name}] Aggiornamento stato per il post %{post}'
         body: "Il post che segui %{post} ha un nuovo stato"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Comment'
+        other: 'Comments'
+      like:
+        one: 'Vote'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        other: 'Posts'
+      user:
+        one: 'User'
+        other: 'Users'
     attributes:
       board:
         name: 'Nome'
@@ -92,7 +114,13 @@ it:
         site_logo: 'Logo del sito'
         subdomain: 'Sottodominio'
         locale: 'Lingua'
-        brand_setting: 'Mostra'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
+        show_roadmap_in_header: 'Show roadmap link in header'
+        collapse_boards_in_header: 'Collapse boards in header'
       user:
         email: 'E-mail'
         full_name: 'Nome e cognome'
