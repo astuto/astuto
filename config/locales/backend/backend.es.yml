@@ -20,14 +20,14 @@ es:
         body: 'Puedes confirmar tu correo de cuenta a través del siguiente enlace:'
         action: 'Confirmar mi cuenta'
       email_changed:
-        body: 'Te estamos contactando para notificarte que se está cambiando tu correo a %{email}.'
-        body2: 'Te estamos contactando para notificarte que se ha cambiado tu correo a %{email}.'
+        body: "Te estamos contactando para notificarte que se está cambiando tu correo a %{email}."
+        body2: "Te estamos contactando para notificarte que se ha cambiado tu correo a %{email}."
       password_change:
-        body: 'Te estamos contactando para notificarte que se ha cambiado tu contraseña.'
+        body: "Te estamos contactando para notificarte que se ha cambiado tu contraseña."
       reset_password:
         body: 'Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo a través del siguiente enlace.'
-        body2: 'Si no solicitaste esto, por favor ignora este correo electrónico.'
-        body3: 'Tu contraseña no cambiará hasta que accedas al enlace de arriba y crees una nueva.'
+        body2: "Si no solicitaste esto, por favor ignora este correo electrónico."
+        body3: "Tu contraseña no cambiará hasta que accedas al enlace de arriba y crees una nueva."
         action: 'Cambiar mi contraseña'
     user:
       opening_greeting: '¡Hola!'
@@ -42,10 +42,10 @@ es:
         body: 'Hay una nueva respuesta de %{user} en tu comentario en la publicación %{post}'
       notify_followers_of_post_update:
         subject: '[%{app_name}] Nueva actualización para la publicación %{post}'
-        body: 'Hay una nueva actualización en la publicación que estás siguiendo %{post}'
+        body: "Hay una nueva actualización en la publicación que estás siguiendo %{post}"
       notify_followers_of_post_status_change:
         subject: '[%{app_name}] Cambio de estado en la publicación %{post}'
-        body: 'La publicación que estás siguiendo %{post} tiene un nuevo estado'
+        body: "La publicación que estás siguiendo %{post} tiene un nuevo estado"
   activerecord:
     models:
       board:
@@ -115,7 +115,7 @@ es:
         subdomain: 'Subdominio'
         locale: 'Idioma'
       tenant_setting:
-        brand_setting: 'Visualización'
+        brand_display: 'Mostrar'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
         show_vote_button_in_board: 'Show vote buttons in board page'
         root_board_id: 'Root page'
