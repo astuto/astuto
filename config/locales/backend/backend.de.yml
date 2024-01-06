@@ -5,7 +5,7 @@ de:
     not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
     not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
     user_blocked_or_deleted: 'Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
-    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wenden Sie sich an den Administrator oder versuchen Sie einen anderen Anbieter.'
+    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wende dich an den Administrator oder versuche einen anderen Anbieter.'
     board:
       update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
     post_status:
@@ -17,36 +17,58 @@ de:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
       opening_greeting: 'Hallo %{email}!'
       confirmation_instructions:
-        body: 'Du kannst Deine Konto-E-Mail über den folgenden Link bestätigen:'
+        body: 'Du kannst deine Konto-E-Mail über den folgenden Link bestätigen:'
         action: 'Mein Konto bestätigen'
       email_changed:
-        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wird."
-        body2: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Deine E-Mail-Adresse in %{email} geändert wurde."
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wird."
+        body2: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wurde."
       password_change:
-        body: "Wir kontaktieren Dich, um Dich darüber zu informieren, dass Dein Passwort geändert wurde."
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass dein Passwort geändert wurde."
       reset_password:
-        body: 'Jemand hat einen Link angefordert, um Dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
-        body2: "Wenn Du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
-        body3: "Dein Passwort ändert sich erst, wenn Du auf den obigen Link zugreifst und ein neues erstellst."
+        body: 'Jemand hat einen Link angefordert, um dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
+        body2: "Wenn du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        body3: "Dein Passwort ändert sich erst, wenn du auf den obigen Link zugreifst und ein neues erstellst."
         action: 'Mein Passwort ändern'
     user:
       opening_greeting: 'Hallo!'
       closing_greeting: 'Habe einen schönen Tag!'
       learn_more: 'Klick hier um mehr zu erfahren'
-      unsubscribe: 'Verärgert? Du kannst Benachrichtigungen hier deaktivieren'
+      unsubscribe: 'Verärgert? du kannst Benachrichtigungen hier deaktivieren'
       notify_post_owner:
         subject: '[%{app_name}] Neuer Kommentar zu %{post}'
-        body: 'Es existiert ein neuer Kommentar von %{user} zu Deinem Beitrag %{post}'
+        body: 'Es existiert ein neuer Kommentar von %{user} zu deinem Beitrag %{post}'
       notify_comment_owner:
-        subject: '[%{app_name}] Neue Antwort auf Deinen Kommentar von %{post}'
-        body: 'Es existiert eine neue Antwort von %{user} auf Deinem Kommentar von Beitrag %{post}'
+        subject: '[%{app_name}] Neue Antwort auf deinen Kommentar von %{post}'
+        body: 'Es existiert eine neue Antwort von %{user} auf deinen Kommentar von Beitrag %{post}'
       notify_followers_of_post_update:
         subject: '[%{app_name}] Neues Update für Beitrag %{post}'
-        body: "Es existiert ein neues Update für den Beitrag, dem Du folgst %{post}"
+        body: "Es existiert ein neues Update für den Beitrag, dem du folgst %{post}"
       notify_followers_of_post_status_change:
         subject: '[%{app_name}] Statusänderung bei Beitrag %{post}'
-        body: "Der Beitrag, dem Du folgst %{post} hat einen neuen Status"
+        body: "Der Beitrag %{post}, dem du folgst, hat einen neuen Status"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Kommentar'
+        other: 'Kommentare'
+      like:
+        one: 'Stimme'
+        other: 'Stimmen'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Status'
+      post:
+        one: 'Eintrag'
+        other: 'Einträge'
+      user:
+        one: 'Nutzer/in'
+        other: 'Nutzer/innen'
     attributes:
       board:
         name: 'Name'
@@ -59,7 +81,7 @@ de:
         post_id: 'Beitrag'
         parent_id: 'Übergeordneter Kommentar'
       follow:
-        user_id: 'Benutzer'
+        user_id: 'Benutzer/in'
         post_id: 'Beitrag'
       like:
         user_id: 'Benutzer'
@@ -92,7 +114,13 @@ de:
         site_logo: 'Seitenlogo'
         subdomain: 'Subdomain'
         locale: 'Sprache'
-        brand_setting: 'Anzeigen'
+      tenant_setting:
+        brand_display: 'Anzeige'
+        show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
+        show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
+        root_board_id: 'Root-Page'
+        show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
+        collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
       user:
         email: 'E-Mail'
         full_name: 'Voller Name'

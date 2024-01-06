@@ -1,11 +1,11 @@
 es:
   common:
     validations:
-      required: 'se requiere %{attribute}'
-      email: 'Correo electrónico no válido'
-      url: 'URL no válido'
+      required: '%{attribute} es obligatorio'
+      email: 'Email invalido'
+      url: 'URL no válida'
       password: 'La contraseña debe tener al menos %{n} caracteres'
-      password_mismatch: 'La contraseña y la confirmación de la contraseña deben coincidir'
+      password_mismatch: 'Las contraseñas no coinciden'
     forms:
       auth:
         email: 'Correo electrónico'
@@ -34,60 +34,60 @@ es:
         change_password: 'Cambiar contraseña'
         password_help: 'mínimo %{count} caracteres'
     comments_number:
-      one: '1 comment'
-      other: '%{count} comments'
-    no_status: 'No status'
-    loading: 'Loading...'
-    confirmation: 'Are you sure?'
-    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
-    edited: 'Edited'
-    enabled: 'Enabled'
-    disabled: 'Disabled'
-    copied: 'Copied!'
+      one: '1 comentario'
+      other: '%{count} comentarios'
+    no_status: 'Sin estado'
+    loading: 'Cargando...'
+    confirmation: '¿Está seguro?'
+    unsaved_changes: 'Los cambios se perderán si abandona esta página.'
+    edited: 'Editado'
+    enabled: 'Habilitado'
+    disabled: 'Deshabilitado'
+    copied: '¡Copiado!'
     buttons:
-      new: 'New'
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
-      back: 'Back'
+      new: 'Nuevo'
+      edit: 'Editar'
+      delete: 'Borrar'
+      cancel: 'Cancelar'
+      create: 'Crear'
+      update: 'Guardar'
+      confirm: 'Confirmar'
+      back: 'Atrás'
       test: 'Test'
     datetime:
-      now: 'just now'
+      now: 'ahora mismo'
       minutes:
-        one: '1 minute ago'
-        other: '%{count} minutes ago'
+        one: 'Hace 1 minuto'
+        other: 'Hace %{count} minutos'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: 'hace 1 hora'
+        other: 'Hace %{count} horas'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: 'Hace 1 día'
+        other: 'hace %{count} días'
   signup:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Register with email'
+      email_auth: 'Registrar con e-mail'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
       validations:
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_already_taken: 'Lo siento, este subdominio no está disponible'
     step3:
-      title: "You're almost done!"
+      title: "¡Casi hemos terminado!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
     header:
     menu:
       site_settings: 'Configuración del sitio'
-      profile_settings: 'Configuración del perfil'
+      profile_settings: 'Configuración de perfil'
       sign_out: 'Cerrar sesión'
     log_in: 'Iniciar sesión / Registrarse'
   roadmap:
     title: 'Hoja de ruta'
   pending_tenant:
-    title: 'Verifica tu dirección de correo electrónico'
+    title: 'Verifica tu correo electrónico'
     message: 'Hemos enviado un correo electrónico con un enlace de activación al correo que proporcionaste durante el registro. ¡Haz clic en ese enlace para activar este espacio de retroalimentación!'
   blocked_tenant:
     title: 'Este espacio de retroalimentación ha sido bloqueado'
@@ -98,15 +98,15 @@ es:
       login_button: 'Iniciar sesión / Registrarse'
       title: 'Título'
       description: 'Descripción (opcional)'
-      no_title: 'El campo de título es obligatorio'
-      submit_success: '¡Retroalimentación publicada! Serás redirigido pronto...'
-      submit_error: 'Ocurrió un error desconocido, intenta de nuevo'
+      no_title: 'El campo Título es obligatorio'
+      submit_success: '¡Comentarios publicados! Serás redirigido pronto...'
+      submit_error: 'Se ha producido un error desconocido, por favor vuelve a intentarlo'
     search_box:
       title: 'Buscar'
     filter_box:
       title: 'Filtrar por estado'
     posts_list:
-      empty: 'No hay publicaciones'
+      empty: 'Aún no hay publicaciones'
   post:
     edit_button: 'Editar'
     published_by: 'Publicado por'
@@ -144,18 +144,24 @@ es:
       users: 'Usuarios'
       authentication: 'Autenticación'
     info_box:
-      up_to_date: 'Todos los cambios guardados'
-      error: 'Ocurrió un error: %{message}'
-      dirty: 'Cambios no guardados'
+      up_to_date: 'Se han guardado todos los cambios'
+      error: 'Se ha producido un error: %{message}'
+      dirty: 'No se han guardado los cambios'
     general:
       title: 'General'
       brand_setting_both: 'Nombre y logotipo'
-      brand_setting_name: 'Solo nombre'
-      brand_setting_logo: 'Solo logotipo'
+      brand_setting_name: 'Solo el nombre'
+      brand_setting_logo: 'Sólo Logo'
       brand_setting_none: 'Ninguno'
+      subtitle_header: 'Header'
+      collapse_boards_in_header_no_collapse: 'Nunca'
+      collapse_boards_in_header_always_collapse: 'Siempre'
+      subtitle_visibility: 'Visibilidad'
+      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
+      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
     boards:
       title: 'Tableros'
-      empty: 'No hay tableros. ¡Crea uno a continuación!'
+      empty: 'No hay tableros. ¡Crea uno abajo!'
       new: 'Nuevo'
       form:
         name: 'Nombre del tablero'
@@ -176,11 +182,13 @@ es:
       block: 'Bloquear'
       unblock: 'Desbloquear'
       block_confirmation: "%{name} no podrá iniciar sesión hasta que sea desbloqueado. ¿Estás seguro?"
-      unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Estás seguro?"
+      unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} tendrá los mismos privilegios que tú, por lo que incluso podrían degradarte o bloquearte. Procede solo si realmente confías en %{name}. ¿Estás seguro?"
       role_user: 'Usuario'
       role_moderator: 'Moderador'
       role_admin: 'Administrador'
+      role_owner: 'Propietario'
       status_active: 'Activo'
       status_blocked: 'Bloqueado'
       status_deleted: 'Eliminado'

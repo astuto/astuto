@@ -47,6 +47,28 @@ es:
         subject: '[%{app_name}] Cambio de estado en la publicación %{post}'
         body: 'La publicación que estás siguiendo %{post} tiene un nuevo estado'
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Comentario'
+        other: 'Comentarios'
+      like:
+        one: 'Voto'
+        other: 'Votos'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Statuses'
+      post:
+        one: 'Post'
+        other: 'Posts'
+      user:
+        one: 'User'
+        other: 'Users'
     attributes:
       board:
         name: 'Nombre'
@@ -92,7 +114,13 @@ es:
         site_logo: 'Logo del sitio'
         subdomain: 'Subdominio'
         locale: 'Idioma'
+      tenant_setting:
         brand_setting: 'Visualización'
+        show_vote_count: 'Mostrar el número de votos a los usuarios'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
+        show_roadmap_in_header: 'Show roadmap link in header'
+        collapse_boards_in_header: 'Collapse boards in header'
       user:
         email: 'Correo electrónico'
         full_name: 'Nombre completo'
@@ -102,9 +130,9 @@ es:
         notifications_enabled: 'Notificaciones habilitadas'
     errors:
       messages:
-        invalid: 'no es válido/a'
-        required: 'es obligatorio/a'
-        blank: 'no puede estar en blanco'
+        invalid: 'no es válido'
+        required: 'es obligatorio'
+        blank: 'no puede estar vacío'
         taken: 'ya está en uso'
         too_short: 'es demasiado corto (mínimo %{count} caracteres)'
         too_long: 'es demasiado largo (máximo %{count} caracteres)'
