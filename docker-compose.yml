@@ -1,5 +1,16 @@
 version: '3.4'
 services:
+  redis:
+    image: redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    command: redis-server
+    ports:
+      - 6379
   db:
     image: postgres:14.5
     environment:
@@ -20,7 +31,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      db:
+        condition: service_started
+      redis:
+        condition: service_healthy
     
 volumes:
   dbdata:
