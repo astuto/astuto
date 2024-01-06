@@ -115,7 +115,7 @@ es:
         subdomain: 'Subdominio'
         locale: 'Idioma'
       tenant_setting:
-        brand_setting: 'Visualización'
+        brand_display: 'Visualización'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
         show_vote_button_in_board: 'Show vote buttons in board page'
         root_board_id: 'Root page'

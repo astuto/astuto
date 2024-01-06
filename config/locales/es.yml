@@ -78,7 +78,7 @@ es:
     step3:
       title: "¡Casi hemos terminado!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
-    header:
+  header:
     menu:
       site_settings: 'Configuración del sitio'
       profile_settings: 'Configuración de perfil'
