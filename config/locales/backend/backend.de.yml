@@ -4,7 +4,7 @@ de:
     unauthorized: 'Du bist nicht autorisiert'
     not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
     not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
-    user_blocked_or_deleted: 'Du kannst nicht auf Dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
+    user_blocked_or_deleted: 'Du kannst nicht auf dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
     o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wende dich an den Administrator oder versuche einen anderen Anbieter.'
     board:
       update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
