@@ -159,7 +159,7 @@ const GeneralSiteSettingsP = ({
               <option value="fr">🇫🇷 Français</option>
               <option value="es">🇪🇸 Español</option>
               <option value="ru">🇷🇺 Русский</option>
-              <option value="vi">🇻🇳 Việt Nam</option>
+              <option value="vi">🇻🇳 Tiếng Việt</option>
             </select>
           </div>
 
