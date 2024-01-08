@@ -47,6 +47,42 @@ ru:
         subject: '[%{app_name}] Статус изменен на пост %{post}'
         body: "На публикацию, которые вы подписаны %{post} новый статус"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        few: 'Доска'
+        many: 'Boards'
+        other: 'Доски'
+      comment:
+        one: 'Комментарий'
+        few: 'Комментарий'
+        many: 'Комментарии'
+        other: 'Комментарии'
+      like:
+        one: 'Голос'
+        few: 'Голосов'
+        many: 'Голосов'
+        other: 'Голоса'
+      o_auth:
+        one: 'OAuth'
+        few: 'OAuths'
+        many: 'OAuths'
+        other: 'OAuths'
+      post_status:
+        one: 'Статус'
+        few: 'Statuses'
+        many: 'Statuses'
+        other: 'Statuses'
+      post:
+        one: 'Пост'
+        few: 'Posts'
+        many: 'Posts'
+        other: 'Posts'
+      user:
+        one: 'Пользователь'
+        few: 'Users'
+        many: 'Users'
+        other: 'Users'
     attributes:
       board:
         name: 'Имя'
@@ -92,9 +128,15 @@ ru:
         site_logo: 'Логотип сайта'
         subdomain: 'Поддомен'
         locale: 'Язык'
-        brand_setting: 'Отображение'
+      tenant_setting:
+        brand_display: 'Экран'
+        show_vote_count: 'Показать количество голосов пользователям'
+        show_vote_button_in_board: 'Показывать кнопки голосования на странице доски'
+        root_board_id: 'Главная страница'
+        show_roadmap_in_header: 'Показать roadmap в заголовке'
+        collapse_boards_in_header: 'Сворачивать доски в заголовке'
       user:
-        email: 'Email'
+        email: 'Электронная почта'
         full_name: 'Полное имя'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
