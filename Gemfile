@@ -5,11 +5,11 @@ ruby '3.0.6'
 
 gem 'rake', '12.3.3'
 
-gem 'rails', '6.1.7.3'
+gem 'rails', '6.1.7.5'
 
 gem 'pg', '1.3.5'
 
-gem 'puma', '4.3.12'
+gem 'puma', '5.6.8'
 
 gem 'turbolinks', '5.2.1'
 
