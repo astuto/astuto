@@ -1,51 +1,51 @@
 vi:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
-    not_logged_in: 'You must be logged in to access this page'
-    not_enough_privileges: 'You do not have the privilegies to access this page'
-    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    unknown: 'Đã xảy ra một lỗi không xác định'
+    unauthorized: 'Bạn không được ủy quyền'
+    not_logged_in: 'Bạn phải đăng nhập để truy cập trang này'
+    not_enough_privileges: 'Bạn không có đủ quyền để truy cập trang này'
+    user_blocked_or_deleted: 'Bạn không thể truy cập tài khoản của mình vì nó đã bị chặn hoặc xóa.'
+    o_auth_login_error: 'Có lỗi khi đăng nhập bằng %{name}. Vui lòng liên hệ với quản trị viên trang web hoặc thử một nhà cung cấp khác.'
     board:
-      update_order: 'There was an error in reordering boards'
+      update_order: 'Đã xảy ra lỗi khi sắp xếp lại các bảng'
     post_status:
-      update_order: 'There was an error in reordering statuses'
+      update_order: 'Đã xảy ra lỗi khi sắp xếp lại các trạng thái'
   defaults:
-    user_full_name: 'Anonymous User'
+    user_full_name: 'Người dùng Ẩn Danh'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Chào mừng bạn đến với %{site_name}, %{email}!'
+      opening_greeting: 'Xin chào %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'Bạn có thể xác nhận email tài khoản của bạn qua liên kết dưới đây:'
+        action: 'Xác nhận tài khoản của tôi'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "Chúng tôi liên hệ với bạn để thông báo rằng địa chỉ email của bạn đang được thay đổi thành %{email}."
+        body2: "Chúng tôi liên hệ với bạn để thông báo rằng địa chỉ email của bạn đã được thay đổi thành %{email}."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Chúng tôi liên hệ với bạn để thông báo rằng mật khẩu của bạn đã được thay đổi."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body: 'Ai đó đã yêu cầu một liên kết để đổi mật khẩu của bạn. Bạn có thể làm điều này thông qua liên kết dưới đây.'
+        body2: "Nếu bạn không yêu cầu điều này, vui lòng bỏ qua email này."
+        body3: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập vào liên kết trên và tạo một mật khẩu mới."
+        action: 'Đổi mật khẩu của tôi'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      opening_greeting: 'Xin chào!'
+      closing_greeting: 'Chúc bạn một ngày tốt lành!'
+      learn_more: 'Nhấn vào đây để tìm hiểu thêm'
+      unsubscribe: 'Khó chịu? Bạn có thể tắt thông báo tại đây'
       notify_post_owner:
-        subject: '[%{app_name}] New comment on %{post}'
-        body: 'There is a new comment by %{user} on your post %{post}'
+        subject: '[%{app_name}] Bình luận mới trên %{post}'
+        body: 'Có một bình luận mới từ %{user} trên bài viết của bạn %{post}'
       notify_comment_owner:
-        subject: '[%{app_name}] New reply on your comment from %{post}'
-        body: 'There is a new reply by %{user} on your comment from post %{post}'
+        subject: '[%{app_name}] Phản hồi mới trên bình luận của bạn từ %{post}'
+        body: 'Có một phản hồi mới từ %{user} trên bình luận của bạn trên bài viết %{post}'
       notify_followers_of_post_update:
-        subject: '[%{app_name}] New update for post %{post}'
-        body: "There is a new update on the post you're following %{post}"
+        subject: '[%{app_name}] Cập nhật mới cho bài viết %{post}'
+        body: "Có một cập nhật mới trên bài viết bạn đang theo dõi %{post}"
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Status change on post %{post}'
-        body: "The post you're following %{post} has a new status"
+        subject: '[%{app_name}] Thay đổi trạng thái trên bài viết %{post}'
+        body: "Bài viết bạn đang theo dõi %{post} có một trạng thái mới"
   activerecord:
     models:
       board:
@@ -64,68 +64,68 @@ vi:
         other: 'Users'
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
-        order: 'Order'
+        name: 'Tên'
+        description: 'Mô tả'
+        order: 'Thứ tự'
       comment:
-        body: 'Body'
-        is_post_update: 'Post update'
-        user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        body: 'Nội dung'
+        is_post_update: 'Cập nhật bài viết'
+        user_id: 'Tác giả'
+        post_id: 'Bài viết'
+        parent_id: 'Bình luận cha'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Người dùng'
+        post_id: 'Bài viết'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Người dùng'
+        post_id: 'Bài viết'
       o_auth:
-        name: 'Name'
+        name: 'Tên'
         logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
-        authorize_url: 'Authorize URL'
-        token_url: 'Token URL'
-        profile_url: 'Profile URL'
-        scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        is_enabled: 'Đã bật'
+        client_id: 'ID Khách hàng'
+        client_secret: 'Mã bí mật Khách hàng'
+        authorize_url: 'URL Ủy quyền'
+        token_url: 'URL Token'
+        profile_url: 'URL Hồ sơ'
+        scope: 'Phạm vi'
+        json_user_name_path: 'Đường dẫn JSON đến tên người dùng'
+        json_user_email_path: 'Đường dẫn JSON đến email người dùng'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: 'Tên'
+        color: 'Màu'
+        order: 'Thứ tự'
+        show_in_roadmap: 'Hiển thị trong lộ trình'
       post:
-        title: 'Title'
-        description: 'Description'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        title: 'Tiêu đề'
+        description: 'Mô tả'
+        board_id: 'Bảng của bài viết'
+        user_id: 'Tác giả bài viết'
+        post_status_id: 'Trạng thái bài viết'
       tenant:
-        site_name: 'Site name'
-        site_logo: 'Site logo'
-        subdomain: 'Subdomain'
-        locale: 'Language'
+        site_name: 'Tên trang web'
+        site_logo: 'Logo trang web'
+        subdomain: 'Tên miền phụ'
+        locale: 'Ngôn ngữ'
       tenant_setting:
-        brand_display: 'Display'
-        show_vote_count: 'Show vote count to users'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
+        brand_display: 'Hiển thị'
+        show_vote_count: 'Hiển thị số phiếu bầu cho người dùng'
+        show_vote_button_in_board: 'Hiển thị nút phiếu bầu trên trang bảng'
+        root_board_id: 'Trang gốc'
+        show_roadmap_in_header: 'Hiển thị liên kết lộ trình trên tiêu đề'
+        collapse_boards_in_header: 'Thu gọn các bảng trong tiêu đề'
       user:
         email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        full_name: 'Họ và tên'
+        password: 'Mật khẩu'
+        password_confirmation: 'Xác nhận mật khẩu'
+        role: 'Vai trò'
+        notifications_enabled: 'Cho phép thông báo'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
-        too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum %{count} characters)'
+        invalid: 'không hợp lệ'
+        required: 'là bắt buộc'
+        blank: 'không thể để trống'
+        taken: 'đã tồn tại'
+        too_short: 'quá ngắn (ít nhất %{count} ký tự)'
+        too_long: 'quá dài (tối đa %{count} ký tự)'
