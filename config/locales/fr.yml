@@ -1,11 +1,11 @@
 fr:
   common:
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
-      password: 'Password must have at least %{n} characters'
-      password_mismatch: 'Password and password confirmation must match'
+      required: '%{attribute} est obligatoire'
+      email: 'Email invalide'
+      url: 'URL invalide'
+      password: 'Le mot de passe doit contenir au minimum %{n} caractères'
+      password_mismatch: 'Le mot de passe et la confirmation du mot de passe doivent concorder'
     forms:
       auth:
         email: 'Email'
@@ -20,8 +20,8 @@ fr:
         remember_me: 'Se souvenir de moi'
         log_in: 'Se connecter'
         sign_up: 'S''inscrire'
-        log_in_with: 'Log in with %{o_auth}'
-        sign_up_with: 'Sign up with %{o_auth}'
+        log_in_with: 'Se connecter avec %{o_auth}'
+        sign_up_with: 'S''inscrire avec %{o_auth}'
         profile_settings: 'Paramètres du profil'
         update_profile: 'Mettre à jour le profil'
         cancel_account: 'Annuler le compte'
@@ -39,11 +39,11 @@ fr:
     no_status: 'Pas de statut'
     loading: 'Chargement ...'
     confirmation: 'Vous êtes sûr ?'
-    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
+    unsaved_changes: 'Les modifications apportées seront perdues si vous quittez cette page.'
     edited: 'Modifié'
-    enabled: 'Enabled'
-    disabled: 'Disabled'
-    copied: 'Copied!'
+    enabled: 'Activé'
+    disabled: 'Désactivé'
+    copied: 'Copié !'
     buttons:
       new: 'Nouveau'
       edit: 'Modifier'
@@ -52,8 +52,8 @@ fr:
       create: 'Créer'
       update: 'Sauvegarder'
       confirm: 'Confirmer'
-      back: 'Back'
-      test: 'Test'
+      back: 'Revenir en arrière'
+      test: 'Tester'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -122,7 +122,7 @@ fr:
     action_box:
       title: 'Options'
       follow_button: 'S''abonner à la publication'
-      following_description: "vous recevez des notifications sur les nouvelles mises à jour de ce poste"
+      following_description: "vous recevez des notifications sur les nouvelles mises à jour de cette publication"
       not_following_description: "vous ne recevrez pas de notifications concernant cette publication"
     comments:
       title: 'Activité'
@@ -142,7 +142,7 @@ fr:
       post_statuses: 'Statuts'
       roadmap: 'Feuille de route'
       users: 'Utilisateur·rice·s'
-      authentication: 'Authentication'
+      authentication: 'Authentification'
     info_box:
       up_to_date: 'Toutes les modifications ont été enregistrées'
       error: 'Une erreur s''est produite : %{message}'
@@ -153,6 +153,12 @@ fr:
       brand_setting_name: 'Nom seulement'
       brand_setting_logo: 'Logo uniquement'
       brand_setting_none: 'Aucun'
+      subtitle_header: 'En-tête'
+      collapse_boards_in_header_no_collapse: 'Jamais'
+      collapse_boards_in_header_always_collapse: 'Toujours'
+      subtitle_visibility: 'Visibilité'
+      show_vote_count_help: 'Si vous activez ce paramètre, les utilisateurs pourront voir le nombre de votes sur les publications. Cela peut inciter les utilisateurs à voter sur des publications déjà populaires, ce qui peut entraîner un effet boule de neige.'
+      show_vote_button_in_board_help: 'Si vous activez ce paramètre, les utilisateurs seront en mesure de voter pour des publications depuis la page des tableaux. Cela peut inciter les utilisateurs à voter sur un plus grand nombre de publications, ce qui peut entraîner un nombre plus élevé de votes mais de moindre importance.'
     boards:
       title: 'Tableaux'
       empty: 'Il n''y a pas de tableaux. Créez en un ci-dessous!'
@@ -177,28 +183,30 @@ fr:
       unblock: 'Débloquer'
       block_confirmation: "%{name} ne pourra pas se connecter tant qu'il ne sera pas débloqué. Êtes-vous sûr(e) ?"
       unblock_confirmation: "%{name} sera en mesure de se connecter et de soumettre des commentaires. Vous êtes sûr ?"
+      role_to_moderator_confirmation: "%{name} sera en mesure de gérer les messages et les utilisateurs. Ne continuez que si vous avez confiance en cette personne. Êtes-vous sûr ?"
       role_to_admin_confirmation: "%{name} aura les mêmes privilèges que vous, et pourra même vous rétrograder ou vous bloquer. Ne continuez que si vous avez vraiment confiance en %{name}. Vous êtes sûr ?"
       role_user: 'Utilisateur'
       role_moderator: 'Modérateur'
       role_admin: 'Administrateur'
+      role_owner: 'Propriétaire'
       status_active: 'Actif'
       status_blocked: 'Bloqué'
       status_deleted: 'Supprimé'
     authentication:
-      title: 'Authentication'
-      oauth_subtitle: 'OAuth providers'
-      copy_url: 'Copy URL'
+      title: 'Authentification'
+      oauth_subtitle: 'Fournisseurs OAuth'
+      copy_url: 'Copier l''URL'
       test_page:
-        title: '%{name} OAuth test results'
-        fetched_user_data: 'Fetched user data'
-        found: 'Found'
-        summary: 'Summary'
-        valid_configuration: 'This OAuth provider is configured correctly!'
-        warning_configuration: 'This OAuth provider is configured correctly, but a default name for users (%{name}) will be used.'
-        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+        title: 'Résultats du test du fournisseur OAuth %{name}'
+        fetched_user_data: 'Données utilisateurs récupérées'
+        found: 'Trouvé'
+        summary: 'Résumé'
+        valid_configuration: 'Ce fournisseur OAuth est correctement configuré !'
+        warning_configuration: 'Ce fournisseur OAuth est configuré correctement, mais un nom par défaut pour les utilisateurs (%{name}) sera utilisé.'
+        invalid_configuration: 'Ce fournisseur OAuth n''est PAS configuré correctement.'
       form:
-        title_new: 'New OAuth provider'
-        title_edit: 'Edit OAuth provider'
-        subtitle_oauth_config: 'OAuth configuration'
-        subtitle_user_profile_config: 'User profile configuration'
-        client_secret_help: 'hidden for security purposes'
+        title_new: 'Nouveau fournisseur OAuth'
+        title_edit: 'Modifier le fournisseur OAuth'
+        subtitle_oauth_config: 'Configuration OAuth'
+        subtitle_user_profile_config: 'Configuration du profil utilisateur'
+        client_secret_help: 'masqué pour des raisons de sécurité'
