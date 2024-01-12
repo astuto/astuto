@@ -37,6 +37,26 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  if ENV['EMAIL_DELIVERY_METHOD'] == "smtp"
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              ENV['EMAIL_SMTP_HOST'],
+      port:                 ENV.fetch("EMAIL_SMTP_PORT") { 25 },
+      domain:               ENV["EMAIL_SMTP_HELO_DOMAIN"],
+      user_name:            ENV.fetch("EMAIL_SMTP_USER"),
+      password:             ENV.fetch("EMAIL_SMTP_PASS"),
+      authentication:       ENV.fetch("EMAIL_SMTP_AUTH", "plain"),
+      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "true")),
+      openssl_verify_mode:  ENV["EMAIL_SMTP_OPENSSL_VERIFY_MODE"],
+      tls:                  ENV["EMAIL_SMTP_TLS"]
+    }
+  end
+
+  config.action_mailer.default_options = {
+    from: ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"),
+    reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"))
+  }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
