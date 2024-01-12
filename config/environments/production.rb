@@ -83,8 +83,8 @@ Rails.application.configure do
 
   if ENV['EMAIL_CONFIRMATION']
     config.action_mailer.default_options = {
-      from: ENV.fetch("EMAIL_MAIL_FROM"),
-      reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM"))
+      from: ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"),
+    reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"))
     }
   end
 
