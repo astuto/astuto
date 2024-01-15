@@ -3,7 +3,7 @@
     <%=
       link_to root_path, class: 'brand' do
         app_name = content_tag :span, @tenant.site_name
-        logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo')
+        logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo', skip_pipeline: true)
 
         if @tenant_setting.brand_display == "name_and_logo"
           logo + app_name
