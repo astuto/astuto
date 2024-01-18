@@ -67,9 +67,9 @@ class OAuthsController < ApplicationController
       end
 
       @user_profile = user_profile
-      @user_email = query_path_from_hash(user_profile, @o_auth.json_user_email_path)
+      @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       @email_valid = URI::MailTo::EMAIL_REGEXP.match?(@user_email)
-      @user_name = query_path_from_hash(user_profile, @o_auth.json_user_name_path)
+      @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
       @name_valid = !@user_name.nil?
 
       render 'o_auths/test', layout: false
@@ -77,8 +77,8 @@ class OAuthsController < ApplicationController
     elsif reason == 'tenantsignup'
 
       @o_auths = []
-      @user_email = query_path_from_hash(user_profile, @o_auth.json_user_email_path)
-      @user_name = query_path_from_hash(user_profile, @o_auth.json_user_name_path)
+      @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
+      @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
       @o_auth_login_completed = true
 
       session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"

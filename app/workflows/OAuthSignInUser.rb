@@ -27,7 +27,7 @@ class OAuthSignInUser
 
     begin
       # Attempts to get email from user_profile Hash
-      email = query_path_from_hash(@user_profile, @o_auth.json_user_email_path)
+      email = query_path_from_object(@user_profile, @o_auth.json_user_email_path)
       
       return nil if email.nil? or not URI::MailTo::EMAIL_REGEXP.match?(email)
 
@@ -36,7 +36,7 @@ class OAuthSignInUser
       
       if user.nil?
         if not @o_auth.json_user_name_path.blank?
-          full_name = query_path_from_hash(@user_profile, @o_auth.json_user_name_path)
+          full_name = query_path_from_object(@user_profile, @o_auth.json_user_name_path)
         end
         full_name ||= I18n.t('defaults.user_full_name')
 

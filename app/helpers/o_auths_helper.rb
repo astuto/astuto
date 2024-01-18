@@ -1,6 +1,11 @@
 module OAuthsHelper
-  def query_path_from_hash(hash, path)
-    return nil unless hash.class == Hash and path.class == String
+  # Retrieves a value from a hash/array using a given path.
+  # obj [Hash, Array] The object or hash to query.
+  # path [String] The path to the desired value, using dot notation for nested keys and square brackets for array indexes.
+  # returns [Object, nil] The value at the specified path, or nil if the path is invalid or the value is not found.
+  def query_path_from_object(obj, path)
+    return nil unless obj.class == Hash or obj.class == Array
+    return nil unless path.class == String
 
     path_array = path
       .split(Regexp.union([ '.', '[', ']' ]))     # split by . and []
@@ -9,18 +14,18 @@ module OAuthsHelper
         if v == "0"
           0
         elsif v.to_i == 0
-           v
+            v
         else
           v.to_i
         end
       end
     
     path_array.each do |selector|
-      break if hash == nil
+      break if obj == nil
 
-      hash = hash[selector]
+      obj = obj[selector]
     end
 
-    hash
+    obj
   end
 end
