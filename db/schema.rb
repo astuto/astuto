@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_11_095500) do
+ActiveRecord::Schema.define(version: 2024_01_17_112502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_095500) do
     t.string "scope", null: false
     t.string "json_user_name_path"
     t.string "json_user_email_path", null: false
-    t.bigint "tenant_id", null: false
+    t.bigint "tenant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "tenant_id"], name: "index_o_auths_on_name_and_tenant_id", unique: true
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_095500) do
     t.boolean "notifications_enabled", default: true, null: false
     t.integer "status"
     t.bigint "tenant_id", null: false
+    t.string "oauth_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email", "tenant_id"], name: "index_users_on_email_and_tenant_id", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

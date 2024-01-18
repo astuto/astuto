@@ -49,7 +49,8 @@ class ApplicationController < ActionController::Base
     end
 
     def load_oauths
-      @o_auths = Current.tenant_or_raise!.o_auths
+      @o_auths = OAuth
+        .include_defaults
         .where(is_enabled: true)
         .order(created_at: :asc)
     end

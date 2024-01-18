@@ -5,15 +5,20 @@ import I18n from 'i18n-js';
 import Box from '../common/Box';
 import Button from '../common/Button';
 import { ITenantSignUpUserForm } from './TenantSignUpP';
-import { DangerText } from '../common/CustomTexts';
+import { CenteredText, DangerText } from '../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
+import { IOAuth } from '../../interfaces/IOAuth';
 
 interface Props {
   currentStep: number;
   setCurrentStep(step: number): void;
   emailAuth: boolean;
   setEmailAuth(enabled: boolean): void;
+  oAuths: Array<IOAuth>;
+  oAuthLoginCompleted: boolean;
+  oauthUserEmail?: string;
+  oauthUserName?: string;
   userData: ITenantSignUpUserForm;
   setUserData({}: ITenantSignUpUserForm): void;
 }
@@ -23,6 +28,10 @@ const UserSignUpForm = ({
   setCurrentStep,
   emailAuth,
   setEmailAuth,
+  oAuths,
+  oAuthLoginCompleted,
+  oauthUserEmail,
+  oauthUserName,
   userData,
   setUserData,
 }: Props) => {
@@ -49,9 +58,19 @@ const UserSignUpForm = ({
 
       {
         currentStep === 1 && !emailAuth && 
+        <>
         <Button className="emailAuth" onClick={() => setEmailAuth(true)}>
           { I18n.t('signup.step1.email_auth') }
         </Button>
+
+        {
+          oAuths.map((oAuth, i) =>
+            <a href={`/o_auths/${oAuth.id}/start?reason=tenantsignup`} key={i}>
+              <CenteredText>{ I18n.t('common.forms.auth.log_in_with', { o_auth: oAuth.name }) }</CenteredText>
+            </a>
+          )
+        }
+        </>
       }
 
       {
@@ -116,8 +135,13 @@ const UserSignUpForm = ({
       }
 
       {
-        currentStep === 2 &&
+        currentStep === 2 && !oAuthLoginCompleted &&
         <p><b>{userData.fullName}</b> ({userData.email})</p>
+      }
+
+      {
+        currentStep === 2 && oAuthLoginCompleted &&
+        <p><b>{oauthUserName}</b> ({oauthUserEmail})</p>
       }
     </Box>
   );

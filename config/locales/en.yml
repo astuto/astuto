@@ -75,6 +75,7 @@ en:
       create_button: 'Create feedback space'
       validations:
         subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "You're almost done!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :o_auths, only: [:index, :create, :update, :destroy]
     get '/o_auths/:id/start', to: 'o_auths#start', as: :o_auth_start
     get '/o_auths/:id/callback', to: 'o_auths#callback', as: :o_auth_callback
+    get '/o_auths/sign_in_from_oauth_token', to: 'o_auths#sign_in_from_oauth_token', as: :o_auth_sign_in_from_oauth_token
   
     resources :posts, only: [:index, :create, :show, :update, :destroy] do
       resource :follows, only: [:create, :destroy]

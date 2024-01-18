@@ -9,6 +9,7 @@ class Tenant < ApplicationRecord
   enum status: [:active, :pending, :blocked]
 
   after_initialize :set_default_status, if: :new_record?
+  before_save :downcase_subdomain
 
   validates :site_name, presence: true
   validates :subdomain, presence: true, uniqueness: true
@@ -17,5 +18,9 @@ class Tenant < ApplicationRecord
 
   def set_default_status
     self.status ||= :pending
+  end
+
+  def downcase_subdomain
+    self.subdomain = self.subdomain.downcase
   end
 end

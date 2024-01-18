@@ -3,6 +3,8 @@ class OAuth < ApplicationRecord
   include ApplicationHelper
   include Rails.application.routes.url_helpers
 
+  scope :include_defaults, -> { unscope(where: :tenant_id).where(tenant_id: [Current.tenant, nil]) }
+
   attr_accessor :state
 
   validates :name, presence: true, uniqueness: { scope: :tenant_id }
@@ -15,8 +17,19 @@ class OAuth < ApplicationRecord
   validates :scope, presence: true
   validates :json_user_email_path, presence: true
 
+  def is_default?
+    tenant_id == nil
+  end
+
   def callback_url
-    add_subdomain_to(method(:o_auth_callback_url), id)
+    # Default OAuths are available to all tenants
+    # but must have a single unique callback url:
+    # for this reason, we don't preprend subdomain
+    if self.is_default?
+      o_auth_callback_url(id, host: Rails.application.base_url, subdomain: "login")
+    else
+      add_subdomain_to(method(:o_auth_callback_url), id)
+    end
   end
 
   def authorize_url_with_query_params

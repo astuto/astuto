@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     userPassword: string,
     siteName: string,
     subdomain: string,
+    isOAuthLogin: boolean,
     authenticityToken: string,
   ): Promise<any> {
     return dispatch(submitTenant(
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch: any) => ({
       userPassword,
       siteName,
       subdomain,
+      isOAuthLogin,
       authenticityToken,
     ));
   }

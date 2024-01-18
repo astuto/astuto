@@ -41,41 +41,44 @@ const OAuthProviderItem = ({
       </div>
     </div>
 
-    <div className="oAuthActions">
-      <CopyToClipboardButton
-        label={I18n.t('site_settings.authentication.copy_url')}
-        textToCopy={oAuth.callbackUrl}
-      />
-      
-      <ActionLink
-        onClick={() =>
-          window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
-        }
-        icon={<TestIcon />}
-        customClass='testAction'
-      >
-        {I18n.t('common.buttons.test')}
-      </ActionLink>
-      
-      <ActionLink
-        onClick={() => {
-          setSelectedOAuth(oAuth.id);
-          setPage('edit');
-        }}
-        icon={<EditIcon />}
-        customClass='editAction'
-      >
-        {I18n.t('common.buttons.edit')}
-      </ActionLink>
-      
-      <ActionLink
-        onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
-        icon={<DeleteIcon />}
-        customClass='deleteAction'
-      >
-        {I18n.t('common.buttons.delete')}
-      </ActionLink>
-    </div>
+    {
+      oAuth.tenantId &&
+      <div className="oAuthActions">
+        <CopyToClipboardButton
+          label={I18n.t('site_settings.authentication.copy_url')}
+          textToCopy={oAuth.callbackUrl}
+        />
+        
+        <ActionLink
+          onClick={() =>
+            window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
+          }
+          icon={<TestIcon />}
+          customClass='testAction'
+        >
+          {I18n.t('common.buttons.test')}
+        </ActionLink>
+        
+        <ActionLink
+          onClick={() => {
+            setSelectedOAuth(oAuth.id);
+            setPage('edit');
+          }}
+          icon={<EditIcon />}
+          customClass='editAction'
+        >
+          {I18n.t('common.buttons.edit')}
+        </ActionLink>
+        
+        <ActionLink
+          onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
+          icon={<DeleteIcon />}
+          customClass='deleteAction'
+        >
+          {I18n.t('common.buttons.delete')}
+        </ActionLink>
+      </div>
+    }
   </li>
 );
 

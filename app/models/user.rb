@@ -84,4 +84,15 @@ class User < ApplicationRecord
   def blocked?
     status == 'blocked'
   end
+
+  def generate_oauth_token
+    self.oauth_token = SecureRandom.urlsafe_base64
+    self.save!
+    oauth_token
+  end
+
+  def invalidate_oauth_token
+    self.oauth_token = nil
+    self.save!
+  end
 end
