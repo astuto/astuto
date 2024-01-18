@@ -6,26 +6,29 @@ module OAuthsHelper
   def query_path_from_object(obj, path)
     return nil unless obj.class == Hash or obj.class == Array
     return nil unless path.class == String
-
-    path_array = path
-      .split(Regexp.union([ '.', '[', ']' ]))     # split by . and []
-      .filter { |v| not v.blank? }                # remove possible blank values
-      .map do |v|                                 # convert indexes to integer
-        if v == "0"
-          0
-        elsif v.to_i == 0
-            v
-        else
-          v.to_i
+    begin
+      path_array = path
+        .split(Regexp.union([ '.', '[', ']' ]))     # split by . and []
+        .filter { |v| not v.blank? }                # remove possible blank values
+        .map do |v|                                 # convert indexes to integer
+          if v == "0"
+            0
+          elsif v.to_i == 0
+              v
+          else
+            v.to_i
+          end
         end
+      
+      path_array.each do |selector|
+        break if obj == nil
+
+        obj = obj[selector]
       end
-    
-    path_array.each do |selector|
-      break if obj == nil
 
-      obj = obj[selector]
+      obj
+    rescue
+      nil
     end
-
-    obj
   end
 end

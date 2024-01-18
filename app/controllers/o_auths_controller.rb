@@ -69,8 +69,10 @@ class OAuthsController < ApplicationController
       @user_profile = user_profile
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       @email_valid = URI::MailTo::EMAIL_REGEXP.match?(@user_email)
-      @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
-      @name_valid = !@user_name.nil?
+      if not @o_auth.json_user_name_path.blank?
+        @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+        @name_valid = !@user_name.nil?
+      end
 
       render 'o_auths/test', layout: false
 
