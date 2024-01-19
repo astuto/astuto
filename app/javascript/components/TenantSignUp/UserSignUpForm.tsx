@@ -64,7 +64,7 @@ const UserSignUpForm = ({
         </Button>
 
         {
-          oAuths.map((oAuth, i) =>
+          oAuths.filter(oAuth => oAuth.isEnabled).map((oAuth, i) =>
             <a href={`/o_auths/${oAuth.id}/start?reason=tenantsignup`} key={i}>
               <CenteredText>{ I18n.t('common.forms.auth.log_in_with', { o_auth: oAuth.name }) }</CenteredText>
             </a>

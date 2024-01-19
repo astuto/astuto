@@ -80,7 +80,9 @@ class OAuthsController < ApplicationController
 
       @o_auths = []
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
-      @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+      if not @o_auth.json_user_name_path.blank?
+        @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+      end
       @o_auth_login_completed = true
 
       session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"

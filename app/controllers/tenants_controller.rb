@@ -24,7 +24,7 @@ class TenantsController < ApplicationController
         # Check if OAuth email and username coincide with submitted ones
         # (session[:o_auth_sign_up] set in oauth#callback)
         email, username = session[:o_auth_sign_up].split(",", 2)
-        raise "Mismatching email and password in OAuth login" unless email == params[:user][:email] and username == params[:user][:full_name]
+        raise "Mismatching email in OAuth login" unless email == params[:user][:email]
 
         @tenant.status = "active" # no need to verify email address if logged in with oauth
       end
@@ -33,7 +33,7 @@ class TenantsController < ApplicationController
       Current.tenant = @tenant
 
       @user = User.create!(
-        full_name: params[:user][:full_name],
+        full_name: params[:user][:full_name] || I18n.t('defaults.user_full_name'),
         email: params[:user][:email],
         password: is_o_auth_login ? Devise.friendly_token : params[:user][:password],
         role: "owner"

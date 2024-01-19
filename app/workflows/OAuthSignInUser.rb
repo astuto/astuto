@@ -23,7 +23,7 @@ class OAuthSignInUser
 
   def run
     return nil unless @o_auth and @o_auth.class == OAuth and @o_auth.is_enabled?
-    return nil unless @user_profile and @user_profile.class == Hash
+    return nil unless @user_profile and (@user_profile.class == Hash or @user_profile.class == Array)
 
     begin
       # Attempts to get email from user_profile Hash
