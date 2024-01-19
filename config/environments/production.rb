@@ -81,12 +81,10 @@ Rails.application.configure do
     }
   end
 
-  if ENV['EMAIL_CONFIRMATION']
-    config.action_mailer.default_options = {
-      from: ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"),
+  config.action_mailer.default_options = {
+    from: ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"),
     reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"))
-    }
-  end
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

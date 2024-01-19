@@ -46,7 +46,7 @@ class OAuthSignInUser
           password: Devise.friendly_token,
           status: 'active'
         )
-        user.skip_confirmation!
+        user.skip_confirmation
         user.save
       end
 

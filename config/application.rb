@@ -24,10 +24,6 @@ module App
       ENV["MULTI_TENANCY"] == "true"
     end
 
-    def email_confirmation?
-      ENV["EMAIL_CONFIRMATION"] == "true"
-    end
-
     def posts_per_page
       15
     end

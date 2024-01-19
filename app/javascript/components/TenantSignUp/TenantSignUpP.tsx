@@ -83,7 +83,7 @@ const TenantSignUpP = ({
       if (oAuthLoginCompleted) {
         let redirectUrl = new URL(baseUrl);
         redirectUrl.hostname = `${subdomain}.${redirectUrl.hostname}`;
-        window.location.href = redirectUrl.toString();
+        window.location.href = `${redirectUrl.toString()}users/sign_in`;
         return;
       }
 

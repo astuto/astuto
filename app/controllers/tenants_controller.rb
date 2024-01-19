@@ -32,7 +32,7 @@ class TenantsController < ApplicationController
       @tenant.save!
       Current.tenant = @tenant
 
-      @user = User.create!(
+      @user = User.new(
         full_name: params[:user][:full_name] || I18n.t('defaults.user_full_name'),
         email: params[:user][:email],
         password: is_o_auth_login ? Devise.friendly_token : params[:user][:password],
@@ -40,8 +40,10 @@ class TenantsController < ApplicationController
       )
 
       if is_o_auth_login
-        @user.skip_confirmation!
+        @user.skip_confirmation
       end
+
+      @user.save!
 
       render json: @tenant, status: :created
 
