@@ -2,39 +2,49 @@
   "name": "astuto",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build": "webpack --config ./config/webpack/webpack.config.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
-    "@rails/actioncable": "6.0.5",
-    "@rails/activestorage": "6.0.5",
-    "@rails/ujs": "6.0.5",
-    "@rails/webpacker": "4.3.0",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "bootstrap": "4.3.1",
-    "i18n-js": "^3.9.2",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.15.0",
-    "prop-types": "^15.7.2",
-    "rails-erb-loader": "^5.5.2",
-    "react": "^16.9.0",
-    "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^16.9.0",
-    "react-gravatar": "^2.6.3",
+    "@babel/core": "7.21.8",
+    "@babel/preset-env": "7.21.5",
+    "@babel/preset-react": "7.18.6",
+    "@babel/preset-typescript": "7.21.5",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "babel-loader": "9.1.2",
+    "bootstrap": "4.6.2",
+    "i18n-js": "3.9.2",
+    "jquery": "3.5.1",
+    "popper.js": "1.16.1",
+    "rails-erb-loader": "5.5.2",
+    "react": "16.9.0",
+    "react-beautiful-dnd": "13.1.0",
+    "react-dom": "16.9.0",
+    "react-gravatar": "2.6.3",
     "react-hook-form": "7.33.1",
     "react-icons": "4.4.0",
-    "react-infinite-scroller": "^1.2.4",
-    "react-markdown": "^5.0.3",
-    "react-redux": "^7.1.1",
-    "react_ujs": "^2.6.0",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "ts-loader": "8.1.0",
-    "turbolinks": "^5.2.0",
-    "typescript": "4.3.2"
+    "react-infinite-scroller": "1.2.4",
+    "react-markdown": "5.0.3",
+    "react-redux": "7.1.1",
+    "react_ujs": "2.6.0",
+    "redux": "4.0.4",
+    "redux-thunk": "2.3.0",
+    "sass": "1.62.1",
+    "turbolinks": "5.2.0",
+    "typescript": "4.3.2",
+    "webpack": "5.82.1",
+    "webpack-cli": "5.1.1"
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.3",
-    "webpack-dev-server": "3.11.0"
+    "@types/react-redux": "7.1.3"
   }
 }

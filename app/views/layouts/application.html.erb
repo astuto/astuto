@@ -11,9 +11,8 @@
 
     <%= render 'layouts/set_js_locale' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <%= favicon_link_tag asset_pack_path('media/images/favicon.png') %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>

@@ -39,6 +39,7 @@ const CommentFooter = ({
     <ActionLink
       onClick={handleToggleCommentReply}
       icon={replyForm.isOpen ? <CancelIcon /> : <ReplyIcon />}
+      customClass={replyForm.isOpen ? 'cancelAction' : 'replyAction'}
     >
       {
         replyForm.isOpen ?

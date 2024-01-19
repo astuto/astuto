@@ -1,5 +1,19 @@
-<% boards.each do |board| %>
-  <li class="nav-item<%= board.id == @board.id ? ' active' : '' unless @board.nil? %>">
-    <%= link_to board.name, board_path(board), class: 'nav-link' %>
-  </li>
+<% if @tenant_setting.collapse_boards_in_header == 'always_collapse' %>
+  <li class="navbar-nav nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Boards
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <% boards.each do |board| %>
+        <li>
+          <%= link_to board.name, board_path(board), class: 'dropdown-item py-2' %>
+        </li>
+      <% end %>
+    </ul>
+<% else %>
+  <% boards.each do |board| %>
+    <li class="nav-item<%= board.id == @board.id ? ' active' : '' unless @board.nil? %>">
+      <%= link_to board.name, board_path(board), class: 'nav-link' %>
+    </li>
+  <% end %>
 <% end %>

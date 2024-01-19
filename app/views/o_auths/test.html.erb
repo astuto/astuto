@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= t('site_settings.authentication.test_page.title', { name: @o_auth.name }) %></title>
+  <title><%= t('site_settings.authentication.test_page.title', name: @o_auth.name) %></title>
 </head>
 <body>
-  <h1><%= t('site_settings.authentication.test_page.title', { name: @o_auth.name }) %></h1>
+  <h1><%= t('site_settings.authentication.test_page.title', name: @o_auth.name) %></h1>
 
   <div>
     <h2><%= t('site_settings.authentication.test_page.fetched_user_data') %></h2>
@@ -36,7 +36,7 @@
     <% end %>
 
     <% if @email_valid and not @name_valid %>
-      <p><%= t('site_settings.authentication.test_page.warning_configuration', { name: t('defaults.user_full_name') }) %></p>
+      <p><%= t('site_settings.authentication.test_page.warning_configuration', name: t('defaults.user_full_name')) %></p>
     <% end %>
 
     <% if not @email_valid %>

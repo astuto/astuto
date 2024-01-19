@@ -6,7 +6,6 @@ import { DescriptionText } from '../../common/CustomTexts';
 
 import DragZone from '../../common/DragZone';
 import PostBoardLabel from '../../common/PostBoardLabel';
-import Separator from '../../common/Separator';
 import BoardForm from './BoardForm';
 import ActionLink from '../../common/ActionLink';
 import { CancelIcon, DeleteIcon, EditIcon } from '../../common/Icons';
@@ -85,13 +84,18 @@ class BoardsEditable extends React.Component<Props, State> {
                 </div>
 
                 <div className="boardEditableActions">
-                  <ActionLink onClick={this.toggleEditMode} icon={<EditIcon />}>
+                  <ActionLink
+                    onClick={this.toggleEditMode}
+                    icon={<EditIcon />}
+                    customClass="editAction"
+                  >
                     {I18n.t('common.buttons.edit')}
                   </ActionLink>
 
                   <ActionLink
                     onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}
                     icon={<DeleteIcon />}
+                    customClass="deleteAction"
                   >
                     {I18n.t('common.buttons.delete')}
                   </ActionLink>

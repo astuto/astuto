@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: /.*/ do
-    root to: 'static_pages#roadmap'
+    root to: 'static_pages#root'
     
     get '/roadmap', to: 'static_pages#roadmap'
     get '/pending-tenant', to: 'static_pages#pending_tenant'
@@ -56,4 +56,10 @@ Rails.application.routes.draw do
       get 'authentication'
     end
   end
+
+  # Healthcheck endpoint
+  get '/health', to: proc {
+    Tenant.first # to make sure db works
+    [200, {}, ['success']]
+  }
 end

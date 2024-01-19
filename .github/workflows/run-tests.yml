@@ -1,0 +1,45 @@
+# Build production image and run tests on it
+
+name: Run tests
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+    paths:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker production image
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
+
+      - name: Run Docker containers
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
+
+      - name: Install required packages
+        run: |
+          docker compose exec web apt-get update
+          docker compose exec web apt-get install -y --no-install-recommends apt-utils
+          docker compose exec web apt-get install -y build-essential wget libpq-dev
+
+      - name: Install RSpec and required gems
+        run: |
+          docker compose exec web bundle config set --local without development
+          docker compose exec web bundle config set deployment false --local
+          docker compose exec web bundle install
+
+      - name: Install Google Chrome
+        run: |
+          docker compose exec web wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          docker compose exec web dpkg -i google-chrome-stable_current_amd64.deb || true
+          docker compose exec web apt-get -fy install
+        
+      - name: Run tests
+        run: docker compose exec web bundle exec rspec
