@@ -3,7 +3,7 @@ class OAuth < ApplicationRecord
   include ApplicationHelper
   include Rails.application.routes.url_helpers
 
-  scope :include_defaults, -> { unscope(where: :tenant_id).where(tenant_id: [Current.tenant, nil]) }
+  scope :include_defaults, -> { unscope(where: :tenant_id).where(tenant_id: Current.tenant).or(unscope(where: :tenant_id).where(tenant_id: nil, is_enabled: true)) }
 
   attr_accessor :state
 
