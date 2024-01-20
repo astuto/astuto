@@ -10,6 +10,8 @@ import { DangerText } from '../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
 import { IOAuth } from '../../interfaces/IOAuth';
+import ActionLink from '../common/ActionLink';
+import { BackIcon } from '../common/Icons';
 
 interface Props {
   currentStep: number;
@@ -71,6 +73,7 @@ const UserSignUpForm = ({
               oAuthName={oAuth.name}
               oAuthLogo={oAuth.logo}
               oAuthReason='tenantsignup'
+              isSignUp
               key={i}
             />
           )
@@ -81,6 +84,14 @@ const UserSignUpForm = ({
       {
         currentStep === 1 && emailAuth &&
         <form onSubmit={handleSubmit(onSubmit)}>
+          <ActionLink
+            onClick={() => setEmailAuth(false)}
+            icon={<BackIcon />}
+            customClass="backButton"
+          >
+            {I18n.t('common.buttons.back')}
+          </ActionLink>
+
           <div className="formRow">
             <input
               {...register('fullName', { required: true, minLength: 2 })}

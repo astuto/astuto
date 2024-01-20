@@ -3,7 +3,6 @@ import I18n from 'i18n-js';
 
 import { IOAuth } from '../../../interfaces/IOAuth';
 import Switch from '../../common/Switch';
-import Separator from '../../common/Separator';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import CopyToClipboardButton from '../../common/CopyToClipboardButton';
 import ActionLink from '../../common/ActionLink';
@@ -30,14 +29,17 @@ const OAuthProviderItem = ({
 
       <div className="oAuthNameAndEnabled">
         <span className="oAuthName">{oAuth.name}</span>
-        <div className="oAuthIsEnabled">
-          <Switch
-            label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
-            onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
-            checked={oAuth.isEnabled}
-            htmlId={`oAuth${oAuth.name}EnabledSwitch`}
-          />
-        </div>
+        {
+          oAuth.tenantId &&
+          <div className="oAuthIsEnabled">
+            <Switch
+              label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
+              onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
+              checked={oAuth.isEnabled}
+              htmlId={`oAuth${oAuth.name}EnabledSwitch`}
+            />
+          </div>
+        }
       </div>
     </div>
 

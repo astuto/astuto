@@ -12,7 +12,7 @@ interface Props {
 const OAuthProviderLink = ({ oAuthId, oAuthName, oAuthLogo, oAuthReason, isSignUp = false }: Props) => (
   <button
     onClick={() => window.location.href = `/o_auths/${oAuthId}/start?reason=${oAuthReason}`}
-    className={`oauthProviderBtn oauthProvider${oAuthName.toLowerCase()}`}
+    className={`oauthProviderBtn oauthProvider${oAuthName.replace(' ', '')}`}
   >
     <img src={oAuthLogo} alt={oAuthName} width={28} height={28} />
     <span className='oauthProviderText'>

@@ -1,63 +1,49 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <h2><%= t('common.forms.auth.sign_up') %></h2>
+<div class="new_user">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { class: "new_user_form" }) do |f| %>
+    <h2><%= t('common.forms.auth.sign_up') %></h2>
 
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group">
-    <%= f.label :full_name, class: "sr-only" %>
-    <%= f.text_field :full_name,
-      autofocus: true,
-      placeholder: t('common.forms.auth.full_name'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :full_name, class: "sr-only" %>
+      <%= f.text_field :full_name,
+        autofocus: true,
+        placeholder: t('common.forms.auth.full_name'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :email, class: "sr-only" %>
-    <%= f.email_field :email,
-      autocomplete: "email",
-      placeholder: t('common.forms.auth.email'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email, class: "sr-only" %>
+      <%= f.email_field :email,
+        autocomplete: "email",
+        placeholder: t('common.forms.auth.email'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: "sr-only" %>
-    <%= f.password_field :password,
-      placeholder: t('common.forms.auth.password'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password, class: "sr-only" %>
+      <%= f.password_field :password,
+        placeholder: t('common.forms.auth.password'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation, class: "sr-only" %>
-    <%= f.password_field :password_confirmation,
-      placeholder: t('common.forms.auth.password_confirmation'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "sr-only" %>
+      <%= f.password_field :password_confirmation,
+        placeholder: t('common.forms.auth.password_confirmation'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
-  </div>
-  
-  <% if not @o_auths.blank? %>
-    <hr />
-    <% @o_auths.each do |o_auth| %>
-      <%=
-        react_component(
-          'common/OAuthProviderLink',
-          {
-            oAuthId: o_auth.id,
-            oAuthName: o_auth.name,
-            oAuthLogo: o_auth.logo,
-            oAuthReason: "login",
-            isSignUp: true,
-          }
-        )
-      %>
-    <% end %>
+    <div class="actions">
+      <%= f.submit t('common.forms.auth.sign_up'), class: "btn btn-dark btn-block" %>
+    </div>
   <% end %>
-<% end %>
+  
+  <%= render "devise/shared/o_auths", is_sign_up: true %>
+</div>
 
 <%= render "devise/shared/links" %>

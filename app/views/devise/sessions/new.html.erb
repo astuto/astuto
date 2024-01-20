@@ -1,51 +1,38 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <h2><%= t('common.forms.auth.log_in') %></h2>
+<div class="new_user">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "new_user_form" }) do |f| %>
+    <h2><%= t('common.forms.auth.log_in') %></h2>
 
-  <div class="form-group">
-    <%= f.label :email, class: "sr-only" %>
-    <%= f.email_field :email,
-      autocomplete: "email",
-      placeholder: t('common.forms.auth.email'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email, class: "sr-only" %>
+      <%= f.email_field :email,
+        autocomplete: "email",
+        placeholder: t('common.forms.auth.email'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: "sr-only" %>
-    <%= f.password_field :password,
-      autocomplete: "current-password",
-      placeholder: t('common.forms.auth.password'),
-      required: true,
-      class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password, class: "sr-only" %>
+      <%= f.password_field :password,
+        autocomplete: "current-password",
+        placeholder: t('common.forms.auth.password'),
+        required: true,
+        class: "form-control" %>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
-      <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label :remember_me, t('common.forms.auth.remember_me'), class: "form-check-label" %>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group form-check">
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :remember_me, t('common.forms.auth.remember_me'), class: "form-check-label" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit t('common.forms.auth.log_in'), class: "btn btn-dark btn-block" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit t('common.forms.auth.log_in'), class: "btn btn-dark btn-block" %>
-  </div>
-  
-  <% if not @o_auths.empty? %>
-    <hr />
-    <% @o_auths.each do |o_auth| %>
-      <%=
-        react_component(
-          'common/OAuthProviderLink',
-          {
-            oAuthId: o_auth.id,
-            oAuthName: o_auth.name,
-            oAuthLogo: o_auth.logo,
-            oAuthReason: "login",
-          }
-        )
-      %>
-    <% end %>
-  <% end %>
-<% end %>
+  <%= render "devise/shared/o_auths" %>
+</div>
 
 <%= render "devise/shared/links" %>
