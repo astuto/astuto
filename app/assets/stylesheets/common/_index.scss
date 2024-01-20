@@ -209,3 +209,18 @@
     cursor: not-allowed;
   }
 }
+
+.oauthProviderBtn {
+  @extend
+    .btn,
+    .btn-block,
+    .btn-outline-dark,
+    .mt-2,
+    .mb-2;
+
+  .oauthProviderText {
+    @extend .ml-2;
+    
+    vertical-align: middle;
+  }
+}

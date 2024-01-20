@@ -4,8 +4,9 @@ import I18n from 'i18n-js';
 
 import Box from '../common/Box';
 import Button from '../common/Button';
+import OAuthProviderLink from '../common/OAuthProviderLink';
 import { ITenantSignUpUserForm } from './TenantSignUpP';
-import { CenteredText, DangerText } from '../common/CustomTexts';
+import { DangerText } from '../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
 import { IOAuth } from '../../interfaces/IOAuth';
@@ -65,9 +66,13 @@ const UserSignUpForm = ({
 
         {
           oAuths.filter(oAuth => oAuth.isEnabled).map((oAuth, i) =>
-            <a href={`/o_auths/${oAuth.id}/start?reason=tenantsignup`} key={i}>
-              <CenteredText>{ I18n.t('common.forms.auth.log_in_with', { o_auth: oAuth.name }) }</CenteredText>
-            </a>
+            <OAuthProviderLink
+              oAuthId={oAuth.id}
+              oAuthName={oAuth.name}
+              oAuthLogo={oAuth.logo}
+              oAuthReason='tenantsignup'
+              key={i}
+            />
           )
         }
         </>

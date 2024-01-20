@@ -33,10 +33,17 @@
   <% if not @o_auths.empty? %>
     <hr />
     <% @o_auths.each do |o_auth| %>
-      <p>
-        <%= link_to t('common.forms.auth.log_in_with', o_auth: o_auth.name),
-          o_auth_start_path(o_auth, reason: 'login') %>
-      </p>
+      <%=
+        react_component(
+          'common/OAuthProviderLink',
+          {
+            oAuthId: o_auth.id,
+            oAuthName: o_auth.name,
+            oAuthLogo: o_auth.logo,
+            oAuthReason: "login",
+          }
+        )
+      %>
     <% end %>
   <% end %>
 <% end %>
