@@ -196,6 +196,7 @@ en:
     authentication:
       title: 'Authentication'
       oauth_subtitle: 'OAuth providers'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
       test_page:
         title: '%{name} OAuth test results'

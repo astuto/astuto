@@ -7,6 +7,7 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import CopyToClipboardButton from '../../common/CopyToClipboardButton';
 import ActionLink from '../../common/ActionLink';
 import { DeleteIcon, EditIcon, TestIcon } from '../../common/Icons';
+import { MutedText } from '../../common/CustomTexts';
 
 interface Props {
   oAuth: IOAuth;
@@ -30,15 +31,17 @@ const OAuthProviderItem = ({
       <div className="oAuthNameAndEnabled">
         <span className="oAuthName">{oAuth.name}</span>
         {
-          oAuth.tenantId &&
-          <div className="oAuthIsEnabled">
-            <Switch
-              label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
-              onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
-              checked={oAuth.isEnabled}
-              htmlId={`oAuth${oAuth.name}EnabledSwitch`}
-            />
-          </div>
+          oAuth.tenantId ?
+            <div className="oAuthIsEnabled">
+              <Switch
+                label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
+                onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
+                checked={oAuth.isEnabled}
+                htmlId={`oAuth${oAuth.name}EnabledSwitch`}
+              />
+            </div>
+            :
+            <div><MutedText>{I18n.t('site_settings.authentication.default_oauth')}</MutedText></div>
         }
       </div>
     </div>
