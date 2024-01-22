@@ -10,7 +10,7 @@ class OAuthsController < ApplicationController
   # [subdomain.]base_url/o_auths/:id/start?reason=login|test|tenantsignup
   # Generates authorize url with required parameters and redirects to provider
   def start
-    @o_auth = OAuth.unscoped.find(params[:id])
+    @o_auth = OAuth.unscoped.include_defaults.find(params[:id])
     
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
 
@@ -31,7 +31,9 @@ class OAuthsController < ApplicationController
     return unless cookies[:token_state] == params[:state]
     cookies.delete(:token_state, domain: ".#{request.domain}")
 
-    @o_auth = OAuth.unscoped.find(params[:id])
+    @o_auth = OAuth.unscoped.include_defaults.find(params[:id])
+
+    return if reason != 'test' and not @o_auth.is_enabled?
 
     # If it is a default OAuth we need to set the tenant
     if @o_auth.is_default?

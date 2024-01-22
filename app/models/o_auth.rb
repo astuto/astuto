@@ -23,8 +23,9 @@ class OAuth < ApplicationRecord
 
   def callback_url
     # Default OAuths are available to all tenants
-    # but must have a single unique callback url:
-    # for this reason, we don't preprend subdomain
+    # but must have a single callback url:
+    # for this reason, we don't preprend tenant subdomain
+    # but rather use the "login" subdomain
     if self.is_default?
       o_auth_callback_url(id, host: Rails.application.base_url, subdomain: "login")
     else
