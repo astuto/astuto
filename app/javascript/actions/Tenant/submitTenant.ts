@@ -49,6 +49,7 @@ export const submitTenant = (
   userPassword: string,
   siteName: string,
   subdomain: string,
+  isOAuthLogin: boolean,
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(tenantSubmitStart());
@@ -67,6 +68,9 @@ export const submitTenant = (
           site_name: siteName,
           subdomain: subdomain,
         },
+        settings: {
+          is_o_auth_login: isOAuthLogin,
+        }
       }),
     });
     const json = await res.json();

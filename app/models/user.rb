@@ -16,8 +16,6 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
   after_initialize :set_default_status, if: :new_record?
 
-  before_save :skip_confirmation
-
   validates :full_name, presence: true, length: { in: 2..32 }
   validates :email,
     presence: true,
@@ -54,7 +52,6 @@ class User < ApplicationRecord
   end
 
   def skip_confirmation
-    return if Rails.application.email_confirmation?
     skip_confirmation!
     skip_confirmation_notification!
     skip_reconfirmation!
@@ -83,5 +80,16 @@ class User < ApplicationRecord
 
   def blocked?
     status == 'blocked'
+  end
+
+  def generate_oauth_token
+    self.oauth_token = SecureRandom.urlsafe_base64
+    self.save!
+    oauth_token
+  end
+
+  def invalidate_oauth_token
+    self.oauth_token = nil
+    self.save!
   end
 end

@@ -11,8 +11,9 @@ export interface IOAuth {
   scope: string;
   jsonUserEmailPath: string;
   jsonUserNamePath?: string;
-
+  
   callbackUrl?: string;
+  tenantId?: number;
 }
 
 export interface IOAuthJSON {
@@ -30,9 +31,10 @@ export interface IOAuthJSON {
   json_user_name_path?: string;
 
   callback_url?: string;
+  tenant_id?: string;
 }
 
-export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON) => ({
+export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON): IOAuth => ({
   id: parseInt(oAuthJSON.id),
   name: oAuthJSON.name,
   logo: oAuthJSON.logo,
@@ -47,6 +49,7 @@ export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON) => ({
   jsonUserNamePath: oAuthJSON.json_user_name_path,
 
   callbackUrl: oAuthJSON.callback_url,
+  tenantId: oAuthJSON.tenant_id ? parseInt(oAuthJSON.tenant_id) : null,
 });
 
 export const oAuthJS2JSON = (oAuth: IOAuth) => ({
@@ -64,4 +67,5 @@ export const oAuthJS2JSON = (oAuth: IOAuth) => ({
   json_user_name_path: oAuth.jsonUserNamePath,
 
   callback_url: oAuth.callbackUrl,
+  tenant_id: oAuth.tenantId,
 });
