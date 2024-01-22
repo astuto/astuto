@@ -17,7 +17,7 @@ class OAuthsController < ApplicationController
     # Generate random state + other query params
     tenant_domain = Current.tenant ? Current.tenant_or_raise!.subdomain : "null"
     token_state = "#{params[:reason]}#{TOKEN_STATE_SEPARATOR}#{tenant_domain}#{TOKEN_STATE_SEPARATOR}#{Devise.friendly_token(30)}"
-    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}" }
+    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true }
     @o_auth.state = token_state
 
     redirect_to @o_auth.authorize_url_with_query_params
