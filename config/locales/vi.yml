@@ -65,12 +65,13 @@ vi:
     page_title: 'Tạo không gian phản hồi của bạn'
     step1:
       title: '1. Tạo tài khoản'
-      email_auth: 'Đăng ký bằng email'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Tạo không gian phản hồi'
       create_button: 'Tạo không gian phản hồi'
       validations:
         subdomain_already_taken: 'Xin lỗi, tên miền này không khả dụng'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Bạn đã sẵn sàng để bắt đầu!"
       message: "Kiểm tra email %{email} để kích hoạt %{subdomain}!"
@@ -191,6 +192,7 @@ vi:
     authentication:
       title: 'Xác thực'
       oauth_subtitle: 'OAuth Providers'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Sao chép URL'
       test_page:
         title: 'Kết quả kiểm tra OAuth %{name}'
