@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
@@ -38,12 +38,15 @@ const AppearanceSiteSettingsP = ({
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isSubmitSuccessful, errors }
+    formState: { isDirty, isSubmitSuccessful },
+    watch,
   } = useForm<ISiteSettingsAppearanceForm>({
     defaultValues: {
       customCss: originForm.customCss,
     },
   });
+
+  const customCss = watch('customCss');
   
   const onSubmit: SubmitHandler<ISiteSettingsAppearanceForm> = data => {
     updateTenant(
@@ -54,6 +57,17 @@ const AppearanceSiteSettingsP = ({
       window.location.reload();
     });
   };
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = customCss;
+    document.body.appendChild(style);
+
+    // Clean up function
+    return () => {
+      document.body.removeChild(style);
+    };
+  }, [customCss]);
 
   return (
     <>
@@ -70,11 +84,7 @@ const AppearanceSiteSettingsP = ({
                 maxLength={32000}
                 id="customCss"
                 className="formControl"
-                onKeyDown={(e) => {
-                  if (e.key === 'Tab') {
-                    e.preventDefault(); 
-                  }
-                }}
+                onKeyDown={e => e.key === 'Tab' && e.preventDefault()}
               />
             </div>
           </div>
