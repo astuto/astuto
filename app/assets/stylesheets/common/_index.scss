@@ -1,3 +1,7 @@
+::selection {
+  background-color: var(--primary-color-light);
+}
+
 .btnPrimary {
   @extend .btn;
 
