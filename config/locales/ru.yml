@@ -77,12 +77,13 @@ ru:
     page_title: 'Создайте область обратной связи'
     step1:
       title: '1. Создание учетной записи пользователя'
-      email_auth: 'Регистрация по электронной почте'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Создать область обратной связи'
       create_button: 'Создать область обратной связи'
       validations:
         subdomain_already_taken: 'Извините, этот поддомен недоступен'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Вы почти закончили!"
       message: "Проверьте свою электронную почту %{email}, чтобы активировать новое пространство обратной связи %{subdomain}!"
@@ -203,6 +204,7 @@ ru:
     authentication:
       title: 'Аутентификация'
       oauth_subtitle: 'Поставщики OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Копировать ссылку'
       test_page:
         title: 'Результаты теста OAuth %{name}'
