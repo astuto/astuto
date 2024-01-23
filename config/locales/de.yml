@@ -69,12 +69,13 @@ de:
     page_title: 'Deinen Feedback-Bereich erstellen'
     step1:
       title: '1. Benutzerkonto erstellen'
-      email_auth: 'Mit E-Mail registrieren'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Feedbackbereich erstellen'
       create_button: 'Feedbackbereich erstellen'
       validations:
         subdomain_already_taken: 'Diese Subdomain ist leider nicht verfügbar'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Fast fertig!"
       message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
@@ -195,6 +196,7 @@ de:
     authentication:
       title: 'Authentifizierung'
       oauth_subtitle: 'OAuth-Anbieter'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'URL in Zwischenablage kopieren'
       test_page:
         title: '%{name} OAuth-Testergebnisse'
