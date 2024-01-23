@@ -69,12 +69,13 @@ pt:
     page_title: 'Crie seu espaço de comentário'
     step1:
       title: 'Criar conta de usuário'
-      email_auth: 'Cadastrar com e-mail'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Criar espaço de feedback'
       create_button: 'Criar espaço de feedback'
       validations:
         subdomain_already_taken: 'Desculpe, este subdomínio não é válido'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Você está quase lá!"
       message: "Verifique o seu e-mail %{email} para ativar o seu novo espaço de feedback %{subdomain}!"
@@ -195,6 +196,7 @@ pt:
     authentication:
       title: 'Autenticação'
       oauth_subtitle: 'Provedores de identidade OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copiar URL'
       test_page:
         title: '%{name} resultados do teste OAuth'
