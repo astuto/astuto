@@ -69,12 +69,13 @@ fr:
     page_title: 'Créez votre espace de feedback'
     step1:
       title: '1. Créer un compte utilisateur'
-      email_auth: 'S´inscrire avec une adresse e-mail'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Créer un espace de feedback'
       create_button: 'Créer un espace de feedback'
       validations:
         subdomain_already_taken: 'Désolé, ce sous-domaine n''est pas disponible'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Vous avez presque terminé !"
       message: "Vérifiez votre e-mail %{email} pour activer votre nouvel espace de feedback %{subdomain}!"
@@ -195,6 +196,7 @@ fr:
     authentication:
       title: 'Authentification'
       oauth_subtitle: 'Fournisseurs OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copier l''URL'
       test_page:
         title: 'Résultats du test du fournisseur OAuth %{name}'
