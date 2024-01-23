@@ -70,6 +70,11 @@ const AppearanceSiteSettingsP = ({
                 maxLength={32000}
                 id="customCss"
                 className="formControl"
+                onKeyDown={(e) => {
+                  if (e.key === 'Tab') {
+                    e.preventDefault(); 
+                  }
+                }}
               />
             </div>
           </div>
