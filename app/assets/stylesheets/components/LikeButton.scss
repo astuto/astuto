@@ -14,13 +14,13 @@
     border-bottom: $like_button_size solid rgba(35,35,35,.2);
 
     &:hover {
-      border-bottom-color: $primary-color;
+      border-bottom-color: var(--primary-color);
       cursor: pointer;
     }
   }
 
   .likeButton.liked {
-    border-bottom-color: $primary-color;
+    border-bottom-color: var(--primary-color);
   }
 
   .likeCountLabel {

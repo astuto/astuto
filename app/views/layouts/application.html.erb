@@ -25,5 +25,11 @@
     <div class="container">
       <%= yield %>
     </div>
+
+    <% if @tenant and not @tenant.tenant_setting.custom_css.blank? %>
+      <style type="text/css">
+        <%= @tenant.tenant_setting.custom_css %>
+      </style>
+    <% end %>
   </body>
 </html>

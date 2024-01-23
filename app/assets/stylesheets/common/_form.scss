@@ -9,8 +9,8 @@
 }
 
 .form-control:focus {
-  border-color: $astuto-light-grey;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(0, 0, 0, 0.6);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem var(--primary-color-light);
 }
 
 .new_user, .edit_user {
@@ -33,7 +33,7 @@
 
   margin-top: 24px;
 
-  a { color: $primary-color; }
+  a { color: var(--astuto-black); }
 }
 
 .formRow {

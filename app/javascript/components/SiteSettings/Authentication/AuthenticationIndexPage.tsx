@@ -6,6 +6,8 @@ import OAuthProvidersList from './OAuthProvidersList';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import { OAuthsState } from '../../../reducers/oAuthsReducer';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
+import ActionLink from '../../common/ActionLink';
+import { LearnMoreIcon } from '../../common/Icons';
 
 interface Props {
   oAuths: OAuthsState;
@@ -33,6 +35,15 @@ const AuthenticationIndexPage = ({
   <>
     <Box customClass="authenticationIndexPage">
       <h2>{ I18n.t('site_settings.authentication.title') }</h2>
+
+      <p style={{textAlign: 'left'}}>
+        <ActionLink
+          onClick={() => window.open('https://docs.astuto.io/category/oauth-configuration/', '_blank')}
+          icon={<LearnMoreIcon />}
+        >
+          {I18n.t('site_settings.authentication.learn_more')}
+        </ActionLink>
+      </p>
 
       <OAuthProvidersList
         oAuths={oAuths.items}

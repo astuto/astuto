@@ -3,6 +3,8 @@ class TenantSetting < ApplicationRecord
   
   belongs_to :tenant
 
+  validates :custom_css, length: { maximum: 32000 }
+
   enum brand_display: [
     :name_and_logo,
     :name_only,
