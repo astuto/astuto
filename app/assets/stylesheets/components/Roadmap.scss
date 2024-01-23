@@ -11,7 +11,7 @@
       .p-0;
 
     width: 32%;
-    background-color: $astuto-light-grey;
+    background-color: var(--astuto-grey-light);
 
     @include media-breakpoint-down(sm) {
       width: 100%;
@@ -35,8 +35,9 @@
   }
 
   .postLink {
-    @extend
-      .my-2;
+    @extend .my-2;
+
+    color: var(--astuto-black);
 
     &:hover { text-decoration: none; }
   }

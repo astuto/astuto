@@ -54,11 +54,16 @@
       
       font-size: 14px;
       text-align: left;
+
+      a:hover { color: var(--primary-color); }
+      
+      &.active {
+        @extend .badgeLight;
+
+        a { color: var(--primary-color) !important };
+      }
     }
 
-    .nav-item.active {
-      @extend .badgeLight;
-    }
   }
 
   .profileNav {
@@ -75,12 +80,12 @@
     }
 
     .fullname {
-      color: $astuto-black;
+      color: var(--astuto-black);
       vertical-align: middle;
     }
   }
 
   .dropdown-item:active {
-    background-color: $primary-color;
+    background-color: var(--primary-color);
   }
 }
