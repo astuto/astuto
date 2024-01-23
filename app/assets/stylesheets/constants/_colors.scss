@@ -1,6 +1,7 @@
 :root {
   // Theme palette (supposed to be customized)
   --primary-color: rgb(135, 97, 209);
+  --background-color: rgba(134, 97, 209, 0.03);
 
   // Theme palette shades (supposed to be computed from theme palette)
   --primary-color-light: color-mix(in srgb,var(--primary-color), #fff 85%);
