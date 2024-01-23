@@ -7,7 +7,8 @@ class TenantSettingPolicy < ApplicationPolicy
         :show_vote_count,
         :show_vote_button_in_board,
         :show_roadmap_in_header,
-        :collapse_boards_in_header
+        :collapse_boards_in_header,
+        :custom_css
       ]
     else
       []

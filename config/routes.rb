@@ -50,11 +50,12 @@ Rails.application.routes.draw do
   
     namespace :site_settings do
       get 'general'
+      get 'authentication'
       get 'boards'
       get 'post_statuses'
       get 'roadmap'
+      get 'appearance'
       get 'users'
-      get 'authentication'
     end
   end
 

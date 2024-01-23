@@ -144,6 +144,7 @@ en:
       roadmap: 'Roadmap'
       users: 'Users'
       authentication: 'Authentication'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -178,6 +179,8 @@ en:
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+    appearance:
+      title: 'Appearance'
     users:
       title: 'Users'
       block: 'Block'
