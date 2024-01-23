@@ -69,12 +69,13 @@ nl:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Register with email'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
       validations:
         subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "You're almost done!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
@@ -195,6 +196,7 @@ nl:
     authentication:
       title: 'Authentication'
       oauth_subtitle: 'OAuth providers'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
       test_page:
         title: '%{name} OAuth test results'
