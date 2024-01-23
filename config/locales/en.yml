@@ -181,6 +181,7 @@ en:
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     appearance:
       title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Users'
       block: 'Block'
@@ -198,6 +199,7 @@ en:
       status_deleted: 'Deleted'
     authentication:
       title: 'Authentication'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'

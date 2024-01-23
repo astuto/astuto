@@ -6,6 +6,7 @@ import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
 import { MdContentCopy, MdDone, MdOutlineArrowBack } from 'react-icons/md';
 import { GrTest } from 'react-icons/gr';
+import { MdOutlineLibraryBooks } from "react-icons/md";
 
 export const EditIcon = () => <FiEdit />;
 
@@ -26,3 +27,5 @@ export const DoneIcon = () => <MdDone />;
 export const BackIcon = () => <MdOutlineArrowBack />;
 
 export const ReplyIcon = () => <BsReply />;
+
+export const LearnMoreIcon = () => <MdOutlineLibraryBooks />;

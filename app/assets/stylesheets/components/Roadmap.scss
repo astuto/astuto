@@ -37,8 +37,6 @@
   .postLink {
     @extend .my-2;
 
-    color: var(--astuto-black);
-
     &:hover { text-decoration: none; }
   }
 

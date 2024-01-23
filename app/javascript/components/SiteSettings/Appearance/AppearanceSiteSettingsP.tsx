@@ -8,6 +8,8 @@ import Button from '../../common/Button';
 import HttpStatus from '../../../constants/http_status';
 import { getLabel } from '../../../helpers/formUtils';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import ActionLink from '../../common/ActionLink';
+import { LearnMoreIcon } from '../../common/Icons';
 
 
 export interface ISiteSettingsAppearanceForm {
@@ -73,6 +75,15 @@ const AppearanceSiteSettingsP = ({
     <>
       <Box>
         <h2>{ I18n.t('site_settings.appearance.title') }</h2>
+
+        <p style={{textAlign: 'left'}}>
+          <ActionLink
+            onClick={() => window.open('https://docs.astuto.io/category/appearance-customization/', '_blank')}
+            icon={<LearnMoreIcon />}
+          >
+            {I18n.t('site_settings.appearance.learn_more')}
+          </ActionLink>
+        </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="formRow">
