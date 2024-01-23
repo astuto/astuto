@@ -78,7 +78,7 @@ const AppearanceSiteSettingsP = ({
 
         <p style={{textAlign: 'left'}}>
           <ActionLink
-            onClick={() => window.open('https://docs.astuto.io/category/appearance-customization/', '_blank')}
+            onClick={() => window.open('https://docs.astuto.io/appearance-customization/', '_blank')}
             icon={<LearnMoreIcon />}
           >
             {I18n.t('site_settings.appearance.learn_more')}
