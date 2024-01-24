@@ -1,11 +1,11 @@
-class OAuthSignInUser
+class OAuthSignInUserWorkflow
   include OAuthsHelper
 
   attr_accessor :user_profile, :o_auth
 
   # Given:
   #   user_profile: ruby Hash containing information about the user
-  #                 Could've been returned from OAuthExchangeAuthCodeForProfile
+  #                 Could've been returned from OAuthExchangeAuthCodeForProfileWorkflow
   #   o_auth: ActiveRecord model with information about the OAuth provider
   #
   # The workfow creates a new user if it doesn't exist, or select the existing one
