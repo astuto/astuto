@@ -140,6 +140,7 @@ ko:
       roadmap: 'Roadmap'
       users: 'Users'
       authentication: 'Authentication'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -174,6 +175,9 @@ ko:
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Users'
       block: 'Block'
@@ -191,6 +195,7 @@ ko:
       status_deleted: 'Deleted'
     authentication:
       title: 'Authentication'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
