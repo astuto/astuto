@@ -144,6 +144,7 @@ it:
       roadmap: 'Roadmap'
       users: 'Utenti'
       authentication: 'Autenticazione'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
@@ -178,6 +179,9 @@ it:
       title2: 'Non in roadmap'
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Utenti'
       block: 'Blocca'
@@ -195,6 +199,7 @@ it:
       status_deleted: 'Eliminato'
     authentication:
       title: 'Autenticazione'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Provider OAuth'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copia URL'
