@@ -144,6 +144,7 @@ fr:
       roadmap: 'Feuille de route'
       users: 'Utilisateur·rice·s'
       authentication: 'Authentification'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Toutes les modifications ont été enregistrées'
       error: 'Une erreur s''est produite : %{message}'
@@ -178,6 +179,9 @@ fr:
       title2: 'Pas dans la feuille de route'
       empty: 'La feuille de route est vide.'
       help: 'Vous pouvez ajouter des statuts à la feuille de route en les faisant glisser depuis la section ci-dessous. Si vous voulez plutôt créer un nouveau statut ou modifier leur commande, allez dans Paramètres du site > Statuts.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Utilisateur·rice·s'
       block: 'Bloquer'
@@ -195,6 +199,7 @@ fr:
       status_deleted: 'Supprimé'
     authentication:
       title: 'Authentification'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Fournisseurs OAuth'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copier l''URL'
