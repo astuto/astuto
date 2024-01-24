@@ -140,6 +140,7 @@ vi:
       roadmap: 'Lộ trình'
       users: 'Người dùng'
       authentication: 'Xác thực'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Tất cả thay đổi đã được lưu'
       error: 'Đã xảy ra lỗi: %{message}'
@@ -174,6 +175,9 @@ vi:
       title2: 'Không có trong lộ trình'
       empty: 'Lộ trình rỗng.'
       help: 'Bạn có thể thêm trạng thái vào lộ trình bằng cách kéo chúng từ phần dưới. Nếu bạn muốn tạo trạng thái mới hoặc thay đổi thứ tự, hãy đến Cài đặt trang > Trạng thái.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Người dùng'
       block: 'Chặn'
@@ -191,6 +195,7 @@ vi:
       status_deleted: 'Đã xóa'
     authentication:
       title: 'Xác thực'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth Providers'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Sao chép URL'
