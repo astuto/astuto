@@ -26,6 +26,7 @@ const NewPostForm = ({
           type="text"
           value={title}
           onChange={e => handleTitleChange(e.target.value)}
+          maxLength={128}
 
           id="postTitle"
           className="form-control"

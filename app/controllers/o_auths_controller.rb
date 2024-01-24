@@ -40,14 +40,14 @@ class OAuthsController < ApplicationController
       Current.tenant = Tenant.find_by(subdomain: tenant_domain)
     end
 
-    user_profile = OAuthExchangeAuthCodeForProfile.new(
+    user_profile = OAuthExchangeAuthCodeForProfileWorkflow.new(
       authorization_code: params[:code],
       o_auth: @o_auth
     ).run
     
     if reason == 'login'
       
-      user = OAuthSignInUser.new(
+      user = OAuthSignInUserWorkflow.new(
         user_profile: user_profile,
         o_auth: @o_auth
       ).run

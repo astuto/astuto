@@ -85,7 +85,7 @@
       .mb-3,
       .p-3;
 
-    height: 140px;
+    min-height: 140px;
     color: var(--astuto-black);
 
     @include media-breakpoint-down(sm) {
@@ -104,14 +104,16 @@
 
   .postTitle {
     @extend
-      .font-weight-bold;
+      .font-weight-bold,
+      .mb-2;
   }
 
   .postDetails {
     @extend
       .d-flex,
       .justify-content-start,
-      .text-uppercase;
+      .text-uppercase,
+      .mt-2;
 
     .badge {
       @extend .mr-2;

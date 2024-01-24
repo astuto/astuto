@@ -45,6 +45,8 @@ class TenantsController < ApplicationController
 
       @user.save!
 
+      CreateWelcomeEntitiesWorkflow.new().run
+
       render json: @tenant, status: :created
 
     rescue ActiveRecord::RecordInvalid => exception

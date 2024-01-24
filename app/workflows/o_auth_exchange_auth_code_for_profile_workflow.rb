@@ -1,4 +1,4 @@
-class OAuthExchangeAuthCodeForProfile
+class OAuthExchangeAuthCodeForProfileWorkflow
   include HTTParty
 
   attr_accessor :authorization_code, :o_auth
