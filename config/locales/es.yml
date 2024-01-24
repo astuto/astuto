@@ -144,6 +144,7 @@ es:
       roadmap: 'Hoja de ruta'
       users: 'Usuarios'
       authentication: 'Autenticación'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Se han guardado todos los cambios'
       error: 'Se ha producido un error: %{message}'
@@ -178,6 +179,9 @@ es:
       title2: 'No en la hoja de ruta'
       empty: 'La hoja de ruta está vacía.'
       help: 'Puedes agregar estados a la hoja de ruta arrastrándolos desde la sección de abajo. Si en cambio quieres crear un nuevo estado o cambiar su orden, ve a Configuración del sitio > Estados.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Usuarios'
       block: 'Bloquear'
@@ -195,6 +199,7 @@ es:
       status_deleted: 'Eliminado'
     authentication:
       title: 'Autenticación'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Proveedores OAuth'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copiar URL'
