@@ -121,6 +121,7 @@ fr:
         root_board_id: 'Root page'
         show_roadmap_in_header: 'Show roadmap link in header'
         collapse_boards_in_header: 'Collapse boards in header'
+        custom_css: 'Custom CSS'
       user:
         email: 'Email'
         full_name: 'Nom complet'
