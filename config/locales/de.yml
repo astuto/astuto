@@ -144,6 +144,7 @@ de:
       roadmap: 'Übersicht'
       users: 'Benutzer'
       authentication: 'Authentifizierung'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
       error: 'Ein Fehler ist aufgetreten: %{message}'
@@ -178,6 +179,9 @@ de:
       title2: 'Nicht in der Roadmap'
       empty: 'Die Roadmap ist leer.'
       help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Benutzer'
       block: 'Sperren'
@@ -195,6 +199,7 @@ de:
       status_deleted: 'Gelöscht'
     authentication:
       title: 'Authentifizierung'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth-Anbieter'
       default_oauth: 'Default OAuth provider'
       copy_url: 'URL in Zwischenablage kopieren'
