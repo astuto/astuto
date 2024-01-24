@@ -152,6 +152,7 @@ ru:
       roadmap: 'Дорожная Карта'
       users: 'Пользователи'
       authentication: 'Аутентификация'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Все изменения сохранены'
       error: 'Произошла ошибка: %{message}'
@@ -186,6 +187,9 @@ ru:
       title2: 'Не в дорожной карте'
       empty: 'Дорожная карта пуста.'
       help: 'Вы можете добавить статусы к дорожной карте, перетаскивая их из раздела ниже. Если вы хотите создать новый статус или изменить его порядок, перейдите в Настройки сайта > Статусы.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Пользователи'
       block: 'Блокировка'
@@ -203,6 +207,7 @@ ru:
       status_deleted: 'Удаленный'
     authentication:
       title: 'Аутентификация'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Поставщики OAuth'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Копировать ссылку'
