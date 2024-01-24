@@ -121,6 +121,7 @@ de:
         root_board_id: 'Root-Page'
         show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
         collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
+        custom_css: 'Custom CSS'
       user:
         email: 'E-Mail'
         full_name: 'Voller Name'
