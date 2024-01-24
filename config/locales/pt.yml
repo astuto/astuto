@@ -144,6 +144,7 @@ pt:
       roadmap: 'Rotas'
       users: 'Usuária(e/o)s'
       authentication: 'Autenticação'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Todas as alterações foram salvas'
       error: 'Ocorreu um erro: %{message}'
@@ -178,6 +179,9 @@ pt:
       title2: 'Não está no mapa'
       empty: 'O mapa está vazio.'
       help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Usuários'
       block: 'Bloquear'
@@ -195,6 +199,7 @@ pt:
       status_deleted: 'Excluída(e/o)'
     authentication:
       title: 'Autenticação'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Provedores de identidade OAuth'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copiar URL'
