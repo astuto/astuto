@@ -29,7 +29,7 @@
 
     box-sizing: border-box;
     flex: 0 0 28%;
-    background-color: $astuto-light-grey;
+    background-color: var(--astuto-grey-light);
     overflow: hidden;
     height: 150px;
 
@@ -47,7 +47,9 @@
       padding: 8px 4px;
       text-transform: uppercase;
 
-      .titleText { @extend .align-self-center; }
+      .titleText {
+        @extend .align-self-center;
+      }
     }
   }
 }

@@ -3,11 +3,11 @@ import I18n from 'i18n-js';
 
 import { IOAuth } from '../../../interfaces/IOAuth';
 import Switch from '../../common/Switch';
-import Separator from '../../common/Separator';
 import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import CopyToClipboardButton from '../../common/CopyToClipboardButton';
 import ActionLink from '../../common/ActionLink';
 import { DeleteIcon, EditIcon, TestIcon } from '../../common/Icons';
+import { MutedText } from '../../common/CustomTexts';
 
 interface Props {
   oAuth: IOAuth;
@@ -30,52 +30,60 @@ const OAuthProviderItem = ({
 
       <div className="oAuthNameAndEnabled">
         <span className="oAuthName">{oAuth.name}</span>
-        <div className="oAuthIsEnabled">
-          <Switch
-            label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
-            onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
-            checked={oAuth.isEnabled}
-            htmlId={`oAuth${oAuth.name}EnabledSwitch`}
-          />
-        </div>
+        {
+          oAuth.tenantId ?
+            <div className="oAuthIsEnabled">
+              <Switch
+                label={I18n.t(`common.${oAuth.isEnabled ? 'enabled' : 'disabled'}`)}
+                onClick={() => handleToggleEnabledOAuth(oAuth.id, !oAuth.isEnabled)}
+                checked={oAuth.isEnabled}
+                htmlId={`oAuth${oAuth.name}EnabledSwitch`}
+              />
+            </div>
+            :
+            <div><MutedText>{I18n.t('site_settings.authentication.default_oauth')}</MutedText></div>
+        }
       </div>
     </div>
 
-    <div className="oAuthActions">
-      <CopyToClipboardButton
-        label={I18n.t('site_settings.authentication.copy_url')}
-        textToCopy={oAuth.callbackUrl}
-      />
-      
-      <ActionLink
-        onClick={() =>
-          window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
-        }
-        icon={<TestIcon />}
-        customClass='testAction'
-      >
-        {I18n.t('common.buttons.test')}
-      </ActionLink>
-      
-      <ActionLink
-        onClick={() => {
-          setSelectedOAuth(oAuth.id);
-          setPage('edit');
-        }}
-        icon={<EditIcon />}
-        customClass='editAction'
-      >
-        {I18n.t('common.buttons.edit')}
-      </ActionLink>
-      
-      <ActionLink
-        onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
-        icon={<DeleteIcon />}
-        customClass='deleteAction'
-      >
-        {I18n.t('common.buttons.delete')}
-      </ActionLink>
-    </div>
+    {
+      oAuth.tenantId &&
+      <div className="oAuthActions">
+        <CopyToClipboardButton
+          label={I18n.t('site_settings.authentication.copy_url')}
+          textToCopy={oAuth.callbackUrl}
+        />
+        
+        <ActionLink
+          onClick={() =>
+            window.open(`/o_auths/${oAuth.id}/start?reason=test`, '', 'width=640, height=640')
+          }
+          icon={<TestIcon />}
+          customClass='testAction'
+        >
+          {I18n.t('common.buttons.test')}
+        </ActionLink>
+        
+        <ActionLink
+          onClick={() => {
+            setSelectedOAuth(oAuth.id);
+            setPage('edit');
+          }}
+          icon={<EditIcon />}
+          customClass='editAction'
+        >
+          {I18n.t('common.buttons.edit')}
+        </ActionLink>
+        
+        <ActionLink
+          onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteOAuth(oAuth.id)}
+          icon={<DeleteIcon />}
+          customClass='deleteAction'
+        >
+          {I18n.t('common.buttons.delete')}
+        </ActionLink>
+      </div>
+    }
   </li>
 );
 

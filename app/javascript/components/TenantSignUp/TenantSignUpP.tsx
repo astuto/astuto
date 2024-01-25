@@ -5,8 +5,14 @@ import ConfirmSignUpPage from './ConfirmSignUpPage';
 
 import TenantSignUpForm from './TenantSignUpForm';
 import UserSignUpForm from './UserSignUpForm';
+import { IOAuth } from '../../interfaces/IOAuth';
 
 interface Props {
+  oAuthLoginCompleted: boolean;
+  oauthUserEmail?: string;
+  oauthUserName?: string;
+  oAuths: Array<IOAuth>;
+
   isSubmitting: boolean;
   error: string;
 
@@ -16,9 +22,11 @@ interface Props {
     userPassword: string,
     siteName: string,
     subdomain: string,
+    isOAuthLogin: boolean,
     authenticityToken: string,
   ): Promise<any>;
 
+  baseUrl: string;
   authenticityToken: string;
 }
 
@@ -35,9 +43,14 @@ export interface ITenantSignUpTenantForm {
 }
 
 const TenantSignUpP = ({
+  oAuths,
+  oAuthLoginCompleted,
+  oauthUserEmail,
+  oauthUserName,
   isSubmitting,
   error,
   handleSubmit,
+  baseUrl,
   authenticityToken
 }: Props) => {
   const [userData, setUserData] = useState({
@@ -52,19 +65,27 @@ const TenantSignUpP = ({
     subdomain: '',
   });
 
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(oAuthLoginCompleted ? 2 : 1);
+
   const [emailAuth, setEmailAuth] = useState(false);
 
   const handleSignUpSubmit = (siteName: string, subdomain: string) => {
     handleSubmit(
-      userData.fullName,
-      userData.email,
+      oAuthLoginCompleted ? oauthUserName : userData.fullName,
+      oAuthLoginCompleted ? oauthUserEmail : userData.email,
       userData.password,
       siteName,
       subdomain,
+      oAuthLoginCompleted,
       authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.Created) return;
+      if (oAuthLoginCompleted) {
+        let redirectUrl = new URL(baseUrl);
+        redirectUrl.hostname = `${subdomain}.${redirectUrl.hostname}`;
+        window.location.href = `${redirectUrl.toString()}users/sign_in`;
+        return;
+      }
 
       setTenantData({ siteName, subdomain });
       setCurrentStep(currentStep + 1);
@@ -80,6 +101,10 @@ const TenantSignUpP = ({
             setCurrentStep={setCurrentStep}
             emailAuth={emailAuth}
             setEmailAuth={setEmailAuth}
+            oAuths={oAuths}
+            oAuthLoginCompleted={oAuthLoginCompleted}
+            oauthUserEmail={oauthUserEmail}
+            oauthUserName={oauthUserName}
             userData={userData}
             setUserData={setUserData}
           />

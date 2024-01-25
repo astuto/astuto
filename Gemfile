@@ -5,11 +5,11 @@ ruby '3.0.6'
 
 gem 'rake', '12.3.3'
 
-gem 'rails', '6.1.7.3'
+gem 'rails', '6.1.7.5'
 
 gem 'pg', '1.3.5'
 
-gem 'puma', '4.3.12'
+gem 'puma', '5.6.8'
 
 gem 'turbolinks', '5.2.1'
 
@@ -59,7 +59,7 @@ group :test do
   gem 'capybara', '3.36.0'
   gem 'selenium-webdriver', '4.1.0'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers', '5.0.0'
+  gem 'webdrivers', '5.3.1'
 end
 
 # If not bundled, webpack compilation in production fails

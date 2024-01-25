@@ -1,17 +1,17 @@
 fr:
   errors:
-    unknown: 'An unknown error occurred'
+    unknown: 'L''opération a échoué pour une raison inconnue'
     unauthorized: 'Vous n’êtes pas autorisé'
     not_logged_in: 'Vous devez être connecté pour accéder à cette page'
     not_enough_privileges: 'Vous n''avez pas les privilèges pour accéder à cette page'
     user_blocked_or_deleted: 'Vous ne pouvez pas accéder à votre compte parce qu''il a été bloqué ou supprimé.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    o_auth_login_error: 'Une erreur s''est produite lors de la connexion avec %{name}. Veuillez contacter l''administrateur du site ou essayer un autre fournisseur.'
     board:
       update_order: 'Il y a eu une erreur dans la réorganisation des panneaux'
     post_status:
       update_order: 'Il y a eu une erreur dans la réorganisation des statuts'
   defaults:
-    user_full_name: 'Anonymous User'
+    user_full_name: 'Utilisateur anonyme'
   mailers:
     devise:
       welcome_greeting: 'Bienvenue sur %{site_name}, %{email} !'
@@ -47,6 +47,28 @@ fr:
         subject: '[%{app_name}] Changement de statut sur la publication %{post}'
         body: "La publication que vous suivez %{post} a un nouveau statut"
   activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Tableaux'
+      comment:
+        one: 'Comment'
+        other: 'Commentaires'
+      like:
+        one: 'Vote'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuth'
+      post_status:
+        one: 'Status'
+        other: 'Statuts'
+      post:
+        one: 'Post'
+        other: 'Publications'
+      user:
+        one: 'User'
+        other: 'Utilisateurs'
     attributes:
       board:
         name: 'Nom'
@@ -67,9 +89,9 @@ fr:
       o_auth:
         name: 'Nom'
         logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
+        is_enabled: 'Activé'
+        client_id: 'ID client'
+        client_secret: 'Secret client'
         authorize_url: 'Authorize URL'
         token_url: 'Token URL'
         profile_url: 'Profile URL'
@@ -92,7 +114,13 @@ fr:
         site_logo: 'Logo du site'
         subdomain: 'Sous-domaine'
         locale: 'Langue'
-        brand_setting: 'Afficher'
+      tenant_setting:
+        brand_display: 'Display'
+        show_vote_count: 'Show vote count to users'
+        show_vote_button_in_board: 'Show vote buttons in board page'
+        root_board_id: 'Root page'
+        show_roadmap_in_header: 'Show roadmap link in header'
+        collapse_boards_in_header: 'Collapse boards in header'
       user:
         email: 'Email'
         full_name: 'Nom complet'
@@ -107,4 +135,4 @@ fr:
         blank: 'ne peut pas être vide'
         taken: 'est déjà utilisé'
         too_short: 'est trop court (au moins %{count} caractères)'
-        too_long: 'is too long (maximum %{count} characters)'
+        too_long: 'est trop long (pas plus de %{count} caractères)'

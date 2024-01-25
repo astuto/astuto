@@ -48,7 +48,7 @@ export const requestPosts = (
   boardId: number,
   page: number,
   searchQuery: string,
-  postStatusId: number,
+  postStatusIds: Array<number>,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(postsRequestStart());
 
@@ -57,7 +57,14 @@ export const requestPosts = (
     params += `page=${page}`;
     params += `&board_id=${boardId}`;
     if (searchQuery) params += `&search=${searchQuery}`;
-    if (postStatusId) params += `&post_status_id=${postStatusId}`;
+    if (postStatusIds) {
+      params += '&';
+
+      for (let i = 0; i < postStatusIds.length; i++) {
+        params += `post_status_ids[]=${postStatusIds[i]}`;
+        if (i !== postStatusIds.length-1) params += '&';
+      }
+    }
 
     const response = await fetch(`/posts?${params}`);
     const json = await response.json();

@@ -25,7 +25,7 @@ interface Props {
     boardId: number,
     page?: number,
     searchQuery?: string,
-    postStatusId?: number,
+    postStatusIds?: Array<number>,
   ): void;
   requestPostStatuses(): void;
   handleSearchFilterChange(searchQuery: string): void;
@@ -44,21 +44,21 @@ class BoardP extends React.Component<Props> {
     const { searchQuery } = this.props.posts.filters;
     const prevSearchQuery = prevProps.posts.filters.searchQuery;
 
-    const { postStatusId } = this.props.posts.filters;
-    const prevPostStatusId = prevProps.posts.filters.postStatusId;
+    const { postStatusIds } = this.props.posts.filters;
+    const prevPostStatusIds = prevProps.posts.filters.postStatusIds;
 
     // search filter changed
     if (searchQuery !== prevSearchQuery) {
       if (this.searchFilterTimeoutId) clearInterval(this.searchFilterTimeoutId);
 
       this.searchFilterTimeoutId = setTimeout(() => (
-        this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusId)
+        this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds)
       ), 500);
     }
 
     // post status filter changed
-    if (postStatusId !== prevPostStatusId) {
-      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusId);
+    if (postStatusIds.length !== prevPostStatusIds.length) {
+      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds);
     }
   }
 
@@ -95,7 +95,7 @@ class BoardP extends React.Component<Props> {
             areLoading={postStatuses.areLoading}
             error={postStatuses.error}
 
-            currentFilter={filters.postStatusId}
+            currentFilter={filters.postStatusIds}
             handleFilterClick={handlePostStatusFilterChange}
           />
         </Sidebar>
@@ -113,7 +113,7 @@ class BoardP extends React.Component<Props> {
             posts.areLoading ?
               null
             :
-              requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
+              requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusIds)
           }
 
           isLoggedIn={isLoggedIn}

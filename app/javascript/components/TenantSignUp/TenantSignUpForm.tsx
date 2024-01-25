@@ -47,9 +47,13 @@ const TenantSignUpForm = ({
             <input
               {...register('subdomain', {
                 required: true,
-                validate: async (newSubdomain) => {
-                  const res = await fetch(`/is_available?new_subdomain=${newSubdomain}`);
-                  return res.status === HttpStatus.OK;
+                pattern: /^[a-zA-Z0-9-]+$/,
+                validate: {
+                  noSpaces: (value) => !/\s/.test(value),
+                  notAlreadyTaken: async (newSubdomain) => {
+                    const res = await fetch(`/is_available?new_subdomain=${newSubdomain}`);
+                    return res.status === HttpStatus.OK;
+                  },
                 },
               })}
               placeholder={getLabel('tenant', 'subdomain')}
@@ -64,7 +68,10 @@ const TenantSignUpForm = ({
             {errors.subdomain?.type === 'required' && getValidationMessage('required', 'tenant', 'subdomain')}
           </DangerText>
           <DangerText>
-            {errors.subdomain?.type === 'validate' && I18n.t('signup.step2.validations.subdomain_already_taken')}
+            {errors.subdomain?.type === 'pattern' && I18n.t('signup.step2.validations.subdomain_only_letters_and_numbers')}
+          </DangerText>
+          <DangerText>
+            {errors.subdomain?.type === 'notAlreadyTaken' && I18n.t('signup.step2.validations.subdomain_already_taken')}
           </DangerText>
         </div>
 

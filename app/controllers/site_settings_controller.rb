@@ -2,12 +2,15 @@ class SiteSettingsController < ApplicationController
   include ApplicationHelper
 
   before_action :authenticate_admin,
-    only: [:general, :boards, :post_statuses, :roadmap, :authentication]
+    only: [:general, :authentication, :boards, :post_statuses, :roadmap, :appearance]
 
   before_action :authenticate_moderator,
     only: [:users]
   
   def general
+  end
+
+  def authentication
   end
 
   def boards
@@ -19,9 +22,9 @@ class SiteSettingsController < ApplicationController
   def roadmap
   end
 
-  def users
+  def appearance
   end
 
-  def authentication
+  def users
   end
 end

@@ -17,8 +17,8 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  requestPosts(boardId: number, page: number = 1, searchQuery: string = '', postStatusId: number = null) {
-    dispatch(requestPosts(boardId, page, searchQuery, postStatusId));
+  requestPosts(boardId: number, page: number = 1, searchQuery: string = '', postStatusIds: Array<number> = null) {
+    dispatch(requestPosts(boardId, page, searchQuery, postStatusIds));
   },
 
   requestPostStatuses() {

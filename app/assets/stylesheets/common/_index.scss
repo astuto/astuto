@@ -1,23 +1,55 @@
+::selection {
+  background-color: var(--primary-color-light);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.btnPrimary {
+  @extend .btn;
+
+  color: white;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color-dark);
+
+  &:hover { color: white; }
+  &:focus { box-shadow: 0 0 0 0.25rem var(--primary-color-light); }
+}
+
+.btnOutlinePrimary {
+  @extend .btn;
+
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+
+  &:hover {
+    color: white;
+    background-color: var(--primary-color);
+  }
+
+  &:focus { box-shadow: 0 0 0 0.25rem var(--primary-color-light); }
+}
+
 .card {
   @extend .card;
 
-  box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 1px 1px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04),0 2px 4px -1px rgba(0, 0, 0, 0.03);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
-  color: $primary-color;
+  color: var(--astuto-black);
 
   padding: 8px;
 }
 
 .card3D {
-  @extend
-    .card;
+  @extend .card;
 
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   &:hover {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08),0 4px 6px -2px rgba(0, 0, 0, 0.04);
   }
 }
 
@@ -90,17 +122,17 @@
     .align-self-stretch;
 
   a {
-    color: $astuto-grey;
+    color: var(--astuto-grey);
     font-weight: 500;
 
     &:hover {
-      color: $astuto-black;
+      color: var(--primary-color);
     }
   }
 
   .nav-link.active {
-    color: $astuto-black;
-    background-color: $astuto-light-grey;
+    color: var(--primary-color);
+    background-color: var(--astuto-grey-light);
   }
 }
 
@@ -135,7 +167,7 @@
 .badgeLight {
   @extend .badge-light;
 
-  background-color: $astuto-light-grey;
+  background-color: var(--astuto-grey-light);
 }
 
 .container {
@@ -148,7 +180,7 @@
 }
 
 .turbolinks-progress-bar {
-  background-color: $primary-color;
+  background-color: var(--primary-color);
   height: 2px;
 }
 
@@ -163,6 +195,14 @@
 
   & > input[type="checkbox"] {
     @extend .custom-control-input;
+
+    &:focus ~ label::before {
+      box-shadow: 0 0 0 0.25rem var(--primary-color-light);
+    }
+
+    &:active ~ label::before {
+      background-color: var(--primary-color);
+    }
   }
 
   & > label {
@@ -174,14 +214,23 @@
   }
 
   & > input:checked ~ label::before {
-    background-color: $primary-color !important;
-    border-color: $primary-color !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color-dark) !important;
+  }
+
+  & > input:focus ~ label::before {
+    border-color: var(--primary-color-dark) !important;
   }
 }
 
 .selectPicker {
   @extend
     .custom-select;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem var(--primary-color-light);
+    border-color: var(--primary-color-dark);
+  }
 }
 
 .link {
@@ -190,13 +239,16 @@
 }
 
 .actionLink {
-  color: $astuto-black;
+  color: var(--astuto-black);
   display: flex;
   cursor: pointer;
   align-self: center;
   margin-right: 12px;
   
-  &:hover { text-decoration: underline !important; }
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline !important;
+  }
 
   svg {
     margin-right: 4px;
@@ -204,9 +256,24 @@
   }
 
   &.actionLinkDisabled {
-    color: $astuto-grey !important;
+    color: var(--astuto-grey) !important;
   
     text-decoration: none !important;
     cursor: not-allowed;
+  }
+}
+
+.oauthProviderBtn {
+  @extend
+    .btn,
+    .btn-block,
+    .btn-outline-dark,
+    .mt-2,
+    .mb-2;
+
+  .oauthProviderText {
+    @extend .ml-2;
+    
+    vertical-align: middle;
   }
 }

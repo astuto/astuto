@@ -125,7 +125,7 @@
       @extend
         .my-4;
 
-      color: $primary-color;
+      color: var(--astuto-black);
 
       p:last-child {
         @extend .mb-0;

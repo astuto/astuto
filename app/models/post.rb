@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_status_changes, dependent: :destroy
 
-  validates :title, presence: true, length: { in: 4..64 }
+  validates :title, presence: true, length: { in: 4..128 }
 
   paginates_per Rails.application.posts_per_page
 
