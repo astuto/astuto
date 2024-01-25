@@ -6,12 +6,12 @@ import {
 
 export interface FiltersState {
   searchQuery: string;
-  postStatusId: number;
+  postStatusIds: Array<number>;
 }
 
 const initialState: FiltersState = {
   searchQuery: '',
-  postStatusId: null,
+  postStatusIds: [],
 }
 
 const filtersReducer = (
@@ -28,7 +28,9 @@ const filtersReducer = (
     case SET_POST_STATUS_FILTER:
       return {
         ...state,
-        postStatusId: action.postStatusId,
+        postStatusIds: state.postStatusIds.includes(action.postStatusId)
+          ? state.postStatusIds.filter(id => id !== action.postStatusId)
+          : [...state.postStatusIds, action.postStatusId],
       };
 
     default:
