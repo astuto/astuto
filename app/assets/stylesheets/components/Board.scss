@@ -48,13 +48,17 @@
     height: 40px;
 
     &:hover {
-      filter: brightness(90%);
+      filter: brightness(85%);
       cursor: pointer;
     }
 
     span.badge {
       display: block; font-size: 15px;
     }
+  }
+
+  .postStatusListItemSelected {
+    filter: brightness(85%);
   }
 
   .resetFilter {
@@ -67,6 +71,7 @@
 
     width: 30px;
     height: 30px;
+    font-weight: bold;
   }
 
   .postList {

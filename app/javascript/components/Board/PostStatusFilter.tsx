@@ -14,7 +14,7 @@ interface Props {
   error: string;
   
   handleFilterClick(postStatusId: number): void;
-  currentFilter: number;
+  currentFilter: Array<number>;
 }
 
 const PostStatusFilter = ({
@@ -33,13 +33,19 @@ const PostStatusFilter = ({
           color={postStatus.color}
 
           handleClick={() => handleFilterClick(postStatus.id)}
-          isCurrentFilter={postStatus.id === currentFilter}
-          handleResetFilter={() => handleFilterClick(0)}
+          isCurrentFilter={currentFilter.includes(postStatus.id)}
 
           key={i}
         />
       ))
     }
+    <PostStatusListItem
+      name={I18n.t('common.no_status')}
+      color='black'
+
+      handleClick={() => handleFilterClick(0)}
+      isCurrentFilter={currentFilter.includes(0)}
+    />
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
   </SidebarBox>
