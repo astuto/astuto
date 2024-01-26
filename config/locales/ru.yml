@@ -114,6 +114,12 @@ ru:
       title: 'Поиск'
     filter_box:
       title: 'Фильтр по статусу'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Нет публикаций'
   post:
