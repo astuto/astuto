@@ -106,6 +106,12 @@ pt:
       title: 'Procurar'
     filter_box:
       title: 'Filtrar por estado atual'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Não existem postagens ainda'
   post:
