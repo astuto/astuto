@@ -62,6 +62,8 @@ class PostsController < ApplicationController
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
     @board = @post.board
 
+    @page_title = @post.title.length > 60 ? @post.title.slice(0, 60) + "..." : @post.title
+
     respond_to do |format|
       format.html
 
