@@ -102,6 +102,12 @@ ja:
       title: 'Search'
     filter_box:
       title: 'Filter by status'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'There are no posts'
   post:
