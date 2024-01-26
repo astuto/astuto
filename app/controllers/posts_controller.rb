@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       .group('posts.id')
       .where(board_id: params[:board_id] || Board.first.id)
       .search_by_name_or_description(params[:search])
-      .order('hotness DESC')
+      .order_by(params[:sort_by])
       .page(params[:page])
 
       # apply post status filter if present
