@@ -106,6 +106,12 @@ de:
       title: 'Suchen'
     filter_box:
       title: 'Nach Status filtern'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:
