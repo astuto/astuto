@@ -4,6 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 import IPostJSON from '../../interfaces/json/IPost';
 
 import { State } from '../../reducers/rootReducer';
+import { SortByFilterValues } from '../changeFilters';
 
 export const POSTS_REQUEST_START = 'POSTS_REQUEST_START';
 interface PostsRequestStartAction {
@@ -49,6 +50,7 @@ export const requestPosts = (
   page: number,
   searchQuery: string,
   postStatusIds: Array<number>,
+  sortBy: SortByFilterValues,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(postsRequestStart());
 
@@ -65,6 +67,7 @@ export const requestPosts = (
         if (i !== postStatusIds.length-1) params += '&';
       }
     }
+    if (sortBy) params += `&sort_by=${sortBy}`;
 
     const response = await fetch(`/posts?${params}`);
     const json = await response.json();

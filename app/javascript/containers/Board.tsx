@@ -5,6 +5,8 @@ import { requestPostStatuses } from '../actions/PostStatus/requestPostStatuses';
 import {
   setSearchFilter,
   setPostStatusFilter,
+  SortByFilterValues,
+  setSortByFilter,
 } from '../actions/changeFilters';
 
 import { State } from '../reducers/rootReducer';
@@ -17,8 +19,14 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  requestPosts(boardId: number, page: number = 1, searchQuery: string = '', postStatusIds: Array<number> = null) {
-    dispatch(requestPosts(boardId, page, searchQuery, postStatusIds));
+  requestPosts(
+    boardId: number,
+    page: number = 1,
+    searchQuery: string = '',
+    postStatusIds: Array<number> = null,
+    sortBy: SortByFilterValues = null,
+  ) {
+    dispatch(requestPosts(boardId, page, searchQuery, postStatusIds, sortBy));
   },
 
   requestPostStatuses() {
@@ -32,6 +40,10 @@ const mapDispatchToProps = (dispatch: any) => ({
   handlePostStatusFilterChange(postStatusId: number) {
     dispatch(setPostStatusFilter(postStatusId));
   },
+
+  handleSortByFilterChange(sortBy: SortByFilterValues) {
+    dispatch(setSortByFilter(sortBy));
+  }
 });
 
 export default connect(

@@ -25,5 +25,20 @@ class Post < ApplicationRecord
       s = sanitize_sql_like(s)
       where("posts.title ILIKE ? OR posts.description ILIKE ?", "%#{s}%", "%#{s}%")
     end
+
+    def order_by(sort_by)
+      case sort_by
+      when 'newest'
+        order(created_at: :desc)
+      when 'trending'
+        order(hotness: :desc)
+      when 'most_voted'
+        order(likes_count: :desc)
+      when 'oldest'
+        order(created_at: :asc)
+      else
+        order(created_at: :desc)
+      end
+    end
   end
 end
