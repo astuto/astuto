@@ -5,14 +5,17 @@ class StaticPagesController < ApplicationController
     @board = Board.find_by(id: Current.tenant.tenant_setting.root_board_id)
 
     if @board
+      @page_title = @board.name
       render 'boards/show'
     else
+      @page_title = t('roadmap.title')
       get_roadmap_data
       render 'static_pages/roadmap'
     end
   end
 
   def roadmap
+    @page_title = t('roadmap.title')
     get_roadmap_data
   end
 

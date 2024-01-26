@@ -6,6 +6,8 @@ class SiteSettingsController < ApplicationController
 
   before_action :authenticate_moderator,
     only: [:users]
+
+  before_action :set_page_title
   
   def general
   end
@@ -27,4 +29,10 @@ class SiteSettingsController < ApplicationController
 
   def users
   end
+
+  private
+
+    def set_page_title
+      @page_title = t('header.menu.site_settings')
+    end
 end

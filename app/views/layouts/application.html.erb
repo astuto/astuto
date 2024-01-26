@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @tenant ? @tenant.site_name : @page_title %></title>
+    <title><%= render 'layouts/page_title' %></title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
