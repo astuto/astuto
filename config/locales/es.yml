@@ -106,6 +106,12 @@ es:
       title: 'Buscar'
     filter_box:
       title: 'Filtrar por estado'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Aún no hay publicaciones'
   post:
