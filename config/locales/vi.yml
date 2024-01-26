@@ -102,6 +102,12 @@ vi:
       title: 'Tim kiếm'
     filter_box:
       title: 'Lọc theo trạng thái'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Không có phản hồi nào'
   post:
