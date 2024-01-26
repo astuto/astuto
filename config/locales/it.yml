@@ -106,6 +106,12 @@ it:
       title: 'Cerca'
     filter_box:
       title: 'Filtra per stato'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Non ci sono post'
   post:
