@@ -69,13 +69,13 @@ fr:
     page_title: 'Créez votre espace de feedback'
     step1:
       title: '1. Créer un compte utilisateur'
-      email_auth: 'Sign up with email'
+      email_auth: 'S''inscrire par e-mail'
     step2:
       title: '2. Créer un espace de feedback'
       create_button: 'Créer un espace de feedback'
       validations:
         subdomain_already_taken: 'Désolé, ce sous-domaine n''est pas disponible'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
+        subdomain_only_letters_and_numbers: 'Le sous-domaine ne peut contenir que des caractères alphanumériques et des traits d''union'
     step3:
       title: "Vous avez presque terminé !"
       message: "Vérifiez votre e-mail %{email} pour activer votre nouvel espace de feedback %{subdomain}!"
@@ -107,11 +107,11 @@ fr:
     filter_box:
       title: 'Filtrer par statut'
     sort_by_box:
-      title: 'Sort by'
-      trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      title: 'Trier par'
+      trending: 'Populaire'
+      newest: 'Plus récent'
+      most_voted: 'Les plus votés'
+      oldest: 'Plus anciens'
     posts_list:
       empty: 'Il n''y a pas de publications'
   post:
@@ -150,7 +150,7 @@ fr:
       roadmap: 'Feuille de route'
       users: 'Utilisateur·rice·s'
       authentication: 'Authentification'
-      appearance: 'Appearance'
+      appearance: 'Apparence'
     info_box:
       up_to_date: 'Toutes les modifications ont été enregistrées'
       error: 'Une erreur s''est produite : %{message}'
@@ -186,8 +186,8 @@ fr:
       empty: 'La feuille de route est vide.'
       help: 'Vous pouvez ajouter des statuts à la feuille de route en les faisant glisser depuis la section ci-dessous. Si vous voulez plutôt créer un nouveau statut ou modifier leur commande, allez dans Paramètres du site > Statuts.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
+      title: 'Apparence'
+      learn_more: 'Apprendre à personnaliser l''apparence'
     users:
       title: 'Utilisateur·rice·s'
       block: 'Bloquer'
@@ -205,9 +205,9 @@ fr:
       status_deleted: 'Supprimé'
     authentication:
       title: 'Authentification'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Apprendre à configurer les fournisseurs OAuth customisés'
       oauth_subtitle: 'Fournisseurs OAuth'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Fournisseur OAuth par défaut'
       copy_url: 'Copier l''URL'
       test_page:
         title: 'Résultats du test du fournisseur OAuth %{name}'
