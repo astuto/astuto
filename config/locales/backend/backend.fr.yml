@@ -49,10 +49,10 @@ fr:
   activerecord:
     models:
       board:
-        one: 'Board'
+        one: 'Panneau'
         other: 'Tableaux'
       comment:
-        one: 'Comment'
+        one: 'Commentaire'
         other: 'Commentaires'
       like:
         one: 'Vote'
@@ -64,10 +64,10 @@ fr:
         one: 'Status'
         other: 'Statuts'
       post:
-        one: 'Post'
+        one: 'Poster'
         other: 'Publications'
       user:
-        one: 'User'
+        one: 'Utilisateur'
         other: 'Utilisateurs'
     attributes:
       board:
