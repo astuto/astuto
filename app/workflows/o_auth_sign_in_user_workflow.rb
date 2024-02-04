@@ -52,7 +52,7 @@ class OAuthSignInUserWorkflow
 
       return user
     rescue => error
-      print(error)
+      logger.error { "Error in OAuthSignInUserWorkflow: #{error}, o_auth: #{@o_auth.inspect}" }
       return nil
     end
   end

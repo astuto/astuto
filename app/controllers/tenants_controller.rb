@@ -47,9 +47,13 @@ class TenantsController < ApplicationController
 
       CreateWelcomeEntitiesWorkflow.new().run
 
+      logger.info { "New tenant registration: #{Current.tenant.inspect}" }
+
       render json: @tenant, status: :created
 
     rescue ActiveRecord::RecordInvalid => exception
+      logger.error { "Error in tenant registration: #{exception}" }
+
       render json: { error: exception }, status: :unprocessable_entity
     end
   end
