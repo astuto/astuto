@@ -58,6 +58,8 @@ class ApplicationController < ActionController::Base
   private
 
     def user_not_authorized
+      logger.error { "User not authorized: #{user_signed_in? ? current_user.inspect : 'unlogged user'}" }
+
       render json: {
         error: t('errors.unauthorized')
       }, status: :unauthorized
