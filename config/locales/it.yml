@@ -69,12 +69,13 @@ it:
     page_title: 'Crea il tuo spazio di feedback'
     step1:
       title: '1. Crea account utente'
-      email_auth: 'Registrati con indirizzo email'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Crea spazio di feedback'
       create_button: 'Crea spazio feedback'
       validations:
         subdomain_already_taken: 'Siamo spiacenti, questo sottodominio non è disponibile'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Hai quasi finito!"
       message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
@@ -105,6 +106,12 @@ it:
       title: 'Cerca'
     filter_box:
       title: 'Filtra per stato'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Non ci sono post'
   post:
@@ -143,6 +150,7 @@ it:
       roadmap: 'Roadmap'
       users: 'Utenti'
       authentication: 'Autenticazione'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
@@ -177,6 +185,9 @@ it:
       title2: 'Non in roadmap'
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Utenti'
       block: 'Blocca'
@@ -194,7 +205,9 @@ it:
       status_deleted: 'Eliminato'
     authentication:
       title: 'Autenticazione'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Provider OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copia URL'
       test_page:
         title: 'Risultati test %{name} OAuth'

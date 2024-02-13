@@ -69,12 +69,13 @@ pt:
     page_title: 'Crie seu espaço de comentário'
     step1:
       title: 'Criar conta de usuário'
-      email_auth: 'Cadastrar com e-mail'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Criar espaço de feedback'
       create_button: 'Criar espaço de feedback'
       validations:
         subdomain_already_taken: 'Desculpe, este subdomínio não é válido'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Você está quase lá!"
       message: "Verifique o seu e-mail %{email} para ativar o seu novo espaço de feedback %{subdomain}!"
@@ -105,6 +106,12 @@ pt:
       title: 'Procurar'
     filter_box:
       title: 'Filtrar por estado atual'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Não existem postagens ainda'
   post:
@@ -143,6 +150,7 @@ pt:
       roadmap: 'Rotas'
       users: 'Usuária(e/o)s'
       authentication: 'Autenticação'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Todas as alterações foram salvas'
       error: 'Ocorreu um erro: %{message}'
@@ -177,6 +185,9 @@ pt:
       title2: 'Não está no mapa'
       empty: 'O mapa está vazio.'
       help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Usuários'
       block: 'Bloquear'
@@ -194,7 +205,9 @@ pt:
       status_deleted: 'Excluída(e/o)'
     authentication:
       title: 'Autenticação'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Provedores de identidade OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copiar URL'
       test_page:
         title: '%{name} resultados do teste OAuth'

@@ -75,6 +75,7 @@ vi:
       create_button: 'Tạo không gian phản hồi'
       validations:
         subdomain_already_taken: 'Xin lỗi, tên miền này không khả dụng'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Bạn đã sẵn sàng để bắt đầu!"
       message: "Kiểm tra email %{email} để kích hoạt %{subdomain}!"
@@ -105,6 +106,12 @@ vi:
       title: 'Tim kiếm'
     filter_box:
       title: 'Lọc theo trạng thái'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Không có phản hồi nào'
   post:
@@ -143,6 +150,7 @@ vi:
       roadmap: 'Lộ trình'
       users: 'Người dùng'
       authentication: 'Xác thực'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Tất cả thay đổi đã được lưu'
       error: 'Đã xảy ra lỗi: %{message}'
@@ -177,6 +185,9 @@ vi:
       title2: 'Không có trong lộ trình'
       empty: 'Lộ trình rỗng.'
       help: 'Bạn có thể thêm trạng thái vào lộ trình bằng cách kéo chúng từ phần dưới. Nếu bạn muốn tạo trạng thái mới hoặc thay đổi thứ tự, hãy đến Cài đặt trang > Trạng thái.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Người dùng'
       block: 'Chặn'
@@ -194,7 +205,9 @@ vi:
       status_deleted: 'Đã xóa'
     authentication:
       title: 'Xác thực'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth Providers'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Sao chép URL'
       test_page:
         title: 'Kết quả kiểm tra OAuth %{name}'

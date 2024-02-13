@@ -135,6 +135,7 @@ ru:
         root_board_id: 'Главная страница'
         show_roadmap_in_header: 'Показать roadmap в заголовке'
         collapse_boards_in_header: 'Сворачивать доски в заголовке'
+        custom_css: 'Custom CSS'
       user:
         email: 'Электронная почта'
         full_name: 'Полное имя'

@@ -69,12 +69,13 @@ de:
     page_title: 'Deinen Feedback-Bereich erstellen'
     step1:
       title: '1. Benutzerkonto erstellen'
-      email_auth: 'Mit E-Mail registrieren'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Feedbackbereich erstellen'
       create_button: 'Feedbackbereich erstellen'
       validations:
         subdomain_already_taken: 'Diese Subdomain ist leider nicht verfügbar'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Fast fertig!"
       message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
@@ -105,6 +106,12 @@ de:
       title: 'Suchen'
     filter_box:
       title: 'Nach Status filtern'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:
@@ -143,6 +150,7 @@ de:
       roadmap: 'Übersicht'
       users: 'Benutzer'
       authentication: 'Authentifizierung'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
       error: 'Ein Fehler ist aufgetreten: %{message}'
@@ -177,6 +185,9 @@ de:
       title2: 'Nicht in der Roadmap'
       empty: 'Die Roadmap ist leer.'
       help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Benutzer'
       block: 'Sperren'
@@ -194,7 +205,9 @@ de:
       status_deleted: 'Gelöscht'
     authentication:
       title: 'Authentifizierung'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth-Anbieter'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'URL in Zwischenablage kopieren'
       test_page:
         title: '%{name} OAuth-Testergebnisse'

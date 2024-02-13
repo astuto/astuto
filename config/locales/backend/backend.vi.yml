@@ -121,6 +121,7 @@ vi:
         root_board_id: 'Trang gốc'
         show_roadmap_in_header: 'Hiển thị liên kết lộ trình trên tiêu đề'
         collapse_boards_in_header: 'Thu gọn các bảng trong tiêu đề'
+        custom_css: 'Custom CSS'
       user:
         email: 'Email'
         full_name: 'Họ và tên'

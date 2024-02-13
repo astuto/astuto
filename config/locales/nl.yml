@@ -69,12 +69,13 @@ nl:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Register with email'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
       validations:
         subdomain_already_taken: 'Sorry, this subdomain is not available'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "You're almost done!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
@@ -105,6 +106,12 @@ nl:
       title: 'Search'
     filter_box:
       title: 'Filter by status'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'There are no posts'
   post:
@@ -143,6 +150,7 @@ nl:
       roadmap: 'Roadmap'
       users: 'Users'
       authentication: 'Authentication'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -177,6 +185,9 @@ nl:
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Users'
       block: 'Block'
@@ -194,7 +205,9 @@ nl:
       status_deleted: 'Deleted'
     authentication:
       title: 'Authentication'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth providers'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
       test_page:
         title: '%{name} OAuth test results'

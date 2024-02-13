@@ -69,12 +69,13 @@ es:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Registrar con e-mail'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
       validations:
         subdomain_already_taken: 'Lo siento, este subdominio no está disponible'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "¡Casi hemos terminado!"
       message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
@@ -105,6 +106,12 @@ es:
       title: 'Buscar'
     filter_box:
       title: 'Filtrar por estado'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Aún no hay publicaciones'
   post:
@@ -143,6 +150,7 @@ es:
       roadmap: 'Hoja de ruta'
       users: 'Usuarios'
       authentication: 'Autenticación'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Se han guardado todos los cambios'
       error: 'Se ha producido un error: %{message}'
@@ -177,6 +185,9 @@ es:
       title2: 'No en la hoja de ruta'
       empty: 'La hoja de ruta está vacía.'
       help: 'Puedes agregar estados a la hoja de ruta arrastrándolos desde la sección de abajo. Si en cambio quieres crear un nuevo estado o cambiar su orden, ve a Configuración del sitio > Estados.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Usuarios'
       block: 'Bloquear'
@@ -184,7 +195,7 @@ es:
       block_confirmation: "%{name} no podrá iniciar sesión hasta que sea desbloqueado. ¿Estás seguro?"
       unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} tendrá los mismos privilegios que tú, por lo que incluso podrían degradarte o bloquearte. Procede solo si realmente confías en %{name}. ¿Estás seguro?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
       role_user: 'Usuario'
       role_moderator: 'Moderador'
       role_admin: 'Administrador'
@@ -194,7 +205,9 @@ es:
       status_deleted: 'Eliminado'
     authentication:
       title: 'Autenticación'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Proveedores OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Copiar URL'
       test_page:
         title: 'Resultados de la prueba OAuth de %{name}'

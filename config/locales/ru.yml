@@ -77,12 +77,13 @@ ru:
     page_title: 'Создайте область обратной связи'
     step1:
       title: '1. Создание учетной записи пользователя'
-      email_auth: 'Регистрация по электронной почте'
+      email_auth: 'Sign up with email'
     step2:
       title: '2. Создать область обратной связи'
       create_button: 'Создать область обратной связи'
       validations:
         subdomain_already_taken: 'Извините, этот поддомен недоступен'
+        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
     step3:
       title: "Вы почти закончили!"
       message: "Проверьте свою электронную почту %{email}, чтобы активировать новое пространство обратной связи %{subdomain}!"
@@ -113,6 +114,12 @@ ru:
       title: 'Поиск'
     filter_box:
       title: 'Фильтр по статусу'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
     posts_list:
       empty: 'Нет публикаций'
   post:
@@ -151,6 +158,7 @@ ru:
       roadmap: 'Дорожная Карта'
       users: 'Пользователи'
       authentication: 'Аутентификация'
+      appearance: 'Appearance'
     info_box:
       up_to_date: 'Все изменения сохранены'
       error: 'Произошла ошибка: %{message}'
@@ -185,6 +193,9 @@ ru:
       title2: 'Не в дорожной карте'
       empty: 'Дорожная карта пуста.'
       help: 'Вы можете добавить статусы к дорожной карте, перетаскивая их из раздела ниже. Если вы хотите создать новый статус или изменить его порядок, перейдите в Настройки сайта > Статусы.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
     users:
       title: 'Пользователи'
       block: 'Блокировка'
@@ -202,7 +213,9 @@ ru:
       status_deleted: 'Удаленный'
     authentication:
       title: 'Аутентификация'
+      learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'Поставщики OAuth'
+      default_oauth: 'Default OAuth provider'
       copy_url: 'Копировать ссылку'
       test_page:
         title: 'Результаты теста OAuth %{name}'
