@@ -69,7 +69,7 @@ de:
     page_title: 'Deinen Feedback-Bereich erstellen'
     step1:
       title: '1. Benutzerkonto erstellen'
-      email_auth: 'Sign up with email'
+      email_auth: 'Mit E-Mail registrieren'
     step2:
       title: '2. Feedbackbereich erstellen'
       create_button: 'Feedbackbereich erstellen'
