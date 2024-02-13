@@ -34,7 +34,7 @@ vi:
         change_password: 'Đổi mật khẩu'
         password_help: 'Ít nhất %{count} ký từ'
     comments_number:
-      other: '%{count} comments'
+      other: '%{count} bình luận'
     no_status: 'Không có trạng thái'
     loading: 'Đang tải...'
     confirmation: 'Bạn có chắc chắn?'
@@ -56,11 +56,11 @@ vi:
     datetime:
       now: 'Vừa xong'
       minutes:
-        other: '%{count} minutes ago'
+        other: '%{count} phút trước'
       hours:
-        other: '%{count} hours ago'
+        other: '%{count} giờ trước'
       days:
-        other: '%{count} days ago'
+        other: '%{count} ngày trước'
   signup:
     page_title: 'Tạo không gian phản hồi của bạn'
     step1:
