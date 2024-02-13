@@ -59,5 +59,4 @@ vi:
       not_found: "không tìm thấy"
       not_locked: "không bị khóa"
       not_saved:
-        one: "1 lỗi đã ngăn %{resource} này khỏi việc lưu:"
-        other: "%{count} lỗi đã ngăn %{resource} này khỏi việc lưu:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
