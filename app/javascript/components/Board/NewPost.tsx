@@ -168,7 +168,7 @@ class NewPost extends React.Component<Props, State> {
               }
             </Button>
           :
-            <a href="/users/sign_in" className="btn btn-dark">
+            <a href="/users/sign_in" className="btn btnPrimary">
               {I18n.t('board.new_post.login_button')}
             </a>
         }

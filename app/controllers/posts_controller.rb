@@ -16,10 +16,13 @@ class PostsController < ApplicationController
       .left_outer_joins(:likes)
       .left_outer_joins(:comments)
       .group('posts.id')
-      .where(filter_params)
+      .where(board_id: params[:board_id] || Board.first.id)
       .search_by_name_or_description(params[:search])
-      .order('hotness DESC')
+      .order_by(params[:sort_by])
       .page(params[:page])
+
+      # apply post status filter if present
+      posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
     
     render json: posts
   end
@@ -58,6 +61,8 @@ class PostsController < ApplicationController
     
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
     @board = @post.board
+
+    @page_title = @post.title.length > 60 ? @post.title.slice(0, 60) + "..." : @post.title
 
     respond_to do |format|
       format.html
@@ -107,15 +112,6 @@ class PostsController < ApplicationController
   end
 
   private
-  
-    def filter_params
-      defaults = Board.first ? { board_id: Board.first.id } : {}
-
-      params
-        .permit(:board_id, :post_status_id, :page, :search)
-        .with_defaults(defaults)
-        .except(:page, :search)
-    end
     
     def post_create_params
       params

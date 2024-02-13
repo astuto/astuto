@@ -3,9 +3,6 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
-# Set up default environment variables
-ENV["EMAIL_CONFIRMATION"] = "no"
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # For Devise
@@ -39,6 +36,11 @@ Rails.application.configure do
   config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_options = {
+    from: "notifications@astuto.io",
+    reply_to: "notifications@astuto.io"
+  }
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the

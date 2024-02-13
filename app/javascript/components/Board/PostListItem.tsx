@@ -50,7 +50,7 @@ const PostListItem = ({
     <div className="postContainer">
       <span className="postTitle">{title}</span>
         <ReactMarkdown className="descriptionText" allowedTypes={['text']} unwrapDisallowed>
-          {description?.slice(0, 120)}
+          {description}
         </ReactMarkdown>
 
       <div className="postDetails">

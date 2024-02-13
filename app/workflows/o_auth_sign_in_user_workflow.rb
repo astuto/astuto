@@ -1,11 +1,11 @@
-class OAuthSignInUser
+class OAuthSignInUserWorkflow
   include OAuthsHelper
 
   attr_accessor :user_profile, :o_auth
 
   # Given:
   #   user_profile: ruby Hash containing information about the user
-  #                 Could've been returned from OAuthExchangeAuthCodeForProfile
+  #                 Could've been returned from OAuthExchangeAuthCodeForProfileWorkflow
   #   o_auth: ActiveRecord model with information about the OAuth provider
   #
   # The workfow creates a new user if it doesn't exist, or select the existing one
@@ -23,11 +23,11 @@ class OAuthSignInUser
 
   def run
     return nil unless @o_auth and @o_auth.class == OAuth and @o_auth.is_enabled?
-    return nil unless @user_profile and @user_profile.class == Hash
+    return nil unless @user_profile and (@user_profile.class == Hash or @user_profile.class == Array)
 
     begin
       # Attempts to get email from user_profile Hash
-      email = query_path_from_hash(@user_profile, @o_auth.json_user_email_path)
+      email = query_path_from_object(@user_profile, @o_auth.json_user_email_path)
       
       return nil if email.nil? or not URI::MailTo::EMAIL_REGEXP.match?(email)
 
@@ -36,7 +36,7 @@ class OAuthSignInUser
       
       if user.nil?
         if not @o_auth.json_user_name_path.blank?
-          full_name = query_path_from_hash(@user_profile, @o_auth.json_user_name_path)
+          full_name = query_path_from_object(@user_profile, @o_auth.json_user_name_path)
         end
         full_name ||= I18n.t('defaults.user_full_name')
 
@@ -46,13 +46,13 @@ class OAuthSignInUser
           password: Devise.friendly_token,
           status: 'active'
         )
-        user.skip_confirmation!
+        user.skip_confirmation
         user.save
       end
 
       return user
     rescue => error
-      print(error)
+      logger.error { "Error in OAuthSignInUserWorkflow: #{error}, o_auth: #{@o_auth.inspect}" }
       return nil
     end
   end

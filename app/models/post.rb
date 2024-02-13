@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_status_changes, dependent: :destroy
 
-  validates :title, presence: true, length: { in: 4..64 }
+  validates :title, presence: true, length: { in: 4..128 }
 
   paginates_per Rails.application.posts_per_page
 
@@ -24,6 +24,21 @@ class Post < ApplicationRecord
       s = s || ''
       s = sanitize_sql_like(s)
       where("posts.title ILIKE ? OR posts.description ILIKE ?", "%#{s}%", "%#{s}%")
+    end
+
+    def order_by(sort_by)
+      case sort_by
+      when 'newest'
+        order(created_at: :desc)
+      when 'trending'
+        order(hotness: :desc)
+      when 'most_voted'
+        order(likes_count: :desc)
+      when 'oldest'
+        order(created_at: :asc)
+      else
+        order(created_at: :desc)
+      end
     end
   end
 end

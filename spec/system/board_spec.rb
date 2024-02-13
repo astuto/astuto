@@ -131,14 +131,24 @@ feature 'board', type: :system, js: true do
     expect(page).to have_no_content(/#{post2.title}/i)
     expect(page).to have_no_content(/#{post3.title}/i)
 
-    # you can also clear the filter
+    # you can also filter by multiple statuses
     within sidebar do
-      find(reset_filter).click
+      selector = ".postStatus#{post_status2.name.gsub(' ', '')}"
+      find(selector).click
     end
 
     expect(page).to have_content(/#{post1.title}/i)
     expect(page).to have_content(/#{post2.title}/i)
-    expect(page).to have_content(/#{post3.title}/i)
+    expect(page).to have_no_content(/#{post3.title}/i)
+
+    # you can also clear the filter
+    within sidebar do
+      find(reset_filter, match: :first).click
+    end
+
+    expect(page).to have_no_content(/#{post1.title}/i)
+    expect(page).to have_content(/#{post2.title}/i)
+    expect(page).to have_no_content(/#{post3.title}/i)
   end
 
   it 'enables users to search posts by title and description' do

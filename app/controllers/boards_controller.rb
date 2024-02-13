@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @page_title = @board.name
   end
 
   def create

@@ -11,7 +11,7 @@ interface Props {
 const Button = ({ children, onClick, className = '', outline = false, disabled = false}: Props) => (
   <button
     onClick={onClick}
-    className={`${className} btn btn-${outline ? 'outline-' : ''}dark`}
+    className={`${className} btn${outline ? 'Outline' : ''}Primary`}
     disabled={disabled}
   >
     {children}

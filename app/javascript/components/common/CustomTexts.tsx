@@ -21,6 +21,10 @@ export const MutedText = ({ children }: Props) => (
   <span className="mutedText">{children}</span>
 );
 
+export const CenteredText = ({ children }: Props) => (
+  <p className="centeredText">{children}</p>
+);
+
 export const CenteredMutedText = ({ children }: Props) => (
   <p className="centeredText"><span className="mutedText">{children}</span></p>
 );

@@ -24,7 +24,7 @@
 }
 
 .mutedText {
-  color: $astuto-grey;
+  color: var(--astuto-grey);
 }
 
 .smallMutedText {
@@ -60,4 +60,7 @@
 .descriptionText {
   @extend
     .text-muted;
+
+  max-height: 48px;
+  overflow-y: hidden;
 }

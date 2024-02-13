@@ -11,7 +11,7 @@
   }
 
   .newPostContainer {
-    background-color: $astuto-light-grey;
+    background-color: var(--astuto-grey-light);
     text-align: center;
 
     .boardTitle {
@@ -37,6 +37,8 @@
   .postStatusListItemLink {
     @extend
       .flex-grow-1;
+
+    &:hover { text-decoration: none; }
   }
 
   .postStatusListItem {
@@ -46,13 +48,17 @@
     height: 40px;
 
     &:hover {
-      filter: brightness(90%);
+      filter: brightness(85%);
       cursor: pointer;
     }
 
     span.badge {
       display: block; font-size: 15px;
     }
+  }
+
+  .postStatusListItemSelected {
+    filter: brightness(85%);
   }
 
   .resetFilter {
@@ -65,6 +71,7 @@
 
     width: 30px;
     height: 30px;
+    font-weight: bold;
   }
 
   .postList {
@@ -83,8 +90,8 @@
       .mb-3,
       .p-3;
 
-    height: 140px;
-    color: $primary-color;
+    min-height: 140px;
+    color: var(--astuto-black);
 
     @include media-breakpoint-down(sm) {
       height: auto;
@@ -102,14 +109,16 @@
 
   .postTitle {
     @extend
-      .font-weight-bold;
+      .font-weight-bold,
+      .mb-2;
   }
 
   .postDetails {
     @extend
       .d-flex,
       .justify-content-start,
-      .text-uppercase;
+      .text-uppercase,
+      .mt-2;
 
     .badge {
       @extend .mr-2;

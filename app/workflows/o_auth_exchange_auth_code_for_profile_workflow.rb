@@ -1,4 +1,4 @@
-class OAuthExchangeAuthCodeForProfile
+class OAuthExchangeAuthCodeForProfileWorkflow
   include HTTParty
 
   attr_accessor :authorization_code, :o_auth
@@ -49,7 +49,8 @@ class OAuthExchangeAuthCodeForProfile
 
       return profile_response
     rescue => error
-      print(error)
+      logger.error { "Error in OAuthExchangeAuthCodeForProfileWorkflow: #{error}, o_auth: #{@o_auth.inspect}" }
+
       return nil
     end
   end

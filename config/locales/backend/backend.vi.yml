@@ -49,19 +49,26 @@ vi:
   activerecord:
     models:
       board:
-        other: 'Boards'
+        one: 'Bảng'
+        other: 'Các bảng'
       comment:
-        other: 'Comments'
+        one: 'Bình luận'
+        other: 'Các bình luận'
       like:
-        other: 'Votes'
+        one: 'Phiếu bầu'
+        other: 'Các phiếu bầu'
       o_auth:
-        other: 'OAuths'
+        one: 'Xác thực OAuth'
+        other: 'Các xác thực OAuth'
       post_status:
-        other: 'Statuses'
+        one: 'Trạng thái'
+        other: 'Các trạng thái'
       post:
-        other: 'Posts'
+        one: 'Bài viết'
+        other: 'Các bài viết'
       user:
-        other: 'Users'
+        one: 'Người dùng'
+        other: 'Các người dùng'
     attributes:
       board:
         name: 'Tên'

@@ -11,6 +11,8 @@ import ITenantSetting from '../../interfaces/ITenantSetting';
 
 import { PostsState } from '../../reducers/postsReducer';
 import { PostStatusesState } from '../../reducers/postStatusesReducer';
+import SortByFilter from './SortByFilter';
+import { SortByFilterValues } from '../../actions/changeFilters';
 
 interface Props {
   board: IBoard;
@@ -25,18 +27,20 @@ interface Props {
     boardId: number,
     page?: number,
     searchQuery?: string,
-    postStatusId?: number,
+    postStatusIds?: Array<number>,
+    sortBy?: SortByFilterValues,
   ): void;
   requestPostStatuses(): void;
   handleSearchFilterChange(searchQuery: string): void;
   handlePostStatusFilterChange(postStatusId: number): void;
+  handleSortByFilterChange(sortBy: SortByFilterValues): void;
 }
 
 class BoardP extends React.Component<Props> {
   searchFilterTimeoutId: ReturnType<typeof setTimeout>;
 
   componentDidMount() {
-    this.props.requestPosts(this.props.board.id);
+    this.props.requestPosts(this.props.board.id, 1, '', null, this.props.posts.filters.sortBy);
     this.props.requestPostStatuses();
   }
 
@@ -44,21 +48,29 @@ class BoardP extends React.Component<Props> {
     const { searchQuery } = this.props.posts.filters;
     const prevSearchQuery = prevProps.posts.filters.searchQuery;
 
-    const { postStatusId } = this.props.posts.filters;
-    const prevPostStatusId = prevProps.posts.filters.postStatusId;
+    const { postStatusIds } = this.props.posts.filters;
+    const prevPostStatusIds = prevProps.posts.filters.postStatusIds;
+
+    const { sortBy } = this.props.posts.filters;
+    const prevSortBy = prevProps.posts.filters.sortBy;
 
     // search filter changed
     if (searchQuery !== prevSearchQuery) {
       if (this.searchFilterTimeoutId) clearInterval(this.searchFilterTimeoutId);
 
       this.searchFilterTimeoutId = setTimeout(() => (
-        this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusId)
+        this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds)
       ), 500);
     }
 
     // post status filter changed
-    if (postStatusId !== prevPostStatusId) {
-      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusId);
+    if (postStatusIds.length !== prevPostStatusIds.length) {
+      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds);
+    }
+
+    // sort by filter changed
+    if (sortBy !== prevSortBy) {
+      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds, sortBy);
     }
   }
 
@@ -75,6 +87,7 @@ class BoardP extends React.Component<Props> {
       requestPosts,
       handleSearchFilterChange,
       handlePostStatusFilterChange,
+      handleSortByFilterChange,
     } = this.props;
     const { filters } = posts;
 
@@ -90,12 +103,19 @@ class BoardP extends React.Component<Props> {
             searchQuery={filters.searchQuery}
             handleChange={handleSearchFilterChange}
           />
+          {
+            isPowerUser &&
+            <SortByFilter
+              sortBy={filters.sortBy}
+              handleChange={sortBy => handleSortByFilterChange(sortBy)}
+            />
+          }
           <PostStatusFilter
             postStatuses={postStatuses.items}
             areLoading={postStatuses.areLoading}
             error={postStatuses.error}
 
-            currentFilter={filters.postStatusId}
+            currentFilter={filters.postStatusIds}
             handleFilterClick={handlePostStatusFilterChange}
           />
         </Sidebar>
@@ -113,7 +133,7 @@ class BoardP extends React.Component<Props> {
             posts.areLoading ?
               null
             :
-              requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusId)
+              requestPosts(board.id, posts.page + 1, filters.searchQuery, filters.postStatusIds)
           }
 
           isLoggedIn={isLoggedIn}

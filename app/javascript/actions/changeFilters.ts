@@ -10,6 +10,13 @@ interface SetPostStatusFilterAction {
   postStatusId: number;
 }
 
+export const SET_SORT_BY_FILTER = 'SET_SORT_BY_FILTER';
+export type SortByFilterValues = 'trending' | 'newest' | 'most_voted' | 'oldest';
+interface SetSortByFilterAction {
+  type: typeof SET_SORT_BY_FILTER;
+  sortBy: SortByFilterValues;
+}
+
 
 export const setSearchFilter = (searchQuery: string): SetSearchFilterAction => ({
   type: SET_SEARCH_FILTER,
@@ -21,7 +28,13 @@ export const setPostStatusFilter = (postStatusId: number): SetPostStatusFilterAc
   postStatusId,
 });
 
+export const setSortByFilter = (sortBy: SortByFilterValues): SetSortByFilterAction => ({
+  type: SET_SORT_BY_FILTER,
+  sortBy,
+});
+
 
 export type ChangeFiltersActionTypes =
   SetSearchFilterAction |
-  SetPostStatusFilterAction;
+  SetPostStatusFilterAction |
+  SetSortByFilterAction;

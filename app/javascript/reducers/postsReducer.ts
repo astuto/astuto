@@ -25,6 +25,7 @@ import {
   ChangeFiltersActionTypes,
   SET_SEARCH_FILTER,
   SET_POST_STATUS_FILTER,
+  SET_SORT_BY_FILTER,
 } from '../actions/changeFilters';
 
 import {
@@ -93,6 +94,7 @@ const postsReducer = (
 
     case SET_SEARCH_FILTER:
     case SET_POST_STATUS_FILTER:
+    case SET_SORT_BY_FILTER:
       return {
         ...state,
         filters: filtersReducer(state.filters, action),

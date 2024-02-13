@@ -4,16 +4,24 @@ import I18n from 'i18n-js';
 
 import Box from '../common/Box';
 import Button from '../common/Button';
+import OAuthProviderLink from '../common/OAuthProviderLink';
 import { ITenantSignUpUserForm } from './TenantSignUpP';
 import { DangerText } from '../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
+import { IOAuth } from '../../interfaces/IOAuth';
+import ActionLink from '../common/ActionLink';
+import { BackIcon } from '../common/Icons';
 
 interface Props {
   currentStep: number;
   setCurrentStep(step: number): void;
   emailAuth: boolean;
   setEmailAuth(enabled: boolean): void;
+  oAuths: Array<IOAuth>;
+  oAuthLoginCompleted: boolean;
+  oauthUserEmail?: string;
+  oauthUserName?: string;
   userData: ITenantSignUpUserForm;
   setUserData({}: ITenantSignUpUserForm): void;
 }
@@ -23,6 +31,10 @@ const UserSignUpForm = ({
   setCurrentStep,
   emailAuth,
   setEmailAuth,
+  oAuths,
+  oAuthLoginCompleted,
+  oauthUserEmail,
+  oauthUserName,
   userData,
   setUserData,
 }: Props) => {
@@ -49,14 +61,37 @@ const UserSignUpForm = ({
 
       {
         currentStep === 1 && !emailAuth && 
+        <>
         <Button className="emailAuth" onClick={() => setEmailAuth(true)}>
           { I18n.t('signup.step1.email_auth') }
         </Button>
+
+        {
+          oAuths.filter(oAuth => oAuth.isEnabled).map((oAuth, i) =>
+            <OAuthProviderLink
+              oAuthId={oAuth.id}
+              oAuthName={oAuth.name}
+              oAuthLogo={oAuth.logo}
+              oAuthReason='tenantsignup'
+              isSignUp
+              key={i}
+            />
+          )
+        }
+        </>
       }
 
       {
         currentStep === 1 && emailAuth &&
         <form onSubmit={handleSubmit(onSubmit)}>
+          <ActionLink
+            onClick={() => setEmailAuth(false)}
+            icon={<BackIcon />}
+            customClass="backButton"
+          >
+            {I18n.t('common.buttons.back')}
+          </ActionLink>
+
           <div className="formRow">
             <input
               {...register('fullName', { required: true, minLength: 2 })}
@@ -116,8 +151,13 @@ const UserSignUpForm = ({
       }
 
       {
-        currentStep === 2 &&
+        currentStep === 2 && !oAuthLoginCompleted &&
         <p><b>{userData.fullName}</b> ({userData.email})</p>
+      }
+
+      {
+        currentStep === 2 && oAuthLoginCompleted &&
+        <p><b>{oauthUserName}</b> ({oauthUserEmail})</p>
       }
     </Box>
   );

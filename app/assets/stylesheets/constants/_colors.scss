@@ -1,5 +1,14 @@
-$primary-color: #333;
+:root {
+  // Theme palette (supposed to be customized)
+  --primary-color: rgb(51, 51, 51);
+  --background-color: rgb(255, 255, 255);
 
-$astuto-black: #333;
-$astuto-grey: rgba(0, 0, 0, 0.5);
-$astuto-light-grey: rgba(178, 178, 178, 0.2);
+  // Theme palette shades (supposed to be computed from theme palette)
+  --primary-color-light: color-mix(in srgb,var(--primary-color), #fff 85%);
+  --primary-color-dark: color-mix(in srgb,var(--primary-color), #000 20%);
+
+  // Astuto colors (supposed to be fixed)
+  --astuto-black: rgb(51, 51, 51);
+  --astuto-grey: rgba(0, 0, 0, 0.5);
+  --astuto-grey-light: rgba(178, 178, 178, 0.2);
+}

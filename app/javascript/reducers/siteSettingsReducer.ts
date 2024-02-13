@@ -95,6 +95,7 @@ import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from '
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
 import siteSettingsUsersReducer, { SiteSettingsUsersState } from './SiteSettings/usersReducer';
 import siteSettingsAuthenticationReducer, { SiteSettingsAuthenticationState } from './SiteSettings/authenticationReducer';
+import siteSettingsAppearanceReducer, { SiteSettingsAppearanceState } from './SiteSettings/appearanceReducer';
 
 interface SiteSettingsState {
   general: SiteSettingsGeneralState;
@@ -102,6 +103,7 @@ interface SiteSettingsState {
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
+  appearance: SiteSettingsAppearanceState;
   users: SiteSettingsUsersState;
 }
 
@@ -111,6 +113,7 @@ const initialState: SiteSettingsState = {
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
+  appearance: siteSettingsAppearanceReducer(undefined, {} as any),
   users: siteSettingsUsersReducer(undefined, {} as any),
 };
 
@@ -138,6 +141,7 @@ const siteSettingsReducer = (
       return {
         ...state,
         general: siteSettingsGeneralReducer(state.general, action),
+        appearance: siteSettingsAppearanceReducer(state.general, action),
       };
 
     case OAUTH_SUBMIT_START:

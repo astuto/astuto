@@ -15,11 +15,11 @@ RSpec.describe Post, type: :model do
     expect(empty_post).to be_invalid
   end
 
-  it 'has a title between 4 and 64 characters' do
+  it 'has a title between 4 and 128 characters' do
     too_short_post = FactoryBot.build(:post, title: 'a' * 3)
     short_post = FactoryBot.build(:post, title: 'a' * 4)
-    long_post = FactoryBot.build(:post, title: 'a' * 64)
-    too_long_post = FactoryBot.build(:post, title: 'a' * 65)
+    long_post = FactoryBot.build(:post, title: 'a' * 128)
+    too_long_post = FactoryBot.build(:post, title: 'a' * 129)
 
     expect(too_short_post).to be_invalid
     expect(short_post).to be_valid

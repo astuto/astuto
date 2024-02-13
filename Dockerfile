@@ -3,7 +3,11 @@
 ###
 FROM ruby:3.0.6 AS builder
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+RUN mkdir -p /etc/apt/keyrings && \
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN npm install -g yarn
 RUN gem install bundler -v 2.3
