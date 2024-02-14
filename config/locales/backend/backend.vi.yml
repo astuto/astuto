@@ -49,26 +49,19 @@ vi:
   activerecord:
     models:
       board:
-        one: 'Bảng'
-        other: 'Các bảng'
+        other: 'Bảng'
       comment:
-        one: 'Bình luận'
-        other: 'Các bình luận'
+        other: 'Bình luận'
       like:
-        one: 'Phiếu bầu'
-        other: 'Các phiếu bầu'
+        other: 'Phiếu bầu'
       o_auth:
-        one: 'Xác thực OAuth'
-        other: 'Các xác thực OAuth'
+        other: 'Xác thực OAuth'
       post_status:
-        one: 'Trạng thái'
-        other: 'Các trạng thái'
+        other: 'Trạng thái'
       post:
-        one: 'Bài viết'
-        other: 'Các bài viết'
+        other: 'Bài viết'
       user:
-        one: 'Người dùng'
-        other: 'Các người dùng'
+        other: 'Người dùng'
     attributes:
       board:
         name: 'Tên'
@@ -121,7 +114,7 @@ vi:
         root_board_id: 'Trang gốc'
         show_roadmap_in_header: 'Hiển thị liên kết lộ trình trên tiêu đề'
         collapse_boards_in_header: 'Thu gọn các bảng trong tiêu đề'
-        custom_css: 'Custom CSS'
+        custom_css: 'Tùy chỉnh CSS'
       user:
         email: 'Email'
         full_name: 'Họ và tên'

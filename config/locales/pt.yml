@@ -69,7 +69,7 @@ pt:
     page_title: 'Crie seu espaço de comentário'
     step1:
       title: 'Criar conta de usuário'
-      email_auth: 'Sign up with email'
+      email_auth: 'Cadastrar com e-mail'
     step2:
       title: '2. Criar espaço de feedback'
       create_button: 'Criar espaço de feedback'

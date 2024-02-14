@@ -8,7 +8,7 @@ export const getLabel = (
   attribute ?
     I18n.t(`activerecord.attributes.${entity}.${attribute}`)
   :
-    I18n.t(`activerecord.models.${entity}.one`)
+    I18n.t(`activerecord.models.${entity}`, { count: 1 })
 );
 
 export const getValidationMessage = (

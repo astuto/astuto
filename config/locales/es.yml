@@ -69,7 +69,7 @@ es:
     page_title: 'Create your feedback space'
     step1:
       title: '1. Create user account'
-      email_auth: 'Sign up with email'
+      email_auth: 'Registrar con e-mail'
     step2:
       title: '2. Create feedback space'
       create_button: 'Create feedback space'
