@@ -46,6 +46,7 @@ ru:
     enabled: 'Включено'
     disabled: 'Отключено'
     copied: 'Скопировано!'
+    user_staff: 'Staff'
     buttons:
       new: 'Новый'
       edit: 'Редактировать'
