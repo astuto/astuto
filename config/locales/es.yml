@@ -44,6 +44,7 @@ es:
     enabled: 'Habilitado'
     disabled: 'Deshabilitado'
     copied: '¡Copiado!'
+    user_staff: 'Staff'
     buttons:
       new: 'Nuevo'
       edit: 'Editar'
