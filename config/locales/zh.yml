@@ -43,6 +43,7 @@ zh-CN:
     enabled: 'Enabled'
     disabled: 'Disabled'
     copied: 'Copied!'
+    user_staff: 'Staff'
     buttons:
       new: 'New'
       edit: 'Edit'
