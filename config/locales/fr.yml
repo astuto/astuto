@@ -44,6 +44,7 @@ fr:
     enabled: 'Activé'
     disabled: 'Désactivé'
     copied: 'Copié !'
+    user_staff: 'Staff'
     buttons:
       new: 'Nouveau'
       edit: 'Modifier'
