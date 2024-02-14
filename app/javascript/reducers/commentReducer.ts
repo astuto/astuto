@@ -17,6 +17,7 @@ const initialState: IComment = {
   isPostUpdate: false,
   userFullName: '<Unknown user>',
   userEmail: 'example@example.com',
+  userRole: 0,
   createdAt: undefined,
   updatedAt: undefined,
 };
@@ -35,6 +36,7 @@ const commentReducer = (
         isPostUpdate: action.comment.is_post_update,
         userFullName: action.comment.user_full_name,
         userEmail: action.comment.user_email,
+        userRole: action.comment.user_role,
         createdAt: action.comment.created_at,
         updatedAt: action.comment.updated_at,
       };
