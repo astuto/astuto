@@ -43,6 +43,7 @@ vi:
     enabled: 'Đã bật'
     disabled: 'Đã tắt'
     copied: 'Đã sao chép!'
+    user_staff: 'Staff'
     buttons:
       new: 'Taọ mới'
       edit: 'Chỉnh sửa'
