@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
         :updated_at,
         'users.full_name as user_full_name',
         'users.email as user_email',
+        'users.role as user_role',
       )
       .where(post_id: params[:post_id])
       .left_outer_joins(:user)
@@ -28,7 +29,7 @@ class CommentsController < ApplicationController
       SendNotificationForCommentWorkflow.new(comment: @comment).run
 
       render json: @comment.attributes.merge(
-        { user_full_name: current_user.full_name, user_email: current_user.email }
+        { user_full_name: current_user.full_name, user_email: current_user.email, user_role: current_user.role_before_type_cast }
       ), status: :created
     else
       render json: {
@@ -43,7 +44,7 @@ class CommentsController < ApplicationController
 
     if @comment.update(comment_update_params)
       render json: @comment.attributes.merge(
-        { user_full_name: @comment.user.full_name, user_email: @comment.user.email }
+        { user_full_name: @comment.user.full_name, user_email: @comment.user.email, user_role: @comment.user.role_before_type_cast }
       )
     else
       render json: {

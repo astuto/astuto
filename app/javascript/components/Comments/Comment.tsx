@@ -9,6 +9,7 @@ import { ReplyFormState } from '../../reducers/replyFormReducer';
 
 import CommentEditForm from './CommentEditForm';
 import CommentFooter from './CommentFooter';
+import { StaffIcon } from '../common/Icons';
 
 interface Props {
   id: number;
@@ -16,6 +17,7 @@ interface Props {
   isPostUpdate: boolean;
   userFullName: string;
   userEmail: string;
+  userRole: number;
   createdAt: string;
   updatedAt: string;
 
@@ -68,6 +70,7 @@ class Comment extends React.Component<Props, State> {
       isPostUpdate,
       userFullName,
       userEmail,
+      userRole,
       createdAt,
       updatedAt,
     
@@ -88,6 +91,9 @@ class Comment extends React.Component<Props, State> {
         <div className="commentHeader">
           <Gravatar email={userEmail} size={28} className="gravatar" />
           <span className="commentAuthor">{userFullName}</span>
+          
+          { userRole > 0 && <StaffIcon /> }
+
           {
             isPostUpdate ?
               <span className="postUpdateBadge">
