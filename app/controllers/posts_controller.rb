@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
+    start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.parse('1970-01-01')
+    end_date = params[:end_date] ? Date.parse(params[:end_date]) : Date.today
+
     posts = Post
       .select(
         :id,
@@ -17,6 +20,7 @@ class PostsController < ApplicationController
       .left_outer_joins(:comments)
       .group('posts.id')
       .where(board_id: params[:board_id] || Board.first.id)
+      .where(created_at: start_date.beginning_of_day..end_date.end_of_day)
       .search_by_name_or_description(params[:search])
       .order_by(params[:sort_by])
       .page(params[:page])

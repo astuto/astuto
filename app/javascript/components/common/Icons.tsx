@@ -6,7 +6,7 @@ import { FiEdit, FiDelete } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
 import { MdContentCopy, MdDone, MdOutlineArrowBack } from 'react-icons/md';
-import { GrTest } from 'react-icons/gr';
+import { GrTest, GrClearOption } from 'react-icons/gr';
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { MdVerified } from "react-icons/md";
 
@@ -37,3 +37,5 @@ export const StaffIcon = () => (
     <MdVerified />
   </span>
 );
+
+export const ClearIcon = () => <GrClearOption />;

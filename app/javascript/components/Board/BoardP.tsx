@@ -13,6 +13,7 @@ import { PostsState } from '../../reducers/postsReducer';
 import { PostStatusesState } from '../../reducers/postStatusesReducer';
 import SortByFilter from './SortByFilter';
 import { SortByFilterValues } from '../../actions/changeFilters';
+import DateFilter from './DateFilter';
 
 interface Props {
   board: IBoard;
@@ -29,11 +30,13 @@ interface Props {
     searchQuery?: string,
     postStatusIds?: Array<number>,
     sortBy?: SortByFilterValues,
+    date?: { startDate: string; endDate: string },
   ): void;
   requestPostStatuses(): void;
   handleSearchFilterChange(searchQuery: string): void;
   handlePostStatusFilterChange(postStatusId: number): void;
   handleSortByFilterChange(sortBy: SortByFilterValues): void;
+  handleDateFilterChange(startDate: string, endDate: string): void;
 }
 
 class BoardP extends React.Component<Props> {
@@ -54,23 +57,31 @@ class BoardP extends React.Component<Props> {
     const { sortBy } = this.props.posts.filters;
     const prevSortBy = prevProps.posts.filters.sortBy;
 
+    const { startDate, endDate } = this.props.posts.filters.date;
+    const prevStartDate = prevProps.posts.filters.date.startDate;
+    const prevEndDate = prevProps.posts.filters.date.endDate;
+
+    const requestPostsWithFilters = () => (
+      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds, sortBy, { startDate, endDate })
+    );
+
     // search filter changed
     if (searchQuery !== prevSearchQuery) {
       if (this.searchFilterTimeoutId) clearInterval(this.searchFilterTimeoutId);
 
       this.searchFilterTimeoutId = setTimeout(() => (
-        this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds)
+        requestPostsWithFilters()
       ), 500);
     }
 
-    // post status filter changed
-    if (postStatusIds.length !== prevPostStatusIds.length) {
-      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds);
-    }
-
-    // sort by filter changed
-    if (sortBy !== prevSortBy) {
-      this.props.requestPosts(this.props.board.id, 1, searchQuery, postStatusIds, sortBy);
+    // poststatus/sortby/date filter changed
+    if (
+      postStatusIds.length !== prevPostStatusIds.length ||
+      sortBy !== prevSortBy ||
+      startDate !== prevStartDate ||
+      endDate !== prevEndDate
+    ) {
+      requestPostsWithFilters();
     }
   }
 
@@ -88,6 +99,7 @@ class BoardP extends React.Component<Props> {
       handleSearchFilterChange,
       handlePostStatusFilterChange,
       handleSortByFilterChange,
+      handleDateFilterChange,
     } = this.props;
     const { filters } = posts;
 
@@ -105,10 +117,18 @@ class BoardP extends React.Component<Props> {
           />
           {
             isPowerUser &&
+            <>
             <SortByFilter
               sortBy={filters.sortBy}
               handleChange={sortBy => handleSortByFilterChange(sortBy)}
             />
+
+            <DateFilter
+              startDate={filters.date.startDate}
+              endDate={filters.date.endDate}
+              handleChange={handleDateFilterChange}
+            />
+            </>
           }
           <PostStatusFilter
             postStatuses={postStatuses.items}
