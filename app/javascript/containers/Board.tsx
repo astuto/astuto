@@ -7,6 +7,7 @@ import {
   setPostStatusFilter,
   SortByFilterValues,
   setSortByFilter,
+  setDateFilter,
 } from '../actions/changeFilters';
 
 import { State } from '../reducers/rootReducer';
@@ -25,8 +26,9 @@ const mapDispatchToProps = (dispatch: any) => ({
     searchQuery: string = '',
     postStatusIds: Array<number> = null,
     sortBy: SortByFilterValues = null,
+    date: { startDate: string; endDate: string } = { startDate: '', endDate: '' }
   ) {
-    dispatch(requestPosts(boardId, page, searchQuery, postStatusIds, sortBy));
+    dispatch(requestPosts(boardId, page, searchQuery, postStatusIds, sortBy, date));
   },
 
   requestPostStatuses() {
@@ -43,7 +45,11 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   handleSortByFilterChange(sortBy: SortByFilterValues) {
     dispatch(setSortByFilter(sortBy));
-  }
+  },
+
+  handleDateFilterChange(startDate: string, endDate: string) {
+    dispatch(setDateFilter(startDate, endDate));
+  },
 });
 
 export default connect(
