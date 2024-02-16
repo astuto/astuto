@@ -55,6 +55,7 @@ de:
       confirm: 'Bestätigen'
       back: 'Zurück'
       test: 'Test'
+      clear: 'Clear'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -113,6 +114,10 @@ de:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:
