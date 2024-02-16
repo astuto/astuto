@@ -54,6 +54,7 @@ vi:
       confirm: 'Xác nhận'
       back: 'Quay lại'
       test: 'Kiểm tra'
+      clear: 'Clear'
     datetime:
       now: 'Vừa xong'
       minutes:
@@ -109,6 +110,10 @@ vi:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Không có phản hồi nào'
   post:
