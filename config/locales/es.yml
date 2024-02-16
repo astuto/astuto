@@ -55,6 +55,7 @@ es:
       confirm: 'Confirmar'
       back: 'Atrás'
       test: 'Test'
+      clear: 'Clear'
     datetime:
       now: 'ahora mismo'
       minutes:
@@ -113,6 +114,10 @@ es:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Aún no hay publicaciones'
   post:
