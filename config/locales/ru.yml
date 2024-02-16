@@ -57,6 +57,7 @@ ru:
       confirm: 'Подтвердить'
       back: 'Назад'
       test: 'Тест'
+      clear: 'Clear'
     datetime:
       now: 'только что'
       minutes:
@@ -121,6 +122,10 @@ ru:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Нет публикаций'
   post:
