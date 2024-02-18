@@ -1,14 +1,13 @@
 <p align="center"><img width="400" src="./images/logo-and-name.png" /></p>
 <p align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/riggraz/astuto?color=black&style=flat">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/riggraz/astuto?color=black&style=flat">
-  <br>
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=dark&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
+  <br>
+  <h3 align="center"><a href="https://docs.astuto.io/">📖 Documentation</a></h3>
 </p>
 
 ## What is Astuto?
 
-Astuto is a free, open source, self-hosted customer feedback tool. It helps you collect, manage and prioritize feedback from your users. It has been heavily inspired by [Canny.io](https://canny.io/) ("astuto", indeed, is the Italian translation of the word "canny").
+Astuto is an open source customer feedback tool. It helps you collect, manage and prioritize feedback from your customers, so you can build a better product.
 
 <img src="./images/featured-image.png" />
 
@@ -75,6 +74,10 @@ See [contributing guidelines](https://github.com/riggraz/astuto/blob/main/CONTRI
 You are welcome to contribute:
 * Read our [contributing guidelines](https://github.com/riggraz/astuto/blob/main/CONTRIBUTING.md)
 * Join the [Discord channel](https://discord.gg/SrtUMRp) to get in touch
+
+## Credits
+
+Astuto logo created by [Freepik Flaticon](https://www.flaticon.com/free-icons/fox).
 
 A huge thank you to all people who contributed:
 
