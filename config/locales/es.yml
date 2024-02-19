@@ -44,7 +44,7 @@ es:
     enabled: 'Habilitado'
     disabled: 'Deshabilitado'
     copied: '¡Copiado!'
-    user_staff: 'Staff'
+    user_staff: 'Empleados'
     buttons:
       new: 'Nuevo'
       edit: 'Editar'
@@ -54,8 +54,8 @@ es:
       update: 'Guardar'
       confirm: 'Confirmar'
       back: 'Atrás'
-      test: 'Test'
-      clear: 'Clear'
+      test: 'Probar'
+      clear: 'Restablecer'
     datetime:
       now: 'ahora mismo'
       minutes:
@@ -68,19 +68,19 @@ es:
         one: 'Hace 1 día'
         other: 'hace %{count} días'
   signup:
-    page_title: 'Create your feedback space'
+    page_title: 'Crea tu espacio de comentarios'
     step1:
-      title: '1. Create user account'
+      title: 'Crear cuenta de usuario'
       email_auth: 'Registrar con e-mail'
     step2:
-      title: '2. Create feedback space'
-      create_button: 'Create feedback space'
+      title: '2. Crear espacio de comentarios'
+      create_button: 'Crear espacio de comentarios'
       validations:
         subdomain_already_taken: 'Lo siento, este subdominio no está disponible'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
+        subdomain_only_letters_and_numbers: 'El subdominio sólo puede contener caracteres alfanuméricos y guiones'
     step3:
       title: "¡Casi hemos terminado!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
+      message: "¡Revisa tu correo electrónico %{email} para activar tu nuevo espacio de comentarios %{subdomain}!"
   header:
     menu:
       site_settings: 'Configuración del sitio'
@@ -110,7 +110,7 @@ es:
       title: 'Filtrar por estado'
     sort_by_box:
       title: 'Ordenar por'
-      trending: 'Trending'
+      trending: 'En tendencia'
       newest: 'Más reciente'
       most_voted: 'Más votados'
       oldest: 'Más antiguo'
@@ -171,8 +171,8 @@ es:
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Siempre'
       subtitle_visibility: 'Visibilidad'
-      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
-      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      show_vote_count_help: 'Si activa esta configuración, los usuarios podrán ver el recuento de votos de los mensajes. Esto puede incentivar a los usuarios a votar publicaciones ya populares, lo que provocaría un efecto bola de nieve.'
+      show_vote_button_in_board_help: 'Si activas esta configuración, los usuarios podrán votar publicaciones desde la página del foro. Esto puede alentar a los usuarios a votar en más mensajes, lo que lleva a un mayor número de votos, pero de menor importancia.'
     boards:
       title: 'Tableros'
       empty: 'No hay tableros. ¡Crea uno abajo!'
@@ -192,15 +192,15 @@ es:
       empty: 'La hoja de ruta está vacía.'
       help: 'Puedes agregar estados a la hoja de ruta arrastrándolos desde la sección de abajo. Si en cambio quieres crear un nuevo estado o cambiar su orden, ve a Configuración del sitio > Estados.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
+      title: 'Apariencia'
+      learn_more: 'Aprende cómo personalizar la apariencia'
     users:
       title: 'Usuarios'
       block: 'Bloquear'
       unblock: 'Desbloquear'
       block_confirmation: "%{name} no podrá iniciar sesión hasta que sea desbloqueado. ¿Estás seguro?"
       unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_moderator_confirmation: "%{name} podrá administrar las publicaciones y usuarios. Procede sólo si confías en esta persona. ¿Está seguro?"
       role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
       role_user: 'Usuario'
       role_moderator: 'Moderador'
@@ -211,9 +211,9 @@ es:
       status_deleted: 'Eliminado'
     authentication:
       title: 'Autenticación'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Aprende cómo configurar proveedores OAuth personalizados'
       oauth_subtitle: 'Proveedores OAuth'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Proveedor OAuth por defecto'
       copy_url: 'Copiar URL'
       test_page:
         title: 'Resultados de la prueba OAuth de %{name}'
