@@ -109,15 +109,15 @@ es:
     filter_box:
       title: 'Filtrar por estado'
     sort_by_box:
-      title: 'Sort by'
+      title: 'Ordenar por'
       trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      newest: 'Más reciente'
+      most_voted: 'Más votados'
+      oldest: 'Más antiguo'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Filtrar por fecha'
+      from_label: 'Desde'
+      to_label: 'Hasta'
     posts_list:
       empty: 'Aún no hay publicaciones'
   post:
@@ -156,7 +156,7 @@ es:
       roadmap: 'Hoja de ruta'
       users: 'Usuarios'
       authentication: 'Autenticación'
-      appearance: 'Appearance'
+      appearance: 'Apariencia'
     info_box:
       up_to_date: 'Se han guardado todos los cambios'
       error: 'Se ha producido un error: %{message}'
@@ -167,7 +167,7 @@ es:
       brand_setting_name: 'Solo el nombre'
       brand_setting_logo: 'Sólo Logo'
       brand_setting_none: 'Ninguno'
-      subtitle_header: 'Header'
+      subtitle_header: 'Cabecera'
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Siempre'
       subtitle_visibility: 'Visibilidad'
