@@ -49,8 +49,8 @@ es:
   activerecord:
     models:
       board:
-        one: 'Board'
-        other: 'Boards'
+        one: 'Foro'
+        other: 'Foros'
       comment:
         one: 'Comentario'
         other: 'Comentarios'
@@ -61,14 +61,14 @@ es:
         one: 'OAuth'
         other: 'OAuths'
       post_status:
-        one: 'Status'
-        other: 'Statuses'
+        one: 'Estado'
+        other: 'Estados'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Publicación'
+        other: 'Publicaciones'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Usuario'
+        other: 'Usuarios'
     attributes:
       board:
         name: 'Nombre'
@@ -100,7 +100,7 @@ es:
         json_user_email_path: 'Ruta JSON para el correo electrónico del usuario'
       post_status:
         name: 'Nombre'
-        color: 'Color'
+        color: 'Colores'
         order: 'Orden'
         show_in_roadmap: 'Mostrar en el mapa de ruta'
       post:
@@ -117,11 +117,11 @@ es:
       tenant_setting:
         brand_display: 'Visualización'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
-        custom_css: 'Custom CSS'
+        show_vote_button_in_board: 'Mostrar botones de voto en la página del foro'
+        root_board_id: 'Página raíz'
+        show_roadmap_in_header: 'Mostrar enlace de mapa de ruta en el encabezado'
+        collapse_boards_in_header: 'Colapsar foros en el encabezado'
+        custom_css: 'CSS personalizado'
       user:
         email: 'Correo electrónico'
         full_name: 'Nombre completo'
