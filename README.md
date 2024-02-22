@@ -2,14 +2,18 @@
 <p align="center">
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=dark&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
   <br>
-  <h3 align="center"><a href="https://docs.astuto.io/">📖 Documentation</a></h3>
+  <h3 align="center">
+    <a href="https://feedback.astuto.io/">✨ Try it out</a>
+    &nbsp;•&nbsp;
+    <a href="https://docs.astuto.io/">📖 Documentation</a>
+  </h3>
 </p>
 
 ## What is Astuto?
 
 Astuto is an open source customer feedback tool. It helps you collect, manage and prioritize feedback from your customers, so you can build a better product.
 
-<img src="./images/featured-image.png" />
+<img src="./images/hero-image.png" />
 
 ## Features
 
