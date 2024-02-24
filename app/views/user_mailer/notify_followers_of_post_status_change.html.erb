@@ -1,6 +1,6 @@
 <p>
   <%= t('mailers.user.notify_followers_of_post_status_change.body', post: @post.title) %>
-  <span style='background-color: <%= @post.post_status.color %>; color: white;'>
+  <span style='color: white; border-radius: 10rem; padding: 0.5rem; background-color: <%= @post.post_status.color %>;'>
     <%= @post.post_status.name.upcase %>
   </span>
 </p>
