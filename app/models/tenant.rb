@@ -1,10 +1,10 @@
 class Tenant < ApplicationRecord
-  has_one :tenant_setting
-  has_many :boards
-  has_many :o_auths
-  has_many :post_statuses
-  has_many :posts
-  has_many :users
+  has_one :tenant_setting, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :o_auths, dependent: :destroy
+  has_many :post_statuses, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :users, dependent: :destroy
 
   enum status: [:active, :pending, :blocked]
 
