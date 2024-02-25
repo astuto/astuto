@@ -16,6 +16,7 @@ import PostBoardLabel from '../common/PostBoardLabel';
 import PostStatusLabel from '../common/PostStatusLabel';
 import Comments from '../../containers/Comments';
 import Sidebar from '../common/Sidebar';
+import PoweredByLink from '../common/PoweredByLink';
 
 import { LikesState } from '../../reducers/likesReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
@@ -194,6 +195,8 @@ class PostP extends React.Component<Props> {
 
             isLoggedIn={isLoggedIn}
           />
+
+          { tenantSetting.show_powered_by && <PoweredByLink /> }
         </Sidebar>
 
         <div className="postAndCommentsContainer">
