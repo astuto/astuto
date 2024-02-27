@@ -5,15 +5,16 @@ import SearchFilter from './SearchFilter';
 import PostStatusFilter from './PostStatusFilter';
 import PostList from './PostList';
 import Sidebar from '../common/Sidebar';
+import SortByFilter from './SortByFilter';
+import DateFilter from './DateFilter';
+import PoweredByLink from '../common/PoweredByLink';
 
 import IBoard from '../../interfaces/IBoard';
 import ITenantSetting from '../../interfaces/ITenantSetting';
 
 import { PostsState } from '../../reducers/postsReducer';
 import { PostStatusesState } from '../../reducers/postStatusesReducer';
-import SortByFilter from './SortByFilter';
 import { SortByFilterValues } from '../../actions/changeFilters';
-import DateFilter from './DateFilter';
 
 interface Props {
   board: IBoard;
@@ -138,6 +139,8 @@ class BoardP extends React.Component<Props> {
             currentFilter={filters.postStatusIds}
             handleFilterClick={handlePostStatusFilterChange}
           />
+
+          { tenantSetting.show_powered_by && <PoweredByLink /> }
         </Sidebar>
 
         <PostList

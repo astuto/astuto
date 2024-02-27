@@ -282,3 +282,13 @@ body {
   font-size: 24px;
   margin: 0 4px;
 }
+
+.poweredBy {
+  @include media-breakpoint-down(sm) { display: none; }
+  
+  text-align: center;
+  font-size: 15px;
+
+  a { color: var(--astuto-grey); }
+  a:hover { text-decoration: underline; }
+}
