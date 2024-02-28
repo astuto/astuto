@@ -111,6 +111,7 @@ vi:
         brand_display: 'Hiển thị'
         show_vote_count: 'Hiển thị số phiếu bầu cho người dùng'
         show_vote_button_in_board: 'Hiển thị nút phiếu bầu trên trang bảng'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Trang gốc'
         show_roadmap_in_header: 'Hiển thị liên kết lộ trình trên tiêu đề'
         collapse_boards_in_header: 'Thu gọn các bảng trong tiêu đề'
