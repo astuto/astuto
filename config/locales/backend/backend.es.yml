@@ -118,6 +118,7 @@ es:
         brand_display: 'Visualización'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
         show_vote_button_in_board: 'Mostrar botones de voto en la página del foro'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Página raíz'
         show_roadmap_in_header: 'Mostrar enlace de mapa de ruta en el encabezado'
         collapse_boards_in_header: 'Colapsar foros en el encabezado'
