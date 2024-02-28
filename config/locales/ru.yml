@@ -47,6 +47,7 @@ ru:
     disabled: 'Отключено'
     copied: 'Скопировано!'
     user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Новый'
       edit: 'Редактировать'
