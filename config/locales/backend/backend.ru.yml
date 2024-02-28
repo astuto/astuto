@@ -132,6 +132,7 @@ ru:
         brand_display: 'Экран'
         show_vote_count: 'Показать количество голосов пользователям'
         show_vote_button_in_board: 'Показывать кнопки голосования на странице доски'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Главная страница'
         show_roadmap_in_header: 'Показать roadmap в заголовке'
         collapse_boards_in_header: 'Сворачивать доски в заголовке'
