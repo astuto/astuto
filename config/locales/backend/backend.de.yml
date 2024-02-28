@@ -118,6 +118,7 @@ de:
         brand_display: 'Anzeige'
         show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
         show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Root-Page'
         show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
         collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
