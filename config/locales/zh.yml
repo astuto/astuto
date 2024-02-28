@@ -44,6 +44,7 @@ zh-CN:
     disabled: 'Disabled'
     copied: 'Copied!'
     user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'New'
       edit: 'Edit'
