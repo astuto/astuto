@@ -45,6 +45,7 @@ de:
     disabled: 'Deaktiviert'
     copied: 'Kopiert!'
     user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Neu'
       edit: 'Bearbeiten'
