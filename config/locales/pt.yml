@@ -45,6 +45,7 @@ pt:
     disabled: 'Desabilitado'
     copied: 'Copiado!'
     user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Novo'
       edit: 'Editar'
