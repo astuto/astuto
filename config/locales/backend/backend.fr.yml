@@ -118,6 +118,7 @@ fr:
         brand_display: 'Affichage'
         show_vote_count: 'Afficher le nombre de votes aux utilisateurs'
         show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Page racine'
         show_roadmap_in_header: 'Afficher le lien de la roadmap dans l''en-tête'
         collapse_boards_in_header: 'Fusionner les tableaux dans l''en-tête'
