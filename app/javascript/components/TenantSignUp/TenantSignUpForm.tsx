@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import I18n from 'i18n-js';
 
 import Box from '../common/Box';
 import Button from '../common/Button';
@@ -28,7 +27,7 @@ const TenantSignUpForm = ({
 
   return (
     <Box customClass="tenantSignUpStep2">
-      <h3>{ I18n.t('signup.step2.title') }</h3>
+      <h3>Create feedback space</h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="formRow">
@@ -68,10 +67,10 @@ const TenantSignUpForm = ({
             {errors.subdomain?.type === 'required' && getValidationMessage('required', 'tenant', 'subdomain')}
           </DangerText>
           <DangerText>
-            {errors.subdomain?.type === 'pattern' && I18n.t('signup.step2.validations.subdomain_only_letters_and_numbers')}
+            {errors.subdomain?.type === 'pattern' && 'Subdomain can only contain alphanumeric characters and hyphens'}
           </DangerText>
           <DangerText>
-            {errors.subdomain?.type === 'notAlreadyTaken' && I18n.t('signup.step2.validations.subdomain_already_taken')}
+            {errors.subdomain?.type === 'notAlreadyTaken' && 'Sorry, this subdomain is not available'}
           </DangerText>
         </div>
 
@@ -79,7 +78,7 @@ const TenantSignUpForm = ({
           onClick={() => null}
           className="tenantConfirm"
         >
-          { isSubmitting ? <Spinner /> : I18n.t('signup.step2.create_button') }
+          { isSubmitting ? <Spinner /> : 'Create feedback space' }
         </Button>
 
         { error !== '' && <DangerText>{ error }</DangerText> }

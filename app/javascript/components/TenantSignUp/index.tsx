@@ -13,6 +13,8 @@ interface Props {
   oauthUserEmail?: string;
   oauthUserName?: string;
   baseUrl: string;
+  astutoLogoImage: string;
+  pendingTenantImage: string;
   authenticityToken: string;
 }
 
@@ -31,6 +33,8 @@ class TenantSignUpRoot extends React.Component<Props> {
       oAuthLoginCompleted,
       oauthUserEmail,
       oauthUserName,
+      astutoLogoImage,
+      pendingTenantImage,
       baseUrl,
       authenticityToken,
     } = this.props;
@@ -42,6 +46,8 @@ class TenantSignUpRoot extends React.Component<Props> {
           oauthUserEmail={oauthUserEmail}
           oauthUserName={oauthUserName}
           oAuths={oAuths.map(oAuth => oAuthJSON2JS(oAuth))}
+          astutoLogoImage={astutoLogoImage}
+          pendingTenantImage={pendingTenantImage}
           baseUrl={baseUrl}
           authenticityToken={authenticityToken}
         />

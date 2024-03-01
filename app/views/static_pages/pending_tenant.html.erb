@@ -1,6 +1,16 @@
 <div class="smallContainer">
-  <div class="box">
-    <h3><%= t('pending_tenant.title') %></h3>
-    <p><%= t('pending_tenant.message') %></p>
+  <div class="box" style="text-align: center">
+    <h3>Verify your email address</h3>
+    
+    <%= image_tag("pending-tenant.png", size: 64, style: "margin: 0 auto") %>
+    
+    <p>Please check your email inbox (and your spam folder!) and click on the activation link.</p>
+
+    <p>
+      Need help?
+      <a href=<%= "mailto:info@astuto.io?subject=[SUPPORT]%20Unable%20to%20activate%20my%20feedback%20space&body=I%20need%20help%20activating%20my%20feedback%20space%20'#{request.subdomain}'" %>>
+        Contact us.
+      </a>
+    </p>
   </div>
 </div>
