@@ -68,20 +68,6 @@ it:
       days:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
-  signup:
-    page_title: 'Crea il tuo spazio di feedback'
-    step1:
-      title: '1. Crea account utente'
-      email_auth: 'Registrati con indirizzo email'
-    step2:
-      title: '2. Crea spazio di feedback'
-      create_button: 'Crea spazio feedback'
-      validations:
-        subdomain_already_taken: 'Siamo spiacenti, questo sottodominio non è disponibile'
-        subdomain_only_letters_and_numbers: 'Il sottodominio può contenere solo caratteri alfanumerici e trattini'
-    step3:
-      title: "Hai quasi finito!"
-      message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
   header:
     menu:
       site_settings: 'Impostazioni sito'
@@ -90,9 +76,6 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
-  pending_tenant:
-    title: 'Verifica il tuo indirizzo email'
-    message: 'Abbiamo mandato una email con un link di attivazione all''indirizzo email che hai specificato in fase di registrazione. Clicca su quel link per attivare questo spazio di feedback!'
   blocked_tenant:
     title: 'Questo spazio di feedback è stato bloccato'
   board:
