@@ -30,9 +30,12 @@
     text-align: center;
     margin-bottom: 0;
   
-    .actionLink {
+    .editUser {
       display: block;
+      width: fit-content;
       margin-top: 4px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

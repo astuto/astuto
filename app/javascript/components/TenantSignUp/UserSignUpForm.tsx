@@ -154,7 +154,7 @@ const UserSignUpForm = ({
         currentStep === 2 && !oAuthLoginCompleted &&
         <p className="userRecap">
           <b>{oAuthLoginCompleted ? oauthUserName : userData.fullName}</b> ({oAuthLoginCompleted ? oauthUserEmail : userData.email})
-          <ActionLink onClick={() => setCurrentStep(currentStep-1)} icon={<EditIcon />}>Edit</ActionLink>
+          <ActionLink onClick={() => setCurrentStep(currentStep-1)} icon={<EditIcon />} customClass="editUser">Edit</ActionLink>
         </p>
       }
     </Box>
