@@ -1,20 +1,25 @@
 import * as React from 'react';
-import I18n from 'i18n-js';
 import Box from '../common/Box';
 
 interface Props {
   subdomain: string;
   userEmail: string;
+  pendingTenantImage: string;
 }
 
 const ConfirmSignUpPage = ({
   subdomain,
   userEmail,
+  pendingTenantImage,
 }: Props) => (
   <Box>
-    <h3>{ I18n.t('signup.step3.title') }</h3>
+    <h3>You're almost done!</h3>
 
-    <p>{ I18n.t('signup.step3.message', { email: userEmail, subdomain: `${subdomain}.astuto.io` }) }</p>
+    <img src={pendingTenantImage} width={64} height={64} style={{margin: '12px auto'}} />
+
+    <p style={{textAlign: 'center'}}>
+      Check your email <b>{userEmail}</b> to activate your new feedback space {subdomain}.astuto.io!
+    </p>
   </Box>
 );
 

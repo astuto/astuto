@@ -11,7 +11,7 @@ import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
 import { IOAuth } from '../../interfaces/IOAuth';
 import ActionLink from '../common/ActionLink';
-import { BackIcon } from '../common/Icons';
+import { BackIcon, EditIcon } from '../common/Icons';
 
 interface Props {
   currentStep: number;
@@ -47,7 +47,7 @@ const UserSignUpForm = ({
   } = useForm<ITenantSignUpUserForm>();
   const onSubmit: SubmitHandler<ITenantSignUpUserForm> = data => {
     if (data.password !== data.passwordConfirmation) {
-      setError('passwordConfirmation', I18n.t('signup.step1.validations.password_mismatch'));
+      setError('passwordConfirmation', I18n.t('common.validations.password_mismatch'));
       return;
     }
 
@@ -57,13 +57,13 @@ const UserSignUpForm = ({
 
   return (
     <Box customClass="tenantSignUpStep1">
-      <h3>{ I18n.t('signup.step1.title') }</h3>
+      <h3>Create user account</h3>
 
       {
         currentStep === 1 && !emailAuth && 
         <>
         <Button className="emailAuth" onClick={() => setEmailAuth(true)}>
-          { I18n.t('signup.step1.email_auth') }
+          Sign up with email
         </Button>
 
         {
@@ -118,7 +118,7 @@ const UserSignUpForm = ({
           </div>
 
           <div className="formRow">
-            <div className="formGroup col-6">
+            <div className="userPasswordDiv">
               <input
                 {...register('password', { required: true, minLength: 6, maxLength: 128 })}
                 type="password"
@@ -129,7 +129,7 @@ const UserSignUpForm = ({
               <DangerText>{ errors.password && I18n.t('common.validations.password', { n: 6 }) }</DangerText>
             </div>
 
-            <div className="formGroup col-6">
+            <div className="userPasswordConfirmationDiv">
               <input
                 {...register('passwordConfirmation')}
                 type="password"
@@ -152,12 +152,10 @@ const UserSignUpForm = ({
 
       {
         currentStep === 2 && !oAuthLoginCompleted &&
-        <p><b>{userData.fullName}</b> ({userData.email})</p>
-      }
-
-      {
-        currentStep === 2 && oAuthLoginCompleted &&
-        <p><b>{oauthUserName}</b> ({oauthUserEmail})</p>
+        <p className="userRecap">
+          <b>{oAuthLoginCompleted ? oauthUserName : userData.fullName}</b> ({oAuthLoginCompleted ? oauthUserEmail : userData.email})
+          <ActionLink onClick={() => setCurrentStep(currentStep-1)} icon={<EditIcon />} customClass="editUser">Edit</ActionLink>
+        </p>
       }
     </Box>
   );

@@ -4,7 +4,7 @@ class TenantsController < ApplicationController
   before_action :authenticate_admin, only: [:show, :update]
 
   def new
-    @page_title = t('signup.page_title')
+    @page_title = "Create your feedback space"
     @o_auths = OAuth.unscoped.where(tenant_id: nil)
   end
 

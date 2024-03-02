@@ -26,6 +26,9 @@ interface Props {
     authenticityToken: string,
   ): Promise<any>;
 
+  astutoLogoImage: string;
+  pendingTenantImage: string;
+
   baseUrl: string;
   authenticityToken: string;
 }
@@ -50,6 +53,8 @@ const TenantSignUpP = ({
   isSubmitting,
   error,
   handleSubmit,
+  astutoLogoImage,
+  pendingTenantImage,
   baseUrl,
   authenticityToken
 }: Props) => {
@@ -93,6 +98,9 @@ const TenantSignUpP = ({
   }
 
   return (
+    <>
+    <img src={astutoLogoImage} width={64} height={64} className="astutoLogo" />
+    
     <div className="tenantSignUpContainer">
       {
         (currentStep === 1 || currentStep === 2) &&
@@ -124,9 +132,11 @@ const TenantSignUpP = ({
           <ConfirmSignUpPage
             subdomain={tenantData.subdomain}
             userEmail={userData.email}
+            pendingTenantImage={pendingTenantImage}
           />
       }
     </div>
+    </>
   );
 }
 

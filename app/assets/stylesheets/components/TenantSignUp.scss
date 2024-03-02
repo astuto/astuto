@@ -1,3 +1,41 @@
+.astutoLogo {
+  display: block;
+  margin: 12px auto;
+}
+
 .tenantSignUpContainer {
   @extend .smallContainer;
+  
+  h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .userConfirm, .tenantConfirm {
+    display: block;
+    margin: 0 auto;
+    margin-top: 16px;
+  }
+  
+  .userPasswordDiv, .userPasswordConfirmationDiv {
+    @extend .col-6;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .userPasswordDiv { padding-right: 4px; }
+  .userPasswordConfirmationDiv { padding-left: 4px; }
+
+  .userRecap {
+    text-align: center;
+    margin-bottom: 0;
+  
+    .editUser {
+      display: block;
+      width: fit-content;
+      margin-top: 4px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
