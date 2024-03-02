@@ -68,20 +68,6 @@ es:
       days:
         one: 'Hace 1 día'
         other: 'hace %{count} días'
-  signup:
-    page_title: 'Crea tu espacio de comentarios'
-    step1:
-      title: 'Crear cuenta de usuario'
-      email_auth: 'Registrar con e-mail'
-    step2:
-      title: '2. Crear espacio de comentarios'
-      create_button: 'Crear espacio de comentarios'
-      validations:
-        subdomain_already_taken: 'Lo siento, este subdominio no está disponible'
-        subdomain_only_letters_and_numbers: 'El subdominio sólo puede contener caracteres alfanuméricos y guiones'
-    step3:
-      title: "¡Casi hemos terminado!"
-      message: "¡Revisa tu correo electrónico %{email} para activar tu nuevo espacio de comentarios %{subdomain}!"
   header:
     menu:
       site_settings: 'Configuración del sitio'
@@ -90,9 +76,6 @@ es:
     log_in: 'Iniciar sesión / Registrarse'
   roadmap:
     title: 'Hoja de ruta'
-  pending_tenant:
-    title: 'Verifica tu correo electrónico'
-    message: 'Hemos enviado un correo electrónico con un enlace de activación al correo que proporcionaste durante el registro. ¡Haz clic en ese enlace para activar este espacio de retroalimentación!'
   blocked_tenant:
     title: 'Este espacio de retroalimentación ha sido bloqueado'
   board:
