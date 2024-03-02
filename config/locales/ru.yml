@@ -76,20 +76,6 @@ ru:
         few: '%{count} д. назад'
         many: '%{count} д. назад'
         other: '%{count} д. назад'
-  signup:
-    page_title: 'Создайте область обратной связи'
-    step1:
-      title: '1. Создание учетной записи пользователя'
-      email_auth: 'Регистрация по электронной почте'
-    step2:
-      title: '2. Создать область обратной связи'
-      create_button: 'Создать область обратной связи'
-      validations:
-        subdomain_already_taken: 'Извините, этот поддомен недоступен'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "Вы почти закончили!"
-      message: "Проверьте свою электронную почту %{email}, чтобы активировать новое пространство обратной связи %{subdomain}!"
   header:
     menu:
       site_settings: 'Настройки сайта'
@@ -98,9 +84,6 @@ ru:
     log_in: 'Войти / Зарегистрироваться'
   roadmap:
     title: 'Дорожная Карта'
-  pending_tenant:
-    title: 'Подтвердите ваш адрес электронной почты'
-    message: 'Мы отправили письмо со ссылкой для активации на электронное письмо, указанное вами при регистрации. Нажмите на эту ссылку, чтобы активировать это пространство для обратной связи!'
   blocked_tenant:
     title: 'Сообщение обратной связи было сохранено'
   board:
