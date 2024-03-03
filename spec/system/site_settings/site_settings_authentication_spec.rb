@@ -21,21 +21,19 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets view existing oauths' do
-    disabled_default_o_auth # should not be visible
-    enabled_default_o_auth # should be visible
-
-    expected_count = OAuth.include_all_defaults.count - 1
-
-    visit site_settings_authentication_path
-
     within o_auths_list_selector do
-      expect(page).to have_css(o_auth_list_item_selector, count: expected_count)
+      expect(page).to have_css(o_auth_list_item_selector, count: OAuth.count)
 
       expect(page).to have_content(/#{o_auth.name}/i)
     end
   end
 
   it 'lets view existing default oauths, if enabled' do
+    disabled_default_o_auth # should not be visible
+    enabled_default_o_auth # should be visible
+
+    visit site_settings_authentication_path
+
     within o_auths_list_selector do
       expect(page).to have_content(/#{enabled_default_o_auth.name}/i)
       expect(page).not_to have_content(/#{disabled_default_o_auth.name}/i)
