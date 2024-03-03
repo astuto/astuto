@@ -13,8 +13,6 @@ feature 'site settings: authentication', type: :system, js: true do
 
   before(:each) do
     o_auth
-    disabled_default_o_auth
-    enabled_default_o_auth
 
     admin.confirm
     sign_in admin
@@ -23,8 +21,15 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets view existing oauths' do
+    disabled_default_o_auth # should not be visible
+    enabled_default_o_auth # should be visible
+
+    expected_count = OAuth.include_all_defaults.count - 1
+
+    visit site_settings_authentication_path
+
     within o_auths_list_selector do
-      expect(page).to have_css(o_auth_list_item_selector, count: OAuth.include_all_defaults.count)
+      expect(page).to have_css(o_auth_list_item_selector, count: expected_count)
 
       expect(page).to have_content(/#{o_auth.name}/i)
     end
@@ -38,7 +43,7 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets create new oauths' do
-    n_of_o_auths = OAuth.include_all_defaults.count
+    n_of_o_auths = OAuth.count
     new_o_auth_name = 'My new oauth'
 
     within o_auths_list_selector do
@@ -105,7 +110,7 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets delete existing oauths' do
-    n_of_oauths = OAuth.include_all_defaults.count
+    n_of_oauths = OAuth.count
     o_auth_to_delete = OAuth.last
 
     within o_auths_list_selector do
