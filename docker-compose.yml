@@ -13,6 +13,7 @@ services:
       dockerfile: Dockerfile
       target: dev
     environment:
+      MULTI_TENANCY: true
       POSTGRES_USER: astuto
       POSTGRES_PASSWORD: dbpass
       BASE_URL: http://localhost:3000

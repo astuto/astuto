@@ -10,7 +10,7 @@ class OAuthsController < ApplicationController
   # [subdomain.]base_url/o_auths/:id/start?reason=login|test|tenantsignup
   # Generates authorize url with required parameters and redirects to provider
   def start
-    @o_auth = OAuth.unscoped.include_defaults.find(params[:id])
+    @o_auth = OAuth.include_defaults.find(params[:id])
     
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
 
@@ -31,7 +31,7 @@ class OAuthsController < ApplicationController
     return unless cookies[:token_state] == params[:state]
     cookies.delete(:token_state, domain: ".#{request.domain}")
 
-    @o_auth = OAuth.unscoped.include_defaults.find(params[:id])
+    @o_auth = OAuth.include_defaults.find(params[:id])
 
     return if reason != 'test' and not @o_auth.is_enabled?
 
@@ -124,7 +124,9 @@ class OAuthsController < ApplicationController
   def index
     authorize OAuth
 
-    @o_auths = OAuth.include_defaults.order(created_at: :asc)
+    @o_auths = OAuth
+      .include_all_defaults
+      .order(tenant_id: :asc, created_at: :asc)
 
     render json: to_json_custom(@o_auths)
   end
@@ -175,7 +177,7 @@ class OAuthsController < ApplicationController
 
     def to_json_custom(o_auth)
       o_auth.as_json(
-        methods: :callback_url,
+        methods: [:callback_url, :default_o_auth_is_enabled],
         except: [:client_secret]
       )
     end

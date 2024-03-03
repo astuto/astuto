@@ -8,6 +8,7 @@ import AuthenticationSiteSettingsP from "../components/SiteSettings/Authenticati
 import { ISiteSettingsOAuthForm } from "../components/SiteSettings/Authentication/OAuthForm";
 import { IOAuth } from "../interfaces/IOAuth";
 import { State } from "../reducers/rootReducer";
+import { updateDefaultOAuth } from "../actions/OAuth/updateDefaultOAuth";
 
 const mapStateToProps = (state: State) => ({
   oAuths: state.oAuths,
@@ -31,6 +32,10 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   onToggleEnabledOAuth(id: number, isEnabled: boolean, authenticityToken: string) {
     dispatch(updateOAuth({id, isEnabled, authenticityToken}));
+  },
+
+  onToggleEnabledDefaultOAuth(id: number, isEnabled: boolean, authenticityToken: string) {
+    dispatch(updateDefaultOAuth({id, isEnabled, authenticityToken}));
   },
 
   onDeleteOAuth(id: number, authenticityToken: string) {

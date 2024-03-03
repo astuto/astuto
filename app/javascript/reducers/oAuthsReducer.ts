@@ -21,6 +21,7 @@ import {
 } from '../actions/OAuth/deleteOAuth';
 
 import { IOAuth, oAuthJSON2JS } from '../interfaces/IOAuth';
+import { DEFAULT_OAUTH_UPDATE_FAILURE, DEFAULT_OAUTH_UPDATE_START, DEFAULT_OAUTH_UPDATE_SUCCESS, DefaultOAuthUpdateActionTypes } from '../actions/OAuth/updateDefaultOAuth';
 
 export interface OAuthsState {
   items: Array<IOAuth>;
@@ -40,10 +41,12 @@ const oAuthsReducer = (
     OAuthsRequestActionTypes |
     OAuthSubmitActionTypes |
     OAuthUpdateActionTypes |
-    OAuthDeleteActionTypes,
+    OAuthDeleteActionTypes |
+    DefaultOAuthUpdateActionTypes,
 ) => {
   switch (action.type) {
     case OAUTHS_REQUEST_START:
+    case DEFAULT_OAUTH_UPDATE_START:
       return {
         ...state,
         areLoading: true,
@@ -58,6 +61,7 @@ const oAuthsReducer = (
       };
 
     case OAUTHS_REQUEST_FAILURE:
+    case DEFAULT_OAUTH_UPDATE_FAILURE:
       return {
         ...state,
         areLoading: false,
@@ -77,6 +81,19 @@ const oAuthsReducer = (
           if (oAuth.id !== parseInt(action.oAuth.id)) return oAuth;
           return oAuthJSON2JS(action.oAuth);
         })
+      };
+
+    case DEFAULT_OAUTH_UPDATE_SUCCESS:
+      return {
+        ...state,
+        areLoading: false,
+        items: state.items.map(oAuth => {
+          if (oAuth.id !== action.id) return oAuth;
+          return {
+            ...oAuth,
+            defaultOAuthIsEnabled: action.isEnabled,
+          };
+        }),
       };
 
     case OAUTH_DELETE_SUCCESS:

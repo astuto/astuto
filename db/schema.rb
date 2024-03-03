@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_27_110058) do
+ActiveRecord::Schema.define(version: 2024_03_03_103945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2024_02_27_110058) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "tenant_default_o_auths", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.bigint "o_auth_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["o_auth_id"], name: "index_tenant_default_o_auths_on_o_auth_id"
+    t.index ["tenant_id"], name: "index_tenant_default_o_auths_on_tenant_id"
+  end
+
   create_table "tenant_settings", force: :cascade do |t|
     t.integer "brand_display", default: 0, null: false
     t.bigint "tenant_id", null: false
@@ -195,6 +204,8 @@ ActiveRecord::Schema.define(version: 2024_02_27_110058) do
   add_foreign_key "posts", "post_statuses"
   add_foreign_key "posts", "tenants"
   add_foreign_key "posts", "users"
+  add_foreign_key "tenant_default_o_auths", "o_auths"
+  add_foreign_key "tenant_default_o_auths", "tenants"
   add_foreign_key "tenant_settings", "tenants"
   add_foreign_key "users", "tenants"
 end

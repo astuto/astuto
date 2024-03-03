@@ -5,7 +5,7 @@ class TenantsController < ApplicationController
 
   def new
     @page_title = "Create your feedback space"
-    @o_auths = OAuth.unscoped.where(tenant_id: nil)
+    @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
   end
 
   def show

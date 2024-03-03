@@ -3,7 +3,7 @@ class OAuth < ApplicationRecord
   include ApplicationHelper
   include Rails.application.routes.url_helpers
 
-  scope :include_defaults, -> { unscope(where: :tenant_id).where(tenant_id: Current.tenant).or(unscope(where: :tenant_id).where(tenant_id: nil, is_enabled: true)) }
+  has_many :tenant_default_o_auths, dependent: :destroy
 
   attr_accessor :state
 
@@ -40,5 +40,19 @@ class OAuth < ApplicationRecord
     "redirect_uri=#{callback_url()}&"\
     "scope=#{scope}&"\
     "state=#{state}"
+  end
+
+  def default_o_auth_is_enabled
+    is_default? and tenant_default_o_auths.exists?
+  end
+
+  class << self
+    def include_all_defaults
+      unscoped.where(tenant_id: nil, is_enabled: true).or(where(tenant_id: Current.tenant))
+    end
+
+    def include_defaults
+      unscoped.left_outer_joins(:tenant_default_o_auths).where(tenant_default_o_auths: { tenant_id: Current.tenant.id }).or(where(tenant_id: Current.tenant))
+    end
   end
 end

@@ -15,6 +15,7 @@ interface Props {
   submitError: string;
 
   handleToggleEnabledOAuth(id: number, enabled: boolean): void;
+  handleToggleEnabledDefaultOAuth(id: number, enabled: boolean): void;
   handleDeleteOAuth(id: number): void;
 
   setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
@@ -27,6 +28,7 @@ const AuthenticationIndexPage = ({
   submitError,
 
   handleToggleEnabledOAuth,
+  handleToggleEnabledDefaultOAuth,
   handleDeleteOAuth,
 
   setPage,
@@ -48,6 +50,7 @@ const AuthenticationIndexPage = ({
       <OAuthProvidersList
         oAuths={oAuths.items}
         handleToggleEnabledOAuth={handleToggleEnabledOAuth}
+        handleToggleEnabledDefaultOAuth={handleToggleEnabledDefaultOAuth}
         handleDeleteOAuth={handleDeleteOAuth}
         setPage={setPage}
         setSelectedOAuth={setSelectedOAuth}
