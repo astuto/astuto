@@ -24,6 +24,8 @@ feature 'site settings: authentication', type: :system, js: true do
 
   it 'lets view existing oauths' do
     within o_auths_list_selector do
+      expect(page).to have_css(o_auth_list_item_selector, count: OAuth.include_defaults.count)
+
       expect(page).to have_content(/#{o_auth.name}/i)
     end
   end
@@ -36,7 +38,7 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets create new oauths' do
-    n_of_o_auths = OAuth.count
+    n_of_o_auths = OAuth.include_defaults.count
     new_o_auth_name = 'My new oauth'
 
     within o_auths_list_selector do
@@ -103,7 +105,7 @@ feature 'site settings: authentication', type: :system, js: true do
   end
 
   it 'lets delete existing oauths' do
-    n_of_oauths = OAuth.count
+    n_of_oauths = OAuth.include_defaults.count
     o_auth_to_delete = OAuth.last
 
     within o_auths_list_selector do
