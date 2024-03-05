@@ -271,6 +271,13 @@ body {
     .mt-2,
     .mb-2;
 
+  height: 38px;
+
+  &:hover {
+    background-color: white;
+    color: var(--astuto-black);
+  }
+
   .oauthProviderText {
     @extend .ml-2;
     

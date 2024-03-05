@@ -68,18 +68,22 @@ const UserSignUpForm = ({
           Sign up with email
         </Button>
 
-        {
-          oAuths.filter(oAuth => oAuth.isEnabled).map((oAuth, i) =>
-            <OAuthProviderLink
-              oAuthId={oAuth.id}
-              oAuthName={oAuth.name}
-              oAuthLogo={oAuth.logo}
-              oAuthReason='tenantsignup'
-              isSignUp
-              key={i}
-            />
-          )
-        }
+        <hr />
+
+        <div className="oauthProviderList">
+          {
+            oAuths.filter(oAuth => oAuth.isEnabled).map((oAuth, i) =>
+              <OAuthProviderLink
+                oAuthId={oAuth.id}
+                oAuthName={oAuth.name}
+                oAuthLogo={oAuth.logo}
+                oAuthReason='tenantsignup'
+                isSignUp
+                key={i}
+              />
+            )
+          }
+        </div>
         </>
       }
 
