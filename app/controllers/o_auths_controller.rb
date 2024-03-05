@@ -5,12 +5,16 @@ class OAuthsController < ApplicationController
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
 
-  TOKEN_STATE_SEPARATOR = '-'
+  TOKEN_STATE_SEPARATOR = ','
 
   # [subdomain.]base_url/o_auths/:id/start?reason=login|test|tenantsignup
   # Generates authorize url with required parameters and redirects to provider
   def start
-    @o_auth = OAuth.include_defaults.find(params[:id])
+    if params[:reason] == 'tenantsignup'
+      @o_auth = OAuth.include_only_defaults.find(params[:id])
+    else
+      @o_auth = OAuth.include_defaults.find(params[:id])
+    end
     
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
 
@@ -31,14 +35,16 @@ class OAuthsController < ApplicationController
     return unless cookies[:token_state] == params[:state]
     cookies.delete(:token_state, domain: ".#{request.domain}")
 
-    @o_auth = OAuth.include_defaults.find(params[:id])
+    # if it is a default oauth, tenant is not yet set
+    Current.tenant ||= Tenant.find_by(subdomain: tenant_domain)
+
+    if reason == 'tenantsignup'
+      @o_auth = OAuth.include_only_defaults.find(params[:id])
+    else
+      @o_auth = OAuth.include_defaults.find(params[:id])
+    end
 
     return if reason != 'test' and not @o_auth.is_enabled?
-
-    # If it is a default OAuth we need to set the tenant
-    if @o_auth.is_default?
-      Current.tenant = Tenant.find_by(subdomain: tenant_domain)
-    end
 
     user_profile = OAuthExchangeAuthCodeForProfileWorkflow.new(
       authorization_code: params[:code],
@@ -80,7 +86,8 @@ class OAuthsController < ApplicationController
 
     elsif reason == 'tenantsignup'
 
-      @o_auths = []
+      @o_auths = @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
+      
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       if not @o_auth.json_user_name_path.blank?
         @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)

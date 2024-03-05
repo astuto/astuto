@@ -54,7 +54,12 @@ class OAuth < ApplicationRecord
 
     # returns all tenant-specific o_auths plus all default o_auths that are enabled both site-wide and for the current tenant
     def include_defaults
-      unscoped.left_outer_joins(:tenant_default_o_auths).where(tenant_default_o_auths: { tenant_id: Current.tenant.id }, is_enabled: true).or(where(tenant_id: Current.tenant))
+      unscoped.left_outer_joins(:tenant_default_o_auths).where(tenant_default_o_auths: { tenant_id: Current.tenant }, is_enabled: true).or(where(tenant_id: Current.tenant))
+    end
+
+    # returns all default o_auths that are enabled site-wide
+    def include_only_defaults
+      unscoped.where(tenant_id: nil, is_enabled: true)
     end
   end
 end

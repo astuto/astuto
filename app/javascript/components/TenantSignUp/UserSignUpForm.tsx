@@ -5,7 +5,7 @@ import I18n from 'i18n-js';
 import Box from '../common/Box';
 import Button from '../common/Button';
 import OAuthProviderLink from '../common/OAuthProviderLink';
-import { ITenantSignUpUserForm } from './TenantSignUpP';
+import { AuthMethod, ITenantSignUpUserForm } from './TenantSignUpP';
 import { DangerText } from '../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
 import { EMAIL_REGEX } from '../../constants/regex';
@@ -16,12 +16,9 @@ import { BackIcon, EditIcon } from '../common/Icons';
 interface Props {
   currentStep: number;
   setCurrentStep(step: number): void;
-  emailAuth: boolean;
-  setEmailAuth(enabled: boolean): void;
+  authMethod: AuthMethod;
+  setAuthMethod(method: AuthMethod): void;
   oAuths: Array<IOAuth>;
-  oAuthLoginCompleted: boolean;
-  oauthUserEmail?: string;
-  oauthUserName?: string;
   userData: ITenantSignUpUserForm;
   setUserData({}: ITenantSignUpUserForm): void;
 }
@@ -29,12 +26,9 @@ interface Props {
 const UserSignUpForm = ({
   currentStep,
   setCurrentStep,
-  emailAuth,
-  setEmailAuth,
+  authMethod,
+  setAuthMethod,
   oAuths,
-  oAuthLoginCompleted,
-  oauthUserEmail,
-  oauthUserName,
   userData,
   setUserData,
 }: Props) => {
@@ -44,7 +38,15 @@ const UserSignUpForm = ({
     setError,
     getValues,
     formState: { errors }
-  } = useForm<ITenantSignUpUserForm>();
+  } = useForm<ITenantSignUpUserForm>({
+    defaultValues: {
+      fullName: userData.fullName,
+      email: userData.email,
+      password: userData.password,
+      passwordConfirmation: userData.passwordConfirmation,
+    }
+  });
+
   const onSubmit: SubmitHandler<ITenantSignUpUserForm> = data => {
     if (data.password !== data.passwordConfirmation) {
       setError('passwordConfirmation', I18n.t('common.validations.password_mismatch'));
@@ -60,9 +62,9 @@ const UserSignUpForm = ({
       <h3>Create user account</h3>
 
       {
-        currentStep === 1 && !emailAuth && 
+        currentStep === 1 && authMethod == 'none' && 
         <>
-        <Button className="emailAuth" onClick={() => setEmailAuth(true)}>
+        <Button className="emailAuth" onClick={() => setAuthMethod('email')}>
           Sign up with email
         </Button>
 
@@ -82,14 +84,14 @@ const UserSignUpForm = ({
       }
 
       {
-        currentStep === 1 && emailAuth &&
+        currentStep === 1 && (authMethod == 'email' || authMethod == 'oauth') &&
         <form onSubmit={handleSubmit(onSubmit)}>
           <ActionLink
-            onClick={() => setEmailAuth(false)}
+            onClick={() => setAuthMethod('none')}
             icon={<BackIcon />}
             customClass="backButton"
           >
-            {I18n.t('common.buttons.back')}
+            Use another method
           </ActionLink>
 
           <div className="formRow">
@@ -106,6 +108,7 @@ const UserSignUpForm = ({
           <div className="formRow">
             <input
               {...register('email', { required: true, pattern: EMAIL_REGEX })}
+              disabled={authMethod == 'oauth'}
               type="email"
               placeholder={getLabel('user', 'email')}
               id="userEmail"
@@ -117,29 +120,32 @@ const UserSignUpForm = ({
             </DangerText>
           </div>
 
-          <div className="formRow">
-            <div className="userPasswordDiv">
-              <input
-                {...register('password', { required: true, minLength: 6, maxLength: 128 })}
-                type="password"
-                placeholder={getLabel('user', 'password')}
-                id="userPassword"
-                className="formControl"
-              />
-              <DangerText>{ errors.password && I18n.t('common.validations.password', { n: 6 }) }</DangerText>
-            </div>
+          {
+            authMethod == 'email' &&
+            <div className="formRow">
+              <div className="userPasswordDiv">
+                <input
+                  {...register('password', { required: true, minLength: 6, maxLength: 128 })}
+                  type="password"
+                  placeholder={getLabel('user', 'password')}
+                  id="userPassword"
+                  className="formControl"
+                />
+                <DangerText>{ errors.password && I18n.t('common.validations.password', { n: 6 }) }</DangerText>
+              </div>
 
-            <div className="userPasswordConfirmationDiv">
-              <input
-                {...register('passwordConfirmation')}
-                type="password"
-                placeholder={getLabel('user', 'password_confirmation')}
-                id="userPasswordConfirmation"
-                className="formControl"
-              />
-              <DangerText>{ errors.passwordConfirmation && I18n.t('common.validations.password_mismatch') }</DangerText>
+              <div className="userPasswordConfirmationDiv">
+                <input
+                  {...register('passwordConfirmation')}
+                  type="password"
+                  placeholder={getLabel('user', 'password_confirmation')}
+                  id="userPasswordConfirmation"
+                  className="formControl"
+                />
+                <DangerText>{ errors.passwordConfirmation && I18n.t('common.validations.password_mismatch') }</DangerText>
+              </div>
             </div>
-          </div>
+          }
 
           <Button
             onClick={() => null}
@@ -151,9 +157,9 @@ const UserSignUpForm = ({
       }
 
       {
-        currentStep === 2 && !oAuthLoginCompleted &&
+        currentStep === 2 &&
         <p className="userRecap">
-          <b>{oAuthLoginCompleted ? oauthUserName : userData.fullName}</b> ({oAuthLoginCompleted ? oauthUserEmail : userData.email})
+          <b>{userData.fullName}</b> ({userData.email})
           <ActionLink onClick={() => setCurrentStep(currentStep-1)} icon={<EditIcon />} customClass="editUser">Edit</ActionLink>
         </p>
       }
