@@ -11,7 +11,7 @@ class LikesController < ApplicationController
       .left_outer_joins(:user)
       .where(post_id: params[:post_id])
 
-      render json: likes
+    render json: likes
   end
 
   def create

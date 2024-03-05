@@ -4,6 +4,8 @@ feature 'site settings: authentication', type: :system, js: true do
   let(:admin) { FactoryBot.create(:admin) }
   
   let(:o_auth) { FactoryBot.create(:o_auth) }
+  let(:disabled_default_o_auth) { FactoryBot.create(:default_o_auth, is_enabled: false) }
+  let(:enabled_default_o_auth) { FactoryBot.create(:default_o_auth, is_enabled: true) }
 
   let(:o_auths_list_selector) { '.oAuthsList' }
   let(:o_auth_list_item_selector) { '.oAuthListItem' }
@@ -23,6 +25,18 @@ feature 'site settings: authentication', type: :system, js: true do
       expect(page).to have_css(o_auth_list_item_selector, count: OAuth.count)
 
       expect(page).to have_content(/#{o_auth.name}/i)
+    end
+  end
+
+  it 'lets view existing default oauths, if enabled' do
+    disabled_default_o_auth # should not be visible
+    enabled_default_o_auth # should be visible
+
+    visit site_settings_authentication_path
+
+    within o_auths_list_selector do
+      expect(page).to have_content(/#{enabled_default_o_auth.name}/i)
+      expect(page).not_to have_content(/#{disabled_default_o_auth.name}/i)
     end
   end
 

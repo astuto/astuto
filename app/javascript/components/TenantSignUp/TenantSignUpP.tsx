@@ -45,6 +45,8 @@ export interface ITenantSignUpTenantForm {
   subdomain: string;
 }
 
+export type AuthMethod = 'none' | 'email' | 'oauth';
+
 const TenantSignUpP = ({
   oAuths,
   oAuthLoginCompleted,
@@ -58,9 +60,12 @@ const TenantSignUpP = ({
   baseUrl,
   authenticityToken
 }: Props) => {
+  // authMethod is either 'none', 'email' or 'oauth'
+  const [authMethod, setAuthMethod] = useState<AuthMethod>(oAuthLoginCompleted ? 'oauth' : 'none');
+
   const [userData, setUserData] = useState({
-    fullName: '',
-    email: '',
+    fullName: oAuthLoginCompleted ? oauthUserName : '',
+    email: oAuthLoginCompleted ? oauthUserEmail : '',
     password: '',
     passwordConfirmation: '',
   });
@@ -72,20 +77,18 @@ const TenantSignUpP = ({
 
   const [currentStep, setCurrentStep] = useState(oAuthLoginCompleted ? 2 : 1);
 
-  const [emailAuth, setEmailAuth] = useState(false);
-
   const handleSignUpSubmit = (siteName: string, subdomain: string) => {
     handleSubmit(
-      oAuthLoginCompleted ? oauthUserName : userData.fullName,
-      oAuthLoginCompleted ? oauthUserEmail : userData.email,
+      userData.fullName,
+      userData.email,
       userData.password,
       siteName,
       subdomain,
-      oAuthLoginCompleted,
+      authMethod == 'oauth',
       authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.Created) return;
-      if (oAuthLoginCompleted) {
+      if (authMethod == 'oauth') {
         let redirectUrl = new URL(baseUrl);
         redirectUrl.hostname = `${subdomain}.${redirectUrl.hostname}`;
         window.location.href = `${redirectUrl.toString()}users/sign_in`;
@@ -107,12 +110,9 @@ const TenantSignUpP = ({
           <UserSignUpForm
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
-            emailAuth={emailAuth}
-            setEmailAuth={setEmailAuth}
+            authMethod={authMethod}
+            setAuthMethod={setAuthMethod}
             oAuths={oAuths}
-            oAuthLoginCompleted={oAuthLoginCompleted}
-            oauthUserEmail={oauthUserEmail}
-            oauthUserName={oauthUserName}
             userData={userData}
             setUserData={setUserData}
           />
