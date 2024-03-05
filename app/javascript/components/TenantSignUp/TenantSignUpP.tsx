@@ -70,8 +70,6 @@ const TenantSignUpP = ({
     passwordConfirmation: '',
   });
 
-  console.log(userData);
-
   const [tenantData, setTenantData] = useState({
     siteName: '',
     subdomain: '',

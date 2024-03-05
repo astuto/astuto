@@ -68,7 +68,7 @@ const UserSignUpForm = ({
           Sign up with email
         </Button>
 
-        <hr />
+        { oAuths.length > 0 && <hr /> }
 
         <div className="oauthProviderList">
           {
