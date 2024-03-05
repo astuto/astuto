@@ -87,12 +87,19 @@ class OAuthsController < ApplicationController
     elsif reason == 'tenantsignup'
 
       @o_auths = @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
-      
+
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       if not @o_auth.json_user_name_path.blank?
         @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
       end
-      @o_auth_login_completed = true
+
+      @o_auth_login_completed = (not @user_email.blank?)
+
+      if not @o_auth_login_completed
+        flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
+        redirect_to signup_url
+        return
+      end
 
       session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"
 
