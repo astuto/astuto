@@ -2,6 +2,7 @@ class OAuthsController < ApplicationController
   include HTTParty
   include OAuthsHelper
   include ApplicationHelper
+  include Devise::Controllers::Rememberable
 
   before_action :authenticate_admin, only: [:index, :create, :update, :destroy]
 
@@ -124,6 +125,7 @@ class OAuthsController < ApplicationController
 
     if user.oauth_token == params[:token]
       sign_in user
+      remember_me user
       user.invalidate_oauth_token
       flash[:notice] = I18n.t('devise.sessions.signed_in')
       redirect_to root_path

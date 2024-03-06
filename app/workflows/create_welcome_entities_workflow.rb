@@ -67,5 +67,13 @@ class CreateWelcomeEntitiesWorkflow
       body: 'Users can comment to express their opinions! As with posts and board descriptions, comments can be *Markdown* **formatted**',
       user_id: owner.id
     )
+
+    # Set first board as root page
+    TenantSetting.create!(root_board_id: feature_board.id)
+
+    # Enable all default oauths
+    OAuth.include_only_defaults.each do |o_auth|
+      TenantDefaultOAuth.create!(o_auth_id: o_auth.id)
+    end
   end
 end

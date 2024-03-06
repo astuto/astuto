@@ -28,7 +28,12 @@ const OAuthProviderItem = ({
 }: Props) => (
   <li className="oAuthListItem">
     <div className="oAuthInfo">
-      <img src={oAuth.logo} className="oAuthLogo" width={42} height={42} />
+      {
+        oAuth.logo && oAuth.logo.length > 0 ?
+          <img src={oAuth.logo} className="oAuthLogo" width={42} height={42} />
+        :
+          <div className="oauthLogo" style={{width: 42, height: 42}}></div>
+      }
 
       <div className="oAuthNameAndEnabled">
         <span className="oAuthName">{oAuth.name}</span>

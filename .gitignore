@@ -10,6 +10,9 @@
 # Ignore vs code config.
 .vscode
 
+# Ignore all .DS_Store files.
+**/.DS_Store
+
 # Ignore bundler config.
 /.bundle
 
