@@ -46,9 +46,6 @@ class TenantsController < ApplicationController
       @user.save!
 
       CreateWelcomeEntitiesWorkflow.new().run
-      OAuth.include_only_defaults.each do |o_auth|
-        TenantDefaultOAuth.create(o_auth_id: o_auth.id)
-      end
 
       logger.info { "New tenant registration: #{Current.tenant.inspect}" }
 
