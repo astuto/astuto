@@ -14,7 +14,7 @@ const OAuthProviderLink = ({ oAuthId, oAuthName, oAuthLogo, oAuthReason, isSignU
     onClick={() => window.location.href = `/o_auths/${oAuthId}/start?reason=${oAuthReason}`}
     className={`oauthProviderBtn oauthProvider${oAuthName.replace(' ', '')}`}
   >
-    <img src={oAuthLogo} alt={oAuthName} width={28} height={28} />
+    { oAuthLogo && oAuthLogo.length > 0 && <img src={oAuthLogo} alt={oAuthName} width={28} height={28} /> }
     <span className='oauthProviderText'>
       {
         isSignUp ?
