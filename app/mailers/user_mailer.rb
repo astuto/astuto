@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
+      subject: t('mailers.user.notify_post_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
 
@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
+      subject: t('mailers.user.notify_comment_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
 
@@ -32,7 +32,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: comment.post.followers.pluck(:email),
-      subject: default_i18n_subject(app_name: app_name, post: comment.post.title)
+      subject: t('mailers.user.notify_followers_of_post_update.subject', site_name: site_name, post: comment.post.title)
     )
   end
 
@@ -43,13 +43,13 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: post.followers.pluck(:email),
-      subject: default_i18n_subject(app_name: app_name, post: post.title)
+      subject: t('mailers.user.notify_followers_of_post_status_change.subject', site_name: site_name, post: post.title)
     )
   end
 
   private
 
-    def app_name
+    def site_name
       Current.tenant_or_raise!.site_name
     end
 end

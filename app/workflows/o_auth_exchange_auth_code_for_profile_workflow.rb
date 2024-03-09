@@ -19,6 +19,14 @@ class OAuthExchangeAuthCodeForProfileWorkflow
     @o_auth = o_auth
   end
 
+  def request_profile(profile_url, access_token)
+    HTTParty.get(
+      profile_url,
+      headers: { "Authorization": "Bearer #{access_token}" },
+      format: :json
+    ).parsed_response
+  end
+
   def run
     return nil unless @o_auth and @o_auth.class == OAuth
     return nil unless @authorization_code and @authorization_code.class == String
@@ -41,16 +49,18 @@ class OAuthExchangeAuthCodeForProfileWorkflow
       access_token = token_response['access_token']
       
       # Exchange access token for profile info
-      profile_response = HTTParty.get(
-        @o_auth.profile_url,
-        headers: { "Authorization": "Bearer #{access_token}" },
-        format: :json
-      ).parsed_response
+      profile_urls = @o_auth.profile_url.split(',')
+      if profile_urls.length == 1
+        profile_response = request_profile(profile_urls[0], access_token)
+      else
+        profile_response = {}
+        profile_urls.each_with_index do |profile_url, n|
+          profile_response["profile#{n}"] = request_profile(profile_url, access_token)
+        end
+      end
 
       return profile_response
     rescue => error
-      logger.error { "Error in OAuthExchangeAuthCodeForProfileWorkflow: #{error}, o_auth: #{@o_auth.inspect}" }
-
       return nil
     end
   end

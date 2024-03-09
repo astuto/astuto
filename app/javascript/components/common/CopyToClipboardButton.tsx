@@ -3,6 +3,7 @@ import I18n from 'i18n-js';
 import { useState } from 'react';
 import ActionLink from './ActionLink';
 import { CopyIcon, DoneIcon } from './Icons';
+import { SuccessText } from './CustomTexts';
 
 interface Props {
   label: string;
@@ -40,7 +41,7 @@ const CopyToClipboardButton = ({
       </ActionLink>
     :
       <span style={{display: 'flex', marginRight: 12}}>
-        {copiedLabel}
+        <SuccessText>{copiedLabel}</SuccessText>
       </span>
   );
 };

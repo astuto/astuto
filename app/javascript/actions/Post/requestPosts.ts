@@ -51,6 +51,7 @@ export const requestPosts = (
   searchQuery: string,
   postStatusIds: Array<number>,
   sortBy: SortByFilterValues,
+  date: { startDate: string; endDate: string },
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(postsRequestStart());
 
@@ -68,6 +69,8 @@ export const requestPosts = (
       }
     }
     if (sortBy) params += `&sort_by=${sortBy}`;
+    if (date.startDate) params += `&start_date=${date.startDate}`;
+    if (date.endDate) params += `&end_date=${date.endDate}`;
 
     const response = await fetch(`/posts?${params}`);
     const json = await response.json();

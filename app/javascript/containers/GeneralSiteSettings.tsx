@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     collapseBoardsInHeader: TenantSettingCollapseBoardsInHeader,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
+    showPoweredBy: boolean,
     authenticityToken: string
   ): Promise<any> {
     return dispatch(updateTenant({
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         brand_display: brandDisplaySetting,
         show_vote_count: showVoteCount,
         show_vote_button_in_board: showVoteButtonInBoard,
+        show_powered_by: showPoweredBy,
         root_board_id: rootBoardId,
         show_roadmap_in_header: showRoadmapInHeader,
         collapse_boards_in_header: collapseBoardsInHeader,

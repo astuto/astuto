@@ -1,0 +1,28 @@
+.card {
+  /* Bootstrap 4.6.2 card style */
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+
+  /* My customizations */
+  max-width: 720px;
+  text-align: center;
+  font-family: system-ui;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04),0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  color: black;
+  padding: 8px;
+}
+
+.error-image { margin: 0 auto; }
+.error-description { font-size: 18px; }
+a { color: black; }

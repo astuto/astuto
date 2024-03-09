@@ -21,11 +21,15 @@ RSpec.describe TenantSetting, type: :model do
   end
 
   it 'has a setting to show vote count' do
-    expect(tenant_setting.show_vote_count).to be_falsy
+    expect(tenant_setting.show_vote_count).to be_truthy
   end
 
   it 'has a setting to show vote button in board view' do
-    expect(tenant_setting.show_vote_button_in_board).to be_falsy
+    expect(tenant_setting.show_vote_button_in_board).to be_truthy
+  end
+
+  it 'has a setting to show powered by astuto' do
+    expect(tenant_setting.show_powered_by).to be_truthy
   end
 
   it 'has a setting that contains the board id of the root page' do

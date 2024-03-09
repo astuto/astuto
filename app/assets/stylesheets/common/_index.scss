@@ -269,7 +269,15 @@ body {
     .btn-block,
     .btn-outline-dark,
     .mt-2,
-    .mb-2;
+    .mb-2,
+    .p-0;
+
+  height: 38px;
+
+  &:hover {
+    background-color: white;
+    color: var(--astuto-black);
+  }
 
   .oauthProviderText {
     @extend .ml-2;
@@ -281,4 +289,14 @@ body {
 .staffIcon {
   font-size: 24px;
   margin: 0 4px;
+}
+
+.poweredBy {
+  @include media-breakpoint-down(sm) { display: none; }
+  
+  text-align: center;
+  font-size: 15px;
+
+  a { color: var(--astuto-grey); }
+  a:hover { text-decoration: underline; }
 }

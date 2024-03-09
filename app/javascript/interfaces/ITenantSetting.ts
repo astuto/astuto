@@ -25,6 +25,7 @@ interface ITenantSetting {
   show_vote_count?: boolean;
   show_vote_button_in_board?: boolean;
   show_roadmap_in_header?: boolean;
+  show_powered_by?: boolean;
   collapse_boards_in_header?: TenantSettingCollapseBoardsInHeader;
   custom_css?: string;
 }

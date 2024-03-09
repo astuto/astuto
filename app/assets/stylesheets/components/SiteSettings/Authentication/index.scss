@@ -38,6 +38,12 @@
 
         align-self: center;
       }
+
+      .defaultOAuthDiv {
+        @extend .d-flex;
+
+        .defaultOAuthLabel { @extend .align-self-center; }
+      }
     }
   }
 }

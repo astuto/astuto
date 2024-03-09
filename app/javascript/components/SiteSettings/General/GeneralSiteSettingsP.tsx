@@ -25,6 +25,7 @@ export interface ISiteSettingsGeneralForm {
   locale: string;
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
+  showPoweredBy: boolean;
   rootBoardId?: string;
   showRoadmapInHeader: boolean;
   collapseBoardsInHeader: string;
@@ -48,6 +49,7 @@ interface Props {
     collapseBoardsInHeader: string,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
+    showPoweredBy: boolean,
     authenticityToken: string
   ): Promise<any>;
 }
@@ -73,6 +75,7 @@ const GeneralSiteSettingsP = ({
       locale: originForm.locale,
       showVoteCount: originForm.showVoteCount,
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
+      showPoweredBy: originForm.showPoweredBy,
       rootBoardId: originForm.rootBoardId,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
       collapseBoardsInHeader: originForm.collapseBoardsInHeader,
@@ -90,6 +93,7 @@ const GeneralSiteSettingsP = ({
       data.collapseBoardsInHeader,
       data.showVoteCount,
       data.showVoteButtonInBoard,
+      data.showPoweredBy,
       authenticityToken
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
@@ -230,6 +234,15 @@ const GeneralSiteSettingsP = ({
               <SmallMutedText>
                 { I18n.t('site_settings.general.show_vote_button_in_board_help') }
               </SmallMutedText>
+            </div>
+          </div>
+
+          <br />
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('showPoweredBy')} type="checkbox" id="show_powered_by_checkbox" />
+              <label htmlFor="show_powered_by_checkbox">{ getLabel('tenant_setting', 'show_powered_by') }</label>
             </div>
           </div>
 
