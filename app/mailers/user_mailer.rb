@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user = comment.post.user
 
     mail(
-      to: @user,
+      to: @user.email,
       subject: t('mailers.user.notify_post_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
