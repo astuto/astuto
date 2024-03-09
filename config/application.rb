@@ -16,9 +16,6 @@ module App
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # For assets in mailers
-    config.asset_host = ENV["BASE_URL"]
-
     def base_url
       ENV["BASE_URL"]
     end
