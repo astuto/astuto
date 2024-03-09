@@ -1,8 +1,11 @@
 <footer>
-  <%=
-    t(
-      'mailers.user.unsubscribe_from_site',
-      href: link_to(t('mailers.user.unsubscribe_link'), add_subdomain_to(method(:edit_user_registration_url)))
-    ).html_safe
-  %>
+  <hr style="border-top: 1px;">
+  <p style="margin-bottom: 0; font-size: 14px; color: grey;">
+    <%=
+      t(
+        'mailers.user.unsubscribe_from_site_html',
+        href: link_to(t('mailers.user.unsubscribe_link'), add_subdomain_to(method(:edit_user_registration_url)))
+      ).html_safe
+    %>
+  </p>
 </footer>

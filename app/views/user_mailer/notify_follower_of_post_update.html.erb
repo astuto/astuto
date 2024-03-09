@@ -1,12 +1,10 @@
 <%= render 'user_mailer/opening', user_name: @user.full_name %>
 
 <p>
-  <%= t('mailers.user.notify_follower_of_post_update.body', user: @comment.user.full_name, post: @comment.post.title) %>:
+  <%= t('mailers.user.notify_follower_of_post_update.body_html', user: @comment.user.full_name, post: @comment.post.title) %>:
 </p>
 
-<p>
-  <i><%= @comment.body %></i>
-</p>
+<%= render 'user_mailer/quoted_text', text: @comment.body %>
 
 <p>
   <%= link_to t('mailers.user.learn_more'), add_subdomain_to(method(:post_url), @comment.post) %>
