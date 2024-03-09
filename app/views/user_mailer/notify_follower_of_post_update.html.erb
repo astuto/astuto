@@ -1,7 +1,7 @@
 <%= render 'user_mailer/opening', user_name: @user.full_name %>
 
 <p>
-  <%= t('mailers.user.notify_post_owner.body', user: @comment.user.full_name, post: @comment.post.title) %>:
+  <%= t('mailers.user.notify_follower_of_post_update.body', user: @comment.user.full_name, post: @comment.post.title) %>:
 </p>
 
 <p>

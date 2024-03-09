@@ -30,7 +30,7 @@ en:
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
     user:
-      opening_greeting: 'Hello!'
+      opening_greeting: 'Hello %{name}!'
       closing_greeting: 'Have a great day!'
       learn_more: 'Click here to learn more'
       unsubscribe: 'Annoyed? You can turn off notifications here'
@@ -39,11 +39,11 @@ en:
         body: 'There is a new comment by "%{user}" on your post "%{post}"'
       notify_comment_owner:
         subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
-      notify_followers_of_post_update:
+        body: 'There is a new reply by "%{user}" to your comment on post "%{post}"'
+      notify_follower_of_post_update:
         subject: '[%{site_name}] New update for post "%{post}"'
         body: 'There is a new update on the post you are following "%{post}"'
-      notify_followers_of_post_status_change:
+      notify_follower_of_post_status_change:
         subject: '[%{site_name}] Status change on post "%{post}"'
         body: 'There is a status update on the post you are following "%{post}"'
   activerecord:

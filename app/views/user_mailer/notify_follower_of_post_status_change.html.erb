@@ -1,5 +1,10 @@
+<%= render 'user_mailer/opening', user_name: @user.full_name %>
+
 <p>
-  <%= t('mailers.user.notify_followers_of_post_status_change.body', post: @post.title) %>
+  <%= t('mailers.user.notify_follower_of_post_status_change.body', post: @post.title) %>:
+</p>
+
+<p>
   <span style='color: white; border-radius: 10rem; padding: 0.5rem; background-color: <%= @post.post_status.color %>;'>
     <%= @post.post_status.name.upcase %>
   </span>
@@ -8,3 +13,7 @@
 <p>
   <%= link_to t('mailers.user.learn_more'), add_subdomain_to(method(:post_url), @post) %>
 </p>
+
+<%= render 'user_mailer/closing' %>
+
+<%= render 'user_mailer/unsubscribe_from_post', post: @post %>

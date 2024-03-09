@@ -1,12 +1,11 @@
 class UserMailer < ApplicationMailer
-  layout 'user_mailer'
-
   def notify_post_owner(comment:)
     Current.tenant = comment.tenant
     @comment = comment
+    @user = comment.post.user
 
     mail(
-      to: comment.post.user,
+      to: @user,
       subject: t('mailers.user.notify_post_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
@@ -14,30 +13,33 @@ class UserMailer < ApplicationMailer
   def notify_comment_owner(comment:)
     Current.tenant = comment.tenant
     @comment = comment
+    @user = comment.parent.user
 
     mail(
-      to: comment.parent.user.email,
+      to: @user.email,
       subject: t('mailers.user.notify_comment_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
 
-  def notify_followers_of_post_update(comment:)
+  def notify_follower_of_post_update(comment:, follower:)
     Current.tenant = comment.tenant
     @comment = comment
+    @user = follower
 
     mail(
-      to: comment.post.followers.pluck(:email),
-      subject: t('mailers.user.notify_followers_of_post_update.subject', site_name: site_name, post: comment.post.title)
+      to: follower.email,
+      subject: t('mailers.user.notify_follower_of_post_update.subject', site_name: site_name, post: comment.post.title)
     )
   end
 
-  def notify_followers_of_post_status_change(post:)
+  def notify_follower_of_post_status_change(post:, follower:)
     Current.tenant = post.tenant
     @post = post
+    @user = follower
 
     mail(
-      to: post.followers.pluck(:email),
-      subject: t('mailers.user.notify_followers_of_post_status_change.subject', site_name: site_name, post: post.title)
+      to: follower.email,
+      subject: t('mailers.user.notify_follower_of_post_status_change.subject', site_name: site_name, post: post.title)
     )
   end
 
