@@ -40,10 +40,10 @@ zh-CN:
       notify_comment_owner:
         subject: '[%{site_name}] New reply on your comment on post "%{post}"'
         body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
-      notify_followers_of_post_update:
+      notify_follower_of_post_update:
         subject: '[%{site_name}] New update for post "%{post}"'
         body: 'There is a new update on the post you are following "%{post}"'
-      notify_followers_of_post_status_change:
+      notify_follower_of_post_status_change:
         subject: '[%{site_name}] Status change on post "%{post}"'
         body: 'There is a status update on the post you are following "%{post}"'
   activerecord:

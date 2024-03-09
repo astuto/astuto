@@ -89,7 +89,9 @@ class PostsController < ApplicationController
           post_status_id: @post.post_status_id
         )
   
-        UserMailer.notify_followers_of_post_status_change(post: @post).deliver_later
+        @post.followers.each do |follower|
+          UserMailer.notify_follower_of_post_status_change(post: @post, follower: follower).deliver_later
+        end
       end
 
       render json: @post
