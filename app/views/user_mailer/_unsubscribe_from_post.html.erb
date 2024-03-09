@@ -1,8 +1,8 @@
 <footer>
   <%=
-    link_to(
-      t('mailers.user.unsubscribe'),
-      add_subdomain_to(method(:post_url), post)
-    )
+    t(
+      'mailers.user.unsubscribe_from_post',
+      href: link_to(t('mailers.user.unsubscribe_link'), add_subdomain_to(method(:post_url), post))
+    ).html_safe
   %>
 </footer>
