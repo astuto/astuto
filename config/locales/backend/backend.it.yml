@@ -35,17 +35,17 @@ it:
       learn_more: 'Clicca qui per saperne di più'
       unsubscribe: 'Non vuoi più ricevere notifiche? Clicca qui'
       notify_post_owner:
-        subject: '[%{app_name}] Nuovo commento al tuo post %{post}'
-        body: '%{user} ha commentato il tuo post %{post}'
+        subject: '[%{site_name}] New comment on "%{post}"'
+        body: 'There is a new comment by "%{user}" on your post "%{post}"'
       notify_comment_owner:
-        subject: '[%{app_name}] Risposta al tuo commento nel post %{post}'
-        body: '%{user} ha risposto al tuo commento nel post %{post}'
+        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
+        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
       notify_followers_of_post_update:
-        subject: '[%{app_name}] Nuovo aggiornamento per il post %{post}'
-        body: "C'è un nuovo aggiornamento sul post che stai seguendo %{post}"
+        subject: '[%{site_name}] New update for post "%{post}"'
+        body: 'There is a new update on the post you are following "%{post}"'
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Aggiornamento stato per il post %{post}'
-        body: "Il post che segui %{post} ha un nuovo stato"
+        subject: '[%{site_name}] Status change on post "%{post}"'
+        body: 'There is a status update on the post you are following "%{post}"'
   activerecord:
     models:
       board:
@@ -118,6 +118,7 @@ it:
         brand_display: 'Display'
         show_vote_count: 'Show vote count to users'
         show_vote_button_in_board: 'Show vote buttons in board page'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Root page'
         show_roadmap_in_header: 'Show roadmap link in header'
         collapse_boards_in_header: 'Collapse boards in header'

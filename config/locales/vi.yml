@@ -43,6 +43,8 @@ vi:
     enabled: 'Đã bật'
     disabled: 'Đã tắt'
     copied: 'Đã sao chép!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Taọ mới'
       edit: 'Chỉnh sửa'
@@ -53,6 +55,7 @@ vi:
       confirm: 'Xác nhận'
       back: 'Quay lại'
       test: 'Kiểm tra'
+      clear: 'Clear'
     datetime:
       now: 'Vừa xong'
       minutes:
@@ -61,20 +64,6 @@ vi:
         other: '%{count} giờ trước'
       days:
         other: '%{count} ngày trước'
-  signup:
-    page_title: 'Tạo không gian phản hồi của bạn'
-    step1:
-      title: '1. Tạo tài khoản'
-      email_auth: 'Đăng ký bằng email'
-    step2:
-      title: '2. Tạo không gian phản hồi'
-      create_button: 'Tạo không gian phản hồi'
-      validations:
-        subdomain_already_taken: 'Xin lỗi, tên miền này không khả dụng'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "Bạn đã sẵn sàng để bắt đầu!"
-      message: "Kiểm tra email %{email} để kích hoạt %{subdomain}!"
   header:
     menu:
       site_settings: 'Cài đặt trang'
@@ -83,9 +72,6 @@ vi:
     log_in: 'Đăng nhập / Đăng ký'
   roadmap:
     title: 'Lộ trình'
-  pending_tenant:
-    title: 'Xác minh địa chỉ email của bạn'
-    message: 'Chúng tôi đã gửi một email xác minh đến %{email}. Vui lòng kiểm tra hộp thư đến của bạn và nhấp vào liên kết để hoàn tất đăng ký.'
   blocked_tenant:
     title: 'Không gian phản hồi này đã bị chặn'
   board:
@@ -108,6 +94,10 @@ vi:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Không có phản hồi nào'
   post:

@@ -44,6 +44,8 @@ de:
     enabled: 'Aktiviert'
     disabled: 'Deaktiviert'
     copied: 'Kopiert!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Neu'
       edit: 'Bearbeiten'
@@ -54,6 +56,7 @@ de:
       confirm: 'Bestätigen'
       back: 'Zurück'
       test: 'Test'
+      clear: 'Clear'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -65,20 +68,6 @@ de:
       days:
         one: 'vor 1 Tag'
         other: 'vor %{count} Tagen'
-  signup:
-    page_title: 'Deinen Feedback-Bereich erstellen'
-    step1:
-      title: '1. Benutzerkonto erstellen'
-      email_auth: 'Mit E-Mail registrieren'
-    step2:
-      title: '2. Feedbackbereich erstellen'
-      create_button: 'Feedbackbereich erstellen'
-      validations:
-        subdomain_already_taken: 'Diese Subdomain ist leider nicht verfügbar'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "Fast fertig!"
-      message: "E-Mail %{email} überprüfen, um neuen Feedback-Bereich %{subdomain} zu aktivieren!"
   header:
     menu:
       site_settings: 'Seiteneinstellungen'
@@ -87,9 +76,6 @@ de:
     log_in: 'Einloggen / Registrieren'
   roadmap:
     title: 'Roadmap'
-  pending_tenant:
-    title: 'E-Mail-Adresse verifizieren'
-    message: 'Wir haben eine E-Mail mit einem Aktivierungslink an die E-Mail gesendet, die bei der Registrierung angegeben wurde. Um diesen Feedbackbereich zu aktivieren, muss auf dessen Link geklickt werden!'
   blocked_tenant:
     title: 'Dieser Feedback-Bereich wurde blockiert'
   board:
@@ -112,6 +98,10 @@ de:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:

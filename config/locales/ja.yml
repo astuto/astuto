@@ -43,6 +43,8 @@ ja:
     enabled: 'Enabled'
     disabled: 'Disabled'
     copied: 'Copied!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'New'
       edit: 'Edit'
@@ -53,6 +55,7 @@ ja:
       confirm: 'Confirm'
       back: 'Back'
       test: 'Test'
+      clear: 'Clear'
     datetime:
       now: 'just now'
       minutes:
@@ -61,20 +64,6 @@ ja:
         other: '%{count} hours ago'
       days:
         other: '%{count} days ago'
-  signup:
-    page_title: 'Create your feedback space'
-    step1:
-      title: '1. Create user account'
-      email_auth: 'Register with email'
-    step2:
-      title: '2. Create feedback space'
-      create_button: 'Create feedback space'
-      validations:
-        subdomain_already_taken: 'Sorry, this subdomain is not available'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "You're almost done!"
-      message: "Check your email %{email} to activate your new feedback space %{subdomain}!"
   header:
     menu:
       site_settings: 'Site settings'
@@ -83,9 +72,6 @@ ja:
     log_in: 'Log in / Sign up'
   roadmap:
     title: 'Roadmap'
-  pending_tenant:
-    title: 'Verify your email address'
-    message: 'We''ve sent an email with an activation link to the email you provided during registration. Click on that link to activate this feedback space!'
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:
@@ -108,6 +94,10 @@ ja:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'There are no posts'
   post:

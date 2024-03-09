@@ -44,6 +44,8 @@ fr:
     enabled: 'Activé'
     disabled: 'Désactivé'
     copied: 'Copié !'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Nouveau'
       edit: 'Modifier'
@@ -54,6 +56,7 @@ fr:
       confirm: 'Confirmer'
       back: 'Revenir en arrière'
       test: 'Tester'
+      clear: 'Clear'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -65,20 +68,6 @@ fr:
       days:
         one: 'Il y a 1 jour'
         other: 'il y a %{count} jours'
-  signup:
-    page_title: 'Créez votre espace de feedback'
-    step1:
-      title: '1. Créer un compte utilisateur'
-      email_auth: 'S´inscrire avec une adresse e-mail'
-    step2:
-      title: '2. Créer un espace de feedback'
-      create_button: 'Créer un espace de feedback'
-      validations:
-        subdomain_already_taken: 'Désolé, ce sous-domaine n''est pas disponible'
-        subdomain_only_letters_and_numbers: 'Le sous-domaine ne peut contenir que des caractères alphanumériques et des traits d''union'
-    step3:
-      title: "Vous avez presque terminé !"
-      message: "Vérifiez votre e-mail %{email} pour activer votre nouvel espace de feedback %{subdomain}!"
   header:
     menu:
       site_settings: 'Paramètres du site'
@@ -87,9 +76,6 @@ fr:
     log_in: 'Se connecter / S''inscrire'
   roadmap:
     title: 'Feuille de route'
-  pending_tenant:
-    title: 'Confirmez votre adresse e-mail'
-    message: 'Nous avons envoyé un e-mail avec un lien d''activation à l''e-mail que vous avez fourni lors de votre inscription. Cliquez sur ce lien pour activer cet espace de feedback !'
   blocked_tenant:
     title: 'Cet espace de feedback a été bloqué'
   board:
@@ -112,6 +98,10 @@ fr:
       newest: 'Plus récent'
       most_voted: 'Les plus votés'
       oldest: 'Plus anciens'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Il n''y a pas de publications'
   post:

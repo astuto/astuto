@@ -44,6 +44,8 @@ pt:
     enabled: 'Habilitado'
     disabled: 'Desabilitado'
     copied: 'Copiado!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Novo'
       edit: 'Editar'
@@ -54,6 +56,7 @@ pt:
       confirm: 'Confirmar'
       back: 'Voltar'
       test: 'Testar'
+      clear: 'Clear'
     datetime:
       now: 'agora mesmo'
       minutes:
@@ -65,20 +68,6 @@ pt:
       days:
         one: '1 dia atrás'
         other: '%{count} dias atrás'
-  signup:
-    page_title: 'Crie seu espaço de comentário'
-    step1:
-      title: 'Criar conta de usuário'
-      email_auth: 'Cadastrar com e-mail'
-    step2:
-      title: '2. Criar espaço de feedback'
-      create_button: 'Criar espaço de feedback'
-      validations:
-        subdomain_already_taken: 'Desculpe, este subdomínio não é válido'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "Você está quase lá!"
-      message: "Verifique o seu e-mail %{email} para ativar o seu novo espaço de feedback %{subdomain}!"
   header:
     menu:
       site_settings: 'Configurações do site'
@@ -87,9 +76,6 @@ pt:
     log_in: 'Entrar / Cadastrar'
   roadmap:
     title: 'Mapa'
-  pending_tenant:
-    title: 'Verifique seu endereço de correio eletrônico'
-    message: 'Enviamos uma mensagem com um linque de ativação para o endereço eletrônico que você forneceu durante o registro. Clique nesse linque para ativar este espaço de comentário!'
   blocked_tenant:
     title: 'Este espaço de comentários foi bloqueado'
   board:
@@ -112,6 +98,10 @@ pt:
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Não existem postagens ainda'
   post:

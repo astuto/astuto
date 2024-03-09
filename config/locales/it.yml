@@ -44,6 +44,8 @@ it:
     enabled: 'Abilitato'
     disabled: 'Disabilitato'
     copied: 'Copiato!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
     buttons:
       new: 'Nuova'
       edit: 'Modifica'
@@ -54,6 +56,7 @@ it:
       confirm: 'Conferma'
       back: 'Indietro'
       test: 'Test'
+      clear: 'Clear'
     datetime:
       now: 'adesso'
       minutes:
@@ -65,20 +68,6 @@ it:
       days:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
-  signup:
-    page_title: 'Crea il tuo spazio di feedback'
-    step1:
-      title: '1. Crea account utente'
-      email_auth: 'Registrati con indirizzo email'
-    step2:
-      title: '2. Crea spazio di feedback'
-      create_button: 'Crea spazio feedback'
-      validations:
-        subdomain_already_taken: 'Siamo spiacenti, questo sottodominio non è disponibile'
-        subdomain_only_letters_and_numbers: 'Subdomain can only contain alphanumeric characters and hyphen'
-    step3:
-      title: "Hai quasi finito!"
-      message: "Controlla la tua email %{email} per attivare il tuo nuovo spazio di feedback %{subdomain}!"
   header:
     menu:
       site_settings: 'Impostazioni sito'
@@ -87,9 +76,6 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
-  pending_tenant:
-    title: 'Verifica il tuo indirizzo email'
-    message: 'Abbiamo mandato una email con un link di attivazione all''indirizzo email che hai specificato in fase di registrazione. Clicca su quel link per attivare questo spazio di feedback!'
   blocked_tenant:
     title: 'Questo spazio di feedback è stato bloccato'
   board:
@@ -107,11 +93,15 @@ it:
     filter_box:
       title: 'Filtra per stato'
     sort_by_box:
-      title: 'Sort by'
-      trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      title: 'Ordina'
+      trending: 'Di tendenza'
+      newest: 'Più recenti'
+      most_voted: 'Più votati'
+      oldest: 'Meno recenti'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
     posts_list:
       empty: 'Non ci sono post'
   post:
@@ -150,7 +140,7 @@ it:
       roadmap: 'Roadmap'
       users: 'Utenti'
       authentication: 'Autenticazione'
-      appearance: 'Appearance'
+      appearance: 'Tema'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
       error: 'Si è verificato un errore: %{message}'
@@ -161,12 +151,12 @@ it:
       brand_setting_name: 'Solo nome'
       brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
-      subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
-      collapse_boards_in_header_always_collapse: 'Always'
-      subtitle_visibility: 'Visibility'
-      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
-      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      subtitle_header: 'Menu in alto'
+      collapse_boards_in_header_no_collapse: 'Mai'
+      collapse_boards_in_header_always_collapse: 'Sempre'
+      subtitle_visibility: 'Visibilità'
+      show_vote_count_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di vedere il numero di voti dei post. Questo può incentivare gli utenti a votare su post già popolari, portando a un effetto a valanga.'
+      show_vote_button_in_board_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di votare i post dalla bacheca. Questo può incentivare gli utenti a votare su un maggior numero di post, risultando in un maggior numero di voti ma di minore importanza.'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
@@ -186,28 +176,28 @@ it:
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
+      title: 'Tema'
+      learn_more: 'Scopri come personalizzare il tema'
     users:
       title: 'Utenti'
       block: 'Blocca'
       unblock: 'Sblocca'
       block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_moderator_confirmation: "%{name} sarà in grado di gestire post e utenti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
       role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di %{name}. Sei sicuro?"
       role_user: 'Utente'
       role_moderator: 'Moderatore'
       role_admin: 'Amministratore'
-      role_owner: 'Owner'
+      role_owner: 'Proprietario'
       status_active: 'Attivo'
       status_blocked: 'Bloccato'
       status_deleted: 'Eliminato'
     authentication:
       title: 'Autenticazione'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Scopri come configurare provider OAuth personalizzati'
       oauth_subtitle: 'Provider OAuth'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Provider OAuth predefinito'
       copy_url: 'Copia URL'
       test_page:
         title: 'Risultati test %{name} OAuth'

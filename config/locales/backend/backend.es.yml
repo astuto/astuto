@@ -35,22 +35,22 @@ es:
       learn_more: 'Haz clic aquí para obtener más información'
       unsubscribe: '¿Molesto/a? Puedes desactivar las notificaciones aquí'
       notify_post_owner:
-        subject: '[%{app_name}] Nuevo comentario en %{post}'
-        body: 'Hay un nuevo comentario de %{user} en tu publicación %{post}'
+        subject: '[%{site_name}] New comment on "%{post}"'
+        body: 'There is a new comment by "%{user}" on your post "%{post}"'
       notify_comment_owner:
-        subject: '[%{app_name}] Nueva respuesta en tu comentario de %{post}'
-        body: 'Hay una nueva respuesta de %{user} en tu comentario en la publicación %{post}'
+        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
+        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
       notify_followers_of_post_update:
-        subject: '[%{app_name}] Nueva actualización para la publicación %{post}'
-        body: "Hay una nueva actualización en la publicación que estás siguiendo %{post}"
+        subject: '[%{site_name}] New update for post "%{post}"'
+        body: 'There is a new update on the post you are following "%{post}"'
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Cambio de estado en la publicación %{post}'
-        body: "La publicación que estás siguiendo %{post} tiene un nuevo estado"
+        subject: '[%{site_name}] Status change on post "%{post}"'
+        body: 'There is a status update on the post you are following "%{post}"'
   activerecord:
     models:
       board:
-        one: 'Board'
-        other: 'Boards'
+        one: 'Foro'
+        other: 'Foros'
       comment:
         one: 'Comentario'
         other: 'Comentarios'
@@ -61,14 +61,14 @@ es:
         one: 'OAuth'
         other: 'OAuths'
       post_status:
-        one: 'Status'
-        other: 'Statuses'
+        one: 'Estado'
+        other: 'Estados'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Publicación'
+        other: 'Publicaciones'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Usuario'
+        other: 'Usuarios'
     attributes:
       board:
         name: 'Nombre'
@@ -100,7 +100,7 @@ es:
         json_user_email_path: 'Ruta JSON para el correo electrónico del usuario'
       post_status:
         name: 'Nombre'
-        color: 'Color'
+        color: 'Colores'
         order: 'Orden'
         show_in_roadmap: 'Mostrar en el mapa de ruta'
       post:
@@ -117,11 +117,12 @@ es:
       tenant_setting:
         brand_display: 'Visualización'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
-        custom_css: 'Custom CSS'
+        show_vote_button_in_board: 'Mostrar botones de voto en la página del foro'
+        show_powered_by: 'Show "Powered by Astuto"'
+        root_board_id: 'Página raíz'
+        show_roadmap_in_header: 'Mostrar enlace de mapa de ruta en el encabezado'
+        collapse_boards_in_header: 'Colapsar foros en el encabezado'
+        custom_css: 'CSS personalizado'
       user:
         email: 'Correo electrónico'
         full_name: 'Nombre completo'

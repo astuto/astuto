@@ -35,17 +35,17 @@ fr:
       learn_more: 'Cliquez ici pour en savoir plus'
       unsubscribe: 'Inutile ? Vous pouvez désactiver les notifications ici'
       notify_post_owner:
-        subject: '%{app_name} Nouveau commentaire sur %{post}'
-        body: 'Il y a un nouveau commentaire de %{user} sur votre publication %{post}'
+        subject: '[%{site_name}] New comment on "%{post}"'
+        body: 'There is a new comment by "%{user}" on your post "%{post}"'
       notify_comment_owner:
-        subject: '%{app_name} Nouvelle réponse à votre commentaire de %{post}'
-        body: 'Il y a une nouvelle réponse de %{user} sur votre commentaire du post %{post}'
+        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
+        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
       notify_followers_of_post_update:
-        subject: '%{app_name} Nouvelle mise à jour pour la publication %{post}'
-        body: "Il y a une nouvelle mise à jour sur la publication que vous suivez %{post}"
+        subject: '[%{site_name}] New update for post "%{post}"'
+        body: 'There is a new update on the post you are following "%{post}"'
       notify_followers_of_post_status_change:
-        subject: '[%{app_name}] Changement de statut sur la publication %{post}'
-        body: "La publication que vous suivez %{post} a un nouveau statut"
+        subject: '[%{site_name}] Status change on post "%{post}"'
+        body: 'There is a status update on the post you are following "%{post}"'
   activerecord:
     models:
       board:
@@ -118,6 +118,7 @@ fr:
         brand_display: 'Affichage'
         show_vote_count: 'Afficher le nombre de votes aux utilisateurs'
         show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
+        show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Page racine'
         show_roadmap_in_header: 'Afficher le lien de la roadmap dans l''en-tête'
         collapse_boards_in_header: 'Fusionner les tableaux dans l''en-tête'
