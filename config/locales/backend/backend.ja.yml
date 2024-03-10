@@ -30,22 +30,24 @@ ja:
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
     user:
-      opening_greeting: 'Hello!'
+      opening_greeting: 'Hello %{name}!'
       closing_greeting: 'Have a great day!'
       learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
+      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
+      unsubscribe_link: 'here'
       notify_post_owner:
         subject: '[%{site_name}] New comment on "%{post}"'
-        body: 'There is a new comment by "%{user}" on your post "%{post}"'
+        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
       notify_comment_owner:
         subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
+        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
       notify_follower_of_post_update:
         subject: '[%{site_name}] New update for post "%{post}"'
-        body: 'There is a new update on the post you are following "%{post}"'
+        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
       notify_follower_of_post_status_change:
         subject: '[%{site_name}] Status change on post "%{post}"'
-        body: 'There is a status update on the post you are following "%{post}"'
+        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
   activerecord:
     models:
       board:
