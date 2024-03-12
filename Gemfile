@@ -41,6 +41,9 @@ gem 'react-rails', '2.6.2'
 # Pagination
 gem 'kaminari', '1.2.2'
 
+# DDoS protection
+gem 'rack-attack', '6.7.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
