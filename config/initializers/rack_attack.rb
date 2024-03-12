@@ -50,6 +50,13 @@ class Rack::Attack
     end
   end
 
+  # Throttle POST requests to /tenants by IP address
+  throttle('tenant_signups/ip', limit: 10, period: 1.day) do |req|
+    if req.path == '/tenants' && req.post?
+      req.ip
+    end
+  end
+
   ### Custom Throttle Response ###
 
   # By default, Rack::Attack returns an HTTP 429 for throttled responses,
