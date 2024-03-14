@@ -29,6 +29,10 @@ class TenantsController < ApplicationController
         @tenant.status = "active" # no need to verify email address if logged in with oauth
       end
 
+      # Check how many times this email registered a tenant
+      already_registered_tenants = User.unscoped.where(email: params[:user][:email], role: User.roles[:owner]).count
+      raise "Too many tenants registered by email" unless already_registered_tenants < 3
+
       @tenant.save!
       Current.tenant = @tenant
 
