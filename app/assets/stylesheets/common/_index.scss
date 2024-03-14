@@ -274,9 +274,9 @@ body {
 
   height: 38px;
 
-  &:hover {
-    background-color: white;
-    color: var(--astuto-black);
+  &:hover, &:active, &:focus {
+    background-color: white !important;
+    color: var(--astuto-black) !important;
   }
 
   .oauthProviderText {
