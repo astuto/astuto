@@ -51,7 +51,7 @@ class Rack::Attack
   end
 
   # Throttle POST requests to /tenants by IP address
-  throttle('tenant_signups/ip', limit: 10, period: 1.day) do |req|
+  throttle('tenant_signups/ip', limit: 5, period: 20.seconds) do |req|
     if req.path == '/tenants' && req.post?
       req.ip
     end
