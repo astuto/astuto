@@ -1,133 +1,135 @@
 zh-CN:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
-    not_logged_in: 'You must be logged in to access this page'
-    not_enough_privileges: 'You do not have the privilegies to access this page'
-    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    unknown: '发生了未知错误'
+    unauthorized: '您未被授权'
+    not_logged_in: '您必须登录才能访问该页面'
+    not_enough_privileges: '你没有访问此页面的权限'
+    user_blocked_or_deleted: '您的账户已被封禁或删除，无法访问。'
+    o_auth_login_error: '无法使用 %{name} 登录， 请联系网站管理员或尝试其他方式登录。'
     board:
-      update_order: 'There was an error in reordering boards'
+      update_order: '重新排序版块时出错'
     post_status:
-      update_order: 'There was an error in reordering statuses'
+      update_order: '重新排序状态时出错'
   defaults:
-    user_full_name: 'Anonymous User'
+    user_full_name: '匿名用户'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: '欢迎来到 %{site_name}, %{email}!'
+      opening_greeting: '您好 %{email}！'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: '您可以通过以下链接确认您账户的电子邮箱：'
+        action: '确认我的账户'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "我们正在联系您，以通知您的邮箱正在变更至 %{email}"
+        body2: "我们正在联系您，以通知您的邮箱已变更至 %{email}"
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "我们正在联系您，以通知您的密码已被修改。"
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body: '有人正在请求修改您的密码，你可以通过下面的连接完成此操作。'
+        body2: "如果您未提出此请求，请忽略本邮件。"
+        body3: "在您访问以上链接并创建一个新密码前，您的密码不会更改。"
+        action: '修改我的密码'
     user:
-      opening_greeting: 'Hello!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe: 'Annoyed? You can turn off notifications here'
+      opening_greeting: '您好 %{name}！'
+      closing_greeting: '祝您今天过得愉快！'
+      learn_more: '点击这里了解更多'
+      unsubscribe_from_post_html: '被打扰了？您关闭这个帖子的通知 %{href}'
+      unsubscribe_from_site_html: '被打扰了？您关闭所有通知 %{href}'
+      unsubscribe_link: '这里'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body: 'There is a new comment by "%{user}" on your post "%{post}"'
+        subject: '[%{site_name}] 帖子有新评论 "%{post}"'
+        body_html: '<b>%{user}</b> 对您的帖子 <b>%{post}</b> 发表了一个新评论'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body: 'There is a new reply by "%{user}" on your comment from post "%{post}"'
+        subject: '[%{site_name}] 您的评论有新回复 "%{post}"'
+        body_html: '<b>%{user}</b> 对您在帖子 <b>%{post}</b> 下的评论发表了新回复'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body: 'There is a new update on the post you are following "%{post}"'
+        subject: '[%{site_name}] 帖子更新 "%{post}"'
+        body_html: '您关注的帖子 <b>%{post}</b> 有新的更新'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body: 'There is a status update on the post you are following "%{post}"'
+        subject: '[%{site_name}] 帖子状态变化 "%{post}"'
+        body_html: '您关注的帖子 <b>%{post}</b> 状态发生改变'
   activerecord:
     models:
       board:
-        other: 'Boards'
+        other: '版块'
       comment:
-        other: 'Comments'
+        other: '评论'
       like:
-        other: 'Votes'
+        other: '投票'
       o_auth:
-        other: 'OAuths'
+        other: 'OAuth 授权'
       post_status:
-        other: 'Statuses'
+        other: '状态'
       post:
-        other: 'Posts'
+        other: '帖子'
       user:
-        other: 'Users'
+        other: '用户'
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
-        order: 'Order'
+        name: '名称'
+        description: '描述'
+        order: '排序'
       comment:
-        body: 'Body'
-        is_post_update: 'Post update'
-        user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        body: '内容'
+        is_post_update: '帖子更新'
+        user_id: '作者'
+        post_id: '帖子'
+        parent_id: '上级评论'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: '用户'
+        post_id: '帖子'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: '用户'
+        post_id: '帖子'
       o_auth:
-        name: 'Name'
-        logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
-        authorize_url: 'Authorize URL'
-        token_url: 'Token URL'
-        profile_url: 'Profile URL'
-        scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        name: '名称'
+        logo: '图标'
+        is_enabled: '已启用'
+        client_id: '客户端 ID'
+        client_secret: '客户端密钥'
+        authorize_url: '授权 URL'
+        token_url: '令牌 URL'
+        profile_url: '资料 URL'
+        scope: '作用域'
+        json_user_name_path: 'JSON 路径到用户名'
+        json_user_email_path: 'JSON 路径到用户电子邮件'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: '名称'
+        color: '颜色'
+        order: '排序'
+        show_in_roadmap: '在路线图中显示'
       post:
-        title: 'Title'
-        description: 'Description'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        title: '标题'
+        description: '描述'
+        board_id: '帖子版块'
+        user_id: '帖子作者'
+        post_status_id: '帖子状态'
       tenant:
-        site_name: 'Site name'
-        site_logo: 'Site logo'
-        subdomain: 'Subdomain'
-        locale: 'Language'
+        site_name: '网站名称'
+        site_logo: '网站图标'
+        subdomain: '子域名'
+        locale: '语言'
       tenant_setting:
-        brand_display: 'Display'
-        show_vote_count: 'Show vote count to users'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        show_powered_by: 'Show "Powered by Astuto"'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
-        custom_css: 'Custom CSS'
+        brand_display: '显示'
+        show_vote_count: '对用户显示投票数'
+        show_vote_button_in_board: '在版块页面显示投票按钮'
+        show_powered_by: '显示 "由 Asisto 提供"'
+        root_board_id: '根页面'
+        show_roadmap_in_header: '在页眉显示路线图链接'
+        collapse_boards_in_header: '折叠页眉中的版块'
+        custom_css: '自定义 CSS'
       user:
-        email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        email: '电子邮箱'
+        full_name: '姓名'
+        password: '密码'
+        password_confirmation: '确认密码'
+        role: '角色'
+        notifications_enabled: '开启通知'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
-        too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum %{count} characters)'
+        invalid: '无效'
+        required: '是必填项'
+        blank: '不能为空'
+        taken: '已在使用中'
+        too_short: '太短 (最少为 %{count} 个字符)'
+        too_long: '太长 (最多为 %{count} 个字符)'
