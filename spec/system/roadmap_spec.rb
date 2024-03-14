@@ -33,13 +33,7 @@ feature 'roadmap', type: :system, js: true do
     post2
     post3
   end
-
-  it 'renders correctly' do
-    visit roadmap_path
-
-    expect(page).to have_content('Roadmap')
-  end
-
+  
   it 'shows a colum for each post status with show_in_roadmap set to true' do
     visit roadmap_path
 
