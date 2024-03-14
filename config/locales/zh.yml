@@ -1,9 +1,9 @@
 zh-CN:
   common:
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
+      required: '%{attribute} 为必填项'
+      email: '电子邮箱无效'
+      url: '网址无效'
       password: 'Password must have at least %{n} characters'
       password_mismatch: 'Password and password confirmation must match'
     forms:
