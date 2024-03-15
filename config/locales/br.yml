@@ -1,0 +1,215 @@
+pt:
+  common:
+    validations:
+      required: '%{attribute} não pode ficar em branco'
+      email: 'E-mail inválido'
+      url: 'URL inválida'
+      password: 'A senha deve ter pelo menos %{n} caracteres'
+      password_mismatch: 'Senha e confirmação de senha devem corresponder'
+    forms:
+      auth:
+        email: 'E-mail'
+        full_name: 'Nome completo'
+        password: 'Senha'
+        password_confirmation: 'Confirmação da senha'
+        new_password: 'Nova senha'
+        new_password_confirmation: 'Confirmação da nova senha'
+        current_password: 'Senha atual'
+        notifications_enabled: 'Notificações ativadas'
+        notifications_enabled_help: "se desativado, você não receberá nenhuma notificação"
+        remember_me: 'Manter sessão iniciada'
+        log_in: 'Entrar'
+        sign_up: 'Cadastre-se'
+        log_in_with: 'Entrar com %{o_auth}'
+        sign_up_with: 'Cadastre-se com %{o_auth}'
+        profile_settings: 'Configurações do perfil'
+        update_profile: 'Atulizar perfil'
+        cancel_account: 'Cancelar conta'
+        forgot_password: 'Esqueceu a senha?'
+        confirmation_instructions_not_received: "Não recebeu instruções de confirmação?"
+        unlock_instructions_not_received: "Não recebeu instruções de confirmação?"
+        send_reset_password_instructions: 'Envie-me as instruções de redefinição de senha'
+        resend_confirmation_instructions: 'Reenviar instruções de confirmação'
+        resend_unlock_instructions: 'Reenviar instruções de desbloqueio'
+        change_password: 'Alterar senha'
+        password_help: 'Mínimo de %{count} caracteres'
+    comments_number:
+      one: '1 (um) comentário'
+      other: '%{count} comentários'
+    no_status: 'Nenhum status'
+    loading: 'Carregando...'
+    confirmation: 'Tem certeza?'
+    unsaved_changes: 'As alterações não salvas serão perdidas se você sair da página.'
+    edited: 'Editado'
+    enabled: 'Habilitado'
+    disabled: 'Desabilitado'
+    copied: 'Copiado!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
+    buttons:
+      new: 'Novo'
+      edit: 'Editar'
+      delete: 'Apagar'
+      cancel: 'Cancelar'
+      create: 'Criar'
+      update: 'Salvar'
+      confirm: 'Confirmar'
+      back: 'Voltar'
+      test: 'Testar'
+      clear: 'Clear'
+    datetime:
+      now: 'agora mesmo'
+      minutes:
+        one: '1 minuto atrás'
+        other: 'Há %{count} minutos'
+      hours:
+        one: '1h (uma hora) atrás'
+        other: '%{count} horas atrás'
+      days:
+        one: '1 dia atrás'
+        other: '%{count} dias atrás'
+  header:
+    menu:
+      site_settings: 'Configurações do site'
+      profile_settings: 'Configurações do perfil'
+      sign_out: 'Sair'
+    log_in: 'Entrar / Cadastrar'
+  roadmap:
+    title: 'Mapa'
+  blocked_tenant:
+    title: 'Este espaço de comentários foi bloqueado'
+  board:
+    new_post:
+      submit_button: 'Enviar comentário'
+      cancel_button: 'Cancelar'
+      login_button: 'Autentique-se ou cadastre-se'
+      title: 'Título'
+      description: 'Descrição (opcional)'
+      no_title: 'O campo "título" é de preenchimento necessário'
+      submit_success: 'Comentário publicado! Você será redirecionada(o) em breve...'
+      submit_error: 'Aconteceu um erro inesperado, por favor tente novamente.'
+    search_box:
+      title: 'Procurar'
+    filter_box:
+      title: 'Filtrar por estado atual'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
+    posts_list:
+      empty: 'Não existem postagens ainda'
+  post:
+    edit_button: 'Alterar'
+    published_by: 'Publicado por'
+    post_status_select:
+      no_post_status: 'Nenhuma mensagem publicada'
+    updates_box:
+      title: 'Atualizações'
+      empty: 'Não há atualizações ainda'
+      status_change: 'Mudou de estado para'
+    likes_box:
+      title: 'Gostaram'
+      empty: 'Nenhuma pessoa demonstrou gostar até então'
+    action_box:
+      title: 'Ações'
+      follow_button: 'Seguir publicação'
+      following_description: "você está recebendo notificações sobre novas atualizações nesta publicação"
+      not_following_description: "você não receberá as atualizações desta publicação"
+    comments:
+      title: 'Atividades recentes'
+      post_update_badge: 'Atualizar'
+      reply_button: 'Responder'
+    new_comment:
+      body_placeholder: 'Deixe seu comentário'
+      submit_button: 'Enviar'
+      is_post_update: 'Marcar como atualizado'
+      user_notification: 'Os usuários que seguem esta publicação serão notificados'
+      not_logged_in: 'Você precisa se autenticar para comentar'
+  site_settings:
+    menu:
+      title: 'Configurações do site'
+      general: 'Geral'
+      boards: 'Painéis'
+      post_statuses: 'Estado atual'
+      roadmap: 'Rotas'
+      users: 'Usuária(e/o)s'
+      authentication: 'Autenticação'
+      appearance: 'Appearance'
+    info_box:
+      up_to_date: 'Todas as alterações foram salvas'
+      error: 'Ocorreu um erro: %{message}'
+      dirty: 'As mudanças não foram salvas'
+    general:
+      title: 'Geral'
+      brand_setting_both: 'Nome e logotipo'
+      brand_setting_name: 'Apenas nome'
+      brand_setting_logo: 'Logotipo apenas'
+      brand_setting_none: 'Nada salvo'
+      subtitle_header: 'Cabeçalho'
+      collapse_boards_in_header_no_collapse: 'Nunca'
+      collapse_boards_in_header_always_collapse: 'Sempre'
+      subtitle_visibility: 'Visibilidade'
+      show_vote_count_help: 'Se você habilitar essa configuração, os usuários poderão ver a contagem de votos das postagens. Isso pode incentivar os usuários a votar em postagens já populares, levando a um efeito de bola de neve.'
+      show_vote_button_in_board_help: 'Se você habilitar esta configuração, os usuários poderão votar nas postagens da página do fórum. Isso pode incentivar os usuários a votar em mais postagens, levando a um número maior de votos, mas de menor significância.'
+    boards:
+      title: 'Quadros'
+      empty: 'Não há quadros. Crie um abaixo!'
+      new: 'Novo'
+      form:
+        name: 'Nome do quadro'
+        description: 'Descrição do quadro (opcional)'
+    post_statuses:
+      title: 'Status'
+      empty: 'Não há nenhum status. Crie um abaixo!'
+      new: 'Novo'
+      form:
+        name: 'Nome do status'
+    roadmap:
+      title: 'Mapa'
+      title2: 'Não está no mapa'
+      empty: 'O mapa está vazio.'
+      help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
+    users:
+      title: 'Usuários'
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
+      block_confirmation: "%{name} não poderá acessar até que seja desbloqueado. Tem certeza?"
+      unblock_confirmation: "%{name} poderá se autenticar e enviar comentário. Tem certeza?"
+      role_to_moderator_confirmation: "%{name} poderá gerenciar postagens e usuários. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
+      role_to_admin_confirmation: "%{name} poderá gerenciar painéis, postagens, estados, usuários e muito mais. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
+      role_user: 'Usuária(e/o)s'
+      role_moderator: 'Moderador(e/a)'
+      role_admin: 'Administrador(e/a)'
+      role_owner: 'Responsável'
+      status_active: 'Ativa(e/o)'
+      status_blocked: 'Bloqueada(e/o)'
+      status_deleted: 'Excluída(e/o)'
+    authentication:
+      title: 'Autenticação'
+      learn_more: 'Learn how to configure custom OAuth providers'
+      oauth_subtitle: 'Provedores de identidade OAuth'
+      default_oauth: 'Default OAuth provider'
+      copy_url: 'Copiar URL'
+      test_page:
+        title: '%{name} resultados do teste OAuth'
+        fetched_user_data: 'Dados de usuária(e/o) obtidos'
+        found: 'Encontrada(e/o)'
+        summary: 'Resumo'
+        valid_configuration: 'Este provedor de identidade OAuth está configurado corretamente!'
+        warning_configuration: 'Este provedor OAuth está configurado corretamente, mas um nome padrão para usuária(e/o)s (%{name}) será usado.'
+        invalid_configuration: 'Este provedor de identidade OAuth NÃO está configurado corretamente.'
+      form:
+        title_new: 'Novo provedor de identidade OAuth'
+        title_edit: 'Editar provedor de identidade OAuth'
+        subtitle_oauth_config: 'Configuração de servidor de identidade OAuth'
+        subtitle_user_profile_config: 'Configuração do perfil do usuária(e/o)'
+        client_secret_help: 'ocultado por motivos de segurança'
