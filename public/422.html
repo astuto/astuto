@@ -3,11 +3,45 @@
 <head>
   <title>The change you wanted was rejected</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/astuto/astuto-assets/main/public/style.css" />
+  
+  <style type="text/css">
+    .card {
+      /* Bootstrap 4.6.2 card style */
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+
+      /* My customizations */
+      max-width: 540px;
+      text-align: center;
+      font-family: system-ui;
+      margin: 0 auto;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04),0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      color: black;
+      padding: 8px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .error-image { margin: 0 auto; }
+    .error-description { font-size: 18px; }
+    a { color: black; }
+  </style>
 </head>
 
 <body>
   <!-- This file lives in public/422.html -->
+  <div class="logo"><img src="https://raw.githubusercontent.com/astuto/astuto-assets/main/logo-256.png" width="64" height="64" /></div>
   <div class="card">
     <h1>Rejected</h1>
     <img src="https://raw.githubusercontent.com/astuto/astuto-assets/main/public/error-422.png" width="64" height="64" class="error-image" />
