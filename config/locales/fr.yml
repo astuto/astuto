@@ -44,8 +44,8 @@ fr:
     enabled: 'Activé'
     disabled: 'Désactivé'
     copied: 'Copié !'
-    user_staff: 'Staff'
-    powered_by: 'Powered by'
+    user_staff: 'Équipe'
+    powered_by: 'Propulsé par'
     buttons:
       new: 'Nouveau'
       edit: 'Modifier'
@@ -56,7 +56,7 @@ fr:
       confirm: 'Confirmer'
       back: 'Revenir en arrière'
       test: 'Tester'
-      clear: 'Clear'
+      clear: 'Effacer'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -99,9 +99,9 @@ fr:
       most_voted: 'Les plus votés'
       oldest: 'Plus anciens'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Filtrer par date'
+      from_label: 'De'
+      to_label: 'À'
     posts_list:
       empty: 'Il n''y a pas de publications'
   post:
