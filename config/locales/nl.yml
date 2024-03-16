@@ -17,6 +17,9 @@ nl:
         current_password: 'Current password'
         notifications_enabled: 'Notifications enabled'
         notifications_enabled_help: "if disabled, you won't receive any notification"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Remember me'
         log_in: 'Log in'
         sign_up: 'Sign up'
