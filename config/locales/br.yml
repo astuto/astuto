@@ -17,6 +17,9 @@ pt:
         current_password: 'Senha atual'
         notifications_enabled: 'Notificações ativadas'
         notifications_enabled_help: "se desativado, você não receberá nenhuma notificação"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Manter sessão iniciada'
         log_in: 'Entrar'
         sign_up: 'Cadastre-se'
