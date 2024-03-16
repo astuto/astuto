@@ -17,6 +17,9 @@ es:
         current_password: 'Contraseña actual'
         notifications_enabled: 'Notificaciones habilitadas'
         notifications_enabled_help: "si está deshabilitado, no recibirás ninguna notificación"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Recuérdame'
         log_in: 'Iniciar sesión'
         sign_up: 'Registrarse'
