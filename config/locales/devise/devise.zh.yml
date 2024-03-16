@@ -2,8 +2,8 @@ zh-CN:
   devise:
     confirmations:
       confirmed: "成功验证您的帐号。您现已登录。"
-      send_instructions: "您的电子邮箱将在几分钟后收到一封帐号确认邮件。"
-      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封确认帐号的邮件。"
+      send_instructions: "几分钟后，您将收到一封验证邮箱地址的邮件。"
+      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封验证邮件。"
     failure:
       already_authenticated: "您已经登录。"
       inactive: "您还没有激活帐户。"
@@ -13,14 +13,14 @@ zh-CN:
       not_found_in_database: "邮箱或密码错误。"
       timeout: "您已登录超时，请重新登录。"
       unauthenticated: "继续操作前请注册或者登录。"
-      unconfirmed: "继续操作前请先确认您的帐号。"
+      unconfirmed: "继续操作前请先验证您的邮箱地址。"
     mailer:
       confirmation_instructions:
-        subject: "帐户确认信息"
+        subject: "验证邮箱"
       reset_password_instructions:
-        subject: "重置密码信息"
+        subject: "重置密码"
       unlock_instructions:
-        subject: "帐户解锁信息"
+        subject: "帐户解锁"
       email_changed:
         subject: "电邮已被修改"
       password_change:
@@ -29,9 +29,9 @@ zh-CN:
       failure: "由于%{reason}，无法从%{kind}获得授权。"
       success: "成功地从%{kind}获得授权。"
     passwords:
-      no_token: "无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入的URL完整的。"
-      send_instructions: "几分钟后，您将收到重置密码的电子邮件。"
-      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。"
+      no_token: "无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入了完整的网址。"
+      send_instructions: "几分钟后，您将收到一封重置密码的邮件。"
+      send_paranoid_instructions: "如果您的邮箱存在于我们的数据库中，您将收到一封重置密码的邮件。"
       updated: "您的密码已修改成功，您现在已登录。"
       updated_not_active: "您的密码已修改成功。"
     registrations:
@@ -39,8 +39,8 @@ zh-CN:
       signed_up: "欢迎！您已注册成功。"
       signed_up_but_inactive: "您已注册，但尚未激活帐号。"
       signed_up_but_locked: "您已注册，但帐号被锁定了。"
-      signed_up_but_unconfirmed: "一封带有确认链接的邮件已经发送至您的邮箱，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。"
-      update_needs_confirmation: "信息更新成功，但我们需要验证您的新电子邮件地址，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。"
+      signed_up_but_unconfirmed: "一封带有验证链接的邮件已经发送至您的邮箱，请检查邮箱（包括垃圾箱），并点击该链接激活您的帐号。"
+      update_needs_confirmation: "信息更新成功，但我们需要验证您的新电子邮件地址，请检查邮箱（包括垃圾箱），并点击该链接激活您的帐号。"
       updated: "帐号资料更新成功。"
       updated_but_not_signed_in: "帐号资料更新成功。由于密码已修改，请重新登录。"
     sessions:
@@ -54,7 +54,7 @@ zh-CN:
   errors:
     messages:
       already_confirmed: "已经确认，请重新登录。"
-      confirmation_period_expired: "注册帐号后须在%{period}以内确认。请重新注册。"
+      confirmation_period_expired: "注册帐号后须在 %{period} 以内验证邮箱。请重新注册。"
       expired: "邮件确认已过期，请重新注册。"
       not_found: "找不到。"
       not_locked: "未锁定。"
