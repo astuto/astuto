@@ -17,6 +17,9 @@ zh-CN:
         current_password: '当前密码'
         notifications_enabled: '开启通知'
         notifications_enabled_help: "关闭后，您将不会收到任何通知"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: '记住账号'
         log_in: '登录'
         sign_up: '注册'
