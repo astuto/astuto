@@ -18,6 +18,7 @@ class Tenant < ApplicationRecord
 
   validates :site_name, presence: true
   validates :subdomain, presence: true, uniqueness: true
+  validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
 
   accepts_nested_attributes_for :tenant_setting, update_only: true
 
