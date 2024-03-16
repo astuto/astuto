@@ -17,6 +17,9 @@ vi:
         current_password: 'Mật khẩu hiện tại'
         notifications_enabled: 'Thông báo đã bật'
         notifications_enabled_help: "Nếu tắt, bạn sẽ không nhận được thông báo nào"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Nhớ mật khẩu'
         log_in: 'Đăng nhập'
         sign_up: 'Đăng ký'
