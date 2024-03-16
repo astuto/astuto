@@ -13,6 +13,13 @@
     <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
   </div>
 
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>
+      <b><%= t('common.forms.auth.waiting_confirmation', email: resource.unconfirmed_email) %></b>
+      <br /><br />
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :notifications_enabled, t('common.forms.auth.notifications_enabled') %>
     &nbsp;
@@ -22,15 +29,11 @@
     </small>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
   <div class="form-group">
     <%= f.label :password, t('common.forms.auth.password') %>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <small id="passwordEditHelp" class="form-text text-muted">
-      leave blank if you don't want to change your password
+      <%= t('common.forms.auth.password_leave_blank_help') %>
     </small>
   </div>
 
@@ -43,7 +46,7 @@
     <%= f.label :current_password, t('common.forms.auth.current_password') %>
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
     <small id="currentPasswordHelp" class="form-text text-muted">
-      we need your current password to confirm your changes
+      <%= t('common.forms.auth.current_password_required_help') %>
     </small>
   </div>
 
