@@ -185,7 +185,7 @@ it:
       block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
       role_to_moderator_confirmation: "%{name} sarà in grado di gestire post e utenti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
-      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di %{name}. Sei sicuro?"
+      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
       role_user: 'Utente'
       role_moderator: 'Moderatore'
       role_admin: 'Amministratore'
