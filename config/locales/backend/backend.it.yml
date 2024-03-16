@@ -92,7 +92,7 @@ it:
         name: 'Nome'
         logo: 'Logo'
         is_enabled: 'Abilitato'
-        client_id: 'Client ID'
+        client_id: 'Cliente ID'
         client_secret: 'Client secret'
         authorize_url: 'Authorize URL'
         token_url: 'Token URL'
