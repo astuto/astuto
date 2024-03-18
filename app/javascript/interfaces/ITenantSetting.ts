@@ -22,6 +22,7 @@ export type TenantSettingCollapseBoardsInHeader =
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
   root_board_id?: number;
+  custom_domain?: string;
   show_vote_count?: boolean;
   show_vote_button_in_board?: boolean;
   show_roadmap_in_header?: boolean;
