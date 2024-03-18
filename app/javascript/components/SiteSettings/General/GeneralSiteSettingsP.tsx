@@ -27,6 +27,7 @@ export interface ISiteSettingsGeneralForm {
   showVoteButtonInBoard: boolean;
   showPoweredBy: boolean;
   rootBoardId?: string;
+  customDomain: string;
   showRoadmapInHeader: boolean;
   collapseBoardsInHeader: string;
 }
@@ -45,6 +46,7 @@ interface Props {
     brandDisplaySetting: string,
     locale: string,
     rootBoardId: number,
+    customDomain: string,
     showRoadmapInHeader: boolean,
     collapseBoardsInHeader: string,
     showVoteCount: boolean,
@@ -77,6 +79,7 @@ const GeneralSiteSettingsP = ({
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
       showPoweredBy: originForm.showPoweredBy,
       rootBoardId: originForm.rootBoardId,
+      customDomain: originForm.customDomain,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
       collapseBoardsInHeader: originForm.collapseBoardsInHeader,
     },
@@ -89,6 +92,7 @@ const GeneralSiteSettingsP = ({
       data.brandDisplaySetting,
       data.locale,
       Number(data.rootBoardId),
+      data.customDomain,
       data.showRoadmapInHeader,
       data.collapseBoardsInHeader,
       data.showVoteCount,
@@ -184,6 +188,15 @@ const GeneralSiteSettingsP = ({
                 ))}
               </optgroup>
             </select>
+          </div>
+
+          <div className="formGroup">
+            <label htmlFor="customDomain">{ getLabel('tenant_setting', 'custom_domain') }</label>
+            <input
+              {...register('customDomain')}
+              id="customDomain"
+              className="formControl"
+            />
           </div>
 
           <br />

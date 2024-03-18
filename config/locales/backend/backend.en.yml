@@ -122,6 +122,7 @@ en:
         show_vote_button_in_board: 'Show vote buttons in board page'
         show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Root page'
+        custom_domain: 'Custom domain'
         show_roadmap_in_header: 'Show roadmap link in header'
         collapse_boards_in_header: 'Collapse boards in header'
         custom_css: 'Custom CSS'

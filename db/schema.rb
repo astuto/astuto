@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_03_103945) do
+ActiveRecord::Schema.define(version: 2024_03_18_174818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2024_03_03_103945) do
     t.integer "collapse_boards_in_header", default: 0, null: false
     t.text "custom_css"
     t.boolean "show_powered_by", default: true, null: false
+    t.string "custom_domain"
     t.index ["tenant_id"], name: "index_tenant_settings_on_tenant_id"
   end
 
