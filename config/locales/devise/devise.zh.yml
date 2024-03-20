@@ -22,7 +22,7 @@ zh-CN:
       unlock_instructions:
         subject: "帐户解锁"
       email_changed:
-        subject: "电邮已被修改"
+        subject: "邮箱地址已被修改"
       password_change:
         subject: "密码已被重置"
     omniauth_callbacks:
