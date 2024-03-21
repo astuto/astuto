@@ -4,6 +4,6 @@ FactoryBot.define do
     site_logo { "" }
     sequence(:subdomain) { |n| "mysubdomain#{n}" }
     locale { "en" }
-    custom_url { "" }
+    custom_domain { "" }
   end
 end

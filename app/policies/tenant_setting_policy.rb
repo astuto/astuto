@@ -4,7 +4,6 @@ class TenantSettingPolicy < ApplicationPolicy
       [
         :brand_display,
         :root_board_id,
-        :custom_domain,
         :show_vote_count,
         :show_vote_button_in_board,
         :show_powered_by,

@@ -191,7 +191,7 @@ const GeneralSiteSettingsP = ({
           </div>
 
           <div className="formGroup">
-            <label htmlFor="customDomain">{ getLabel('tenant_setting', 'custom_domain') }</label>
+            <label htmlFor="customDomain">{ getLabel('tenant', 'custom_domain') }</label>
             <input
               {...register('customDomain')}
               id="customDomain"

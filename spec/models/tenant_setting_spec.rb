@@ -36,40 +36,6 @@ RSpec.describe TenantSetting, type: :model do
     expect(tenant_setting.root_board_id).to eq(0)
   end
 
-  it 'has a setting for custom domain' do
-    expect(tenant_setting.custom_domain).to be_nil
-
-    tenant_setting.custom_domain = ''
-    expect(tenant_setting).to be_valid
-
-    tenant_setting.custom_domain = 'example.com'
-    expect(tenant_setting).to be_valid
-
-    tenant_setting.custom_domain = 'subdomain.example.com'
-    expect(tenant_setting).to be_valid
-
-    tenant_setting.custom_domain = 'sub.subdomain.example.com'
-    expect(tenant_setting).to be_valid
-
-    tenant_setting.custom_domain = 'com'
-    expect(tenant_setting).to be_invalid
-
-    tenant_setting.custom_domain = 'https://example.com'
-    expect(tenant_setting).to be_invalid
-
-    tenant_setting.custom_domain = 'example.com/sub'
-    expect(tenant_setting).to be_invalid
-
-    tenant_setting.custom_domain = 'example.com.'
-    expect(tenant_setting).to be_invalid
-
-    tenant_setting.custom_domain = 'example..com'
-    expect(tenant_setting).to be_invalid
-
-    tenant_setting.custom_domain = '.example.com'
-    expect(tenant_setting).to be_invalid
-  end
-
   it 'has a setting to show/hide roadmap link in header' do
     expect(tenant_setting.show_roadmap_in_header).to be_truthy
   end
