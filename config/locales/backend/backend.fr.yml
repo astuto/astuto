@@ -33,20 +33,20 @@ fr:
       opening_greeting: 'Bonjour %{name} !'
       closing_greeting: 'Passez une bonne journée !'
       learn_more: 'Cliquez ici pour en savoir plus'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
+      unsubscribe_from_post_html: 'Agacé ? Vous pouvez désactiver les notifications pour ce post %{href}'
+      unsubscribe_from_site_html: 'Agacé ? Vous pouvez désactiver toutes les notifications %{href}'
       unsubscribe_link: 'ici'
       notify_post_owner:
         subject: '[%{site_name}] Nouveau commentaire sur "%{post}"'
         body_html: 'Il y a un nouveau commentaire de <b>%{user}</b> sur votre publication <b>%{post}</b>'
       notify_comment_owner:
         subject: '[%{site_name}] Nouvelle réponse à votre commentaire de %{post}'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        body_html: 'Il y a une nouvelle réponse par <b>%{user}</b> à votre commentaire sur le post <b>%{post}</b>'
       notify_follower_of_post_update:
         subject: '[%{site_name}] Nouvelle mise à jour pour la publication" %{post}"'
         body_html: 'Il y a une nouvelle mise à jour sur la publication que vous suivez <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
+        subject: '[%{site_name}] Statut changé sur le post "%{post}"'
         body_html: 'Il y a une nouvelle mise à jour sur la publication que vous suivez <b>%{post}</b>'
   activerecord:
     models:
