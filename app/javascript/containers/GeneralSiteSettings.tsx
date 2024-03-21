@@ -34,11 +34,11 @@ const mapDispatchToProps = (dispatch: any) => ({
         show_vote_button_in_board: showVoteButtonInBoard,
         show_powered_by: showPoweredBy,
         root_board_id: rootBoardId,
-        custom_domain: customDomain,
         show_roadmap_in_header: showRoadmapInHeader,
         collapse_boards_in_header: collapseBoardsInHeader,
       },
       locale,
+      customDomain,
       authenticityToken,
     }));
   },

@@ -4,7 +4,7 @@
     <%=
       t(
         'mailers.user.unsubscribe_from_post_html',
-        href: link_to(t('mailers.user.unsubscribe_link'), add_subdomain_to(method(:post_url), post))
+        href: link_to(t('mailers.user.unsubscribe_link'), get_url_for(method(:post_url), post))
       )
     %>
   </p>

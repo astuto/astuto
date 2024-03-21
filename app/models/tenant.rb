@@ -19,6 +19,7 @@ class Tenant < ApplicationRecord
   validates :site_name, presence: true
   validates :subdomain, presence: true, uniqueness: true
   validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
+  validates :custom_domain, format: { with: /\A[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/ }, allow_blank: true
 
   accepts_nested_attributes_for :tenant_setting, update_only: true
 

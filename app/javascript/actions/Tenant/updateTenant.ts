@@ -50,6 +50,7 @@ interface UpdateTenantParams {
   siteLogo?: string;
   tenantSetting?: ITenantSetting;
   locale?: string;
+  customDomain?: string;
   authenticityToken: string;
 }
 
@@ -58,6 +59,7 @@ export const updateTenant = ({
   siteLogo = null,
   tenantSetting = null,
   locale = null,
+  customDomain = null,
   authenticityToken,
 }: UpdateTenantParams): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(tenantUpdateStart());
@@ -65,7 +67,8 @@ export const updateTenant = ({
   const tenant = Object.assign({},
     siteName !== null ? { site_name: siteName } : null,
     siteLogo !== null ? { site_logo: siteLogo } : null,
-    locale !== null ? { locale } : null
+    locale !== null ? { locale } : null,
+    customDomain !== null ? { custom_domain: customDomain } : null,
   );
 
   try {
