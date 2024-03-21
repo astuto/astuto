@@ -17,9 +17,9 @@ fr:
         current_password: 'Mot de passe actuel'
         notifications_enabled: 'Notifications activées'
         notifications_enabled_help: "si désactivé, vous ne recevrez aucune notification"
-        waiting_confirmation: 'Currently waiting confirmation for %{email}'
-        password_leave_blank_help: "leave blank if you don't want to change your password"
-        current_password_required_help: 'we need your current password to confirm your changes'
+        waiting_confirmation: 'En attente de confirmation de : %{email}'
+        password_leave_blank_help: "laissez vide si vous ne souhaitez pas changer votre mot de passe"
+        current_password_required_help: 'nous avons besoin de votre mot de passe actuel pour confirmer vos modifications'
         remember_me: 'Se souvenir de moi'
         log_in: 'Se connecter'
         sign_up: 'S''inscrire'
