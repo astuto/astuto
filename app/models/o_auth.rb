@@ -29,7 +29,7 @@ class OAuth < ApplicationRecord
     if self.is_default?
       o_auth_callback_url(id, host: Rails.application.base_url, subdomain: "login")
     else
-      get_url_for(method(:o_auth_callback_url), id)
+      get_url_for(method(:o_auth_callback_url), resource: id, disallow_custom_domain: true)
     end
   end
 

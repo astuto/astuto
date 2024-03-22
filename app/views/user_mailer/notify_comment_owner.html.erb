@@ -7,7 +7,7 @@
 <%= render 'user_mailer/quoted_text', text: @comment.body %>
 
 <p>
-  <%= link_to t('mailers.user.learn_more'), get_url_for(method(:post_url), @comment.post) %>
+  <%= link_to t('mailers.user.learn_more'), get_url_for(method(:post_url), resource: @comment.post) %>
 </p>
 
 <%= render 'user_mailer/closing' %>

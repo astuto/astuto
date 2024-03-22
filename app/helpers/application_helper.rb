@@ -28,14 +28,24 @@ module ApplicationHelper
     end
   end
 
-  def get_url_for(url_helper, resource=nil, options={})
+  def get_url_for(url_helper, resource: nil, disallow_custom_domain: false, options: {})
     custom_domain = Current.tenant.custom_domain
 
-    if Rails.application.multi_tenancy? && custom_domain.blank?
+    if Rails.application.multi_tenancy? && (custom_domain.blank? || disallow_custom_domain)
       options[:subdomain] = Current.tenant.subdomain
     end
 
-    options[:host] = custom_domain.blank? ? Rails.application.base_url : custom_domain
+    if custom_domain.blank? || disallow_custom_domain
+      options[:host] = Rails.application.base_url
+    else
+      options[:host] = custom_domain
+    end
+
+    if Rails.env.production? || Rails.application.base_url.include?('https')
+      options[:protocol] = 'https'
+    else
+      options[:protocol] = 'http'
+    end
 
     resource ? url_helper.call(resource, options) : url_helper.call(options)
   end
