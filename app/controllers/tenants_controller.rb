@@ -69,37 +69,16 @@ class TenantsController < ApplicationController
     authorize @tenant
 
     # If the custom domain has changed, we need to add it to astuto-cname
-    if Rails.application.multi_tenancy? and params[:tenant][:custom_domain] != @tenant.custom_domain
-      begin
-        # Add new custom domain...
-        if params[:tenant][:custom_domain].present?
-          response = HTTParty.post(
-            ENV["ASTUTO_CNAME_API_URL"],
-            headers: {
-              "api_key" => ENV["ASTUTO_CNAME_API_KEY"],
-              "Accept" => "application/json",
-            },
-            query: { "domain" => params[:tenant][:custom_domain] }
-          )
+    custom_domain_response = AddCustomDomainWorkflow.new(
+      new_custom_domain: params[:tenant][:custom_domain],
+      current_custom_domain: @tenant.custom_domain
+    ).run
 
-          raise "Unable to register custom domain" unless response.success?
-        end
-
-        # ... and remove the current one
-        if @tenant.custom_domain.present?
-          response = HTTParty.delete(
-            ENV["ASTUTO_CNAME_API_URL"],
-            headers: {
-              "api_key" => ENV["ASTUTO_CNAME_API_KEY"],
-              "Accept" => "application/json",
-            },
-            query: { "domain" => @tenant.custom_domain }
-          )
-        end
-      rescue => e
-        render json: { error: e }, status: :unprocessable_entity
-        return
-      end
+    if custom_domain_response == false
+      render json: {
+        error: "Error adding custom domain"
+      }, status: :unprocessable_entity
+      return
     end
 
     if @tenant.update(tenant_update_params)
