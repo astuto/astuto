@@ -61,7 +61,7 @@ class OAuthsController < ApplicationController
 
       if user
         oauth_token = user.generate_oauth_token
-        redirect_to get_url_for(method(:o_auth_sign_in_from_oauth_token_url), nil, {user_id: user.id, token: oauth_token})
+        redirect_to get_url_for(method(:o_auth_sign_in_from_oauth_token_url), options: { user_id: user.id, token: oauth_token })
       else
         flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
         redirect_to get_url_for(method(:new_user_session_url))
