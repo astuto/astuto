@@ -203,7 +203,7 @@ const GeneralSiteSettingsP = ({
               className="formControl"
             />
             {
-              (originForm.customDomain !== customDomain) &&
+              originForm.customDomain !== customDomain && customDomain !== '' &&
               <div style={{marginTop: 16}}>
                 <SmallMutedText>
                   { I18n.t('site_settings.general.custom_domain_help', { domain: customDomain }) }

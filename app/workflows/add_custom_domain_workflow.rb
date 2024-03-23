@@ -26,7 +26,7 @@ class AddCustomDomainWorkflow
     return true unless Rails.application.multi_tenancy?
     return true if @new_custom_domain == @current_custom_domain
     return true if Tenant.exists?(custom_domain: @new_custom_domain)
-      
+    
     begin
       # Add new custom domain...
       if @new_custom_domain.present?

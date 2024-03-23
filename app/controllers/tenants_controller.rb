@@ -81,6 +81,10 @@ class TenantsController < ApplicationController
       return
     end
 
+    # Since custom_domain is unique at db level, we need to set it to nil if it is blank
+    # to avoid unique constraint violation
+    params[:tenant][:custom_domain] = nil if params[:tenant][:custom_domain].blank?
+
     if @tenant.update(tenant_update_params)
       render json: @tenant
     else
