@@ -17,6 +17,8 @@ import {
 import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import IBoardJSON from '../../../interfaces/json/IBoard';
+import ActionLink from '../../common/ActionLink';
+import { LearnMoreIcon } from '../../common/Icons';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
@@ -68,7 +70,8 @@ const GeneralSiteSettingsP = ({
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isSubmitSuccessful, errors }
+    formState: { isDirty, isSubmitSuccessful, errors },
+    watch,
   } = useForm<ISiteSettingsGeneralForm>({
     defaultValues: {
       siteName: originForm.siteName,
@@ -104,6 +107,8 @@ const GeneralSiteSettingsP = ({
       window.location.reload();
     });
   };
+
+  const customDomain = watch('customDomain');
 
   return (
     <>
@@ -197,6 +202,20 @@ const GeneralSiteSettingsP = ({
               id="customDomain"
               className="formControl"
             />
+            {
+              (originForm.customDomain !== customDomain) &&
+              <div style={{marginTop: 16}}>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.custom_domain_help', { domain: customDomain }) }
+                </SmallMutedText>
+                <ActionLink
+                  onClick={() => window.open('https://docs.astuto.io/custom-domain', '_blank')}
+                  icon={<LearnMoreIcon />}
+                >
+                  {I18n.t('site_settings.general.custom_domain_learn_more')}
+                </ActionLink>
+              </div>
+            }
           </div>
 
           <br />

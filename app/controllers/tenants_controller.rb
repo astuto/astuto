@@ -68,7 +68,7 @@ class TenantsController < ApplicationController
     @tenant = Current.tenant_or_raise!
     authorize @tenant
 
-    # If the custom domain has changed, we need to add it to astuto-cname
+    # If the custom domain has changed, we need to provision SSL certificate
     custom_domain_response = AddCustomDomainWorkflow.new(
       new_custom_domain: params[:tenant][:custom_domain],
       current_custom_domain: @tenant.custom_domain
