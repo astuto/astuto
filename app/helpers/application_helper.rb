@@ -41,7 +41,7 @@ module ApplicationHelper
       options[:host] = custom_domain
     end
 
-    if Rails.env.production? || Rails.application.base_url.include?('https')
+    if Rails.application.base_url.include?('https')
       options[:protocol] = 'https'
     else
       options[:protocol] = 'http'
@@ -57,7 +57,7 @@ module ApplicationHelper
 
       if app_host_splitted.join('.') == request_host_splitted.last(app_host_splitted.length).join('.')
         return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
-        
+
         tenant = Tenant.find_by(subdomain: request.subdomain)
       else
         tenant = Tenant.find_by(custom_domain: request.host)
