@@ -130,6 +130,7 @@ ru:
         site_logo: 'Логотип сайта'
         subdomain: 'Поддомен'
         locale: 'Язык'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Экран'
         show_vote_count: 'Показать количество голосов пользователям'

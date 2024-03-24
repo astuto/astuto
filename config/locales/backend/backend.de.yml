@@ -116,6 +116,7 @@ de:
         site_logo: 'Seitenlogo'
         subdomain: 'Subdomain'
         locale: 'Sprache'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Anzeige'
         show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
