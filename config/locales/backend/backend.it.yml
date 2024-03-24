@@ -116,6 +116,7 @@ it:
         site_logo: 'Logo del sito'
         subdomain: 'Sottodominio'
         locale: 'Lingua'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
         show_vote_count: 'Show vote count to users'
