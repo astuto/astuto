@@ -28,16 +28,9 @@ module ApplicationHelper
     end
   end
 
-  def get_url_for(url_helper, resource=nil, options={})
-    custom_domain = Current.tenant.custom_domain
-
-    if Rails.application.multi_tenancy? && custom_domain.blank?
-      options[:subdomain] = Current.tenant.subdomain
-    end
-
-    options[:host] = custom_domain.blank? ? Rails.application.base_url : custom_domain
-
-    resource ? url_helper.call(resource, options) : url_helper.call(options)
+  def add_subdomain_to(url_helper, resource=nil, options={})
+    options[:subdomain] = Current.tenant_or_raise!.subdomain if Rails.application.multi_tenancy?
+    options[:host] = Rails.application.base_url
   end
 
   def get_tenant_from_request(request)

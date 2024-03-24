@@ -5,7 +5,7 @@
   </head>
   <body>
     <div style="margin: 16px auto; text-align: center;">
-      <a href="<%= get_url_for(method(:root_url)) %>">
+      <a href="<%= add_subdomain_to(method(:root_url)) %>">
         <%= image_tag('https://raw.githubusercontent.com/astuto/astuto-assets/main/logo-64.png', alt: 'Astuto Logo', size: 64) %>
       </a>
     </div>

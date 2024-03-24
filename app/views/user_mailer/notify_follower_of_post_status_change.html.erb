@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <%= link_to t('mailers.user.learn_more'), get_url_for(method(:post_url), @post) %>
+  <%= link_to t('mailers.user.learn_more'), add_subdomain_to(method(:post_url), @post) %>
 </p>
 
 <%= render 'user_mailer/closing' %>
