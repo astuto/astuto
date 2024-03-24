@@ -154,6 +154,8 @@ vi:
       collapse_boards_in_header_no_collapse: 'Không bao giờ'
       collapse_boards_in_header_always_collapse: 'Luôn luôn'
       subtitle_visibility: 'Hiển thị'
+      custom_domain_help: 'In your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io"'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ thấy số phiếu bầu của các bài viết. Điều này có thể khuyến khích người dùng bình chọn cho những bài viết đã phổ biến, dẫn đến hiệu ứng tuyết.'
       show_vote_button_in_board_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ có thể bình chọn cho các bài viết từ trang bảng. Điều này có thể khuyến khích người dùng bình chọn cho nhiều bài viết hơn, dẫn đến một số lượng phiếu bầu cao hơn nhưng ý nghĩa thấp hơn.'
     boards:
