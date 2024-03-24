@@ -56,7 +56,7 @@ module ApplicationHelper
       app_host_splitted = URI.parse(Rails.application.base_url).host.split('.')
 
       if app_host_splitted.join('.') == request_host_splitted.last(app_host_splitted.length).join('.')
-        return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
+        return nil if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
 
         tenant = Tenant.find_by(subdomain: request.subdomain)
       else
