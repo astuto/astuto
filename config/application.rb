@@ -16,6 +16,12 @@ module App
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # If configured, add trusted proxy to the list of trusted proxies
+    config.middleware.insert_after ActionDispatch::RemoteIp, Rack::Attack
+    if ENV["TRUSTED_PROXY"]
+      config.action_dispatch.trusted_proxies = ActionDispatch::RemoteIp::TRUSTED_PROXIES + [IPAddr.new(ENV["TRUSTED_PROXY"])]
+    end
+
     def base_url
       ENV["BASE_URL"]
     end

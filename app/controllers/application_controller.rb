@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
 
     def load_tenant_data
       current_tenant = get_tenant_from_request(request)
+      return unless current_tenant
 
       if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
         redirect_to pending_tenant_path; return
@@ -29,7 +30,6 @@ class ApplicationController < ActionController::Base
         redirect_to blocked_tenant_path; return
       end
 
-      return unless current_tenant
       Current.tenant = current_tenant
 
       # Load tenant data

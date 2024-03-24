@@ -52,15 +52,16 @@ module ApplicationHelper
 
   def get_tenant_from_request(request)
     if Rails.application.multi_tenancy?
-      request_host_splitted = request.host.split('.')
+      request_host = request.headers['HTTP_X_FORWARDED_HOST'] || request.host
+      request_host_splitted = request_host.split('.')
       app_host_splitted = URI.parse(Rails.application.base_url).host.split('.')
 
       if app_host_splitted.join('.') == request_host_splitted.last(app_host_splitted.length).join('.')
-        return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
+        return nil if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
 
         tenant = Tenant.find_by(subdomain: request.subdomain)
       else
-        tenant = Tenant.find_by(custom_domain: request.host)
+        tenant = Tenant.find_by(custom_domain: request_host)
       end
     else
       tenant = Tenant.first
