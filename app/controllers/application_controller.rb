@@ -19,14 +19,24 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
-      current_tenant = get_tenant_from_request(request)
+      if Rails.application.multi_tenancy?
+        return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
 
-      if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
-        redirect_to pending_tenant_path; return
-      end
+        # Load the current tenant based on subdomain
+        current_tenant = Tenant.find_by(subdomain: request.subdomain)
 
-      if current_tenant.status == "blocked"
-        redirect_to blocked_tenant_path; return
+        if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
+          redirect_to pending_tenant_path; return
+        end
+
+        if current_tenant.status == "blocked"
+          redirect_to blocked_tenant_path; return
+        end
+
+        redirect_to showcase_url unless current_tenant
+      else
+        # Load the one and only tenant
+        current_tenant = Tenant.first
       end
 
       return unless current_tenant
