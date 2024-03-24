@@ -35,4 +35,38 @@ RSpec.describe Tenant, type: :model do
     tenant.subdomain = tenant2.subdomain
     expect(tenant).to be_invalid
   end
+
+  it 'may have a valid custom domain' do
+    expect(tenant.custom_domain).to be_nil
+
+    tenant.custom_domain = ''
+    expect(tenant).to be_valid
+
+    tenant.custom_domain = 'example.com'
+    expect(tenant).to be_valid
+
+    tenant.custom_domain = 'subdomain.example.com'
+    expect(tenant).to be_valid
+
+    tenant.custom_domain = 'sub.subdomain.example.com'
+    expect(tenant).to be_valid
+
+    tenant.custom_domain = 'com'
+    expect(tenant).to be_invalid
+
+    tenant.custom_domain = 'https://example.com'
+    expect(tenant).to be_invalid
+
+    tenant.custom_domain = 'example.com/sub'
+    expect(tenant).to be_invalid
+
+    tenant.custom_domain = 'example.com.'
+    expect(tenant).to be_invalid
+
+    tenant.custom_domain = 'example..com'
+    expect(tenant).to be_invalid
+
+    tenant.custom_domain = '.example.com'
+    expect(tenant).to be_invalid
+  end
 end

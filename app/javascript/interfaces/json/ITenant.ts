@@ -4,6 +4,7 @@ interface ITenantJSON {
   site_logo: string;
   brand_display_setting: string;
   locale: string;
+  custom_domain?: string;
 }
 
 export default ITenantJSON;

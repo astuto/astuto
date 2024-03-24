@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
     rootBoardId: number,
+    customDomain: string,
     showRoadmapInHeader: boolean,
     collapseBoardsInHeader: TenantSettingCollapseBoardsInHeader,
     showVoteCount: boolean,
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         collapse_boards_in_header: collapseBoardsInHeader,
       },
       locale,
+      customDomain,
       authenticityToken,
     }));
   },
