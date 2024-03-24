@@ -19,7 +19,20 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
-      current_tenant = get_tenant_from_request(request)
+      if Rails.application.multi_tenancy?
+        request_host_splitted = request.host.split('.')
+        app_host_splitted = URI.parse(Rails.application.base_url).host.split('.')
+  
+        if app_host_splitted.join('.') == request_host_splitted.last(app_host_splitted.length).join('.')
+          return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
+  
+          current_tenant = Tenant.find_by(subdomain: request.subdomain)
+        else
+          current_tenant = Tenant.find_by(custom_domain: request.host)
+        end
+      else
+        current_tenant = Tenant.first
+      end
 
       return unless current_tenant
 
