@@ -158,6 +158,8 @@ pt:
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilidade'
+      custom_domain_help: 'In your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io"'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'Se você habilitar essa configuração, os usuários poderão ver a contagem de votos das postagens. Isso pode incentivar os usuários a votar em postagens já populares, levando a um efeito de bola de neve.'
       show_vote_button_in_board_help: 'Se você habilitar esta configuração, os usuários poderão votar nas postagens da página do fórum. Isso pode incentivar os usuários a votar em mais postagens, levando a um número maior de votos, mas de menor significância.'
     boards:
