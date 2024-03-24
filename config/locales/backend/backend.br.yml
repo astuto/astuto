@@ -116,6 +116,7 @@ pt:
         site_logo: 'Site logo'
         subdomain: 'Subdomain'
         locale: 'Language'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
         show_vote_count: 'Show vote count to users'
