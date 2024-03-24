@@ -109,6 +109,7 @@ vi:
         site_logo: 'Logo trang web'
         subdomain: 'Tên miền phụ'
         locale: 'Ngôn ngữ'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Hiển thị'
         show_vote_count: 'Hiển thị số phiếu bầu cho người dùng'
