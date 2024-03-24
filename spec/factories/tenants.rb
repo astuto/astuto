@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:subdomain) { |n| "mysubdomain#{n}" }
     locale { "en" }
     custom_domain { nil }
+    status { "active" }
   end
 end

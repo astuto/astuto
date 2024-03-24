@@ -21,14 +21,12 @@ class ApplicationController < ActionController::Base
     def load_tenant_data
       current_tenant = get_tenant_from_request(request)
 
-      if Rails.application.multi_tenancy?
-        if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
-          redirect_to pending_tenant_path; return
-        end
+      if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
+        redirect_to pending_tenant_path; return
+      end
 
-        if current_tenant.status == "blocked"
-          redirect_to blocked_tenant_path; return
-        end
+      if current_tenant.status == "blocked"
+        redirect_to blocked_tenant_path; return
       end
 
       return unless current_tenant
