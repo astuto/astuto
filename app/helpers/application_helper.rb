@@ -65,7 +65,7 @@ module ApplicationHelper
     else
       tenant = Tenant.first
     end
-
+    
     tenant
   end
 end

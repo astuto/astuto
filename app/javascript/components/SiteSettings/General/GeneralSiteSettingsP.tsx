@@ -29,7 +29,7 @@ export interface ISiteSettingsGeneralForm {
   showVoteButtonInBoard: boolean;
   showPoweredBy: boolean;
   rootBoardId?: string;
-  customDomain: string;
+  customDomain?: string;
   showRoadmapInHeader: boolean;
   collapseBoardsInHeader: string;
 }

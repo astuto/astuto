@@ -3,7 +3,7 @@ interface ITenant {
   siteName: string;
   siteLogo: string;
   locale: string;
-  customDomain: string;
+  customDomain?: string;
 }
 
 export default ITenant;
