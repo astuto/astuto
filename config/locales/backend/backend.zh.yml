@@ -109,6 +109,7 @@ zh-CN:
         site_logo: '网站图标'
         subdomain: '子域名'
         locale: '语言'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: '显示模式'
         show_vote_count: '对用户显示投票数'
