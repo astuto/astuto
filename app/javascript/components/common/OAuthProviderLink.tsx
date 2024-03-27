@@ -7,11 +7,15 @@ interface Props {
   oAuthLogo?: string;
   oAuthReason: string;
   isSignUp?: boolean;
+
+  href?: string;
 }
 
-const OAuthProviderLink = ({ oAuthId, oAuthName, oAuthLogo, oAuthReason, isSignUp = false }: Props) => (
+const OAuthProviderLink = ({ oAuthId, oAuthName, oAuthLogo, oAuthReason, isSignUp = false, href = undefined }: Props) => (
   <button
-    onClick={() => window.location.href = `/o_auths/${oAuthId}/start?reason=${oAuthReason}`}
+    onClick={
+      () => { alert(href); window.location.href = href ? href : `/o_auths/${oAuthId}/start?reason=${oAuthReason}` }
+    }
     className={`oauthProviderBtn oauthProvider${oAuthName.replace(' ', '')}`}
   >
     { oAuthLogo && oAuthLogo.length > 0 && <img src={oAuthLogo} alt={oAuthName} width={28} height={28} /> }

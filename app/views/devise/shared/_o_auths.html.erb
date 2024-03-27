@@ -10,6 +10,7 @@
           oAuthLogo: o_auth.logo,
           oAuthReason: "login",
           isSignUp: defined?(is_sign_up) ? is_sign_up : false,
+          href: get_url_for(method(:o_auth_start_url), resource: o_auth.id, disallow_custom_domain: true, options: { reason: "login" }),
         }
       )
     %>
