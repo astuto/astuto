@@ -14,7 +14,7 @@ interface Props {
 const OAuthProviderLink = ({ oAuthId, oAuthName, oAuthLogo, oAuthReason, isSignUp = false, href = undefined }: Props) => (
   <button
     onClick={
-      () => { alert(href); window.location.href = href ? href : `/o_auths/${oAuthId}/start?reason=${oAuthReason}` }
+      () => { window.location.href = href ? href : `/o_auths/${oAuthId}/start?reason=${oAuthReason}` }
     }
     className={`oauthProviderBtn oauthProvider${oAuthName.replace(' ', '')}`}
   >
