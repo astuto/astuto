@@ -208,14 +208,16 @@ const GeneralSiteSettingsP = ({
                 <SmallMutedText>
                   { I18n.t('site_settings.general.custom_domain_help', { domain: customDomain }) }
                 </SmallMutedText>
-                <ActionLink
-                  onClick={() => window.open('https://docs.astuto.io/custom-domain', '_blank')}
-                  icon={<LearnMoreIcon />}
-                >
-                  {I18n.t('site_settings.general.custom_domain_learn_more')}
-                </ActionLink>
               </div>
             }
+            <div style={{marginTop: 8}}>
+              <ActionLink
+                onClick={() => window.open('https://docs.astuto.io/custom-domain', '_blank')}
+                icon={<LearnMoreIcon />}
+              >
+                {I18n.t('site_settings.general.custom_domain_learn_more')}
+              </ActionLink>
+            </div>
           </div>
 
           <br />
