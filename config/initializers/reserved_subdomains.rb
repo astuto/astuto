@@ -10,5 +10,6 @@ RESERVED_SUBDOMAINS = [
   'logs',
   'dashboard',
   'analytics',
-  'cname'
+  'cname',
+  'whatever'
 ]
