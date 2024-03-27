@@ -11,6 +11,7 @@ import { ISiteSettingsGeneralForm } from './GeneralSiteSettingsP';
 interface Props {
   originForm: ISiteSettingsGeneralForm;
   boards: IBoardJSON[];
+  isMultiTenant: boolean;
   authenticityToken: string;
 }
 
@@ -29,6 +30,7 @@ class GeneralSiteSettingsRoot extends React.Component<Props> {
         <GeneralSiteSettings
           originForm={this.props.originForm}
           boards={this.props.boards}
+          isMultiTenant={this.props.isMultiTenant}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>
