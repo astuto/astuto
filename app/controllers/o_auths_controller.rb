@@ -22,7 +22,7 @@ class OAuthsController < ApplicationController
     # Generate random state + other query params
     tenant_domain = Current.tenant ? Current.tenant_or_raise!.subdomain : "null"
     token_state = "#{params[:reason]}#{TOKEN_STATE_SEPARATOR}#{tenant_domain}#{TOKEN_STATE_SEPARATOR}#{Devise.friendly_token(30)}"
-    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true }
+    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true } unless params[:reason] == 'test'
     @o_auth.state = token_state
 
     redirect_to @o_auth.authorize_url_with_query_params
@@ -33,8 +33,10 @@ class OAuthsController < ApplicationController
   def callback
     reason, tenant_domain, token_state = params[:state].split(TOKEN_STATE_SEPARATOR, 3)
 
-    return unless cookies[:token_state] == params[:state]
-    cookies.delete(:token_state, domain: ".#{request.domain}")
+    unless reason == "test"
+      return unless cookies[:token_state] == params[:state]
+      cookies.delete(:token_state, domain: ".#{request.domain}")
+    end
 
     # if it is a default oauth, tenant is not yet set
     Current.tenant ||= Tenant.find_by(subdomain: tenant_domain)
@@ -71,7 +73,7 @@ class OAuthsController < ApplicationController
       
       unless user_signed_in? and current_user.admin?
         flash[:alert] = I18n.t('errors.unauthorized')
-        redirect_to root_url
+        redirect_to get_url_for(method(:root_url))
         return
       end
 

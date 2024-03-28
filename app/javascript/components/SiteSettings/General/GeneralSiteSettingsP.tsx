@@ -37,6 +37,7 @@ export interface ISiteSettingsGeneralForm {
 interface Props {
   originForm: ISiteSettingsGeneralForm;
   boards: IBoardJSON[];
+  isMultiTenant: boolean;
   authenticityToken: string;
 
   areUpdating: boolean;
@@ -61,6 +62,7 @@ interface Props {
 const GeneralSiteSettingsP = ({
   originForm,
   boards,
+  isMultiTenant,
   authenticityToken,
 
   areUpdating,
@@ -195,19 +197,23 @@ const GeneralSiteSettingsP = ({
             </select>
           </div>
 
-          <div className="formGroup">
-            <label htmlFor="customDomain">{ getLabel('tenant', 'custom_domain') }</label>
-            <input
-              {...register('customDomain')}
-              id="customDomain"
-              className="formControl"
-            />
-            {
-              originForm.customDomain !== customDomain && customDomain !== '' &&
-              <div style={{marginTop: 16}}>
-                <SmallMutedText>
-                  { I18n.t('site_settings.general.custom_domain_help', { domain: customDomain }) }
-                </SmallMutedText>
+          { isMultiTenant &&
+            <div className="formGroup">
+              <label htmlFor="customDomain">{ getLabel('tenant', 'custom_domain') }</label>
+              <input
+                {...register('customDomain')}
+                id="customDomain"
+                className="formControl"
+              />
+              {
+                originForm.customDomain !== customDomain && customDomain !== '' &&
+                <div style={{marginTop: 16}}>
+                  <SmallMutedText>
+                    { I18n.t('site_settings.general.custom_domain_help', { domain: customDomain }) }
+                  </SmallMutedText>
+                </div>
+              }
+              <div style={{marginTop: 8}}>
                 <ActionLink
                   onClick={() => window.open('https://docs.astuto.io/custom-domain', '_blank')}
                   icon={<LearnMoreIcon />}
@@ -215,8 +221,8 @@ const GeneralSiteSettingsP = ({
                   {I18n.t('site_settings.general.custom_domain_learn_more')}
                 </ActionLink>
               </div>
-            }
-          </div>
+            </div>
+          }
 
           <br />
           <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>

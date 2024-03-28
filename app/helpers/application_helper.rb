@@ -29,9 +29,9 @@ module ApplicationHelper
   end
 
   def get_url_for(url_helper, resource: nil, disallow_custom_domain: false, options: {})
-    custom_domain = Current.tenant.custom_domain
+    custom_domain = Current.tenant.custom_domain if not disallow_custom_domain and Current.tenant
 
-    if Rails.application.multi_tenancy? && (custom_domain.blank? || disallow_custom_domain)
+    if options[:subdomain].blank? && Rails.application.multi_tenancy? && (custom_domain.blank? || disallow_custom_domain)
       options[:subdomain] = Current.tenant.subdomain
     end
 
