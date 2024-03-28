@@ -154,7 +154,7 @@ zh-CN:
       collapse_boards_in_header_no_collapse: '从不'
       collapse_boards_in_header_always_collapse: '始终'
       subtitle_visibility: '可见性'
-      custom_domain_help: 'In your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io"'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: '如果您启用此设置，用户将可以看到帖子的投票数。 这可能会鼓励用户对已经很受欢迎的帖子进行投票，导致雪球效应。'
       show_vote_button_in_board_help: '如果您启用此设置，用户将能够从版块页面直接对帖子投票。 这可能会鼓励用户对更多的帖子投票，导致更多的票数，但会稀释每一票的重要性。'
