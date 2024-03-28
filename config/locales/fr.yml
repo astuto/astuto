@@ -158,7 +158,7 @@ fr:
       collapse_boards_in_header_no_collapse: 'Jamais'
       collapse_boards_in_header_always_collapse: 'Toujours'
       subtitle_visibility: 'Visibilité'
-      custom_domain_help: 'Dans vos paramètres DNS, ajoutez un enregistrement CNAME pointant "%{domain}" vers "cname.astuto.io"'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
       custom_domain_learn_more: 'Apprenez comment configurer un domaine personnalisé'
       show_vote_count_help: 'Si vous activez ce paramètre, les utilisateurs pourront voir le nombre de votes sur les publications. Cela peut inciter les utilisateurs à voter sur des publications déjà populaires, ce qui peut entraîner un effet boule de neige.'
       show_vote_button_in_board_help: 'Si vous activez ce paramètre, les utilisateurs seront en mesure de voter pour des publications depuis la page des tableaux. Cela peut inciter les utilisateurs à voter sur un plus grand nombre de publications, ce qui peut entraîner un nombre plus élevé de votes mais de moindre importance.'
