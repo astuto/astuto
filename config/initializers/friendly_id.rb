@@ -60,7 +60,7 @@ FriendlyId.defaults do |config|
   #
   # By default, slug has no size limit, but you can change it if you wish.
   #
-  config.slug_limit = 128
+  # config.slug_limit = 128
   #
   # When FriendlyId can not generate a unique ID from your base method, it appends
   # a UUID, separated by a single dash. You can configure the character used as the
