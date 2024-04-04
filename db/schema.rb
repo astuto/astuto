@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_04_153252) do
+ActiveRecord::Schema.define(version: 2024_04_04_153446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,9 @@ ActiveRecord::Schema.define(version: 2024_04_04_153252) do
     t.bigint "tenant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["name", "tenant_id"], name: "index_o_auths_on_name_and_tenant_id", unique: true
+    t.index ["slug", "tenant_id"], name: "index_o_auths_on_slug_and_tenant_id", unique: true
     t.index ["tenant_id"], name: "index_o_auths_on_tenant_id"
   end
 
