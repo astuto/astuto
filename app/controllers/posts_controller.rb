@@ -9,6 +9,7 @@ class PostsController < ApplicationController
       .select(
         :id,
         :title,
+        :slug,
         :description,
         :post_status_id,
         'COUNT(DISTINCT likes.id) AS likes_count',
@@ -48,9 +49,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post
+      .friendly
       .select(
         :id,
         :title,
+        :slug,
         :description,
         :board_id,
         :user_id,

@@ -1,6 +1,7 @@
 interface IPost {
   id: number;
   title: string;
+  slug?: string;
   description?: string;
   boardId: number;
   postStatusId?: number;
