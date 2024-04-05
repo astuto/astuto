@@ -48,6 +48,7 @@ export const updateBoard = (
   id: number,
   name: string,
   description: string,
+  slug: string,
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(boardUpdateStart());
@@ -60,6 +61,7 @@ export const updateBoard = (
         board: {
           name,
           description,
+          slug,
         },
       }),
     });

@@ -14,13 +14,15 @@ interface Props {
   id: number;
   name: string;
   description?: string;
+  slug?: string;
   index: number;
   settingsAreUpdating: boolean;
 
   handleUpdate(
     id: number,
-    description: string,
     name: string,
+    description: string,
+    slug: string,
     onSuccess: Function,
   ): void;
   handleDelete(id: number): void;
@@ -46,11 +48,12 @@ class BoardsEditable extends React.Component<Props, State> {
     this.setState({editMode: !this.state.editMode});
   }
 
-  handleUpdate(id: number, name: string, description: string) {
+  handleUpdate(id: number, name: string, description: string, slug: string) {
     this.props.handleUpdate(
       id,
       name,
       description,
+      slug,
       () => this.setState({editMode: false}),
     );
   }
@@ -60,6 +63,7 @@ class BoardsEditable extends React.Component<Props, State> {
       id,
       name,
       description,
+      slug,
       index,
       settingsAreUpdating,
       handleDelete,
@@ -108,6 +112,7 @@ class BoardsEditable extends React.Component<Props, State> {
                   id={id}
                   name={name}
                   description={description}
+                  slug={slug}
                   handleUpdate={this.handleUpdate}
                 />
 

@@ -62,8 +62,12 @@ export const deleteBoard = (
       } else {
         dispatch(boardDeleteFailure(json.error));
       }
+
+      return Promise.resolve(res);
     } catch (e) {
       dispatch(boardDeleteFailure(e));
+
+      return Promise.resolve(null);
     }
   }
 );
