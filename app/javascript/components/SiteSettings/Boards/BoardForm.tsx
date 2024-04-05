@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
+import { DangerText } from '../../common/CustomTexts';
 
 interface Props {
   mode: 'create' | 'update';
@@ -10,6 +11,7 @@ interface Props {
   id?: number;
   name?: string;
   description?: string;
+  slug?: string;
 
   handleCreate?(
     name: string,
@@ -20,12 +22,14 @@ interface Props {
     id: number,
     name: string,
     description?: string,
+    slug?: string,
   ): void;
 }
 
 interface IBoardForm {
   name: string;
   description: string;
+  slug?: string;
 }
 
 const BoardForm = ({
@@ -33,6 +37,7 @@ const BoardForm = ({
   id,
   name,
   description,
+  slug,
   handleCreate,
   handleUpdate,
 }: Props) => {
@@ -40,14 +45,18 @@ const BoardForm = ({
     register,
     handleSubmit,
     reset,
-    formState: { isValid },
+    formState: { isValid, errors },
+    watch,
   } = useForm<IBoardForm>({
     mode: 'onChange',
     defaultValues: {
       name: name || '',
       description: description || '',
+      slug: slug || undefined,
     },
   });
+
+  const formBoardName = watch('name');
 
   const onSubmit: SubmitHandler<IBoardForm> = data => {
     if (mode === 'create') {
@@ -57,7 +66,7 @@ const BoardForm = ({
         () => reset({ name: '', description: '' })
       );
     } else {
-      handleUpdate(id, data.name, data.description);
+      handleUpdate(id, data.name, data.description, data.slug);
     }
   }
 
@@ -91,6 +100,25 @@ const BoardForm = ({
         placeholder={I18n.t('site_settings.boards.form.description')}
         className="formControl"
       />
+
+      {mode === 'update' && (
+        <>
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <div className="input-group-text">boards/</div>
+          </div>
+          <input
+            {...register('slug', { pattern: /^[a-zA-Z0-9-]+$/ })}
+            type="text"
+            placeholder={formBoardName.trim().replace(/\s/g, '-').toLowerCase()}
+            className="formControl"
+          />
+        </div>
+        <DangerText>
+          {errors.slug?.type === 'pattern' && I18n.t('common.validations.url')}
+        </DangerText>
+        </>
+      )}
     </form>
   );
 }

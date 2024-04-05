@@ -13,6 +13,7 @@ import IPost from '../interfaces/IPost';
 const initialState: IPost = {
   id: 0,
   title: '',
+  slug: null,
   description: null,
   boardId: 0,
   postStatusId: null,
@@ -37,6 +38,7 @@ const postReducer = (
       return {
         id: action.post.id,
         title: action.post.title,
+        slug: action.post.slug,
         description: action.post.description,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,

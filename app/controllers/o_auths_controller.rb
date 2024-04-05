@@ -12,9 +12,9 @@ class OAuthsController < ApplicationController
   # Generates authorize url with required parameters and redirects to provider
   def start
     if params[:reason] == 'tenantsignup'
-      @o_auth = OAuth.include_only_defaults.find(params[:id])
+      @o_auth = OAuth.include_only_defaults.friendly.find(params[:id])
     else
-      @o_auth = OAuth.include_defaults.find(params[:id])
+      @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
     
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
@@ -42,9 +42,9 @@ class OAuthsController < ApplicationController
     Current.tenant ||= Tenant.find_by(subdomain: tenant_domain)
 
     if reason == 'tenantsignup'
-      @o_auth = OAuth.include_only_defaults.find(params[:id])
+      @o_auth = OAuth.include_only_defaults.friendly.find(params[:id])
     else
-      @o_auth = OAuth.include_defaults.find(params[:id])
+      @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
 
     return if reason != 'test' and not @o_auth.is_enabled?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_21_171022) do
+ActiveRecord::Schema.define(version: 2024_04_04_161306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2024_03_21_171022) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order", null: false
     t.bigint "tenant_id", null: false
+    t.string "slug"
     t.index ["name", "tenant_id"], name: "index_boards_on_name_and_tenant_id", unique: true
+    t.index ["slug", "tenant_id"], name: "index_boards_on_slug_and_tenant_id", unique: true
     t.index ["tenant_id"], name: "index_boards_on_tenant_id"
   end
 
@@ -80,7 +82,9 @@ ActiveRecord::Schema.define(version: 2024_03_21_171022) do
     t.bigint "tenant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["name", "tenant_id"], name: "index_o_auths_on_name_and_tenant_id", unique: true
+    t.index ["slug", "tenant_id"], name: "index_o_auths_on_slug_and_tenant_id", unique: true
     t.index ["tenant_id"], name: "index_o_auths_on_tenant_id"
   end
 
@@ -118,8 +122,10 @@ ActiveRecord::Schema.define(version: 2024_03_21_171022) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tenant_id", null: false
+    t.string "slug"
     t.index ["board_id"], name: "index_posts_on_board_id"
     t.index ["post_status_id"], name: "index_posts_on_post_status_id"
+    t.index ["slug", "tenant_id"], name: "index_posts_on_slug_and_tenant_id", unique: true
     t.index ["tenant_id"], name: "index_posts_on_tenant_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

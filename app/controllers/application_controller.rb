@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       # Load tenant data
       @tenant = Current.tenant_or_raise!
       @tenant_setting = TenantSetting.first_or_create
-      @boards = Board.select(:id, :name).order(order: :asc)
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
 
       # Setup locale
       I18n.locale = @tenant.locale

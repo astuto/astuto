@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include TenantOwnable
+  extend FriendlyId
   
   belongs_to :board
   belongs_to :user
@@ -14,6 +15,8 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { in: 4..128 }
 
   paginates_per Rails.application.posts_per_page
+
+  friendly_id :title, use: :slugged
 
   class << self
     def find_with_post_status_in(post_statuses)

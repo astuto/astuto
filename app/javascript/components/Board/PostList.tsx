@@ -55,6 +55,7 @@ const PostList = ({
             <PostListItem
               id={post.id}
               title={post.title}
+              slug={post.slug}
               description={post.description}
               postStatus={postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
               likeCount={post.likeCount}

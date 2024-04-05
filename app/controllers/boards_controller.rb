@@ -10,7 +10,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
+    @board = Board.friendly.find(params[:id])
     @page_title = @board.name
   end
 
@@ -80,6 +80,6 @@ class BoardsController < ApplicationController
     def board_params
       params
         .require(:board)
-        .permit(:name, :description)
+        .permit(:name, :description, :slug)
     end
 end
