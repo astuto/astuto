@@ -12,6 +12,7 @@ de:
       update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
   defaults:
     user_full_name: 'Anonymer Benutzer'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
