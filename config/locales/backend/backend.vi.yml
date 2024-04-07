@@ -12,6 +12,7 @@ vi:
       update_order: 'Đã xảy ra lỗi khi sắp xếp lại các trạng thái'
   defaults:
     user_full_name: 'Người dùng Ẩn Danh'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Chào mừng bạn đến với %{site_name}, %{email}!'
