@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
   paginates_per Rails.application.posts_per_page
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: :scoped, scope: :tenant_id
 
   class << self
     def find_with_post_status_in(post_statuses)

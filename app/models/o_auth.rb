@@ -19,7 +19,7 @@ class OAuth < ApplicationRecord
   validates :scope, presence: true
   validates :json_user_email_path, presence: true
 
-  friendly_id :generate_random_slug, use: :slugged
+  friendly_id :generate_random_slug, use: :scoped, scope: :tenant_id
 
   def is_default?
     tenant_id == nil
