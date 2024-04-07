@@ -12,6 +12,7 @@ it:
       update_order: 'Si è verificato un errore durante il riordinamento degli stati'
   defaults:
     user_full_name: 'Utente Anonimo'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Benvenuto su %{site_name}, %{email}!'
