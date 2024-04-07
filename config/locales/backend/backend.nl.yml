@@ -12,6 +12,7 @@ nl:
       update_order: 'There was an error in reordering statuses'
   defaults:
     user_full_name: 'Anonymous User'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
