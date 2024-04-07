@@ -12,6 +12,7 @@ zh-CN:
       update_order: '重新排序状态时出错'
   defaults:
     user_full_name: '匿名用户'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: '欢迎来到 %{site_name}, %{email}!'
