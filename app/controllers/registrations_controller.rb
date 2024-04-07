@@ -8,6 +8,8 @@ class RegistrationsController < Devise::RegistrationsController
   # Override destroy to soft delete
   def destroy
     resource.status = "deleted"
+    resource.email = ''
+    resource.full_name = t('defaults.deleted_user_full_name')
     resource.save
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :destroyed
