@@ -149,6 +149,12 @@
         @extend .my-3;
       }
 
+      .postDescription {
+        height: 150px;
+        min-height: 150px;
+        resize: vertical;
+      }
+
       .postEditFormButtons {
         @extend .d-flex, .justify-content-end;
       }
