@@ -3,10 +3,10 @@
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Boards
     </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <ul class="dropdown-menu boards-dropdown" aria-labelledby="navbarDropdown">
       <% boards.each do |board| %>
         <li>
-          <%= link_to board.name, board_path(board), class: 'dropdown-item py-2' %>
+          <%= link_to board.name, board_path(board), class: 'dropdown-item' %>
         </li>
       <% end %>
     </ul>
