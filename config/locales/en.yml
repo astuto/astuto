@@ -79,6 +79,7 @@ en:
     log_in: 'Log in / Sign up'
   roadmap:
     title: 'Roadmap'
+    no_posts_for_status:
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:
