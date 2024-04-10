@@ -98,7 +98,7 @@ const BoardForm = ({
       <textarea
         {...register('description')}
         placeholder={I18n.t('site_settings.boards.form.description')}
-        className="formControl"
+        className="boardDescriptionTextArea formControl"
       />
 
       {mode === 'update' && (

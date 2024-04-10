@@ -58,6 +58,7 @@ class CommentEditForm extends React.Component<Props, State> {
         <textarea
           value={body}
           onChange={e => this.handleCommentBodyChange(e.target.value)}
+          rows={3}
           className="commentForm"
         />
 

@@ -85,7 +85,15 @@
     }
   }
 
+  .boards-dropdown {
+    .dropdown-item {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
+
   .dropdown-item:active {
+    color: white !important;
     background-color: var(--primary-color);
   }
 }

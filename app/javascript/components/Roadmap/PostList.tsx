@@ -1,4 +1,5 @@
 import * as React from 'react';
+import I18n from 'i18n-js';
 
 import PostListItem from './PostListItem';
 import { CenteredMutedText } from '../common/CustomTexts';
@@ -25,7 +26,7 @@ const PostList = ({ posts, boards }: Props) => (
           />
         ))
       :
-        <CenteredMutedText>There are no posts that have this status.</CenteredMutedText>
+        <CenteredMutedText>{ I18n.t('board.posts_list.empty') }</CenteredMutedText>
     }
   </div>
 );

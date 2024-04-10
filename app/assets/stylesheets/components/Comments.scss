@@ -9,11 +9,11 @@
       .mr-2;
 
     height: 80px;
+    min-height: 80px;
+    resize: vertical;
     
     border: thin solid grey;
     border-radius: 4px;
-
-    resize: none;
   }
 
   .newCommentForm {

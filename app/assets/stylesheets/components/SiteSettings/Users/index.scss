@@ -1,3 +1,7 @@
+.userCount {
+  text-transform: lowercase;
+}
+
 ul.usersList {
   @extend
     .pl-1;
