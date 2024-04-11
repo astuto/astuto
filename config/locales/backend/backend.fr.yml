@@ -12,7 +12,7 @@ fr:
       update_order: 'Il y a eu une erreur dans la réorganisation des statuts'
   defaults:
     user_full_name: 'Utilisateur anonyme'
-    deleted_user_full_name: 'Deleted User'
+    deleted_user_full_name: 'Utilisateur supprimé'
   mailers:
     devise:
       welcome_greeting: 'Bienvenue sur %{site_name}, %{email} !'
