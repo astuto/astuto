@@ -10,7 +10,7 @@ sv:
       auth:
         email: 'Email'
         full_name: 'Full name'
-        password: 'Password'
+        password: 'Lösenord'
         password_confirmation: 'Password confirmation'
         new_password: 'New password'
         new_password_confirmation: 'New password confirmation'
@@ -21,24 +21,24 @@ sv:
         password_leave_blank_help: "leave blank if you don't want to change your password"
         current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        log_in_with: 'Log in with %{o_auth}'
+        log_in: 'Logga in'
+        sign_up: 'Registrera dig'
+        log_in_with: 'Logga in med %{o_auth}'
         sign_up_with: 'Sign up with %{o_auth}'
         profile_settings: 'Profile settings'
         update_profile: 'Update profile'
         cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
+        forgot_password: 'Glömt ditt lösenord?'
         confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
         unlock_instructions_not_received: "Didn't receive unlock instructions?"
         send_reset_password_instructions: 'Send me reset password instructions'
         resend_confirmation_instructions: 'Resend confirmation instructions'
         resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
+        change_password: 'Ändra lösenord'
         password_help: '%{count} characters minimum'
     comments_number:
-      one: '1 comment'
-      other: '%{count} comments'
+      one: '1 kommentar'
+      other: '%{count} kommentarer'
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
@@ -51,11 +51,11 @@ sv:
     powered_by: 'Powered by'
     buttons:
       new: 'New'
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
+      edit: 'Redigera'
+      delete: 'Radera'
+      cancel: 'Avbryt'
       create: 'Create'
-      update: 'Save'
+      update: 'Spara'
       confirm: 'Confirm'
       back: 'Back'
       test: 'Test'
@@ -130,7 +130,7 @@ sv:
       reply_button: 'Reply'
     new_comment:
       body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
+      submit_button: 'Skicka'
       is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
       not_logged_in: 'You need to log in to post comments'
@@ -141,7 +141,7 @@ sv:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      users: 'Users'
+      users: 'Användare'
       authentication: 'Authentication'
       appearance: 'Appearance'
     info_box:
@@ -184,14 +184,14 @@ sv:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
     users:
-      title: 'Users'
+      title: 'Användare'
       block: 'Block'
       unblock: 'Unblock'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
       role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
+      role_user: 'Användare'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
       role_owner: 'Owner'
