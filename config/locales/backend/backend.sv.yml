@@ -15,7 +15,7 @@ sv:
     deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
+      welcome_greeting: 'Välkommen till %{site_name}, %{email}!'
       opening_greeting: 'Hej %{email}!'
       confirmation_instructions:
         body: 'You can confirm your account email through the link below:'
@@ -55,11 +55,11 @@ sv:
         one: 'Board'
         other: 'Boards'
       comment:
-        one: 'Comment'
-        other: 'Comments'
+        one: 'Kommentar'
+        other: 'Kommentarer'
       like:
-        one: 'Vote'
-        other: 'Votes'
+        one: 'Röst'
+        other: 'Röster'
       o_auth:
         one: 'OAuth'
         other: 'OAuths'
@@ -67,8 +67,8 @@ sv:
         one: 'Status'
         other: 'Statuses'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Inlägg'
+        other: 'Inlägg'
       user:
         one: 'Användare'
         other: 'Användare'
