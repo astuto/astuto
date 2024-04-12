@@ -59,5 +59,7 @@ pl:
       not_found: "nie znaleziono"
       not_locked: "nie był zablokowany"
       not_saved:
-        one: "%{resource} nie został zapisany z powodu jednego błędu:"
-        other: "%{resource} nie został zapisany z powodu %{count} błędów:"
+        one: "1 error prohibited this %{resource} from being saved:"
+        few: "%{count} errors prohibited this %{resource} from being saved:"
+        many: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
