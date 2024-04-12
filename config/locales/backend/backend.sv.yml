@@ -1,4 +1,4 @@
-ko:
+sv:
   errors:
     unknown: 'An unknown error occurred'
     unauthorized: 'You are not authorized'
@@ -15,11 +15,11 @@ ko:
     deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Välkommen till %{site_name}, %{email}!'
+      opening_greeting: 'Hej %{email}!'
       confirmation_instructions:
         body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        action: 'Bekräfta mitt konto'
       email_changed:
         body: "We're contacting you to notify you that your email is being changed to %{email}."
         body2: "We're contacting you to notify you that your email has been changed to %{email}."
@@ -29,9 +29,9 @@ ko:
         body: 'Someone has requested a link to change your password. You can do this through the link below.'
         body2: "If you didn't request this, please ignore this email."
         body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        action: 'Ändra mitt lösenord'
     user:
-      opening_greeting: 'Hello %{name}!'
+      opening_greeting: 'Hej %{name}!'
       closing_greeting: 'Have a great day!'
       learn_more: 'Click here to learn more'
       unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
@@ -52,23 +52,30 @@ ko:
   activerecord:
     models:
       board:
+        one: 'Board'
         other: 'Boards'
       comment:
-        other: 'Comments'
+        one: 'Kommentar'
+        other: 'Kommentarer'
       like:
-        other: 'Votes'
+        one: 'Röst'
+        other: 'Röster'
       o_auth:
+        one: 'OAuth'
         other: 'OAuths'
       post_status:
+        one: 'Status'
         other: 'Statuses'
       post:
-        other: 'Posts'
+        one: 'Inlägg'
+        other: 'Inlägg'
       user:
-        other: 'Users'
+        one: 'Användare'
+        other: 'Användare'
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
+        name: 'Namn'
+        description: 'Beskrivning'
         order: 'Order'
       comment:
         body: 'Body'
@@ -77,13 +84,13 @@ ko:
         post_id: 'Post'
         parent_id: 'Parent comment'
       follow:
-        user_id: 'User'
+        user_id: 'Användare'
         post_id: 'Post'
       like:
-        user_id: 'User'
+        user_id: 'Användare'
         post_id: 'Post'
       o_auth:
-        name: 'Name'
+        name: 'Namn'
         logo: 'Logo'
         is_enabled: 'Enabled'
         client_id: 'Client ID'
@@ -95,13 +102,13 @@ ko:
         json_user_name_path: 'JSON path to user name'
         json_user_email_path: 'JSON path to user email'
       post_status:
-        name: 'Name'
-        color: 'Color'
+        name: 'Namn'
+        color: 'Färg'
         order: 'Order'
         show_in_roadmap: 'Show in roadmap'
       post:
         title: 'Title'
-        description: 'Description'
+        description: 'Beskrivning'
         board_id: 'Post board'
         user_id: 'Post author'
         post_status_id: 'Post status'
@@ -109,7 +116,7 @@ ko:
         site_name: 'Site name'
         site_logo: 'Site logo'
         subdomain: 'Subdomain'
-        locale: 'Language'
+        locale: 'Språk'
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
@@ -123,9 +130,9 @@ ko:
       user:
         email: 'Email'
         full_name: 'Full name'
-        password: 'Password'
+        password: 'Lösenord'
         password_confirmation: 'Password confirmation'
-        role: 'Role'
+        role: 'Roll'
         notifications_enabled: 'Notifications enabled'
     errors:
       messages:

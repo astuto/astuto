@@ -17,6 +17,9 @@ ru:
         current_password: 'Текущий пароль'
         notifications_enabled: 'Уведомления включены'
         notifications_enabled_help: "если отключено, вы не получите никаких уведомлений"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Запомнить'
         log_in: 'Войти'
         sign_up: 'Зарегистрироваться'
@@ -163,6 +166,8 @@ ru:
       collapse_boards_in_header_no_collapse: 'Никогда'
       collapse_boards_in_header_always_collapse: 'Всегда'
       subtitle_visibility: 'Видимость'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'При включении этой настройки, пользователи смогут видеть количество голосов. Это может стимулировать пользователей голосовать за уже популярные записи, приводя к эффекту снежного кома (эффект накопления и усиления).'
       show_vote_button_in_board_help: 'Если включить эту опцию, пользователи смогут голосовать за сообщения со страницы форума. Это может стимулировать пользователей голосовать за больше записей, что приведет к большему количеству голосов, но менее значимому результату.'
     boards:

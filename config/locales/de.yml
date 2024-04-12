@@ -17,6 +17,9 @@ de:
         current_password: 'Aktuelles Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
         notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigungen"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -155,6 +158,8 @@ de:
       collapse_boards_in_header_no_collapse: 'nie'
       collapse_boards_in_header_always_collapse: 'immer'
       subtitle_visibility: 'Sichtbarkeit'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'Wird diese Einstellung aktiviert, können Nutzer*innen sehen, wie oft für einen Post gevotet wurde. Das kann Nutzer*innen dazu anregen, ebenfalls für beliebte Posts zu stimmen – das würde einem Schneeballeffekt entsprechen.'
       show_vote_button_in_board_help: 'Wenn Sie diese Einstellung aktivieren, können Nutzer*innen Beiträge von der Board-Seite bewerten. Dies kann Nutzer*innen dazu veranlassen, über mehr Beiträge abzustimmen, was zu einer höheren Anzahl von Stimmen führt – die Bedeutung indes verringert sich.'
     boards:

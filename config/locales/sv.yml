@@ -1,18 +1,18 @@
-ko:
+sv:
   common:
     validations:
       required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
-      password: 'Password must have at least %{n} characters'
+      email: 'Ogiltig e-postadress'
+      url: 'Ogiltig URL'
+      password: 'Lösenord måste innehålla minst %{n} tecken'
       password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
         email: 'Email'
         full_name: 'Full name'
-        password: 'Password'
+        password: 'Lösenord'
         password_confirmation: 'Password confirmation'
-        new_password: 'New password'
+        new_password: 'Nytt lösenord'
         new_password_confirmation: 'New password confirmation'
         current_password: 'Current password'
         notifications_enabled: 'Notifications enabled'
@@ -20,24 +20,25 @@ ko:
         waiting_confirmation: 'Currently waiting confirmation for %{email}'
         password_leave_blank_help: "leave blank if you don't want to change your password"
         current_password_required_help: 'we need your current password to confirm your changes'
-        remember_me: 'Remember me'
-        log_in: 'Log in'
-        sign_up: 'Sign up'
-        log_in_with: 'Log in with %{o_auth}'
-        sign_up_with: 'Sign up with %{o_auth}'
-        profile_settings: 'Profile settings'
-        update_profile: 'Update profile'
+        remember_me: 'Kom ihåg mig'
+        log_in: 'Logga in'
+        sign_up: 'Registrera dig'
+        log_in_with: 'Logga in med %{o_auth}'
+        sign_up_with: 'Registrera dig med %{o_auth}'
+        profile_settings: 'Profilinställningar'
+        update_profile: 'Uppdatera profil'
         cancel_account: 'Cancel account'
-        forgot_password: 'Forgot your password?'
+        forgot_password: 'Glömt ditt lösenord?'
         confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
         unlock_instructions_not_received: "Didn't receive unlock instructions?"
         send_reset_password_instructions: 'Send me reset password instructions'
         resend_confirmation_instructions: 'Resend confirmation instructions'
         resend_unlock_instructions: 'Resend unlock instructions'
-        change_password: 'Change password'
+        change_password: 'Ändra lösenord'
         password_help: '%{count} characters minimum'
     comments_number:
-      other: '%{count} comments'
+      one: '1 kommentar'
+      other: '%{count} kommentarer'
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
@@ -50,37 +51,40 @@ ko:
     powered_by: 'Powered by'
     buttons:
       new: 'New'
-      edit: 'Edit'
-      delete: 'Delete'
-      cancel: 'Cancel'
-      create: 'Create'
-      update: 'Save'
-      confirm: 'Confirm'
-      back: 'Back'
+      edit: 'Redigera'
+      delete: 'Radera'
+      cancel: 'Avbryt'
+      create: 'Skapa'
+      update: 'Spara'
+      confirm: 'Bekräfta'
+      back: 'Tillbaka'
       test: 'Test'
-      clear: 'Clear'
+      clear: 'Rensa'
     datetime:
-      now: 'just now'
+      now: 'just nu'
       minutes:
-        other: '%{count} minutes ago'
+        one: '1 minut sedan'
+        other: '%{count} minuter sedan'
       hours:
-        other: '%{count} hours ago'
+        one: '1 timme sedan'
+        other: '%{count} timmar sedan'
       days:
-        other: '%{count} days ago'
+        one: '1 dag sedan'
+        other: '%{count} dagar sedan'
   header:
     menu:
       site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      profile_settings: 'Profilinställningar'
+      sign_out: 'Logga ut'
+    log_in: 'Logga in/Registrera dig'
   roadmap:
     title: 'Roadmap'
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:
     new_post:
-      submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
+      submit_button: 'Skicka feedback'
+      cancel_button: 'Avbryt'
       login_button: 'Log in / Sign up'
       title: 'Title'
       description: 'Description (optional)'
@@ -88,26 +92,26 @@ ko:
       submit_success: 'Feedback published! You will be redirected soon...'
       submit_error: 'An unknown error occurred, try again'
     search_box:
-      title: 'Search'
+      title: 'Sök'
     filter_box:
       title: 'Filter by status'
     sort_by_box:
-      title: 'Sort by'
+      title: 'Sortera efter'
       trending: 'Trending'
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
     filter_by_date_box:
       title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      from_label: 'Från'
+      to_label: 'Till'
     posts_list:
       empty: 'There are no posts'
   post:
-    edit_button: 'Edit'
+    edit_button: 'Redigera'
     published_by: 'Published by'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Ingen'
     updates_box:
       title: 'Updates'
       empty: 'There are no updates yet'
@@ -121,12 +125,12 @@ ko:
       following_description: "you're receiving notifications about new updates on this post"
       not_following_description: "you won't receive notifications about this post"
     comments:
-      title: 'Activity'
-      post_update_badge: 'Update'
-      reply_button: 'Reply'
+      title: 'Aktivitet'
+      post_update_badge: 'Uppdatera'
+      reply_button: 'Svara'
     new_comment:
-      body_placeholder: 'Leave a comment'
-      submit_button: 'Submit'
+      body_placeholder: 'Lämna en kommentar'
+      submit_button: 'Skicka'
       is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
       not_logged_in: 'You need to log in to post comments'
@@ -137,9 +141,9 @@ ko:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      users: 'Users'
-      authentication: 'Authentication'
-      appearance: 'Appearance'
+      users: 'Användare'
+      authentication: 'Autentisering'
+      appearance: 'Utseende'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -151,7 +155,7 @@ ko:
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
       subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
+      collapse_boards_in_header_no_collapse: 'Aldrig'
       collapse_boards_in_header_always_collapse: 'Always'
       subtitle_visibility: 'Visibility'
       custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
@@ -180,14 +184,14 @@ ko:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
     users:
-      title: 'Users'
+      title: 'Användare'
       block: 'Block'
       unblock: 'Unblock'
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
-      role_user: 'User'
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'Användare'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
       role_owner: 'Owner'
@@ -199,7 +203,7 @@ ko:
       learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
-      copy_url: 'Copy URL'
+      copy_url: 'Kopiera URL'
       test_page:
         title: '%{name} OAuth test results'
         fetched_user_data: 'Fetched user data'

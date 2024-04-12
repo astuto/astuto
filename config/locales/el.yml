@@ -1,4 +1,4 @@
-ko:
+el:
   common:
     validations:
       required: '%{attribute} is required'
@@ -37,6 +37,7 @@ ko:
         change_password: 'Change password'
         password_help: '%{count} characters minimum'
     comments_number:
+      one: '1 comment'
       other: '%{count} comments'
     no_status: 'No status'
     loading: 'Loading...'
@@ -62,10 +63,13 @@ ko:
     datetime:
       now: 'just now'
       minutes:
+        one: '1 minute ago'
         other: '%{count} minutes ago'
       hours:
+        one: '1 hour ago'
         other: '%{count} hours ago'
       days:
+        one: '1 day ago'
         other: '%{count} days ago'
   header:
     menu:
@@ -186,7 +190,7 @@ ko:
       block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
       unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
       role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
       role_user: 'User'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'

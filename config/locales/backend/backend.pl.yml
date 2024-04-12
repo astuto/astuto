@@ -1,4 +1,4 @@
-ko:
+pl:
   errors:
     unknown: 'An unknown error occurred'
     unauthorized: 'You are not authorized'
@@ -52,18 +52,39 @@ ko:
   activerecord:
     models:
       board:
+        one: 'Board'
+        few: 'Boards'
+        many: 'Boards'
         other: 'Boards'
       comment:
+        one: 'Comment'
+        few: 'Comments'
+        many: 'Comments'
         other: 'Comments'
       like:
+        one: 'Vote'
+        few: 'Votes'
+        many: 'Votes'
         other: 'Votes'
       o_auth:
+        one: 'OAuth'
+        few: 'OAuths'
+        many: 'OAuths'
         other: 'OAuths'
       post_status:
+        one: 'Status'
+        few: 'Statuses'
+        many: 'Statuses'
         other: 'Statuses'
       post:
+        one: 'Post'
+        few: 'Posts'
+        many: 'Posts'
         other: 'Posts'
       user:
+        one: 'User'
+        few: 'Users'
+        many: 'Users'
         other: 'Users'
     attributes:
       board:

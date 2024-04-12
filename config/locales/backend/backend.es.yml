@@ -12,6 +12,7 @@ es:
       update_order: 'Hubo un error al reordenar los estados de las publicaciones'
   defaults:
     user_full_name: 'Usuario Anónimo'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: '¡Bienvenido/a a %{site_name}, %{email}!'
@@ -116,6 +117,7 @@ es:
         site_logo: 'Logo del sitio'
         subdomain: 'Subdominio'
         locale: 'Idioma'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Visualización'
         show_vote_count: 'Mostrar el número de votos a los usuarios'

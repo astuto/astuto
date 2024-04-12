@@ -17,6 +17,9 @@ fr:
         current_password: 'Mot de passe actuel'
         notifications_enabled: 'Notifications activées'
         notifications_enabled_help: "si désactivé, vous ne recevrez aucune notification"
+        waiting_confirmation: 'En attente de confirmation de : %{email}'
+        password_leave_blank_help: "laissez vide si vous ne souhaitez pas changer votre mot de passe"
+        current_password_required_help: 'nous avons besoin de votre mot de passe actuel pour confirmer vos modifications'
         remember_me: 'Se souvenir de moi'
         log_in: 'Se connecter'
         sign_up: 'S''inscrire'
@@ -44,8 +47,8 @@ fr:
     enabled: 'Activé'
     disabled: 'Désactivé'
     copied: 'Copié !'
-    user_staff: 'Staff'
-    powered_by: 'Powered by'
+    user_staff: 'Équipe'
+    powered_by: 'Propulsé par'
     buttons:
       new: 'Nouveau'
       edit: 'Modifier'
@@ -56,7 +59,7 @@ fr:
       confirm: 'Confirmer'
       back: 'Revenir en arrière'
       test: 'Tester'
-      clear: 'Clear'
+      clear: 'Effacer'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -99,9 +102,9 @@ fr:
       most_voted: 'Les plus votés'
       oldest: 'Plus anciens'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Filtrer par date'
+      from_label: 'De'
+      to_label: 'À'
     posts_list:
       empty: 'Il n''y a pas de publications'
   post:
@@ -155,6 +158,8 @@ fr:
       collapse_boards_in_header_no_collapse: 'Jamais'
       collapse_boards_in_header_always_collapse: 'Toujours'
       subtitle_visibility: 'Visibilité'
+      custom_domain_help: 'Tout d''abord, dans vos paramètres DNS, ajoutez un enregistrement CNAME pointant "%{domain}" vers "cname.astuto.io". Ensuite, cliquez sur le bouton "Enregistrer" ci-dessous.'
+      custom_domain_learn_more: 'Apprenez comment configurer un domaine personnalisé'
       show_vote_count_help: 'Si vous activez ce paramètre, les utilisateurs pourront voir le nombre de votes sur les publications. Cela peut inciter les utilisateurs à voter sur des publications déjà populaires, ce qui peut entraîner un effet boule de neige.'
       show_vote_button_in_board_help: 'Si vous activez ce paramètre, les utilisateurs seront en mesure de voter pour des publications depuis la page des tableaux. Cela peut inciter les utilisateurs à voter sur un plus grand nombre de publications, ce qui peut entraîner un nombre plus élevé de votes mais de moindre importance.'
     boards:

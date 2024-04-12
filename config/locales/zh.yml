@@ -17,20 +17,23 @@ zh-CN:
         current_password: '当前密码'
         notifications_enabled: '开启通知'
         notifications_enabled_help: "关闭后，您将不会收到任何通知"
+        waiting_confirmation: '正在等待验证 %{email}'
+        password_leave_blank_help: "留空则不更改密码"
+        current_password_required_help: '请输入当前密码以确认新设置'
         remember_me: '记住账号'
         log_in: '登录'
         sign_up: '注册'
         log_in_with: '通过 %{o_auth} 登录'
         sign_up_with: '通过 %{o_auth} 注册'
-        profile_settings: '个人资料设置'
-        update_profile: '更新个人资料'
+        profile_settings: '账号设置'
+        update_profile: '更新账号信息'
         cancel_account: '注销账号'
         forgot_password: '忘记密码'
-        confirmation_instructions_not_received: "没有收到确认指令？"
-        unlock_instructions_not_received: "没有收到解锁指令？"
-        send_reset_password_instructions: '向我发送密码重置指令'
-        resend_confirmation_instructions: '重新发送密码重置指令'
-        resend_unlock_instructions: '重新发送解锁指令'
+        confirmation_instructions_not_received: "未收到验证邮件"
+        unlock_instructions_not_received: "未收到解锁邮件"
+        send_reset_password_instructions: '向我发送密码重置邮件'
+        resend_confirmation_instructions: '重新发送验证邮件'
+        resend_unlock_instructions: '重新发送解锁邮件'
         change_password: '修改密码'
         password_help: '至少需要 %{count} 个字符'
     comments_number:
@@ -44,7 +47,7 @@ zh-CN:
     disabled: '已禁用'
     copied: '已复制！'
     user_staff: '工作人员'
-    powered_by: '提供支持：'
+    powered_by: '技术支持:'
     buttons:
       new: '新建'
       edit: '编辑'
@@ -67,11 +70,11 @@ zh-CN:
   header:
     menu:
       site_settings: '网站设置'
-      profile_settings: '个人资料设置'
+      profile_settings: '账号设置'
       sign_out: '退出登录'
     log_in: '登录/注册'
   roadmap:
-    title: '路线图'
+    title: '开发路线'
   blocked_tenant:
     title: '此反馈空间已被禁止访问'
   board:
@@ -92,7 +95,7 @@ zh-CN:
       title: '排序方式'
       trending: '热门'
       newest: '最新'
-      most_voted: '投票最多'
+      most_voted: '票数'
       oldest: '最早'
     filter_by_date_box:
       title: '按日期筛选'
@@ -130,19 +133,19 @@ zh-CN:
   site_settings:
     menu:
       title: '网站设置'
-      general: '通用'
-      boards: '版块'
-      post_statuses: '状态'
-      roadmap: '路线图'
-      users: '用户'
+      general: '通用设置'
+      boards: '网站版块'
+      post_statuses: '帖子状态'
+      roadmap: '开发路线'
+      users: '用户列表'
       authentication: '身份验证'
-      appearance: '外观'
+      appearance: '外观定制'
     info_box:
       up_to_date: '已保存所有更改'
       error: '发生了一个错误：%{message}'
       dirty: '更改尚未保存'
     general:
-      title: '通用'
+      title: '通用设置'
       brand_setting_both: '名称和图标'
       brand_setting_name: '仅名称'
       brand_setting_logo: '仅图标'
@@ -151,37 +154,39 @@ zh-CN:
       collapse_boards_in_header_no_collapse: '从不'
       collapse_boards_in_header_always_collapse: '始终'
       subtitle_visibility: '可见性'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: '如果您启用此设置，用户将可以看到帖子的投票数。 这可能会鼓励用户对已经很受欢迎的帖子进行投票，导致雪球效应。'
       show_vote_button_in_board_help: '如果您启用此设置，用户将能够从版块页面直接对帖子投票。 这可能会鼓励用户对更多的帖子投票，导致更多的票数，但会稀释每一票的重要性。'
     boards:
-      title: '版块'
+      title: '网站版块'
       empty: '尚无版块，在下方创建板块！'
       new: '新建'
       form:
         name: '版块名称'
         description: '版块描述 (可选)'
     post_statuses:
-      title: '状态'
+      title: '帖子状态'
       empty: '尚无状态，在下方创建状态！'
       new: '新建'
       form:
         name: '状态名称'
     roadmap:
-      title: '路线图'
+      title: '开发路线'
       title2: '不在路线图中'
       empty: '路线图是空的。'
-      help: '您可以从下方拖拽状态添加到路线图中。如果您想要创建新状态或改变顺序，请前往 网站设置 > 状态。'
+      help: '您可以从下方拖拽状态添加到开发路线图中。如果您想要创建新状态或改变顺序，请前往 网站设置 > 帖子状态。'
     appearance:
-      title: '外观'
+      title: '外观定制'
       learn_more: '了解如何自定义外观'
     users:
-      title: '用户'
+      title: '用户列表'
       block: '封禁'
       unblock: '解除封禁'
-      block_confirmation: "%{name} 在被接触封禁前无法登录，您确定吗？"
+      block_confirmation: "%{name} 在被解除封禁前无法登录，您确定吗？"
       unblock_confirmation: "%{name} 将可以登录和发表反馈，您确定吗？"
-      role_to_moderator_confirmation: "%{name} 将可以管理帖子和用户，请仅在信任此人的情况下继续，您确定吗？"
-      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_to_moderator_confirmation: "%{name} 将可以管理帖子和用户，请仅在信任此人的情况下继续。您确定吗？"
+      role_to_admin_confirmation: "%{name} 将拥有和您同等的权限，包括把您降级和封禁，请仅在信任此人的情况下继续。 您确定吗？"
       role_user: '用户'
       role_moderator: '版主'
       role_admin: '管理员'
@@ -199,7 +204,7 @@ zh-CN:
         title: '%{name} OAuth 测试结果'
         fetched_user_data: '已获取的用户数据'
         found: '已找到'
-        summary: '概览'
+        summary: '总结'
         valid_configuration: '此 OAuth 提供者配置正确！'
         warning_configuration: '此 OAuth 提供者配置错误，用户 (%{name}) 的默认名称将被使用。'
         invalid_configuration: '此 OAuth 提供者配置不正确。'

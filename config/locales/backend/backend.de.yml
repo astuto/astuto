@@ -12,6 +12,7 @@ de:
       update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
   defaults:
     user_full_name: 'Anonymer Benutzer'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
@@ -116,6 +117,7 @@ de:
         site_logo: 'Seitenlogo'
         subdomain: 'Subdomain'
         locale: 'Sprache'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Anzeige'
         show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'

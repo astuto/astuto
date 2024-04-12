@@ -12,6 +12,7 @@ ru:
       update_order: 'Произошла ошибка при изменении порядка досок'
   defaults:
     user_full_name: 'Анонимный пользователь'
+    deleted_user_full_name: 'Deleted User'
   mailers:
     devise:
       welcome_greeting: 'Добро пожаловать на %{site_name}, %{email}!'
@@ -130,6 +131,7 @@ ru:
         site_logo: 'Логотип сайта'
         subdomain: 'Поддомен'
         locale: 'Язык'
+        custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Экран'
         show_vote_count: 'Показать количество голосов пользователям'

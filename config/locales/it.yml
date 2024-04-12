@@ -17,6 +17,9 @@ it:
         current_password: 'Password corrente'
         notifications_enabled: 'Notifiche abilitate'
         notifications_enabled_help: "se disabilitato, non riceverai alcuna notifica"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Ricordami'
         log_in: 'Accedi'
         sign_up: 'Registrati'
@@ -155,6 +158,8 @@ it:
       collapse_boards_in_header_no_collapse: 'Mai'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilità'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di vedere il numero di voti dei post. Questo può incentivare gli utenti a votare su post già popolari, portando a un effetto a valanga.'
       show_vote_button_in_board_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di votare i post dalla bacheca. Questo può incentivare gli utenti a votare su un maggior numero di post, risultando in un maggior numero di voti ma di minore importanza.'
     boards:
@@ -185,7 +190,7 @@ it:
       block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
       unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
       role_to_moderator_confirmation: "%{name} sarà in grado di gestire post e utenti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
-      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di %{name}. Sei sicuro?"
+      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
       role_user: 'Utente'
       role_moderator: 'Moderatore'
       role_admin: 'Amministratore'
