@@ -1,7 +1,9 @@
 class OAuth < ApplicationRecord
-  include TenantOwnable
   include ApplicationHelper
   include Rails.application.routes.url_helpers
+
+  include TenantOwnable
+  extend FriendlyId
 
   has_many :tenant_default_o_auths, dependent: :destroy
 
@@ -17,6 +19,8 @@ class OAuth < ApplicationRecord
   validates :scope, presence: true
   validates :json_user_email_path, presence: true
 
+  friendly_id :generate_random_slug, use: :scoped, scope: :tenant_id
+
   def is_default?
     tenant_id == nil
   end
@@ -27,9 +31,9 @@ class OAuth < ApplicationRecord
     # for this reason, we don't preprend tenant subdomain
     # but rather use the "login" subdomain
     if self.is_default?
-      o_auth_callback_url(id, host: Rails.application.base_url, subdomain: "login")
+      get_url_for(method(:o_auth_callback_url), resource: self, disallow_custom_domain: true, options: { subdomain: "login", host: Rails.application.base_url })
     else
-      add_subdomain_to(method(:o_auth_callback_url), id)
+      get_url_for(method(:o_auth_callback_url), resource: self, disallow_custom_domain: true)
     end
   end
 
@@ -44,6 +48,14 @@ class OAuth < ApplicationRecord
 
   def default_o_auth_is_enabled
     is_default? and tenant_default_o_auths.exists?
+  end
+
+  def generate_random_slug
+    loop do
+      self.slug = SecureRandom.hex(8)
+      break unless self.class.exists?(slug: slug)
+    end
+    slug
   end
 
   class << self

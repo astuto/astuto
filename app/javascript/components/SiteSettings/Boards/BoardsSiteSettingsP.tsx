@@ -30,6 +30,7 @@ interface Props {
     id: number,
     name: string,
     description: string,
+    slug: string,
     onSuccess: Function,
     authenticityToken: string,
   ): void;
@@ -61,8 +62,8 @@ class BoardsSiteSettingsP extends React.Component<Props> {
     this.props.submitBoard(name, description, onSuccess, this.props.authenticityToken);
   }
 
-  handleUpdate(id: number, name: string, description: string, onSuccess: Function) {
-    this.props.updateBoard(id, name, description, onSuccess, this.props.authenticityToken);
+  handleUpdate(id: number, name: string, description: string, slug: string, onSuccess: Function) {
+    this.props.updateBoard(id, name, description, slug, onSuccess, this.props.authenticityToken);
   }
 
   handleDragEnd(result) {
@@ -105,6 +106,7 @@ class BoardsSiteSettingsP extends React.Component<Props> {
                           id={board.id}
                           name={board.name}
                           description={board.description}
+                          slug={board.slug}
                           index={i}
                           settingsAreUpdating={settingsAreUpdating}
 

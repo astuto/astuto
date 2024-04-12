@@ -221,6 +221,8 @@ body {
   & > input:focus ~ label::before {
     border-color: var(--primary-color-dark) !important;
   }
+
+  z-index: auto;
 }
 
 .selectPicker {

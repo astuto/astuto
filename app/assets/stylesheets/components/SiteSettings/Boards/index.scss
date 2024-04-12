@@ -44,4 +44,10 @@
 
     column-gap: 8px;
   }
+
+  .boardDescriptionTextArea {
+    height: 80px;
+    min-height: 80px;
+    resize: vertical;
+  }
 }

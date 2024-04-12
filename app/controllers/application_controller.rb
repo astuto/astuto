@@ -1,4 +1,7 @@
+require 'uri'
+
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -16,33 +19,23 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
-      if Rails.application.multi_tenancy?
-        return if request.subdomain.blank? or RESERVED_SUBDOMAINS.include?(request.subdomain)
+      current_tenant = get_tenant_from_request(request)
+      return unless current_tenant
 
-        # Load the current tenant based on subdomain
-        current_tenant = Tenant.find_by(subdomain: request.subdomain)
-
-        if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
-          redirect_to pending_tenant_path; return
-        end
-
-        if current_tenant.status == "blocked"
-          redirect_to blocked_tenant_path; return
-        end
-
-        redirect_to showcase_url unless current_tenant
-      else
-        # Load the one and only tenant
-        current_tenant = Tenant.first
+      if current_tenant.status == "pending" and controller_name != "confirmation" and action_name != "show"
+        redirect_to pending_tenant_path; return
       end
 
-      return unless current_tenant
+      if current_tenant.status == "blocked"
+        redirect_to blocked_tenant_path; return
+      end
+
       Current.tenant = current_tenant
 
       # Load tenant data
       @tenant = Current.tenant_or_raise!
       @tenant_setting = TenantSetting.first_or_create
-      @boards = Board.select(:id, :name).order(order: :asc)
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
 
       # Setup locale
       I18n.locale = @tenant.locale

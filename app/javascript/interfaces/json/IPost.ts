@@ -1,6 +1,7 @@
 interface IPostJSON {
   id: number;
   title: string;
+  slug?: string;
   description?: string;
   board_id: number;
   post_status_id?: number;

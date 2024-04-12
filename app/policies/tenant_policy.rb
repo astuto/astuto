@@ -5,7 +5,7 @@ class TenantPolicy < ApplicationPolicy
 
   def permitted_attributes_for_update
     if user.admin?
-      [:site_name, :site_logo, :locale]
+      [:site_name, :site_logo, :locale, :custom_domain]
     else
       []
     end

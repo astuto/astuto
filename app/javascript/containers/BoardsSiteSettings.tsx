@@ -28,7 +28,10 @@ const mapDispatchToProps = (dispatch: any) => ({
     authenticityToken: string,
   ) {
     dispatch(submitBoard(name, description, authenticityToken)).then(res => {
-      if (res && res.status === HttpStatus.Created) onSuccess();
+      if (res && res.status === HttpStatus.Created) {
+        onSuccess();
+        window.location.reload();
+      }
     });
   },
 
@@ -36,11 +39,15 @@ const mapDispatchToProps = (dispatch: any) => ({
     id: number,
     name: string,
     description: string,
+    slug: string,
     onSuccess: Function,
     authenticityToken: string,
   ) {
-    dispatch(updateBoard(id, name, description, authenticityToken)).then(res => {
-      if (res && res.status === HttpStatus.OK) onSuccess();
+    dispatch(updateBoard(id, name, description, slug, authenticityToken)).then(res => {
+      if (res && res.status === HttpStatus.OK) {
+        onSuccess();
+        window.location.reload();
+      }
     });
   },
 
@@ -54,7 +61,12 @@ const mapDispatchToProps = (dispatch: any) => ({
   },
 
   deleteBoard(id: number, authenticityToken: string) {
-    dispatch(deleteBoard(id, authenticityToken));
+    dispatch(deleteBoard(id, authenticityToken)).then(res => {
+      console.log(res);
+      if (res && res.status === HttpStatus.Accepted) {
+        window.location.reload();
+      }
+    });
   },
 });
 

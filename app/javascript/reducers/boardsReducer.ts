@@ -63,6 +63,7 @@ const boardsReducer = (
           id: board.id,
           name: board.name,
           description: board.description,
+          slug: board.slug,
         })),
         areLoading: false,
         error: '',

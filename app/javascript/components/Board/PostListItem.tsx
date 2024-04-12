@@ -10,6 +10,7 @@ import IPostStatus from '../../interfaces/IPostStatus';
 interface Props {
   id: number;
   title: string;
+  slug?: string;
   description?: string;
   postStatus: IPostStatus;
   likeCount: number;
@@ -25,6 +26,7 @@ interface Props {
 const PostListItem = ({
   id,
   title,
+  slug,
   description,
   postStatus,
   likeCount,
@@ -36,7 +38,7 @@ const PostListItem = ({
   isLoggedIn,
   authenticityToken,
 }: Props) => (
-  <div onClick={() => window.location.href = `/posts/${id}`} className="postListItem">
+  <div onClick={() => window.location.href = `/posts/${slug || id}`} className="postListItem">
     <LikeButton
       postId={id}
       likeCount={likeCount}
@@ -46,7 +48,7 @@ const PostListItem = ({
       isLoggedIn={isLoggedIn}
       authenticityToken={authenticityToken}
     />
-
+    
     <div className="postContainer">
       <span className="postTitle">{title}</span>
         <ReactMarkdown className="descriptionText" allowedTypes={['text']} unwrapDisallowed>

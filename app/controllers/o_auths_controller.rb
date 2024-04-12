@@ -12,9 +12,9 @@ class OAuthsController < ApplicationController
   # Generates authorize url with required parameters and redirects to provider
   def start
     if params[:reason] == 'tenantsignup'
-      @o_auth = OAuth.include_only_defaults.find(params[:id])
+      @o_auth = OAuth.include_only_defaults.friendly.find(params[:id])
     else
-      @o_auth = OAuth.include_defaults.find(params[:id])
+      @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
     
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
@@ -22,7 +22,7 @@ class OAuthsController < ApplicationController
     # Generate random state + other query params
     tenant_domain = Current.tenant ? Current.tenant_or_raise!.subdomain : "null"
     token_state = "#{params[:reason]}#{TOKEN_STATE_SEPARATOR}#{tenant_domain}#{TOKEN_STATE_SEPARATOR}#{Devise.friendly_token(30)}"
-    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true }
+    cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true } unless params[:reason] == 'test'
     @o_auth.state = token_state
 
     redirect_to @o_auth.authorize_url_with_query_params
@@ -33,16 +33,18 @@ class OAuthsController < ApplicationController
   def callback
     reason, tenant_domain, token_state = params[:state].split(TOKEN_STATE_SEPARATOR, 3)
 
-    return unless cookies[:token_state] == params[:state]
-    cookies.delete(:token_state, domain: ".#{request.domain}")
+    unless reason == "test"
+      return unless cookies[:token_state] == params[:state]
+      cookies.delete(:token_state, domain: ".#{request.domain}")
+    end
 
     # if it is a default oauth, tenant is not yet set
     Current.tenant ||= Tenant.find_by(subdomain: tenant_domain)
 
     if reason == 'tenantsignup'
-      @o_auth = OAuth.include_only_defaults.find(params[:id])
+      @o_auth = OAuth.include_only_defaults.friendly.find(params[:id])
     else
-      @o_auth = OAuth.include_defaults.find(params[:id])
+      @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
 
     return if reason != 'test' and not @o_auth.is_enabled?
@@ -61,17 +63,17 @@ class OAuthsController < ApplicationController
 
       if user
         oauth_token = user.generate_oauth_token
-        redirect_to add_subdomain_to(method(:o_auth_sign_in_from_oauth_token_url), nil, {user_id: user.id, token: oauth_token})
+        redirect_to get_url_for(method(:o_auth_sign_in_from_oauth_token_url), options: { user_id: user.id, token: oauth_token })
       else
         flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
-        redirect_to add_subdomain_to(method(:new_user_session_url))
+        redirect_to get_url_for(method(:new_user_session_url))
       end
 
     elsif reason == 'test'
       
       unless user_signed_in? and current_user.admin?
         flash[:alert] = I18n.t('errors.unauthorized')
-        redirect_to root_url
+        redirect_to get_url_for(method(:root_url))
         return
       end
 

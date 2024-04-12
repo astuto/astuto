@@ -107,7 +107,7 @@ class NewPost extends React.Component<Props, State> {
       });
       const json = await res.json();
       this.setState({isLoading: false});
-
+      
       if (res.status === HttpStatus.Created) {
         this.setState({
           success: I18n.t('board.new_post.submit_success'),
@@ -117,7 +117,7 @@ class NewPost extends React.Component<Props, State> {
         });
 
         setTimeout(() => (
-          window.location.href = `/posts/${json.id}`
+          window.location.href = `/posts/${json.slug || json.id}`
         ), 1000);
       } else {
         this.setState({error: json.error});
