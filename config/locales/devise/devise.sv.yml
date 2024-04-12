@@ -1,19 +1,19 @@
 sv:
   devise:
     confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: "Din e-postadress har bekräftats."
+      send_instructions: "Du kommer inom några minuter att få ett e-postmeddelande med instruktioner om hur du bekräftar din e-postadress."
+      send_paranoid_instructions: "Om din e-postadress finns i vår databas, kommer du inom några minuter att få ett e-postmeddelande med instruktioner om hur du bekräftar din e-postadress."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
+      already_authenticated: "Du är redan inloggad."
+      inactive: "Ditt konto är inte aktiverat än."
       invalid: "Invalid %{authentication_keys} or password."
-      locked: "Your account is locked."
+      locked: "Ditt konto är låst."
       last_attempt: "You have one more attempt before your account is locked."
       not_found_in_database: "Invalid %{authentication_keys} or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      timeout: "Din session har upphört. Logga in igen för att fortsätta."
+      unauthenticated: "Du måste logga in eller registrera dig innan du fortsätter."
+      unconfirmed: "Du måste bekräfta din e-postadress innan du kan fortsätta."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -33,7 +33,7 @@ sv:
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+      updated_not_active: "Ditt lösenord har ändrats."
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
