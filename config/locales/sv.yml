@@ -2,9 +2,9 @@ sv:
   common:
     validations:
       required: '%{attribute} is required'
-      email: 'Invalid email'
+      email: 'Ogiltig e-postadress'
       url: 'Ogiltig URL'
-      password: 'Password must have at least %{n} characters'
+      password: 'Lösenord måste innehålla minst %{n} tecken'
       password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
@@ -25,7 +25,7 @@ sv:
         sign_up: 'Registrera dig'
         log_in_with: 'Logga in med %{o_auth}'
         sign_up_with: 'Registrera dig med %{o_auth}'
-        profile_settings: 'Profile settings'
+        profile_settings: 'Profilinställningar'
         update_profile: 'Uppdatera profil'
         cancel_account: 'Cancel account'
         forgot_password: 'Glömt ditt lösenord?'
@@ -66,25 +66,25 @@ sv:
         one: '1 minut sedan'
         other: '%{count} minuter sedan'
       hours:
-        one: '1 hour ago'
-        other: '%{count} hours ago'
+        one: '1 timme sedan'
+        other: '%{count} timmar sedan'
       days:
-        one: '1 day ago'
-        other: '%{count} days ago'
+        one: '1 dag sedan'
+        other: '%{count} dagar sedan'
   header:
     menu:
       site_settings: 'Site settings'
-      profile_settings: 'Profile settings'
-      sign_out: 'Sign out'
-    log_in: 'Log in / Sign up'
+      profile_settings: 'Profilinställningar'
+      sign_out: 'Logga ut'
+    log_in: 'Logga in/Registrera dig'
   roadmap:
     title: 'Roadmap'
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:
     new_post:
-      submit_button: 'Submit feedback'
-      cancel_button: 'Cancel'
+      submit_button: 'Skicka feedback'
+      cancel_button: 'Avbryt'
       login_button: 'Log in / Sign up'
       title: 'Title'
       description: 'Description (optional)'
@@ -92,26 +92,26 @@ sv:
       submit_success: 'Feedback published! You will be redirected soon...'
       submit_error: 'An unknown error occurred, try again'
     search_box:
-      title: 'Search'
+      title: 'Sök'
     filter_box:
       title: 'Filter by status'
     sort_by_box:
-      title: 'Sort by'
+      title: 'Sortera efter'
       trending: 'Trending'
       newest: 'Newest'
       most_voted: 'Most voted'
       oldest: 'Oldest'
     filter_by_date_box:
       title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      from_label: 'Från'
+      to_label: 'Till'
     posts_list:
       empty: 'There are no posts'
   post:
-    edit_button: 'Edit'
+    edit_button: 'Redigera'
     published_by: 'Published by'
     post_status_select:
-      no_post_status: 'None'
+      no_post_status: 'Ingen'
     updates_box:
       title: 'Updates'
       empty: 'There are no updates yet'
@@ -125,11 +125,11 @@ sv:
       following_description: "you're receiving notifications about new updates on this post"
       not_following_description: "you won't receive notifications about this post"
     comments:
-      title: 'Activity'
-      post_update_badge: 'Update'
-      reply_button: 'Reply'
+      title: 'Aktivitet'
+      post_update_badge: 'Uppdatera'
+      reply_button: 'Svara'
     new_comment:
-      body_placeholder: 'Leave a comment'
+      body_placeholder: 'Lämna en kommentar'
       submit_button: 'Skicka'
       is_post_update: 'Mark as update'
       user_notification: 'Users that follow this post will be notified'
@@ -142,8 +142,8 @@ sv:
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
       users: 'Användare'
-      authentication: 'Authentication'
-      appearance: 'Appearance'
+      authentication: 'Autentisering'
+      appearance: 'Utseende'
     info_box:
       up_to_date: 'All changes saved'
       error: 'An error occurred: %{message}'
@@ -155,7 +155,7 @@ sv:
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
       subtitle_header: 'Header'
-      collapse_boards_in_header_no_collapse: 'Never'
+      collapse_boards_in_header_no_collapse: 'Aldrig'
       collapse_boards_in_header_always_collapse: 'Always'
       subtitle_visibility: 'Visibility'
       custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
@@ -203,7 +203,7 @@ sv:
       learn_more: 'Learn how to configure custom OAuth providers'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
-      copy_url: 'Copy URL'
+      copy_url: 'Kopiera URL'
       test_page:
         title: '%{name} OAuth test results'
         fetched_user_data: 'Fetched user data'
