@@ -19,6 +19,7 @@ RSpec.configure do |config|
   # Set tenant before each test
   config.before(:each) do
     Current.tenant = FactoryBot.create(:tenant)
+    Current.tenant.tenant_billing.create!
   end
 
   # Compile fresh assets before system specs (needed to get the changes)
