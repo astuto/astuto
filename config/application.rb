@@ -33,5 +33,9 @@ module App
     def posts_per_page
       15
     end
+
+    def trial_period_days
+      ENV["TRIAL_PERIOD_DAYS"].to_i.days
+    end
   end
 end

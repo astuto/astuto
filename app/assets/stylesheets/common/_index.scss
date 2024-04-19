@@ -302,3 +302,11 @@ body {
   a { color: var(--astuto-grey); }
   a:hover { text-decoration: underline; }
 }
+
+.noActiveSubscriptionBanner {
+  @extend
+    .alert,
+    .alert-warning,
+    .text-center,
+    .m-0;
+}

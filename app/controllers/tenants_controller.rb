@@ -51,6 +51,8 @@ class TenantsController < ApplicationController
 
       @user.save!
 
+      @tenant.tenant_billing = TenantBilling.create!
+
       CreateWelcomeEntitiesWorkflow.new().run
 
       logger.info { "New tenant registration: #{Current.tenant.inspect}" }

@@ -1,0 +1,7 @@
+<div class="noActiveSubscriptionBanner">
+  <% if @tenant.tenant_billing.trial? %>
+    <span>Your trial has ended. Please subscribe to continue accessing our services.</span>
+  <% else %>  
+    <span>Your subscription has ended. Please renew your subscription to continue accessing our services.</span>
+  <% end %>
+</div>

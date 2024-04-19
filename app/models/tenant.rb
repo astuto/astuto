@@ -1,5 +1,6 @@
 class Tenant < ApplicationRecord
   has_one :tenant_setting, dependent: :destroy
+  has_one :tenant_billing, dependent: :destroy
   has_many :boards, dependent: :destroy
   has_many :post_statuses, dependent: :destroy
   has_many :posts, dependent: :destroy

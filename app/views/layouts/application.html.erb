@@ -18,6 +18,10 @@
   </head>
 
   <body>
+    <% if not @tenant.tenant_billing.has_active_subscription? %>
+      <%= render 'layouts/no_active_subscription_banner' %>
+    <% end %>
+
     <% if @tenant %>
       <%= render 'layouts/header' %>
     <% end %>
