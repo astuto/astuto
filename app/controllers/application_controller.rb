@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     end
 
     def check_tenant_subscription
-      return if @tenant_billing.has_active_subscription?
+      return if Current.tenant.tenant_billing.has_active_subscription?
 
       render json: {
         error: 'Your subscription has expired. Please renew it to continue using the service.'
