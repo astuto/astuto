@@ -1,9 +1,19 @@
-.billingStatusBadge {
-  @extend
-    .badge,
-    .badgeLight,
-    .p-2;
-
-  width: fit-content;
-  text-transform: uppercase;
+.billingContainer {
+  .billingStatusBadge {
+    @extend
+      .badge,
+      .badgeLight,
+      .p-2;
+  
+    width: fit-content;
+    text-transform: uppercase;
+  }
+  
+  .pricingTable {
+    @extend
+      .d-flex,
+      .justify-content-around,
+      .mt-4,
+      .mb-4;
+  }
 }

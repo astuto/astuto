@@ -19,10 +19,6 @@ class StaticPagesController < ApplicationController
     get_roadmap_data
   end
 
-  def billing
-    @page_title = t('billing.title')
-  end
-
   def showcase
     render html: 'Showcase home page.'
   end
