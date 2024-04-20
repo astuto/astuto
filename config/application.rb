@@ -35,7 +35,7 @@ module App
     end
 
     def trial_period_days
-      ENV["TRIAL_PERIOD_DAYS"].to_i.days
+      ENV.key?("TRIAL_PERIOD_DAYS") ? ENV["TRIAL_PERIOD_DAYS"].to_i.days : 7.days
     end
   end
 end
