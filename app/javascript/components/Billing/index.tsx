@@ -2,7 +2,7 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-import ITenantBilling, { TENANT_BILLING_STATUS_CANCELED, TENANT_BILLING_STATUS_TRIAL } from '../../interfaces/ITenantBilling';
+import ITenantBilling, { TENANT_BILLING_STATUS_ACTIVE, TENANT_BILLING_STATUS_CANCELED, TENANT_BILLING_STATUS_TRIAL } from '../../interfaces/ITenantBilling';
 import Box from '../common/Box';
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
@@ -42,6 +42,11 @@ const Billing = ({ tenantBilling, prices, authenticityToken }: Props) => {
       {
         tenantBilling.status === TENANT_BILLING_STATUS_TRIAL && 
           <p>Trial ends: {new Date(tenantBilling.trial_ends_at).toLocaleString(undefined, {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+      }
+
+      {
+        tenantBilling.status === TENANT_BILLING_STATUS_ACTIVE &&
+          <p>Renews: {new Date(tenantBilling.subscription_ends_at).toLocaleString(undefined, {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
       }
 
       {

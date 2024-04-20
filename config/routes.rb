@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       
       resource :tenants, only: [:create]
     end
+
+    constraints subdomain: 'billing' do
+      post '/webhook', to: 'billing#webhook'
+    end
   end
 
   constraints subdomain: /.*/ do

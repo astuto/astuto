@@ -13,7 +13,7 @@ class TenantBilling < ApplicationRecord
   ]
 
   def has_active_subscription?
-    perpetual? || active? || (trial? && trial_ends_at > Time.current)
+    perpetual? || (active? && subscription_ends_at > Time.current) || (trial? && trial_ends_at > Time.current)
   end
 
   private

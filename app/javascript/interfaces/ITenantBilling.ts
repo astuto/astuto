@@ -12,6 +12,7 @@ export type TenantBillingStatus =
 
 interface ITenantBilling {
   trial_ends_at: string;
+  subscription_ends_at: string;
   status: TenantBillingStatus;
 }
 
