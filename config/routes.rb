@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root to: 'static_pages#root'
     
     get '/roadmap', to: 'static_pages#roadmap'
+    get '/billing', to: 'static_pages#billing'
     get '/pending-tenant', to: 'static_pages#pending_tenant'
     get '/blocked-tenant', to: 'static_pages#blocked_tenant'
     

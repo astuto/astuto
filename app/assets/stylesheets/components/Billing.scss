@@ -1,0 +1,9 @@
+.billingStatusBadge {
+  @extend
+    .badge,
+    .badgeLight,
+    .p-2;
+
+  width: fit-content;
+  text-transform: uppercase;
+}
