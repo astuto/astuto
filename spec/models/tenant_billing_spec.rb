@@ -25,12 +25,21 @@ RSpec.describe TenantBilling, type: :model do
     expect(tenant_billing.trial_ends_at).to be_within(5.seconds).of(Time.current + Rails.application.trial_period_days)
   end
 
+  it 'has a subscription_ends_at datetime that defaults to TRIAL_PERIOD_DAYS env variable' do
+    tenant_billing.save
+    expect(tenant_billing.subscription_ends_at).to be_within(5.seconds).of(Time.current + Rails.application.trial_period_days)
+  end
+
   it 'has a has_active_subscription? method that returns true if tenant can access the service' do
     tenant_billing.status = 'perpetual'
     expect(tenant_billing.has_active_subscription?).to be_truthy
 
     tenant_billing.status = 'active'
+    tenant_billing.subscription_ends_at = Time.current + 1.day
     expect(tenant_billing.has_active_subscription?).to be_truthy
+
+    tenant_billing.subscription_ends_at = Time.current - 1.day
+    expect(tenant_billing.has_active_subscription?).to be_falsey
 
     tenant_billing.status = 'trial'
     tenant_billing.trial_ends_at = Time.current + 1.day
