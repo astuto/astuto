@@ -7,6 +7,8 @@ import Box from '../common/Box';
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import { SmallMutedText } from '../common/CustomTexts';
+import ActionLink from '../common/ActionLink';
+import { LearnMoreIcon } from '../common/Icons';
 
 interface Props {
   tenantBilling: ITenantBilling;
@@ -115,6 +117,16 @@ const Billing = ({ tenantBilling, prices, manageSubscriptionUrl, authenticityTok
             </SmallMutedText>
           </div>
       }
+
+      <div className="billingUsefulLinks">
+        <ActionLink onClick={() => window.open('https://astuto.io/terms-of-service', '_blank')} icon={<LearnMoreIcon />}>
+          Terms of Service
+        </ActionLink>
+
+        <ActionLink onClick={() => window.open('https://astuto.io/privacy-policy', '_blank')} icon={<LearnMoreIcon />}>
+          Privacy Policy
+        </ActionLink>
+      </div>
     </Box>
   );
 }

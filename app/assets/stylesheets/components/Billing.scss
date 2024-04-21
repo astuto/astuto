@@ -1,5 +1,5 @@
 .billingContainer {
-  width: 640px;
+  max-width: 640px;
   margin: 0 auto;
 
   h2 { @extend .mb-4; }
@@ -27,5 +27,9 @@
       .justify-content-around,
       .mt-4,
       .mb-4;
+  }
+
+  .billingUsefulLinks {
+    @extend .mt-4;
   }
 }
