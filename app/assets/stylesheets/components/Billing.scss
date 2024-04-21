@@ -1,12 +1,24 @@
 .billingContainer {
+  width: 640px;
+  margin: 0 auto;
+
+  h2 { @extend .mb-4; }
+
   .billingStatusBadge {
     @extend
       .badge,
       .badgeLight,
-      .p-2;
+      .p-2,
+      .ml-1,
+      .mr-1;
   
     width: fit-content;
     text-transform: uppercase;
+  }
+
+  .billingStatusBadgeExpired {
+    color: white;
+    background-color: $danger;
   }
   
   .pricingTable {

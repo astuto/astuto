@@ -236,8 +236,14 @@ body {
 }
 
 .link {
+  color: var(--astuto-black);
+  text-decoration: underline;
   cursor: pointer;
-  &:hover { text-decoration: underline; }
+
+  &:hover {
+    color: var(--astuto-black);
+    text-decoration: underline;
+  }
 }
 
 .actionLink {

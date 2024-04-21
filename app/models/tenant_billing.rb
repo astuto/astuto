@@ -14,7 +14,7 @@ class TenantBilling < ApplicationRecord
   ]
 
   def has_active_subscription?
-    perpetual? || (active? && subscription_ends_at > Time.current) || (trial? && trial_ends_at > Time.current)
+    perpetual? || (active? && subscription_ends_at+1.day > Time.current) || (canceled? && subscription_ends_at > Time.current) || (trial? && trial_ends_at > Time.current)
   end
 
   private
@@ -24,6 +24,6 @@ class TenantBilling < ApplicationRecord
     end
 
     def set_subscription_ends_at
-      self.subscription_ends_at = Time.current + Rails.application.trial_period_days
+      self.subscription_ends_at = Time.current
     end
 end

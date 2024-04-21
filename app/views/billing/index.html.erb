@@ -4,6 +4,7 @@
     {
       tenantBilling: @tenant.tenant_billing,
       prices: @prices,
+      manageSubscriptionUrl: Rails.application.stripe_manage_subscription_url,
       authenticityToken: form_authenticity_token
     }
   )

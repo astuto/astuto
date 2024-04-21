@@ -45,5 +45,9 @@ module App
     def stripe_endpoint_secret
       ENV["STRIPE_ENDPOINT_SECRET"]
     end
+
+    def stripe_manage_subscription_url
+      ENV["STRIPE_MANAGE_SUBSCRIPTION_URL"]
+    end
   end
 end

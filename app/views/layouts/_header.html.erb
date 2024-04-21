@@ -54,7 +54,7 @@
                 %>
 
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
-                  <%= link_to t('billing.title'), billing_path, class: 'dropdown-item' %>
+                  <%= link_to t('billing.title'), billing_path, class: 'dropdown-item', data: {turbolinks: false} %>
                 <% end %>
                 <div class="dropdown-divider"></div>
               <% end %>

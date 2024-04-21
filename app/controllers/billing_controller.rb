@@ -53,18 +53,22 @@ class BillingController < ApplicationController
       return head :bad_request
     end
 
-    if event['type'] == 'checkout.session.completed'
-      session = get_session_from_event(event)
-      Current.tenant = get_tenant_from_session(session)
+    if event['type'] == 'invoice.paid'
+      Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
       
-      subscription_type = session.line_items.data[0].price.lookup_key
+      subscription_type = event.data.object.lines.data[0].price.lookup_key
       return head :bad_request unless subscription_type == 'monthly' || subscription_type == 'yearly'
 
       subscription_duration = subscription_type == 'monthly' ? 1.month : 1.year
       Current.tenant.tenant_billing.update!(
         status: 'active',
-        subscription_ends_at: Time.current + subscription_duration + 1.day
+        subscription_ends_at: Time.current + subscription_duration
       )
+    elsif event['type'] == 'customer.subscription.updated'
+      Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
+
+      has_canceled = event.data.object.cancel_at_period_end
+      Current.tenant.tenant_billing.update!(status: has_canceled ? 'canceled' : 'active')
     end
 
     return head :ok
@@ -76,14 +80,7 @@ class BillingController < ApplicationController
       redirect_to root_path unless Rails.application.multi_tenancy?
     end
 
-    def get_session_from_event(event)
-      Stripe::Checkout::Session.retrieve({
-        id: event['data']['object']['id'],
-        expand: ['line_items'],
-      })
-    end
-
-    def get_tenant_from_session(session)
-      TenantBilling.unscoped.find_by(customer_id: session.customer).tenant
+    def get_tenant_from_customer_id(customer_id)
+      TenantBilling.unscoped.find_by(customer_id: customer_id).tenant
     end
 end
