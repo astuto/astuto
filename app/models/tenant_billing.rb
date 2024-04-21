@@ -4,6 +4,7 @@ class TenantBilling < ApplicationRecord
   belongs_to :tenant
 
   before_create :set_trial_ends_at
+  before_create :set_subscription_ends_at
 
   enum status: [
     :trial,
@@ -20,5 +21,9 @@ class TenantBilling < ApplicationRecord
 
     def set_trial_ends_at
       self.trial_ends_at = Time.current + Rails.application.trial_period_days
+    end
+
+    def set_subscription_ends_at
+      self.subscription_ends_at = Time.current + Rails.application.trial_period_days
     end
 end
