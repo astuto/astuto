@@ -8,19 +8,28 @@ import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import { SmallMutedText } from '../common/CustomTexts';
 import ActionLink from '../common/ActionLink';
-import { LearnMoreIcon } from '../common/Icons';
+import { BackIcon, LearnMoreIcon } from '../common/Icons';
+import PricingTable from './PricingTable';
 
 interface Props {
   tenantBilling: ITenantBilling;
   prices: Array<any>;
+  billingUrl: string;
   manageSubscriptionUrl: string;
   authenticityToken: string;
 }
 
 const stripePromise = loadStripe('pk_test_51P7Hdw073bx1HD5Nk1sVrAGm1r7TWXUdZTEUKIMe558TQtQHEvy0rRuWRc33RVsbCMoZjar5vazbiXB200f6qEB000xIdkRMA3');
 
-const Billing = ({ tenantBilling, prices, manageSubscriptionUrl, authenticityToken }: Props) => {
+const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, authenticityToken }: Props) => {
+  const [currentPrice, setCurrentPrice] = React.useState(null);
   const [chosenPrice, setChosenPrice] = React.useState(null);
+
+  React.useEffect(() => {
+    if (prices && prices.length > 0) {
+      setCurrentPrice(prices[0].id);
+    }
+  }, [prices]);
 
   const fetchClientSecret = React.useCallback(() => {
     // Create a Checkout Session
@@ -80,29 +89,30 @@ const Billing = ({ tenantBilling, prices, manageSubscriptionUrl, authenticityTok
       }
 
       {
-        (tenantBilling.status === TENANT_BILLING_STATUS_TRIAL) &&
-          <div className="pricingTable">
-          {
-            prices && prices.map((price) => (
-              <div key={price.id} className="pricingTableColumn">
-                <h3>{ price.lookup_key === 'monthly' ? 'Monthly subscription' : 'Yearly subscription' }</h3>
-                <p className="price">{price.unit_amount / 100.0} {price.currency}</p>
-                <button onClick={() => setChosenPrice(price.id)} className="btnPrimary">Subscribe</button>
-              </div>
-            ))
-          }
-          </div>
+        (tenantBilling.status === TENANT_BILLING_STATUS_TRIAL) && chosenPrice === null &&
+          <PricingTable
+            prices={prices}
+            currentPrice={currentPrice}
+            setCurrentPrice={setCurrentPrice}
+            setChosenPrice={setChosenPrice}
+          />
       }
 
       {
         chosenPrice &&
-          <div id="checkout">
-            <EmbeddedCheckoutProvider
-              stripe={stripePromise}
-              options={options}
-            >
-              <EmbeddedCheckout />
-            </EmbeddedCheckoutProvider>
+          <div className="checkoutContainer">
+            <ActionLink onClick={() => window.location.href = billingUrl} icon={<BackIcon />}>
+              Choose another plan
+            </ActionLink>
+
+            <div id="checkout">
+              <EmbeddedCheckoutProvider
+                stripe={stripePromise}
+                options={options}
+              >
+                <EmbeddedCheckout />
+              </EmbeddedCheckoutProvider>
+            </div>
           </div>
       }
 
@@ -122,7 +132,6 @@ const Billing = ({ tenantBilling, prices, manageSubscriptionUrl, authenticityTok
         <ActionLink onClick={() => window.open('https://astuto.io/terms-of-service', '_blank')} icon={<LearnMoreIcon />}>
           Terms of Service
         </ActionLink>
-
         <ActionLink onClick={() => window.open('https://astuto.io/privacy-policy', '_blank')} icon={<LearnMoreIcon />}>
           Privacy Policy
         </ActionLink>
