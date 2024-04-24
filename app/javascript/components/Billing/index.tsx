@@ -24,6 +24,7 @@ const stripePromise = loadStripe('pk_test_51P7Hdw073bx1HD5Nk1sVrAGm1r7TWXUdZTEUK
 const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, authenticityToken }: Props) => {
   const [currentPrice, setCurrentPrice] = React.useState(null);
   const [chosenPrice, setChosenPrice] = React.useState(null);
+  const [showBackLink, setShowBackLink] = React.useState(false);
 
   React.useEffect(() => {
     if (prices && prices.length > 0) {
@@ -39,6 +40,18 @@ const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, aut
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);
+  }, [chosenPrice]);
+
+  React.useEffect(() => {
+    if (chosenPrice) {
+      const timer = setTimeout(() => {
+        setShowBackLink(true);
+      }, 5000);
+  
+      return () => clearTimeout(timer); // cleanup on unmount or when chosenPrice changes
+    } else {
+      setShowBackLink(false); // reset state when chosenPrice becomes null
+    }
   }, [chosenPrice]);
 
   const options = {fetchClientSecret};
@@ -101,9 +114,13 @@ const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, aut
       {
         chosenPrice &&
           <div className="checkoutContainer">
-            <ActionLink onClick={() => window.location.href = billingUrl} icon={<BackIcon />}>
-              Choose another plan
-            </ActionLink>
+            { showBackLink ?
+              <ActionLink onClick={() => window.location.href = billingUrl} icon={<BackIcon />}>
+                Choose another plan
+              </ActionLink>
+              :
+              <br />
+            }
 
             <div id="checkout">
               <EmbeddedCheckoutProvider
