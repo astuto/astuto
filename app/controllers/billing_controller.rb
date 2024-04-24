@@ -2,6 +2,7 @@ require 'stripe'
 
 class BillingController < ApplicationController
   before_action :check_multi_tenancy
+  before_action :authenticate_owner, only: [:index, :return]
   skip_before_action :verify_authenticity_token, only: :webhook
 
   def index
