@@ -14,6 +14,7 @@ import PricingTable from './PricingTable';
 interface Props {
   tenantBilling: ITenantBilling;
   prices: Array<any>;
+  createCheckoutSessionUrl: string;
   billingUrl: string;
   manageSubscriptionUrl: string;
   authenticityToken: string;
@@ -21,7 +22,14 @@ interface Props {
 
 const stripePromise = loadStripe('pk_test_51P7Hdw073bx1HD5Nk1sVrAGm1r7TWXUdZTEUKIMe558TQtQHEvy0rRuWRc33RVsbCMoZjar5vazbiXB200f6qEB000xIdkRMA3');
 
-const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, authenticityToken }: Props) => {
+const Billing = ({
+  tenantBilling,
+  prices,
+  createCheckoutSessionUrl,
+  billingUrl,
+  manageSubscriptionUrl,
+  authenticityToken,
+}: Props) => {
   const [currentPrice, setCurrentPrice] = React.useState(null);
   const [chosenPrice, setChosenPrice] = React.useState(null);
   const [showBackLink, setShowBackLink] = React.useState(false);
@@ -34,7 +42,7 @@ const Billing = ({ tenantBilling, prices, billingUrl, manageSubscriptionUrl, aut
 
   const fetchClientSecret = React.useCallback(() => {
     // Create a Checkout Session
-    return fetch(`/create_checkout_session?price_id=${chosenPrice}`, {
+    return fetch(`${createCheckoutSessionUrl}?price_id=${chosenPrice}`, {
       method: "POST",
       headers: buildRequestHeaders(authenticityToken),
     })

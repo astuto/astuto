@@ -6,14 +6,14 @@
     <ul class="dropdown-menu boards-dropdown" aria-labelledby="navbarDropdown">
       <% boards.each do |board| %>
         <li>
-          <%= link_to board.name, board_path(board), class: 'dropdown-item' %>
+          <%= link_to board.name, get_url_for(method(:board_url), resource: board), class: 'dropdown-item' %>
         </li>
       <% end %>
     </ul>
 <% else %>
   <% boards.each do |board| %>
     <li class="nav-item<%= board.id == @board.id ? ' active' : '' unless @board.nil? %>">
-      <%= link_to board.name, board_path(board), class: 'nav-link' %>
+      <%= link_to board.name, get_url_for(method(:board_url), resource: board), class: 'nav-link' %>
     </li>
   <% end %>
 <% end %>

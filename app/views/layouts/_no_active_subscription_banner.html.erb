@@ -1,7 +1,7 @@
 <div class="noActiveSubscriptionBanner">
   <% if @tenant.tenant_billing.trial? %>
-    <span>Your trial has ended. Please <%= link_to 'subscribe', billing_path, data: {turbolinks: false} %>  to continue using our services.</span>
+    <span>Your trial has ended. Please <%= link_to 'subscribe', get_url_for(method(:request_billing_page_url)), data: {turbolinks: false} %>  to continue using our services.</span>
   <% else %>  
-    <span>Your subscription has ended. Please <%= link_to 'renew your subscription', billing_path, data: {turbolinks: false} %> to continue using our services.</span>
+    <span>Your subscription has ended. Please <%= link_to 'renew your subscription', get_url_for(method(:request_billing_page_url)), data: {turbolinks: false} %> to continue using our services.</span>
   <% end %>
 </div>

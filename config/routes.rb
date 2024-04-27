@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
 
     constraints subdomain: 'billing' do
+      get '/billing', to: 'billing#index'
       post '/webhook', to: 'billing#webhook'
     end
   end
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     get '/pending-tenant', to: 'static_pages#pending_tenant'
     get '/blocked-tenant', to: 'static_pages#blocked_tenant'
     
-    get '/billing', to: 'billing#index'
+    get '/request_billing_page', to: 'billing#request_billing_page'
     get '/billing/return', to: 'billing#return'
     post '/create_checkout_session', to: 'billing#create_checkout_session'
     get '/session_status', to: 'billing#session_status'

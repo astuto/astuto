@@ -2,12 +2,40 @@ require 'stripe'
 
 class BillingController < ApplicationController
   before_action :check_multi_tenancy
-  before_action :authenticate_owner, only: [:index, :return]
-  skip_before_action :verify_authenticity_token, only: :webhook
+  before_action :authenticate_owner, only: [:request_billing_page, :return]
+  skip_before_action :verify_authenticity_token, only: [:create_checkout_session, :webhook]
+
+  def request_billing_page
+    tb = Current.tenant.tenant_billing
+    tenant_id = tb.slug
+    auth_token = tb.generate_auth_token
+
+    redirect_to billing_url(tenant_id: tenant_id, auth_token: auth_token)
+  end
 
   def index
-    @page_title = t('billing.title')
-    @prices = Stripe::Price.list({limit: 2}).data
+    return unless params[:tenant_id] and params[:auth_token]
+
+    tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
+    Current.tenant = tb.tenant
+
+    if (user_signed_in? && current_user.owner?) || (tb.auth_token == params[:auth_token])
+      # needed because ApplicationController#load_tenant_data is not called for this action
+      @tenant = tb.tenant
+      @tenant_setting = @tenant.tenant_setting
+      @tenant_billing = tb
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
+      I18n.locale = @tenant.locale
+
+      owner = User.find_by(role: "owner")
+      sign_in owner
+      tb.invalidate_auth_token
+
+      @page_title = t('billing.title')
+      @prices = Stripe::Price.list({limit: 2}).data
+    else
+      redirect_to get_url_for(method(:root_url))
+    end
   end
 
   def return

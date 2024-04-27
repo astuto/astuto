@@ -1,7 +1,7 @@
 <nav class="header">
   <div class="container">
     <%=
-      link_to root_path, class: 'brand' do
+      link_to get_url_for(method(:root_url)), class: 'brand' do
         app_name = content_tag :span, @tenant.site_name
         logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo', skip_pipeline: true)
 
@@ -31,7 +31,7 @@
       <ul class="boardsNav">
         <% if @tenant_setting.show_roadmap_in_header %>
           <li class="nav-item<%= (current_page?(roadmap_path) or (@tenant_setting.root_board_id == 0 and current_page?(root_path))) ? ' active' : '' %>">
-            <%= link_to t('roadmap.title'), roadmap_path, class: 'nav-link' %>
+            <%= link_to t('roadmap.title'), get_url_for(method(:roadmap_url)), class: 'nav-link' %>
           </li>
         <% end %>
         
@@ -49,25 +49,25 @@
               <% if current_user.moderator? %>
                 <%=
                   link_to t('header.menu.site_settings'),
-                    current_user.admin? ? site_settings_general_path : site_settings_users_path,
+                    current_user.admin? ? get_url_for(method(:site_settings_general_url)) : get_url_for(method(:site_settings_users_url)),
                     class: 'dropdown-item'
                 %>
 
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
-                  <%= link_to t('billing.title'), billing_path, class: 'dropdown-item', data: {turbolinks: false} %>
+                  <%= link_to t('billing.title'), get_url_for(method(:request_billing_page_url)), class: 'dropdown-item', data: {turbolinks: false} %>
                 <% end %>
                 <div class="dropdown-divider"></div>
               <% end %>
 
-              <%= link_to t('header.menu.profile_settings'), edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to t('header.menu.profile_settings'), get_url_for(method(:edit_user_registration_url)), class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
 
-              <%= button_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              <%= button_to t('header.menu.sign_out'), get_url_for(method(:destroy_user_session_url)), method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to t('header.log_in'), new_user_session_path, class: 'nav-link' %>
+            <%= link_to t('header.log_in'), get_url_for(method(:new_user_session_url)), class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
