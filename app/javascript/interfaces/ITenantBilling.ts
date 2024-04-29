@@ -14,6 +14,8 @@ interface ITenantBilling {
   trial_ends_at: string;
   subscription_ends_at: string;
   status: TenantBillingStatus;
+  customer_id: string;
+  slug: string;
 }
 
 export default ITenantBilling;

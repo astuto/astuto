@@ -42,7 +42,7 @@ const Billing = ({
 
   const fetchClientSecret = React.useCallback(() => {
     // Create a Checkout Session
-    return fetch(`${createCheckoutSessionUrl}?price_id=${chosenPrice}`, {
+    return fetch(`${createCheckoutSessionUrl}?price_id=${chosenPrice}&tenant_id=${tenantBilling.slug}`, {
       method: "POST",
       headers: buildRequestHeaders(authenticityToken),
     })

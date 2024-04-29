@@ -4,7 +4,7 @@
     {
       tenantBilling: @tenant.tenant_billing,
       prices: @prices,
-      createCheckoutSessionUrl: get_url_for(method(:create_checkout_session_url)),
+      createCheckoutSessionUrl: create_checkout_session_url,
       billingUrl: get_url_for(method(:request_billing_page_url)),
       manageSubscriptionUrl: Rails.application.stripe_manage_subscription_url,
       authenticityToken: form_authenticity_token

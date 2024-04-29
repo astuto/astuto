@@ -3,8 +3,15 @@ import { useEffect, useState } from "react";
 import Box from '../common/Box';
 import ActionLink from '../common/ActionLink';
 import { BackIcon } from '../common/Icons';
+import ITenantBilling from '../../interfaces/ITenantBilling';
 
-const Return = () => {
+interface Props {
+  tenantBilling: ITenantBilling;
+  homeUrl: string;
+  billingUrl: string;
+}
+
+const Return = ({ tenantBilling, homeUrl, billingUrl }: Props) => {
   const [status, setStatus] = useState(null);
   const [session, setSession] = useState(null);
 
@@ -13,7 +20,7 @@ const Return = () => {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get('session_id');
 
-    fetch(`/session_status?session_id=${sessionId}`)
+    fetch(`/session_status?session_id=${sessionId}&tenant_id=${tenantBilling.slug}`)
       .then(res => res.json())
       .then(data => {
         setStatus(data.status);
@@ -27,7 +34,7 @@ const Return = () => {
         <h2>Error</h2>
         <p>Unfortunately, there was an error processing your payment. Please try again.</p>
 
-        <ActionLink onClick={() => window.location.href = '/billing'} icon={<BackIcon />}>
+        <ActionLink onClick={() => window.location.href = billingUrl} icon={<BackIcon />}>
           Back to billing
         </ActionLink>
       </Box>
@@ -40,7 +47,7 @@ const Return = () => {
         <h2>Success</h2>
         <p>Thank you for choosing Astuto! Your subscription will be activated shortly.</p>
         
-        <ActionLink onClick={() => window.location.href = '/'} icon={<BackIcon />}>
+        <ActionLink onClick={() => window.location.href = homeUrl} icon={<BackIcon />}>
           Back to home
         </ActionLink>
       </Box>

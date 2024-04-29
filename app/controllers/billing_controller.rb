@@ -2,8 +2,9 @@ require 'stripe'
 
 class BillingController < ApplicationController
   before_action :check_multi_tenancy
-  before_action :authenticate_owner, only: [:request_billing_page, :return]
-  skip_before_action :verify_authenticity_token, only: [:create_checkout_session, :webhook]
+  before_action :authenticate_owner, only: :request_billing_page
+  before_action :set_tenant_on_billing_subdomain, only: [:create_checkout_session, :session_status]
+  skip_before_action :verify_authenticity_token, only: :webhook
 
   def request_billing_page
     tb = Current.tenant.tenant_billing
@@ -19,7 +20,7 @@ class BillingController < ApplicationController
     tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
     Current.tenant = tb.tenant
 
-    if (user_signed_in? && current_user.owner?) || (tb.auth_token == params[:auth_token])
+    if (user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?) || (tb.auth_token == params[:auth_token])
       # needed because ApplicationController#load_tenant_data is not called for this action
       @tenant = tb.tenant
       @tenant_setting = @tenant.tenant_setting
@@ -39,10 +40,21 @@ class BillingController < ApplicationController
   end
 
   def return
-    @page_title = t('billing.title')
+    return unless params[:tenant_id]
 
-    session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    Current.tenant.tenant_billing.update!(customer_id: session.customer)
+    tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
+    Current.tenant = tb.tenant
+
+    if (user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?)
+      @page_title = t('billing.title')
+      @tenant = Current.tenant
+      @tenant_setting = @tenant.tenant_setting
+      @tenant_billing = @tenant.tenant_billing
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
+      I18n.locale = @tenant.locale
+    else
+      redirect_to get_url_for(method(:root_url))
+    end
   end
 
   def create_checkout_session
@@ -53,7 +65,7 @@ class BillingController < ApplicationController
         quantity: 1,
       }],
       mode: 'subscription',
-      return_url: "#{get_url_for(method(:billing_return_url))}?session_id={CHECKOUT_SESSION_ID}",
+      return_url: "#{billing_return_url}?session_id={CHECKOUT_SESSION_ID}&tenant_id=#{params[:tenant_id]}",
       customer: Current.tenant.tenant_billing.customer_id,
     })
 
@@ -85,7 +97,7 @@ class BillingController < ApplicationController
     if event['type'] == 'invoice.paid'
       Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
       
-      subscription_type = event.data.object.lines.data[0].price.lookup_key
+      subscription_type = event.data.object.lines.data.last.price.lookup_key
       return head :bad_request unless subscription_type == 'monthly' || subscription_type == 'yearly'
 
       subscription_duration = subscription_type == 'monthly' ? 1.month : 1.year
@@ -111,5 +123,17 @@ class BillingController < ApplicationController
 
     def get_tenant_from_customer_id(customer_id)
       TenantBilling.unscoped.find_by(customer_id: customer_id).tenant
+    end
+
+    def set_tenant_on_billing_subdomain
+      tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
+      Current.tenant = tb.tenant
+      
+      unless user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?
+        render json: {
+          error: t('errors.unauthorized')
+        }, status: :unauthorized
+        return
+      end
     end
 end
