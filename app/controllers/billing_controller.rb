@@ -20,22 +20,15 @@ class BillingController < ApplicationController
     tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
     Current.tenant = tb.tenant
 
-    if (user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?) || (tb.auth_token == params[:auth_token])
-      # needed because ApplicationController#load_tenant_data is not called for this action
-      @tenant = tb.tenant
-      @tenant_setting = @tenant.tenant_setting
-      @tenant_billing = tb
-      @boards = Board.select(:id, :name, :slug).order(order: :asc)
-      I18n.locale = @tenant.locale
+    if is_current_user_owner? || tb.auth_token == params[:auth_token]
+      @page_title = t('billing.title')
+      load_tenant_data_for_billing
 
-      # signing out from 'billing' subdomain cause authenticity token error
-      @disable_sign_out = true
-
+      # log in owner on "billing" subdomain
       owner = User.find_by(role: "owner")
       sign_in owner
       tb.invalidate_auth_token
 
-      @page_title = t('billing.title')
       @prices = Stripe::Price.list({limit: 2}).data
     else
       redirect_to get_url_for(method(:root_url))
@@ -48,16 +41,9 @@ class BillingController < ApplicationController
     tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
     Current.tenant = tb.tenant
 
-    if (user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?)
+    if is_current_user_owner?
       @page_title = t('billing.title')
-      @tenant = Current.tenant
-      @tenant_setting = @tenant.tenant_setting
-      @tenant_billing = @tenant.tenant_billing
-      @boards = Board.select(:id, :name, :slug).order(order: :asc)
-      I18n.locale = @tenant.locale
-
-      # signing out from 'billing' subdomain cause authenticity token error
-      @disable_sign_out = true
+      load_tenant_data_for_billing
     else
       redirect_to get_url_for(method(:root_url))
     end
@@ -86,8 +72,6 @@ class BillingController < ApplicationController
   def webhook
     event = nil
 
-    # Verify webhook signature and extract the event
-    # See https://stripe.com/docs/webhooks#verify-events for more information.
     begin
       sig_header = request.env['HTTP_STRIPE_SIGNATURE']
       payload = request.body.read
@@ -131,15 +115,31 @@ class BillingController < ApplicationController
       TenantBilling.unscoped.find_by(customer_id: customer_id).tenant
     end
 
+    def is_current_user_owner?
+      user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?
+    end
+
     def set_tenant_on_billing_subdomain
       tb = TenantBilling.unscoped.find_by(slug: params[:tenant_id])
       Current.tenant = tb.tenant
       
-      unless user_signed_in? && current_user.tenant_id == Current.tenant.id && current_user.owner?
+      unless is_current_user_owner?
         render json: {
           error: t('errors.unauthorized')
         }, status: :unauthorized
         return
       end
+    end
+
+    def load_tenant_data_for_billing
+      # needed because ApplicationController#load_tenant_data is not called for this action
+      @tenant = Current.tenant
+      @tenant_setting = @tenant.tenant_setting
+      @tenant_billing = @tenant.tenant_billing
+      @boards = Board.select(:id, :name, :slug).order(order: :asc)
+      I18n.locale = @tenant.locale
+
+      # needed because signing out from 'billing' subdomain cause authenticity token error
+      @disable_sign_out = true
     end
 end
