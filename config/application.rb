@@ -42,6 +42,10 @@ module App
       ENV["STRIPE_SECRET_KEY"]
     end
 
+    def stripe_public_key
+      ENV["STRIPE_PUBLIC_KEY"]
+    end
+
     def stripe_endpoint_secret
       ENV["STRIPE_ENDPOINT_SECRET"]
     end

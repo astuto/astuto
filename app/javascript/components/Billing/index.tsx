@@ -17,10 +17,10 @@ interface Props {
   createCheckoutSessionUrl: string;
   billingUrl: string;
   manageSubscriptionUrl: string;
+
+  stripePublicKey: string;
   authenticityToken: string;
 }
-
-const stripePromise = loadStripe('pk_test_51P7Hdw073bx1HD5Nk1sVrAGm1r7TWXUdZTEUKIMe558TQtQHEvy0rRuWRc33RVsbCMoZjar5vazbiXB200f6qEB000xIdkRMA3');
 
 const Billing = ({
   tenantBilling,
@@ -28,11 +28,17 @@ const Billing = ({
   createCheckoutSessionUrl,
   billingUrl,
   manageSubscriptionUrl,
+  stripePublicKey,
   authenticityToken,
 }: Props) => {
+  const [stripePromise, setStripePromise] = React.useState(null);
   const [currentPrice, setCurrentPrice] = React.useState(null);
   const [chosenPrice, setChosenPrice] = React.useState(null);
   const [showBackLink, setShowBackLink] = React.useState(false);
+
+  React.useEffect(() => {
+    setStripePromise(loadStripe(stripePublicKey));
+  }, []);
 
   React.useEffect(() => {
     if (prices && prices.length > 0) {
