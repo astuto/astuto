@@ -28,6 +28,9 @@ class BillingController < ApplicationController
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
       I18n.locale = @tenant.locale
 
+      # signing out from 'billing' subdomain cause authenticity token error
+      @disable_sign_out = true
+
       owner = User.find_by(role: "owner")
       sign_in owner
       tb.invalidate_auth_token
@@ -52,6 +55,9 @@ class BillingController < ApplicationController
       @tenant_billing = @tenant.tenant_billing
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
       I18n.locale = @tenant.locale
+
+      # signing out from 'billing' subdomain cause authenticity token error
+      @disable_sign_out = true
     else
       redirect_to get_url_for(method(:root_url))
     end

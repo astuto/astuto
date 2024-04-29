@@ -61,8 +61,14 @@
 
               <%= link_to t('header.menu.profile_settings'), get_url_for(method(:edit_user_registration_url)), class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
-
-              <%= button_to t('header.menu.sign_out'), get_url_for(method(:destroy_user_session_url)), method: :delete, class: 'dropdown-item' %>
+              
+              <% unless @disable_sign_out %>
+                <%= button_to t('header.menu.sign_out'), get_url_for(method(:destroy_user_session_url)), method: :delete, class: 'dropdown-item' %>
+              <% else %>
+                <small style="font-size: 12px; color: grey; padding: 0.25rem 1.5rem;">
+                  Sign out disabled
+                </small>
+              <% end %>
             </div>
           </li>
         <% else %>
