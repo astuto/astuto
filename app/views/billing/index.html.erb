@@ -7,7 +7,8 @@
       createCheckoutSessionUrl: create_checkout_session_url,
       billingUrl: get_url_for(method(:request_billing_page_url)),
       manageSubscriptionUrl: Rails.application.stripe_manage_subscription_url,
-
+      stripeMonthlyLookupKey: Rails.application.stripe_monthly_lookup_key,
+      stripeYearlyLookupKey: Rails.application.stripe_yearly_lookup_key,
       stripePublicKey: Rails.application.stripe_public_key,
       authenticityToken: form_authenticity_token
     }

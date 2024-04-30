@@ -53,5 +53,13 @@ module App
     def stripe_manage_subscription_url
       ENV["STRIPE_MANAGE_SUBSCRIPTION_URL"]
     end
+
+    def stripe_monthly_lookup_key
+      ENV["STRIPE_MONTHLY_LOOKUP_KEY"]
+    end
+
+    def stripe_yearly_lookup_key
+      ENV["STRIPE_YEARLY_LOOKUP_KEY"]
+    end
   end
 end

@@ -17,7 +17,8 @@ interface Props {
   createCheckoutSessionUrl: string;
   billingUrl: string;
   manageSubscriptionUrl: string;
-
+  stripeMonthlyLookupKey: string;
+  stripeYearlyLookupKey: string;
   stripePublicKey: string;
   authenticityToken: string;
 }
@@ -28,6 +29,8 @@ const Billing = ({
   createCheckoutSessionUrl,
   billingUrl,
   manageSubscriptionUrl,
+  stripeMonthlyLookupKey,
+  stripeYearlyLookupKey,
   stripePublicKey,
   authenticityToken,
 }: Props) => {
@@ -122,6 +125,8 @@ const Billing = ({
             currentPrice={currentPrice}
             setCurrentPrice={setCurrentPrice}
             setChosenPrice={setChosenPrice}
+            stripeMonthlyLookupKey={stripeMonthlyLookupKey}
+            stripeYearlyLookupKey={stripeYearlyLookupKey}
           />
       }
 

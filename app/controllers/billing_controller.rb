@@ -29,7 +29,14 @@ class BillingController < ApplicationController
       sign_in owner
       tb.invalidate_auth_token
 
-      @prices = Stripe::Price.list({limit: 2}).data
+      @prices = Stripe::Price.list({
+        lookup_keys: [
+          Rails.application.stripe_monthly_lookup_key,
+          Rails.application.stripe_yearly_lookup_key
+        ],
+        active: true
+      }).data
+      @prices = @prices.sort_by { |price| price.unit_amount }
     else
       redirect_to get_url_for(method(:root_url))
     end
@@ -87,10 +94,13 @@ class BillingController < ApplicationController
     if event['type'] == 'invoice.paid'
       Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
       
+      monthly_lookup_key = Rails.application.stripe_monthly_lookup_key
+      yearly_lookup_key = Rails.application.stripe_yearly_lookup_key
+      
       subscription_type = event.data.object.lines.data.last.price.lookup_key
-      return head :bad_request unless subscription_type == 'monthly' || subscription_type == 'yearly'
+      return head :bad_request unless subscription_type == monthly_lookup_key || subscription_type == yearly_lookup_key
 
-      subscription_duration = subscription_type == 'monthly' ? 1.month : 1.year
+      subscription_duration = subscription_type == monthly_lookup_key ? 1.month : 1.year
       Current.tenant.tenant_billing.update!(
         status: 'active',
         subscription_ends_at: Time.current + subscription_duration
