@@ -5,6 +5,7 @@ class TenantMailer < ApplicationMailer
 
     mail(
       to: @owner.email,
+      from: email_from,
       subject: "Astuto subscription confirmation"
     )
   end
@@ -16,6 +17,7 @@ class TenantMailer < ApplicationMailer
 
     mail(
       to: @owner.email,
+      from: email_from,
       subject: "Astuto subscription cancellation"
     )
   end
@@ -26,7 +28,14 @@ class TenantMailer < ApplicationMailer
 
     mail(
       to: @owner.email,
+      from: email_from,
       subject: "Astuto subscription renewal"
     )
   end
+
+  private
+
+    def email_from
+      "Astuto <notifications@astuto.io>"
+    end
 end
