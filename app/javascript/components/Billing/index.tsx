@@ -61,6 +61,13 @@ const Billing = ({
 
   React.useEffect(() => {
     if (chosenPrice) {
+      // scroll to checkout
+      const checkoutElement = document.getElementById('checkout');
+      setTimeout(() => {
+        checkoutElement.scrollIntoView({behavior: 'smooth'});
+      }, 100);
+      
+      // show back link after 5 seconds
       const timer = setTimeout(() => {
         setShowBackLink(true);
       }, 5000);
