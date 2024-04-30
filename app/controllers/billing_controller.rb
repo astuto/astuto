@@ -100,16 +100,30 @@ class BillingController < ApplicationController
       subscription_type = event.data.object.lines.data.last.price.lookup_key
       return head :bad_request unless subscription_type == monthly_lookup_key || subscription_type == yearly_lookup_key
 
+      old_subscription_status = Current.tenant.tenant_billing.status
+
       subscription_duration = subscription_type == monthly_lookup_key ? 1.month : 1.year
       Current.tenant.tenant_billing.update!(
         status: 'active',
         subscription_ends_at: Time.current + subscription_duration
       )
+
+      if old_subscription_status == 'trial'
+        TenantMailer.subscription_confirmation(tenant: Current.tenant).deliver_later
+      end
     elsif event['type'] == 'customer.subscription.updated'
       Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
 
-      has_canceled = event.data.object.cancel_at_period_end
-      Current.tenant.tenant_billing.update!(status: has_canceled ? 'canceled' : 'active')
+      if Current.tenant.tenant_billing.status == 'active' || Current.tenant.tenant_billing.status == 'canceled'
+        has_canceled = event.data.object.cancel_at_period_end
+        Current.tenant.tenant_billing.update!(status: has_canceled ? 'canceled' : 'active')
+
+        if has_canceled
+          TenantMailer.cancellation_confirmation(tenant: Current.tenant).deliver_later
+        else
+          TenantMailer.renewal_confirmation(tenant: Current.tenant).deliver_later
+        end
+      end
     end
 
     return head :ok
