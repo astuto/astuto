@@ -4,46 +4,42 @@ class TenantMailer < ApplicationMailer
 
   def trial_started(tenant:)
     Current.tenant = tenant
-    @owner = User.find_by(role: 'owner')
 
     mail(
       from: email_from_riccardo,
       reply_to: email_from_riccardo,
-      to: @owner.email,
+      to: tenant.owner.email,
       subject: "Welcome to Astuto!",
     )
   end
 
   def subscription_confirmation(tenant:)
     Current.tenant = tenant
-    @owner = User.find_by(role: 'owner')
 
     mail(
       from: email_from_astuto,
-      to: @owner.email,
+      to: tenant.owner.email,
       subject: "Astuto subscription confirmation"
     )
   end
 
   def cancellation_confirmation(tenant:)
     Current.tenant = tenant
-    @owner = User.find_by(role: 'owner')
     @subscription_ends_at = Current.tenant.tenant_billing.subscription_ends_at
 
     mail(
       from: email_from_astuto,
-      to: @owner.email,
+      to: tenant.owner.email,
       subject: "Astuto subscription cancellation"
     )
   end
 
   def renewal_confirmation(tenant:)
     Current.tenant = tenant
-    @owner = User.find_by(role: 'owner')
 
     mail(
       from: email_from_astuto,
-      to: @owner.email,
+      to: tenant.owner.email,
       subject: "Astuto subscription renewal"
     )
   end

@@ -31,4 +31,8 @@ class Tenant < ApplicationRecord
   def downcase_subdomain
     self.subdomain = self.subdomain.downcase
   end
+
+  def owner
+    users.find_by(role: 'owner')
+  end
 end
