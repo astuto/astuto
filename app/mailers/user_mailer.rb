@@ -6,7 +6,6 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      from: email_from,
       subject: t('mailers.user.notify_post_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
@@ -18,7 +17,6 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      from: email_from,
       subject: t('mailers.user.notify_comment_owner.subject', site_name: site_name, post: comment.post.title)
     )
   end
@@ -30,7 +28,6 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: follower.email,
-      from: email_from,
       subject: t('mailers.user.notify_follower_of_post_update.subject', site_name: site_name, post: comment.post.title)
     )
   end
@@ -42,7 +39,6 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: follower.email,
-      from: email_from,
       subject: t('mailers.user.notify_follower_of_post_status_change.subject', site_name: site_name, post: post.title)
     )
   end
@@ -51,9 +47,5 @@ class UserMailer < ApplicationMailer
 
     def site_name
       Current.tenant_or_raise!.site_name
-    end
-
-    def email_from
-      "#{Current.tenant.site_name} <notifications@astuto.io>"
     end
 end

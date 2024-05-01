@@ -1,5 +1,4 @@
 require 'httparty'
-require 'stripe'
 
 class TenantsController < ApplicationController
   include ApplicationHelper
@@ -52,13 +51,12 @@ class TenantsController < ApplicationController
 
       @user.save!
 
-      customer = Stripe::Customer.create({
-        email: @user.email,
-        name: @user.full_name,
-      })
-      @tenant.tenant_billing = TenantBilling.create!(customer_id: customer.id)
-
       CreateWelcomeEntitiesWorkflow.new().run
+
+      if is_o_auth_login
+        CreateStripeCustomer.new().run
+        TenantMailer.trial_started(tenant: @tenant).deliver_later
+      end
 
       logger.info { "New tenant registration: #{Current.tenant.inspect}" }
 
