@@ -65,7 +65,7 @@ const Billing = ({
       const checkoutElement = document.getElementById('checkout');
       setTimeout(() => {
         checkoutElement.scrollIntoView({behavior: 'smooth'});
-      }, 100);
+      }, 500);
       
       // show back link after 5 seconds
       const timer = setTimeout(() => {
