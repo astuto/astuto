@@ -3,7 +3,7 @@
 ###
 FROM ruby:3.0.6 AS builder
 
-RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg cron
 RUN mkdir -p /etc/apt/keyrings && \
   curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
@@ -58,7 +58,8 @@ FROM ruby:3.0.6-slim AS prod
 RUN apt-get update -qq && \
   apt-get install -yq  \
   postgresql-client \
-  nodejs && \
+  nodejs \
+  cron && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
   truncate -s 0 /var/log/*log

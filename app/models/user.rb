@@ -50,7 +50,7 @@ class User < ApplicationRecord
       tenant.save
 
       CreateStripeCustomer.new().run
-      TenantMailer.trial_started(tenant: tenant).deliver_later
+      TenantMailer.trial_start(tenant: tenant).deliver_later
     end
   end
 

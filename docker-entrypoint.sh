@@ -27,3 +27,7 @@ else
   bundle exec rake db:migrate
 fi
 echo "Database prepared."
+
+# Cron jobs
+bundle exec whenever --update-crontab
+service cron start
