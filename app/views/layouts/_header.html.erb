@@ -54,8 +54,14 @@
                 %>
 
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
-                  <%= link_to t('billing.title'), get_url_for(method(:request_billing_page_url)), class: 'dropdown-item', data: {turbolinks: false} %>
+                  <%= link_to get_url_for(method(:request_billing_page_url)), class: 'dropdown-item', data: {turbolinks: false} do %>
+                    <%= t('billing.title') %>
+                    <% if not Current.tenant.tenant_billing.has_active_subscription? %>
+                      <span style="color: red; font-size: 18px;">⚠️</span>
+                    <% end %>
+                  <% end %>
                 <% end %>
+
                 <div class="dropdown-divider"></div>
               <% end %>
 
