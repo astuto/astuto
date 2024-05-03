@@ -50,9 +50,6 @@ gem 'friendly_id', '5.5.1'
 # Billing
 gem 'stripe', '11.2.0'
 
-# Cron jobs
-gem 'whenever', '1.0.0', require: false
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
