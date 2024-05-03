@@ -31,13 +31,15 @@ task notify_tenants_trial_period: [:environment] do
       TenantMailer.trial_end(tenant: tenant).deliver_later
     end
   rescue Exception => e
-    puts "Scheduled Task 'notify_tenants_trial_period.rake' Failed"
+    error_subject = "Scheduled Task 'notify_tenants_trial_period.rake' Failed"
+
     res = ActionMailer::Base.mail(
       from: "errors@astuto.io",
       to: "info@astuto.io",
-      subject: "Scheduled Task 'notify_tenants_trial_period.rake' Failed",
+      subject: error_subject,
       body: "#{e.message}\n\n#{e.backtrace.join("\n")}",
     ).deliver_now
-    puts res
+
+    raise error_subject # raise error so rake task returns non-zero code
   end
 end
