@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :check_tenant_subscription, only: [:create, :update, :destroy]
 
   def index
     comments = Comment

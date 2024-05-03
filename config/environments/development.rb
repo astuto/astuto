@@ -58,8 +58,7 @@ Rails.application.configure do
   end
 
   config.action_mailer.default_options = {
-    from: ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"),
-    reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", ENV.fetch("EMAIL_MAIL_FROM", "Astuto <notifications@astuto.io>"))
+    reply_to: "noreply@astuto.io"
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).

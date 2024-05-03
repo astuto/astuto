@@ -1,0 +1,122 @@
+.billingContainer {
+  max-width: 640px;
+  margin: 0 auto;
+
+  h2 { @extend .mb-4; }
+
+  .billingStatusBadge {
+    @extend
+      .badge,
+      .badgeLight,
+      .p-2,
+      .ml-1,
+      .mr-1;
+  
+    width: fit-content;
+    text-transform: uppercase;
+  }
+
+  .billingStatusBadgeExpired {
+    color: white;
+    background-color: $danger;
+  }
+  
+  .pricingTable {
+    @extend
+      .d-flex,
+      .flex-column,
+      .mt-4,
+      .mb-4;
+
+    h3 { text-align: center; }
+
+    .pricingPlansNav {
+      @extend
+        .nav,
+        .nav-pills,
+        .align-self-center,
+        .px-2,
+        .py-1,
+        .mt-2;
+
+      .yearlyPlanDiscount {
+        @extend .ml-2;
+        color: red;
+      }
+
+      background-color: var(--astuto-grey-light);
+      border-radius: 0.5rem;
+
+      li.nav-item {
+        width: 130px;
+      }
+
+      a {
+        @extend
+          .px-3,
+          .py-1;
+
+        color: var(--astuto-black);
+        cursor: pointer;
+        text-align: center;
+
+        &::first-letter { text-transform: uppercase; }
+      }
+
+      a.nav-link.active {
+        color: var(--astuto-black);
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .pricingTableColumn {
+      @extend
+        .card,
+        .my-2,
+        .p-4;
+
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+
+      .priceContainer {
+        @extend
+          .d-flex,
+          .justify-content-between;
+
+        .price {
+          .amount { font-size: 36px; }
+        }
+        .priceYearly {
+          @extend .align-self-end;
+
+          .amount { font-size: 26px; }
+        }
+
+        .price, .priceYearly {
+          .amount { font-weight: 700; }
+          .currency { text-transform: uppercase; }
+        }
+      }
+    }
+  }
+
+  .checkoutContainer {
+    @extend .mt-4;
+
+    a { display: block; text-align: center; }
+
+    #checkout { @extend .my-2; }
+  }
+
+  .billingUsefulLinks {
+    @extend
+      .d-flex,  
+      .mt-4;
+    
+    margin: 0 auto;
+
+    a { @extend .mx-2; }
+  }
+}

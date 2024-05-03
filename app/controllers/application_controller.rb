@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
       # Load tenant data
       @tenant = Current.tenant_or_raise!
       @tenant_setting = TenantSetting.first_or_create
+      @tenant_billing = TenantBilling.first_or_create
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
 
       # Setup locale
@@ -46,6 +47,14 @@ class ApplicationController < ActionController::Base
         .include_defaults
         .where(is_enabled: true)
         .order(created_at: :asc)
+    end
+
+    def check_tenant_subscription
+      return if Current.tenant.tenant_billing.has_active_subscription?
+
+      render json: {
+        error: 'Your subscription has expired. Please renew it to continue using the service.'
+      }, status: :forbidden
     end
 
   private

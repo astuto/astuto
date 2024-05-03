@@ -30,7 +30,8 @@
 .smallMutedText {
   @extend
     .mutedText,
-    .m-0;
+    .mt-1,
+    .mb-0;
   
   font-size: smaller;
 }

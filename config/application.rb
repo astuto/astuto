@@ -33,5 +33,33 @@ module App
     def posts_per_page
       15
     end
+
+    def trial_period_days
+      ENV.key?("TRIAL_PERIOD_DAYS") ? ENV["TRIAL_PERIOD_DAYS"].to_i.days : 7.days
+    end
+
+    def stripe_secret_key
+      ENV["STRIPE_SECRET_KEY"]
+    end
+
+    def stripe_public_key
+      ENV["STRIPE_PUBLIC_KEY"]
+    end
+
+    def stripe_endpoint_secret
+      ENV["STRIPE_ENDPOINT_SECRET"]
+    end
+
+    def stripe_manage_subscription_url
+      ENV["STRIPE_MANAGE_SUBSCRIPTION_URL"]
+    end
+
+    def stripe_monthly_lookup_key
+      ENV["STRIPE_MONTHLY_LOOKUP_KEY"]
+    end
+
+    def stripe_yearly_lookup_key
+      ENV["STRIPE_YEARLY_LOOKUP_KEY"]
+    end
   end
 end

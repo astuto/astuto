@@ -30,6 +30,8 @@ interface Props {
   pendingTenantImage: string;
 
   baseUrl: string;
+  trialPeriodDays: number;
+
   authenticityToken: string;
 }
 
@@ -58,6 +60,7 @@ const TenantSignUpP = ({
   astutoLogoImage,
   pendingTenantImage,
   baseUrl,
+  trialPeriodDays,
   authenticityToken
 }: Props) => {
   // authMethod is either 'none', 'email' or 'oauth'
@@ -124,6 +127,7 @@ const TenantSignUpP = ({
             isSubmitting={isSubmitting}
             error={error}
             handleSignUpSubmit={handleSignUpSubmit}
+            trialPeriodDays={trialPeriodDays}
           />
       }
 

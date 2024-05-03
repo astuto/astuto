@@ -1,0 +1,28 @@
+<p>
+Hello <%= @tenant.owner.full_name %>,
+</p>
+
+<p>
+Welcome aboard!
+</p>
+
+<p>
+I'm Riccardo from the Astuto team and I'm happy to let you know that <b>your <%= (Rails.application.trial_period_days / 1.day).to_s %>-day trial has started</b>.
+</p>
+
+<p>
+Dive into your new feedback space at <a href="<%= get_url_for(method(:root_url)) %>"><%= get_url_for(method(:root_url)) %></a>.
+</p>
+
+<p>
+To customize your feedback space, just head to <a href="<%= get_url_for(method(:site_settings_general_url)) %>">site settings</a>. For more advanced configurations, such as custom OAuth providers or custom domains, you can refer to the <a href="https://docs.astuto.io/">Astuto documentation</a>.
+</p>
+
+<p>
+Got any questions, thoughts or just want to get in touch? Simply hit reply to this email!
+</p>
+
+<p>
+Cheers,<br />
+Riccardo
+</p>

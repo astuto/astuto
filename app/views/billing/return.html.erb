@@ -1,0 +1,10 @@
+<%=
+  react_component(
+    'Billing/Return',
+    {
+      tenantBilling: @tenant.tenant_billing,
+      homeUrl: get_url_for(method(:root_url)),
+      billingUrl: get_url_for(method(:request_billing_page_url)),
+    }
+  )
+%>

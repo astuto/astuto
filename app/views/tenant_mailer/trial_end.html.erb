@@ -1,0 +1,28 @@
+<p>
+Hi <%= @tenant.owner.full_name %>,
+</p>
+
+<p>
+I hope you're doing well!
+</p>
+
+<p>
+I'm Riccardo from the Astuto team.
+</p>
+
+<p>
+I wanted to let you know that your <%= (Rails.application.trial_period_days / 1.day).to_s %>-day trial has expired and now your feedback space is in read-only mode.
+</p>
+
+<p>
+If you've enjoyed your trial and want to upgrade to a paid plan, you can do so from the <a href="<%= get_url_for(method(:request_billing_page_url)) %>">billing page</a>.
+</p>
+
+<p>
+However, if there's anything holding you back from upgrading or if you'd like to request more trial days, please don't hesitate to hit reply and let me know. Your feedback is very important and I'm here to help!
+</p>
+
+<p>
+Cheers,<br />
+Riccardo
+</p>
