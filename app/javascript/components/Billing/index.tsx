@@ -65,7 +65,7 @@ const Billing = ({
       const checkoutElement = document.getElementById('checkout');
       setTimeout(() => {
         checkoutElement.scrollIntoView({behavior: 'smooth'});
-      }, 500);
+      }, 300);
       
       // show back link after 5 seconds
       const timer = setTimeout(() => {
@@ -163,7 +163,7 @@ const Billing = ({
         (tenantBilling.status === TENANT_BILLING_STATUS_ACTIVE || tenantBilling.status === TENANT_BILLING_STATUS_CANCELED) &&
           <div className="billingAction">
             <button className="btnPrimary" onClick={() => window.open(manageSubscriptionUrl, '_blank')}>
-              Manage subscription
+              {tenantBilling.status === TENANT_BILLING_STATUS_ACTIVE ? 'Manage subscription' : 'Renew subscription'}
             </button>
             <SmallMutedText>
               You will be redirected to Stripe, our billing partner.

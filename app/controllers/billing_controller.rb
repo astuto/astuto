@@ -25,10 +25,11 @@ class BillingController < ApplicationController
       load_tenant_data_for_billing
 
       # log in owner on "billing" subdomain
-      owner = User.find_by(role: "owner")
+      owner = Current.tenant.owner
       sign_in owner
       tb.invalidate_auth_token
 
+      # get prices from stripe
       @prices = Stripe::Price.list({
         lookup_keys: [
           Rails.application.stripe_monthly_lookup_key,

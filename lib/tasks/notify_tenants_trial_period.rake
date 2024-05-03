@@ -1,7 +1,7 @@
 require 'rake'
 
 def get_tenants_to_notify(period)
-  days_before_expiration = period == "mid" ? 3.days : -1.day
+  days_before_expiration = period == "mid" ? 4.days : -1.day
   date_to_check = Date.current + days_before_expiration
 
   tbs = TenantBilling.unscoped.where(
