@@ -79,6 +79,8 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Questo spazio di feedback è stato bloccato'
   board:
