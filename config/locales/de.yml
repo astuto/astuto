@@ -79,6 +79,8 @@ de:
     log_in: 'Einloggen / Registrieren'
   roadmap:
     title: 'Roadmap'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Dieser Feedback-Bereich wurde blockiert'
   board:
