@@ -79,6 +79,8 @@ pt:
     log_in: 'Entrar / Cadastrar'
   roadmap:
     title: 'Mapa'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Este espaço de comentários foi bloqueado'
   board:
