@@ -75,6 +75,8 @@ vi:
     log_in: 'Đăng nhập / Đăng ký'
   roadmap:
     title: 'Lộ trình'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Không gian phản hồi này đã bị chặn'
   board:
