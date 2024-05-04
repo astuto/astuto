@@ -79,6 +79,8 @@ es:
     log_in: 'Iniciar sesión / Registrarse'
   roadmap:
     title: 'Hoja de ruta'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Este espacio de retroalimentación ha sido bloqueado'
   board:
