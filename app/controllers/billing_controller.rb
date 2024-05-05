@@ -11,7 +11,11 @@ class BillingController < ApplicationController
     tenant_id = tb.slug
     auth_token = tb.generate_auth_token
 
-    redirect_to billing_url(tenant_id: tenant_id, auth_token: auth_token)
+    redirect_to get_url_for(
+      method(:billing_url),
+      disallow_custom_domain: true,
+      options: { subdomain: 'billing', tenant_id: tenant_id, auth_token: auth_token }
+    )
   end
 
   def index
@@ -58,6 +62,12 @@ class BillingController < ApplicationController
   end
 
   def create_checkout_session
+    return_url = get_url_for(
+      method(:billing_return_url),
+      disallow_custom_domain: true,
+      options: { subdomain: 'billing' }
+    )
+    
     session = Stripe::Checkout::Session.create({
       ui_mode: 'embedded',
       line_items: [{
@@ -65,7 +75,7 @@ class BillingController < ApplicationController
         quantity: 1,
       }],
       mode: 'subscription',
-      return_url: "#{billing_return_url}?session_id={CHECKOUT_SESSION_ID}&tenant_id=#{params[:tenant_id]}",
+      return_url: "#{return_url}?session_id={CHECKOUT_SESSION_ID}&tenant_id=#{params[:tenant_id]}",
       customer: Current.tenant.tenant_billing.customer_id,
     })
 
