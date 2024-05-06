@@ -17,9 +17,9 @@ pt:
         current_password: 'Senha atual'
         notifications_enabled: 'Notificações ativadas'
         notifications_enabled_help: "se desativado, você não receberá nenhuma notificação"
-        waiting_confirmation: 'Currently waiting confirmation for %{email}'
-        password_leave_blank_help: "leave blank if you don't want to change your password"
-        current_password_required_help: 'we need your current password to confirm your changes'
+        waiting_confirmation: 'Aguardando confirmação do e-mail: %{email}'
+        password_leave_blank_help: "deixe em branco se você não deseja alterar a senha"
+        current_password_required_help: 'precisamos da sua senha atual para confirmar suas alterações'
         remember_me: 'Manter sessão iniciada'
         log_in: 'Entrar'
         sign_up: 'Cadastre-se'
@@ -47,8 +47,8 @@ pt:
     enabled: 'Habilitado'
     disabled: 'Desabilitado'
     copied: 'Copiado!'
-    user_staff: 'Staff'
-    powered_by: 'Powered by'
+    user_staff: 'Pessoal'
+    powered_by: 'Desenvolvido por'
     buttons:
       new: 'Novo'
       edit: 'Editar'
@@ -59,7 +59,7 @@ pt:
       confirm: 'Confirmar'
       back: 'Voltar'
       test: 'Testar'
-      clear: 'Clear'
+      clear: 'Limpar'
     datetime:
       now: 'agora mesmo'
       minutes:
@@ -80,7 +80,7 @@ pt:
   roadmap:
     title: 'Mapa'
   billing:
-    title: 'Billing'
+    title: 'Faturamento'
   blocked_tenant:
     title: 'Este espaço de comentários foi bloqueado'
   board:
@@ -98,15 +98,15 @@ pt:
     filter_box:
       title: 'Filtrar por estado atual'
     sort_by_box:
-      title: 'Sort by'
-      trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      title: 'Ordenar por'
+      trending: 'Mais populares'
+      newest: 'Mais Recente'
+      most_voted: 'Mais votado'
+      oldest: 'Mais antigo'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Filtrar por data'
+      from_label: 'De'
+      to_label: 'Para'
     posts_list:
       empty: 'Não existem postagens ainda'
   post:
@@ -145,7 +145,7 @@ pt:
       roadmap: 'Rotas'
       users: 'Usuária(e/o)s'
       authentication: 'Autenticação'
-      appearance: 'Appearance'
+      appearance: 'Aparência'
     info_box:
       up_to_date: 'Todas as alterações foram salvas'
       error: 'Ocorreu um erro: %{message}'
@@ -160,8 +160,8 @@ pt:
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilidade'
-      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
-      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      custom_domain_help: 'Primeiro, nas suas configurações DNS, adicione um registro CNAME apontando "%{domain}" para "cname.astuto.io". Em seguida, clique no botão "Salvar" abaixo.'
+      custom_domain_learn_more: 'Aprenda como configurar um domínio personalizado'
       show_vote_count_help: 'Se você habilitar essa configuração, os usuários poderão ver a contagem de votos das postagens. Isso pode incentivar os usuários a votar em postagens já populares, levando a um efeito de bola de neve.'
       show_vote_button_in_board_help: 'Se você habilitar esta configuração, os usuários poderão votar nas postagens da página do fórum. Isso pode incentivar os usuários a votar em mais postagens, levando a um número maior de votos, mas de menor significância.'
     boards:
@@ -183,8 +183,8 @@ pt:
       empty: 'O mapa está vazio.'
       help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
+      title: 'Aparência'
+      learn_more: 'Saiba como personalizar a aparência'
     users:
       title: 'Usuários'
       block: 'Bloquear'
@@ -202,9 +202,9 @@ pt:
       status_deleted: 'Excluída(e/o)'
     authentication:
       title: 'Autenticação'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Aprenda como configurar provedores OAuth personalizados'
       oauth_subtitle: 'Provedores de identidade OAuth'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Provedor OAuth padrão'
       copy_url: 'Copiar URL'
       test_page:
         title: '%{name} resultados do teste OAuth'
