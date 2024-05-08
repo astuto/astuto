@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
+      # Set default locale
+      I18n.locale = I18n.default_locale
+
       current_tenant = get_tenant_from_request(request)
       return unless current_tenant
 
@@ -38,7 +41,7 @@ class ApplicationController < ActionController::Base
       @tenant_billing = TenantBilling.first_or_create
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
 
-      # Setup locale
+      # Set tenant locale
       I18n.locale = @tenant.locale
     end
 
