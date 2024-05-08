@@ -1,6 +1,7 @@
 class TenantMailer < ApplicationMailer
   layout :choose_layout
   skip_after_action :set_mail_from_for_multitenancy
+  before_action :set_locale_to_english
 
   def trial_start(tenant:)
     @tenant = tenant
@@ -20,7 +21,7 @@ class TenantMailer < ApplicationMailer
     @tenant = tenant
     Current.tenant = tenant
 
-    @trial_ends_at = tenant.tenant_billing.trial_ends_at
+    @trial_ends_at = tenant.tenant_billing.trial_ends_at.to_date
 
     mail(
       from: email_from_riccardo,
@@ -62,7 +63,7 @@ class TenantMailer < ApplicationMailer
 
     @tenant = tenant
     Current.tenant = tenant
-    @subscription_ends_at = Current.tenant.tenant_billing.subscription_ends_at
+    @subscription_ends_at = Current.tenant.tenant_billing.subscription_ends_at.to_date
 
     mail(
       from: email_from_astuto,
@@ -96,5 +97,9 @@ class TenantMailer < ApplicationMailer
 
     def choose_layout
       action_name == 'trial_mid' || action_name == 'trial_end' ? 'mailer_no_style' : 'mailer'
+    end
+
+    def set_locale_to_english
+      I18n.locale = :en
     end
 end

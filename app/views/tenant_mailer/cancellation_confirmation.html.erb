@@ -7,7 +7,7 @@ We're sorry to see you go. <b>Your subscription has been cancelled and won't be 
 </p>
 
 <p>
-Your current subscription will remain active until <%= @subscription_ends_at.strftime('%B %d, %Y') %>.
+Your current subscription will remain active until <%= I18n.localize @subscription_ends_at, format: :long %>.
 </p>
 
 <p>
