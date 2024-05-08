@@ -102,7 +102,7 @@ class TenantsController < ApplicationController
   # Given a new_subdomain
   # Returns true if it is available, false otherwise
   def is_available
-    subdomain = params[:new_subdomain]
+    subdomain = params[:new_subdomain].downcase
 
     return unless subdomain.present?
     return if RESERVED_SUBDOMAINS.include?(subdomain)
