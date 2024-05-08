@@ -19,7 +19,7 @@ task notify_tenants_trial_period: [:environment] do
 
     tenants_mid_trial.each do |tenant|
       puts "Delivering trial_mid email for #{tenant.site_name}..."
-      TenantMailer.trial_mid(tenant: tenant).deliver_later
+      TenantMailer.trial_mid(tenant: tenant).deliver_now
     end
 
     # Notify tenants end of trial
@@ -28,7 +28,7 @@ task notify_tenants_trial_period: [:environment] do
 
     tenants_end_trial.each do |tenant|
       puts "Delivering trial_end email for #{tenant.site_name}..."
-      TenantMailer.trial_end(tenant: tenant).deliver_later
+      TenantMailer.trial_end(tenant: tenant).deliver_now
     end
   rescue Exception => e
     error_subject = "Scheduled Task 'notify_tenants_trial_period.rake' Failed"
