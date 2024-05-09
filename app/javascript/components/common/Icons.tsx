@@ -9,6 +9,7 @@ import { MdContentCopy, MdDone, MdOutlineArrowBack } from 'react-icons/md';
 import { GrTest, GrClearOption } from 'react-icons/gr';
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { MdVerified } from "react-icons/md";
+import { BiLike, BiSolidLike } from "react-icons/bi";
 
 export const EditIcon = () => <FiEdit />;
 
@@ -39,3 +40,7 @@ export const StaffIcon = () => (
 );
 
 export const ClearIcon = () => <GrClearOption />;
+
+export const LikeIcon = ({size = 32}) => <BiLike size={size} />;
+
+export const SolidLikeIcon = ({size = 32}) => <BiSolidLike size={size} />;

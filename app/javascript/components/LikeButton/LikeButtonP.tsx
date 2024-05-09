@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LikeIcon, SolidLikeIcon } from '../common/Icons';
 
 interface Props {
   postId: number;
@@ -35,6 +36,7 @@ const LikeButtonP = ({
       className={`likeButton${liked ? ' liked' : ''}`}
       hidden={!showLikeButton}
     >
+      { liked ? <SolidLikeIcon /> : <LikeIcon />}
     </div>
     { showLikeCount && <span className="likeCountLabel">{likeCount}</span> }
   </div>
