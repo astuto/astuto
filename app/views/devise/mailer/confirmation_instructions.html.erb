@@ -1,6 +1,10 @@
-<p><%= t('mailers.devise.welcome_greeting', email: @email, site_name: Current.tenant_or_raise!.site_name) %></p>
+<p>
+  <%= t('mailers.devise.welcome_greeting', email: @email, site_name: Current.tenant.users.count == 1 ? "Astuto" : Current.tenant.site_name) %>
+</p>
 
-<p><%= t('mailers.devise.confirmation_instructions.body') %></p>
+<p>
+  <%= t('mailers.devise.confirmation_instructions.body') %>
+</p>
 
 <p>
   <%= link_to t('mailers.devise.confirmation_instructions.action'),
