@@ -65,6 +65,14 @@ class User < ApplicationRecord
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
 
+  def full_name_or_email
+    if full_name.present? && full_name != I18n.t('defaults.user_full_name') && full_name != I18n.t('defaults.user_full_name', locale: 'en')
+      full_name
+    else
+      email
+    end
+  end
+
   def owner?
     role == 'owner'
   end
