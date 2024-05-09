@@ -119,6 +119,7 @@ const OAuthForm = ({
           <label htmlFor="logo">{ getLabel('o_auth', 'logo') }</label>
           <input
             {...register('logo')}
+            placeholder='https://example.com/logo.png'
             id="logo"
             className="formControl"
           />

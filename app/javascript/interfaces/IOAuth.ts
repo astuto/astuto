@@ -14,7 +14,7 @@ export interface IOAuth {
   
   callbackUrl?: string;
   tenantId?: number;
-  defaultOAuthIsEnabled: boolean;
+  defaultOAuthIsEnabled?: boolean;
 }
 
 export interface IOAuthJSON {
@@ -33,7 +33,7 @@ export interface IOAuthJSON {
 
   callback_url?: string;
   tenant_id?: string;
-  default_o_auth_is_enabled: boolean;
+  default_o_auth_is_enabled?: boolean;
 }
 
 export const oAuthJSON2JS = (oAuthJSON: IOAuthJSON): IOAuth => ({
