@@ -1,4 +1,4 @@
-<%= render 'user_mailer/opening', user_name: @user.full_name %>
+<%= render 'user_mailer/opening', user_name: @user.full_name_or_email %>
 
 <p>
   <%= t('mailers.user.notify_follower_of_post_status_change.body_html', post: @post.title) %>:

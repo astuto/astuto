@@ -44,7 +44,7 @@ const Return = ({ tenantBilling, homeUrl, billingUrl }: Props) => {
   if (status === 'complete') {
     return (
       <Box customClass="billingContainer">
-        <h2>Success</h2>
+        <h2>Success!</h2>
         <p>Thank you for choosing Astuto! Your subscription will be activated shortly.</p>
         
         <ActionLink onClick={() => window.location.href = homeUrl} icon={<BackIcon />}>

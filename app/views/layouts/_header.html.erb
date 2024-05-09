@@ -1,7 +1,7 @@
 <nav class="header">
   <div class="container">
     <%=
-      link_to get_url_for(method(:root_url)), class: 'brand' do
+      link_to @header_full_urls ? get_url_for(method(:root_url)) : root_path, class: 'brand' do
         app_name = content_tag :span, @tenant.site_name
         logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo', skip_pipeline: true)
 
@@ -31,7 +31,7 @@
       <ul class="boardsNav">
         <% if @tenant_setting.show_roadmap_in_header %>
           <li class="nav-item<%= (current_page?(roadmap_path) or (@tenant_setting.root_board_id == 0 and current_page?(root_path))) ? ' active' : '' %>">
-            <%= link_to t('roadmap.title'), get_url_for(method(:roadmap_url)), class: 'nav-link' %>
+            <%= link_to t('roadmap.title'), @header_full_urls ? get_url_for(method(:roadmap_url)) : roadmap_path, class: 'nav-link' %>
           </li>
         <% end %>
         
@@ -47,14 +47,21 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.moderator? %>
-                <%=
-                  link_to t('header.menu.site_settings'),
-                    current_user.admin? ? get_url_for(method(:site_settings_general_url)) : get_url_for(method(:site_settings_users_url)),
-                    class: 'dropdown-item'
-                %>
-
+                <% if current_user.admin? or current_user.owner? %>
+                  <%=
+                    link_to t('header.menu.site_settings'),
+                    @header_full_urls ? get_url_for(method(:site_settings_general_url)) : site_settings_general_path,
+                      class: 'dropdown-item'
+                    %>
+                <% else %>
+                  <%=
+                    link_to t('header.menu.site_settings'),
+                    @header_full_urls ? get_url_for(method(:site_settings_users_url)) : site_settings_users_path,
+                      class: 'dropdown-item'
+                  %>
+                <% end %>
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
-                  <%= link_to get_url_for(method(:request_billing_page_url)), class: 'dropdown-item', data: {turbolinks: false} do %>
+                  <%= link_to @header_full_urls ? get_url_for(method(:request_billing_page_url)) : request_billing_page_path, class: 'dropdown-item', data: {turbolinks: false} do %>
                     <%= t('billing.title') %>
                     <% if not Current.tenant.tenant_billing.has_active_subscription? %>
                       <span style="color: red; font-size: 18px;">⚠️</span>
@@ -65,11 +72,11 @@
                 <div class="dropdown-divider"></div>
               <% end %>
 
-              <%= link_to t('header.menu.profile_settings'), get_url_for(method(:edit_user_registration_url)), class: 'dropdown-item' %>
+              <%= link_to t('header.menu.profile_settings'), @header_full_urls ? get_url_for(method(:edit_user_registration_url)) : edit_user_registration_path, class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
               
               <% unless @disable_sign_out %>
-                <%= button_to t('header.menu.sign_out'), get_url_for(method(:destroy_user_session_url)), method: :delete, class: 'dropdown-item' %>
+                <%= button_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               <% else %>
                 <small style="font-size: 12px; color: grey; padding: 0.25rem 1.5rem;">
                   Sign out disabled
@@ -79,7 +86,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to t('header.log_in'), get_url_for(method(:new_user_session_url)), class: 'nav-link' %>
+            <%= link_to t('header.log_in'), @header_full_urls ? get_url_for(method(:new_user_session_url)) : new_user_session_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>

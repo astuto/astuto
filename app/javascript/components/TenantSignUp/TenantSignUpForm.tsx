@@ -45,6 +45,9 @@ const TenantSignUpForm = ({
 
         <div className="formRow">
           <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="input-group-text">https://</div>
+            </div>
             <input
               {...register('subdomain', {
                 required: true,
@@ -57,7 +60,7 @@ const TenantSignUpForm = ({
                   },
                 },
               })}
-              placeholder={getLabel('tenant', 'subdomain')}
+              placeholder={getLabel('tenant', 'subdomain').toLowerCase()}
               id="tenantSubdomain"
               className="formControl"
             />

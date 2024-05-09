@@ -66,3 +66,20 @@
     method: :delete,
     class: "btn btn-danger btn-block" %>
 </div>
+
+<br />
+
+<% if Rails.application.multi_tenancy? && user_signed_in? && current_user.owner? %>
+  <div class="edit_user">
+    <h3>Delete feedback space</h3>
+
+    <p>
+      Deleting the feedback space will also delete all the feedback and users associated with it. This action cannot be undone.
+    </p>
+    <p>
+      If you want to delete the feedback space, please send an email to <a href="mailto:info@astuto.io">info@astuto.io</a> from the email address associated with this feedback space.
+    </p>
+  </div>
+<% end %>
+
+<br />

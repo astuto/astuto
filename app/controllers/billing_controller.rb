@@ -172,6 +172,7 @@ class BillingController < ApplicationController
       @tenant_setting = @tenant.tenant_setting
       @tenant_billing = @tenant.tenant_billing
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
+      @header_full_urls = true
       I18n.locale = @tenant.locale
 
       # needed because signing out from 'billing' subdomain cause authenticity token error

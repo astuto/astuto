@@ -1,5 +1,5 @@
 <p>
-Hi <%= @tenant.owner.full_name %>,
+Hi <%= @tenant.owner.full_name_or_email %>,
 </p>
 
 <p>
@@ -15,7 +15,7 @@ How's your Astuto trial going? If you have any questions or encounter any issues
 </p>
 
 <p>
-Also remember that your trial period will expire on <%= @trial_ends_at.strftime('%B %d, %Y') %>.
+Also remember that your trial period will expire on <%= I18n.localize @trial_ends_at, format: :long %>.
 </p>
 
 <p>
