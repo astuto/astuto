@@ -14,6 +14,7 @@ interface Props {
   error: string;
   handleSignUpSubmit(siteName: string, subdomain: string): void;
   trialPeriodDays: number;
+  currentStep: number;
 }
 
 const TenantSignUpForm = ({
@@ -21,6 +22,7 @@ const TenantSignUpForm = ({
   error,
   handleSignUpSubmit,
   trialPeriodDays,
+  currentStep,
 }: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<ITenantSignUpTenantForm>();
   const onSubmit: SubmitHandler<ITenantSignUpTenantForm> = data => {
@@ -28,7 +30,7 @@ const TenantSignUpForm = ({
   }
 
   return (
-    <Box customClass="tenantSignUpStep2">
+    <Box customClass={`tenantSignUpStep2${currentStep !== 2 ? ' d-none' : ''}`}>
       <h3>Create feedback space</h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>

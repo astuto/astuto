@@ -122,12 +122,13 @@ const TenantSignUpP = ({
       }
 
       {
-        currentStep === 2 &&
+        (currentStep === 1 || currentStep === 2) &&
           <TenantSignUpForm
             isSubmitting={isSubmitting}
             error={error}
             handleSignUpSubmit={handleSignUpSubmit}
             trialPeriodDays={trialPeriodDays}
+            currentStep={currentStep}
           />
       }
 
