@@ -38,7 +38,7 @@ const LikeButtonP = ({
       className={`likeButton${liked ? ' liked' : ''}`}
       hidden={!showLikeButton}
     >
-      { liked ? <SolidLikeIcon size={size === 'medium' ? 26 : 36} /> : <LikeIcon size={size === 'medium' ? 26 : 36} />}
+      { liked ? <SolidLikeIcon size={size === 'medium' ? 26 : 34} /> : <LikeIcon size={size === 'medium' ? 26 : 34} />}
     </div>
     { showLikeCount && <span className={`likeCountLabel likeCountLabel-${size}`}>{likeCount}</span> }
   </div>
