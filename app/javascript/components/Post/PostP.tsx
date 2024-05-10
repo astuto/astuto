@@ -225,6 +225,7 @@ class PostP extends React.Component<Props> {
                   likeCount={likes.items.length}
                   showLikeCount={isPowerUser || tenantSetting.show_vote_count}
                   liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
+                  size="large"
                   isLoggedIn={isLoggedIn}
                   authenticityToken={authenticityToken}
                 />
