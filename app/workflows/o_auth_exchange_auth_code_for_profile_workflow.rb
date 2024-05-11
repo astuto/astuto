@@ -50,6 +50,9 @@ class OAuthExchangeAuthCodeForProfileWorkflow
       
       # Exchange access token for profile info
       # che succede? non capisco come mai falliscono i test
+      CIAO = 1
+      COME = ';'
+      VA = 123
       profile_urls = @o_auth.profile_url.split(';')
       if profile_urls.length == 1
         profile_response = request_profile(profile_urls[0], access_token)
