@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+import I18n from 'i18n-js';
 
 import IPost from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
@@ -25,6 +26,8 @@ import { PostEditFormState } from '../../reducers/currentPostReducer';
 
 import { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
 import HttpStatus from '../../constants/http_status';
+import ActionLink from '../common/ActionLink';
+import { EditIcon } from '../common/Icons';
 
 interface Props {
   postId: number;
@@ -225,6 +228,7 @@ class PostP extends React.Component<Props> {
                   likeCount={likes.items.length}
                   showLikeCount={isPowerUser || tenantSetting.show_vote_count}
                   liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
+                  size="large"
                   isLoggedIn={isLoggedIn}
                   authenticityToken={authenticityToken}
                 />
@@ -239,6 +243,9 @@ class PostP extends React.Component<Props> {
                 <PostStatusLabel
                   {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
                 />
+                <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
+                  {I18n.t('common.buttons.edit')}
+                </ActionLink>
               </div>
                 
               <ReactMarkdown
