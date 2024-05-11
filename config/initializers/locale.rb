@@ -1,7 +1,7 @@
 # Configure I18n to look at subfolders too
 I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
 
-I18n.available_locales = [:en, :it, :de, :fr, :es, 'zh-CN', :ru, :vi]
+I18n.available_locales = [:en, :it, :de, :fr, :es, 'pt-BR', 'zh-CN', :ru, :vi]
 
 # Custom pluralization rules
 # Those must be mirrored in app/javascript/translations/index.js.erb
