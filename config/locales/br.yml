@@ -1,4 +1,4 @@
-pt:
+pt-BR:
   common:
     validations:
       required: '%{attribute} não pode ficar em branco'
