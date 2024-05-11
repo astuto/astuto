@@ -15,6 +15,7 @@ interface Props {
   baseUrl: string;
   astutoLogoImage: string;
   pendingTenantImage: string;
+  trialPeriodDays: number;
   authenticityToken: string;
 }
 
@@ -36,6 +37,7 @@ class TenantSignUpRoot extends React.Component<Props> {
       astutoLogoImage,
       pendingTenantImage,
       baseUrl,
+      trialPeriodDays,
       authenticityToken,
     } = this.props;
 
@@ -49,6 +51,7 @@ class TenantSignUpRoot extends React.Component<Props> {
           astutoLogoImage={astutoLogoImage}
           pendingTenantImage={pendingTenantImage}
           baseUrl={baseUrl}
+          trialPeriodDays={trialPeriodDays}
           authenticityToken={authenticityToken}
         />
       </Provider>

@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     end
 
     def load_tenant_data
+      # Set default locale
+      I18n.locale = I18n.default_locale
+
       current_tenant = get_tenant_from_request(request)
       return unless current_tenant
 
@@ -35,9 +38,10 @@ class ApplicationController < ActionController::Base
       # Load tenant data
       @tenant = Current.tenant_or_raise!
       @tenant_setting = TenantSetting.first_or_create
+      @tenant_billing = TenantBilling.first_or_create
       @boards = Board.select(:id, :name, :slug).order(order: :asc)
 
-      # Setup locale
+      # Set tenant locale
       I18n.locale = @tenant.locale
     end
 
@@ -46,6 +50,14 @@ class ApplicationController < ActionController::Base
         .include_defaults
         .where(is_enabled: true)
         .order(created_at: :asc)
+    end
+
+    def check_tenant_subscription
+      return if Current.tenant.tenant_billing.has_active_subscription?
+
+      render json: {
+        error: 'Your subscription has expired. Please renew it to continue using the service.'
+      }, status: :forbidden
     end
 
   private

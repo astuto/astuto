@@ -1,0 +1,19 @@
+<p>
+Hello <%= @tenant.owner.full_name_or_email %>!
+</p>
+
+<p>
+We're sorry to see you go. <b>Your subscription has been cancelled and won't be renewed</b>.
+</p>
+
+<p>
+Your current subscription will remain active until <%= I18n.localize @subscription_ends_at, format: :long %>.
+</p>
+
+<p>
+If you have any questions or need help, please don't hesitate to <a href="mailto:info@astuto.io">contact us</a>.
+</p>
+
+<p>
+Have a great day!
+</p>

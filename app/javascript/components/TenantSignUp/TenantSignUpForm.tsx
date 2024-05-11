@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import Box from '../common/Box';
 import Button from '../common/Button';
 import Spinner from '../common/Spinner';
-import { DangerText } from '../common/CustomTexts';
+import { DangerText, SmallMutedText } from '../common/CustomTexts';
 import { ITenantSignUpTenantForm } from './TenantSignUpP';
 import HttpStatus from '../../constants/http_status';
 import { getLabel, getValidationMessage } from '../../helpers/formUtils';
@@ -13,12 +13,14 @@ interface Props {
   isSubmitting: boolean;
   error: string;
   handleSignUpSubmit(siteName: string, subdomain: string): void;
+  trialPeriodDays: number;
 }
 
 const TenantSignUpForm = ({
   isSubmitting,
   error,
   handleSignUpSubmit,
+  trialPeriodDays,
 }: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<ITenantSignUpTenantForm>();
   const onSubmit: SubmitHandler<ITenantSignUpTenantForm> = data => {
@@ -43,6 +45,9 @@ const TenantSignUpForm = ({
 
         <div className="formRow">
           <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="input-group-text">https://</div>
+            </div>
             <input
               {...register('subdomain', {
                 required: true,
@@ -55,7 +60,7 @@ const TenantSignUpForm = ({
                   },
                 },
               })}
-              placeholder={getLabel('tenant', 'subdomain')}
+              placeholder={getLabel('tenant', 'subdomain').toLowerCase()}
               id="tenantSubdomain"
               className="formControl"
             />
@@ -80,6 +85,12 @@ const TenantSignUpForm = ({
         >
           { isSubmitting ? <Spinner /> : 'Create feedback space' }
         </Button>
+        <p className="smallMutedText" style={{textAlign: 'center'}}>
+          Your trial starts now and ends in {trialPeriodDays.toString()} days.
+        </p>
+        <p className="smallMutedText" style={{textAlign: 'center'}}>
+          By clicking "Create", you agree to our <a href="https://astuto.io/terms-of-service" target="_blank" className="link">Terms of Service</a> and <a href="https://astuto.io/privacy-policy" target="_blank" className="link">Privacy Policy</a>.
+        </p>
 
         { error !== '' && <DangerText>{ error }</DangerText> }
       </form>

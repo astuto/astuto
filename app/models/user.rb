@@ -48,6 +48,9 @@ class User < ApplicationRecord
     if tenant.status == "pending" and tenant.users.count == 1
       tenant.status = "active"
       tenant.save
+
+      CreateStripeCustomer.new().run
+      TenantMailer.trial_start(tenant: tenant).deliver_later
     end
   end
 
@@ -60,6 +63,14 @@ class User < ApplicationRecord
   def gravatar_url
     gravatar_id = Digest::MD5::hexdigest(email.downcase)
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
+  end
+
+  def full_name_or_email
+    if full_name.present? && full_name != I18n.t('defaults.user_full_name') && full_name != I18n.t('defaults.user_full_name', locale: 'en')
+      full_name
+    else
+      email
+    end
   end
 
   def owner?

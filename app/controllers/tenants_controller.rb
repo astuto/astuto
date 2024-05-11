@@ -7,7 +7,7 @@ class TenantsController < ApplicationController
 
   def new
     @page_title = "Create your feedback space"
-    @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
+    @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true).order(created_at: :asc)
   end
 
   def show
@@ -53,6 +53,11 @@ class TenantsController < ApplicationController
 
       CreateWelcomeEntitiesWorkflow.new().run
 
+      if is_o_auth_login
+        CreateStripeCustomer.new().run
+        TenantMailer.trial_start(tenant: @tenant).deliver_later
+      end
+
       logger.info { "New tenant registration: #{Current.tenant.inspect}" }
 
       render json: @tenant, status: :created
@@ -97,7 +102,7 @@ class TenantsController < ApplicationController
   # Given a new_subdomain
   # Returns true if it is available, false otherwise
   def is_available
-    subdomain = params[:new_subdomain]
+    subdomain = params[:new_subdomain].downcase
 
     return unless subdomain.present?
     return if RESERVED_SUBDOMAINS.include?(subdomain)

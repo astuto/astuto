@@ -18,7 +18,7 @@ const ConfirmSignUpPage = ({
     <img src={pendingTenantImage} width={64} height={64} style={{margin: '12px auto'}} />
 
     <p style={{textAlign: 'center'}}>
-      Check your email <b>{userEmail}</b> to activate your new feedback space {subdomain}.astuto.io!
+      Check your email <b>{userEmail}</b> to activate your new feedback space <a href={`https://${subdomain}.astuto.io`} className="link">{`${subdomain}.astuto.io`}</a>!
     </p>
   </Box>
 );

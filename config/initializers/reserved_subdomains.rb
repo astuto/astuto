@@ -11,5 +11,6 @@ RESERVED_SUBDOMAINS = [
   'dashboard',
   'analytics',
   'cname',
-  'whatever'
+  'whatever',
+  'billing'
 ]

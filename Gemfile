@@ -47,6 +47,9 @@ gem 'rack-attack', '6.7.0'
 # Slugs
 gem 'friendly_id', '5.5.1'
 
+# Billing
+gem 'stripe', '11.2.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 

@@ -236,8 +236,14 @@ body {
 }
 
 .link {
+  color: var(--astuto-black);
+  text-decoration: underline;
   cursor: pointer;
-  &:hover { text-decoration: underline; }
+
+  &:hover {
+    color: var(--astuto-black);
+    text-decoration: underline;
+  }
 }
 
 .actionLink {
@@ -301,4 +307,12 @@ body {
 
   a { color: var(--astuto-grey); }
   a:hover { text-decoration: underline; }
+}
+
+.noActiveSubscriptionBanner {
+  @extend
+    .alert,
+    .alert-warning,
+    .text-center,
+    .m-0;
 }

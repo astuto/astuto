@@ -133,6 +133,7 @@ const GeneralSiteSettingsP = ({
               <label htmlFor="siteLogo">{ getLabel('tenant', 'site_logo') }</label>
               <input
                 {...register('siteLogo')}
+                placeholder='https://example.com/logo.png'
                 id="siteLogo"
                 className="formControl"
               />
