@@ -49,8 +49,8 @@ class OAuthExchangeAuthCodeForProfileWorkflow
       access_token = token_response['access_token']
       
       # Exchange access token for profile info
-      PROFILE_URL_SEPARATOR = ';'
-      profile_urls = @o_auth.profile_url.split(PROFILE_URL_SEPARATOR)
+      # che succede? non capisco come mai falliscono i test
+      profile_urls = @o_auth.profile_url.split(';')
       if profile_urls.length == 1
         profile_response = request_profile(profile_urls[0], access_token)
       else
