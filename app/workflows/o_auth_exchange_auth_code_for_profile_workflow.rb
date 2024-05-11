@@ -49,7 +49,8 @@ class OAuthExchangeAuthCodeForProfileWorkflow
       access_token = token_response['access_token']
       
       # Exchange access token for profile info
-      profile_urls = @o_auth.profile_url.split(';')
+      PROFILE_URL_SEPARATOR = ';'
+      profile_urls = @o_auth.profile_url.split(PROFILE_URL_SEPARATOR)
       if profile_urls.length == 1
         profile_response = request_profile(profile_urls[0], access_token)
       else
