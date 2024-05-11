@@ -12,7 +12,7 @@ it:
       update_order: 'Si è verificato un errore durante il riordinamento degli stati'
   defaults:
     user_full_name: 'Utente Anonimo'
-    deleted_user_full_name: 'Deleted User'
+    deleted_user_full_name: 'Utente Eliminato'
   mailers:
     devise:
       welcome_greeting: 'Benvenuto su %{site_name}, %{email}!'
@@ -31,47 +31,47 @@ it:
         body3: "La tua password non sarà modificata finché non cliccherai sul link qua sopra e ne creerai una nuova."
         action: 'Cambia la mia password'
     user:
-      opening_greeting: 'Hello %{name}!'
+      opening_greeting: 'Ciao %{name}!'
       closing_greeting: 'Buona giornata!'
       learn_more: 'Clicca qui per saperne di più'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
-      unsubscribe_link: 'here'
+      unsubscribe_from_post_html: 'Non vuoi più ricevere notifiche su questo post? Clicca %{href}'
+      unsubscribe_from_site_html: 'Non vuoi più ricevere alcuna notifica? Clicca %{href}'
+      unsubscribe_link: 'qui'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+        subject: '[%{site_name}] Nuovo commento al tuo post %{post}"'
+        body_html: '<b>%{user}</b> ha commentato il tuo post <b>%{post}</b>'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        subject: '[%{site_name}] Risposta al tuo commento nel post %{post}"'
+        body_html: '<b>%{user}</b> ha risposto al tuo commento nel post <b>%{post}</b>'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Nuovo aggiornamento per il post %{post}"'
+        body_html: 'C''è un nuovo aggiornamento sul post che stai seguendo <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Aggiornamento stato per il post %{post}"'
+        body_html: 'C''è un nuovo aggiornamento sul post che stai seguendo <b>%{post}</b>'
   activerecord:
     models:
       board:
-        one: 'Board'
-        other: 'Boards'
+        one: 'Bacheca'
+        other: 'Bacheche'
       comment:
-        one: 'Comment'
-        other: 'Comments'
+        one: 'Commento'
+        other: 'Commenti'
       like:
-        one: 'Vote'
-        other: 'Votes'
+        one: 'Voto'
+        other: 'Voti'
       o_auth:
         one: 'OAuth'
-        other: 'OAuths'
+        other: 'OAuth'
       post_status:
-        one: 'Status'
-        other: 'Statuses'
+        one: 'Stato'
+        other: 'Stati'
       post:
         one: 'Post'
-        other: 'Posts'
+        other: 'Post'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Utente'
+        other: 'Utenti'
     attributes:
       board:
         name: 'Nome'
@@ -117,16 +117,16 @@ it:
         site_logo: 'Logo del sito'
         subdomain: 'Sottodominio'
         locale: 'Lingua'
-        custom_domain: 'Custom domain'
+        custom_domain: 'Dominio personalizzato'
       tenant_setting:
-        brand_display: 'Display'
-        show_vote_count: 'Show vote count to users'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        show_powered_by: 'Show "Powered by Astuto"'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
-        custom_css: 'Custom CSS'
+        brand_display: 'Mostra'
+        show_vote_count: 'Mostra numero voti agli utenti'
+        show_vote_button_in_board: 'Mostra pulsanti voto nella pagina bacheca'
+        show_powered_by: 'Mostra "Powered by Astuto"'
+        root_board_id: 'Pagina principale'
+        show_roadmap_in_header: 'Mostra roadmap nel menu in alto'
+        collapse_boards_in_header: 'Comprimi le bacheche nel menu in alto'
+        custom_css: 'CSS personalizzato'
       user:
         email: 'E-mail'
         full_name: 'Nome e cognome'

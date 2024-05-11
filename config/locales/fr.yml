@@ -79,6 +79,8 @@ fr:
     log_in: 'Se connecter / S''inscrire'
   roadmap:
     title: 'Feuille de route'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Cet espace de feedback a été bloqué'
   board:

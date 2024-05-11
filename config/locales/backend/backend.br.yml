@@ -1,144 +1,144 @@
 pt:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
-    not_logged_in: 'You must be logged in to access this page'
-    not_enough_privileges: 'You do not have the privilegies to access this page'
-    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    unknown: 'Um erro desconhecido ocorreu'
+    unauthorized: 'Você não está autorizado'
+    not_logged_in: 'Você precisa estar conectado para acessar esta página'
+    not_enough_privileges: 'Você não tem privilégios para acessar esta página'
+    user_blocked_or_deleted: 'Você não pode acessar sua conta porque ela foi bloqueada ou excluída.'
+    o_auth_login_error: 'Houve um erro ao fazer login com o %{name}. Entre em contato com o administrador do site ou tente um provedor diferente.'
     board:
-      update_order: 'There was an error in reordering boards'
+      update_order: 'Houve um erro ao reordenar os painéis'
     post_status:
-      update_order: 'There was an error in reordering statuses'
+      update_order: 'Houve um erro ao reordenar os status'
   defaults:
-    user_full_name: 'Anonymous User'
-    deleted_user_full_name: 'Deleted User'
+    user_full_name: 'Usuário Anônimo'
+    deleted_user_full_name: 'Usuário excluído'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Bem-vindo a %{site_name}, %{email}!'
+      opening_greeting: 'Olá %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'Você pode confirmar o e-mail da sua conta pelo link abaixo:'
+        action: 'Confirme minha conta'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "Estamos entrando em contato para notificá-lo de que seu e-mail está sendo alterado para %{email}."
+        body2: "Estamos entrando em contato para notificá-lo de que seu e-mail está sendo alterado para %{email}."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Estamos nos comunicando com você para notificá-lo de que sua senha foi alterada."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body: 'Alguém solicitou um link para alterar sua senha. Você pode fazer isso através do link abaixo.'
+        body2: "Se você não solicitou esse código, por favor ignore essa mensagem."
+        body3: "Sua senha não será alterada até que você acesse o link acima e crie um novo."
+        action: 'Alterar minha senha'
     user:
-      opening_greeting: 'Hello %{name}!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
-      unsubscribe_link: 'here'
+      opening_greeting: 'Olá %{name}!'
+      closing_greeting: 'Tenha um ótimo dia!'
+      learn_more: 'Clique aqui para saber mais'
+      unsubscribe_from_post_html: 'Irritado? Você pode desativar as notificações para esta postagem %{href}'
+      unsubscribe_from_site_html: 'Irritado? Você pode desativar as notificações para esta postagem %{href}'
+      unsubscribe_link: 'aqui'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+        subject: '[%{site_name}] Novo comentário sobre "%{post}"'
+        body_html: 'Há um novo comentário de <b>%{user}</b> na sua publicação <b>%{post}</b>'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        subject: '[%{site_name}] Nova resposta no seu comentário sobre a postagem "%{post}"'
+        body_html: 'Há uma nova resposta de <b>%{user}</b> ao seu comentário na publicação <b>%{post}</b>'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Nova atualização para publicação "%{post}"'
+        body_html: 'Há uma nova atualização no post que você está seguindo <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Mudança de status no post "%{post}"'
+        body_html: 'Há uma atualização de status no post que você está seguindo <b>%{post}</b>'
   activerecord:
     models:
       board:
-        one: 'Board'
-        other: 'Boards'
+        one: 'Quadro'
+        other: 'Quadros'
       comment:
-        one: 'Comment'
-        other: 'Comments'
+        one: 'Comentário'
+        other: 'Comentários'
       like:
-        one: 'Vote'
-        other: 'Votes'
+        one: 'Votar'
+        other: 'Votos'
       o_auth:
         one: 'OAuth'
-        other: 'OAuths'
+        other: 'OAuth'
       post_status:
         one: 'Status'
-        other: 'Statuses'
+        other: 'Status'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Publicação'
+        other: 'Publicações'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Usuário'
+        other: 'Usuários'
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
-        order: 'Order'
+        name: 'Nome'
+        description: 'Descrição'
+        order: 'Ordem'
       comment:
-        body: 'Body'
-        is_post_update: 'Post update'
-        user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        body: 'Conteúdo'
+        is_post_update: 'Atualizar post'
+        user_id: 'Autor'
+        post_id: 'Publicação'
+        parent_id: 'Comentário de origem'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Usuário'
+        post_id: 'Publicação'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Usuário'
+        post_id: 'Publicação'
       o_auth:
-        name: 'Name'
-        logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
-        authorize_url: 'Authorize URL'
-        token_url: 'Token URL'
-        profile_url: 'Profile URL'
-        scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        name: 'Nome'
+        logo: 'Logotipo'
+        is_enabled: 'Habilitado'
+        client_id: 'ID do cliente'
+        client_secret: 'Segredo do cliente'
+        authorize_url: 'Autorizar URL'
+        token_url: 'URL do token'
+        profile_url: 'URL do Perfil'
+        scope: 'Escopo'
+        json_user_name_path: 'Caminho JSON para o nome do usuário'
+        json_user_email_path: 'Caminho JSON para o e-mail do usuário'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: 'Nome'
+        color: 'Cor'
+        order: 'Ordem'
+        show_in_roadmap: 'Mostrar no planejamento'
       post:
-        title: 'Title'
-        description: 'Description'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        title: 'Título'
+        description: 'Descrição'
+        board_id: 'Quadro de postagem'
+        user_id: 'Autor da publicação'
+        post_status_id: 'Status do post'
       tenant:
-        site_name: 'Site name'
-        site_logo: 'Site logo'
-        subdomain: 'Subdomain'
-        locale: 'Language'
-        custom_domain: 'Custom domain'
+        site_name: 'Nome do Site'
+        site_logo: 'Logotipo do site'
+        subdomain: 'Subdomínio'
+        locale: 'Idioma'
+        custom_domain: 'Domínio personalizado'
       tenant_setting:
-        brand_display: 'Display'
-        show_vote_count: 'Show vote count to users'
-        show_vote_button_in_board: 'Show vote buttons in board page'
-        show_powered_by: 'Show "Powered by Astuto"'
-        root_board_id: 'Root page'
-        show_roadmap_in_header: 'Show roadmap link in header'
-        collapse_boards_in_header: 'Collapse boards in header'
-        custom_css: 'Custom CSS'
+        brand_display: 'Tela'
+        show_vote_count: 'Mostrar contagem de votos aos usuários'
+        show_vote_button_in_board: 'Mostrar botões de voto na página do quadro'
+        show_powered_by: 'Mostrar "Desenvolvido por Astuto"'
+        root_board_id: 'Página principal'
+        show_roadmap_in_header: 'Mostrar link do planejamento no cabeçalho'
+        collapse_boards_in_header: 'Recolher quadros no cabeçalho'
+        custom_css: 'CSS Personalizado'
       user:
-        email: 'Email'
-        full_name: 'Full name'
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        role: 'Role'
-        notifications_enabled: 'Notifications enabled'
+        email: 'E-mail'
+        full_name: 'Nome completo'
+        password: 'Senha'
+        password_confirmation: 'Confirmação da senha'
+        role: 'Papel'
+        notifications_enabled: 'Notificações ativadas'
     errors:
       messages:
-        invalid: 'is invalid'
-        required: 'is mandatory'
-        blank: 'cannot be blank'
-        taken: 'is already in use'
-        too_short: 'is too short (minimum %{count} characters)'
-        too_long: 'is too long (maximum %{count} characters)'
+        invalid: 'é inválido'
+        required: 'é mandatório'
+        blank: 'não pode estar em branco'
+        taken: 'já está em uso'
+        too_short: 'é muito curta (o mínimo é de %{count} caracteres)'
+        too_long: 'é longo demais (máximo de %{count} caracteres)'

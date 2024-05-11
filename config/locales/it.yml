@@ -17,9 +17,9 @@ it:
         current_password: 'Password corrente'
         notifications_enabled: 'Notifiche abilitate'
         notifications_enabled_help: "se disabilitato, non riceverai alcuna notifica"
-        waiting_confirmation: 'Currently waiting confirmation for %{email}'
-        password_leave_blank_help: "leave blank if you don't want to change your password"
-        current_password_required_help: 'we need your current password to confirm your changes'
+        waiting_confirmation: 'In attesa di conferma per %{email}'
+        password_leave_blank_help: "lascia vuoto se non vuoi cambiare la tua password"
+        current_password_required_help: 'abbiamo bisogno della tua password attuale per confermare le modifiche'
         remember_me: 'Ricordami'
         log_in: 'Accedi'
         sign_up: 'Registrati'
@@ -59,7 +59,7 @@ it:
       confirm: 'Conferma'
       back: 'Indietro'
       test: 'Test'
-      clear: 'Clear'
+      clear: 'Reset'
     datetime:
       now: 'adesso'
       minutes:
@@ -79,6 +79,8 @@ it:
     log_in: 'Accedi / Registrati'
   roadmap:
     title: 'Roadmap'
+  billing:
+    title: 'Abbonamento'
   blocked_tenant:
     title: 'Questo spazio di feedback è stato bloccato'
   board:
@@ -102,9 +104,9 @@ it:
       most_voted: 'Più votati'
       oldest: 'Meno recenti'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Filtra per data'
+      from_label: 'Da'
+      to_label: 'A'
     posts_list:
       empty: 'Non ci sono post'
   post:
@@ -158,8 +160,8 @@ it:
       collapse_boards_in_header_no_collapse: 'Mai'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilità'
-      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
-      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      custom_domain_help: 'Innanzitutto, nelle impostazioni DNS, aggiungi un record CNAME che punta "%{domain}" a "cname.astuto.io". Quindi, clicca sul pulsante "Salva" qui sotto.'
+      custom_domain_learn_more: 'Scopri come configurare un dominio personalizzato'
       show_vote_count_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di vedere il numero di voti dei post. Questo può incentivare gli utenti a votare su post già popolari, portando a un effetto a valanga.'
       show_vote_button_in_board_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di votare i post dalla bacheca. Questo può incentivare gli utenti a votare su un maggior numero di post, risultando in un maggior numero di voti ma di minore importanza.'
     boards:

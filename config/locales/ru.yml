@@ -87,6 +87,8 @@ ru:
     log_in: 'Войти / Зарегистрироваться'
   roadmap:
     title: 'Дорожная Карта'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'Сообщение обратной связи было сохранено'
   board:

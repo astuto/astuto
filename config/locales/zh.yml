@@ -75,6 +75,8 @@ zh-CN:
     log_in: '登录/注册'
   roadmap:
     title: '开发路线'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: '此反馈空间已被禁止访问'
   board:

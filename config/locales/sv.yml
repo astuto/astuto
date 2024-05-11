@@ -79,6 +79,8 @@ sv:
     log_in: 'Logga in/Registrera dig'
   roadmap:
     title: 'Roadmap'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:

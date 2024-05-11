@@ -87,6 +87,8 @@ pl:
     log_in: 'Log in / Sign up'
   roadmap:
     title: 'Roadmap'
+  billing:
+    title: 'Billing'
   blocked_tenant:
     title: 'This feedback space has been blocked'
   board:
