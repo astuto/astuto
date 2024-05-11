@@ -45,6 +45,7 @@ const PostListItem = ({
       showLikeCount={showLikeCount}
       showLikeButton={showLikeButtons}
       liked={liked}
+      size="medium"
       isLoggedIn={isLoggedIn}
       authenticityToken={authenticityToken}
     />
