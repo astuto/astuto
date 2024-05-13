@@ -1,0 +1,218 @@
+zh-CN:
+  common:
+    validations:
+      required: '%{attribute} 为必填项'
+      email: '电子邮箱无效'
+      url: '网址无效'
+      password: '密码必须至少有 %{n} 个字符'
+      password_mismatch: '两次填写的密码不匹配'
+    forms:
+      auth:
+        email: '电子邮箱'
+        full_name: '姓名'
+        password: '密码'
+        password_confirmation: '确认密码'
+        new_password: '新密码'
+        new_password_confirmation: '确认新密码'
+        current_password: '当前密码'
+        notifications_enabled: '开启通知'
+        notifications_enabled_help: "关闭后，您将不会收到任何通知"
+        waiting_confirmation: '正在等待验证 %{email}'
+        password_leave_blank_help: "留空则不更改密码"
+        current_password_required_help: '请输入当前密码以确认新设置'
+        remember_me: '记住账号'
+        log_in: '登录'
+        sign_up: '注册'
+        log_in_with: '通过 %{o_auth} 登录'
+        sign_up_with: '通过 %{o_auth} 注册'
+        profile_settings: '账号设置'
+        update_profile: '更新账号信息'
+        cancel_account: '注销账号'
+        forgot_password: '忘记密码'
+        confirmation_instructions_not_received: "未收到验证邮件"
+        unlock_instructions_not_received: "未收到解锁邮件"
+        send_reset_password_instructions: '向我发送密码重置邮件'
+        resend_confirmation_instructions: '重新发送验证邮件'
+        resend_unlock_instructions: '重新发送解锁邮件'
+        change_password: '修改密码'
+        password_help: '至少需要 %{count} 个字符'
+    comments_number:
+      other: '%{count} 条评论'
+    no_status: '无状态'
+    loading: '加载中…'
+    confirmation: '您确定吗？'
+    unsaved_changes: '如果您离开页面，未保存的更改将会丢失。'
+    edited: '已编辑'
+    enabled: '已启用'
+    disabled: '已禁用'
+    copied: '已复制！'
+    user_staff: '工作人员'
+    powered_by: '技术支持:'
+    buttons:
+      new: '新建'
+      edit: '编辑'
+      delete: '删除'
+      cancel: '取消'
+      create: '创建'
+      update: '保存'
+      confirm: '确认'
+      back: '返回'
+      test: '测试'
+      clear: '清除'
+    datetime:
+      now: '刚刚'
+      minutes:
+        other: '%{count} 分钟前'
+      hours:
+        other: '%{count} 小时前'
+      days:
+        other: '%{count} 天前'
+  header:
+    menu:
+      site_settings: '网站设置'
+      profile_settings: '账号设置'
+      sign_out: '退出登录'
+    log_in: '登录/注册'
+  roadmap:
+    title: '开发路线'
+  billing:
+    title: 'Billing'
+  blocked_tenant:
+    title: '此反馈空间已被禁止访问'
+  board:
+    new_post:
+      submit_button: '提交反馈'
+      cancel_button: '取消'
+      login_button: '登录/注册'
+      title: '标题'
+      description: '描述 (可选)'
+      no_title: '必须填写标题'
+      submit_success: '反馈已发布！您即将被重定向...'
+      submit_error: '出现未知的错误，请重试！'
+    search_box:
+      title: '搜索'
+    filter_box:
+      title: '按状态筛选'
+    sort_by_box:
+      title: '排序方式'
+      trending: '热门'
+      newest: '最新'
+      most_voted: '票数'
+      oldest: '最早'
+    filter_by_date_box:
+      title: '按日期筛选'
+      from_label: '自'
+      to_label: '至'
+    posts_list:
+      empty: '没有帖子'
+  post:
+    edit_button: '编辑'
+    published_by: '发布者'
+    post_status_select:
+      no_post_status: '无'
+    updates_box:
+      title: '更新'
+      empty: '尚无更新'
+      status_change: '将状态更改为'
+    likes_box:
+      title: '赞'
+      empty: '还没有赞'
+    action_box:
+      title: '操作'
+      follow_button: '关注帖子'
+      following_description: "您会收到关于此帖的更新的通知"
+      not_following_description: "您不会收到关于此帖的更新的通知"
+    comments:
+      title: '活动'
+      post_update_badge: '更新'
+      reply_button: '回复'
+    new_comment:
+      body_placeholder: '发表评论'
+      submit_button: '提交'
+      is_post_update: '标记为更新'
+      user_notification: '关注此帖的用户将会收到通知'
+      not_logged_in: '您需要登录才能发表评论'
+  site_settings:
+    menu:
+      title: '网站设置'
+      general: '通用设置'
+      boards: '网站版块'
+      post_statuses: '帖子状态'
+      roadmap: '开发路线'
+      users: '用户列表'
+      authentication: '身份验证'
+      appearance: '外观定制'
+    info_box:
+      up_to_date: '已保存所有更改'
+      error: '发生了一个错误：%{message}'
+      dirty: '更改尚未保存'
+    general:
+      title: '通用设置'
+      brand_setting_both: '名称和图标'
+      brand_setting_name: '仅名称'
+      brand_setting_logo: '仅图标'
+      brand_setting_none: '无'
+      subtitle_header: '页眉'
+      collapse_boards_in_header_no_collapse: '从不'
+      collapse_boards_in_header_always_collapse: '始终'
+      subtitle_visibility: '可见性'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      show_vote_count_help: '如果您启用此设置，用户将可以看到帖子的投票数。 这可能会鼓励用户对已经很受欢迎的帖子进行投票，导致雪球效应。'
+      show_vote_button_in_board_help: '如果您启用此设置，用户将能够从版块页面直接对帖子投票。 这可能会鼓励用户对更多的帖子投票，导致更多的票数，但会稀释每一票的重要性。'
+    boards:
+      title: '网站版块'
+      empty: '尚无版块，在下方创建板块！'
+      new: '新建'
+      form:
+        name: '版块名称'
+        description: '版块描述 (可选)'
+    post_statuses:
+      title: '帖子状态'
+      empty: '尚无状态，在下方创建状态！'
+      new: '新建'
+      form:
+        name: '状态名称'
+    roadmap:
+      title: '开发路线'
+      title2: '不在路线图中'
+      empty: '路线图是空的。'
+      help: '您可以从下方拖拽状态添加到开发路线图中。如果您想要创建新状态或改变顺序，请前往 网站设置 > 帖子状态。'
+    appearance:
+      title: '外观定制'
+      learn_more: '了解如何自定义外观'
+    users:
+      title: '用户列表'
+      block: '封禁'
+      unblock: '解除封禁'
+      block_confirmation: "%{name} 在被解除封禁前无法登录，您确定吗？"
+      unblock_confirmation: "%{name} 将可以登录和发表反馈，您确定吗？"
+      role_to_moderator_confirmation: "%{name} 将可以管理帖子和用户，请仅在信任此人的情况下继续。您确定吗？"
+      role_to_admin_confirmation: "%{name} 将拥有和您同等的权限，包括把您降级和封禁，请仅在信任此人的情况下继续。 您确定吗？"
+      role_user: '用户'
+      role_moderator: '版主'
+      role_admin: '管理员'
+      role_owner: '所有者'
+      status_active: '已启用'
+      status_blocked: '已封禁'
+      status_deleted: '已删除'
+    authentication:
+      title: '身份验证'
+      learn_more: '了解如何配置自定义 OAuth 提供者'
+      oauth_subtitle: 'OAuth 提供者'
+      default_oauth: '默认 OAuth 提供者'
+      copy_url: '复制网址'
+      test_page:
+        title: '%{name} OAuth 测试结果'
+        fetched_user_data: '已获取的用户数据'
+        found: '已找到'
+        summary: '总结'
+        valid_configuration: '此 OAuth 提供者配置正确！'
+        warning_configuration: '此 OAuth 提供者配置错误，用户 (%{name}) 的默认名称将被使用。'
+        invalid_configuration: '此 OAuth 提供者配置不正确。'
+      form:
+        title_new: '新建 OAuth 提供者'
+        title_edit: '编辑 OAuth 提供者'
+        subtitle_oauth_config: 'OAuth 配置'
+        subtitle_user_profile_config: '用户资料配置'
+        client_secret_help: '出于安全隐藏'
