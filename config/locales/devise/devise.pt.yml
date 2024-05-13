@@ -42,7 +42,7 @@ pt:
       signed_up_but_unconfirmed: "Foi enviada uma mensagem com um link de confirmação para o seu endereço de e-mail. Por favor siga o link para activar a sua conta."
       update_needs_confirmation: "A sua conta foi actualizada com sucesso, mas necessitamos de verificar o seu endereço de correio electrónico. Por favor, verifique os seu e-mail e siga o link para confirmar o seu novo e-mail."
       updated: "A sua conta foi actualizada com sucesso."
-      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+      updated_but_not_signed_in: "Sua conta foi atualizada com sucesso, mas como sua senha foi alterada, você precisa se autenticar novamente"
     sessions:
       signed_in: "Autenticação efectuada com sucesso."
       signed_out: "Saíu da sessão com sucesso."
