@@ -1,0 +1,218 @@
+vi:
+  common:
+    validations:
+      required: '%{attribute} bắt buộc nhập'
+      email: 'Email không hợp lệ'
+      url: 'URL không hợp lệ'
+      password: 'Mật khẩu phải từ %{n} ký tự'
+      password_mismatch: 'Mật khẩu và xác nhận mật khẩu phải giống nhau'
+    forms:
+      auth:
+        email: 'Email'
+        full_name: 'Họ và tên'
+        password: 'Mật khẩu'
+        password_confirmation: 'Xác nhận mật khẩu'
+        new_password: 'Mật khẩu mới'
+        new_password_confirmation: 'Xác nhận mật khẩu mới'
+        current_password: 'Mật khẩu hiện tại'
+        notifications_enabled: 'Thông báo đã bật'
+        notifications_enabled_help: "Nếu tắt, bạn sẽ không nhận được thông báo nào"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
+        remember_me: 'Nhớ mật khẩu'
+        log_in: 'Đăng nhập'
+        sign_up: 'Đăng ký'
+        log_in_with: 'Đăng nhập với %{o_auth}'
+        sign_up_with: 'Đăng ký với %{o_auth}'
+        profile_settings: 'Thông tin cá nhân'
+        update_profile: 'Cập nhật thông tin cá nhân'
+        cancel_account: 'Hủy tài khoản'
+        forgot_password: 'Quên mật khẩu?'
+        confirmation_instructions_not_received: "Không nhận được hướng dẫn xác nhận?"
+        unlock_instructions_not_received: "Không nhận được hướng dẫn mở khóa?"
+        send_reset_password_instructions: 'Gửi hướng dẫn đặt lại mật khẩu'
+        resend_confirmation_instructions: 'Gửi lại hướng dẫn xác nhận'
+        resend_unlock_instructions: 'Gửi lại hướng dẫn mở khóa'
+        change_password: 'Đổi mật khẩu'
+        password_help: 'Ít nhất %{count} ký từ'
+    comments_number:
+      other: '%{count} bình luận'
+    no_status: 'Không có trạng thái'
+    loading: 'Đang tải...'
+    confirmation: 'Bạn có chắc chắn?'
+    unsaved_changes: 'Những thay đổi chưa được lưu sẽ bị mất nếu bạn rời khỏi trang.'
+    edited: 'Đã chỉnh sửa'
+    enabled: 'Đã bật'
+    disabled: 'Đã tắt'
+    copied: 'Đã sao chép!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
+    buttons:
+      new: 'Taọ mới'
+      edit: 'Chỉnh sửa'
+      delete: 'Xóa'
+      cancel: 'Huỷ bỏ'
+      create: 'Tạo mới'
+      update: 'Cập nhật'
+      confirm: 'Xác nhận'
+      back: 'Quay lại'
+      test: 'Kiểm tra'
+      clear: 'Clear'
+    datetime:
+      now: 'Vừa xong'
+      minutes:
+        other: '%{count} phút trước'
+      hours:
+        other: '%{count} giờ trước'
+      days:
+        other: '%{count} ngày trước'
+  header:
+    menu:
+      site_settings: 'Cài đặt trang'
+      profile_settings: 'Thông tin cá nhân'
+      sign_out: 'Đăng xuất'
+    log_in: 'Đăng nhập / Đăng ký'
+  roadmap:
+    title: 'Lộ trình'
+  billing:
+    title: 'Billing'
+  blocked_tenant:
+    title: 'Không gian phản hồi này đã bị chặn'
+  board:
+    new_post:
+      submit_button: 'Gửi phản hồi'
+      cancel_button: 'Huỷ bỏ'
+      login_button: 'Đăng nhập / Đăng ký'
+      title: 'Tiêu đề'
+      description: 'Mô tả (tùy chọn)'
+      no_title: 'Tiêu đề là bắt buộc'
+      submit_success: 'Phản hồi đã được gửi! Bạn sẽ được chuyển hướng sớm...'
+      submit_error: 'Lỗi không xác định, vui lòng thử lại'
+    search_box:
+      title: 'Tim kiếm'
+    filter_box:
+      title: 'Lọc theo trạng thái'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
+    posts_list:
+      empty: 'Không có phản hồi nào'
+  post:
+    edit_button: 'Chỉnh sửa'
+    published_by: 'Đăng bởi'
+    post_status_select:
+      no_post_status: 'Không có trạng thái'
+    updates_box:
+      title: 'Cập nhật'
+      empty: 'Chưa có cập nhật'
+      status_change: 'chuyển trạng thái thành'
+    likes_box:
+      title: 'Thích'
+      empty: 'Chưa có lượt thích'
+    action_box:
+      title: 'Hoạt động'
+      follow_button: 'Theo dõi phản hồi'
+      following_description: "you're receiving notifications about new updates on this post"
+      not_following_description: "you won't receive notifications about this post"
+    comments:
+      title: 'Hoạt động'
+      post_update_badge: 'Cập nhật'
+      reply_button: 'Trả lời'
+    new_comment:
+      body_placeholder: 'Để lại bình luận'
+      submit_button: 'Gửi'
+      is_post_update: 'Đánh dấu là cập nhật'
+      user_notification: 'Người dùng theo dõi bài viết này sẽ nhận thông báo'
+      not_logged_in: 'Bạn cần đăng nhập để gửi bình luận'
+  site_settings:
+    menu:
+      title: 'Cài đặt trang'
+      general: 'Chung'
+      boards: 'Bảng'
+      post_statuses: 'Trạng thái'
+      roadmap: 'Lộ trình'
+      users: 'Người dùng'
+      authentication: 'Xác thực'
+      appearance: 'Appearance'
+    info_box:
+      up_to_date: 'Tất cả thay đổi đã được lưu'
+      error: 'Đã xảy ra lỗi: %{message}'
+      dirty: 'Chưa lưu các thay đổi'
+    general:
+      title: 'Chung'
+      brand_setting_both: 'Cả tên và logo'
+      brand_setting_name: 'Chỉ tên'
+      brand_setting_logo: 'Chỉ logo'
+      brand_setting_none: 'Không có'
+      subtitle_header: 'Đầu trang'
+      collapse_boards_in_header_no_collapse: 'Không bao giờ'
+      collapse_boards_in_header_always_collapse: 'Luôn luôn'
+      subtitle_visibility: 'Hiển thị'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      show_vote_count_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ thấy số phiếu bầu của các bài viết. Điều này có thể khuyến khích người dùng bình chọn cho những bài viết đã phổ biến, dẫn đến hiệu ứng tuyết.'
+      show_vote_button_in_board_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ có thể bình chọn cho các bài viết từ trang bảng. Điều này có thể khuyến khích người dùng bình chọn cho nhiều bài viết hơn, dẫn đến một số lượng phiếu bầu cao hơn nhưng ý nghĩa thấp hơn.'
+    boards:
+      title: 'Bảng'
+      empty: 'Không có bảng nào. Tạo mới dưới đây!'
+      new: 'Mới'
+      form:
+        name: 'Tên bảng'
+        description: 'Mô tả bảng (tùy chọn)'
+    post_statuses:
+      title: 'Trạng thái'
+      empty: 'Không có trạng thái nào. Tạo mới dưới đây!'
+      new: 'Mới'
+      form:
+        name: 'Tên trạng thái'
+    roadmap:
+      title: 'Lộ trình'
+      title2: 'Không có trong lộ trình'
+      empty: 'Lộ trình rỗng.'
+      help: 'Bạn có thể thêm trạng thái vào lộ trình bằng cách kéo chúng từ phần dưới. Nếu bạn muốn tạo trạng thái mới hoặc thay đổi thứ tự, hãy đến Cài đặt trang > Trạng thái.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
+    users:
+      title: 'Người dùng'
+      block: 'Chặn'
+      unblock: 'Mở chặn'
+      block_confirmation: "%{name} sẽ không thể đăng nhập cho đến khi bị mở chặn. Bạn có chắc chắn?"
+      unblock_confirmation: "%{name} sẽ có thể đăng nhập và gửi phản hồi. Bạn có chắc chắn?"
+      role_to_moderator_confirmation: "%{name} sẽ có thể quản lý bài viết và người dùng. Tiếp tục chỉ nếu bạn tin tưởng người này. Bạn có chắc chắn?"
+      role_to_admin_confirmation: "%{name} sẽ có thể quản lý bảng, bài viết, trạng thái, người dùng và nhiều hơn nữa. Tiếp tục chỉ nếu bạn tin tưởng người này. Bạn có chắc chắn?"
+      role_user: 'Người dùng'
+      role_moderator: 'Người kiểm duyệt'
+      role_admin: 'Quản trị viên'
+      role_owner: 'Chủ sở hữu'
+      status_active: 'Hoạt động'
+      status_blocked: 'Bị chặn'
+      status_deleted: 'Đã xóa'
+    authentication:
+      title: 'Xác thực'
+      learn_more: 'Learn how to configure custom OAuth providers'
+      oauth_subtitle: 'OAuth Providers'
+      default_oauth: 'Default OAuth provider'
+      copy_url: 'Sao chép URL'
+      test_page:
+        title: 'Kết quả kiểm tra OAuth %{name}'
+        fetched_user_data: 'Dữ liệu người dùng đã được truy vấn'
+        found: 'Tìm thấy'
+        summary: 'Tóm tắt'
+        valid_configuration: 'OAuth Provider này đã được cấu hình đúng!'
+        warning_configuration: 'OAuth Provider này đã được cấu hình đúng, nhưng một tên mặc định cho người dùng (%{name}) sẽ được sử dụng.'
+        invalid_configuration: 'OAuth Provider này KHÔNG được cấu hình đúng.'
+      form:
+        title_new: 'OAuth Provider mới'
+        title_edit: 'Chỉnh sửa OAuth Provider'
+        subtitle_oauth_config: 'Cấu hình OAuth'
+        subtitle_user_profile_config: 'Cấu hình Thông tin người dùng'
+        client_secret_help: 'đã ẩn vì mục đích bảo mật'
