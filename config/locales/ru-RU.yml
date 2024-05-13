@@ -1,0 +1,230 @@
+ru:
+  common:
+    validations:
+      required: 'Необходимо заполнить %{attribute}'
+      email: 'Неправильный адрес электронной почты'
+      url: 'Неверный URL-адрес'
+      password: 'Пароль должен содержать не менее %{n} символов'
+      password_mismatch: 'Пароль и подтверждение пароля должны совпадать'
+    forms:
+      auth:
+        email: 'Email'
+        full_name: 'Полное имя'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        new_password: 'Новый пароль'
+        new_password_confirmation: 'Подтверждение нового пароля'
+        current_password: 'Текущий пароль'
+        notifications_enabled: 'Уведомления включены'
+        notifications_enabled_help: "если отключено, вы не получите никаких уведомлений"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
+        remember_me: 'Запомнить'
+        log_in: 'Войти'
+        sign_up: 'Зарегистрироваться'
+        log_in_with: 'Войти с помощью %{o_auth}'
+        sign_up_with: 'Регистрация с помощью %{o_auth}'
+        profile_settings: 'Настройки профиля'
+        update_profile: 'Обновить профиль'
+        cancel_account: 'Закрыть учетную запись'
+        forgot_password: 'Забыли пароль?'
+        confirmation_instructions_not_received: "Не получили подтверждение?"
+        unlock_instructions_not_received: "Не получили инструкции по разблокировке?"
+        send_reset_password_instructions: 'Отправьте мне инструкции по сбросу пароля'
+        resend_confirmation_instructions: 'Отправить подтверждение инструкции'
+        resend_unlock_instructions: 'Отправить письмо для разблокирования'
+        change_password: 'Изменить пароль'
+        password_help: 'минимальное количство знаков %{count} '
+    comments_number:
+      one: '1 комментарий'
+      few: '%{count} комментариев'
+      many: '%{count} комментариев'
+      other: '%{count} комментариев'
+    no_status: 'Нет статуса'
+    loading: 'Загрузка...'
+    confirmation: 'Вы уверены?'
+    unsaved_changes: 'Несохраненные изменения будут потеряны, если вы сейчас покинете эту страницу.'
+    edited: 'Отредактировано'
+    enabled: 'Включено'
+    disabled: 'Отключено'
+    copied: 'Скопировано!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
+    buttons:
+      new: 'Новый'
+      edit: 'Редактировать'
+      delete: 'Удалить'
+      cancel: 'Отмена'
+      create: 'Создать'
+      update: 'Сохранить'
+      confirm: 'Подтвердить'
+      back: 'Назад'
+      test: 'Тест'
+      clear: 'Clear'
+    datetime:
+      now: 'только что'
+      minutes:
+        one: '1 минута назад'
+        few: '%{count} минут назад'
+        many: '%{count} минут назад'
+        other: '%{count} минут назад'
+      hours:
+        one: '1 ч назад'
+        few: '%{count} часа назад'
+        many: '%{count} часа назад'
+        other: '%{count} часа назад'
+      days:
+        one: '1 день назад'
+        few: '%{count} д. назад'
+        many: '%{count} д. назад'
+        other: '%{count} д. назад'
+  header:
+    menu:
+      site_settings: 'Настройки сайта'
+      profile_settings: 'Настройки профиля'
+      sign_out: 'Выйти'
+    log_in: 'Войти / Зарегистрироваться'
+  roadmap:
+    title: 'Дорожная Карта'
+  billing:
+    title: 'Billing'
+  blocked_tenant:
+    title: 'Сообщение обратной связи было сохранено'
+  board:
+    new_post:
+      submit_button: 'Добавить отзыв'
+      cancel_button: 'Отмена'
+      login_button: 'Войти / Зарегистрироваться'
+      title: 'Заголовок'
+      description: 'Описание (опционально)'
+      no_title: 'Поле обязательное для заполнения'
+      submit_success: 'Отзыв опубликован! Вы будете перенаправлены в ближайшее время...'
+      submit_error: 'Произошла неизвестная ошибка, попробуйте еще раз'
+    search_box:
+      title: 'Поиск'
+    filter_box:
+      title: 'Фильтр по статусу'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
+    posts_list:
+      empty: 'Нет публикаций'
+  post:
+    edit_button: 'Редактировать'
+    published_by: 'Опубликован'
+    post_status_select:
+      no_post_status: 'Нет'
+    updates_box:
+      title: 'Обновления'
+      empty: 'Пока здесь пусто'
+      status_change: 'изменил статус на'
+    likes_box:
+      title: 'Нравится'
+      empty: 'Нет отметок "нравится"'
+    action_box:
+      title: 'Действия'
+      follow_button: 'Подписаться на пост'
+      following_description: "вы получаете уведомления о новых обновлениях на этот пост"
+      not_following_description: "Вы не подписаны на уведомления об активности в этом посте."
+    comments:
+      title: 'Активность'
+      post_update_badge: 'Обновление'
+      reply_button: 'Ответить'
+    new_comment:
+      body_placeholder: 'Оставить комментарий'
+      submit_button: 'Отправить'
+      is_post_update: 'Пометить как обновление'
+      user_notification: 'Пользователи, подписавшиеся на это сообщение, будут уведомлены'
+      not_logged_in: 'Для просмотра этого содержимого необходимо войти в систему.'
+  site_settings:
+    menu:
+      title: 'Настройки сайта'
+      general: 'Общее'
+      boards: 'Доски'
+      post_statuses: 'Статусы'
+      roadmap: 'Дорожная Карта'
+      users: 'Пользователи'
+      authentication: 'Аутентификация'
+      appearance: 'Appearance'
+    info_box:
+      up_to_date: 'Все изменения сохранены'
+      error: 'Произошла ошибка: %{message}'
+      dirty: 'Не удалось сохранить изменения'
+    general:
+      title: 'Общее'
+      brand_setting_both: 'Название и логотип'
+      brand_setting_name: 'Только название'
+      brand_setting_logo: 'Только логотип'
+      brand_setting_none: 'Нет'
+      subtitle_header: 'Заголовок'
+      collapse_boards_in_header_no_collapse: 'Никогда'
+      collapse_boards_in_header_always_collapse: 'Всегда'
+      subtitle_visibility: 'Видимость'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      show_vote_count_help: 'При включении этой настройки, пользователи смогут видеть количество голосов. Это может стимулировать пользователей голосовать за уже популярные записи, приводя к эффекту снежного кома (эффект накопления и усиления).'
+      show_vote_button_in_board_help: 'Если включить эту опцию, пользователи смогут голосовать за сообщения со страницы форума. Это может стимулировать пользователей голосовать за больше записей, что приведет к большему количеству голосов, но менее значимому результату.'
+    boards:
+      title: 'Доски'
+      empty: 'Доски отсутствуют. Создайте доску!'
+      new: 'Новый'
+      form:
+        name: 'Название доски'
+        description: 'Описание доски (опционально)'
+    post_statuses:
+      title: 'Статусы'
+      empty: 'Нет статусов. Создайте новую!'
+      new: 'Новый'
+      form:
+        name: 'Название статуса'
+    roadmap:
+      title: 'Дорожная Карта'
+      title2: 'Не в дорожной карте'
+      empty: 'Дорожная карта пуста.'
+      help: 'Вы можете добавить статусы к дорожной карте, перетаскивая их из раздела ниже. Если вы хотите создать новый статус или изменить его порядок, перейдите в Настройки сайта > Статусы.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
+    users:
+      title: 'Пользователи'
+      block: 'Блокировка'
+      unblock: 'Разблокировать'
+      block_confirmation: "%{name} не сможет войти, пока он не будет разблокирован. Вы уверены?"
+      unblock_confirmation: "%{name} сможет войти и отправить отзыв. Вы уверены?"
+      role_to_moderator_confirmation: "%{name} сможет управлять записями и пользователями. Продолжать, только если вы доверяете этому человеку. Вы уверены?"
+      role_to_admin_confirmation: "%{name} будет обладать теми же привилегиями, что и вы, так что они могут даже понизить или заблокировать вас. Продолжайте только если вы действительно доверяете %{name}. Вы уверены?"
+      role_user: 'Пользователь'
+      role_moderator: 'Модератор'
+      role_admin: 'Администратор'
+      role_owner: 'Владелец'
+      status_active: 'Активный'
+      status_blocked: 'Заблокированный'
+      status_deleted: 'Удаленный'
+    authentication:
+      title: 'Аутентификация'
+      learn_more: 'Learn how to configure custom OAuth providers'
+      oauth_subtitle: 'Поставщики OAuth'
+      default_oauth: 'Default OAuth provider'
+      copy_url: 'Копировать ссылку'
+      test_page:
+        title: 'Результаты теста OAuth %{name}'
+        fetched_user_data: 'Извлеченные данные пользователя'
+        found: 'Найдено'
+        summary: 'Сводка'
+        valid_configuration: 'Этот OAuth провайдер правильно настроен!'
+        warning_configuration: 'Этот OAuth провайдер если правильно настроен, но будет использоваться имя по умолчанию для пользователей (%{name}).'
+        invalid_configuration: 'Этот OAuth провайдер неправильно настроен.'
+      form:
+        title_new: 'Новый поставщики OAuth'
+        title_edit: 'Редактировать OAuth провайдера'
+        subtitle_oauth_config: 'Конфигурация OAuth'
+        subtitle_user_profile_config: 'Настройка профиля пользователя'
+        client_secret_help: 'скрытые в целях безопасности'
