@@ -1,0 +1,144 @@
+de:
+  errors:
+    unknown: 'Ein unbekannter Fehler ist aufgetreten'
+    unauthorized: 'Du bist nicht autorisiert'
+    not_logged_in: 'Du musst angemeldet sein, um auf diese Seite zugreifen zu können'
+    not_enough_privileges: 'Du hast nicht die Berechtigung, auf diese Seite zuzugreifen'
+    user_blocked_or_deleted: 'Du kannst nicht auf dein Konto zugreifen, da es gesperrt oder gelöscht wurde.'
+    o_auth_login_error: 'Beim Einloggen mit %{name} ist ein Fehler aufgetreten. Bitte wende dich an den Administrator oder versuche einen anderen Anbieter.'
+    board:
+      update_order: 'Beim Neuordnen der Boards ist ein Fehler aufgetreten'
+    post_status:
+      update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
+  defaults:
+    user_full_name: 'Anonymer Benutzer'
+    deleted_user_full_name: 'Deleted User'
+  mailers:
+    devise:
+      welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
+      opening_greeting: 'Hallo %{email}!'
+      confirmation_instructions:
+        body: 'Du kannst deine Konto-E-Mail über den folgenden Link bestätigen:'
+        action: 'Mein Konto bestätigen'
+      email_changed:
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wird."
+        body2: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse in %{email} geändert wurde."
+      password_change:
+        body: "Wir kontaktieren dich, um dich darüber zu informieren, dass dein Passwort geändert wurde."
+      reset_password:
+        body: 'Jemand hat einen Link angefordert, um dein Passwort zu ändern. Du kannst dies über den unten stehenden Link tun.'
+        body2: "Wenn du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        body3: "Dein Passwort ändert sich erst, wenn du auf den obigen Link zugreifst und ein neues erstellst."
+        action: 'Mein Passwort ändern'
+    user:
+      opening_greeting: 'Hello %{name}!'
+      closing_greeting: 'Habe einen schönen Tag!'
+      learn_more: 'Klick hier um mehr zu erfahren'
+      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
+      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
+      unsubscribe_link: 'here'
+      notify_post_owner:
+        subject: '[%{site_name}] New comment on "%{post}"'
+        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+      notify_comment_owner:
+        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
+        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+      notify_follower_of_post_update:
+        subject: '[%{site_name}] New update for post "%{post}"'
+        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+      notify_follower_of_post_status_change:
+        subject: '[%{site_name}] Status change on post "%{post}"'
+        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+  activerecord:
+    models:
+      board:
+        one: 'Board'
+        other: 'Boards'
+      comment:
+        one: 'Kommentar'
+        other: 'Kommentare'
+      like:
+        one: 'Stimme'
+        other: 'Stimmen'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuths'
+      post_status:
+        one: 'Status'
+        other: 'Status'
+      post:
+        one: 'Eintrag'
+        other: 'Einträge'
+      user:
+        one: 'Nutzer/in'
+        other: 'Nutzer/innen'
+    attributes:
+      board:
+        name: 'Name'
+        description: 'Beschreibung'
+        order: 'Sortierung'
+      comment:
+        body: 'Body'
+        is_post_update: 'Beitragsdatum'
+        user_id: 'Autor'
+        post_id: 'Beitrag'
+        parent_id: 'Übergeordneter Kommentar'
+      follow:
+        user_id: 'Benutzer/in'
+        post_id: 'Beitrag'
+      like:
+        user_id: 'Benutzer'
+        post_id: 'Beitrag'
+      o_auth:
+        name: 'Name'
+        logo: 'Logo'
+        is_enabled: 'Aktiviert'
+        client_id: 'Client-ID'
+        client_secret: 'Client-Secret'
+        authorize_url: 'URL autorisieren'
+        token_url: 'Token-URL'
+        profile_url: 'Profil-URL'
+        scope: 'Gültigkeitsbereich'
+        json_user_name_path: 'JSON-Pfad zum Benutzernamen'
+        json_user_email_path: 'JSON-Pfad zur E-Mail-Adresse'
+      post_status:
+        name: 'Name'
+        color: 'Farbe'
+        order: 'Sortierung'
+        show_in_roadmap: 'In Roadmap anzeigen'
+      post:
+        title: 'Titel'
+        description: 'Beschreibung'
+        board_id: 'Board posten'
+        user_id: 'Beitragsautor'
+        post_status_id: 'Beitragsstatus'
+      tenant:
+        site_name: 'Seitenname'
+        site_logo: 'Seitenlogo'
+        subdomain: 'Subdomain'
+        locale: 'Sprache'
+        custom_domain: 'Custom domain'
+      tenant_setting:
+        brand_display: 'Anzeige'
+        show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
+        show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
+        show_powered_by: 'Show "Powered by Astuto"'
+        root_board_id: 'Root-Page'
+        show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
+        collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
+        custom_css: 'Custom CSS'
+      user:
+        email: 'E-Mail'
+        full_name: 'Voller Name'
+        password: 'Passwort'
+        password_confirmation: 'Passwort Bestätigung'
+        role: 'Rolle'
+        notifications_enabled: 'Benachrichtigungen aktiviert'
+    errors:
+      messages:
+        invalid: 'ist gültig'
+        required: 'ist obligatorisch'
+        blank: 'darf nicht leer sein'
+        taken: 'wird bereits verwendet'
+        too_short: 'ist zu kurz (mindestens %{count} Zeichen)'
+        too_long: 'ist zu lang (maximal %{count} Zeichen)'
