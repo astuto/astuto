@@ -1,0 +1,63 @@
+pt:
+  devise:
+    confirmations:
+      confirmed: "A sua conta foi confirmada com sucesso."
+      send_instructions: "Dentro de alguns minutos irá receber um email com instruções para confirmar sua conta."
+      send_paranoid_instructions: "Se o seu e-mail existir na nossa base de dados, irá receber dentro de alguns minutos um email com instruções para confirmar a sua conta."
+    failure:
+      already_authenticated: "Já se encontra autenticado."
+      inactive: "A sua conta ainda não está activa."
+      invalid: "%{authentication_keys} ou palavra-passe inválidos."
+      locked: "A sua conta está bloqueada."
+      last_attempt: "Tem mais uma tenativa antes de a sua conta ser bloqueada."
+      not_found_in_database: "%{authentication_keys} ou palavra-passe inválidos."
+      timeout: "A sua sessão expirou, por favor autentique-se novamente para continuar."
+      unauthenticated: "Antes de continuar tem de se autenticar ou efectuar um registo."
+      unconfirmed: "Tem de confirmar a sua conta antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruções de confirmação"
+      reset_password_instructions:
+        subject: "Instruções de recuperação da palavra-passe"
+      unlock_instructions:
+        subject: "Instruções de desbloqueio"
+      email_changed:
+        subject: "Email Alterado"
+      password_change:
+        subject: "Palavra-passe alterada"
+    omniauth_callbacks:
+      failure: "Não foi possível autenticá-lo em %{kind} por causa de \"%{reason}\"."
+      success: "Autenticado com sucesso na conta %{kind}."
+    passwords:
+      no_token: "Não pode aceder a esta página sem seguir o link presente no e-mail de recuperação da palavra-passe. Se tiver seguido o link present no e-mail de recuperação da palavra-passe, por favor verifique se está a utilizar o URL completo que lhe foi enviado."
+      send_instructions: "Dentro de alguns minutos irá receber um email com instruções de reinicialização da palavra-passe."
+      send_paranoid_instructions: "Se o seu e-mail existir na nossa base de dados, irá receber dentro de alguns minutos um e-mail com instruções para recuperar a sua palavra-passe."
+      updated: "A sua palavra-passe foi alterada com sucesso. Agora está autenticado."
+      updated_not_active: "A sua palavra-passw foi alterada com sucesso."
+    registrations:
+      destroyed: "A sua conta foi cancelada com sucesso. Esperamos voltar a vê-lo brevemente."
+      signed_up: "Bem-vindo! A autenticação foi efectuada com sucesso."
+      signed_up_but_inactive: "Efectuou o registo com sucesso. Porém, não pudémos autenticá-lo porque a sua conta ainda não foi activada."
+      signed_up_but_locked: "Efectuou o registo com sucesso. Porém, não pudémos autenticá-lo porque a sua conta está bloqueada."
+      signed_up_but_unconfirmed: "Foi enviada uma mensagem com um link de confirmação para o seu endereço de e-mail. Por favor siga o link para activar a sua conta."
+      update_needs_confirmation: "A sua conta foi actualizada com sucesso, mas necessitamos de verificar o seu endereço de correio electrónico. Por favor, verifique os seu e-mail e siga o link para confirmar o seu novo e-mail."
+      updated: "A sua conta foi actualizada com sucesso."
+      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+    sessions:
+      signed_in: "Autenticação efectuada com sucesso."
+      signed_out: "Saíu da sessão com sucesso."
+      already_signed_out: "Saíu da sessão com sucesso."
+    unlocks:
+      send_instructions: "Dentro de alguns minutos irá receber um email com as instruções para desbloquear a sua conta."
+      send_paranoid_instructions: "Se a sua conta existir, irá receber dentro de alguns minutos um email com instruções para a desbloquear."
+      unlocked: "A sua conta foi desbloqueada com sucesso. Por favor autentique-se para continuar."
+  errors:
+    messages:
+      already_confirmed: "já foi confirmada, por favor tente efectuar a autenticação"
+      confirmation_period_expired: "necessita de ser confirmado dentro de %{period}, por favor solicite uma nova"
+      expired: "expirou, por favor solicite uma nova"
+      not_found: "não foi encontrada"
+      not_locked: "não foi bloqueada"
+      not_saved:
+        one: "1 erro impediu a gravação de %{resource}:"
+        other: "%{count} erros impediram a gravação de %{resource}:"
