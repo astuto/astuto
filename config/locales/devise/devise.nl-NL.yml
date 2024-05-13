@@ -1,0 +1,63 @@
+nl:
+  devise:
+    confirmations:
+      confirmed: "Je account is bevestigd."
+      send_instructions: "Er is een mail onderweg waarmee je je account kunt bevestigen."
+      send_paranoid_instructions: "Als je een account hebt voor dit e-mailadres, ontvang je een mail waarmee je je account kunt bevestigen."
+    failure:
+      already_authenticated: "Je bent al ingelogd."
+      inactive: "Je account is nog niet actief."
+      invalid: "Je %{authentication_keys} of wachtwoord is ongeldig."
+      locked: "Je account is geblokkeerd."
+      last_attempt: "Je kan het nog één keer proberen voordat je account wordt geblokkeerd."
+      not_found_in_database: "Je %{authentication_keys} of wachtwoord is ongeldig."
+      timeout: "De sessie is verlopen. Log opnieuw in."
+      unauthenticated: "Log eerst in of maak een account."
+      unconfirmed: "Bevestig eerst je e-mailadres."
+    mailer:
+      confirmation_instructions:
+        subject: "Bevestig je e-mailadres om je account te activeren."
+      reset_password_instructions:
+        subject: "Een nieuw wachtwoord instellen."
+      unlock_instructions:
+        subject: "De blokkering van je account opheffen."
+      email_changed:
+        subject: "Je e-mailadres is aangepast."
+      password_change:
+        subject: "Je wachtwoord is aangepast."
+    omniauth_callbacks:
+      failure: "Inloggen met je %{kind} account is niet gelukt, doordat \\\"%{reason}\\\"."
+      success: "Je bent nu ingelogd met je %{kind} account."
+    passwords:
+      no_token: "Je kunt je wachtwoord hier alleen veranderen vanuit de mail die je is toegestuurd. Klik op de link in de mail of kopieer de hele link in de adresbalk.\""
+      send_instructions: "Er is een mail onderweg met uitleg hoe je je wachtwoord kunt updaten."
+      send_paranoid_instructions: "Als je een account hebt voor dit e-mailadres, krijg je een mail waarmee je je wachtwoord kunt updaten.\""
+      updated: "Het updaten van je wachtwoord is gelukt en je bent nu ingelogd."
+      updated_not_active: "Het updaten van je wachtwoord is gelukt."
+    registrations:
+      destroyed: "Je account is verwijderd. Dag!"
+      signed_up: "Je account is aangemaakt. Welkom!"
+      signed_up_but_inactive: "Je account is aangemaakt. Je account is nog niet actief en daarom ben je niet automatisch ingelogd."
+      signed_up_but_locked: "Je account is aangemaakt, maar het is geblokkeerd."
+      signed_up_but_unconfirmed: "Er is een bevestigingsmail onderweg. Klik op de link in de mail om je e-mailadres te bevestigen."
+      update_needs_confirmation: "Het updaten van je account is gelukt. Je hoeft alleen nog je e-mailadres te bevestigen: klik op de link in de bevestigingsmail."
+      updated: "Het updaten van je account is gelukt."
+      updated_but_not_signed_in: "Het updaten van je account is gelukt. Je kunt nu inloggen met je nieuwe wachtwoord."
+    sessions:
+      signed_in: "Je bent nu ingelogd."
+      signed_out: "Je bent nu uitgelogd."
+      already_signed_out: "Je was al uitgelogd."
+    unlocks:
+      send_instructions: "Er is een mail onderweg waarmee je de blokkering van je account kunt opheffen."
+      send_paranoid_instructions: "Als je een account hebt voor dit e-mailadres, krijg je een mail waarmee je de blokkering van je account kunt opheffen."
+      unlocked: "Je account werkt weer. Je kunt nu inloggen."
+  errors:
+    messages:
+      already_confirmed: "was al bevestigd. Je kunt meteen inloggen."
+      confirmation_period_expired: "is niet binnen de vereiste %{period} bevestigd. Vraag een nieuwe bevestigingsmail aan."
+      expired: "is niet op tijd bevestigd."
+      not_found: "bestaat niet."
+      not_locked: "is niet geblokkeerd."
+      not_saved:
+        one: "De %{resource} kon niet worden opgeslagen vanwege een fout:"
+        other: "De %{resource} kon niet worden opgeslagen vanwege %{count} fouten:"
