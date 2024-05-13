@@ -1,0 +1,144 @@
+fr:
+  errors:
+    unknown: 'L''opération a échoué pour une raison inconnue'
+    unauthorized: 'Vous n’êtes pas autorisé'
+    not_logged_in: 'Vous devez être connecté pour accéder à cette page'
+    not_enough_privileges: 'Vous n''avez pas les privilèges pour accéder à cette page'
+    user_blocked_or_deleted: 'Vous ne pouvez pas accéder à votre compte parce qu''il a été bloqué ou supprimé.'
+    o_auth_login_error: 'Une erreur s''est produite lors de la connexion avec %{name}. Veuillez contacter l''administrateur du site ou essayer un autre fournisseur.'
+    board:
+      update_order: 'Il y a eu une erreur dans la réorganisation des panneaux'
+    post_status:
+      update_order: 'Il y a eu une erreur dans la réorganisation des statuts'
+  defaults:
+    user_full_name: 'Utilisateur anonyme'
+    deleted_user_full_name: 'Utilisateur supprimé'
+  mailers:
+    devise:
+      welcome_greeting: 'Bienvenue sur %{site_name}, %{email} !'
+      opening_greeting: 'Bonjour %{email} !'
+      confirmation_instructions:
+        body: 'Vous pouvez confirmer l''email de votre compte en cliquant sur le lien ci-dessous :'
+        action: 'Confirmer mon compte'
+      email_changed:
+        body: "Nous vous contactons pour vous informer que votre adresse e-mail va être changée en %{email}."
+        body2: "Nous vous contactons pour vous informer que votre adresse électronique a été changée en %{email}."
+      password_change:
+        body: "Nous vous contactons pour vous informer que votre mot de passe a été modifié."
+      reset_password:
+        body: 'Quelqu''un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire en cliquant sur le lien ci-dessous.'
+        body2: "Si vous ne l'avez pas demandé, veuillez ignorer cet e-mail."
+        body3: "Votre mot de passe ne changera pas tant que vous n'aurez pas accédé au lien ci-dessus et créé un nouveau mot de passe."
+        action: 'Changer mon mot de passe'
+    user:
+      opening_greeting: 'Bonjour %{name} !'
+      closing_greeting: 'Passez une bonne journée !'
+      learn_more: 'Cliquez ici pour en savoir plus'
+      unsubscribe_from_post_html: 'Agacé ? Vous pouvez désactiver les notifications pour ce post %{href}'
+      unsubscribe_from_site_html: 'Agacé ? Vous pouvez désactiver toutes les notifications %{href}'
+      unsubscribe_link: 'ici'
+      notify_post_owner:
+        subject: '[%{site_name}] Nouveau commentaire sur "%{post}"'
+        body_html: 'Il y a un nouveau commentaire de <b>%{user}</b> sur votre publication <b>%{post}</b>'
+      notify_comment_owner:
+        subject: '[%{site_name}] Nouvelle réponse à votre commentaire de %{post}'
+        body_html: 'Il y a une nouvelle réponse par <b>%{user}</b> à votre commentaire sur le post <b>%{post}</b>'
+      notify_follower_of_post_update:
+        subject: '[%{site_name}] Nouvelle mise à jour pour la publication" %{post}"'
+        body_html: 'Il y a une nouvelle mise à jour sur la publication que vous suivez <b>%{post}</b>'
+      notify_follower_of_post_status_change:
+        subject: '[%{site_name}] Statut changé sur le post "%{post}"'
+        body_html: 'Il y a une nouvelle mise à jour sur la publication que vous suivez <b>%{post}</b>'
+  activerecord:
+    models:
+      board:
+        one: 'Panneau'
+        other: 'Tableaux'
+      comment:
+        one: 'Commentaire'
+        other: 'Commentaires'
+      like:
+        one: 'Vote'
+        other: 'Votes'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuth'
+      post_status:
+        one: 'Status'
+        other: 'Statuts'
+      post:
+        one: 'Poster'
+        other: 'Publications'
+      user:
+        one: 'Utilisateur'
+        other: 'Utilisateurs'
+    attributes:
+      board:
+        name: 'Nom'
+        description: 'Description'
+        order: 'Ordre'
+      comment:
+        body: 'Corps'
+        is_post_update: 'Publication mise à jour'
+        user_id: 'Auteur'
+        post_id: 'Publication'
+        parent_id: 'Commentaire parent'
+      follow:
+        user_id: 'Utilisateur'
+        post_id: 'Publication'
+      like:
+        user_id: 'Utilisateur'
+        post_id: 'Publication'
+      o_auth:
+        name: 'Nom'
+        logo: 'Logo'
+        is_enabled: 'Activé'
+        client_id: 'ID client'
+        client_secret: 'Secret client'
+        authorize_url: 'Autoriser l''URL'
+        token_url: 'Token URL'
+        profile_url: 'URL du Profil'
+        scope: 'Portée'
+        json_user_name_path: 'Chemin JSON du nom d''utilisateur'
+        json_user_email_path: 'Chemin JSON de l''adresse email'
+      post_status:
+        name: 'Nom'
+        color: 'Couleur '
+        order: 'Ordre'
+        show_in_roadmap: 'Voir dans la feuille de route'
+      post:
+        title: 'Titre'
+        description: 'Description'
+        board_id: 'Tableau des publications'
+        user_id: 'Auteur de la publication'
+        post_status_id: 'Statut de la publication'
+      tenant:
+        site_name: 'Nom du site'
+        site_logo: 'Logo du site'
+        subdomain: 'Sous-domaine'
+        locale: 'Langue'
+        custom_domain: 'Domaine personnalisé'
+      tenant_setting:
+        brand_display: 'Affichage'
+        show_vote_count: 'Afficher le nombre de votes aux utilisateurs'
+        show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
+        show_powered_by: 'Afficher "Powered by Astuto"'
+        root_board_id: 'Page racine'
+        show_roadmap_in_header: 'Afficher le lien de la roadmap dans l''en-tête'
+        collapse_boards_in_header: 'Fusionner les tableaux dans l''en-tête'
+        custom_css: 'Custom CSS'
+      user:
+        email: 'Email'
+        full_name: 'Nom complet'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmer le mot de passe'
+        role: 'Rôle'
+        notifications_enabled: 'Notifications activées'
+    errors:
+      messages:
+        invalid: 'est invalide'
+        required: 'est obligatoire'
+        blank: 'ne peut pas être vide'
+        taken: 'est déjà utilisé'
+        too_short: 'est trop court (au moins %{count} caractères)'
+        too_long: 'est trop long (pas plus de %{count} caractères)'
