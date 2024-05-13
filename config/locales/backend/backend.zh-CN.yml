@@ -1,0 +1,137 @@
+zh-CN:
+  errors:
+    unknown: '发生了未知错误'
+    unauthorized: '您未被授权'
+    not_logged_in: '您必须登录才能访问该页面'
+    not_enough_privileges: '你没有访问此页面的权限'
+    user_blocked_or_deleted: '您的账户已被封禁或删除，无法访问。'
+    o_auth_login_error: '无法使用 %{name} 登录， 请联系网站管理员或尝试其他方式登录。'
+    board:
+      update_order: '重新排序版块时出错'
+    post_status:
+      update_order: '重新排序状态时出错'
+  defaults:
+    user_full_name: '匿名用户'
+    deleted_user_full_name: 'Deleted User'
+  mailers:
+    devise:
+      welcome_greeting: '欢迎来到 %{site_name}, %{email}!'
+      opening_greeting: '您好 %{email}！'
+      confirmation_instructions:
+        body: '您可以通过以下链接确认您账户的电子邮箱：'
+        action: '确认我的账户'
+      email_changed:
+        body: "我们正在联系您，以通知您的邮箱正在变更至 %{email}"
+        body2: "我们正在联系您，以通知您的邮箱已变更至 %{email}"
+      password_change:
+        body: "我们正在联系您，以通知您的密码已被修改。"
+      reset_password:
+        body: '有人正在请求修改您的密码，你可以通过下面的连接完成此操作。'
+        body2: "如果您未提出此请求，请忽略本邮件。"
+        body3: "在您访问以上链接并创建一个新密码前，您的密码不会更改。"
+        action: '修改我的密码'
+    user:
+      opening_greeting: '您好 %{name}！'
+      closing_greeting: '祝您今天过得愉快！'
+      learn_more: '点击这里了解更多'
+      unsubscribe_from_post_html: '被打扰了？您可以关闭这个帖子的通知 %{href}'
+      unsubscribe_from_site_html: '被打扰了？您可以关闭所有通知 %{href}'
+      unsubscribe_link: '点击这里'
+      notify_post_owner:
+        subject: '[%{site_name}] 帖子有新评论 "%{post}"'
+        body_html: '<b>%{user}</b> 对您的帖子 <b>%{post}</b> 发表了一个新评论'
+      notify_comment_owner:
+        subject: '[%{site_name}] 您的评论有新回复 "%{post}"'
+        body_html: '<b>%{user}</b> 对您在帖子 <b>%{post}</b> 下的评论发表了新回复'
+      notify_follower_of_post_update:
+        subject: '[%{site_name}] 帖子更新 "%{post}"'
+        body_html: '您关注的帖子 <b>%{post}</b> 有新的更新'
+      notify_follower_of_post_status_change:
+        subject: '[%{site_name}] 帖子状态变化 "%{post}"'
+        body_html: '您关注的帖子 <b>%{post}</b> 状态发生改变'
+  activerecord:
+    models:
+      board:
+        other: '版块'
+      comment:
+        other: '评论'
+      like:
+        other: '投票'
+      o_auth:
+        other: 'OAuth 授权'
+      post_status:
+        other: '状态'
+      post:
+        other: '帖子'
+      user:
+        other: '用户'
+    attributes:
+      board:
+        name: '名称'
+        description: '描述'
+        order: '排序'
+      comment:
+        body: '内容'
+        is_post_update: '帖子更新'
+        user_id: '作者'
+        post_id: '帖子'
+        parent_id: '上级评论'
+      follow:
+        user_id: '用户'
+        post_id: '帖子'
+      like:
+        user_id: '用户'
+        post_id: '帖子'
+      o_auth:
+        name: '名称'
+        logo: '图标'
+        is_enabled: '已启用'
+        client_id: '客户端 ID (Client ID)'
+        client_secret: '客户端密钥 (Client secret)'
+        authorize_url: '验证 URL (Authorize URL)'
+        token_url: '令牌 URL (Token URL)'
+        profile_url: '用户信息 URL (Profile URL)'
+        scope: '访问范围 (Scopes)'
+        json_user_name_path: '用户名 JSON 路径'
+        json_user_email_path: '用户邮箱 JSON 路径'
+      post_status:
+        name: '名称'
+        color: '颜色'
+        order: '排序'
+        show_in_roadmap: '在路线图中显示'
+      post:
+        title: '标题'
+        description: '描述'
+        board_id: '帖子版块'
+        user_id: '帖子作者'
+        post_status_id: '帖子状态'
+      tenant:
+        site_name: '网站名称'
+        site_logo: '网站图标'
+        subdomain: '子域名'
+        locale: '语言'
+        custom_domain: 'Custom domain'
+      tenant_setting:
+        brand_display: '显示模式'
+        show_vote_count: '对用户显示投票数'
+        show_vote_button_in_board: '在版块页面显示投票按钮'
+        show_powered_by: '显示 "技术支持: Astuto"'
+        root_board_id: '首页'
+        show_roadmap_in_header: '在页眉显示开发路线图链接'
+        collapse_boards_in_header: '折叠页眉中的版块'
+        custom_css: '自定义 CSS'
+      user:
+        email: '电子邮箱'
+        full_name: '姓名'
+        password: '修改密码'
+        password_confirmation: '确认密码'
+        role: '角色'
+        notifications_enabled: '开启通知'
+    errors:
+      messages:
+        invalid: '无效'
+        required: '是必填项'
+        blank: '不能为空'
+        taken: '已在使用中'
+        too_short: '太短 (最少为 %{count} 个字符)'
+        too_long: '太长 (最多为 %{count} 个字符)'
