@@ -1,0 +1,218 @@
+ko:
+  common:
+    validations:
+      required: '%{attribute} is required'
+      email: 'Invalid email'
+      url: 'Invalid URL'
+      password: 'Password must have at least %{n} characters'
+      password_mismatch: 'Password and password confirmation must match'
+    forms:
+      auth:
+        email: 'Email'
+        full_name: 'Full name'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        new_password: 'New password'
+        new_password_confirmation: 'New password confirmation'
+        current_password: 'Current password'
+        notifications_enabled: 'Notifications enabled'
+        notifications_enabled_help: "if disabled, you won't receive any notification"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
+        remember_me: 'Remember me'
+        log_in: 'Log in'
+        sign_up: 'Sign up'
+        log_in_with: 'Log in with %{o_auth}'
+        sign_up_with: 'Sign up with %{o_auth}'
+        profile_settings: 'Profile settings'
+        update_profile: 'Update profile'
+        cancel_account: 'Cancel account'
+        forgot_password: 'Forgot your password?'
+        confirmation_instructions_not_received: "Didn't receive confirmation instructions?"
+        unlock_instructions_not_received: "Didn't receive unlock instructions?"
+        send_reset_password_instructions: 'Send me reset password instructions'
+        resend_confirmation_instructions: 'Resend confirmation instructions'
+        resend_unlock_instructions: 'Resend unlock instructions'
+        change_password: 'Change password'
+        password_help: '%{count} characters minimum'
+    comments_number:
+      other: '%{count} comments'
+    no_status: 'No status'
+    loading: 'Loading...'
+    confirmation: 'Are you sure?'
+    unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
+    edited: 'Edited'
+    enabled: 'Enabled'
+    disabled: 'Disabled'
+    copied: 'Copied!'
+    user_staff: 'Staff'
+    powered_by: 'Powered by'
+    buttons:
+      new: 'New'
+      edit: 'Edit'
+      delete: 'Delete'
+      cancel: 'Cancel'
+      create: 'Create'
+      update: 'Save'
+      confirm: 'Confirm'
+      back: 'Back'
+      test: 'Test'
+      clear: 'Clear'
+    datetime:
+      now: 'just now'
+      minutes:
+        other: '%{count} minutes ago'
+      hours:
+        other: '%{count} hours ago'
+      days:
+        other: '%{count} days ago'
+  header:
+    menu:
+      site_settings: 'Site settings'
+      profile_settings: 'Profile settings'
+      sign_out: 'Sign out'
+    log_in: 'Log in / Sign up'
+  roadmap:
+    title: 'Roadmap'
+  billing:
+    title: 'Billing'
+  blocked_tenant:
+    title: 'This feedback space has been blocked'
+  board:
+    new_post:
+      submit_button: 'Submit feedback'
+      cancel_button: 'Cancel'
+      login_button: 'Log in / Sign up'
+      title: 'Title'
+      description: 'Description (optional)'
+      no_title: 'Title field is mandatory'
+      submit_success: 'Feedback published! You will be redirected soon...'
+      submit_error: 'An unknown error occurred, try again'
+    search_box:
+      title: 'Search'
+    filter_box:
+      title: 'Filter by status'
+    sort_by_box:
+      title: 'Sort by'
+      trending: 'Trending'
+      newest: 'Newest'
+      most_voted: 'Most voted'
+      oldest: 'Oldest'
+    filter_by_date_box:
+      title: 'Filter by date'
+      from_label: 'From'
+      to_label: 'To'
+    posts_list:
+      empty: 'There are no posts'
+  post:
+    edit_button: 'Edit'
+    published_by: 'Published by'
+    post_status_select:
+      no_post_status: 'None'
+    updates_box:
+      title: 'Updates'
+      empty: 'There are no updates yet'
+      status_change: 'changed status to'
+    likes_box:
+      title: 'Likes'
+      empty: 'There are no likes yet'
+    action_box:
+      title: 'Actions'
+      follow_button: 'Follow post'
+      following_description: "you're receiving notifications about new updates on this post"
+      not_following_description: "you won't receive notifications about this post"
+    comments:
+      title: 'Activity'
+      post_update_badge: 'Update'
+      reply_button: 'Reply'
+    new_comment:
+      body_placeholder: 'Leave a comment'
+      submit_button: 'Submit'
+      is_post_update: 'Mark as update'
+      user_notification: 'Users that follow this post will be notified'
+      not_logged_in: 'You need to log in to post comments'
+  site_settings:
+    menu:
+      title: 'Site settings'
+      general: 'General'
+      boards: 'Boards'
+      post_statuses: 'Statuses'
+      roadmap: 'Roadmap'
+      users: 'Users'
+      authentication: 'Authentication'
+      appearance: 'Appearance'
+    info_box:
+      up_to_date: 'All changes saved'
+      error: 'An error occurred: %{message}'
+      dirty: 'Changes not saved'
+    general:
+      title: 'General'
+      brand_setting_both: 'Both name and logo'
+      brand_setting_name: 'Name only'
+      brand_setting_logo: 'Logo only'
+      brand_setting_none: 'None'
+      subtitle_header: 'Header'
+      collapse_boards_in_header_no_collapse: 'Never'
+      collapse_boards_in_header_always_collapse: 'Always'
+      subtitle_visibility: 'Visibility'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
+      show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+    boards:
+      title: 'Boards'
+      empty: 'There are no boards. Create one below!'
+      new: 'New'
+      form:
+        name: 'Board name'
+        description: 'Board description (optional)'
+    post_statuses:
+      title: 'Statuses'
+      empty: 'There are no statuses. Create one below!'
+      new: 'New'
+      form:
+        name: 'Status name'
+    roadmap:
+      title: 'Roadmap'
+      title2: 'Not in roadmap'
+      empty: 'The roadmap is empty.'
+      help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+    appearance:
+      title: 'Appearance'
+      learn_more: 'Learn how to customize appearance'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
+    authentication:
+      title: 'Authentication'
+      learn_more: 'Learn how to configure custom OAuth providers'
+      oauth_subtitle: 'OAuth providers'
+      default_oauth: 'Default OAuth provider'
+      copy_url: 'Copy URL'
+      test_page:
+        title: '%{name} OAuth test results'
+        fetched_user_data: 'Fetched user data'
+        found: 'Found'
+        summary: 'Summary'
+        valid_configuration: 'This OAuth provider is configured correctly!'
+        warning_configuration: 'This OAuth provider is configured correctly, but a default name for users (%{name}) will be used.'
+        invalid_configuration: 'This OAuth provider is NOT configured correctly.'
+      form:
+        title_new: 'New OAuth provider'
+        title_edit: 'Edit OAuth provider'
+        subtitle_oauth_config: 'OAuth configuration'
+        subtitle_user_profile_config: 'User profile configuration'
+        client_secret_help: 'hidden for security purposes'
