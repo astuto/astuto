@@ -1,0 +1,222 @@
+es:
+  common:
+    validations:
+      required: '%{attribute} es obligatorio'
+      email: 'Email invalido'
+      url: 'URL no válida'
+      password: 'La contraseña debe tener al menos %{n} caracteres'
+      password_mismatch: 'Las contraseñas no coinciden'
+    forms:
+      auth:
+        email: 'Correo electrónico'
+        full_name: 'Nombre completo'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de contraseña'
+        new_password: 'Nueva contraseña'
+        new_password_confirmation: 'Confirmación de nueva contraseña'
+        current_password: 'Contraseña actual'
+        notifications_enabled: 'Notificaciones habilitadas'
+        notifications_enabled_help: "si está deshabilitado, no recibirás ninguna notificación"
+        waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        password_leave_blank_help: "leave blank if you don't want to change your password"
+        current_password_required_help: 'we need your current password to confirm your changes'
+        remember_me: 'Recuérdame'
+        log_in: 'Iniciar sesión'
+        sign_up: 'Registrarse'
+        log_in_with: 'Iniciar sesión con %{o_auth}'
+        sign_up_with: 'Registrarse con %{o_auth}'
+        profile_settings: 'Configuración de perfil'
+        update_profile: 'Actualizar perfil'
+        cancel_account: 'Cancelar cuenta'
+        forgot_password: '¿Olvidaste tu contraseña?'
+        confirmation_instructions_not_received: "¿No recibiste instrucciones de confirmación?"
+        unlock_instructions_not_received: "¿No recibiste instrucciones de desbloqueo?"
+        send_reset_password_instructions: 'Envíame instrucciones para restablecer la contraseña'
+        resend_confirmation_instructions: 'Reenviar instrucciones de confirmación'
+        resend_unlock_instructions: 'Reenviar instrucciones de desbloqueo'
+        change_password: 'Cambiar contraseña'
+        password_help: 'mínimo %{count} caracteres'
+    comments_number:
+      one: '1 comentario'
+      other: '%{count} comentarios'
+    no_status: 'Sin estado'
+    loading: 'Cargando...'
+    confirmation: '¿Está seguro?'
+    unsaved_changes: 'Los cambios se perderán si abandona esta página.'
+    edited: 'Editado'
+    enabled: 'Habilitado'
+    disabled: 'Deshabilitado'
+    copied: '¡Copiado!'
+    user_staff: 'Empleados'
+    powered_by: 'Powered by'
+    buttons:
+      new: 'Nuevo'
+      edit: 'Editar'
+      delete: 'Borrar'
+      cancel: 'Cancelar'
+      create: 'Crear'
+      update: 'Guardar'
+      confirm: 'Confirmar'
+      back: 'Atrás'
+      test: 'Probar'
+      clear: 'Restablecer'
+    datetime:
+      now: 'ahora mismo'
+      minutes:
+        one: 'Hace 1 minuto'
+        other: 'Hace %{count} minutos'
+      hours:
+        one: 'hace 1 hora'
+        other: 'Hace %{count} horas'
+      days:
+        one: 'Hace 1 día'
+        other: 'hace %{count} días'
+  header:
+    menu:
+      site_settings: 'Configuración del sitio'
+      profile_settings: 'Configuración de perfil'
+      sign_out: 'Cerrar sesión'
+    log_in: 'Iniciar sesión / Registrarse'
+  roadmap:
+    title: 'Hoja de ruta'
+  billing:
+    title: 'Billing'
+  blocked_tenant:
+    title: 'Este espacio de retroalimentación ha sido bloqueado'
+  board:
+    new_post:
+      submit_button: 'Enviar retroalimentación'
+      cancel_button: 'Cancelar'
+      login_button: 'Iniciar sesión / Registrarse'
+      title: 'Título'
+      description: 'Descripción (opcional)'
+      no_title: 'El campo Título es obligatorio'
+      submit_success: '¡Comentarios publicados! Serás redirigido pronto...'
+      submit_error: 'Se ha producido un error desconocido, por favor vuelve a intentarlo'
+    search_box:
+      title: 'Buscar'
+    filter_box:
+      title: 'Filtrar por estado'
+    sort_by_box:
+      title: 'Ordenar por'
+      trending: 'En tendencia'
+      newest: 'Más reciente'
+      most_voted: 'Más votados'
+      oldest: 'Más antiguo'
+    filter_by_date_box:
+      title: 'Filtrar por fecha'
+      from_label: 'Desde'
+      to_label: 'Hasta'
+    posts_list:
+      empty: 'Aún no hay publicaciones'
+  post:
+    edit_button: 'Editar'
+    published_by: 'Publicado por'
+    post_status_select:
+      no_post_status: 'Ninguno'
+    updates_box:
+      title: 'Actualizaciones'
+      empty: 'Aún no hay actualizaciones'
+      status_change: 'cambió el estado a'
+    likes_box:
+      title: 'Me gusta'
+      empty: 'Aún no hay "me gusta"'
+    action_box:
+      title: 'Acciones'
+      follow_button: 'Seguir publicación'
+      following_description: "estás recibiendo notificaciones sobre nuevas actualizaciones en esta publicación"
+      not_following_description: "no recibirás notificaciones sobre esta publicación"
+    comments:
+      title: 'Actividad'
+      post_update_badge: 'Actualización'
+      reply_button: 'Responder'
+    new_comment:
+      body_placeholder: 'Deja un comentario'
+      submit_button: 'Enviar'
+      is_post_update: 'Marcar como actualización'
+      user_notification: 'Los usuarios que siguen esta publicación serán notificados'
+      not_logged_in: 'Necesitas iniciar sesión para publicar comentarios'
+  site_settings:
+    menu:
+      title: 'Configuración del sitio'
+      general: 'General'
+      boards: 'Tableros'
+      post_statuses: 'Estados'
+      roadmap: 'Hoja de ruta'
+      users: 'Usuarios'
+      authentication: 'Autenticación'
+      appearance: 'Apariencia'
+    info_box:
+      up_to_date: 'Se han guardado todos los cambios'
+      error: 'Se ha producido un error: %{message}'
+      dirty: 'No se han guardado los cambios'
+    general:
+      title: 'General'
+      brand_setting_both: 'Nombre y logotipo'
+      brand_setting_name: 'Solo el nombre'
+      brand_setting_logo: 'Sólo Logo'
+      brand_setting_none: 'Ninguno'
+      subtitle_header: 'Cabecera'
+      collapse_boards_in_header_no_collapse: 'Nunca'
+      collapse_boards_in_header_always_collapse: 'Siempre'
+      subtitle_visibility: 'Visibilidad'
+      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
+      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      show_vote_count_help: 'Si activa esta configuración, los usuarios podrán ver el recuento de votos de los mensajes. Esto puede incentivar a los usuarios a votar publicaciones ya populares, lo que provocaría un efecto bola de nieve.'
+      show_vote_button_in_board_help: 'Si activas esta configuración, los usuarios podrán votar publicaciones desde la página del foro. Esto puede alentar a los usuarios a votar en más mensajes, lo que lleva a un mayor número de votos, pero de menor importancia.'
+    boards:
+      title: 'Tableros'
+      empty: 'No hay tableros. ¡Crea uno abajo!'
+      new: 'Nuevo'
+      form:
+        name: 'Nombre del tablero'
+        description: 'Descripción del tablero (opcional)'
+    post_statuses:
+      title: 'Estados'
+      empty: 'No hay estados. ¡Crea uno a continuación!'
+      new: 'Nuevo'
+      form:
+        name: 'Nombre del estado'
+    roadmap:
+      title: 'Hoja de ruta'
+      title2: 'No en la hoja de ruta'
+      empty: 'La hoja de ruta está vacía.'
+      help: 'Puedes agregar estados a la hoja de ruta arrastrándolos desde la sección de abajo. Si en cambio quieres crear un nuevo estado o cambiar su orden, ve a Configuración del sitio > Estados.'
+    appearance:
+      title: 'Apariencia'
+      learn_more: 'Aprende cómo personalizar la apariencia'
+    users:
+      title: 'Usuarios'
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
+      block_confirmation: "%{name} no podrá iniciar sesión hasta que sea desbloqueado. ¿Estás seguro?"
+      unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
+      role_to_moderator_confirmation: "%{name} podrá administrar las publicaciones y usuarios. Procede sólo si confías en esta persona. ¿Está seguro?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_user: 'Usuario'
+      role_moderator: 'Moderador'
+      role_admin: 'Administrador'
+      role_owner: 'Propietario'
+      status_active: 'Activo'
+      status_blocked: 'Bloqueado'
+      status_deleted: 'Eliminado'
+    authentication:
+      title: 'Autenticación'
+      learn_more: 'Aprende cómo configurar proveedores OAuth personalizados'
+      oauth_subtitle: 'Proveedores OAuth'
+      default_oauth: 'Proveedor OAuth por defecto'
+      copy_url: 'Copiar URL'
+      test_page:
+        title: 'Resultados de la prueba OAuth de %{name}'
+        fetched_user_data: 'Datos del usuario obtenidos'
+        found: 'Encontrado'
+        summary: 'Resumen'
+        valid_configuration: '¡Este proveedor OAuth está configurado correctamente!'
+        warning_configuration: 'Este proveedor OAuth está configurado correctamente, pero se utilizará un nombre predeterminado para los usuarios (%{name}).'
+        invalid_configuration: 'Este proveedor OAuth NO está configurado correctamente.'
+      form:
+        title_new: 'Nuevo proveedor OAuth'
+        title_edit: 'Editar proveedor OAuth'
+        subtitle_oauth_config: 'Configuración OAuth'
+        subtitle_user_profile_config: 'Configuración del perfil de usuario'
+        client_secret_help: 'oculto por motivos de seguridad'
