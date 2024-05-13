@@ -3,14 +3,14 @@
 "files": [
   {
     "source": "/config/locales/en.yml",
-    "translation": "/config/locales/%locale%.yml"
+    "translation": "/config/locales/%two_letters_code%.yml"
   },
   {
     "source": "/config/locales/devise/devise.en.yml",
-    "translation": "/config/locales/devise/devise.%locale%.yml"
+    "translation": "/config/locales/devise/devise.%two_letters_code%.yml"
   },
   {
     "source": "/config/locales/backend/backend.en.yml",
-    "translation": "/config/locales/backend/backend.%locale%.yml"
+    "translation": "/config/locales/backend/backend.%two_letters_code%.yml"
   }
 ]
