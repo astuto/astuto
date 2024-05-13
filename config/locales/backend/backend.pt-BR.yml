@@ -1,0 +1,144 @@
+pt:
+  errors:
+    unknown: 'Um erro desconhecido ocorreu'
+    unauthorized: 'Você não está autorizado'
+    not_logged_in: 'Você precisa estar conectado para acessar esta página'
+    not_enough_privileges: 'Você não tem privilégios para acessar esta página'
+    user_blocked_or_deleted: 'Você não pode acessar sua conta porque ela foi bloqueada ou excluída.'
+    o_auth_login_error: 'Houve um erro ao fazer login com o %{name}. Entre em contato com o administrador do site ou tente um provedor diferente.'
+    board:
+      update_order: 'Houve um erro ao reordenar os painéis'
+    post_status:
+      update_order: 'Houve um erro ao reordenar os status'
+  defaults:
+    user_full_name: 'Usuário Anônimo'
+    deleted_user_full_name: 'Usuário excluído'
+  mailers:
+    devise:
+      welcome_greeting: 'Bem-vindo a %{site_name}, %{email}!'
+      opening_greeting: 'Olá %{email}!'
+      confirmation_instructions:
+        body: 'Você pode confirmar o e-mail da sua conta pelo link abaixo:'
+        action: 'Confirme minha conta'
+      email_changed:
+        body: "Estamos entrando em contato para notificá-lo de que seu e-mail está sendo alterado para %{email}."
+        body2: "Estamos entrando em contato para notificá-lo de que seu e-mail está sendo alterado para %{email}."
+      password_change:
+        body: "Estamos nos comunicando com você para notificá-lo de que sua senha foi alterada."
+      reset_password:
+        body: 'Alguém solicitou um link para alterar sua senha. Você pode fazer isso através do link abaixo.'
+        body2: "Se você não solicitou esse código, por favor ignore essa mensagem."
+        body3: "Sua senha não será alterada até que você acesse o link acima e crie um novo."
+        action: 'Alterar minha senha'
+    user:
+      opening_greeting: 'Olá %{name}!'
+      closing_greeting: 'Tenha um ótimo dia!'
+      learn_more: 'Clique aqui para saber mais'
+      unsubscribe_from_post_html: 'Irritado? Você pode desativar as notificações para esta postagem %{href}'
+      unsubscribe_from_site_html: 'Irritado? Você pode desativar as notificações para esta postagem %{href}'
+      unsubscribe_link: 'aqui'
+      notify_post_owner:
+        subject: '[%{site_name}] Novo comentário sobre "%{post}"'
+        body_html: 'Há um novo comentário de <b>%{user}</b> na sua publicação <b>%{post}</b>'
+      notify_comment_owner:
+        subject: '[%{site_name}] Nova resposta no seu comentário sobre a postagem "%{post}"'
+        body_html: 'Há uma nova resposta de <b>%{user}</b> ao seu comentário na publicação <b>%{post}</b>'
+      notify_follower_of_post_update:
+        subject: '[%{site_name}] Nova atualização para publicação "%{post}"'
+        body_html: 'Há uma nova atualização no post que você está seguindo <b>%{post}</b>'
+      notify_follower_of_post_status_change:
+        subject: '[%{site_name}] Mudança de status no post "%{post}"'
+        body_html: 'Há uma atualização de status no post que você está seguindo <b>%{post}</b>'
+  activerecord:
+    models:
+      board:
+        one: 'Quadro'
+        other: 'Quadros'
+      comment:
+        one: 'Comentário'
+        other: 'Comentários'
+      like:
+        one: 'Votar'
+        other: 'Votos'
+      o_auth:
+        one: 'OAuth'
+        other: 'OAuth'
+      post_status:
+        one: 'Status'
+        other: 'Status'
+      post:
+        one: 'Publicação'
+        other: 'Publicações'
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+    attributes:
+      board:
+        name: 'Nome'
+        description: 'Descrição'
+        order: 'Ordem'
+      comment:
+        body: 'Conteúdo'
+        is_post_update: 'Atualizar post'
+        user_id: 'Autor'
+        post_id: 'Publicação'
+        parent_id: 'Comentário de origem'
+      follow:
+        user_id: 'Usuário'
+        post_id: 'Publicação'
+      like:
+        user_id: 'Usuário'
+        post_id: 'Publicação'
+      o_auth:
+        name: 'Nome'
+        logo: 'Logotipo'
+        is_enabled: 'Habilitado'
+        client_id: 'ID do cliente'
+        client_secret: 'Segredo do cliente'
+        authorize_url: 'Autorizar URL'
+        token_url: 'URL do token'
+        profile_url: 'URL do Perfil'
+        scope: 'Escopo'
+        json_user_name_path: 'Caminho JSON para o nome do usuário'
+        json_user_email_path: 'Caminho JSON para o e-mail do usuário'
+      post_status:
+        name: 'Nome'
+        color: 'Cor'
+        order: 'Ordem'
+        show_in_roadmap: 'Mostrar no planejamento'
+      post:
+        title: 'Título'
+        description: 'Descrição'
+        board_id: 'Quadro de postagem'
+        user_id: 'Autor da publicação'
+        post_status_id: 'Status do post'
+      tenant:
+        site_name: 'Nome do Site'
+        site_logo: 'Logotipo do site'
+        subdomain: 'Subdomínio'
+        locale: 'Idioma'
+        custom_domain: 'Domínio personalizado'
+      tenant_setting:
+        brand_display: 'Tela'
+        show_vote_count: 'Mostrar contagem de votos aos usuários'
+        show_vote_button_in_board: 'Mostrar botões de voto na página do quadro'
+        show_powered_by: 'Mostrar "Desenvolvido por Astuto"'
+        root_board_id: 'Página principal'
+        show_roadmap_in_header: 'Mostrar link do planejamento no cabeçalho'
+        collapse_boards_in_header: 'Recolher quadros no cabeçalho'
+        custom_css: 'CSS Personalizado'
+      user:
+        email: 'E-mail'
+        full_name: 'Nome completo'
+        password: 'Senha'
+        password_confirmation: 'Confirmação da senha'
+        role: 'Papel'
+        notifications_enabled: 'Notificações ativadas'
+    errors:
+      messages:
+        invalid: 'é inválido'
+        required: 'é mandatório'
+        blank: 'não pode estar em branco'
+        taken: 'já está em uso'
+        too_short: 'é muito curta (o mínimo é de %{count} caracteres)'
+        too_long: 'é longo demais (máximo de %{count} caracteres)'
