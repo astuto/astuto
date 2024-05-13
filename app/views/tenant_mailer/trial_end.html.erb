@@ -14,8 +14,9 @@ I'm Riccardo from the Astuto team.
 I wanted to let you know that your <%= (Rails.application.trial_period_days / 1.day).to_s %>-day trial has expired and now your feedback space is in read-only mode.
 </p>
 
+<%# Do not know why but url helpers and get_url_for do not work, so used workaround! %>
 <p>
-If you've enjoyed your trial and want to upgrade to a paid plan, you can do so from the <a href="<%= get_url_for(method(:request_billing_page_url)) %>">billing page</a>.
+If you've enjoyed your trial and want to upgrade to a paid plan, you can do so from the <a href="https://<%= @tenant.subdomain %>.astuto.io/request_billing_page">billing page</a>.
 </p>
 
 <p>
