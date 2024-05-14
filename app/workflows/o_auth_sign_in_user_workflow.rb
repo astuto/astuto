@@ -44,6 +44,7 @@ class OAuthSignInUserWorkflow
           email: email,
           full_name: full_name,
           password: Devise.friendly_token,
+          has_set_password: false,
           status: 'active'
         )
         user.skip_confirmation

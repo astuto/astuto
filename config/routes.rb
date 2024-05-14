@@ -31,8 +31,13 @@ Rails.application.routes.draw do
     
     devise_for :users, :controllers => {
       :registrations => 'registrations',
-      :sessions => 'sessions'
+      :sessions => 'sessions',
+      :passwords => 'passwords'
     }
+
+    devise_scope :user do
+      get '/users/send_set_password_instructions', to: 'registrations#send_set_password_instructions', as: :send_set_password_instructions
+    end
     
     resources :tenants, only: [:show, :update]
     resources :users, only: [:index, :update]
