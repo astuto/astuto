@@ -37,5 +37,9 @@
         <%= @tenant.tenant_setting.custom_css %>
       </style>
     <% end %>
+
+    <% if params[:tour] == 'true' && user_signed_in? && current_user.admin? %>
+      <%= react_component('Tour/Tour', {}) %>
+    <% end %>
   </body>
 </html>

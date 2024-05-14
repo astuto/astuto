@@ -77,8 +77,14 @@ en:
         other: '%{count} days ago'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Site settings'
+      profile_header: 'Profile'
       profile_settings: 'Profile settings'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'
   roadmap:
