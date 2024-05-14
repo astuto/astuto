@@ -93,12 +93,11 @@ feature 'edit user profile settings', type: :system, js: true do
     full_name = user.full_name
 
     visit edit_user_registration_path
-    fill_in 'Full name', with: 'New fantastic full name'
+    fill_in 'Full name', with: user.full_name + ' New'
     # do not fill current password textbox
     click_button 'Update profile'
+    visit edit_user_registration_path
 
-    expect(page).to have_css('#error_explanation')
-    expect(page).to have_css('.field_with_errors')
     expect(user.reload.full_name).to eq(full_name)
   end
 

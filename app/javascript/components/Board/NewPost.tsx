@@ -125,7 +125,7 @@ class NewPost extends React.Component<Props, State> {
 
     } catch (e) {
       this.setState({
-        error: I18n.t('board.new_post.submit_error')
+        error: I18n.t('common.errors.unknown')
       });
     }
   }

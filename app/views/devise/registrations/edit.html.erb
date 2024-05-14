@@ -3,6 +3,20 @@
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <% if not current_user.has_set_password? %>
+    <%=
+      react_component(
+        'UserProfile/SetPasswordDialog',
+        {
+          sendSetPasswordInstructionsEndpoint: send_set_password_instructions_path(email: current_user.email),
+          authenticityToken: form_authenticity_token
+        },
+      )
+    %>
+
+    <fieldset disabled="disabled">
+  <% end %>
+
   <div class="form-group">
     <%= f.label :full_name, t('common.forms.auth.full_name') %>
     <%= f.text_field :full_name, autocomplete: "full-name", class: "form-control" %>
@@ -42,9 +56,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
+  <hr />
+
   <div class="form-group">
     <%= f.label :current_password, t('common.forms.auth.current_password') %>
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "form-control" %>
     <small id="currentPasswordHelp" class="form-text text-muted">
       <%= t('common.forms.auth.current_password_required_help') %>
     </small>
@@ -53,6 +69,10 @@
   <div class="actions">
     <%= f.submit t('common.forms.auth.update_profile'), class: "btnPrimary btn-block" %>
   </div>
+
+  <% if not current_user.has_set_password? %>
+    </fieldset>
+  <% end %>
 <% end %>
 
 <br />
