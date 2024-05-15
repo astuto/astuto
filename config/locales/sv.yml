@@ -1,5 +1,7 @@
 sv:
   common:
+    errors:
+      unknown: 'An unknown error occurred, please try again'
     validations:
       required: '%{attribute} is required'
       email: 'Ogiltig e-postadress'
@@ -18,6 +20,8 @@ sv:
         notifications_enabled: 'Notifications enabled'
         notifications_enabled_help: "if disabled, you won't receive any notification"
         waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        no_password_set: 'You must set a password to update your profile'
+        set_password: 'Set password'
         password_leave_blank_help: "leave blank if you don't want to change your password"
         current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Kom ihåg mig'
@@ -92,7 +96,6 @@ sv:
       description: 'Description (optional)'
       no_title: 'Title field is mandatory'
       submit_success: 'Feedback published! You will be redirected soon...'
-      submit_error: 'An unknown error occurred, try again'
     search_box:
       title: 'Sök'
     filter_box:
