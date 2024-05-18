@@ -14,6 +14,7 @@ interface Props {
   oauthUserName?: string;
   baseUrl: string;
   astutoLogoImage: string;
+  feedbackSpaceCreatedImage: string;
   pendingTenantImage: string;
   trialPeriodDays: number;
   authenticityToken: string;
@@ -35,6 +36,7 @@ class TenantSignUpRoot extends React.Component<Props> {
       oauthUserEmail,
       oauthUserName,
       astutoLogoImage,
+      feedbackSpaceCreatedImage,
       pendingTenantImage,
       baseUrl,
       trialPeriodDays,
@@ -49,6 +51,7 @@ class TenantSignUpRoot extends React.Component<Props> {
           oauthUserName={oauthUserName}
           oAuths={oAuths.map(oAuth => oAuthJSON2JS(oAuth))}
           astutoLogoImage={astutoLogoImage}
+          feedbackSpaceCreatedImage={feedbackSpaceCreatedImage}
           pendingTenantImage={pendingTenantImage}
           baseUrl={baseUrl}
           trialPeriodDays={trialPeriodDays}
