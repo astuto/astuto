@@ -6,7 +6,7 @@ class CreateWelcomeEntitiesWorkflow
     # Create some Boards
     feature_board = Board.create!(
       name: 'Feature Requests',
-      description: 'This is a **board**! You can create as many as you want from **site settings** and their description can be *Markdown formatted*.',
+      description: 'This is a **board**! Go to Site settings > Boards to customise it or add more!',
       order: 0
     )
     bug_board = Board.create!(
@@ -43,7 +43,7 @@ class CreateWelcomeEntitiesWorkflow
 
     # Create some Posts
     post1 = Post.create!(
-      title: "Welcome #{owner.full_name}! This is an example feedback post, click to learn more!",
+      title: 'This is an example feedback post, click to learn more!',
       description: 'Users can submit feedback by publishing posts like this. You can assign a **status** to each post: this one, for example, is marked as "Planned". Remember that you can customise post statuses from Site settings > Statuses',
       board_id: feature_board.id,
       user_id: owner.id,
@@ -57,7 +57,7 @@ class CreateWelcomeEntitiesWorkflow
 
     post2 = Post.create!(
       title: 'There are multiple boards',
-      description: 'For now you have Feature Requests and Bug Reports, but you can add or remove as many as you want! Just go to Site settings > Boards!',
+      description: 'We created two boards for you, "Feature Requests" and "Bug Reports", but you can add or remove as many as you want! Just head to Site settings > Boards!',
       board_id: bug_board.id,
       user_id: owner.id
     )

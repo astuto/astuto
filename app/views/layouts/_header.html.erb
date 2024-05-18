@@ -80,7 +80,7 @@
               <% if current_user.admin? %>
                 <h6 class="dropdown-header"><%= t('header.menu.help_header') %></h6>
                 <% unless @boards.empty? %>
-                  <%= link_to t('header.menu.tour'), @header_full_urls ? get_url_for(method(:board_url), resource: @boards.first, options: { tour: true }) : board_path(@boards.first, tour: true), class: 'dropdown-item' %>
+                  <%= link_to t('header.menu.tour'), @header_full_urls ? get_url_for(method(:board_url), resource: @boards.first, options: { tour: true }) : board_path(@boards.first, tour: true), class: 'dropdown-item tourDropdown' %>
                 <% end %>
                 <%= link_to t('header.menu.docs'), 'https://docs.astuto.io', class: 'dropdown-item', target: '_blank' %>
                 <%= link_to t('header.menu.support'), Rails.application.multi_tenancy? ? 'mailto:info@astuto.io' : 'https://github.com/astuto/astuto/issues', class: 'dropdown-item', target: '_blank' %>

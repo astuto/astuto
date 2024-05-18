@@ -33,6 +33,10 @@
       }
     }
   }
+  
+  .sidebarFilters {
+    @extend .m-0, .p-0;
+  }
 
   .postStatusListItemContainer {
     @extend

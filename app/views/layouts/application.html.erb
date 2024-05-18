@@ -39,7 +39,7 @@
     <% end %>
 
     <% if params[:tour] == 'true' && user_signed_in? && current_user.admin? %>
-      <%= react_component('Tour/Tour', {}) %>
+      <%= react_component('Tour/Tour', { userFullName: current_user.full_name }) %>
     <% end %>
   </body>
 </html>
