@@ -6,7 +6,11 @@ interface Props {
   userFullName: string;
 }
 
+const BOOTSTRAP_BREAKPOINT_SM = 768;
+
 const Tour = ({ userFullName }: Props) => {
+  const boardsToggler = document.querySelector('button.navbarToggler') as HTMLElement;
+  const profileToggler = document.getElementById('navbarDropdown');
   const userFirstName = userFullName ? userFullName.split(' ')[0].trim() : '';
 
   const steps = [
@@ -50,24 +54,77 @@ const Tour = ({ userFullName }: Props) => {
     },
   ];
 
+  const openBoardsNav = () => {
+    if (boardsToggler.getAttribute('aria-expanded') === 'false') {
+      boardsToggler.click();
+    }
+  };
+
+  const closeBoardsNav = () => {
+    if (boardsToggler.getAttribute('aria-expanded') === 'true') {
+      boardsToggler.click();
+    }
+  };
+
+  const openProfileNav = () => {
+    if (profileToggler.getAttribute('aria-expanded') === 'false') {
+      profileToggler.click();
+    }
+  };
+
+  const closeProfileNav = () => {
+    if (profileToggler.getAttribute('aria-expanded') === 'true') {
+      profileToggler.click();
+    }
+  }
+
   return (
     <Joyride
       steps={steps}
-      callback={async (state) => {
+      callback={state => {
+        console.log(state);
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+
+        // Open boards navbar (only on mobile)
+        if (
+          vw < BOOTSTRAP_BREAKPOINT_SM &&
+          state.type === 'step:after' &&
+          (((state.action === 'next' || state.action === 'close') && state.step.target === 'body') ||
+          (state.action === 'prev' && state.step.target === '.postListItem'))
+        ) {
+          openBoardsNav();
+        }
+
+        // Close boards navbar (only on mobile)
+        if (
+          vw < BOOTSTRAP_BREAKPOINT_SM &&
+          state.type === 'step:after' &&
+          (//(state.action === 'next' && state.step.target === '.boardsNav') || // This causes positioniting problems for Joyride tour
+          (state.action === 'prev' && state.step.target === '.boardsNav'))
+        ) {
+          closeBoardsNav();
+        }
+
+        // Open profile navbar
         if (
           state.type === 'step:after' &&
-          (state.step.target === '.sidebarFilters' || state.step.target === '.siteSettingsDropdown' || state.step.target === '.tourDropdown')
+          (((state.action === 'next' || state.action === 'close') && (state.step.target === '.sidebarFilters' || state.step.target === '.siteSettingsDropdown')) ||
+          (state.action === 'prev' && state.step.target === '.tourDropdown'))
         ) {
-          const dropdownToggler = document.getElementById('navbarDropdown');
-          if (dropdownToggler.getAttribute('aria-expanded') === 'false') {
-            dropdownToggler.click();
-          }
+          if (vw < BOOTSTRAP_BREAKPOINT_SM) openBoardsNav();
+
+          openProfileNav();
+        }
+
+        // Close everything on reset
+        if (state.action === 'reset') {
+          closeBoardsNav();
+          closeProfileNav();
         }
       }}
       continuous
       showSkipButton
       disableScrolling
-      disableOverlayClose
       hideCloseButton
       spotlightClicks={false}
       locale={{
