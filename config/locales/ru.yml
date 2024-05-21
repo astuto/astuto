@@ -48,6 +48,7 @@ ru:
     no_status: 'Нет статуса'
     loading: 'Загрузка...'
     confirmation: 'Вы уверены?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'Несохраненные изменения будут потеряны, если вы сейчас покинете эту страницу.'
     edited: 'Отредактировано'
     enabled: 'Включено'
@@ -85,8 +86,14 @@ ru:
         other: '%{count} д. назад'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Настройки сайта'
+      profile_header: 'Profile'
       profile_settings: 'Настройки профиля'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Выйти'
     log_in: 'Войти / Зарегистрироваться'
   roadmap:
