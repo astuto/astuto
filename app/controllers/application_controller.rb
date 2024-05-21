@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   prepend_before_action :load_tenant_data
 
+  # Override Devise after sign in path
+  def after_sign_in_path_for(resource)
+    if resource.admin? && resource.sign_in_count == 1
+      root_path(tour: true)
+    else
+      super
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
