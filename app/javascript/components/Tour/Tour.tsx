@@ -82,7 +82,6 @@ const Tour = ({ userFullName }: Props) => {
     <Joyride
       steps={steps}
       callback={state => {
-        console.log(state);
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 
         // Open boards navbar (only on mobile)
