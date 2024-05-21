@@ -96,4 +96,9 @@
     color: white !important;
     background-color: var(--primary-color);
   }
+
+  .dropdown-header {
+    text-transform: uppercase;
+    color: var(--astuto-grey);
+  }
 }

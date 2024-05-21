@@ -15,6 +15,7 @@ interface Props {
   handleSignUpSubmit(siteName: string, subdomain: string): void;
   trialPeriodDays: number;
   currentStep: number;
+  setCurrentStep(step: number): void;
 }
 
 const TenantSignUpForm = ({
@@ -23,6 +24,7 @@ const TenantSignUpForm = ({
   handleSignUpSubmit,
   trialPeriodDays,
   currentStep,
+  setCurrentStep,
 }: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<ITenantSignUpTenantForm>();
   const onSubmit: SubmitHandler<ITenantSignUpTenantForm> = data => {

@@ -112,33 +112,35 @@ class BoardP extends React.Component<Props> {
             isLoggedIn={isLoggedIn}
             authenticityToken={authenticityToken}
           />
-          <SearchFilter
-            searchQuery={filters.searchQuery}
-            handleChange={handleSearchFilterChange}
-          />
-          {
-            isPowerUser &&
-            <>
-            <SortByFilter
-              sortBy={filters.sortBy}
-              handleChange={sortBy => handleSortByFilterChange(sortBy)}
+          <div className="sidebarFilters">
+            <SearchFilter
+              searchQuery={filters.searchQuery}
+              handleChange={handleSearchFilterChange}
             />
+            {
+              isPowerUser &&
+              <>
+              <SortByFilter
+                sortBy={filters.sortBy}
+                handleChange={sortBy => handleSortByFilterChange(sortBy)}
+              />
 
-            <DateFilter
-              startDate={filters.date.startDate}
-              endDate={filters.date.endDate}
-              handleChange={handleDateFilterChange}
+              <DateFilter
+                startDate={filters.date.startDate}
+                endDate={filters.date.endDate}
+                handleChange={handleDateFilterChange}
+              />
+              </>
+            }
+            <PostStatusFilter
+              postStatuses={postStatuses.items}
+              areLoading={postStatuses.areLoading}
+              error={postStatuses.error}
+
+              currentFilter={filters.postStatusIds}
+              handleFilterClick={handlePostStatusFilterChange}
             />
-            </>
-          }
-          <PostStatusFilter
-            postStatuses={postStatuses.items}
-            areLoading={postStatuses.areLoading}
-            error={postStatuses.error}
-
-            currentFilter={filters.postStatusIds}
-            handleFilterClick={handlePostStatusFilterChange}
-          />
+          </div>
 
           { tenantSetting.show_powered_by && <PoweredByLink /> }
         </Sidebar>

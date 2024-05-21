@@ -89,7 +89,7 @@ class OAuthsController < ApplicationController
 
     elsif reason == 'tenantsignup'
 
-      @o_auths = @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
+      @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
 
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       if not @o_auth.json_user_name_path.blank?
@@ -106,6 +106,7 @@ class OAuthsController < ApplicationController
 
       session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"
 
+      @page_title = "Create your feedback space"
       render 'tenants/new'
 
     else

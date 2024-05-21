@@ -103,7 +103,7 @@ feature 'site settings: boards', type: :system, js: true do
         find('.deleteAction').click
 
         alert = page.driver.browser.switch_to.alert
-        expect(alert.text).to eq('Are you sure?')
+        expect(alert.text).to include('Are you sure?')
         alert.accept
       end
 

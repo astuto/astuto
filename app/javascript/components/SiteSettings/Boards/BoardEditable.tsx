@@ -97,7 +97,7 @@ class BoardsEditable extends React.Component<Props, State> {
                   </ActionLink>
 
                   <ActionLink
-                    onClick={() => confirm(I18n.t('common.confirmation')) && handleDelete(id)}
+                    onClick={() => confirm(I18n.t('common.confirmation_board_delete', { board: name }) + " " + I18n.t('common.confirmation')) && handleDelete(id)}
                     icon={<DeleteIcon />}
                     customClass="deleteAction"
                   >
