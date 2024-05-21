@@ -45,6 +45,7 @@ vi:
     no_status: 'Không có trạng thái'
     loading: 'Đang tải...'
     confirmation: 'Bạn có chắc chắn?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'Những thay đổi chưa được lưu sẽ bị mất nếu bạn rời khỏi trang.'
     edited: 'Đã chỉnh sửa'
     enabled: 'Đã bật'
@@ -73,8 +74,14 @@ vi:
         other: '%{count} ngày trước'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Cài đặt trang'
+      profile_header: 'Profile'
       profile_settings: 'Thông tin cá nhân'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Đăng xuất'
     log_in: 'Đăng nhập / Đăng ký'
   roadmap:
