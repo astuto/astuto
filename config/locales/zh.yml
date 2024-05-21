@@ -45,6 +45,7 @@ zh-CN:
     no_status: '无状态'
     loading: '加载中…'
     confirmation: '您确定吗？'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: '如果您离开页面，未保存的更改将会丢失。'
     edited: '已编辑'
     enabled: '已启用'
@@ -73,8 +74,14 @@ zh-CN:
         other: '%{count} 天前'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: '网站设置'
+      profile_header: 'Profile'
       profile_settings: '账号设置'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: '退出登录'
     log_in: '登录/注册'
   roadmap:
