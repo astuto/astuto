@@ -17,6 +17,16 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
+  def send_set_password_instructions
+    user = User.find_by_email(params[:email])
+    
+    if user.present?
+      user.send_reset_password_instructions
+    end
+    
+    render json: { success: true } # always return true, even if user not found
+  end
+    
   private
 
     def set_page_title_new
