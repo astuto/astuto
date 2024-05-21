@@ -45,6 +45,7 @@ ja:
     no_status: 'No status'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'Unsaved changes will be lost if you leave the page.'
     edited: 'Edited'
     enabled: 'Enabled'
@@ -73,8 +74,14 @@ ja:
         other: '%{count} days ago'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Site settings'
+      profile_header: 'Profile'
       profile_settings: 'Profile settings'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Sign out'
     log_in: 'Log in / Sign up'
   roadmap:
