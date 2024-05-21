@@ -106,6 +106,7 @@ class OAuthsController < ApplicationController
 
       session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"
 
+      @page_title = "Create your feedback space"
       render 'tenants/new'
 
     else
