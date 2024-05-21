@@ -46,6 +46,7 @@ fr:
     no_status: 'Pas de statut'
     loading: 'Chargement ...'
     confirmation: 'Vous êtes sûr ?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'Les modifications apportées seront perdues si vous quittez cette page.'
     edited: 'Modifié'
     enabled: 'Activé'
@@ -77,8 +78,14 @@ fr:
         other: 'il y a %{count} jours'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Paramètres du site'
+      profile_header: 'Profile'
       profile_settings: 'Paramètres du profil'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Déconnexion'
     log_in: 'Se connecter / S''inscrire'
   roadmap:
