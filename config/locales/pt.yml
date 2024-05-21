@@ -46,6 +46,7 @@ pt:
     no_status: 'Nenhum status'
     loading: 'Carregando...'
     confirmation: 'Tem certeza?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'As alterações não salvas serão perdidas se você sair da página.'
     edited: 'Editado'
     enabled: 'Habilitado'
@@ -77,8 +78,14 @@ pt:
         other: '%{count} dias atrás'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Configurações do site'
+      profile_header: 'Profile'
       profile_settings: 'Configurações do perfil'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Sair'
     log_in: 'Entrar / Cadastrar'
   roadmap:
