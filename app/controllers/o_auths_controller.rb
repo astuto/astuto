@@ -131,7 +131,7 @@ class OAuthsController < ApplicationController
       remember_me user
       user.invalidate_oauth_token
       flash[:notice] = I18n.t('devise.sessions.signed_in')
-      redirect_to root_path
+      redirect_to after_sign_in_path_for(user)
     else
       flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
       redirect_to new_user_session_path
