@@ -1,5 +1,7 @@
 zh-CN:
   common:
+    errors:
+      unknown: 'An unknown error occurred, please try again'
     validations:
       required: '%{attribute} 为必填项'
       email: '电子邮箱无效'
@@ -18,6 +20,8 @@ zh-CN:
         notifications_enabled: '开启通知'
         notifications_enabled_help: "关闭后，您将不会收到任何通知"
         waiting_confirmation: '正在等待验证 %{email}'
+        no_password_set: 'You must set a password to update your profile'
+        set_password: 'Set password'
         password_leave_blank_help: "留空则不更改密码"
         current_password_required_help: '请输入当前密码以确认新设置'
         remember_me: '记住账号'
@@ -41,6 +45,7 @@ zh-CN:
     no_status: '无状态'
     loading: '加载中…'
     confirmation: '您确定吗？'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: '如果您离开页面，未保存的更改将会丢失。'
     edited: '已编辑'
     enabled: '已启用'
@@ -69,8 +74,14 @@ zh-CN:
         other: '%{count} 天前'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: '网站设置'
+      profile_header: 'Profile'
       profile_settings: '账号设置'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: '退出登录'
     log_in: '登录/注册'
   roadmap:
@@ -88,7 +99,6 @@ zh-CN:
       description: '描述 (可选)'
       no_title: '必须填写标题'
       submit_success: '反馈已发布！您即将被重定向...'
-      submit_error: '出现未知的错误，请重试！'
     search_box:
       title: '搜索'
     filter_box:

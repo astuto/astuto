@@ -1,5 +1,7 @@
 es:
   common:
+    errors:
+      unknown: 'An unknown error occurred, please try again'
     validations:
       required: '%{attribute} es obligatorio'
       email: 'Email invalido'
@@ -18,6 +20,8 @@ es:
         notifications_enabled: 'Notificaciones habilitadas'
         notifications_enabled_help: "si está deshabilitado, no recibirás ninguna notificación"
         waiting_confirmation: 'Currently waiting confirmation for %{email}'
+        no_password_set: 'You must set a password to update your profile'
+        set_password: 'Set password'
         password_leave_blank_help: "leave blank if you don't want to change your password"
         current_password_required_help: 'we need your current password to confirm your changes'
         remember_me: 'Recuérdame'
@@ -42,6 +46,7 @@ es:
     no_status: 'Sin estado'
     loading: 'Cargando...'
     confirmation: '¿Está seguro?'
+    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
     unsaved_changes: 'Los cambios se perderán si abandona esta página.'
     edited: 'Editado'
     enabled: 'Habilitado'
@@ -73,8 +78,14 @@ es:
         other: 'hace %{count} días'
   header:
     menu:
+      administration_header: 'Administration'
       site_settings: 'Configuración del sitio'
+      profile_header: 'Profile'
       profile_settings: 'Configuración de perfil'
+      help_header: 'Help'
+      tour: 'Tour'
+      docs: 'Documentation'
+      support: 'Support'
       sign_out: 'Cerrar sesión'
     log_in: 'Iniciar sesión / Registrarse'
   roadmap:
@@ -92,7 +103,6 @@ es:
       description: 'Descripción (opcional)'
       no_title: 'El campo Título es obligatorio'
       submit_success: '¡Comentarios publicados! Serás redirigido pronto...'
-      submit_error: 'Se ha producido un error desconocido, por favor vuelve a intentarlo'
     search_box:
       title: 'Buscar'
     filter_box:
