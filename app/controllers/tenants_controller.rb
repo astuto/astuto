@@ -42,6 +42,7 @@ class TenantsController < ApplicationController
         full_name: params[:user][:full_name] || I18n.t('defaults.user_full_name'),
         email: params[:user][:email],
         password: is_o_auth_login ? Devise.friendly_token : params[:user][:password],
+        has_set_password: !is_o_auth_login,
         role: "owner"
       )
 

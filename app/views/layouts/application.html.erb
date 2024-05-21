@@ -22,6 +22,10 @@
       <%= render 'layouts/no_active_subscription_banner' %>
     <% end %>
 
+    <% if Rails.application.multi_tenancy? && request.subdomain == "feedback" %>
+      <%= render 'layouts/promo_banner' %>
+    <% end %>
+
     <% if @tenant %>
       <%= render 'layouts/header' %>
     <% end %>
@@ -36,6 +40,10 @@
       <style type="text/css">
         <%= @tenant.tenant_setting.custom_css %>
       </style>
+    <% end %>
+
+    <% if params[:tour] == 'true' && user_signed_in? && current_user.admin? %>
+      <%= react_component('Tour/Tour', { userFullName: current_user.full_name }) %>
     <% end %>
   </body>
 </html>

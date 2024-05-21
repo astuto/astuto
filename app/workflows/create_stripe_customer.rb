@@ -8,6 +8,10 @@ class CreateStripeCustomer
     customer = Stripe::Customer.create({
       email: owner.email,
       name: owner.full_name,
+      metadata: {
+        site_name: tenant.site_name,
+        subdomain: tenant.subdomain,
+      },
     })
     tb = TenantBilling.first_or_create
     tb.update!(customer_id: customer.id)

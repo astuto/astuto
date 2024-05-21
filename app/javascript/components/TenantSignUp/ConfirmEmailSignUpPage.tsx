@@ -7,7 +7,7 @@ interface Props {
   pendingTenantImage: string;
 }
 
-const ConfirmSignUpPage = ({
+const ConfirmEmailSignUpPage = ({
   subdomain,
   userEmail,
   pendingTenantImage,
@@ -23,4 +23,4 @@ const ConfirmSignUpPage = ({
   </Box>
 );
 
-export default ConfirmSignUpPage;
+export default ConfirmEmailSignUpPage;

@@ -21,6 +21,7 @@ interface Props {
   oAuths: Array<IOAuth>;
   userData: ITenantSignUpUserForm;
   setUserData({}: ITenantSignUpUserForm): void;
+  setGoneBack(goneBack: boolean): void;
 }
 
 const UserSignUpForm = ({
@@ -31,6 +32,7 @@ const UserSignUpForm = ({
   oAuths,
   userData,
   setUserData,
+  setGoneBack,
 }: Props) => {
   const {
     register,
@@ -164,7 +166,16 @@ const UserSignUpForm = ({
         currentStep === 2 &&
         <p className="userRecap">
           <b>{userData.fullName}</b> ({userData.email})
-          <ActionLink onClick={() => setCurrentStep(currentStep-1)} icon={<EditIcon />} customClass="editUser">Edit</ActionLink>
+          <ActionLink
+            onClick={() => {
+              setGoneBack(true);
+              setCurrentStep(currentStep-1);
+            }}
+            icon={<EditIcon />}
+            customClass="editUser"
+          >
+            Edit
+          </ActionLink>
         </p>
       }
     </Box>

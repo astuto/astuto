@@ -47,17 +47,18 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.moderator? %>
+                <h6 class="dropdown-header"><%= t('header.menu.administration_header') %></h6>
                 <% if current_user.admin? or current_user.owner? %>
                   <%=
                     link_to t('header.menu.site_settings'),
                     @header_full_urls ? get_url_for(method(:site_settings_general_url)) : site_settings_general_path,
-                      class: 'dropdown-item'
+                      class: 'dropdown-item siteSettingsDropdown'
                     %>
                 <% else %>
                   <%=
                     link_to t('header.menu.site_settings'),
                     @header_full_urls ? get_url_for(method(:site_settings_users_url)) : site_settings_users_path,
-                      class: 'dropdown-item'
+                      class: 'dropdown-item siteSettingsDropdown'
                   %>
                 <% end %>
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
@@ -72,8 +73,20 @@
                 <div class="dropdown-divider"></div>
               <% end %>
 
+              <h6 class="dropdown-header"><%= t('header.menu.profile_header') %></h6>
               <%= link_to t('header.menu.profile_settings'), @header_full_urls ? get_url_for(method(:edit_user_registration_url)) : edit_user_registration_path, class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
+
+              <% if current_user.admin? %>
+                <h6 class="dropdown-header"><%= t('header.menu.help_header') %></h6>
+                <% unless @boards.empty? %>
+                  <%= link_to t('header.menu.tour'), @header_full_urls ? get_url_for(method(:board_url), resource: @boards.first, options: { tour: true }) : board_path(@boards.first, tour: true), class: 'dropdown-item tourDropdown' %>
+                <% end %>
+                <%= link_to t('header.menu.docs'), 'https://docs.astuto.io', class: 'dropdown-item', target: '_blank' %>
+                <%= link_to t('header.menu.support'), Rails.application.multi_tenancy? ? 'mailto:info@astuto.io' : 'https://github.com/astuto/astuto/issues', class: 'dropdown-item', target: '_blank' %>
+
+                <div class="dropdown-divider"></div>
+              <% end %>
               
               <% unless @disable_sign_out %>
                 <%= button_to t('header.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>

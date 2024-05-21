@@ -8,8 +8,9 @@ class RegistrationsController < Devise::RegistrationsController
   # Override destroy to soft delete
   def destroy
     resource.status = "deleted"
-    resource.email = ''
+    resource.email = "#{SecureRandom.alphanumeric(16)}@deleted.com"
     resource.full_name = t('defaults.deleted_user_full_name')
+    resource.skip_confirmation
     resource.save
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :destroyed
@@ -17,6 +18,16 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
+  def send_set_password_instructions
+    user = User.find_by_email(params[:email])
+    
+    if user.present?
+      user.send_reset_password_instructions
+    end
+    
+    render json: { success: true } # always return true, even if user not found
+  end
+    
   private
 
     def set_page_title_new

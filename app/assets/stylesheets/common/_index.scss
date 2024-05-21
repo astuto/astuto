@@ -316,3 +316,11 @@ body {
     .text-center,
     .m-0;
 }
+
+.promoBanner {
+  @extend
+    .alert,
+    .alert-primary,
+    .text-center,
+    .m-0;
+}
