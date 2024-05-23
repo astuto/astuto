@@ -22,7 +22,7 @@
       <%= render 'layouts/no_active_subscription_banner' %>
     <% end %>
 
-    <% if Rails.application.multi_tenancy? && request.subdomain == "feedback" %>
+    <% if Rails.application.multi_tenancy? && @tenant && @tenant.subdomain == "feedback" %>
       <%= render 'layouts/promo_banner' %>
     <% end %>
 
