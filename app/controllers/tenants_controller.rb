@@ -56,7 +56,7 @@ class TenantsController < ApplicationController
 
       if is_o_auth_login
         CreateStripeCustomer.new().run
-        TenantMailer.trial_start(tenant: @tenant).deliver_later
+        TenantMailer.trial_start(tenant: @tenant).deliver_now # deliver_later doesn't work here
       end
 
       logger.info { "New tenant registration: #{Current.tenant.inspect}" }
