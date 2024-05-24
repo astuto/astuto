@@ -33,6 +33,7 @@ Locales are stored in YAML files under `config/locales`. Translations are splitt
 
 In order to contribute to Astuto, you need to run Astuto on your computer in development mode. In order to do so, please follow these instructions:
 
+0. Ensure you have Docker and Docker Compose installed
 1. Clone this repository
 2. Edit `docker-compose.yml` if you want to change the value of some environment variables. Note that this `docker-compose.yml` is already configured to run Astuto in development mode (`target: dev`).
 3. Run `docker-compose build`
