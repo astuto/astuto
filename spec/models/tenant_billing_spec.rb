@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe TenantBilling, type: :model do
   let(:tenant_billing) { FactoryBot.build(:tenant_billing) }
 
+  # Tenant Billing subscription works only in multi_tenancy mode
+  before do
+    allow(Rails.application).to receive(:multi_tenancy?).and_return(true)
+  end
+
   it 'should be valid' do
     expect(tenant_billing).to be_valid
   end
