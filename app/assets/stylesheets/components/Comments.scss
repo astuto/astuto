@@ -102,7 +102,8 @@
     .commentBody {
       @extend .my-2;
 
-      p { @extend .m-0; }
+      p { @extend .my-2; }
+      p:nth-child(1) { @extend .m-0; }
     }
 
     .commentFooter {
