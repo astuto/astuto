@@ -63,14 +63,29 @@
 
         max-height: 170px;
         overflow-y: scroll;
+        overflow-x: hidden;
 
         .likeListItem {
           @extend
+            .d-flex,
             .p-2,
             .my-1;
-  
-          .likeListItemName {
-            @extend .ml-2;
+
+          .gravatar {
+            @extend .align-self-center;
+          }
+
+          .likeListItemUserInfo {
+            @extend
+              .d-flex,
+              .flex-column,
+              .ml-3;
+          }
+
+          .likeListItemEmail {
+            @extend .mutedText;
+
+            font-size: 13px;
           }
         }
       }
