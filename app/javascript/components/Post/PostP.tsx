@@ -243,9 +243,11 @@ class PostP extends React.Component<Props> {
                 <PostStatusLabel
                   {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
                 />
-                <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
-                  {I18n.t('common.buttons.edit')}
-                </ActionLink>
+                { isPowerUser &&
+                  <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
+                    {I18n.t('common.buttons.edit')}
+                  </ActionLink>
+                }
               </div>
                 
               <ReactMarkdown

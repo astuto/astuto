@@ -26,8 +26,11 @@ const LikeList = ({ likes, areLoading, error}: Props) => (
       {
         likes.map((like, i) => (
           <div className="likeListItem" key={i}>
-            <Gravatar email={like.email} size={28} className="gravatar" />
-            <span className="likeListItemName">{like.fullName}</span>
+            <Gravatar email={like.email} size={32} className="gravatar" />
+            <div className="likeListItemUserInfo">
+              <span className="likeListItemName" title={like.fullName}>{like.fullName}</span>
+              <span className="likeListItemEmail" title={like.email}>{like.email}</span>
+            </div>
           </div>
         ))
       }
