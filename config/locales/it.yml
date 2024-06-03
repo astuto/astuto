@@ -1,7 +1,7 @@
 it:
   common:
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Si è verificato un errore sconosciuto, riprova'
     validations:
       required: '%{attribute} è obbligatorio'
       email: 'Email non valida'
@@ -20,8 +20,8 @@ it:
         notifications_enabled: 'Notifiche abilitate'
         notifications_enabled_help: "se disabilitato, non riceverai alcuna notifica"
         waiting_confirmation: 'In attesa di conferma per %{email}'
-        no_password_set: 'You must set a password to update your profile'
-        set_password: 'Set password'
+        no_password_set: 'Devi impostare una password per poter aggiornare il tuo profilo'
+        set_password: 'Imposta password'
         password_leave_blank_help: "lascia vuoto se non vuoi cambiare la tua password"
         current_password_required_help: 'abbiamo bisogno della tua password attuale per confermare le modifiche'
         remember_me: 'Ricordami'
@@ -46,7 +46,7 @@ it:
     no_status: 'Nessuno stato'
     loading: 'Caricamento...'
     confirmation: 'Sei sicuro?'
-    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
+    confirmation_board_delete: 'Attenzione: se ci sono post di feedback all''interno di questa bacheca, anche TUTTI questi post saranno eliminati. Questa operazione non può essere annullata.'
     unsaved_changes: 'Se lasci la pagina, le tue modifiche andranno perse.'
     edited: 'Modificato'
     enabled: 'Abilitato'
@@ -78,14 +78,14 @@ it:
         other: '%{count} giorni fa'
   header:
     menu:
-      administration_header: 'Administration'
+      administration_header: 'Amministrazione'
       site_settings: 'Impostazioni sito'
-      profile_header: 'Profile'
+      profile_header: 'Profilo'
       profile_settings: 'Impostazioni profilo'
-      help_header: 'Help'
+      help_header: 'Aiuto'
       tour: 'Tour'
-      docs: 'Documentation'
-      support: 'Support'
+      docs: 'Documentazione'
+      support: 'Assistenza'
       sign_out: 'Esci'
     log_in: 'Accedi / Registrati'
   roadmap:
