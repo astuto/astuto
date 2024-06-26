@@ -64,7 +64,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_RAISE_DELIVERY_ERRORS", "false"))
 
   if ENV['EMAIL_DELIVERY_METHOD'] == "smtp"
     config.action_mailer.delivery_method = :smtp
@@ -77,11 +77,12 @@ Rails.application.configure do
       authentication:       ENV.fetch("EMAIL_SMTP_AUTH", "plain"),
       enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "true")),
       openssl_verify_mode:  ENV["EMAIL_SMTP_OPENSSL_VERIFY_MODE"],
-      tls:                  ENV["EMAIL_SMTP_TLS"]
+      tls:                  ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_TLS", "true")),
     }
   end
 
   config.action_mailer.default_options = {
+    from: ENV.fetch("EMAIL_MAIL_FROM", "noreply@astuto.io"),
     reply_to: "noreply@astuto.io"
   }
 
