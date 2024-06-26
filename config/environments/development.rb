@@ -51,9 +51,9 @@ Rails.application.configure do
       user_name:            ENV.fetch("EMAIL_SMTP_USER"),
       password:             ENV.fetch("EMAIL_SMTP_PASS"),
       authentication:       ENV.fetch("EMAIL_SMTP_AUTH", "plain"),
-      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "true")),
-      openssl_verify_mode:  ENV["EMAIL_SMTP_OPENSSL_VERIFY_MODE"],
-      tls:                  ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_TLS", "true")),
+      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "false")),
+      openssl_verify_mode:  ENV.fetch("EMAIL_SMTP_OPENSSL_VERIFY_MODE", "none"),
+      tls:                  ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_TLS", "false")),
     }
   end
 
