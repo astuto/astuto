@@ -5,7 +5,7 @@ ruby '3.0.6'
 
 gem 'rake', '12.3.3'
 
-gem 'rails', '6.1.7.7'
+gem 'rails', '6.1.7.8'
 
 gem 'pg', '1.3.5'
 
