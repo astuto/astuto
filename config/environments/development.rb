@@ -45,16 +45,17 @@ Rails.application.configure do
   if ENV['EMAIL_DELIVERY_METHOD'] == "smtp"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address:              ENV['EMAIL_SMTP_HOST'],
+      address:              ENV.fetch('EMAIL_SMTP_HOST'),
       port:                 ENV.fetch("EMAIL_SMTP_PORT") { 25 },
-      domain:               ENV["EMAIL_SMTP_HELO_DOMAIN"],
-      user_name:            ENV.fetch("EMAIL_SMTP_USER"),
-      password:             ENV.fetch("EMAIL_SMTP_PASS"),
-      authentication:       ENV.fetch("EMAIL_SMTP_AUTH", "plain"),
-      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO", "false")),
-      openssl_verify_mode:  ENV.fetch("EMAIL_SMTP_OPENSSL_VERIFY_MODE", "none"),
-      tls:                  ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_TLS", "false")),
-    }
+      domain:               ENV.fetch("EMAIL_SMTP_HELO_DOMAIN") { nil },
+      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_STARTTLS_AUTO") { "false" }),
+      openssl_verify_mode:  ENV.fetch("EMAIL_SMTP_OPENSSL_VERIFY_MODE") { "none" },
+      tls:                  ActiveModel::Type::Boolean.new.cast(ENV.fetch("EMAIL_SMTP_TLS") { "false" }),
+    }.tap do |c|
+      c[:authentication] = ENV.fetch("EMAIL_SMTP_AUTH") if ENV["EMAIL_SMTP_AUTH"] != nil
+      c[:user_name]      = ENV.fetch("EMAIL_SMTP_USER") if ENV["EMAIL_SMTP_AUTH"] != nil
+      c[:password]       = ENV.fetch("EMAIL_SMTP_PASS") if ENV["EMAIL_SMTP_AUTH"] != nil
+    end
   end
 
   config.action_mailer.default_options = {
