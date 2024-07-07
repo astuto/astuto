@@ -1,9 +1,15 @@
+#Extracted the default env outside for better readability
+#Ref Fragments: https://github.com/compose-spec/compose-spec/blob/master/spec.md#fragments
+#Ref Extension: https://github.com/compose-spec/compose-spec/blob/master/spec.md#extension
+x-env: &default-env
+  POSTGRES_USER: astuto
+  POSTGRES_PASSWORD: dbpass
+
 services:
   db:
     image: postgres:14.5
     environment:
-      POSTGRES_USER: astuto
-      POSTGRES_PASSWORD: dbpass
+      <<: *default-env
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
@@ -12,8 +18,7 @@ services:
       dockerfile: Dockerfile
       target: dev
     environment:
-      POSTGRES_USER: astuto
-      POSTGRES_PASSWORD: dbpass
+      <<: *default-env
       BASE_URL: http://localhost:3000
       SECRET_KEY_BASE: secretkeybasehere
     ports:
