@@ -8,8 +8,7 @@ x-env: &default-env
 services:
   db:
     image: postgres:14.5
-    environment:
-      <<: *default-env
+    environment: *default-env
     volumes:
       - dbdata:/var/lib/postgresql/data
   web:
@@ -18,7 +17,7 @@ services:
       dockerfile: Dockerfile
       target: dev
     environment:
-      <<: *default-env
+      <<: [*default-env]
       BASE_URL: http://localhost:3000
       SECRET_KEY_BASE: secretkeybasehere
     ports:
