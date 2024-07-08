@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   extend FriendlyId
   
   belongs_to :board
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :post_status, optional: true
 
   has_many :likes, dependent: :destroy
@@ -11,6 +11,12 @@ class Post < ApplicationRecord
   has_many :followers, through: :follows, source: :user
   has_many :comments, dependent: :destroy
   has_many :post_status_changes, dependent: :destroy
+
+  enum approval_status: [
+    :approved,
+    :pending,
+    :rejected
+  ] 
 
   validates :title, presence: true, length: { in: 4..128 }
 

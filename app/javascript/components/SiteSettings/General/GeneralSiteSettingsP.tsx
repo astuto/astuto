@@ -25,13 +25,15 @@ export interface ISiteSettingsGeneralForm {
   siteLogo: string;
   brandDisplaySetting: string;
   locale: string;
+  rootBoardId?: string;
+  customDomain?: string;
+  allowAnonymousFeedback: boolean;
+  feedbackApprovalPolicy: string;
+  showRoadmapInHeader: boolean;
+  collapseBoardsInHeader: string;
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
   showPoweredBy: boolean;
-  rootBoardId?: string;
-  customDomain?: string;
-  showRoadmapInHeader: boolean;
-  collapseBoardsInHeader: string;
 }
 
 interface Props {
@@ -50,6 +52,8 @@ interface Props {
     locale: string,
     rootBoardId: number,
     customDomain: string,
+    allowAnonymousFeedback: boolean,
+    feedbackApprovalPolicy: string,
     showRoadmapInHeader: boolean,
     collapseBoardsInHeader: string,
     showVoteCount: boolean,
@@ -80,13 +84,15 @@ const GeneralSiteSettingsP = ({
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
+      rootBoardId: originForm.rootBoardId,
+      customDomain: originForm.customDomain,
+      allowAnonymousFeedback: originForm.allowAnonymousFeedback,
+      feedbackApprovalPolicy: originForm.feedbackApprovalPolicy,
+      showRoadmapInHeader: originForm.showRoadmapInHeader,
+      collapseBoardsInHeader: originForm.collapseBoardsInHeader,
       showVoteCount: originForm.showVoteCount,
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
       showPoweredBy: originForm.showPoweredBy,
-      rootBoardId: originForm.rootBoardId,
-      customDomain: originForm.customDomain,
-      showRoadmapInHeader: originForm.showRoadmapInHeader,
-      collapseBoardsInHeader: originForm.collapseBoardsInHeader,
     },
   });
   
@@ -98,6 +104,8 @@ const GeneralSiteSettingsP = ({
       data.locale,
       Number(data.rootBoardId),
       data.customDomain,
+      data.allowAnonymousFeedback,
+      data.feedbackApprovalPolicy,
       data.showRoadmapInHeader,
       data.collapseBoardsInHeader,
       data.showVoteCount,
@@ -225,6 +233,42 @@ const GeneralSiteSettingsP = ({
               </div>
             </div>
           }
+
+          <br />
+          <h4>{ I18n.t('site_settings.general.subtitle_moderation') }</h4>
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('allowAnonymousFeedback')} type="checkbox" id="allow_anonymous_feedback" />
+              <label htmlFor="allow_anonymous_feedback">{ getLabel('tenant_setting', 'allow_anonymous_feedback') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.allow_anonymous_feedback_help') }
+              </SmallMutedText>
+            </div>
+          </div>
+
+          <br />
+          <div className="formGroup">
+            <label htmlFor="feedbackApprovalPolicy">{ getLabel('tenant_setting', 'feedback_approval_policy') }</label>
+              <select
+                {...register('feedbackApprovalPolicy')}
+                id="feedbackApprovalPolicy"
+                className="selectPicker"
+              >
+                <option value="anonymous_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_anonymous_require_approval') }
+                </option>
+                <option value="never_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_never_require_approval') }
+                </option>
+                <option value="always_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_always_require_approval') }
+                </option>
+              </select>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.feedback_approval_policy_help') }
+              </SmallMutedText>
+          </div>
 
           <br />
           <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>

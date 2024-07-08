@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_21_124018) do
+ActiveRecord::Schema.define(version: 2024_07_08_191938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,12 +117,13 @@ ActiveRecord::Schema.define(version: 2024_05_21_124018) do
     t.string "title", null: false
     t.text "description"
     t.bigint "board_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id"
     t.bigint "post_status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tenant_id", null: false
     t.string "slug"
+    t.integer "approval_status", default: 0, null: false
     t.index ["board_id"], name: "index_posts_on_board_id"
     t.index ["post_status_id"], name: "index_posts_on_post_status_id"
     t.index ["slug", "tenant_id"], name: "index_posts_on_slug_and_tenant_id", unique: true
@@ -165,6 +166,8 @@ ActiveRecord::Schema.define(version: 2024_05_21_124018) do
     t.integer "collapse_boards_in_header", default: 0, null: false
     t.text "custom_css"
     t.boolean "show_powered_by", default: true, null: false
+    t.boolean "allow_anonymous_feedback", default: true, null: false
+    t.integer "feedback_approval_policy", default: 0, null: false
     t.index ["tenant_id"], name: "index_tenant_settings_on_tenant_id"
   end
 

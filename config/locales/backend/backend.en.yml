@@ -120,6 +120,8 @@ en:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Show vote count to users'
         show_vote_button_in_board: 'Show vote buttons in board page'
         show_powered_by: 'Show "Powered by Astuto"'
