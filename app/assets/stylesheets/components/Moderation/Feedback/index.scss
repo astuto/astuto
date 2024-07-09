@@ -1,0 +1,16 @@
+.feedbackModerationContainer {
+  .badges {
+    @extend
+      .d-flex,
+      .flex-row,
+      .flex-wrap;
+
+    row-gap: 8px;
+  }
+
+  .changeFeedbackModerationSettingsLink {
+    @extend
+      .align-self-auto,
+      .mt-2;
+  }
+}

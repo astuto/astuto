@@ -5,6 +5,10 @@
       react_component(
         'Moderation/Feedback',
         {
+          currentUserRole: current_user.role,
+          changeFeedbackModerationSettingsUrl: site_settings_general_path(anchor: 'moderation'),
+          tenantSettingAllowAnonymousFeedback: @tenant.tenant_setting.allow_anonymous_feedback,
+          tenantSettingFeedbackApprovalPolicy: @tenant.tenant_setting.feedback_approval_policy,
           authenticityToken: form_authenticity_token
         }
       )

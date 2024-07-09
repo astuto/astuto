@@ -324,3 +324,21 @@ body {
     .text-center,
     .m-0;
 }
+
+.statusBadge {
+  @extend
+    .badge,
+    .badgeLight,
+    .p-2,
+    .ml-1,
+    .mr-1;
+
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.highlighted {
+  @extend .p-2;
+  
+  background-color: rgba(255, 255, 0, 0.2);
+}

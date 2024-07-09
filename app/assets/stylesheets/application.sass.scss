@@ -22,11 +22,15 @@
 @import 'components/Roadmap';
 @import 'components/Billing';
 
-  /* Site Settings Components */
-  @import 'components/SiteSettings';
-  @import 'components/SiteSettings/Boards';
-  @import 'components/SiteSettings/PostStatuses';
-  @import 'components/SiteSettings/Roadmap';
-  @import 'components/SiteSettings/Users';
-  @import 'components/SiteSettings/Authentication';
-  @import 'components/SiteSettings/Appearance/';
+/* Site Settings Components */
+@import 'components/SiteSettings';
+@import 'components/SiteSettings/General';
+@import 'components/SiteSettings/Boards';
+@import 'components/SiteSettings/PostStatuses';
+@import 'components/SiteSettings/Roadmap';
+@import 'components/SiteSettings/Authentication';
+@import 'components/SiteSettings/Appearance/';
+
+/* Moderation Components */
+@import 'components/Moderation/Feedback';
+@import 'components/Moderation/Users';

@@ -120,9 +120,26 @@ const GeneralSiteSettingsP = ({
 
   const customDomain = watch('customDomain');
 
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const anchor = window.location.hash.substring(1);
+      const anchorElement = document.getElementById(anchor);
+
+      if (anchorElement) {
+        anchorElement.classList.add('highlighted');
+
+        setTimeout( () => {
+          anchorElement.scrollIntoView({
+            behavior: 'smooth'
+          })
+        }, 50);
+      }
+    }
+  }, []);
+
   return (
     <>
-      <Box>
+      <Box customClass="generalSiteSettingsContainer">
         <h2>{ I18n.t('site_settings.general.title') }</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -234,100 +251,98 @@ const GeneralSiteSettingsP = ({
             </div>
           }
 
-          <br />
-          <h4>{ I18n.t('site_settings.general.subtitle_moderation') }</h4>
+          <div id="moderation" className="settingsGroup">
+            <h4>{ I18n.t('site_settings.general.subtitle_moderation') }</h4>
 
-          <div className="formGroup">
-            <div className="checkboxSwitch">
-              <input {...register('allowAnonymousFeedback')} type="checkbox" id="allow_anonymous_feedback" />
-              <label htmlFor="allow_anonymous_feedback">{ getLabel('tenant_setting', 'allow_anonymous_feedback') }</label>
-              <SmallMutedText>
-                { I18n.t('site_settings.general.allow_anonymous_feedback_help') }
-              </SmallMutedText>
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('allowAnonymousFeedback')} type="checkbox" id="allow_anonymous_feedback" />
+                <label htmlFor="allow_anonymous_feedback">{ getLabel('tenant_setting', 'allow_anonymous_feedback') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.allow_anonymous_feedback_help') }
+                </SmallMutedText>
+              </div>
+            </div>
+
+            <div className="formGroup">
+              <label htmlFor="feedbackApprovalPolicy">{ getLabel('tenant_setting', 'feedback_approval_policy') }</label>
+                <select
+                  {...register('feedbackApprovalPolicy')}
+                  id="feedbackApprovalPolicy"
+                  className="selectPicker"
+                >
+                  <option value="anonymous_require_approval">
+                    { I18n.t('site_settings.general.feedback_approval_policy_anonymous_require_approval') }
+                  </option>
+                  <option value="never_require_approval">
+                    { I18n.t('site_settings.general.feedback_approval_policy_never_require_approval') }
+                  </option>
+                  <option value="always_require_approval">
+                    { I18n.t('site_settings.general.feedback_approval_policy_always_require_approval') }
+                  </option>
+                </select>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.feedback_approval_policy_help') }
+                </SmallMutedText>
             </div>
           </div>
 
-          <br />
-          <div className="formGroup">
-            <label htmlFor="feedbackApprovalPolicy">{ getLabel('tenant_setting', 'feedback_approval_policy') }</label>
-              <select
-                {...register('feedbackApprovalPolicy')}
-                id="feedbackApprovalPolicy"
-                className="selectPicker"
-              >
-                <option value="anonymous_require_approval">
-                  { I18n.t('site_settings.general.feedback_approval_policy_anonymous_require_approval') }
-                </option>
-                <option value="never_require_approval">
-                  { I18n.t('site_settings.general.feedback_approval_policy_never_require_approval') }
-                </option>
-                <option value="always_require_approval">
-                  { I18n.t('site_settings.general.feedback_approval_policy_always_require_approval') }
-                </option>
-              </select>
-              <SmallMutedText>
-                { I18n.t('site_settings.general.feedback_approval_policy_help') }
-              </SmallMutedText>
-          </div>
-
-          <br />
-          <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>
-          
-          <div className="formGroup">
-            <div className="checkboxSwitch">
-              <input {...register('showRoadmapInHeader')} type="checkbox" id="show_roadmap_in_header" />
-              <label htmlFor="show_roadmap_in_header">{ getLabel('tenant_setting', 'show_roadmap_in_header') }</label>
+          <div id="header" className="settingsGroup">
+            <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>
+            
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('showRoadmapInHeader')} type="checkbox" id="show_roadmap_in_header" />
+                <label htmlFor="show_roadmap_in_header">{ getLabel('tenant_setting', 'show_roadmap_in_header') }</label>
+              </div>
             </div>
-          </div>
-          
-          <br />
-          <div className="formGroup">
-            <label htmlFor="collapseBoardsInHeader">{ getLabel('tenant_setting', 'collapse_boards_in_header') }</label>
-              <select
-                {...register('collapseBoardsInHeader')}
-                id="collapseBoardsInHeader"
-                className="selectPicker"
-              >
-                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE}>
-                  { I18n.t('site_settings.general.collapse_boards_in_header_no_collapse') }
-                </option>
-                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE}>
-                  { I18n.t('site_settings.general.collapse_boards_in_header_always_collapse') }
-                </option>
-              </select>
-          </div>
-
-          <br />
-          <h4>{ I18n.t('site_settings.general.subtitle_visibility') }</h4>
-
-          <div className="formGroup">
-            <div className="checkboxSwitch">
-              <input {...register('showVoteCount')} type="checkbox" id="show_vote_count_checkbox" />
-              <label htmlFor="show_vote_count_checkbox">{ getLabel('tenant_setting', 'show_vote_count') }</label>
-              <SmallMutedText>
-                { I18n.t('site_settings.general.show_vote_count_help') }
-              </SmallMutedText>
+            
+            <div className="formGroup">
+              <label htmlFor="collapseBoardsInHeader">{ getLabel('tenant_setting', 'collapse_boards_in_header') }</label>
+                <select
+                  {...register('collapseBoardsInHeader')}
+                  id="collapseBoardsInHeader"
+                  className="selectPicker"
+                >
+                  <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE}>
+                    { I18n.t('site_settings.general.collapse_boards_in_header_no_collapse') }
+                  </option>
+                  <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE}>
+                    { I18n.t('site_settings.general.collapse_boards_in_header_always_collapse') }
+                  </option>
+                </select>
             </div>
           </div>
 
-          <br />
+          <div id="visibility" className="settingsGroup">
+            <br />
+            <h4>{ I18n.t('site_settings.general.subtitle_visibility') }</h4>
 
-          <div className="formGroup">
-            <div className="checkboxSwitch">
-              <input {...register('showVoteButtonInBoard')} type="checkbox" id="show_vote_button_in_board_checkbox" />
-              <label htmlFor="show_vote_button_in_board_checkbox">{ getLabel('tenant_setting', 'show_vote_button_in_board') }</label>
-              <SmallMutedText>
-                { I18n.t('site_settings.general.show_vote_button_in_board_help') }
-              </SmallMutedText>
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('showVoteCount')} type="checkbox" id="show_vote_count_checkbox" />
+                <label htmlFor="show_vote_count_checkbox">{ getLabel('tenant_setting', 'show_vote_count') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.show_vote_count_help') }
+                </SmallMutedText>
+              </div>
             </div>
-          </div>
 
-          <br />
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('showVoteButtonInBoard')} type="checkbox" id="show_vote_button_in_board_checkbox" />
+                <label htmlFor="show_vote_button_in_board_checkbox">{ getLabel('tenant_setting', 'show_vote_button_in_board') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.show_vote_button_in_board_help') }
+                </SmallMutedText>
+              </div>
+            </div>
 
-          <div className="formGroup">
-            <div className="checkboxSwitch">
-              <input {...register('showPoweredBy')} type="checkbox" id="show_powered_by_checkbox" />
-              <label htmlFor="show_powered_by_checkbox">{ getLabel('tenant_setting', 'show_powered_by') }</label>
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('showPoweredBy')} type="checkbox" id="show_powered_by_checkbox" />
+                <label htmlFor="show_powered_by_checkbox">{ getLabel('tenant_setting', 'show_powered_by') }</label>
+              </div>
             </div>
           </div>
 
