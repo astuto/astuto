@@ -51,16 +51,17 @@
                 <% if current_user.admin? or current_user.owner? %>
                   <%=
                     link_to t('header.menu.site_settings'),
-                    @header_full_urls ? get_url_for(method(:site_settings_general_url)) : site_settings_general_path,
-                      class: 'dropdown-item siteSettingsDropdown'
-                    %>
-                <% else %>
-                  <%=
-                    link_to t('header.menu.site_settings'),
-                    @header_full_urls ? get_url_for(method(:site_settings_users_url)) : site_settings_users_path,
+                      @header_full_urls ? get_url_for(method(:site_settings_general_url)) : site_settings_general_path,
                       class: 'dropdown-item siteSettingsDropdown'
                   %>
                 <% end %>
+
+                <%=
+                  link_to t('header.menu.moderation'),
+                    @header_full_urls ? get_url_for(method(:moderation_feedback_url)) : moderation_feedback_path,
+                    class: 'dropdown-item siteSettingsDropdown'
+                %>
+
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
                   <%= link_to @header_full_urls ? get_url_for(method(:request_billing_page_url)) : request_billing_page_path, class: 'dropdown-item', data: {turbolinks: false} do %>
                     <%= t('billing.title') %>

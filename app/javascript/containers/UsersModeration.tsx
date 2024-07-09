@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import UsersSiteSettingsP from "../components/SiteSettings/Users/UsersSiteSettingsP";
+import UsersSiteSettingsP from "../components/Moderation/Users/UsersSiteSettingsP";
 
 import { requestUsers } from "../actions/User/requestUsers";
 import { updateUser } from "../actions/User/updateUser";

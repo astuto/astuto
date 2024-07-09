@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 
-import UsersSiteSettings from '../../../containers/UsersSiteSettings';
+import UsersSiteSettings from '../../../containers/UsersModeration';
 
 import createStoreHelper from '../../../helpers/createStore';
 import { UserRoles } from '../../../interfaces/IUser';

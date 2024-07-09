@@ -81,14 +81,14 @@ class UsersSiteSettingsP extends React.Component<Props> {
     return (
       <>
         <Box>
-          <h2>{ I18n.t('site_settings.users.title') }</h2>
+          <h2>{ I18n.t('moderation.users.title') }</h2>
 
           <p className="userCount">
             {numberOfUsers} {I18n.t('activerecord.models.user', {count: users.items.length})}
             &nbsp;(
-            {numberOfActiveUsers} {I18n.t('site_settings.users.status_active')},&nbsp;
-            {numberOfBlockedUsers} {I18n.t('site_settings.users.status_blocked')},&nbsp;
-            {numberOfDeletedUsers} {I18n.t('site_settings.users.status_deleted')})
+            {numberOfActiveUsers} {I18n.t('moderation.users.status_active')},&nbsp;
+            {numberOfBlockedUsers} {I18n.t('moderation.users.status_blocked')},&nbsp;
+            {numberOfDeletedUsers} {I18n.t('moderation.users.status_deleted')})
           </p>
 
           <ul className="usersList">

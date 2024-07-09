@@ -30,9 +30,9 @@ class UserForm extends React.Component<Props, State> {
 
     if (selectedRole !== currentRole) {
       if (selectedRole === 'moderator')
-        confirmation = confirm(I18n.t('site_settings.users.role_to_moderator_confirmation', { name: user.fullName }));
+        confirmation = confirm(I18n.t('moderation.users.role_to_moderator_confirmation', { name: user.fullName }));
       else if (selectedRole === 'admin')
-        confirmation = confirm(I18n.t('site_settings.users.role_to_admin_confirmation', { name: user.fullName }));
+        confirmation = confirm(I18n.t('moderation.users.role_to_admin_confirmation', { name: user.fullName }));
     }
 
     if (confirmation) updateUserRole(selectedRole);
@@ -60,13 +60,13 @@ class UserForm extends React.Component<Props, State> {
           >
             <optgroup label={getLabel('user', 'role')}>
               <option value={USER_ROLE_USER}>
-                { I18n.t(`site_settings.users.role_${USER_ROLE_USER}`) }
+                { I18n.t(`moderation.users.role_${USER_ROLE_USER}`) }
               </option>
               <option value={USER_ROLE_MODERATOR}>
-                { I18n.t(`site_settings.users.role_${USER_ROLE_MODERATOR}`) }
+                { I18n.t(`moderation.users.role_${USER_ROLE_MODERATOR}`) }
               </option>
               <option value={USER_ROLE_ADMIN}>
-                { I18n.t(`site_settings.users.role_${USER_ROLE_ADMIN}`) }
+                { I18n.t(`moderation.users.role_${USER_ROLE_ADMIN}`) }
               </option>
             </optgroup>
           </select>

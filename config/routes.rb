@@ -72,6 +72,10 @@ Rails.application.routes.draw do
       get 'post_statuses'
       get 'roadmap'
       get 'appearance'
+    end
+
+    namespace :moderation do
+      get 'feedback'
       get 'users'
     end
   end

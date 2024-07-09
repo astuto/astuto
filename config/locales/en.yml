@@ -80,6 +80,7 @@ en:
     menu:
       administration_header: 'Administration'
       site_settings: 'Site settings'
+      moderation: 'Moderation'
       profile_header: 'Profile'
       profile_settings: 'Profile settings'
       help_header: 'Help'
@@ -153,7 +154,6 @@ en:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      users: 'Users'
       authentication: 'Authentication'
       appearance: 'Appearance'
     info_box:
@@ -201,21 +201,6 @@ en:
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
-    users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
     authentication:
       title: 'Authentication'
       learn_more: 'Learn how to configure custom OAuth providers'
@@ -236,3 +221,22 @@ en:
         subtitle_oauth_config: 'OAuth configuration'
         subtitle_user_profile_config: 'User profile configuration'
         client_secret_help: 'hidden for security purposes'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
