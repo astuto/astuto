@@ -7,8 +7,9 @@ import boardsReducer from './boardsReducer';
 import postStatusesReducer from './postStatusesReducer';
 import usersReducer from './usersReducer';
 import currentPostReducer from './currentPostReducer';
-import siteSettingsReducer from './siteSettingsReducer';
 import oAuthsReducer from './oAuthsReducer';
+import siteSettingsReducer from './siteSettingsReducer';
+import moderationReducer from './moderationReducer';
 
 const rootReducer = combineReducers({
   tenantSignUp: tenantSignUpReducer,
@@ -18,8 +19,10 @@ const rootReducer = combineReducers({
   postStatuses: postStatusesReducer,
   users: usersReducer,
   currentPost: currentPostReducer,
-  siteSettings: siteSettingsReducer,
   oAuths: oAuthsReducer,
+  
+  siteSettings: siteSettingsReducer,
+  moderation: moderationReducer,
 });
 
 export type State = ReturnType<typeof rootReducer>

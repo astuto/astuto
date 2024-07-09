@@ -62,13 +62,6 @@ import {
 } from '../actions/PostStatus/updatePostStatus';
 
 import {
-  UserUpdateActionTypes,
-  USER_UPDATE_START,
-  USER_UPDATE_SUCCESS,
-  USER_UPDATE_FAILURE,
-} from '../actions/User/updateUser';
-
-import {
   OAuthSubmitActionTypes,
   OAUTH_SUBMIT_START,
   OAUTH_SUBMIT_SUCCESS,
@@ -93,7 +86,6 @@ import siteSettingsGeneralReducer, { SiteSettingsGeneralState } from './SiteSett
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
-import siteSettingsUsersReducer, { SiteSettingsUsersState } from './SiteSettings/usersReducer';
 import siteSettingsAuthenticationReducer, { SiteSettingsAuthenticationState } from './SiteSettings/authenticationReducer';
 import siteSettingsAppearanceReducer, { SiteSettingsAppearanceState } from './SiteSettings/appearanceReducer';
 
@@ -104,7 +96,6 @@ interface SiteSettingsState {
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
   appearance: SiteSettingsAppearanceState;
-  users: SiteSettingsUsersState;
 }
 
 const initialState: SiteSettingsState = {
@@ -114,7 +105,6 @@ const initialState: SiteSettingsState = {
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
   appearance: siteSettingsAppearanceReducer(undefined, {} as any),
-  users: siteSettingsUsersReducer(undefined, {} as any),
 };
 
 const siteSettingsReducer = (
@@ -131,8 +121,7 @@ const siteSettingsReducer = (
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
-    PostStatusUpdateActionTypes |
-    UserUpdateActionTypes
+    PostStatusUpdateActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case TENANT_UPDATE_START:
@@ -196,14 +185,6 @@ const siteSettingsReducer = (
         ...state,
         postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action),
         roadmap: siteSettingsRoadmapReducer(state.roadmap, action),
-      };
-
-    case USER_UPDATE_START:
-    case USER_UPDATE_SUCCESS:
-    case USER_UPDATE_FAILURE:
-      return {
-        ...state,
-        users: siteSettingsUsersReducer(state.users, action),
       };
 
     default:

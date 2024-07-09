@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import UsersSiteSettingsP from "../components/Moderation/Users/UsersSiteSettingsP";
+import UsersModerationP from "../components/Moderation/Users/UsersModerationP";
 
 import { requestUsers } from "../actions/User/requestUsers";
 import { updateUser } from "../actions/User/updateUser";
@@ -9,8 +9,8 @@ import { State } from "../reducers/rootReducer";
 
 const mapStateToProps = (state: State) => ({
   users: state.users,
-  settingsAreUpdating: state.siteSettings.users.areUpdating,
-  settingsError: state.siteSettings.users.error,
+  settingsAreUpdating: state.moderation.users.areUpdating,
+  settingsError: state.moderation.users.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UsersSiteSettingsP);
+)(UsersModerationP);

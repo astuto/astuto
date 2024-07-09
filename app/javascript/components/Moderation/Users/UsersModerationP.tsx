@@ -32,7 +32,7 @@ interface Props {
   authenticityToken: string;
 }
 
-class UsersSiteSettingsP extends React.Component<Props> {
+class UsersModerationP extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
@@ -117,4 +117,4 @@ class UsersSiteSettingsP extends React.Component<Props> {
   }
 }
 
-export default UsersSiteSettingsP;
+export default UsersModerationP;

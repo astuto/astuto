@@ -5,17 +5,17 @@ import {
   USER_UPDATE_FAILURE,
 } from '../../actions/User/updateUser';
 
-export interface SiteSettingsUsersState {
+export interface ModerationUsersState {
   areUpdating: boolean;
   error: string;
 }
 
-const initialState: SiteSettingsUsersState = {
+const initialState: ModerationUsersState = {
   areUpdating: false,
   error: '',
 };
 
-const siteSettingsUsersReducer = (
+const moderationUsersReducer = (
   state = initialState,
   action: UserUpdateActionTypes,
 ) => {
@@ -45,4 +45,4 @@ const siteSettingsUsersReducer = (
   }
 }
 
-export default siteSettingsUsersReducer;
+export default moderationUsersReducer;
