@@ -1,7 +1,7 @@
 de:
   common:
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Ein unbekannter Fehler ist aufgetreten, bitte versuchen Sie es erneut'
     validations:
       required: '%{attribute} ist erforderlich'
       email: 'Ungültige E-Mail-Adresse'
@@ -19,11 +19,11 @@ de:
         current_password: 'Aktuelles Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
         notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigungen"
-        waiting_confirmation: 'Currently waiting confirmation for %{email}'
-        no_password_set: 'You must set a password to update your profile'
-        set_password: 'Set password'
-        password_leave_blank_help: "leave blank if you don't want to change your password"
-        current_password_required_help: 'we need your current password to confirm your changes'
+        waiting_confirmation: 'Warte auf Bestätigung von: %{email}'
+        no_password_set: 'Sie müssen ein Passwort festlegen, um Ihr Profil zu aktualisieren'
+        set_password: 'Passwort festlegen'
+        password_leave_blank_help: "Lassen Sie das Feld leer, wenn Sie Ihr Passwort nicht ändern möchten"
+        current_password_required_help: 'Wir benötigen Ihr aktuelles Passwort, um Ihre Änderungen zu bestätigen'
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -46,13 +46,13 @@ de:
     no_status: 'Kein Status'
     loading: 'Lädt...'
     confirmation: 'Sicher?'
-    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
+    confirmation_board_delete: 'Warnung: Wenn es in diesem Forum Feedback Beiträge gibt, werden ALLE diese Beiträge ebenfalls gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.'
     unsaved_changes: 'Ungespeicherte Änderungen gehen verloren, wenn du die Seite verlässt.'
     edited: 'Bearbeitet'
     enabled: 'Aktiviert'
     disabled: 'Deaktiviert'
     copied: 'Kopiert!'
-    user_staff: 'Staff'
+    user_staff: 'Mitarbeiter'
     powered_by: 'Powered by'
     buttons:
       new: 'Neu'
@@ -64,7 +64,7 @@ de:
       confirm: 'Bestätigen'
       back: 'Zurück'
       test: 'Test'
-      clear: 'Clear'
+      clear: 'Zurücksetzen'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -80,18 +80,18 @@ de:
     menu:
       administration_header: 'Administration'
       site_settings: 'Seiteneinstellungen'
-      profile_header: 'Profile'
+      profile_header: 'Profil'
       profile_settings: 'Profileinstellungen'
-      help_header: 'Help'
-      tour: 'Tour'
-      docs: 'Documentation'
+      help_header: 'Hilfe'
+      tour: 'Führung'
+      docs: 'Dokumentation'
       support: 'Support'
       sign_out: 'Abmelden'
     log_in: 'Einloggen / Registrieren'
   roadmap:
     title: 'Roadmap'
   billing:
-    title: 'Billing'
+    title: 'Abrechnung'
   blocked_tenant:
     title: 'Dieser Feedback-Bereich wurde blockiert'
   board:
@@ -108,15 +108,15 @@ de:
     filter_box:
       title: 'Nach Status filtern'
     sort_by_box:
-      title: 'Sort by'
-      trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      title: 'Sortieren nach'
+      trending: 'Angesagt'
+      newest: 'Neueste'
+      most_voted: 'Beliebteste'
+      oldest: 'Am ältesten'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Nach Datum filtern'
+      from_label: 'Von'
+      to_label: 'Bis'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:
@@ -155,7 +155,7 @@ de:
       roadmap: 'Übersicht'
       users: 'Benutzer'
       authentication: 'Authentifizierung'
-      appearance: 'Appearance'
+      appearance: 'Erscheinung'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
       error: 'Ein Fehler ist aufgetreten: %{message}'
@@ -170,8 +170,8 @@ de:
       collapse_boards_in_header_no_collapse: 'nie'
       collapse_boards_in_header_always_collapse: 'immer'
       subtitle_visibility: 'Sichtbarkeit'
-      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
-      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      custom_domain_help: 'Zuerst fügen Sie in Ihren DNS-Einstellungen einen CNAME Eintrag hinzu, der "%{domain}" zu "cname.astuto.io" zeigt. Klicken Sie dann unten auf "Speichern".'
+      custom_domain_learn_more: 'Erfahren Sie, wie Sie eine eigene Domain konfigurieren'
       show_vote_count_help: 'Wird diese Einstellung aktiviert, können Nutzer*innen sehen, wie oft für einen Post gevotet wurde. Das kann Nutzer*innen dazu anregen, ebenfalls für beliebte Posts zu stimmen – das würde einem Schneeballeffekt entsprechen.'
       show_vote_button_in_board_help: 'Wenn Sie diese Einstellung aktivieren, können Nutzer*innen Beiträge von der Board-Seite bewerten. Dies kann Nutzer*innen dazu veranlassen, über mehr Beiträge abzustimmen, was zu einer höheren Anzahl von Stimmen führt – die Bedeutung indes verringert sich.'
     boards:
@@ -193,8 +193,8 @@ de:
       empty: 'Die Roadmap ist leer.'
       help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
+      title: 'Erscheinung'
+      learn_more: 'Erfahren Sie, wie man das Aussehen anpassen kann'
     users:
       title: 'Benutzer'
       block: 'Sperren'
@@ -212,9 +212,9 @@ de:
       status_deleted: 'Gelöscht'
     authentication:
       title: 'Authentifizierung'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Erfahren Sie, wie Sie eigene OAuth Anbieter konfigurieren'
       oauth_subtitle: 'OAuth-Anbieter'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Standard OAuth-Provider'
       copy_url: 'URL in Zwischenablage kopieren'
       test_page:
         title: '%{name} OAuth-Testergebnisse'
