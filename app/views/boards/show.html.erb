@@ -5,6 +5,7 @@
       board: @board,
       isLoggedIn: user_signed_in?,
       isPowerUser: user_signed_in? ? current_user.moderator? : false,
+      currentUserFullName: user_signed_in? ? current_user.full_name_or_email : '',
       tenantSetting: @tenant_setting,
       authenticityToken: form_authenticity_token
     }

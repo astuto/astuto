@@ -17,6 +17,8 @@ import HttpStatus from '../../constants/http_status';
 interface Props {
   board: IBoard;
   isLoggedIn: boolean;
+  currentUserFullName: string;
+  isAnonymousFeedbackAllowed: boolean;
   authenticityToken: string;
 }
 
@@ -28,6 +30,7 @@ interface State {
 
   title: string;
   description: string;
+  isSubmissionAnonymous: boolean;
 }
 
 class NewPost extends React.Component<Props, State> {
@@ -42,6 +45,7 @@ class NewPost extends React.Component<Props, State> {
 
       title: '',
       description: '',
+      isSubmissionAnonymous: false,
     };
 
     this.toggleForm = this.toggleForm.bind(this);
@@ -131,7 +135,13 @@ class NewPost extends React.Component<Props, State> {
   }
   
   render() {
-    const { board, isLoggedIn } = this.props;
+    const {
+      board,
+      isLoggedIn,
+      currentUserFullName,
+      isAnonymousFeedbackAllowed
+    } = this.props;
+
     const {
       showForm,
       error,
@@ -139,7 +149,8 @@ class NewPost extends React.Component<Props, State> {
       isLoading,
       
       title,
-      description
+      description,
+      isSubmissionAnonymous,
     } = this.state;
 
     return (
@@ -154,23 +165,41 @@ class NewPost extends React.Component<Props, State> {
           {board.description}
         </ReactMarkdown>
 
+        <Button
+          onClick={() => {
+            if (isLoggedIn) {
+              this.toggleForm();
+              this.setState({ isSubmissionAnonymous: false });
+            } else {
+              window.location.href = '/users/sign_in';
+            }
+          }}
+          className="submitBtn"
+          outline={showForm}
+        >
+          {
+            showForm ?
+              I18n.t('board.new_post.cancel_button')
+            :
+              I18n.t('board.new_post.submit_button')
+          }
+        </Button>
+
         {
-          isLoggedIn ?
-            <Button
-              onClick={this.toggleForm}
-              className="submitBtn"
-              outline={showForm}>
-              {
-                showForm ?
-                  I18n.t('board.new_post.cancel_button')
-                :
-                  I18n.t('board.new_post.submit_button')
-              }
-            </Button>
-          :
-            <a href="/users/sign_in" className="btn btnPrimary">
-              {I18n.t('board.new_post.login_button')}
-            </a>
+          (isAnonymousFeedbackAllowed && !showForm) &&
+            <div className="anonymousFeedbackLink">
+              {I18n.t('common.words.or')}
+              &nbsp;
+              <a
+                onClick={() => {
+                  this.toggleForm();
+                  this.setState({ isSubmissionAnonymous: true });
+                }}
+                className="link"
+              >
+                {I18n.t('board.new_post.submit_anonymous_button').toLowerCase()}
+              </a>
+            </div>
         }
 
         {
@@ -178,6 +207,8 @@ class NewPost extends React.Component<Props, State> {
             <NewPostForm
               title={title}
               description={description}
+              currentUserFullName={currentUserFullName}
+              isSubmissionAnonymous={isSubmissionAnonymous}
               handleTitleChange={this.onTitleChange}
               handleDescriptionChange={this.onDescriptionChange}
               handleSubmit={this.submitForm}

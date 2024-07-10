@@ -1,5 +1,7 @@
 en:
   common:
+    words:
+      or: 'or'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
@@ -98,11 +100,14 @@ en:
   board:
     new_post:
       submit_button: 'Submit feedback'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: 'Cancel'
       login_button: 'Log in / Sign up'
       title: 'Title'
       description: 'Description (optional)'
       no_title: 'Title field is mandatory'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Feedback published! You will be redirected soon...'
     search_box:
       title: 'Search'

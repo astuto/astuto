@@ -32,6 +32,10 @@
         resize: vertical;
       }
     }
+
+    .anonymousFeedbackLink {
+      @extend .mt-2;
+    }
   }
   
   .sidebarFilters {
