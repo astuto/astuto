@@ -109,6 +109,10 @@ en:
       post:
         title: 'Title'
         description: 'Description'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: 'Post board'
         user_id: 'Post author'
         post_status_id: 'Post status'

@@ -2,7 +2,7 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
-import IPost from '../../interfaces/IPost';
+import IPost, { POST_APPROVAL_STATUS_APPROVED, POST_APPROVAL_STATUS_PENDING } from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 import ITenantSetting from '../../interfaces/ITenantSetting';
@@ -28,6 +28,7 @@ import { fromRailsStringToJavascriptDate } from '../../helpers/datetime';
 import HttpStatus from '../../constants/http_status';
 import ActionLink from '../common/ActionLink';
 import { EditIcon } from '../common/Icons';
+import Badge, { BADGE_TYPE_DANGER, BADGE_TYPE_WARNING } from '../common/Badge';
 
 interface Props {
   postId: number;
@@ -249,6 +250,15 @@ class PostP extends React.Component<Props> {
                   </ActionLink>
                 }
               </div>
+
+              {
+                (isPowerUser && post.approvalStatus !== POST_APPROVAL_STATUS_APPROVED) &&
+                  <div className="postInfo">
+                    <Badge type={post.approvalStatus === POST_APPROVAL_STATUS_PENDING ? BADGE_TYPE_WARNING : BADGE_TYPE_DANGER}>
+                      { I18n.t(`activerecord.attributes.post.approval_status_${post.approvalStatus.toLowerCase()}`) }
+                    </Badge>
+                  </div>
+              }
                 
               <ReactMarkdown
                 className="postDescription"

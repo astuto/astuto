@@ -8,7 +8,7 @@ import HttpStatus from '../../../constants/http_status';
 import Spinner from '../../common/Spinner';
 import { UserRoles } from '../../../interfaces/IUser';
 import { TenantSettingFeedbackApprovalPolicy } from '../../../interfaces/ITenantSetting';
-import Badge from '../../common/Badge';
+import Badge, { BADGE_TYPE_LIGHT } from '../../common/Badge';
 import ActionLink from '../../common/ActionLink';
 import { SettingsIcon } from '../../common/Icons';
 
@@ -57,7 +57,7 @@ class FeedbackModerationP extends React.Component<Props> {
             (currentUserRole === 'admin' || currentUserRole === 'owner') &&
               <>
               <div className="badges">
-                <Badge>
+                <Badge type={BADGE_TYPE_LIGHT}>
                   {
                     tenantSettingAllowAnonymousFeedback ?
                       I18n.t('moderation.feedback.anonymous_feedback_allowed')
@@ -66,7 +66,7 @@ class FeedbackModerationP extends React.Component<Props> {
                   }
                 </Badge>
                 
-                <Badge>
+                <Badge type={BADGE_TYPE_LIGHT}>
                   { this.getFeedbackPolicyString(tenantSettingFeedbackApprovalPolicy) }
                 </Badge>
               </div>

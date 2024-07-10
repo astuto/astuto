@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_moderator_if_post_not_approved, only: [:show]
   before_action :check_tenant_subscription, only: [:create, :update, :destroy]
 
   def index
@@ -23,12 +24,13 @@ class PostsController < ApplicationController
       .group('posts.id')
       .where(board_id: params[:board_id] || Board.first.id)
       .where(created_at: start_date.beginning_of_day..end_date.end_of_day)
+      .where(approval_status: "approved")
       .search_by_name_or_description(params[:search])
       .order_by(params[:sort_by])
       .page(params[:page])
 
-      # apply post status filter if present
-      posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
+    # apply post status filter if present
+    posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
     
     render json: posts
   end
@@ -56,6 +58,7 @@ class PostsController < ApplicationController
         :title,
         :slug,
         :description,
+        :approval_status,
         :board_id,
         :user_id,
         :post_status_id,
@@ -122,6 +125,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def authenticate_moderator_if_post_not_approved
+      post = Post.friendly.find(params[:id])
+      authenticate_moderator unless post.approval_status == "approved"
+    end
     
     def post_create_params
       params

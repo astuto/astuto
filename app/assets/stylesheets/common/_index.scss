@@ -159,16 +159,20 @@ body {
   @extend
     .badge,
     .badge-pill,
-    .p-2;
+    .p-2,
+    .ml-1,
+    .mr-1;
 
   font-size: 13px;
+  text-transform: uppercase;
 }
 
 .badgeLight {
   @extend .badge-light;
-
   background-color: var(--astuto-grey-light);
 }
+.badgeWarning { @extend .badge-warning; }
+.badgeDanger { @extend .badge-danger; }
 
 .container {
   max-width: 960px;
@@ -323,18 +327,6 @@ body {
     .alert-primary,
     .text-center,
     .m-0;
-}
-
-.statusBadge {
-  @extend
-    .badge,
-    .badgeLight,
-    .p-2,
-    .ml-1,
-    .mr-1;
-
-  width: fit-content;
-  text-transform: uppercase;
 }
 
 .highlighted {
