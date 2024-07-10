@@ -12,7 +12,7 @@ de:
       update_order: 'Beim Neuordnen des Status ist ein Fehler aufgetreten'
   defaults:
     user_full_name: 'Anonymer Benutzer'
-    deleted_user_full_name: 'Deleted User'
+    deleted_user_full_name: 'Gelöschter Benutzer'
   mailers:
     devise:
       welcome_greeting: 'Willkommen auf %{site_name}, %{email}!'
@@ -31,24 +31,24 @@ de:
         body3: "Dein Passwort ändert sich erst, wenn du auf den obigen Link zugreifst und ein neues erstellst."
         action: 'Mein Passwort ändern'
     user:
-      opening_greeting: 'Hello %{name}!'
+      opening_greeting: 'Hallo %{name}!'
       closing_greeting: 'Habe einen schönen Tag!'
       learn_more: 'Klick hier um mehr zu erfahren'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
-      unsubscribe_link: 'here'
+      unsubscribe_from_post_html: 'Genervt? Sie können Benachrichtigungen für diesen Post hier deaktivieren %{href}'
+      unsubscribe_from_site_html: 'Genervt? Sie können alle Benachrichtigungen hier deaktivieren %{href}'
+      unsubscribe_link: 'hier'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+        subject: '[%{site_name}] neuer Kommentar zu %{post}"'
+        body_html: 'Es existiert ein neuer Kommentar von <b>%{user}</b> zu deinem Beitrag <b>%{post}</b>'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        subject: '[%{site_name}] neue Antwort auf deinen Kommentar von %{post}"'
+        body_html: 'Es gibt eine neue Antwort von <b>%{user}</b> auf Ihren Kommentar im Beitrag <b>%{post}</b>'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] neues Update für Beitrag %{post}"'
+        body_html: 'Es gibt ein neues Update für den Beitrag, dem Sie folgen <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Statusänderung bei Beitrag %{post}"'
+        body_html: 'Es gibt eine Statusaktualisierung für den Beitrag, dem Sie folgen <b>%{post}</b>'
   activerecord:
     models:
       board:
@@ -117,16 +117,16 @@ de:
         site_logo: 'Seitenlogo'
         subdomain: 'Subdomain'
         locale: 'Sprache'
-        custom_domain: 'Custom domain'
+        custom_domain: 'Benutzerdefinierte Domain'
       tenant_setting:
         brand_display: 'Anzeige'
         show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
         show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
-        show_powered_by: 'Show "Powered by Astuto"'
+        show_powered_by: '"Powered by Astuto" anzeigen'
         root_board_id: 'Root-Page'
         show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
         collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
-        custom_css: 'Custom CSS'
+        custom_css: 'Benutzerdefiniertes CSS'
       user:
         email: 'E-Mail'
         full_name: 'Voller Name'
