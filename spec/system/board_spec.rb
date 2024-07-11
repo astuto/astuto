@@ -72,6 +72,7 @@ feature 'board', type: :system, js: true do
       click_button 'Submit feedback' # open submit form
 
       expect(page).to have_css(new_post_form)
+    end
   end
 
   it 'enables logged in users to submit posts to that board' do
