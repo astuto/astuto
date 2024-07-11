@@ -167,6 +167,12 @@ class NewPost extends React.Component<Props, State> {
 
         <Button
           onClick={() => {
+            
+            if (showForm) {
+              this.toggleForm();
+              return;
+            }
+
             if (isLoggedIn) {
               this.toggleForm();
               this.setState({ isSubmissionAnonymous: false });
