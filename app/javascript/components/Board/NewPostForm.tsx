@@ -54,30 +54,32 @@ const NewPostForm = ({
         />
       </div>
 
+      { /* Honeypot field 1 */ }
       <div className="form-group form-group-dnf">
         <input
           type="text"
           value={dnf1}
           onChange={e => handleDnf1Change(e.target.value)}
           maxLength={128}
-          placeholder="dnf1"
+          placeholder="email"
           autoComplete="off"
 
-          id="dnf1"
+          id="email"
           className="form-control"
         />
       </div>
 
+      { /* Honeypot field 2 */ }
       <input
         type="text"
         value={dnf2}
         onChange={e => handleDnf2Change(e.target.value)}
         maxLength={128}
-        placeholder="dnf2"
+        placeholder="name"
         autoComplete="off"
         tabIndex={-1}
 
-        id="dnf2"
+        id="name"
         className="form-control"
       />
 

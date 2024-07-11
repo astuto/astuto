@@ -39,13 +39,15 @@
         padding: 0;
         height: 1px;
 
-        #dnf1 {
+        /* honeypot field 1 */
+        #email {
           visibility: hidden;
           height: 1px;
         }
       }
 
-      #dnf2 {
+      /* honeypot field 2 */
+      #name {
         position: absolute;
         left: -9999px;
       }
