@@ -37,16 +37,17 @@ class PostsController < ApplicationController
 
   def create
     # honeypot fields check
-    if params[:post][:dnf1] != "" || params[:post][:dnf2] != ""
+    if params[:post][:dnf1] != "" || params[:post][:dnf2] != "" || Time.now.to_i - params[:post][:form_rendered_at] < 5
       render json: {
         error: t('errors.unknown')
       }, status: :unprocessable_entity
       return
     end
 
-    # remove fields dnf1 and dnf2 from params
+    # remove anti-spam fields
     params[:post].delete(:dnf1)
     params[:post].delete(:dnf2)
+    params[:post].delete(:form_rendered_at)
 
     @post = Post.new
     @post.assign_attributes(post_create_params)

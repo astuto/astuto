@@ -1,6 +1,7 @@
 class PostPolicy < ApplicationPolicy
   def permitted_attributes_for_create
-    [:title, :description, :board_id, :dnf1, :dnf2] # dnf fields are honeypot fields
+    # dnf1, dnf2 and component_rendered_at fields are anti spam fields
+    [:title, :description, :board_id, :dnf1, :dnf2, :component_rendered_at]
   end
 
   def permitted_attributes_for_update

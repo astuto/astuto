@@ -16,6 +16,7 @@ interface Props {
   isPowerUser: boolean;
   currentUserFullName: string;
   tenantSetting: ITenantSetting;
+  componentRenderedAt: number;
   authenticityToken: string;
 }
 
@@ -35,6 +36,7 @@ class BoardRoot extends React.Component<Props> {
       isPowerUser,
       currentUserFullName,
       tenantSetting,
+      componentRenderedAt,
       authenticityToken,
     } = this.props;
 
@@ -46,6 +48,7 @@ class BoardRoot extends React.Component<Props> {
           isPowerUser={isPowerUser}
           currentUserFullName={currentUserFullName}
           tenantSetting={tenantSetting}
+          componentRenderedAt={componentRenderedAt}
           authenticityToken={authenticityToken}
         />
       </Provider>

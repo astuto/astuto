@@ -22,6 +22,7 @@ interface Props {
   isPowerUser: boolean;
   currentUserFullName: string;
   tenantSetting: ITenantSetting;
+  componentRenderedAt: number;
   authenticityToken: string;
   posts: PostsState;
   postStatuses: PostStatusesState;
@@ -94,6 +95,7 @@ class BoardP extends React.Component<Props> {
       isPowerUser,
       currentUserFullName,
       tenantSetting,
+      componentRenderedAt,
       authenticityToken,
       posts,
       postStatuses,
@@ -114,6 +116,7 @@ class BoardP extends React.Component<Props> {
             isLoggedIn={isLoggedIn}
             currentUserFullName={currentUserFullName}
             isAnonymousFeedbackAllowed={tenantSetting.allow_anonymous_feedback}
+            componentRenderedAt={componentRenderedAt}
             authenticityToken={authenticityToken}
           />
 

@@ -20,6 +20,9 @@ interface Props {
   currentUserFullName: string;
   isAnonymousFeedbackAllowed: boolean;
   authenticityToken: string;
+
+  // Time check anti-spam measure
+  componentRenderedAt: number;
 }
 
 interface State {
@@ -32,9 +35,8 @@ interface State {
   description: string;
   isSubmissionAnonymous: boolean;
 
-  // These two fields are honey pot fields
-  // They are not visibile and must not be filled
-  // They are used to detect spam bots
+  // Honeypot anti-spam measure
+  // These fields are honeypots: they are not visibile and must not be filled
   // dnf = do not fill
   dnf1: string;
   dnf2: string;
@@ -111,7 +113,7 @@ class NewPost extends React.Component<Props, State> {
     });
 
     const boardId = this.props.board.id;
-    const { authenticityToken } = this.props;
+    const { authenticityToken, componentRenderedAt } = this.props;
     const { title, description, dnf1, dnf2 } = this.state;
 
     if (title === '') {
@@ -134,6 +136,7 @@ class NewPost extends React.Component<Props, State> {
             
             dnf1,
             dnf2,
+            form_rendered_at: componentRenderedAt,
           },
         }),
       });
