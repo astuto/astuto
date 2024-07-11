@@ -13,6 +13,7 @@ import Button from '../common/Button';
 import IBoard from '../../interfaces/IBoard';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import HttpStatus from '../../constants/http_status';
+import { POST_APPROVAL_STATUS_APPROVED } from '../../interfaces/IPost';
 
 interface Props {
   board: IBoard;
@@ -114,7 +115,7 @@ class NewPost extends React.Component<Props, State> {
 
     const boardId = this.props.board.id;
     const { authenticityToken, componentRenderedAt } = this.props;
-    const { title, description, dnf1, dnf2 } = this.state;
+    const { title, description, isSubmissionAnonymous, dnf1, dnf2 } = this.state;
 
     if (title === '') {
       this.setState({
@@ -133,6 +134,8 @@ class NewPost extends React.Component<Props, State> {
             title,
             description,
             board_id: boardId,
+
+            is_anonymous: isSubmissionAnonymous,
             
             dnf1,
             dnf2,
@@ -144,16 +147,24 @@ class NewPost extends React.Component<Props, State> {
       this.setState({isLoading: false});
       
       if (res.status === HttpStatus.Created) {
-        this.setState({
-          success: I18n.t('board.new_post.submit_success'),
+        console.log(json);
 
-          title: '',
-          description: '',
-        });
+        if (json.approval_status === POST_APPROVAL_STATUS_APPROVED) {
+          this.setState({
+            success: I18n.t('board.new_post.submit_success'),
+          });
 
-        setTimeout(() => (
-          window.location.href = `/posts/${json.slug || json.id}`
-        ), 1000);
+          setTimeout(() => (
+            window.location.href = `/posts/${json.slug || json.id}`
+          ), 1000);
+        } else {
+          this.setState({
+            success: I18n.t('board.new_post.submit_pending'),
+            title: '',
+            description: '',
+            showForm: false,
+          });
+        }
       } else {
         this.setState({error: json.error});
       }

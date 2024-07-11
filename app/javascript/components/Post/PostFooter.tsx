@@ -29,14 +29,23 @@ const PostFooter = ({
 }: Props) => (
   <div className="postFooter">
     <div className="postAuthor">
-      <span>{I18n.t('post.published_by').toLowerCase()} &nbsp;</span>
-      <Gravatar email={authorEmail} size={24} className="postAuthorAvatar" /> &nbsp;
-      {authorFullName}
+      {
+        authorEmail ?
+          <>
+          <span>{I18n.t('post.published_by').toLowerCase()} &nbsp;</span>
+          <Gravatar email={authorEmail} size={24} className="postAuthorAvatar" /> &nbsp;
+          <span>{authorFullName}</span>
+          </>
+        :
+          <span>{I18n.t('post.published_anonymously').toLowerCase()}</span>
+      }
+      
       <Separator />
-      {friendlyDate(createdAt)}
+
+      <span>{friendlyDate(createdAt)}</span>
     </div>
     {
-      isPowerUser || authorEmail === currentUserEmail ?
+      isPowerUser || (authorEmail && authorEmail === currentUserEmail) ?
         <div className="postFooterActions">
           <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
             {I18n.t('common.buttons.edit')}

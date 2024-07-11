@@ -109,6 +109,7 @@ en:
       anonymous_submission_help: 'You are posting anonymously'
       non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Feedback published! You will be redirected soon...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: 'Search'
     filter_box:
@@ -128,6 +129,7 @@ en:
   post:
     edit_button: 'Edit'
     published_by: 'Published by'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: 'None'
     updates_box:
