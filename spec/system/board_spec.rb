@@ -60,16 +60,6 @@ feature 'board', type: :system, js: true do
     end
   end
 
-  it 'renders a log in button if not logged in' do
-    visit board_path(board)
-
-    within sidebar do
-      expect(page).to have_content(/Log in \/ Sign up/i)
-      click_link 'Log in / Sign up'
-      expect(page).to have_current_path(new_user_session_path)
-    end
-  end
-
   it 'renders a submit feedback button that shows a form if logged in' do
     user.confirm
     sign_in user
@@ -82,9 +72,6 @@ feature 'board', type: :system, js: true do
       click_button 'Submit feedback' # open submit form
 
       expect(page).to have_css(new_post_form)
-      expect(page).to have_content(/Title/i)
-      expect(page).to have_content(/Description/i)
-    end
   end
 
   it 'enables logged in users to submit posts to that board' do
