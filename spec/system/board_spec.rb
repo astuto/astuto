@@ -91,6 +91,9 @@ feature 'board', type: :system, js: true do
 
       fill_in 'Title', with: post_title
       fill_in 'Description (optional)', with: post_description
+
+      sleep 5 # needed to avoid time check anti-spam measure
+
       click_button 'Submit feedback' # submit
     end
 
