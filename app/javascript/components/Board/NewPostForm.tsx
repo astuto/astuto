@@ -7,21 +7,35 @@ import { SmallMutedText } from '../common/CustomTexts';
 interface Props {
   title: string;
   description: string;
-  currentUserFullName: string;
-  isSubmissionAnonymous: boolean;
   handleTitleChange(title: string): void;
   handleDescriptionChange(description: string): void;
+
   handleSubmit(e: object): void;
+
+  dnf1: string;
+  dnf2: string;
+  handleDnf1Change(dnf1: string): void;
+  handleDnf2Change(dnf2: string): void;
+
+  currentUserFullName: string;
+  isSubmissionAnonymous: boolean;
 }
 
 const NewPostForm = ({
   title,
   description,
-  currentUserFullName,
-  isSubmissionAnonymous,
   handleTitleChange,
   handleDescriptionChange,
+
   handleSubmit,
+
+  dnf1,
+  dnf2,
+  handleDnf1Change,
+  handleDnf2Change,
+
+  currentUserFullName,
+  isSubmissionAnonymous,
   }: Props) => (
   <div className="newPostForm">
     <form>
@@ -39,6 +53,34 @@ const NewPostForm = ({
           autoFocus
         />
       </div>
+
+      <div className="form-group form-group-dnf">
+        <input
+          type="text"
+          value={dnf1}
+          onChange={e => handleDnf1Change(e.target.value)}
+          maxLength={128}
+          placeholder="dnf1"
+          autoComplete="off"
+
+          id="dnf1"
+          className="form-control"
+        />
+      </div>
+
+      <input
+        type="text"
+        value={dnf2}
+        onChange={e => handleDnf2Change(e.target.value)}
+        maxLength={128}
+        placeholder="dnf2"
+        autoComplete="off"
+        tabIndex={-1}
+
+        id="dnf2"
+        className="form-control"
+      />
+
       <div className="form-group">
         <textarea
           value={description}

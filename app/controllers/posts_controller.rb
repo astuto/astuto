@@ -36,6 +36,18 @@ class PostsController < ApplicationController
   end
 
   def create
+    # honeypot fields check
+    if params[:post][:dnf1] != "" || params[:post][:dnf2] != ""
+      render json: {
+        error: t('errors.unknown')
+      }, status: :unprocessable_entity
+      return
+    end
+
+    # remove fields dnf1 and dnf2 from params
+    params[:post].delete(:dnf1)
+    params[:post].delete(:dnf2)
+
     @post = Post.new
     @post.assign_attributes(post_create_params)
 

@@ -31,6 +31,13 @@ interface State {
   title: string;
   description: string;
   isSubmissionAnonymous: boolean;
+
+  // These two fields are honey pot fields
+  // They are not visibile and must not be filled
+  // They are used to detect spam bots
+  // dnf = do not fill
+  dnf1: string;
+  dnf2: string;
 }
 
 class NewPost extends React.Component<Props, State> {
@@ -46,12 +53,18 @@ class NewPost extends React.Component<Props, State> {
       title: '',
       description: '',
       isSubmissionAnonymous: false,
+
+      dnf1: '',
+      dnf2: '',
     };
 
     this.toggleForm = this.toggleForm.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
+
+    this.onDnf1Change = this.onDnf1Change.bind(this)
+    this.onDnf2Change = this.onDnf2Change.bind(this)
   }
 
   toggleForm() {
@@ -76,6 +89,18 @@ class NewPost extends React.Component<Props, State> {
     });
   }
 
+  onDnf1Change(dnf1: string) {
+    this.setState({
+      dnf1,
+    });
+  }
+
+  onDnf2Change(dnf2: string) {
+    this.setState({
+      dnf2,
+    });
+  }
+
   async submitForm(e: React.FormEvent) {
     e.preventDefault();
 
@@ -87,7 +112,7 @@ class NewPost extends React.Component<Props, State> {
 
     const boardId = this.props.board.id;
     const { authenticityToken } = this.props;
-    const { title, description } = this.state;
+    const { title, description, dnf1, dnf2 } = this.state;
 
     if (title === '') {
       this.setState({
@@ -106,6 +131,9 @@ class NewPost extends React.Component<Props, State> {
             title,
             description,
             board_id: boardId,
+            
+            dnf1,
+            dnf2,
           },
         }),
       });
@@ -151,6 +179,9 @@ class NewPost extends React.Component<Props, State> {
       title,
       description,
       isSubmissionAnonymous,
+
+      dnf1,
+      dnf2,
     } = this.state;
 
     return (
@@ -213,11 +244,18 @@ class NewPost extends React.Component<Props, State> {
             <NewPostForm
               title={title}
               description={description}
-              currentUserFullName={currentUserFullName}
-              isSubmissionAnonymous={isSubmissionAnonymous}
               handleTitleChange={this.onTitleChange}
               handleDescriptionChange={this.onDescriptionChange}
+
               handleSubmit={this.submitForm}
+
+              dnf1={dnf1}
+              dnf2={dnf2}
+              handleDnf1Change={this.onDnf1Change}
+              handleDnf2Change={this.onDnf2Change}
+
+              currentUserFullName={currentUserFullName}
+              isSubmissionAnonymous={isSubmissionAnonymous}
             />
           :
             null

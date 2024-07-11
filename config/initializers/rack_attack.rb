@@ -57,6 +57,27 @@ class Rack::Attack
     end
   end
 
+  # Throttle POST requests to /posts by IP address when honeypot fields are filled
+  throttle('posts/ip_honeypot', limit: 1, period: 30.minutes) do |req|
+    if req.path == '/posts' && req.post?
+      ip = req.get_header("action_dispatch.remote_ip")
+      real_req = ActionDispatch::Request.new(req.env) # Needed to parse JSON body
+  
+      # Check for honeypot field submission
+      honeypot_filled = real_req.params['post']['dnf1'] != "" || real_req.params['post']['dnf2'] != ""
+  
+      # If honeypot fields are filled, flag this IP in the cache
+      if honeypot_filled
+        Rack::Attack.cache.store.write("honeypot-#{ip}", true, expires_in: 30.minutes)
+      end
+  
+      # Block if this IP was previously flagged for honeypot submission
+      if Rack::Attack.cache.store.read("honeypot-#{ip}")
+        ip
+      end
+    end
+  end
+
   ### Custom Throttle Response ###
 
   # By default, Rack::Attack returns an HTTP 429 for throttled responses,

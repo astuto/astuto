@@ -24,12 +24,30 @@
     }
 
     .newPostForm {
-      @extend .my-2;
+      @extend
+        .mt-4,
+        .mb-2;
 
       #postDescription {
         height: 100px;
         min-height: 100px;
         resize: vertical;
+      }
+
+      .form-group-dnf {
+        margin: 0;
+        padding: 0;
+        height: 1px;
+
+        #dnf1 {
+          visibility: hidden;
+          height: 1px;
+        }
+      }
+
+      #dnf2 {
+        position: absolute;
+        left: -9999px;
       }
     }
 

@@ -1,6 +1,6 @@
 class PostPolicy < ApplicationPolicy
   def permitted_attributes_for_create
-    [:title, :description, :board_id]
+    [:title, :description, :board_id, :dnf1, :dnf2] # dnf fields are honeypot fields
   end
 
   def permitted_attributes_for_update
