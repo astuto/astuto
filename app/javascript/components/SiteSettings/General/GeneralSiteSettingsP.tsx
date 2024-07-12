@@ -114,6 +114,9 @@ const GeneralSiteSettingsP = ({
       authenticityToken
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
+
+      const urlWithoutHash = window.location.href.split('#')[0];
+      window.history.pushState({}, document.title, urlWithoutHash);
       window.location.reload();
     });
   };
