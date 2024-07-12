@@ -109,6 +109,10 @@ pt:
       post:
         title: 'Título'
         description: 'Descrição'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: 'Quadro de postagem'
         user_id: 'Autor da publicação'
         post_status_id: 'Status do post'
@@ -120,6 +124,8 @@ pt:
         custom_domain: 'Domínio personalizado'
       tenant_setting:
         brand_display: 'Tela'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Mostrar contagem de votos aos usuários'
         show_vote_button_in_board: 'Mostrar botões de voto na página do quadro'
         show_powered_by: 'Mostrar "Desenvolvido por Astuto"'
