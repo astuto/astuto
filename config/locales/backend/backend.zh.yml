@@ -102,6 +102,10 @@ zh-CN:
       post:
         title: '标题'
         description: '描述'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: '帖子版块'
         user_id: '帖子作者'
         post_status_id: '帖子状态'
@@ -113,6 +117,8 @@ zh-CN:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: '显示模式'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: '对用户显示投票数'
         show_vote_button_in_board: '在版块页面显示投票按钮'
         show_powered_by: '显示 "技术支持: Astuto"'
