@@ -1,5 +1,7 @@
 hi:
   common:
+    words:
+      or: 'or'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
@@ -65,6 +67,8 @@ hi:
       back: 'Back'
       test: 'Test'
       clear: 'Clear'
+      approve: 'Approve'
+      reject: 'Reject'
     datetime:
       now: 'just now'
       minutes:
@@ -80,6 +84,7 @@ hi:
     menu:
       administration_header: 'Administration'
       site_settings: 'Site settings'
+      moderation: 'Moderation'
       profile_header: 'Profile'
       profile_settings: 'Profile settings'
       help_header: 'Help'
@@ -97,12 +102,16 @@ hi:
   board:
     new_post:
       submit_button: 'Submit feedback'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: 'Cancel'
       login_button: 'Log in / Sign up'
       title: 'Title'
       description: 'Description (optional)'
       no_title: 'Title field is mandatory'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Feedback published! You will be redirected soon...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: 'Search'
     filter_box:
@@ -122,6 +131,7 @@ hi:
   post:
     edit_button: 'Edit'
     published_by: 'Published by'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: 'None'
     updates_box:
@@ -153,7 +163,6 @@ hi:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      users: 'Users'
       authentication: 'Authentication'
       appearance: 'Appearance'
     info_box:
@@ -166,6 +175,12 @@ hi:
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
+      subtitle_moderation: 'Moderation'
+      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
+      feedback_approval_policy_never_require_approval: 'Never require approval'
+      feedback_approval_policy_always_require_approval: 'Always require approval'
+      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Header'
       collapse_boards_in_header_no_collapse: 'Never'
       collapse_boards_in_header_always_collapse: 'Always'
@@ -195,21 +210,6 @@ hi:
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
-    users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
     authentication:
       title: 'Authentication'
       learn_more: 'Learn how to configure custom OAuth providers'
@@ -230,3 +230,26 @@ hi:
         subtitle_oauth_config: 'OAuth configuration'
         subtitle_user_profile_config: 'User profile configuration'
         client_secret_help: 'hidden for security purposes'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    feedback:
+      anonymous_feedback_allowed: 'Anonymous feedback allowed'
+      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
+      change_feedback_moderation_settings: 'Change feedback moderation settings'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
