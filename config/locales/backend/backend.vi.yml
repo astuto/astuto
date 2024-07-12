@@ -102,6 +102,10 @@ vi:
       post:
         title: 'Tiêu đề'
         description: 'Mô tả'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: 'Bảng của bài viết'
         user_id: 'Tác giả bài viết'
         post_status_id: 'Trạng thái bài viết'
@@ -113,6 +117,8 @@ vi:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Hiển thị'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Hiển thị số phiếu bầu cho người dùng'
         show_vote_button_in_board: 'Hiển thị nút phiếu bầu trên trang bảng'
         show_powered_by: 'Show "Powered by Astuto"'
