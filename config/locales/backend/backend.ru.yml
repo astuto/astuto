@@ -123,6 +123,10 @@ ru:
       post:
         title: 'Заголовок'
         description: 'Описание'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: 'Выложить доску'
         user_id: 'Автор сообщения'
         post_status_id: 'Статус сообщения'
@@ -134,6 +138,8 @@ ru:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Экран'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Показать количество голосов пользователям'
         show_vote_button_in_board: 'Показывать кнопки голосования на странице доски'
         show_powered_by: 'Show "Powered by Astuto"'
