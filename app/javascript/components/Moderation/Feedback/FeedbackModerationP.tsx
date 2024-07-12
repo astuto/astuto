@@ -3,14 +3,13 @@ import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
-
-import HttpStatus from '../../../constants/http_status';
-import Spinner from '../../common/Spinner';
 import { UserRoles } from '../../../interfaces/IUser';
 import { TenantSettingFeedbackApprovalPolicy } from '../../../interfaces/ITenantSetting';
 import Badge, { BADGE_TYPE_LIGHT } from '../../common/Badge';
 import ActionLink from '../../common/ActionLink';
 import { SettingsIcon } from '../../common/Icons';
+import IPost, { PostApprovalStatus } from '../../../interfaces/IPost';
+import FeedbackModerationList from './FeedbackModerationList';
 
 interface Props {
   currentUserRole: UserRoles;
@@ -18,15 +17,34 @@ interface Props {
   tenantSettingAllowAnonymousFeedback: boolean;
   tenantSettingFeedbackApprovalPolicy: TenantSettingFeedbackApprovalPolicy;
   authenticityToken: string;
+
+  posts: Array<IPost>;
+  areLoading: boolean;
+  areUpdating: boolean;
+  error: string;
+  requestPostsForModeration(): void;
+  updatePostApprovalStatus(
+    id: number,
+    approvalStatus: PostApprovalStatus,
+    authenticityToken: string
+  ): Promise<any>;
 }
 
-class FeedbackModerationP extends React.Component<Props> {
+interface State {
+  filter: 'pending' | 'rejected';
+}
+
+class FeedbackModerationP extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
+    this.state = {
+      filter: 'pending',
+    };
   }
 
   componentDidMount() {
-    // TODO
+    this.props.requestPostsForModeration();
   }
 
   getFeedbackPolicyString(tenantSettingFeedbackApprovalPolicy: TenantSettingFeedbackApprovalPolicy): string {
@@ -46,7 +64,21 @@ class FeedbackModerationP extends React.Component<Props> {
       changeFeedbackModerationSettingsUrl,
       tenantSettingAllowAnonymousFeedback,
       tenantSettingFeedbackApprovalPolicy,
+
+      posts,
+      areLoading,
+      areUpdating,
+      error,
+
+      updatePostApprovalStatus,
+
+      authenticityToken,
     } = this.props;
+
+    const { filter } = this.state;
+
+    const pendingPosts = posts.filter(post => post.approvalStatus === 'pending');
+    const rejectedPosts = posts.filter(post => post.approvalStatus === 'rejected');
 
     return (
       <>
@@ -79,9 +111,44 @@ class FeedbackModerationP extends React.Component<Props> {
               </ActionLink>
               </>
           }
+
+          <ul className="filterModerationFeedbackNav">
+            <li className="nav-item">
+              <a onClick={() => this.setState({filter: 'pending'})} className={`nav-link${filter === 'pending' ? ' active' : ''}`}>
+                {I18n.t('activerecord.attributes.post.approval_status_pending')}
+                &nbsp;
+                ({pendingPosts && pendingPosts.length})
+              </a>
+            </li>
+            <li className="nav-item">
+              <a onClick={() => this.setState({filter: 'rejected'})} className={`nav-link${filter === 'rejected' ? ' active' : ''}`}>
+                {I18n.t('activerecord.attributes.post.approval_status_rejected')}
+              </a>
+            </li>
+          </ul>
+
+          {
+            filter === 'pending' ?
+              <FeedbackModerationList
+                posts={pendingPosts}
+                onUpdatePostApprovalStatus={
+                  (id: number, approvalStatus: PostApprovalStatus) =>
+                    updatePostApprovalStatus(id, approvalStatus, authenticityToken)
+                }
+              />
+            :
+              <FeedbackModerationList
+                posts={rejectedPosts}
+                onUpdatePostApprovalStatus={
+                  (id: number, approvalStatus: PostApprovalStatus) =>
+                    updatePostApprovalStatus(id, approvalStatus, authenticityToken)
+                }
+                hideRejectButton
+              />
+          }
         </Box>
 
-        <SiteSettingsInfoBox areUpdating={true} error={'TODO'} />
+        <SiteSettingsInfoBox areUpdating={areLoading || areUpdating} error={error} />
       </>
     );
   }

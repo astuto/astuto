@@ -55,6 +55,8 @@ Rails.application.routes.draw do
       resources :likes, only: [:index]
       resources :comments, only: [:index, :create, :update, :destroy]
       resources :post_status_changes, only: [:index]
+
+      get '/moderation', on: :collection, to: 'posts#moderation'
     end
     
     resources :boards, only: [:index, :create, :update, :destroy, :show] do

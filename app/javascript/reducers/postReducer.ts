@@ -61,6 +61,7 @@ const postReducer = (
         description: action.post.description,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
+        approvalStatus: action.post.approval_status,
       };
 
     default:

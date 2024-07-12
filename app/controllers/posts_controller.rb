@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
+  before_action :authenticate_moderator, only: [:moderation]
   before_action :authenticate_moderator_if_post_not_approved, only: [:show]
   before_action :check_tenant_subscription, only: [:create, :update, :destroy]
 
@@ -139,6 +140,29 @@ class PostsController < ApplicationController
         error: @post.errors.full_messages
       }, status: :unprocessable_entity
     end
+  end
+
+  # Returns a list of posts for moderation in JSON
+  def moderation
+    posts = Post
+      .select(
+        :id,
+        :title,
+        :description,
+        :slug,
+        :approval_status,
+        :user_id,
+        :board_id,
+        :created_at,
+        'users.email as user_email',
+        'users.full_name as user_full_name'
+      )
+      .eager_load(:user)
+      .where(approval_status: ["pending", "rejected"])
+      .order_by(created_at: :desc)
+      .limit(100)
+
+    render json: posts
   end
 
   private

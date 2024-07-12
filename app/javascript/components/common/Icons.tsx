@@ -13,7 +13,10 @@ import {
   MdOutlineArrowBack,
   MdOutlineLibraryBooks,
   MdVerified,
+  MdCheck,
+  MdClear,
 } from 'react-icons/md';
+import { FaUserNinja } from "react-icons/fa";
 
 export const EditIcon = () => <FiEdit />;
 
@@ -50,3 +53,9 @@ export const LikeIcon = ({size = 32}) => <BiLike size={size} />;
 export const SolidLikeIcon = ({size = 32}) => <BiSolidLike size={size} />;
 
 export const SettingsIcon = () => <FiSettings />;
+
+export const AnonymousIcon = ({size = 32, title=I18n.t('defaults.user_full_name')}) => <FaUserNinja size={size} title={title} />;
+
+export const ApproveIcon = () => <MdCheck />;
+
+export const RejectIcon = () => <MdClear />;
