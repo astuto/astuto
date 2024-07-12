@@ -1,5 +1,7 @@
 zh-CN:
   common:
+    words:
+      or: 'or'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
@@ -64,6 +66,8 @@ zh-CN:
       back: '返回'
       test: '测试'
       clear: '清除'
+      approve: 'Approve'
+      reject: 'Reject'
     datetime:
       now: '刚刚'
       minutes:
@@ -76,6 +80,7 @@ zh-CN:
     menu:
       administration_header: 'Administration'
       site_settings: '网站设置'
+      moderation: 'Moderation'
       profile_header: 'Profile'
       profile_settings: '账号设置'
       help_header: 'Help'
@@ -93,12 +98,16 @@ zh-CN:
   board:
     new_post:
       submit_button: '提交反馈'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: '取消'
       login_button: '登录/注册'
       title: '标题'
       description: '描述 (可选)'
       no_title: '必须填写标题'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: '反馈已发布！您即将被重定向...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: '搜索'
     filter_box:
@@ -118,6 +127,7 @@ zh-CN:
   post:
     edit_button: '编辑'
     published_by: '发布者'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: '无'
     updates_box:
@@ -149,7 +159,6 @@ zh-CN:
       boards: '网站版块'
       post_statuses: '帖子状态'
       roadmap: '开发路线'
-      users: '用户列表'
       authentication: '身份验证'
       appearance: '外观定制'
     info_box:
@@ -162,6 +171,12 @@ zh-CN:
       brand_setting_name: '仅名称'
       brand_setting_logo: '仅图标'
       brand_setting_none: '无'
+      subtitle_moderation: 'Moderation'
+      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
+      feedback_approval_policy_never_require_approval: 'Never require approval'
+      feedback_approval_policy_always_require_approval: 'Always require approval'
+      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: '页眉'
       collapse_boards_in_header_no_collapse: '从不'
       collapse_boards_in_header_always_collapse: '始终'
@@ -191,21 +206,6 @@ zh-CN:
     appearance:
       title: '外观定制'
       learn_more: '了解如何自定义外观'
-    users:
-      title: '用户列表'
-      block: '封禁'
-      unblock: '解除封禁'
-      block_confirmation: "%{name} 在被解除封禁前无法登录，您确定吗？"
-      unblock_confirmation: "%{name} 将可以登录和发表反馈，您确定吗？"
-      role_to_moderator_confirmation: "%{name} 将可以管理帖子和用户，请仅在信任此人的情况下继续。您确定吗？"
-      role_to_admin_confirmation: "%{name} 将拥有和您同等的权限，包括把您降级和封禁，请仅在信任此人的情况下继续。 您确定吗？"
-      role_user: '用户'
-      role_moderator: '版主'
-      role_admin: '管理员'
-      role_owner: '所有者'
-      status_active: '已启用'
-      status_blocked: '已封禁'
-      status_deleted: '已删除'
     authentication:
       title: '身份验证'
       learn_more: '了解如何配置自定义 OAuth 提供者'
@@ -226,3 +226,26 @@ zh-CN:
         subtitle_oauth_config: 'OAuth 配置'
         subtitle_user_profile_config: '用户资料配置'
         client_secret_help: '出于安全隐藏'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    feedback:
+      anonymous_feedback_allowed: 'Anonymous feedback allowed'
+      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
+      change_feedback_moderation_settings: 'Change feedback moderation settings'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
