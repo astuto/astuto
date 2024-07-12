@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2024_07_08_191938) do
     t.string "title", null: false
     t.text "description"
     t.bigint "board_id", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.bigint "post_status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
