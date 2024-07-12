@@ -1,5 +1,7 @@
 pt:
   common:
+    words:
+      or: 'or'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
@@ -65,6 +67,8 @@ pt:
       back: 'Voltar'
       test: 'Testar'
       clear: 'Limpar'
+      approve: 'Approve'
+      reject: 'Reject'
     datetime:
       now: 'agora mesmo'
       minutes:
@@ -80,6 +84,7 @@ pt:
     menu:
       administration_header: 'Administration'
       site_settings: 'Configurações do site'
+      moderation: 'Moderation'
       profile_header: 'Profile'
       profile_settings: 'Configurações do perfil'
       help_header: 'Help'
@@ -97,12 +102,16 @@ pt:
   board:
     new_post:
       submit_button: 'Enviar comentário'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: 'Cancelar'
       login_button: 'Autentique-se ou cadastre-se'
       title: 'Título'
       description: 'Descrição (opcional)'
       no_title: 'O campo "título" é de preenchimento necessário'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Comentário publicado! Você será redirecionada(o) em breve...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: 'Procurar'
     filter_box:
@@ -122,6 +131,7 @@ pt:
   post:
     edit_button: 'Alterar'
     published_by: 'Publicado por'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: 'Nenhuma mensagem publicada'
     updates_box:
@@ -153,7 +163,6 @@ pt:
       boards: 'Painéis'
       post_statuses: 'Estado atual'
       roadmap: 'Rotas'
-      users: 'Usuária(e/o)s'
       authentication: 'Autenticação'
       appearance: 'Aparência'
     info_box:
@@ -166,6 +175,12 @@ pt:
       brand_setting_name: 'Apenas nome'
       brand_setting_logo: 'Logotipo apenas'
       brand_setting_none: 'Nada salvo'
+      subtitle_moderation: 'Moderation'
+      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
+      feedback_approval_policy_never_require_approval: 'Never require approval'
+      feedback_approval_policy_always_require_approval: 'Always require approval'
+      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Cabeçalho'
       collapse_boards_in_header_no_collapse: 'Nunca'
       collapse_boards_in_header_always_collapse: 'Sempre'
@@ -195,21 +210,6 @@ pt:
     appearance:
       title: 'Aparência'
       learn_more: 'Saiba como personalizar a aparência'
-    users:
-      title: 'Usuários'
-      block: 'Bloquear'
-      unblock: 'Desbloquear'
-      block_confirmation: "%{name} não poderá acessar até que seja desbloqueado. Tem certeza?"
-      unblock_confirmation: "%{name} poderá se autenticar e enviar comentário. Tem certeza?"
-      role_to_moderator_confirmation: "%{name} poderá gerenciar postagens e usuários. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
-      role_to_admin_confirmation: "%{name} poderá gerenciar painéis, postagens, estados, usuários e muito mais. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
-      role_user: 'Usuária(e/o)s'
-      role_moderator: 'Moderador(e/a)'
-      role_admin: 'Administrador(e/a)'
-      role_owner: 'Responsável'
-      status_active: 'Ativa(e/o)'
-      status_blocked: 'Bloqueada(e/o)'
-      status_deleted: 'Excluída(e/o)'
     authentication:
       title: 'Autenticação'
       learn_more: 'Aprenda como configurar provedores OAuth personalizados'
@@ -230,3 +230,26 @@ pt:
         subtitle_oauth_config: 'Configuração de servidor de identidade OAuth'
         subtitle_user_profile_config: 'Configuração do perfil do usuária(e/o)'
         client_secret_help: 'ocultado por motivos de segurança'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    feedback:
+      anonymous_feedback_allowed: 'Anonymous feedback allowed'
+      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
+      change_feedback_moderation_settings: 'Change feedback moderation settings'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'
