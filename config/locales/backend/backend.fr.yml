@@ -109,6 +109,10 @@ fr:
       post:
         title: 'Titre'
         description: 'Description'
+        approval_status: 'Approval status'
+        approval_status_approved: 'Approved'
+        approval_status_pending: 'Pending approval'
+        approval_status_rejected: 'Rejected'
         board_id: 'Tableau des publications'
         user_id: 'Auteur de la publication'
         post_status_id: 'Statut de la publication'
@@ -120,6 +124,8 @@ fr:
         custom_domain: 'Domaine personnalisé'
       tenant_setting:
         brand_display: 'Affichage'
+        allow_anonymous_feedback: 'Allow anonymous feedback'
+        feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Afficher le nombre de votes aux utilisateurs'
         show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
         show_powered_by: 'Afficher "Powered by Astuto"'
