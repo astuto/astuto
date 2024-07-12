@@ -62,7 +62,6 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   deleteBoard(id: number, authenticityToken: string) {
     dispatch(deleteBoard(id, authenticityToken)).then(res => {
-      console.log(res);
       if (res && res.status === HttpStatus.Accepted) {
         window.location.reload();
       }

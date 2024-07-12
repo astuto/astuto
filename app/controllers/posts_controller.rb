@@ -177,7 +177,7 @@ class PostsController < ApplicationController
     end
 
     def invalid_anonymous_submission
-      params[:is_anonymous] == false && !user_signed_in?
+      (params[:post][:is_anonymous] == false && !user_signed_in?) || (params[:post][:is_anonymous] == true && Current.tenant.tenant_setting.allow_anonymous_feedback == false)
     end
     
     def post_create_params(is_anonymous: false)

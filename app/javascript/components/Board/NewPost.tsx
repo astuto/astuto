@@ -147,8 +147,6 @@ class NewPost extends React.Component<Props, State> {
       this.setState({isLoading: false});
       
       if (res.status === HttpStatus.Created) {
-        console.log(json);
-
         if (json.approval_status === POST_APPROVAL_STATUS_APPROVED) {
           this.setState({
             success: I18n.t('board.new_post.submit_success'),
