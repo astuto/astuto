@@ -67,7 +67,7 @@ class Rack::Attack
       honeypot_filled = real_req.params['post']['dnf1'] != "" || real_req.params['post']['dnf2'] != ""
 
       # Check for time of form render
-      too_fast_submit = Time.now.to_i - real_req.params[:post][:form_rendered_at] < 5
+      too_fast_submit = Time.now.to_i - real_req.params[:post][:form_rendered_at] < 3
   
       if honeypot_filled || too_fast_submit
         Rack::Attack.cache.store.write("post-submit-antispam-#{ip}", true, expires_in: 1.minute)
