@@ -59,7 +59,7 @@
                   %>
                 <% end %>
 
-                <%= link_to @header_full_urls ? get_url_for(method(:moderation_feedback_url)) : moderation_feedback_path, class: 'dropdown-item siteSettingsDropdown' do %>
+                <%= link_to @header_full_urls ? get_url_for(method(:moderation_feedback_url)) : moderation_feedback_path, class: 'dropdown-item moderationDropdown' do %>
                   <%= t('header.menu.moderation') %>
                   <% if Post.pending.length > 0 %>
                     &nbsp;

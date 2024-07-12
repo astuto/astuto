@@ -43,7 +43,13 @@ const Tour = ({ userFullName }: Props) => {
     {
       target: '.siteSettingsDropdown',
       title: 'Site settings',
-      content: 'Click "Site settings" to customize your feedback space. You can add custom boards and statuses, manage users, personalize appearance, and more.',
+      content: 'Click "Site settings" to customize your feedback space. You can add custom boards and statuses, configure various settings, personalize appearance, and more.',
+      disableBeacon: true,
+    },
+    {
+      target: '.moderationDropdown',
+      title: 'Moderation',
+      content: 'Click "Moderation" to approve or reject submitted feedback and to manage users.',
       disableBeacon: true,
     },
     {
@@ -107,8 +113,8 @@ const Tour = ({ userFullName }: Props) => {
         // Open profile navbar
         if (
           state.type === 'step:after' &&
-          (((state.action === 'next' || state.action === 'close') && (state.step.target === '.sidebarFilters' || state.step.target === '.siteSettingsDropdown')) ||
-          (state.action === 'prev' && state.step.target === '.tourDropdown'))
+          (((state.action === 'next' || state.action === 'close') && (state.step.target === '.sidebarFilters' || state.step.target === '.siteSettingsDropdown' || state.step.target === '.moderationDropdown')) ||
+          (state.action === 'prev' && (state.step.target === '.moderationDropdown' || state.step.target === '.tourDropdown')))
         ) {
           if (vw < BOOTSTRAP_BREAKPOINT_SM) openBoardsNav();
 
