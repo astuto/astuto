@@ -26,10 +26,4 @@ RSpec.describe 'site settings routing', :aggregate_failures, type: :routing do
       controller: 'site_settings', action: 'roadmap'
     )
   end
-
-  it 'routes users' do
-    expect(get: base_url + '/users').to route_to(
-      controller: 'site_settings', action: 'users'
-    )
-  end
 end

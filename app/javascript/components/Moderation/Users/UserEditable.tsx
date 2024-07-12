@@ -64,9 +64,9 @@ class UserEditable extends React.Component<Props, State> {
     
     const confirmationMessage =
       newStatus === 'blocked' ?
-        I18n.t('site_settings.users.block_confirmation', { name: user.fullName })
+        I18n.t('moderation.users.block_confirmation', { name: user.fullName })
       :
-        I18n.t('site_settings.users.unblock_confirmation', { name: user.fullName });
+        I18n.t('moderation.users.unblock_confirmation', { name: user.fullName });
 
     const confirmationResponse =  confirm(confirmationMessage);
 
@@ -101,7 +101,7 @@ class UserEditable extends React.Component<Props, State> {
                 
                 <div className="userRoleStatus">
                   <span>
-                    <MutedText>{ I18n.t(`site_settings.users.role_${user.role}`) }</MutedText>
+                    <MutedText>{ I18n.t(`moderation.users.role_${user.role}`) }</MutedText>
                   </span>
 
                   {
@@ -109,7 +109,7 @@ class UserEditable extends React.Component<Props, State> {
                       <>
                       <Separator />
                       <span className={`userStatus userStatus${user.status}`}>
-                      { I18n.t(`site_settings.users.status_${user.status}`) }
+                      { I18n.t(`moderation.users.status_${user.status}`) }
                       </span>
                       </>
                     :
@@ -137,9 +137,9 @@ class UserEditable extends React.Component<Props, State> {
               >
                 {
                   user.status !== USER_STATUS_BLOCKED ?
-                    I18n.t('site_settings.users.block')
+                    I18n.t('moderation.users.block')
                   :
-                    I18n.t('site_settings.users.unblock')
+                    I18n.t('moderation.users.unblock')
                 }
               </ActionLink>
             </div>

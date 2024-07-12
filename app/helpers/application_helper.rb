@@ -31,7 +31,7 @@ module ApplicationHelper
   def authenticate_moderator
     return if check_user_signed_in == false
 
-    unless  current_user.moderator?
+    unless current_user.moderator?
       flash[:alert] = t('errors.not_enough_privileges')
       redirect_to root_path
       return

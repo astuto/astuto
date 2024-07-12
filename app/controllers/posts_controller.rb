@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:update, :destroy]
+  before_action :authenticate_moderator, only: [:moderation]
+  before_action :authenticate_moderator_if_post_not_approved, only: [:show]
   before_action :check_tenant_subscription, only: [:create, :update, :destroy]
 
   def index
@@ -23,22 +25,40 @@ class PostsController < ApplicationController
       .group('posts.id')
       .where(board_id: params[:board_id] || Board.first.id)
       .where(created_at: start_date.beginning_of_day..end_date.end_of_day)
+      .where(approval_status: "approved")
       .search_by_name_or_description(params[:search])
       .order_by(params[:sort_by])
       .page(params[:page])
 
-      # apply post status filter if present
-      posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
+    # apply post status filter if present
+    posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
     
     render json: posts
   end
 
   def create
-    @post = Post.new
-    @post.assign_attributes(post_create_params)
+    if anti_spam_checks || invalid_anonymous_submission
+      render json: {
+        error: t('errors.unknown')
+      }, status: :unprocessable_entity
+      return
+    end
+
+    # handle anonymous feedback
+    approval_status = "pending"
+    is_anonymous = params[:post][:is_anonymous]
+
+    if Current.tenant.tenant_setting.feedback_approval_policy == "never_require_approval" ||
+      (Current.tenant.tenant_setting.feedback_approval_policy == "anonymous_require_approval" && !is_anonymous) ||
+      (user_signed_in? && current_user.moderator?)
+      approval_status = "approved"
+    end
+
+    @post = Post.new(approval_status: approval_status)
+    @post.assign_attributes(post_create_params(is_anonymous: is_anonymous))
 
     if @post.save
-      Follow.create(post_id: @post.id, user_id: current_user.id)
+      Follow.create(post_id: @post.id, user_id: current_user.id) unless is_anonymous
       
       render json: @post, status: :created
     else
@@ -56,6 +76,7 @@ class PostsController < ApplicationController
         :title,
         :slug,
         :description,
+        :approval_status,
         :board_id,
         :user_id,
         :post_status_id,
@@ -64,7 +85,7 @@ class PostsController < ApplicationController
         'users.email as user_email',
         'users.full_name as user_full_name'
       )
-      .joins(:user)
+      .eager_load(:user) # left outer join
       .find(params[:id])
     
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
@@ -121,13 +142,49 @@ class PostsController < ApplicationController
     end
   end
 
+  # Returns a list of posts for moderation in JSON
+  def moderation
+    posts = Post
+      .select(
+        :id,
+        :title,
+        :description,
+        :slug,
+        :approval_status,
+        :user_id,
+        :board_id,
+        :created_at,
+        'users.email as user_email',
+        'users.full_name as user_full_name'
+      )
+      .eager_load(:user)
+      .where(approval_status: ["pending", "rejected"])
+      .order_by(created_at: :desc)
+      .limit(100)
+
+    render json: posts
+  end
+
   private
+
+    def authenticate_moderator_if_post_not_approved
+      post = Post.friendly.find(params[:id])
+      authenticate_moderator unless post.approval_status == "approved"
+    end
+
+    def anti_spam_checks
+      params[:post][:dnf1] != "" || params[:post][:dnf2] != "" || Time.now.to_i - params[:post][:form_rendered_at] < 3
+    end
+
+    def invalid_anonymous_submission
+      (params[:post][:is_anonymous] == false && !user_signed_in?) || (params[:post][:is_anonymous] == true && Current.tenant.tenant_setting.allow_anonymous_feedback == false)
+    end
     
-    def post_create_params
+    def post_create_params(is_anonymous: false)
       params
         .require(:post)
         .permit(policy(@post).permitted_attributes_for_create)
-        .merge(user_id: current_user.id)
+        .merge(user_id: is_anonymous ? nil : current_user.id)
     end
 
     def post_update_params

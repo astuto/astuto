@@ -1,0 +1,88 @@
+.feedbackModerationContainer {
+  .badges {
+    @extend
+      .d-flex,
+      .flex-row,
+      .flex-wrap;
+
+    row-gap: 8px;
+  }
+
+  .changeFeedbackModerationSettingsLink {
+    @extend
+      .align-self-auto,
+      .mt-2;
+  }
+
+  .filterModerationFeedbackNav {
+    @extend
+      .nav,
+      .nav-pills,
+      .align-self-center,
+      .px-2,
+      .mt-4;
+
+    .nav-item {
+      cursor: pointer;
+    }
+
+    .nav-link {
+      color: var(--astuto-black);
+
+      &.active {
+        color: white;
+        background-color: var(--astuto-black);
+      }
+    }
+  }
+
+  .emptyList {
+    @extend .mt-4, .mb-2;
+
+    text-align: center;
+  }
+
+  .feedbackModerationList {
+    .feedbackListItem {
+      @extend
+        .d-flex,
+        .flex-row,
+        .justify-content-between,
+        .my-4,
+        .mx-2,
+        .p-2;
+
+      .feedbackListItemIconAndContent {
+        @extend .d-flex;
+
+        .feedbackListItemIcon {
+          @extend .align-self-center;
+        }
+        
+        .feedbackListItemContent {
+          @extend .ml-4;
+  
+          .feedbackListItemTitle {
+            @extend
+              .font-weight-bold,
+              .mb-1;
+
+            &:hover {
+              cursor: pointer;
+              text-decoration: underline;
+            }
+          }
+
+          .feedbackListItemDescription {
+            color: var(--astuto-grey);
+          }
+        }
+      }
+
+      .feedbackListItemActions {
+        @extend
+          .d-flex;
+      }
+    }
+  }
+}

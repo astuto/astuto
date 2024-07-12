@@ -24,13 +24,37 @@
     }
 
     .newPostForm {
-      @extend .my-2;
+      @extend
+        .mt-4,
+        .mb-2;
 
       #postDescription {
         height: 100px;
         min-height: 100px;
         resize: vertical;
       }
+
+      .form-group-dnf {
+        margin: 0;
+        padding: 0;
+        height: 1px;
+
+        /* honeypot field 1 */
+        #email {
+          visibility: hidden;
+          height: 1px;
+        }
+      }
+
+      /* honeypot field 2 */
+      #name {
+        position: absolute;
+        left: -9999px;
+      }
+    }
+
+    .anonymousFeedbackLink {
+      @extend .my-2;
     }
   }
   

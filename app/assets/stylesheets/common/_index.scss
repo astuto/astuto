@@ -159,16 +159,20 @@ body {
   @extend
     .badge,
     .badge-pill,
-    .p-2;
+    .p-2,
+    .ml-1,
+    .mr-1;
 
   font-size: 13px;
+  text-transform: uppercase;
 }
 
 .badgeLight {
   @extend .badge-light;
-
   background-color: var(--astuto-grey-light);
 }
+.badgeWarning { @extend .badge-warning; }
+.badgeDanger { @extend .badge-danger; }
 
 .container {
   max-width: 960px;
@@ -323,4 +327,26 @@ body {
     .alert-primary,
     .text-center,
     .m-0;
+}
+
+.highlighted {
+  @extend .p-2;
+  
+  background-color: rgba(255, 255, 0, 0.2);
+}
+
+.notificationDot {
+  display: inline-block;
+  color: white;
+  background-color: var(--primary-color);
+  min-width: 22px;
+  font-size: 14px;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.notificationDot.notificationDotTop {
+  position: relative;
+  bottom: 8px;
+  scale: 80%;
 }

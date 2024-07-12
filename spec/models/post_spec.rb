@@ -41,13 +41,13 @@ RSpec.describe Post, type: :model do
     expect(no_status_post).to be_valid
   end
 
-  it 'has a reference to a user than cannot be nil' do
+  it 'has a reference to a user that can be nil (for anonymous feedback)' do
     no_user_post = FactoryBot.build(:post, user_id: nil)
 
-    expect(no_user_post).to be_invalid
+    expect(no_user_post).to be_valid
   end
 
-  it 'has a reference to a board than cannot be nil' do
+  it 'has a reference to a board that cannot be nil' do
     no_board_post = FactoryBot.build(:post, board_id: nil)
 
     expect(no_board_post).to be_invalid
@@ -76,5 +76,15 @@ RSpec.describe Post, type: :model do
 
     expect { Post.search_by_name_or_description(nil) }.not_to raise_error
     expect { Post.search_by_name_or_description('dangerous symbols: " \' %') }.not_to raise_error
+  end
+
+  it 'has an approval status that can be approved, pending or rejected' do
+    expect(post.approval_status).to eq('approved')
+
+    post.approval_status = 'pending'
+    expect(post).to be_valid
+
+    post.approval_status = 'rejected'
+    expect(post).to be_valid
   end
 end

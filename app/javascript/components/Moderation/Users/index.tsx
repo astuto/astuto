@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 
-import UsersSiteSettings from '../../../containers/UsersSiteSettings';
+import UsersModeration from '../../../containers/UsersModeration';
 
 import createStoreHelper from '../../../helpers/createStore';
 import { UserRoles } from '../../../interfaces/IUser';
@@ -14,7 +14,7 @@ interface Props {
   authenticityToken: string;
 }
 
-class UsersSiteSettingsRoot extends React.Component<Props> {
+class UsersModerationRoot extends React.Component<Props> {
   store: Store<State, any>;
   
   constructor(props: Props) {
@@ -26,7 +26,7 @@ class UsersSiteSettingsRoot extends React.Component<Props> {
   render() {
     return (
       <Provider store={this.store}>
-        <UsersSiteSettings
+        <UsersModeration
           currentUserEmail={this.props.currentUserEmail}
           currentUserRole={this.props.currentUserRole}
           authenticityToken={this.props.authenticityToken}
@@ -36,4 +36,4 @@ class UsersSiteSettingsRoot extends React.Component<Props> {
   }
 }
 
-export default UsersSiteSettingsRoot;
+export default UsersModerationRoot;

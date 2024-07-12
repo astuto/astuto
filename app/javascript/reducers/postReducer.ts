@@ -8,13 +8,14 @@ import {
   POST_UPDATE_SUCCESS,
 } from '../actions/Post/updatePost';
 
-import IPost from '../interfaces/IPost';
+import IPost, { POST_APPROVAL_STATUS_APPROVED } from '../interfaces/IPost';
 
 const initialState: IPost = {
   id: 0,
   title: '',
   slug: null,
   description: null,
+  approvalStatus: POST_APPROVAL_STATUS_APPROVED,
   boardId: 0,
   postStatusId: null,
   likeCount: 0,
@@ -40,6 +41,7 @@ const postReducer = (
         title: action.post.title,
         slug: action.post.slug,
         description: action.post.description,
+        approvalStatus: action.post.approval_status,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
         likeCount: action.post.likes_count,
@@ -59,6 +61,7 @@ const postReducer = (
         description: action.post.description,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
+        approvalStatus: action.post.approval_status,
       };
 
     default:

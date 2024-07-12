@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <div class="sidebarBox">
+    <span class="boxTitleText"><%= t('header.menu.moderation') %></span>
+    
+    <div class="verticalNavigation" role="tablist" aria-orientation="vertical">
+      <%= render 'shared/sidebar_menu_link', label: t('moderation.menu.feedback'), path: moderation_feedback_path %>  
+      <%= render 'shared/sidebar_menu_link', label: t('moderation.menu.users'), path: moderation_users_path %>
+    </div>
+  </div>
+</div>

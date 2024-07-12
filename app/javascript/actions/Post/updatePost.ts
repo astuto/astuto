@@ -4,6 +4,7 @@ import HttpStatus from "../../constants/http_status";
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
 import IPostJSON from "../../interfaces/json/IPost";
 import { State } from "../../reducers/rootReducer";
+import { PostApprovalStatus } from "../../interfaces/IPost";
 
 export const POST_UPDATE_START = 'POST_UPDATE_START';
 interface PostUpdateStartAction {
@@ -31,7 +32,7 @@ const postUpdateStart = (): PostUpdateStartAction => ({
   type: POST_UPDATE_START,
 });
 
-const postUpdateSuccess = (
+export const postUpdateSuccess = (
   postJSON: IPostJSON,
 ): PostUpdateSuccessAction => ({
   type: POST_UPDATE_SUCCESS,
@@ -63,6 +64,39 @@ export const updatePost = (
           description,
           board_id: boardId,
           post_status_id: postStatusId,
+        }
+      }),
+    });
+    const json = await res.json();
+
+    if (res.status === HttpStatus.OK) {
+      dispatch(postUpdateSuccess(json));
+    } else {
+      dispatch(postUpdateFailure(json.error));
+    }
+
+    return Promise.resolve(res);
+  } catch (e) {
+    dispatch(postUpdateFailure(e));
+    
+    return Promise.resolve(null);
+  }
+};
+
+export const updatePostApprovalStatus = (
+  id: number,
+  approvalStatus: PostApprovalStatus,
+  authenticityToken: string,
+): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
+  dispatch(postUpdateStart());
+
+  try {
+    const res = await fetch(`/posts/${id}`, {
+      method: 'PATCH',
+      headers: buildRequestHeaders(authenticityToken),
+      body: JSON.stringify({
+        post: {
+          approval_status: approvalStatus,
         }
       }),
     });

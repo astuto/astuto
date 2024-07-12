@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'site settings: users', type: :system, js: true do
+feature 'moderation: users', type: :system, js: true do
   let(:admin) { FactoryBot.create(:admin) }
   let(:user) { FactoryBot.create(:user) }
 
@@ -14,7 +14,7 @@ feature 'site settings: users', type: :system, js: true do
 
     user
 
-    visit site_settings_users_path
+    visit moderation_users_path
   end
 
   it 'lets view existing users' do

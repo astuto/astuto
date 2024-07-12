@@ -20,7 +20,9 @@ interface Props {
   board: IBoard;
   isLoggedIn: boolean;
   isPowerUser: boolean;
+  currentUserFullName: string;
   tenantSetting: ITenantSetting;
+  componentRenderedAt: number;
   authenticityToken: string;
   posts: PostsState;
   postStatuses: PostStatusesState;
@@ -91,7 +93,9 @@ class BoardP extends React.Component<Props> {
       board,
       isLoggedIn,
       isPowerUser,
+      currentUserFullName,
       tenantSetting,
+      componentRenderedAt,
       authenticityToken,
       posts,
       postStatuses,
@@ -110,8 +114,12 @@ class BoardP extends React.Component<Props> {
           <NewPost
             board={board}
             isLoggedIn={isLoggedIn}
+            currentUserFullName={currentUserFullName}
+            isAnonymousFeedbackAllowed={tenantSetting.allow_anonymous_feedback}
+            componentRenderedAt={componentRenderedAt}
             authenticityToken={authenticityToken}
           />
+
           <div className="sidebarFilters">
             <SearchFilter
               searchQuery={filters.searchQuery}

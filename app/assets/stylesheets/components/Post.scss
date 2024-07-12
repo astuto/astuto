@@ -110,7 +110,9 @@
       .mb-3;
 
     .postInfo {
-      @extend .d-flex;
+      @extend
+        .d-flex,
+        .mb-2;
 
       span {
         @extend .mr-2;
