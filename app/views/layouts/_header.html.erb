@@ -44,6 +44,9 @@
             <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
               <span class="fullname"><%= current_user.full_name %></span>
+              <% if current_user.moderator? && Post.pending.length > 0 %>
+                <span class="notificationDot notificationDotTop"><%= Post.pending.length %></span>
+              <% end %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if current_user.moderator? %>
@@ -56,11 +59,13 @@
                   %>
                 <% end %>
 
-                <%=
-                  link_to t('header.menu.moderation'),
-                    @header_full_urls ? get_url_for(method(:moderation_feedback_url)) : moderation_feedback_path,
-                    class: 'dropdown-item siteSettingsDropdown'
-                %>
+                <%= link_to @header_full_urls ? get_url_for(method(:moderation_feedback_url)) : moderation_feedback_path, class: 'dropdown-item siteSettingsDropdown' do %>
+                  <%= t('header.menu.moderation') %>
+                  <% if Post.pending.length > 0 %>
+                    &nbsp;
+                    <span class="notificationDot"><%= Post.pending.length %></span>
+                  <% end %>
+                <% end %>
 
                 <% if current_user.owner? and Rails.application.multi_tenancy? %>
                   <%= link_to @header_full_urls ? get_url_for(method(:request_billing_page_url)) : request_billing_page_path, class: 'dropdown-item', data: {turbolinks: false} do %>

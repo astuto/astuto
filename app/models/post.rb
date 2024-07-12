@@ -49,5 +49,9 @@ class Post < ApplicationRecord
         order(created_at: :desc)
       end
     end
+
+    def pending
+      where(approval_status: "pending")
+    end
   end
 end

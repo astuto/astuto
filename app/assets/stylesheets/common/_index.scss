@@ -334,3 +334,19 @@ body {
   
   background-color: rgba(255, 255, 0, 0.2);
 }
+
+.notificationDot {
+  display: inline-block;
+  color: white;
+  background-color: var(--primary-color);
+  min-width: 22px;
+  font-size: 14px;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.notificationDot.notificationDotTop {
+  position: relative;
+  bottom: 8px;
+  scale: 80%;
+}
