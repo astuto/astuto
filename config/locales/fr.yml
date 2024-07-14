@@ -1,9 +1,9 @@
 fr:
   common:
     words:
-      or: 'or'
+      or: 'ou'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Une erreur inconnue s''est produite, veuillez réessayer'
     validations:
       required: '%{attribute} est obligatoire'
       email: 'Email invalide'
@@ -22,8 +22,8 @@ fr:
         notifications_enabled: 'Notifications activées'
         notifications_enabled_help: "si désactivé, vous ne recevrez aucune notification"
         waiting_confirmation: 'En attente de confirmation de : %{email}'
-        no_password_set: 'You must set a password to update your profile'
-        set_password: 'Set password'
+        no_password_set: 'Vous devez définir un mot de passe pour mettre à jour votre profil'
+        set_password: 'Définir un mot de passe'
         password_leave_blank_help: "laissez vide si vous ne souhaitez pas changer votre mot de passe"
         current_password_required_help: 'nous avons besoin de votre mot de passe actuel pour confirmer vos modifications'
         remember_me: 'Se souvenir de moi'
@@ -48,7 +48,7 @@ fr:
     no_status: 'Pas de statut'
     loading: 'Chargement ...'
     confirmation: 'Vous êtes sûr ?'
-    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
+    confirmation_board_delete: 'Attention : s''il y a des commentaires dans ce tableau, alors TOUS ces messages seront également supprimés. Cette action ne peut pas être annulée.'
     unsaved_changes: 'Les modifications apportées seront perdues si vous quittez cette page.'
     edited: 'Modifié'
     enabled: 'Activé'
@@ -67,8 +67,8 @@ fr:
       back: 'Revenir en arrière'
       test: 'Tester'
       clear: 'Effacer'
-      approve: 'Approve'
-      reject: 'Reject'
+      approve: 'Approuver'
+      reject: 'Rejeter'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -84,11 +84,11 @@ fr:
     menu:
       administration_header: 'Administration'
       site_settings: 'Paramètres du site'
-      moderation: 'Moderation'
-      profile_header: 'Profile'
+      moderation: 'Modération'
+      profile_header: 'Profil'
       profile_settings: 'Paramètres du profil'
-      help_header: 'Help'
-      tour: 'Tour'
+      help_header: 'Aide'
+      tour: 'Tutoriel'
       docs: 'Documentation'
       support: 'Support'
       sign_out: 'Déconnexion'
@@ -96,22 +96,22 @@ fr:
   roadmap:
     title: 'Feuille de route'
   billing:
-    title: 'Billing'
+    title: 'Facturation'
   blocked_tenant:
     title: 'Cet espace de feedback a été bloqué'
   board:
     new_post:
       submit_button: 'Soumettre un retour'
-      submit_anonymous_button: 'Submit anonymously'
+      submit_anonymous_button: 'Soumettre anonymement'
       cancel_button: 'Annuler'
       login_button: 'Se connecter / S''inscrire'
       title: 'Titre'
       description: 'Description (optionnel)'
       no_title: 'Le champ Titre est obligatoire'
-      anonymous_submission_help: 'You are posting anonymously'
-      non_anonymous_submission_help: 'You are posting as %{name}'
+      anonymous_submission_help: 'Vous publiez anonymement'
+      non_anonymous_submission_help: 'Vous publiez en tant que %{name}'
       submit_success: 'Feedback publié ! Vous allez bientôt être redirigé ...'
-      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
+      submit_pending: 'Votre avis a été soumis et est maintenant en attente d''approbation d''un modérateur!'
     search_box:
       title: 'Recherche'
     filter_box:
@@ -131,7 +131,7 @@ fr:
   post:
     edit_button: 'Modifier'
     published_by: 'Publié par'
-    published_anonymously: 'Published anonymously'
+    published_anonymously: 'Publié anonymement'
     post_status_select:
       no_post_status: 'Aucun'
     updates_box:
@@ -175,11 +175,11 @@ fr:
       brand_setting_name: 'Nom seulement'
       brand_setting_logo: 'Logo uniquement'
       brand_setting_none: 'Aucun'
-      subtitle_moderation: 'Moderation'
-      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
-      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
-      feedback_approval_policy_never_require_approval: 'Never require approval'
-      feedback_approval_policy_always_require_approval: 'Always require approval'
+      subtitle_moderation: 'Modération'
+      allow_anonymous_feedback_help: 'Les utilisateurs non inscrits pourront soumettre leurs commentaires.'
+      feedback_approval_policy_anonymous_require_approval: 'Exiger l''approbation pour les commentaires anonymes seulement'
+      feedback_approval_policy_never_require_approval: 'Ne jamais exiger d''approbation'
+      feedback_approval_policy_always_require_approval: 'Toujours exiger l''approbation'
       feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'En-tête'
       collapse_boards_in_header_no_collapse: 'Jamais'
