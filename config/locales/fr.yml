@@ -180,7 +180,7 @@ fr:
       feedback_approval_policy_anonymous_require_approval: 'Exiger l''approbation pour les commentaires anonymes seulement'
       feedback_approval_policy_never_require_approval: 'Ne jamais exiger d''approbation'
       feedback_approval_policy_always_require_approval: 'Toujours exiger l''approbation'
-      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
+      feedback_approval_policy_help: 'Si vous exiger l''approbation, les commentaires soumis resteront cachés au public jusqu''à ce qu''un modérateur ou qu''un administrateur l''approuve. Les commentaires soumis par les modérateurs et les administrateurs sont toujours approuvés automatiquement.'
       subtitle_header: 'En-tête'
       collapse_boards_in_header_no_collapse: 'Jamais'
       collapse_boards_in_header_always_collapse: 'Toujours'
@@ -232,24 +232,24 @@ fr:
         client_secret_help: 'masqué pour des raisons de sécurité'
   moderation:
     menu:
-      feedback: 'Feedback'
-      users: 'Users'
+      feedback: 'Commentaires'
+      users: 'Utilisateurs'
     feedback:
-      anonymous_feedback_allowed: 'Anonymous feedback allowed'
-      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
-      change_feedback_moderation_settings: 'Change feedback moderation settings'
+      anonymous_feedback_allowed: 'Commentaire anonyme autorisé'
+      anonymous_feedback_not_allowed: 'Commentaire anonyme non autorisé'
+      change_feedback_moderation_settings: 'Modifier les paramètres de modération des commentaires'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      title: 'Utilisateurs'
+      block: 'Bloquer'
+      unblock: 'Débloquer'
+      block_confirmation: "%{name} ne pourra pas se connecter tant qu'il ne sera pas débloqué. Êtes-vous sûr(e) ?"
+      unblock_confirmation: "%{name} sera en mesure de se connecter et de soumettre des commentaires. Êtes-vous sûr(e) ?"
+      role_to_moderator_confirmation: "%{name} sera en mesure de gérer les messages et les utilisateurs. Ne continuez que si vous avez confiance en cette personne. Êtes-vous sûr(e) ?"
+      role_to_admin_confirmation: "%{name} sera en mesure de gérer les tableaux, messages, statuts, utilisateurs et plus encore. Continuez uniquement si vous faites confiance à cette personne. Êtes-vous sûr(e) ?"
+      role_user: 'Utilisateur'
+      role_moderator: 'Modérateur'
+      role_admin: 'Administrateur'
+      role_owner: 'Propriétaire'
+      status_active: 'Actif'
+      status_blocked: 'Bloqué'
+      status_deleted: 'Supprimé'
