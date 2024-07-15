@@ -3,7 +3,7 @@ ru:
     words:
       or: 'or'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Произошла неизвестная ошибка, попробуйте еще раз'
     validations:
       required: 'Необходимо заполнить %{attribute}'
       email: 'Неправильный адрес электронной почты'
