@@ -239,17 +239,17 @@ es:
       anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
       change_feedback_moderation_settings: 'Change feedback moderation settings'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      title: 'Usuarios'
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
+      block_confirmation: "%{name} no podrá iniciar sesión hasta que sea desbloqueado. ¿Estás seguro?"
+      unblock_confirmation: "%{name} podrá iniciar sesión y enviar comentarios. ¿Está seguro?"
+      role_to_moderator_confirmation: "%{name} podrá administrar las publicaciones y usuarios. Procede sólo si confías en esta persona. ¿Está seguro?"
+      role_to_admin_confirmation: "%{name} will have the same privileges as you, so they could even demote or block you. Proceed only if you really trust %{name}. Are you sure?"
+      role_user: 'Usuario'
+      role_moderator: 'Moderador'
+      role_admin: 'Administrador'
+      role_owner: 'Propietario'
+      status_active: 'Activo'
+      status_blocked: 'Bloqueado'
+      status_deleted: 'Eliminado'
