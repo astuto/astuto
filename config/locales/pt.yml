@@ -3,7 +3,7 @@ pt:
     words:
       or: 'or'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Ocorreu um erro, por favor tente novamente'
     validations:
       required: '%{attribute} não pode ficar em branco'
       email: 'E-mail inválido'
@@ -240,16 +240,16 @@ pt:
       change_feedback_moderation_settings: 'Change feedback moderation settings'
     users:
       title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      block: 'Bloquear'
+      unblock: 'Desbloquear'
+      block_confirmation: "%{name} não poderá acessar até que seja desbloqueado. Tem certeza?"
+      unblock_confirmation: "%{name} poderá se autenticar e enviar comentário. Tem certeza?"
+      role_to_moderator_confirmation: "%{name} poderá gerenciar postagens e usuários. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
+      role_to_admin_confirmation: "%{name} poderá gerenciar painéis, postagens, estados, usuários e muito mais. Prossiga apenas se você confiar nessa pessoa. Tem certeza?"
       role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      role_moderator: 'Moderador(e/a)'
+      role_admin: 'Administrador(e/a)'
+      role_owner: 'Responsável'
+      status_active: 'Ativa(e/o)'
+      status_blocked: 'Bloqueada(e/o)'
+      status_deleted: 'Excluída(e/o)'
