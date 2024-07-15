@@ -229,23 +229,23 @@ zh-CN:
   moderation:
     menu:
       feedback: 'Feedback'
-      users: 'Users'
+      users: '用户'
     feedback:
       anonymous_feedback_allowed: 'Anonymous feedback allowed'
       anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
       change_feedback_moderation_settings: 'Change feedback moderation settings'
     users:
-      title: 'Users'
-      block: 'Block'
-      unblock: 'Unblock'
-      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
-      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
-      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
-      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
-      role_user: 'User'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Owner'
-      status_active: 'Active'
-      status_blocked: 'Blocked'
-      status_deleted: 'Deleted'
+      title: '用户'
+      block: '封禁'
+      unblock: '解除封禁'
+      block_confirmation: "%{name} 在被解除封禁前无法登录，您确定吗？"
+      unblock_confirmation: "%{name} 将可以登录和发表反馈，您确定吗？"
+      role_to_moderator_confirmation: "%{name} 将可以管理帖子和用户，请仅在信任此人的情况下继续。您确定吗？"
+      role_to_admin_confirmation: "%{name} 将拥有和您同等的权限，包括把您降级和封禁，请仅在信任此人的情况下继续。 您确定吗？"
+      role_user: '用户'
+      role_moderator: '版主'
+      role_admin: '管理员'
+      role_owner: '所有者'
+      status_active: '已启用'
+      status_blocked: '已封禁'
+      status_deleted: '已删除'
