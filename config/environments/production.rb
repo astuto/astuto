@@ -84,7 +84,7 @@ Rails.application.configure do
 
   config.action_mailer.default_options = {
     from: ENV.fetch("EMAIL_MAIL_FROM", "noreply@astuto.io"),
-    reply_to: "noreply@astuto.io"
+    reply_to: ENV.fetch("EMAIL_MAIL_REPLY_TO", "noreply@astuto.io")
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
