@@ -10,6 +10,16 @@ export type TenantSettingBrandDisplay =
   typeof TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY |
   typeof TENANT_SETTING_BRAND_DISPLAY_NONE;
 
+// Feedback approval policy
+export const TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ANONYMOUS_REQUIRE_APPROVAL = 'anonymous_require_approval';
+export const TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_NEVER_REQUIRE_APPROVAL = 'never_require_approval';
+export const TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ALWAYS_REQUIRE_APPROVAL = 'always_require_approval';
+
+export type TenantSettingFeedbackApprovalPolicy =
+  typeof TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ANONYMOUS_REQUIRE_APPROVAL |
+  typeof TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_NEVER_REQUIRE_APPROVAL |
+  typeof TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ALWAYS_REQUIRE_APPROVAL;
+
 // Collapse boards in header
 export const TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE = 'no_collapse';
 export const TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE = 'always_collapse';
@@ -22,6 +32,8 @@ export type TenantSettingCollapseBoardsInHeader =
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
   root_board_id?: number;
+  allow_anonymous_feedback?: boolean;
+  feedback_approval_policy?: TenantSettingFeedbackApprovalPolicy;
   show_vote_count?: boolean;
   show_vote_button_in_board?: boolean;
   show_roadmap_in_header?: boolean;

@@ -46,4 +46,18 @@ RSpec.describe TenantSetting, type: :model do
     tenant_setting.collapse_boards_in_header = 'always_collapse'
     expect(tenant_setting).to be_valid
   end
+
+  it 'has a setting to allow anonymous feedback' do
+    expect(tenant_setting.allow_anonymous_feedback).to be_truthy
+  end
+
+  it 'has a setting to require approval for feedback' do
+    expect(tenant_setting.feedback_approval_policy).to eq('anonymous_require_approval')
+
+    tenant_setting.feedback_approval_policy = 'never_require_approval'
+    expect(tenant_setting).to be_valid
+
+    tenant_setting.feedback_approval_policy = 'always_require_approval'
+    expect(tenant_setting).to be_valid
+  end
 end

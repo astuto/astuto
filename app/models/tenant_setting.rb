@@ -16,4 +16,10 @@ class TenantSetting < ApplicationRecord
     :no_collapse,
     :always_collapse
   ]
+
+  enum feedback_approval_policy: [
+    :anonymous_require_approval,
+    :never_require_approval,
+    :always_require_approval,
+  ]
 end

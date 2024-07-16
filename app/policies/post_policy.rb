@@ -5,7 +5,7 @@ class PostPolicy < ApplicationPolicy
 
   def permitted_attributes_for_update
     if user.moderator?
-      [:title, :description, :board_id, :post_status_id]
+      [:title, :description, :board_id, :post_status_id, :approval_status]
     else
       [:title, :description]
     end

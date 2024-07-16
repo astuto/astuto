@@ -2,14 +2,21 @@ import * as React from 'react';
 import I18n from 'i18n-js';
 
 import { BsReply } from 'react-icons/bs';
-import { FiEdit, FiDelete } from 'react-icons/fi';
+import { FiEdit, FiDelete, FiSettings } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
-import { MdContentCopy, MdDone, MdOutlineArrowBack } from 'react-icons/md';
 import { GrTest, GrClearOption } from 'react-icons/gr';
-import { MdOutlineLibraryBooks } from "react-icons/md";
-import { MdVerified } from "react-icons/md";
 import { BiLike, BiSolidLike } from "react-icons/bi";
+import {
+  MdContentCopy,
+  MdDone,
+  MdOutlineArrowBack,
+  MdOutlineLibraryBooks,
+  MdVerified,
+  MdCheck,
+  MdClear,
+} from 'react-icons/md';
+import { FaUserNinja } from "react-icons/fa";
 
 export const EditIcon = () => <FiEdit />;
 
@@ -44,3 +51,11 @@ export const ClearIcon = () => <GrClearOption />;
 export const LikeIcon = ({size = 32}) => <BiLike size={size} />;
 
 export const SolidLikeIcon = ({size = 32}) => <BiSolidLike size={size} />;
+
+export const SettingsIcon = () => <FiSettings />;
+
+export const AnonymousIcon = ({size = 32, title=I18n.t('defaults.user_full_name')}) => <FaUserNinja size={size} title={title} />;
+
+export const ApproveIcon = () => <MdCheck />;
+
+export const RejectIcon = () => <MdClear />;

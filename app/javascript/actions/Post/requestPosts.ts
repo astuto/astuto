@@ -79,3 +79,19 @@ export const requestPosts = (
     dispatch(postsRequestFailure(e));
   }
 }
+
+// Used to get posts that require moderation (i.e. pending or rejected posts)
+export const requestPostsForModeration = (
+
+): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
+  dispatch(postsRequestStart());
+
+  try {
+    const response = await fetch('/posts/moderation');
+    const json = await response.json();
+
+    dispatch(postsRequestSuccess(json, 1));
+  } catch (e) {
+    dispatch(postsRequestFailure(e));
+  }
+}
