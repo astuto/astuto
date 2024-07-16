@@ -20,18 +20,27 @@
       .nav-pills,
       .align-self-center,
       .px-2,
+      .py-1,
       .mt-4;
+
+    background-color: var(--astuto-grey-light);
+    border-radius: 0.5rem;
 
     .nav-item {
       cursor: pointer;
     }
 
     .nav-link {
+      @extend
+        .px-3,
+        .py-1;
+
       color: var(--astuto-black);
 
       &.active {
-        color: white;
-        background-color: var(--astuto-black);
+        color: var(--astuto-black);
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
     }
   }

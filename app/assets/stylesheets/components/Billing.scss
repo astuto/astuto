@@ -39,13 +39,13 @@
         .py-1,
         .mt-2;
 
+      background-color: var(--astuto-grey-light);
+      border-radius: 0.5rem;
+
       .yearlyPlanDiscount {
         @extend .ml-2;
         color: red;
       }
-
-      background-color: var(--astuto-grey-light);
-      border-radius: 0.5rem;
 
       li.nav-item {
         width: 130px;
