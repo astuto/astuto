@@ -34,17 +34,21 @@ With the paid plan:
 - You get priority support
 - You support open source and get our eternal gratitude :)
 
+
 ### Self-hosted
+
+Read the [Deploy with Docker instructions](https://docs.astuto.io/deploy-docker) for the most comprehensive and up to date guide on installing and configuring Astuto.
+
+What you find below are minimal instructions to get you started as quickly as possible:
 
 0. Ensure you have Docker and Docker Compose installed
 1. Create an empty folder
 2. Inside that folder, create a `docker-compose.yml` file with the following content:
 ```
-version: '3.4'
 services:
   db:
     image: postgres:14.5
-    environment:
+    environment: &db-env
       POSTGRES_USER: yourpostgresusername
       POSTGRES_PASSWORD: yourpostgrespassword
     volumes:
@@ -52,8 +56,7 @@ services:
   web:
     image: riggraz/astuto:latest
     environment:
-      POSTGRES_USER: yourpostgresusername
-      POSTGRES_PASSWORD: yourpostgrespassword
+      <<: *db-env
       BASE_URL: http://yourwebsite.com
       SECRET_KEY_BASE: yoursecretkeybase
     ports:
@@ -64,12 +67,9 @@ services:
 volumes:
   dbdata:
 ```
-3. Edit the environment variables to fit your needs. You can find more information about env variables in the [documentation](https://docs.astuto.io/deploy-docker#2-edit-the-environment-variables-in-the-docker-compose-file).
-4. Run `docker compose pull`
-5. Run `docker compose up`
-6. You should now have a running instance of Astuto on port 3000. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
-
-**Note**: if you are on Linux and you encounter permission denied errors when running Docker commands, try to run them as administrator.
+3. Edit the environment variables to fit your needs. You can find more information about env variables in the [documentation](https://docs.astuto.io/deploy-docker/#2-edit-environment-variables).
+4. Run `docker compose pull && docker compose up`
+5. You should now have a running instance of Astuto on port 3000. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ## Documentation
 
