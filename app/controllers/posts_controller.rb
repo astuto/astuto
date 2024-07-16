@@ -173,7 +173,7 @@ class PostsController < ApplicationController
     end
 
     def anti_spam_checks
-      params[:post][:dnf1] != "" || params[:post][:dnf2] != "" || Time.now.to_i - params[:post][:form_rendered_at] < 3
+      params[:post][:dnf1] != "" || params[:post][:dnf2] != "" || Time.now.to_i - params[:post][:form_rendered_at] < 2
     end
 
     def invalid_anonymous_submission
