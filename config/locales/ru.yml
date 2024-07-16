@@ -1,7 +1,9 @@
 ru:
   common:
+    words:
+      or: 'or'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Произошла неизвестная ошибка, попробуйте еще раз'
     validations:
       required: 'Необходимо заполнить %{attribute}'
       email: 'Неправильный адрес электронной почты'
@@ -67,6 +69,8 @@ ru:
       back: 'Назад'
       test: 'Тест'
       clear: 'Clear'
+      approve: 'Approve'
+      reject: 'Reject'
     datetime:
       now: 'только что'
       minutes:
@@ -88,6 +92,7 @@ ru:
     menu:
       administration_header: 'Administration'
       site_settings: 'Настройки сайта'
+      moderation: 'Moderation'
       profile_header: 'Profile'
       profile_settings: 'Настройки профиля'
       help_header: 'Help'
@@ -105,12 +110,16 @@ ru:
   board:
     new_post:
       submit_button: 'Добавить отзыв'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: 'Отмена'
       login_button: 'Войти / Зарегистрироваться'
       title: 'Заголовок'
       description: 'Описание (опционально)'
       no_title: 'Поле обязательное для заполнения'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Отзыв опубликован! Вы будете перенаправлены в ближайшее время...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: 'Поиск'
     filter_box:
@@ -130,6 +139,7 @@ ru:
   post:
     edit_button: 'Редактировать'
     published_by: 'Опубликован'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: 'Нет'
     updates_box:
@@ -161,7 +171,6 @@ ru:
       boards: 'Доски'
       post_statuses: 'Статусы'
       roadmap: 'Дорожная Карта'
-      users: 'Пользователи'
       authentication: 'Аутентификация'
       appearance: 'Appearance'
     info_box:
@@ -174,6 +183,12 @@ ru:
       brand_setting_name: 'Только название'
       brand_setting_logo: 'Только логотип'
       brand_setting_none: 'Нет'
+      subtitle_moderation: 'Moderation'
+      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
+      feedback_approval_policy_never_require_approval: 'Never require approval'
+      feedback_approval_policy_always_require_approval: 'Always require approval'
+      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Заголовок'
       collapse_boards_in_header_no_collapse: 'Никогда'
       collapse_boards_in_header_always_collapse: 'Всегда'
@@ -203,21 +218,6 @@ ru:
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
-    users:
-      title: 'Пользователи'
-      block: 'Блокировка'
-      unblock: 'Разблокировать'
-      block_confirmation: "%{name} не сможет войти, пока он не будет разблокирован. Вы уверены?"
-      unblock_confirmation: "%{name} сможет войти и отправить отзыв. Вы уверены?"
-      role_to_moderator_confirmation: "%{name} сможет управлять записями и пользователями. Продолжать, только если вы доверяете этому человеку. Вы уверены?"
-      role_to_admin_confirmation: "%{name} будет обладать теми же привилегиями, что и вы, так что они могут даже понизить или заблокировать вас. Продолжайте только если вы действительно доверяете %{name}. Вы уверены?"
-      role_user: 'Пользователь'
-      role_moderator: 'Модератор'
-      role_admin: 'Администратор'
-      role_owner: 'Владелец'
-      status_active: 'Активный'
-      status_blocked: 'Заблокированный'
-      status_deleted: 'Удаленный'
     authentication:
       title: 'Аутентификация'
       learn_more: 'Learn how to configure custom OAuth providers'
@@ -238,3 +238,26 @@ ru:
         subtitle_oauth_config: 'Конфигурация OAuth'
         subtitle_user_profile_config: 'Настройка профиля пользователя'
         client_secret_help: 'скрытые в целях безопасности'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    feedback:
+      anonymous_feedback_allowed: 'Anonymous feedback allowed'
+      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
+      change_feedback_moderation_settings: 'Change feedback moderation settings'
+    users:
+      title: 'Users'
+      block: 'Block'
+      unblock: 'Unblock'
+      block_confirmation: "%{name} won't be able to log in until it is unblocked. Are you sure?"
+      unblock_confirmation: "%{name} will be able to log in and submit feedback. Are you sure?"
+      role_to_moderator_confirmation: "%{name} will be able to manage posts and users. Proceed only if you trust this person. Are you sure?"
+      role_to_admin_confirmation: "%{name} will be able to manage boards, posts, statuses, users and more. Proceed only if you trust this person. Are you sure?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Owner'
+      status_active: 'Active'
+      status_blocked: 'Blocked'
+      status_deleted: 'Deleted'

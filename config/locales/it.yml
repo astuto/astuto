@@ -1,5 +1,7 @@
 it:
   common:
+    words:
+      or: 'o'
     errors:
       unknown: 'Si è verificato un errore sconosciuto, riprova'
     validations:
@@ -65,6 +67,8 @@ it:
       back: 'Indietro'
       test: 'Test'
       clear: 'Reset'
+      approve: 'Approva'
+      reject: 'Rifiuta'
     datetime:
       now: 'adesso'
       minutes:
@@ -80,6 +84,7 @@ it:
     menu:
       administration_header: 'Amministrazione'
       site_settings: 'Impostazioni sito'
+      moderation: 'Moderazione'
       profile_header: 'Profilo'
       profile_settings: 'Impostazioni profilo'
       help_header: 'Aiuto'
@@ -97,12 +102,16 @@ it:
   board:
     new_post:
       submit_button: 'Invia feedback'
+      submit_anonymous_button: 'Invia anonimamente'
       cancel_button: 'Annulla'
       login_button: 'Accedi / Registrati'
       title: 'Titolo'
       description: 'Descrizione (opzionale)'
       no_title: 'Il campo titolo è obbligatorio'
+      anonymous_submission_help: 'Stai pubblicando in modo anonimo'
+      non_anonymous_submission_help: 'Stai pubblicando come %{name}'
       submit_success: 'Feedback pubblicato! Sarai reindirizzato a breve...'
+      submit_pending: 'Il tuo feedback è stato inviato ed è ora in attesa di approvazione!'
     search_box:
       title: 'Cerca'
     filter_box:
@@ -122,6 +131,7 @@ it:
   post:
     edit_button: 'Modifica'
     published_by: 'Pubblicato da'
+    published_anonymously: 'Pubblicato anonimamente'
     post_status_select:
       no_post_status: 'Nessuno'
     updates_box:
@@ -153,7 +163,6 @@ it:
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
-      users: 'Utenti'
       authentication: 'Autenticazione'
       appearance: 'Tema'
     info_box:
@@ -166,6 +175,12 @@ it:
       brand_setting_name: 'Solo nome'
       brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
+      subtitle_moderation: 'Moderazione'
+      allow_anonymous_feedback_help: 'Gli utenti non registrati potranno inviare feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Richiedi approvazione solo per feedback anonimo'
+      feedback_approval_policy_never_require_approval: 'Non richiedere mai l''approvazione'
+      feedback_approval_policy_always_require_approval: 'Richiedi sempre l''approvazione'
+      feedback_approval_policy_help: 'Se si richiede l''approvazione, il feedback inviato rimarrà nascosto al pubblico fino a quando un moderatore o un amministratore lo approva. Il feedback inviato da moderatori e amministratori è sempre approvato automaticamente.'
       subtitle_header: 'Menu in alto'
       collapse_boards_in_header_no_collapse: 'Mai'
       collapse_boards_in_header_always_collapse: 'Sempre'
@@ -195,21 +210,6 @@ it:
     appearance:
       title: 'Tema'
       learn_more: 'Scopri come personalizzare il tema'
-    users:
-      title: 'Utenti'
-      block: 'Blocca'
-      unblock: 'Sblocca'
-      block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
-      unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
-      role_to_moderator_confirmation: "%{name} sarà in grado di gestire post e utenti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
-      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
-      role_user: 'Utente'
-      role_moderator: 'Moderatore'
-      role_admin: 'Amministratore'
-      role_owner: 'Proprietario'
-      status_active: 'Attivo'
-      status_blocked: 'Bloccato'
-      status_deleted: 'Eliminato'
     authentication:
       title: 'Autenticazione'
       learn_more: 'Scopri come configurare provider OAuth personalizzati'
@@ -230,3 +230,26 @@ it:
         subtitle_oauth_config: 'Configurazione OAuth'
         subtitle_user_profile_config: 'Configurazione profilo utente'
         client_secret_help: 'nascosto per motivi di sicurezza'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Utenti'
+    feedback:
+      anonymous_feedback_allowed: 'Feedback anonimo consentito'
+      anonymous_feedback_not_allowed: 'Feedback anonimo non consentito'
+      change_feedback_moderation_settings: 'Modifica impostazioni di moderazione feedback'
+    users:
+      title: 'Utenti'
+      block: 'Blocca'
+      unblock: 'Sblocca'
+      block_confirmation: "%{name} non potrà effettuare l'accesso al sito finché non sarà sbloccato. Sei sicuro?"
+      unblock_confirmation: "%{name} potrà effettuare l'accesso al sito e pubblicare contenuti. Sei sicuro?"
+      role_to_moderator_confirmation: "%{name} sarà in grado di gestire post e utenti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
+      role_to_admin_confirmation: "%{name} avrà i tuoi stessi privilegi, quindi potrebbe anche retrocederti a utente o bloccarti. Procedi solo se ti fidi di questa persona. Sei sicuro?"
+      role_user: 'Utente'
+      role_moderator: 'Moderatore'
+      role_admin: 'Amministratore'
+      role_owner: 'Proprietario'
+      status_active: 'Attivo'
+      status_blocked: 'Bloccato'
+      status_deleted: 'Eliminato'

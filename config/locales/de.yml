@@ -1,7 +1,9 @@
 de:
   common:
+    words:
+      or: 'or'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Ein unbekannter Fehler ist aufgetreten, bitte versuchen Sie es erneut'
     validations:
       required: '%{attribute} ist erforderlich'
       email: 'Ungültige E-Mail-Adresse'
@@ -19,11 +21,11 @@ de:
         current_password: 'Aktuelles Passwort'
         notifications_enabled: 'Benachrichtigungen aktiviert'
         notifications_enabled_help: "Wenn deaktiviert, erhältst du keine Benachrichtigungen"
-        waiting_confirmation: 'Currently waiting confirmation for %{email}'
-        no_password_set: 'You must set a password to update your profile'
-        set_password: 'Set password'
-        password_leave_blank_help: "leave blank if you don't want to change your password"
-        current_password_required_help: 'we need your current password to confirm your changes'
+        waiting_confirmation: 'Warte auf Bestätigung von: %{email}'
+        no_password_set: 'Sie müssen ein Passwort festlegen, um Ihr Profil zu aktualisieren'
+        set_password: 'Passwort festlegen'
+        password_leave_blank_help: "Lassen Sie das Feld leer, wenn Sie Ihr Passwort nicht ändern möchten"
+        current_password_required_help: 'Wir benötigen Ihr aktuelles Passwort, um Ihre Änderungen zu bestätigen'
         remember_me: 'Eingeloggt bleiben'
         log_in: 'Einloggen'
         sign_up: 'Registrieren'
@@ -46,13 +48,13 @@ de:
     no_status: 'Kein Status'
     loading: 'Lädt...'
     confirmation: 'Sicher?'
-    confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
+    confirmation_board_delete: 'Warnung: Wenn es in diesem Forum Feedback Beiträge gibt, werden ALLE diese Beiträge ebenfalls gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.'
     unsaved_changes: 'Ungespeicherte Änderungen gehen verloren, wenn du die Seite verlässt.'
     edited: 'Bearbeitet'
     enabled: 'Aktiviert'
     disabled: 'Deaktiviert'
     copied: 'Kopiert!'
-    user_staff: 'Staff'
+    user_staff: 'Mitarbeiter'
     powered_by: 'Powered by'
     buttons:
       new: 'Neu'
@@ -64,7 +66,9 @@ de:
       confirm: 'Bestätigen'
       back: 'Zurück'
       test: 'Test'
-      clear: 'Clear'
+      clear: 'Zurücksetzen'
+      approve: 'Approve'
+      reject: 'Reject'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -80,48 +84,54 @@ de:
     menu:
       administration_header: 'Administration'
       site_settings: 'Seiteneinstellungen'
-      profile_header: 'Profile'
+      moderation: 'Moderation'
+      profile_header: 'Profil'
       profile_settings: 'Profileinstellungen'
-      help_header: 'Help'
-      tour: 'Tour'
-      docs: 'Documentation'
+      help_header: 'Hilfe'
+      tour: 'Führung'
+      docs: 'Dokumentation'
       support: 'Support'
       sign_out: 'Abmelden'
     log_in: 'Einloggen / Registrieren'
   roadmap:
     title: 'Roadmap'
   billing:
-    title: 'Billing'
+    title: 'Abrechnung'
   blocked_tenant:
     title: 'Dieser Feedback-Bereich wurde blockiert'
   board:
     new_post:
       submit_button: 'Feedback senden'
+      submit_anonymous_button: 'Submit anonymously'
       cancel_button: 'Abbrechen'
       login_button: 'Einloggen / Registrieren'
       title: 'Titel'
       description: 'Beschreibung (optional)'
       no_title: 'Titelfeld ist obligatorisch'
+      anonymous_submission_help: 'You are posting anonymously'
+      non_anonymous_submission_help: 'You are posting as %{name}'
       submit_success: 'Feedback veröffentlicht! Du wirst gleich weitergeleitet...'
+      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
     search_box:
       title: 'Suchen'
     filter_box:
       title: 'Nach Status filtern'
     sort_by_box:
-      title: 'Sort by'
-      trending: 'Trending'
-      newest: 'Newest'
-      most_voted: 'Most voted'
-      oldest: 'Oldest'
+      title: 'Sortieren nach'
+      trending: 'Angesagt'
+      newest: 'Neueste'
+      most_voted: 'Beliebteste'
+      oldest: 'Am ältesten'
     filter_by_date_box:
-      title: 'Filter by date'
-      from_label: 'From'
-      to_label: 'To'
+      title: 'Nach Datum filtern'
+      from_label: 'Von'
+      to_label: 'Bis'
     posts_list:
       empty: 'Es existieren keine Beiträge'
   post:
     edit_button: 'Bearbeiten'
     published_by: 'Herausgegeben von'
+    published_anonymously: 'Published anonymously'
     post_status_select:
       no_post_status: 'Nichts'
     updates_box:
@@ -153,9 +163,8 @@ de:
       boards: 'Boards'
       post_statuses: 'Status'
       roadmap: 'Übersicht'
-      users: 'Benutzer'
       authentication: 'Authentifizierung'
-      appearance: 'Appearance'
+      appearance: 'Erscheinung'
     info_box:
       up_to_date: 'Alle Änderungen gespeichert'
       error: 'Ein Fehler ist aufgetreten: %{message}'
@@ -166,12 +175,18 @@ de:
       brand_setting_name: 'Nur Name'
       brand_setting_logo: 'Nur Logo'
       brand_setting_none: 'Nichts'
+      subtitle_moderation: 'Moderation'
+      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
+      feedback_approval_policy_never_require_approval: 'Never require approval'
+      feedback_approval_policy_always_require_approval: 'Always require approval'
+      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Kopfzeile'
       collapse_boards_in_header_no_collapse: 'nie'
       collapse_boards_in_header_always_collapse: 'immer'
       subtitle_visibility: 'Sichtbarkeit'
-      custom_domain_help: 'First, in your DNS settings, add a CNAME record pointing "%{domain}" to "cname.astuto.io". Then, click the "Save" button below.'
-      custom_domain_learn_more: 'Learn how to configure a custom domain'
+      custom_domain_help: 'Zuerst fügen Sie in Ihren DNS-Einstellungen einen CNAME Eintrag hinzu, der "%{domain}" zu "cname.astuto.io" zeigt. Klicken Sie dann unten auf "Speichern".'
+      custom_domain_learn_more: 'Erfahren Sie, wie Sie eine eigene Domain konfigurieren'
       show_vote_count_help: 'Wird diese Einstellung aktiviert, können Nutzer*innen sehen, wie oft für einen Post gevotet wurde. Das kann Nutzer*innen dazu anregen, ebenfalls für beliebte Posts zu stimmen – das würde einem Schneeballeffekt entsprechen.'
       show_vote_button_in_board_help: 'Wenn Sie diese Einstellung aktivieren, können Nutzer*innen Beiträge von der Board-Seite bewerten. Dies kann Nutzer*innen dazu veranlassen, über mehr Beiträge abzustimmen, was zu einer höheren Anzahl von Stimmen führt – die Bedeutung indes verringert sich.'
     boards:
@@ -193,28 +208,13 @@ de:
       empty: 'Die Roadmap ist leer.'
       help: 'Du kannst der Roadmap Status hinzufügen, indem du sie aus dem Abschnitt unten ziehst. Wenn du stattdessen einen neuen Status erstellst oder seine Reihenfolge ändern möchtest, gehe zu Site-Einstellungen Status.'
     appearance:
-      title: 'Appearance'
-      learn_more: 'Learn how to customize appearance'
-    users:
-      title: 'Benutzer'
-      block: 'Sperren'
-      unblock: 'Entsperren'
-      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du dir sicher?"
-      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du dir sicher?"
-      role_to_moderator_confirmation: "%{name} wird Posts und Nutzer*innen verwalten können. Fahre nur fort, wenn du dieser Person vertraust. Bist du dir sicher?"
-      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du dir sicher?"
-      role_user: 'Benutzer/in'
-      role_moderator: 'Moderator'
-      role_admin: 'Administrator'
-      role_owner: 'Besitzer'
-      status_active: 'Aktiv'
-      status_blocked: 'Gesperrt'
-      status_deleted: 'Gelöscht'
+      title: 'Erscheinung'
+      learn_more: 'Erfahren Sie, wie man das Aussehen anpassen kann'
     authentication:
       title: 'Authentifizierung'
-      learn_more: 'Learn how to configure custom OAuth providers'
+      learn_more: 'Erfahren Sie, wie Sie eigene OAuth Anbieter konfigurieren'
       oauth_subtitle: 'OAuth-Anbieter'
-      default_oauth: 'Default OAuth provider'
+      default_oauth: 'Standard OAuth-Provider'
       copy_url: 'URL in Zwischenablage kopieren'
       test_page:
         title: '%{name} OAuth-Testergebnisse'
@@ -230,3 +230,26 @@ de:
         subtitle_oauth_config: 'OAuth-Konfiguration'
         subtitle_user_profile_config: 'Profileinstellungen'
         client_secret_help: 'aus Sicherheitsgründen versteckt'
+  moderation:
+    menu:
+      feedback: 'Feedback'
+      users: 'Users'
+    feedback:
+      anonymous_feedback_allowed: 'Anonymous feedback allowed'
+      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
+      change_feedback_moderation_settings: 'Change feedback moderation settings'
+    users:
+      title: 'Users'
+      block: 'Sperren'
+      unblock: 'Entsperren'
+      block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du dir sicher?"
+      unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du dir sicher?"
+      role_to_moderator_confirmation: "%{name} wird Posts und Nutzer*innen verwalten können. Fahre nur fort, wenn du dieser Person vertraust. Bist du dir sicher?"
+      role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du dir sicher?"
+      role_user: 'User'
+      role_moderator: 'Moderator'
+      role_admin: 'Administrator'
+      role_owner: 'Besitzer'
+      status_active: 'Aktiv'
+      status_blocked: 'Gesperrt'
+      status_deleted: 'Gelöscht'
