@@ -1,7 +1,7 @@
 de:
   common:
     words:
-      or: 'or'
+      or: 'oder'
     errors:
       unknown: 'Ein unbekannter Fehler ist aufgetreten, bitte versuchen Sie es erneut'
     validations:
@@ -67,8 +67,8 @@ de:
       back: 'Zurück'
       test: 'Test'
       clear: 'Zurücksetzen'
-      approve: 'Approve'
-      reject: 'Reject'
+      approve: 'Freigeben'
+      reject: 'Ablehnen'
     datetime:
       now: 'gerade eben'
       minutes:
@@ -102,16 +102,16 @@ de:
   board:
     new_post:
       submit_button: 'Feedback senden'
-      submit_anonymous_button: 'Submit anonymously'
+      submit_anonymous_button: 'Anonym senden'
       cancel_button: 'Abbrechen'
       login_button: 'Einloggen / Registrieren'
       title: 'Titel'
       description: 'Beschreibung (optional)'
       no_title: 'Titelfeld ist obligatorisch'
-      anonymous_submission_help: 'You are posting anonymously'
-      non_anonymous_submission_help: 'You are posting as %{name}'
+      anonymous_submission_help: 'Sie posten anonym'
+      non_anonymous_submission_help: 'Sie posten als %{name}'
       submit_success: 'Feedback veröffentlicht! Du wirst gleich weitergeleitet...'
-      submit_pending: 'Your feedback has been submitted and is now pending moderator approval!'
+      submit_pending: 'Ihr Feedback wurde übermittelt und wartet nun auf die Freigabe eines Moderators!'
     search_box:
       title: 'Suchen'
     filter_box:
@@ -131,7 +131,7 @@ de:
   post:
     edit_button: 'Bearbeiten'
     published_by: 'Herausgegeben von'
-    published_anonymously: 'Published anonymously'
+    published_anonymously: 'Anonym veröffentlicht'
     post_status_select:
       no_post_status: 'Nichts'
     updates_box:
@@ -176,11 +176,11 @@ de:
       brand_setting_logo: 'Nur Logo'
       brand_setting_none: 'Nichts'
       subtitle_moderation: 'Moderation'
-      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
-      feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
-      feedback_approval_policy_never_require_approval: 'Never require approval'
-      feedback_approval_policy_always_require_approval: 'Always require approval'
-      feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
+      allow_anonymous_feedback_help: 'Nicht registrierte Benutzer können Feedback einreichen.'
+      feedback_approval_policy_anonymous_require_approval: 'Nur für anonymes Feedback Freigabe erforderlich'
+      feedback_approval_policy_never_require_approval: 'Freigabe ist nie erforderlich'
+      feedback_approval_policy_always_require_approval: 'Freigabe immer erforderlich'
+      feedback_approval_policy_help: 'Wenn eine Freigabe benötigt wird, bleibt das eingereichte Feedback so lange verborgen, bis ein Moderator oder Administrator es freigibt. Von Moderatoren oder Administratoren eingereichtes Feedback wird immer automatisch freigegeben.'
       subtitle_header: 'Kopfzeile'
       collapse_boards_in_header_no_collapse: 'nie'
       collapse_boards_in_header_always_collapse: 'immer'
@@ -233,20 +233,20 @@ de:
   moderation:
     menu:
       feedback: 'Feedback'
-      users: 'Users'
+      users: 'Benutzer'
     feedback:
-      anonymous_feedback_allowed: 'Anonymous feedback allowed'
-      anonymous_feedback_not_allowed: 'Anonymous feedback not allowed'
-      change_feedback_moderation_settings: 'Change feedback moderation settings'
+      anonymous_feedback_allowed: 'Anonymes Feedback erlaubt'
+      anonymous_feedback_not_allowed: 'Anonymes Feedback nicht erlaubt'
+      change_feedback_moderation_settings: 'Feedback-Moderationseinstellungen ändern'
     users:
-      title: 'Users'
+      title: 'Benutzer'
       block: 'Sperren'
       unblock: 'Entsperren'
       block_confirmation: "%{name} kann sich nicht anmelden, bis die Blockierung aufgehoben wird. Bist du dir sicher?"
       unblock_confirmation: "%{name} kann sich anmelden und Feedback senden. Bist du dir sicher?"
       role_to_moderator_confirmation: "%{name} wird Posts und Nutzer*innen verwalten können. Fahre nur fort, wenn du dieser Person vertraust. Bist du dir sicher?"
       role_to_admin_confirmation: "%{name} hat die gleichen Rechte wie du, sodass sie dich sogar herabstufen oder blockieren könnten. Fahre nur fort, wenn du %{name} wirklich vertraust. Bist du dir sicher?"
-      role_user: 'User'
+      role_user: 'Benutzer'
       role_moderator: 'Moderator'
       role_admin: 'Administrator'
       role_owner: 'Besitzer'
