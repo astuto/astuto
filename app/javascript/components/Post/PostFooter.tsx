@@ -42,7 +42,9 @@ const PostFooter = ({
       
       <Separator />
 
-      <span>{friendlyDate(createdAt)}</span>
+      <span title={createdAt}>
+        {friendlyDate(createdAt)}
+      </span>
     </div>
     {
       isPowerUser || (authorEmail && authorEmail === currentUserEmail) ?

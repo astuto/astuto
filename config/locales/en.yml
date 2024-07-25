@@ -80,6 +80,12 @@ en:
       days:
         one: '1 day ago'
         other: '%{count} days ago'
+      months:
+        one: '1 month ago'
+        other: '%{count} months ago'
+      years:
+        one: '1 year ago'
+        other: '%{count} years ago'
   header:
     menu:
       administration_header: 'Administration'
