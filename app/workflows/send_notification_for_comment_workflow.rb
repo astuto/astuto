@@ -15,6 +15,8 @@ class SendNotificationForCommentWorkflow
     
     if comment.parent_id == nil # Reply to a post
       user = comment.post.user
+
+      return if user.nil? # anonymous posts don't have a user
       
       if comment.user.id != user.id and
         user.notifications_enabled? and
