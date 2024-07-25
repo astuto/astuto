@@ -66,7 +66,9 @@ const CommentFooter = ({
         null
     }
     
-    <MutedText>{friendlyDate(createdAt)}</MutedText>
+    <span className="mutedText" title={createdAt}>
+      {friendlyDate(createdAt)}
+    </span>
 
     {
       createdAt !== updatedAt &&

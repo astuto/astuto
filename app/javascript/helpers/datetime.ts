@@ -4,19 +4,31 @@ export const friendlyDate = date => {
   var now = new Date();
   var timeStamp = fromRailsStringToJavascriptDate(date);
 
+  const ONE_MINUTE = 60;
+  const ONE_HOUR = 3600;
+  const ONE_DAY = 86400;
+  const ONE_MONTH = 2592000; // 30 days
+  const ONE_YEAR = 31536000; // 365 days
+
   var secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
   
-  if (secondsPast < 60) {
+  if (secondsPast < ONE_MINUTE) {
     return I18n.t('common.datetime.now');
-  } else if (secondsPast < 3600) {
-    let minutesPast = Math.round(secondsPast / 60);
+  } else if (secondsPast < ONE_HOUR) {
+    let minutesPast = Math.round(secondsPast / ONE_MINUTE);
     return I18n.t('common.datetime.minutes', { count: minutesPast });
-  } else if (secondsPast <= 86400) {
-    let hoursPast = Math.round(secondsPast / 3600);
+  } else if (secondsPast <= ONE_DAY) {
+    let hoursPast = Math.round(secondsPast / ONE_HOUR);
     return I18n.t('common.datetime.hours', { count: hoursPast });
-  } else {
-    let daysPast = Math.round(secondsPast / 86400);
+  } else if (secondsPast <= ONE_MONTH) {
+    let daysPast = Math.round(secondsPast / ONE_DAY);
     return I18n.t('common.datetime.days', { count: daysPast });
+  } else if (secondsPast <= ONE_YEAR) {
+    let monthsPast = Math.round(secondsPast / ONE_MONTH);
+    return I18n.t('common.datetime.months', { count: monthsPast });
+  } else {
+    let yearsPast = Math.round(secondsPast / ONE_YEAR);
+    return I18n.t('common.datetime.years', { count: yearsPast });
   }
 }
 

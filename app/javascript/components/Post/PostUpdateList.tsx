@@ -65,7 +65,9 @@ const PostUpdateList = ({
               }
             </div>
 
-            <MutedText>{friendlyDate(postUpdate.createdAt)}</MutedText>
+            <span className="mutedText" title={postUpdate.createdAt}>
+              {friendlyDate(postUpdate.createdAt)}
+            </span>
           </div>
         ))
       }
