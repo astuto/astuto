@@ -81,11 +81,11 @@ it:
         one: '1 giorno fa'
         other: '%{count} giorni fa'
       months:
-        one: '1 month ago'
-        other: '%{count} months ago'
+        one: '1 mese fa'
+        other: '%{count} mesi fa'
       years:
-        one: '1 year ago'
-        other: '%{count} years ago'
+        one: '1 anno fa'
+        other: '%{count} anni fa'
   header:
     menu:
       administration_header: 'Amministrazione'
