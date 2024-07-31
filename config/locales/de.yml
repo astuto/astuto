@@ -81,11 +81,11 @@ de:
         one: 'vor 1 Tag'
         other: 'vor %{count} Tagen'
       months:
-        one: '1 month ago'
-        other: '%{count} months ago'
+        one: 'Vor einem Monat'
+        other: 'Vor %{count} Monaten'
       years:
         one: '1 year ago'
-        other: '%{count} years ago'
+        other: 'Vor %{count} Jahren'
   header:
     menu:
       administration_header: 'Administration'
