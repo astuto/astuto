@@ -81,11 +81,11 @@ fr:
         one: 'Il y a 1 jour'
         other: 'il y a %{count} jours'
       months:
-        one: '1 month ago'
-        other: '%{count} months ago'
+        one: 'Il y a 1 mois'
+        other: 'Il y a %{count} mois'
       years:
-        one: '1 year ago'
-        other: '%{count} years ago'
+        one: 'Il y a 1 an'
+        other: 'Il y a %{count} ans'
   header:
     menu:
       administration_header: 'Administration'
