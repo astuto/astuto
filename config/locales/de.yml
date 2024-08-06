@@ -84,7 +84,7 @@ de:
         one: 'Vor einem Monat'
         other: 'Vor %{count} Monaten'
       years:
-        one: '1 year ago'
+        one: 'Vor 1 Jahr'
         other: 'Vor %{count} Jahren'
   header:
     menu:
