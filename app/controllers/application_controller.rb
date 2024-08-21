@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :check_tenant_is_private, unless: :devise_controller? || :o_auths_controller?
   prepend_before_action :load_tenant_data
 
   # Override Devise after sign in path
@@ -69,6 +70,14 @@ class ApplicationController < ActionController::Base
       }, status: :forbidden
     end
 
+    def check_tenant_is_private
+      return unless Current.tenant.tenant_setting.is_private?
+      return if user_signed_in?
+
+      flash[:alert] = t('errors.not_logged_in')
+      redirect_to new_user_session_path
+    end
+
   private
 
     def user_not_authorized
@@ -77,5 +86,9 @@ class ApplicationController < ActionController::Base
       render json: {
         error: t('errors.unauthorized')
       }, status: :unauthorized
+    end
+
+    def o_auths_controller?
+      controller_name == 'o_auths'
     end
 end
