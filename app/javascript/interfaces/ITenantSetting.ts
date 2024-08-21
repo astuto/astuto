@@ -32,6 +32,7 @@ export type TenantSettingCollapseBoardsInHeader =
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
   root_board_id?: number;
+  is_private?: boolean;
   allow_anonymous_feedback?: boolean;
   feedback_approval_policy?: TenantSettingFeedbackApprovalPolicy;
   show_vote_count?: boolean;

@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     locale: string,
     rootBoardId: number,
     customDomain: string,
+    isPrivate: boolean,
     allowAnonymousFeedback: boolean,
     feedbackApprovalPolicy: TenantSettingFeedbackApprovalPolicy,
     showRoadmapInHeader: boolean,
@@ -33,6 +34,7 @@ const mapDispatchToProps = (dispatch: any) => ({
       tenantSetting: {
         brand_display: brandDisplaySetting,
         root_board_id: rootBoardId,
+        is_private: isPrivate,
         allow_anonymous_feedback: allowAnonymousFeedback,
         feedback_approval_policy: feedbackApprovalPolicy,
         show_roadmap_in_header: showRoadmapInHeader,

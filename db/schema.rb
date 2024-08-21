@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_08_191938) do
+ActiveRecord::Schema.define(version: 2024_08_21_122349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 2024_07_08_191938) do
     t.boolean "show_powered_by", default: true, null: false
     t.boolean "allow_anonymous_feedback", default: true, null: false
     t.integer "feedback_approval_policy", default: 0, null: false
+    t.boolean "is_private", default: false, null: false
     t.index ["tenant_id"], name: "index_tenant_settings_on_tenant_id"
   end
 
