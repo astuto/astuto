@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Override Devise after sign out path
+  def after_sign_out_path_for(resource_or_scope)
+    if Current.tenant.tenant_setting.is_private
+      new_user_session_path
+    else
+      super
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
