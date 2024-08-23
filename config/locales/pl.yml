@@ -88,6 +88,16 @@ pl:
         few: '%{count} days ago'
         many: '%{count} days ago'
         other: '%{count} days ago'
+      months:
+        one: '1 month ago'
+        few: '%{count} months ago'
+        many: '%{count} months ago'
+        other: '%{count} months ago'
+      years:
+        one: '1 year ago'
+        few: '%{count} years ago'
+        many: '%{count} years ago'
+        other: '%{count} years ago'
   header:
     menu:
       administration_header: 'Administration'

@@ -76,6 +76,10 @@ ko:
         other: '%{count} hours ago'
       days:
         other: '%{count} days ago'
+      months:
+        other: '%{count} months ago'
+      years:
+        other: '%{count} years ago'
   header:
     menu:
       administration_header: 'Administration'
