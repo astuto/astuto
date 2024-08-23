@@ -80,6 +80,12 @@ de:
       days:
         one: 'vor 1 Tag'
         other: 'vor %{count} Tagen'
+      months:
+        one: 'Vor einem Monat'
+        other: 'Vor %{count} Monaten'
+      years:
+        one: 'Vor 1 Jahr'
+        other: 'Vor %{count} Jahren'
   header:
     menu:
       administration_header: 'Administration'

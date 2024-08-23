@@ -1,4 +1,4 @@
-tr:
+cs:
   common:
     words:
       or: 'or'
@@ -44,6 +44,8 @@ tr:
         password_help: '%{count} characters minimum'
     comments_number:
       one: '1 comment'
+      few: '%{count} comments'
+      many: '%{count} comments'
       other: '%{count} comments'
     no_status: 'No status'
     loading: 'Loading...'
@@ -73,18 +75,28 @@ tr:
       now: 'just now'
       minutes:
         one: '1 minute ago'
+        few: '%{count} minutes ago'
+        many: '%{count} minutes ago'
         other: '%{count} minutes ago'
       hours:
         one: '1 hour ago'
+        few: '%{count} hours ago'
+        many: '%{count} hours ago'
         other: '%{count} hours ago'
       days:
         one: '1 day ago'
+        few: '%{count} days ago'
+        many: '%{count} days ago'
         other: '%{count} days ago'
       months:
         one: '1 month ago'
+        few: '%{count} months ago'
+        many: '%{count} months ago'
         other: '%{count} months ago'
       years:
         one: '1 year ago'
+        few: '%{count} years ago'
+        many: '%{count} years ago'
         other: '%{count} years ago'
   header:
     menu:

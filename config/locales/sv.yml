@@ -80,14 +80,20 @@ sv:
       days:
         one: '1 dag sedan'
         other: '%{count} dagar sedan'
+      months:
+        one: '1 månad sedan'
+        other: '%{count} månader sedan'
+      years:
+        one: '1 år sedan'
+        other: '%{count} år sedan'
   header:
     menu:
       administration_header: 'Administration'
       site_settings: 'Site settings'
       moderation: 'Moderation'
-      profile_header: 'Profile'
+      profile_header: 'Profil'
       profile_settings: 'Profilinställningar'
-      help_header: 'Help'
+      help_header: 'Hjälp'
       tour: 'Tour'
       docs: 'Documentation'
       support: 'Support'
