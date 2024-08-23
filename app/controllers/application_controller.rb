@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     end
 
     def check_tenant_is_private
-      return unless Current.tenant.tenant_setting.is_private?
+      return unless Current.tenant.tenant_setting.is_private
       return if user_signed_in?
 
       flash[:alert] = t('errors.not_logged_in')
