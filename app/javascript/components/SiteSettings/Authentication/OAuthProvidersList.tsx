@@ -5,6 +5,8 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import Button from '../../common/Button';
 import { IOAuth } from '../../../interfaces/IOAuth';
 import OAuthProviderItem from './OAuthProviderItem';
+import ActionLink from '../../common/ActionLink';
+import { LearnMoreIcon } from '../../common/Icons';
 
 interface Props {
   oAuths: Array<IOAuth>;
@@ -30,6 +32,15 @@ const OAuthProvidersList = ({
         { I18n.t('common.buttons.new') }
       </Button>
     </div>
+
+    <p style={{textAlign: 'left'}}>
+      <ActionLink
+        onClick={() => window.open('https://docs.astuto.io/category/oauth-configuration/', '_blank')}
+        icon={<LearnMoreIcon />}
+      >
+        {I18n.t('site_settings.authentication.learn_more')}
+      </ActionLink>
+    </p>
 
     <ul className="oAuthsList">
       {

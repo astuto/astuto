@@ -17,6 +17,12 @@ class TenantSetting < ApplicationRecord
     :always_collapse
   ]
 
+  enum email_registration_policy: [
+    :all_allowed,
+    :none_allowed,
+    :custom_domains_allowed
+  ]
+
   enum feedback_approval_policy: [
     :anonymous_require_approval,
     :never_require_approval,

@@ -5,8 +5,10 @@ import { Store } from 'redux';
 import AuthenticationSiteSettings from '../../../containers/AuthenticationSiteSettings';
 import createStoreHelper from '../../../helpers/createStore';
 import { State } from '../../../reducers/rootReducer';
+import { IAuthenticationForm } from './AuthenticationIndexPage';
 
 interface Props {
+  originForm: IAuthenticationForm;
   authenticityToken: string;
 }
 
@@ -23,6 +25,7 @@ class AuthenticationSiteSettingsRoot extends React.Component<Props> {
     return (
       <Provider store={this.store}>
         <AuthenticationSiteSettings
+          originForm={this.props.originForm}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>

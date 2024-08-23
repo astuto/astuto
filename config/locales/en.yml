@@ -42,6 +42,7 @@ en:
         resend_unlock_instructions: 'Resend unlock instructions'
         change_password: 'Change password'
         password_help: '%{count} characters minimum'
+        email_registration_not_allowed: 'Email registration not allowed'
     comments_number:
       one: '1 comment'
       other: '%{count} comments'
@@ -221,6 +222,11 @@ en:
     authentication:
       title: 'Authentication'
       learn_more: 'Learn how to configure custom OAuth providers'
+      email_registration_subtitle: 'Email registration'
+      email_registration_policy_all: 'Anyone can register with email'
+      email_registration_policy_none: 'No one can register with email'
+      email_registration_policy_custom: 'Only users with certain email domains can register with email'
+      allowed_email_domains_help: 'Separate domains with commas. Example: "gmail.com,yahoo.com,hotmail.com". Leave blank to allow any domain.'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
