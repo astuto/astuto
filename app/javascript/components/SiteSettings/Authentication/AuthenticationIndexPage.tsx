@@ -148,6 +148,7 @@ const AuthenticationIndexPage = ({
       <SiteSettingsInfoBox
         areUpdating={oAuths.areLoading || isSubmitting}
         error={oAuths.error || submitError}
+        areDirty={isDirtyAllowedEmails}
       />
     </>
   );
