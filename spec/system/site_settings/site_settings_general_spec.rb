@@ -23,7 +23,7 @@ feature 'site settings: general', type: :system, js: true do
 
     fill_in 'Site name', with: new_site_name
     fill_in 'Site logo', with: new_site_logo
-    click_button 'Save'
+    find('button', text: 'Save' match: :first).click
 
     within '.siteSettingsInfo' do
       expect(page).to have_content('All changes saved')
@@ -43,7 +43,7 @@ feature 'site settings: general', type: :system, js: true do
     expect(Current.tenant.locale).not_to eq(new_site_language)
 
     select_by_value 'locale', new_site_language
-    click_button 'Save'
+    find('button', text: 'Save' match: :first).click
 
     within '.siteSettingsInfo' do
       expect(page).to have_content('Tutte le modifiche sono state salvate')
