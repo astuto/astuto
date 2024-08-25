@@ -8,10 +8,18 @@ interface Props {
   areUpdating: boolean;
   error: string;
   areDirty?: boolean;
+  isSticky?: boolean;
+  saveButton?: React.ReactNode;
 }
 
-const SiteSettingsInfoBox = ({ areUpdating, error, areDirty = false }: Props) => (
-  <Box customClass="siteSettingsInfo">
+const SiteSettingsInfoBox = ({
+  areUpdating,
+  error,
+  areDirty = false,
+  isSticky = false,
+  saveButton = null,
+}: Props) => (
+  <Box customClass={`siteSettingsInfo${isSticky ? ' siteSettingsInfoSticky' : ''}`}>
   {
     areUpdating ?
       <Spinner />
@@ -22,7 +30,10 @@ const SiteSettingsInfoBox = ({ areUpdating, error, areDirty = false }: Props) =>
         </span>
       :
         areDirty ?
-          <span className="warning">{ I18n.t('site_settings.info_box.dirty') }</span>
+          <>
+            <span className="warning">{ I18n.t('site_settings.info_box.dirty') }</span>
+            {saveButton && saveButton}
+          </>
         :
           <span>{ I18n.t('site_settings.info_box.up_to_date') }</span>
   }

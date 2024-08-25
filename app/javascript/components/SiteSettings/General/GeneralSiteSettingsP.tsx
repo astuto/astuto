@@ -379,6 +379,12 @@ const GeneralSiteSettingsP = ({
         areUpdating={areUpdating}
         error={error}
         areDirty={isDirty && !isSubmitSuccessful}
+        isSticky={isDirty && !isSubmitSuccessful}
+        saveButton={
+          <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty}>
+            {I18n.t('common.buttons.update')}
+          </Button>
+        }
       />
     </>
   );
