@@ -81,7 +81,6 @@ class ApplicationController < ActionController::Base
     end
 
     def check_tenant_is_private
-      return
       return unless Current.tenant.tenant_setting.is_private
       return unless controller_name == 'posts' ||
                     controller_name == 'boards' ||

@@ -91,7 +91,7 @@ feature 'comments', type: :system, js: true do
 
     comment_body = 'this is a comment!'
 
-    find(new_comment_body_selector).fill_in with: comment_body
+    find(new_comment_body_selector, wait: 10).fill_in with: comment_body
     click_button 'Submit'
 
     expect(page).to have_css(comment_selector, count: comments_count + 1)
