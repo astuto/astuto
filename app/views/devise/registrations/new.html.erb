@@ -4,42 +4,46 @@
 
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="form-group">
-      <%= f.label :full_name, class: "sr-only" %>
-      <%= f.text_field :full_name,
-        placeholder: t('common.forms.auth.full_name'),
-        required: true,
-        class: "form-control" %>
-    </div>
+    <% unless Current.tenant.tenant_setting.email_registration_policy == "none_allowed" %>
+      <div class="form-group">
+        <%= f.label :full_name, class: "sr-only" %>
+        <%= f.text_field :full_name,
+          placeholder: t('common.forms.auth.full_name'),
+          required: true,
+          class: "form-control" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :email, class: "sr-only" %>
-      <%= f.email_field :email,
-        autocomplete: "email",
-        placeholder: t('common.forms.auth.email'),
-        required: true,
-        class: "form-control" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email, class: "sr-only" %>
+        <%= f.email_field :email,
+          autocomplete: "email",
+          placeholder: t('common.forms.auth.email'),
+          required: true,
+          class: "form-control" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password, class: "sr-only" %>
-      <%= f.password_field :password,
-        placeholder: t('common.forms.auth.password'),
-        required: true,
-        class: "form-control" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password, class: "sr-only" %>
+        <%= f.password_field :password,
+          placeholder: t('common.forms.auth.password'),
+          required: true,
+          class: "form-control" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation, class: "sr-only" %>
-      <%= f.password_field :password_confirmation,
-        placeholder: t('common.forms.auth.password_confirmation'),
-        required: true,
-        class: "form-control" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "sr-only" %>
+        <%= f.password_field :password_confirmation,
+          placeholder: t('common.forms.auth.password_confirmation'),
+          required: true,
+          class: "form-control" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit t('common.forms.auth.sign_up'), class: "btnPrimary btn-block" %>
-    </div>
+      <div class="actions">
+        <%= f.submit t('common.forms.auth.sign_up'), class: "btnPrimary btn-block" %>
+      </div>
+    <% else %>
+      <p><%= t('common.forms.auth.email_registration_not_allowed') %></p>
+    <% end %>
   <% end %>
   
   <%= render "devise/shared/o_auths", is_sign_up: true %>

@@ -6,10 +6,13 @@ import { IOAuth } from '../../../interfaces/IOAuth';
 import { OAuthsState } from '../../../reducers/oAuthsReducer';
 
 import AuthenticationFormPage from './AuthenticationFormPage';
-import AuthenticationIndexPage from './AuthenticationIndexPage';
+import AuthenticationIndexPage, { IAuthenticationForm } from './AuthenticationIndexPage';
 import { ISiteSettingsOAuthForm } from './OAuthForm';
+import { TenantSettingEmailRegistrationPolicy } from '../../../interfaces/ITenantSetting';
 
 interface Props {
+  originForm: IAuthenticationForm;
+
   oAuths: OAuthsState;
 
   requestOAuths(): void;
@@ -18,6 +21,7 @@ interface Props {
   onToggleEnabledOAuth(id: number, isEnabled: boolean, authenticityToken: string): void;
   onToggleEnabledDefaultOAuth(id: number, isEnabled: boolean, authenticityToken: string): void;
   onDeleteOAuth(id: number, authenticityToken: string): void;
+  onUpdateTenantSettings(emailRegistrationPolicy: TenantSettingEmailRegistrationPolicy, allowedEmailDomains: string, authenticityToken: string): Promise<any>;
 
   isSubmitting: boolean;
   submitError: string;
@@ -28,6 +32,7 @@ interface Props {
 export type AuthenticationPages = 'index' | 'new' | 'edit';
 
 const AuthenticationSiteSettingsP = ({
+  originForm,
   oAuths,
   requestOAuths,
   onSubmitOAuth,
@@ -35,6 +40,7 @@ const AuthenticationSiteSettingsP = ({
   onToggleEnabledOAuth,
   onToggleEnabledDefaultOAuth,
   onDeleteOAuth,
+  onUpdateTenantSettings,
   isSubmitting,
   submitError,
   authenticityToken,
@@ -68,13 +74,19 @@ const AuthenticationSiteSettingsP = ({
     onDeleteOAuth(id, authenticityToken);
   };
 
+  const handleUpdateTenantSettings = (emailRegistrationPolicy: TenantSettingEmailRegistrationPolicy, allowedEmailDomains: string): Promise<any> => {
+    return onUpdateTenantSettings(emailRegistrationPolicy, allowedEmailDomains, authenticityToken);
+  }
+
   return (
     page === 'index' ?
       <AuthenticationIndexPage
+        originForm={originForm}
         oAuths={oAuths}
         handleToggleEnabledOAuth={handleToggleEnabledOAuth}
         handleToggleEnabledDefaultOAuth={handleToggleEnabledDefaultOAuth}
         handleDeleteOAuth={handleDeleteOAuth}
+        handleUpdateTenantSettings={handleUpdateTenantSettings}
         setPage={setPage}
         setSelectedOAuth={setSelectedOAuth}
         isSubmitting={isSubmitting}

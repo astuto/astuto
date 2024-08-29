@@ -5,6 +5,32 @@ class RegistrationsController < Devise::RegistrationsController
   before_action :set_page_title_new, only: [:new]
   before_action :set_page_title_edit, only: [:edit]
 
+  # Override create to check whether email registration is possible
+  def create
+    ts = Current.tenant.tenant_setting
+    email = sign_up_params[:email]
+
+    if ts.email_registration_policy == "none_allowed" || (ts.email_registration_policy == "custom_domains_allowed" && !allowed_domain?(email))
+      flash[:alert] = t('errors.email_domain_not_allowed')
+      redirect_to new_user_registration_path and return
+    end
+
+    super
+  end
+
+  # Override update to check whether provided email is allowed
+  def update
+    ts = Current.tenant.tenant_setting
+    email = account_update_params[:email]
+
+    if ts.email_registration_policy == "custom_domains_allowed" && !allowed_domain?(email)
+      flash[:alert] = t('errors.email_domain_not_allowed')
+      redirect_to edit_user_registration_path and return
+    end
+
+    super
+  end
+
   # Override destroy to soft delete
   def destroy
     resource.status = "deleted"
@@ -27,8 +53,31 @@ class RegistrationsController < Devise::RegistrationsController
     
     render json: { success: true } # always return true, even if user not found
   end
+
+  protected
+
+    def after_inactive_sign_up_path_for(resource)
+      if Current.tenant.tenant_setting.is_private
+        # Redirect to log in page, since root page only visible to logged in users
+        new_user_session_path
+      else
+        super
+      end
+    end
     
   private
+
+    def allowed_domain?(email)
+      allowed_email_domains = Current.tenant.tenant_setting.allowed_email_domains
+
+      return false unless email.count('@') == 1
+      return true if allowed_email_domains.blank?
+      
+      registering_domain = email.split('@').last
+      allowed_domains = allowed_email_domains.split(',')
+
+      allowed_domains.include?(registering_domain)
+    end
 
     def set_page_title_new
       @page_title = t('common.forms.auth.sign_up')

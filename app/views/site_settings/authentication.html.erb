@@ -5,6 +5,10 @@
       react_component(
         'SiteSettings/Authentication',
         {
+          originForm: {
+            emailRegistrationPolicy: @tenant_setting.email_registration_policy,
+            allowedEmailDomains: @tenant_setting.allowed_email_domains,
+          },
           authenticityToken: form_authenticity_token
         }
       )
