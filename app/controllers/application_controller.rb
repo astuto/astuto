@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :check_tenant_is_private
+  before_action :check_tenant_is_private, if: :should_check_tenant_is_private?
   
   prepend_before_action :load_tenant_data
 
@@ -82,11 +82,6 @@ class ApplicationController < ActionController::Base
 
     def check_tenant_is_private
       return unless Current.tenant.tenant_setting.is_private
-      return unless controller_name == 'posts' ||
-                    controller_name == 'boards' ||
-                    controller_name == 'comments' ||
-                    (controller_name == 'static_pages' && action_name == 'root') ||
-                    (controller_name == 'static_pages' && action_name == 'roadmap')
       return if user_signed_in?
 
       flash[:alert] = t('errors.not_logged_in')
@@ -101,5 +96,13 @@ class ApplicationController < ActionController::Base
       render json: {
         error: t('errors.unauthorized')
       }, status: :unauthorized
+    end
+
+    def should_check_tenant_is_private?
+      controller_name == 'posts' ||
+      controller_name == 'boards' ||
+      controller_name == 'comments' ||
+      (controller_name == 'static_pages' && action_name == 'root') ||
+      (controller_name == 'static_pages' && action_name == 'roadmap')
     end
 end

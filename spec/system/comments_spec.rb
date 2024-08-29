@@ -91,13 +91,10 @@ feature 'comments', type: :system, js: true do
 
     comment_body = 'this is a comment!'
 
-    # Had to comment out after implementing private feedback space (PR #392)
-    # I have no idea why doesn't work anymore
-    
-    # find(new_comment_body_selector).fill_in with: comment_body
-    # click_button 'Submit'
+    find(new_comment_body_selector).fill_in with: comment_body
+    click_button 'Submit'
 
-    # expect(page).to have_css(comment_selector, count: comments_count + 1)
-    # expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
+    expect(page).to have_css(comment_selector, count: comments_count + 1)
+    expect(Comment.where(post_id: post.id).count).to eq(comments_count + 1)
   end
 end
