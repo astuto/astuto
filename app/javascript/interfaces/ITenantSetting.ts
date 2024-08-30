@@ -10,6 +10,16 @@ export type TenantSettingBrandDisplay =
   typeof TENANT_SETTING_BRAND_DISPLAY_LOGO_ONLY |
   typeof TENANT_SETTING_BRAND_DISPLAY_NONE;
 
+// Email registration policy
+export const TENANT_SETTING_EMAIL_REGISTRATION_POLICY_ALL_ALLOWED = 'all_allowed';
+export const TENANT_SETTING_EMAIL_REGISTRATION_POLICY_NONE_ALLOWED = 'none_allowed';
+export const TENANT_SETTING_EMAIL_REGISTRATION_POLICY_CUSTOM_DOMAINS_ALLOWED = 'custom_domains_allowed';
+
+export type TenantSettingEmailRegistrationPolicy =
+  typeof TENANT_SETTING_EMAIL_REGISTRATION_POLICY_ALL_ALLOWED |
+  typeof TENANT_SETTING_EMAIL_REGISTRATION_POLICY_NONE_ALLOWED |
+  typeof TENANT_SETTING_EMAIL_REGISTRATION_POLICY_CUSTOM_DOMAINS_ALLOWED;
+
 // Feedback approval policy
 export const TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ANONYMOUS_REQUIRE_APPROVAL = 'anonymous_require_approval';
 export const TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_NEVER_REQUIRE_APPROVAL = 'never_require_approval';
@@ -32,6 +42,9 @@ export type TenantSettingCollapseBoardsInHeader =
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
   root_board_id?: number;
+  is_private?: boolean;
+  email_registration_policy?: TenantSettingEmailRegistrationPolicy;
+  allowed_email_domains?: string;
   allow_anonymous_feedback?: boolean;
   feedback_approval_policy?: TenantSettingFeedbackApprovalPolicy;
   show_vote_count?: boolean;

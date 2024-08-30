@@ -27,6 +27,7 @@ export interface ISiteSettingsGeneralForm {
   locale: string;
   rootBoardId?: string;
   customDomain?: string;
+  isPrivate: boolean;
   allowAnonymousFeedback: boolean;
   feedbackApprovalPolicy: string;
   showRoadmapInHeader: boolean;
@@ -52,6 +53,7 @@ interface Props {
     locale: string,
     rootBoardId: number,
     customDomain: string,
+    isPrivate: boolean,
     allowAnonymousFeedback: boolean,
     feedbackApprovalPolicy: string,
     showRoadmapInHeader: boolean,
@@ -86,6 +88,7 @@ const GeneralSiteSettingsP = ({
       locale: originForm.locale,
       rootBoardId: originForm.rootBoardId,
       customDomain: originForm.customDomain,
+      isPrivate: originForm.isPrivate,
       allowAnonymousFeedback: originForm.allowAnonymousFeedback,
       feedbackApprovalPolicy: originForm.feedbackApprovalPolicy,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
@@ -104,6 +107,7 @@ const GeneralSiteSettingsP = ({
       data.locale,
       Number(data.rootBoardId),
       data.customDomain,
+      data.isPrivate,
       data.allowAnonymousFeedback,
       data.feedbackApprovalPolicy,
       data.showRoadmapInHeader,
@@ -254,6 +258,20 @@ const GeneralSiteSettingsP = ({
             </div>
           }
 
+          <div id="privacy" className="settingsGroup">
+            <h4>{ I18n.t('site_settings.general.subtitle_privacy') }</h4>
+
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('isPrivate')} type="checkbox" id="is_private_checkbox" />
+                <label htmlFor="is_private_checkbox">{ getLabel('tenant_setting', 'is_private') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.is_private_help') }
+                </SmallMutedText>
+              </div>
+            </div>
+          </div>
+
           <div id="moderation" className="settingsGroup">
             <h4>{ I18n.t('site_settings.general.subtitle_moderation') }</h4>
 
@@ -361,6 +379,12 @@ const GeneralSiteSettingsP = ({
         areUpdating={areUpdating}
         error={error}
         areDirty={isDirty && !isSubmitSuccessful}
+        isSticky={isDirty && !isSubmitSuccessful}
+        saveButton={
+          <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty}>
+            {I18n.t('common.buttons.update')}
+          </Button>
+        }
       />
     </>
   );

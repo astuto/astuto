@@ -60,4 +60,24 @@ RSpec.describe TenantSetting, type: :model do
     tenant_setting.feedback_approval_policy = 'always_require_approval'
     expect(tenant_setting).to be_valid
   end
+
+  it 'has a setting for making the site private' do
+    expect(tenant_setting.is_private).to be_falsey
+
+    tenant_setting.is_private = true
+    expect(tenant_setting).to be_valid
+
+    tenant_setting.is_private = false
+    expect(tenant_setting).to be_valid
+  end
+
+  it 'has a setting for email registration policy' do
+    expect(tenant_setting.email_registration_policy).to eq('all_allowed')
+
+    tenant_setting.email_registration_policy = 'none_allowed'
+    expect(tenant_setting).to be_valid
+
+    tenant_setting.email_registration_policy = 'custom_domains_allowed'
+    expect(tenant_setting).to be_valid
+  end
 end

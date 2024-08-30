@@ -4,6 +4,9 @@ class TenantSettingPolicy < ApplicationPolicy
       [
         :brand_display,
         :root_board_id,
+        :is_private,
+        :email_registration_policy,
+        :allowed_email_domains,
         :allow_anonymous_feedback,
         :feedback_approval_policy,
         :show_vote_count,
