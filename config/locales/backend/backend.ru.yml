@@ -2,6 +2,7 @@ ru:
   errors:
     unknown: 'Произошла неизвестная ошибка'
     unauthorized: 'Вы не авторизованы'
+    email_domain_not_allowed: 'You cannot register with the provided email address'
     not_logged_in: 'Вы должны войти для просмотра этой страницы'
     not_enough_privileges: 'У вас нет разрешения на доступ к этой странице'
     user_blocked_or_deleted: 'Вы не можете получить доступ к вашей учетной записи, потому что она была заблокирована или удалена.'
@@ -138,6 +139,9 @@ ru:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Экран'
+        is_private: 'Private site'
+        email_registration_policy: 'Email registration policy'
+        allowed_email_domains: 'Allowed email domains'
         allow_anonymous_feedback: 'Allow anonymous feedback'
         feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Показать количество голосов пользователям'
