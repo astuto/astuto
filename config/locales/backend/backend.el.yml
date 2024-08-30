@@ -2,6 +2,7 @@ el:
   errors:
     unknown: 'An unknown error occurred'
     unauthorized: 'You are not authorized'
+    email_domain_not_allowed: 'You cannot register with the provided email address'
     not_logged_in: 'You must be logged in to access this page'
     not_enough_privileges: 'You do not have the privilegies to access this page'
     user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
@@ -124,6 +125,9 @@ el:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
+        is_private: 'Private site'
+        email_registration_policy: 'Email registration policy'
+        allowed_email_domains: 'Allowed email domains'
         allow_anonymous_feedback: 'Allow anonymous feedback'
         feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Show vote count to users'
