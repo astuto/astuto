@@ -48,7 +48,7 @@
                 <span class="notificationDot notificationDotTop"><%= Post.pending.length %></span>
               <% end %>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" onclick="event.stopPropagation()" aria-labelledby="navbarDropdown">
               <% if current_user.moderator? %>
                 <h6 class="dropdown-header"><%= t('header.menu.administration_header') %></h6>
                 <% if current_user.admin? or current_user.owner? %>
