@@ -19,6 +19,9 @@ class SiteSettingsController < ApplicationController
   def roadmap
   end
 
+  def invitations
+  end
+
   def appearance
   end
 

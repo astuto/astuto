@@ -70,6 +70,7 @@ en:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      send: 'Send'
     datetime:
       now: 'just now'
       minutes:
@@ -167,10 +168,11 @@ en:
     menu:
       title: 'Site settings'
       general: 'General'
+      authentication: 'Authentication'
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      authentication: 'Authentication'
+      invitations: 'Invitations'
       appearance: 'Appearance'
     info_box:
       up_to_date: 'All changes saved'
@@ -216,6 +218,22 @@ en:
       title2: 'Not in roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+    invitations:
+      title: 'Invitations'
+      description: 'Invite users to join your feedback space'
+      subject: 'Subject'
+      subject_default: 'You have been invited to join %{name} feedback space'
+      body: 'Body'
+      body_default: |
+        Hello!
+        
+        We'd love to hear your opinions and comments on %{name}, so we invite you to join our feedback space.
+        
+        Click the link below to start submitting feedback!
+        
+        %link
+
+        Have a great day!
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'

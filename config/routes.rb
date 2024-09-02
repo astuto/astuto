@@ -73,6 +73,7 @@ Rails.application.routes.draw do
       get 'boards'
       get 'post_statuses'
       get 'roadmap'
+      get 'invitations'
       get 'appearance'
     end
 
