@@ -1,0 +1,34 @@
+class InvitationsController < ApplicationController
+  before_action :authenticate_admin
+
+  def create
+    to = invitation_params[:to].split(',').map(&:strip)
+    subject = invitation_params[:subject]
+    body = invitation_params[:body]
+
+    to.each do |email|
+      invitation_token = SecureRandom.hex(16)
+      invitation_token_digest = Digest::SHA256.hexdigest(invitation_token)
+
+      invitation = Invitation.find_or_initialize_by(email: email)
+      invitation.token_digest = invitation_token_digest
+      invitation.save!
+
+      # replace %link% placeholder in body with the invitation link
+      body_with_link = body.gsub('%link%', get_url_for(method(:new_user_registration_url), options: { invitation_token: invitation_token, email: email }))
+
+      InvitationMailer.invite(to: email, subject: subject, body: body_with_link).deliver_later
+    end
+  end
+
+
+  private
+
+    def invitation_params
+      params.require(:invitations).tap do |invitation|
+        invitation.require(:to)
+        invitation.require(:subject)
+        invitation.require(:body)
+      end
+    end
+end

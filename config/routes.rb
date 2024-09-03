@@ -66,6 +66,8 @@ Rails.application.routes.draw do
     resources :post_statuses, only: [:index, :create, :update, :destroy] do
       patch 'update_order', on: :collection
     end
+
+    resources :invitations, only: [:create]
   
     namespace :site_settings do
       get 'general'

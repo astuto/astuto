@@ -221,9 +221,11 @@ en:
     invitations:
       title: 'Invitations'
       description: 'Invite users to join your feedback space'
-      subject: 'Subject'
+      to: 'Send invitations to'
+      to_help: 'Fill with email addresses you want to invite, separated by commas.'
+      subject: 'Email subject'
       subject_default: 'You have been invited to join %{name} feedback space'
-      body: 'Body'
+      body: 'Email body'
       body_default: |
         Hello!
         
@@ -231,7 +233,7 @@ en:
         
         Click the link below to start submitting feedback!
         
-        %link
+        %link%
 
         Have a great day!
     appearance:
