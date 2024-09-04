@@ -70,7 +70,6 @@ en:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
-      send: 'Send'
     datetime:
       now: 'just now'
       minutes:
@@ -220,7 +219,8 @@ en:
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     invitations:
       title: 'Invitations'
-      description: 'Invite users to join your feedback space'
+      send_subtitle: 'Send invitations'
+      sent_subtitle: 'Sent invitations'
       to: 'Send invitations to'
       to_help: 'Fill with email addresses you want to invite, separated by commas.'
       subject: 'Email subject'
@@ -236,6 +236,12 @@ en:
         %link%
 
         Have a great day!
+      send:
+        one: 'Send invitation'
+        other: 'Send %{count} invitations'
+      invalid_emails: 'Invalid email addresses: %{emails}'
+      too_many_emails: 'You can only send %{count} invitations at a time.'
+      invitation_link_not_found: 'You must use the %link% placeholder in the email body'
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
