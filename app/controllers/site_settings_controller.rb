@@ -20,6 +20,7 @@ class SiteSettingsController < ApplicationController
   end
 
   def invitations
+    @invitations = Invitation.all.order(updated_at: :desc)
   end
 
   def appearance

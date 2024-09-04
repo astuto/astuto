@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import Gravatar from 'react-gravatar';
+import { useForm } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
 import Button from '../../common/Button';
-import { SmallMutedText } from '../../common/CustomTexts';
+import { DangerText, SmallMutedText, SuccessText } from '../../common/CustomTexts';
 import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 import HttpStatus from '../../../constants/http_status';
 import { isValidEmail } from '../../../helpers/regex';
+import IInvitation from '../../../interfaces/IInvitation';
+import friendlyDate from '../../../helpers/datetime';
 
 interface Props {
   siteName: string;
+  invitations: Array<IInvitation>;
   authenticityToken: string;
 }
 
@@ -22,11 +26,11 @@ interface IFormData {
 
 const MAX_INVITATIONS = 20;
 
-const Invitations = ({ siteName, authenticityToken }: Props) => {
+const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { },
+    formState: {},
     watch,
   } = useForm<IFormData>({
     defaultValues: {
@@ -39,10 +43,21 @@ const Invitations = ({ siteName, authenticityToken }: Props) => {
   const to = watch('to');
   const emailList = to.split(',');
 
+  const [successMessage, setSuccessMessage] = React.useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
+  const [filter, setFilter] = React.useState<'all' | 'pending' | 'accepted'>('pending');
+
+  const pendingInvitations = invitations.filter((invitation) => !invitation.accepted_at);
+  const acceptedInvitations = invitations.filter((invitation) => invitation.accepted_at);
+
+  let invitationsToDisplay = invitations;
+  if (filter === 'pending') invitationsToDisplay = pendingInvitations;
+  if (filter === 'accepted') invitationsToDisplay = acceptedInvitations;
+
   return (
-    <Box>
-      <h2>{ I18n.t('site_settings.invitations.title') }</h2>
-      <h3>{ I18n.t('site_settings.invitations.send_subtitle') }</h3>
+    <>
+    <Box customClass="newInvitationsBox">
+      <h2>{ I18n.t('site_settings.invitations.new_invitations_title') }</h2>
 
       <form
         onSubmit={handleSubmit(async (formData) => {
@@ -76,12 +91,12 @@ const Invitations = ({ siteName, authenticityToken }: Props) => {
             }),
           });
 
-          const json = await res.json();
-
           if (res.status === HttpStatus.OK) {
-            console.log('success');
+            setSuccessMessage(I18n.t('site_settings.invitations.submit_success'));
+            setErrorMessage(null);
+            setTimeout(() => window.location.reload(), 2000);
           } else {
-            console.log('error');
+            setErrorMessage(I18n.t('site_settings.invitations.submit_failure'));
           }
         }
       )}>
@@ -123,10 +138,65 @@ const Invitations = ({ siteName, authenticityToken }: Props) => {
         </Button>
       </form>
 
-      <br />
-
-      <h3>{ I18n.t('site_settings.invitations.sent_subtitle') }</h3>
+      { successMessage ? <SuccessText>{ successMessage }</SuccessText> : null }
+      { errorMessage ? <DangerText>{ errorMessage }</DangerText> : null }
     </Box>
+
+
+    <Box customClass="pastInvitationsBox">
+      <h2>{ I18n.t('site_settings.invitations.past_invitations_title') }</h2>
+
+      <ul className="filterInvitationsNav">
+        <li className="nav-item">
+          <a onClick={() => setFilter('all')} className={`nav-link${filter === 'all' ? ' active' : ''}`}>
+            {I18n.t('site_settings.invitations.all')}
+            &nbsp;
+            ({invitations && invitations.length})
+          </a>
+        </li>
+        <li className="nav-item">
+          <a onClick={() => setFilter('pending')} className={`nav-link${filter === 'pending' ? ' active' : ''}`}>
+            {I18n.t('site_settings.invitations.pending')}
+            &nbsp;
+            ({pendingInvitations && pendingInvitations.length})
+          </a>
+        </li>
+        <li className="nav-item">
+          <a onClick={() => setFilter('accepted')} className={`nav-link${filter === 'accepted' ? ' active' : ''}`}>
+            {I18n.t('site_settings.invitations.accepted')}
+            &nbsp;
+            ({acceptedInvitations && acceptedInvitations.length})
+          </a>
+        </li>
+      </ul>
+
+      <ul className="invitationsList">
+        {
+          invitationsToDisplay.map((invitation, i) => (
+            <li key={i} className="invitationListItem">
+              <div className="invitationUserInfo">
+                <Gravatar email={invitation.email} size={42} className="gravatar userGravatar" />
+                <span className="invitationEmail">{ invitation.email }</span>
+              </div>
+
+              <div className="invitationInfo">
+                {
+                  invitation.accepted_at ?
+                    <span className="invitationAcceptedAt" title={invitation.accepted_at}>
+                      { I18n.t('site_settings.invitations.accepted_at', { when: friendlyDate(invitation.accepted_at) }) }
+                    </span>
+                  :
+                    <span className="invitationSentAt" title={invitation.updated_at}>
+                      { I18n.t('site_settings.invitations.sent_at', { when: friendlyDate(invitation.updated_at) }) }
+                    </span>
+                }
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </Box>
+    </>
   );
 };
 

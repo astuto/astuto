@@ -218,9 +218,8 @@ en:
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
     invitations:
-      title: 'Invitations'
-      send_subtitle: 'Send invitations'
-      sent_subtitle: 'Sent invitations'
+      new_invitations_title: 'New invitations'
+      past_invitations_title: 'Invitations'
       to: 'Send invitations to'
       to_help: 'Fill with email addresses you want to invite, separated by commas.'
       subject: 'Email subject'
@@ -239,9 +238,16 @@ en:
       send:
         one: 'Send invitation'
         other: 'Send %{count} invitations'
+      submit_success: 'Invitations sent!'
+      submit_failure: 'An error occurred while sending invitations'
       invalid_emails: 'Invalid email addresses: %{emails}'
       too_many_emails: 'You can only send %{count} invitations at a time.'
       invitation_link_not_found: 'You must use the %link% placeholder in the email body'
+      all: 'All'
+      pending: 'Pending'
+      accepted: 'Accepted'
+      sent_at: 'Sent %{when}'
+      accepted_at: 'Accepted %{when}'
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
