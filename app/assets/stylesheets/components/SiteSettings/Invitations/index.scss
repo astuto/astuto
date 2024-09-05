@@ -2,6 +2,22 @@
   textarea#body {
     height: 280px;
   }
+
+  .submitFormDiv {
+    button {
+      @extend .mr-4;
+
+      vertical-align: text-bottom;
+    }
+
+    .testInvitation {
+      @extend .mt-2;
+      
+      display: inline-block;
+  
+      a.actionLink { display: inline-block; }
+    }
+  }
 }
 
 .pastInvitationsBox {

@@ -11,10 +11,13 @@ import HttpStatus from '../../../constants/http_status';
 import { isValidEmail } from '../../../helpers/regex';
 import IInvitation from '../../../interfaces/IInvitation';
 import friendlyDate from '../../../helpers/datetime';
+import ActionLink from '../../common/ActionLink';
+import { TestIcon } from '../../common/Icons';
 
 interface Props {
   siteName: string;
   invitations: Array<IInvitation>;
+  currentUserEmail: string;
   authenticityToken: string;
 }
 
@@ -25,8 +28,9 @@ interface IFormData {
 }
 
 const MAX_INVITATIONS = 20;
+const LINK_PLACEHOLDER = '%link%';
 
-const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
+const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToken }: Props) => {
   const {
     register,
     handleSubmit,
@@ -42,6 +46,9 @@ const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
 
   const to = watch('to');
   const emailList = to.split(',');
+
+  const subject = watch('subject')
+  const body = watch('body')
 
   const [successMessage, setSuccessMessage] = React.useState<string | null>(null);
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
@@ -69,12 +76,12 @@ const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
             return;
           }
 
-          if (invalidEmails.length > 0) {
-            alert(I18n.t('site_settings.invitations.invalid_emails', { emails: invalidEmails.join(', ') }));
-            return;
-          }
+          // if (invalidEmails.length > 0) {
+          //   alert(I18n.t('site_settings.invitations.invalid_emails', { emails: invalidEmails.join(', ').replace(/, $/, '') }));
+          //   return;
+          // }
 
-          if (!formData.body.includes('%link%')) {
+          if (!formData.body.includes(LINK_PLACEHOLDER)) {
             alert(I18n.t('site_settings.invitations.invitation_link_not_found'));
             return;
           }
@@ -110,7 +117,7 @@ const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
             id="to"
           />
           <SmallMutedText>
-            {`${ I18n.t('site_settings.invitations.to_help') } ${ I18n.t('site_settings.invitations.too_many_emails', { count: MAX_INVITATIONS }) }`}
+            { I18n.t('site_settings.invitations.to_help') }
           </SmallMutedText>
         </div>
 
@@ -133,9 +140,45 @@ const Invitations = ({ siteName, invitations, authenticityToken }: Props) => {
           />
         </div>
 
-        <Button onClick={() => {}} disabled={to === ''}>
-          { I18n.t('site_settings.invitations.send', { count: emailList.length }) }
-        </Button>
+        <div className="submitFormDiv">
+          <Button onClick={() => {}} disabled={to === ''}>
+            { I18n.t('site_settings.invitations.send', { count: emailList.length }) }
+          </Button>
+          
+          <div className="testInvitation">
+            <ActionLink
+              icon={<TestIcon />}
+              onClick={async () => {
+                if (!body.includes(LINK_PLACEHOLDER)) {
+                  alert(I18n.t('site_settings.invitations.invitation_link_not_found'));
+                  return;
+                }
+
+                const res = await fetch(`/invitations/test`, {
+                  method: 'POST',
+                  headers: buildRequestHeaders(authenticityToken),
+                  body: JSON.stringify({
+                    invitations: {
+                      to: currentUserEmail,
+                      subject: subject,
+                      body: body,
+                    }
+                  }),
+                });
+
+                if (res.status === HttpStatus.OK) {
+                  alert(I18n.t('site_settings.invitations.test_invitation_success', { email: currentUserEmail }));
+                } else {
+                  alert(I18n.t('site_settings.invitations.submit_failure'));
+                }
+              }}
+            >
+              { I18n.t('site_settings.invitations.test_invitation_button') }
+            </ActionLink>
+
+            <SmallMutedText>{ I18n.t('site_settings.invitations.test_invitation_help', { email: currentUserEmail }) }</SmallMutedText>
+          </div>
+        </div>
       </form>
 
       { successMessage ? <SuccessText>{ successMessage }</SuccessText> : null }

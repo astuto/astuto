@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     end
 
     resources :invitations, only: [:create]
+    post '/invitations/test', to: 'invitations#test', as: :invitation_test
   
     namespace :site_settings do
       get 'general'
