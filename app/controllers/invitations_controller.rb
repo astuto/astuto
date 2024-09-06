@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_admin
+  before_action :check_tenant_subscription, only: [:create]
 
   def create
     to = invitation_params[:to].split(',').map(&:strip).select { |email| URI::MailTo::EMAIL_REGEXP.match?(email) }
@@ -11,6 +12,9 @@ class InvitationsController < ApplicationController
     to.each do |email|
       invitation_token = SecureRandom.hex(16)
       invitation_token_digest = Digest::SHA256.hexdigest(invitation_token)
+
+      # skip if user already registered
+      next if User.find_by(email: email).present?
 
       invitation = Invitation.find_or_initialize_by(email: email)
 

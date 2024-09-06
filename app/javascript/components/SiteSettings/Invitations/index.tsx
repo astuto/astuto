@@ -76,10 +76,10 @@ const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToke
             return;
           }
 
-          // if (invalidEmails.length > 0) {
-          //   alert(I18n.t('site_settings.invitations.invalid_emails', { emails: invalidEmails.join(', ').replace(/, $/, '') }));
-          //   return;
-          // }
+          if (invalidEmails.length > 0) {
+            alert(I18n.t('site_settings.invitations.invalid_emails', { emails: invalidEmails.join(', ').replace(/, $/, '') }));
+            return;
+          }
 
           if (!formData.body.includes(LINK_PLACEHOLDER)) {
             alert(I18n.t('site_settings.invitations.invitation_link_not_found'));
@@ -180,7 +180,7 @@ const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToke
           </div>
         </div>
       </form>
-
+      <br />
       { successMessage ? <SuccessText>{ successMessage }</SuccessText> : null }
       { errorMessage ? <DangerText>{ errorMessage }</DangerText> : null }
     </Box>
