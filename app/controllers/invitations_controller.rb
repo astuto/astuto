@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_admin
-  before_action :check_tenant_subscription, only: [:create]
+  # before_action :check_tenant_subscription, only: [:create]
 
   def create
     to = invitation_params[:to].split(',').map(&:strip).select { |email| URI::MailTo::EMAIL_REGEXP.match?(email) }
