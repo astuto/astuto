@@ -66,6 +66,9 @@ Rails.application.routes.draw do
     resources :post_statuses, only: [:index, :create, :update, :destroy] do
       patch 'update_order', on: :collection
     end
+
+    resources :invitations, only: [:create]
+    post '/invitations/test', to: 'invitations#test', as: :invitation_test
   
     namespace :site_settings do
       get 'general'
@@ -73,6 +76,7 @@ Rails.application.routes.draw do
       get 'boards'
       get 'post_statuses'
       get 'roadmap'
+      get 'invitations'
       get 'appearance'
     end
 
