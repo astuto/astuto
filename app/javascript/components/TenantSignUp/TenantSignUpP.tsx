@@ -73,7 +73,7 @@ const TenantSignUpP = ({
   const [goneBack, setGoneBack] = useState(false);
 
   const [userData, setUserData] = useState({
-    fullName: oAuthLoginCompleted ? oauthUserName.slice(0, 64) : '',
+    fullName: (oAuthLoginCompleted && oauthUserName) ? oauthUserName.slice(0, 64) : '',
     email: oAuthLoginCompleted ? oauthUserEmail : '',
     password: '',
     passwordConfirmation: '',
