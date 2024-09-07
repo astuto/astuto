@@ -40,15 +40,24 @@ class OAuthSignInUserWorkflow
         end
         full_name ||= I18n.t('defaults.user_full_name')
 
-        user = User.new(
-          email: email,
-          full_name: full_name,
-          password: Devise.friendly_token,
-          has_set_password: false,
-          status: 'active'
-        )
-        user.skip_confirmation
-        user.save
+        ActiveRecord::Base.transaction do
+          user = User.new(
+            email: email,
+            full_name: full_name,
+            password: Devise.friendly_token,
+            has_set_password: false,
+            status: 'active'
+          )
+          user.skip_confirmation
+          user.save
+          
+          # if there is a pending invitation for this email, mark it as accepted
+          invitation = Invitation.find_by(email: email)
+          if invitation && invitation.accepted_at.nil?
+            invitation.accepted_at = Time.now
+            invitation.save!
+          end
+        end
       end
 
       return user
