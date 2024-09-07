@@ -1,5 +1,8 @@
 class InvitationMailer < ApplicationMailer
-  def invite(to:, subject:, body:)
+  def invite(invitation:, subject:, body:)
+    Current.tenant = invitation.tenant
+
+    to = invitation.email
     @body = body
 
     mail(
