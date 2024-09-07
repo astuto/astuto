@@ -1,0 +1,16 @@
+<div class="twoColumnsContainer">
+  <%= render 'menu' %>
+  <div>
+    <%=
+      react_component(
+        'SiteSettings/Invitations',
+        {
+          siteName: Current.tenant.site_name,
+          invitations: @invitations,
+          currentUserEmail: current_user.email,
+          authenticityToken: form_authenticity_token
+        }
+      )
+    %>
+  </div>
+</div>

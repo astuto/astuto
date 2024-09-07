@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
@@ -7,7 +8,6 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import Button from '../../common/Button';
 import HttpStatus from '../../../constants/http_status';
 import { getLabel } from '../../../helpers/formUtils';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import ActionLink from '../../common/ActionLink';
 import { LearnMoreIcon } from '../../common/Icons';
 
