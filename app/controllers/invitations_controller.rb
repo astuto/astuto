@@ -50,7 +50,7 @@ class InvitationsController < ApplicationController
     subject = "[TEST] " + subject
     body_with_link = body.gsub('%link%', get_url_for(method(:new_user_registration_url), options: { invitation_token: invitation_token, email: to }))
 
-    InvitationMailer.invite(to: to, subject: subject, body: body_with_link).deliver_later
+    InvitationMailer.invite(invitation: invitation, subject: subject, body: body_with_link).deliver_now
 
     render json: {}, status: :ok
   end
