@@ -52,11 +52,11 @@ RSpec.describe User, type: :model do
     expect(empty_name_user).to be_invalid
   end
 
-  it 'has a full name between 2 and 32 characters' do
+  it 'has a full name between 2 and 64 characters' do
     too_short_user = FactoryBot.build(:user, full_name: 'a' * 1)
     short_user = FactoryBot.build(:user, full_name: 'a' * 2)
-    long_user = FactoryBot.build(:user, full_name: 'a' * 32)
-    too_long_user = FactoryBot.build(:user, full_name: 'a' * 33)
+    long_user = FactoryBot.build(:user, full_name: 'a' * 64)
+    too_long_user = FactoryBot.build(:user, full_name: 'a' * 65)
     
     expect(too_short_user).to be_invalid
     expect(short_user).to be_valid
