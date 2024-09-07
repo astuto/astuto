@@ -167,10 +167,11 @@ it:
     menu:
       title: 'Impostazioni sito'
       general: 'Generali'
+      authentication: 'Autenticazione'
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
-      authentication: 'Autenticazione'
+      invitations: 'Invitations'
       appearance: 'Tema'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
@@ -216,6 +217,40 @@ it:
       title2: 'Non in roadmap'
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
+    invitations:
+      new_invitations_title: 'New invitations'
+      past_invitations_title: 'Invitations'
+      to: 'Send invitations to'
+      to_help: 'Email addresses of people you want to invite, separated by commas.'
+      subject: 'Email subject'
+      subject_default: 'We value your feedback! Join us in shaping %{name}!'
+      body: 'Email body'
+      body_default: |
+        Hello!
+
+        We truly appreciate your experience with %{name} and would love to hear your feedback. Your insights help us improve and continue delivering the best possible service.
+
+        Click the link below to share your thoughts and make your voice heard:
+
+        %link%
+
+        Have a great day!
+      send:
+        one: 'Send invitation'
+        other: 'Send %{count} invitations'
+      submit_success: 'Invitations sent!'
+      submit_failure: 'An error occurred while sending invitations'
+      invalid_emails: 'Invalid email addresses: %{emails}'
+      too_many_emails: 'You can only send %{count} invitations at a time.'
+      invitation_link_not_found: 'You must use the %link% placeholder in the email body'
+      test_invitation_button: 'Test send invitation'
+      test_invitation_help: 'This will send a test invitation email to %{email}'
+      test_invitation_success: 'A test invitation email has been sent to %{email}'
+      all: 'All'
+      pending: 'Pending'
+      accepted: 'Accepted'
+      sent_at: 'Sent %{when}'
+      accepted_at: 'Accepted %{when}'
     appearance:
       title: 'Tema'
       learn_more: 'Scopri come personalizzare il tema'
