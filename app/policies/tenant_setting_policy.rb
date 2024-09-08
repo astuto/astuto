@@ -3,6 +3,7 @@ class TenantSettingPolicy < ApplicationPolicy
     if user.admin?
       [
         :brand_display,
+        :use_browser_locale,
         :root_board_id,
         :is_private,
         :email_registration_policy,

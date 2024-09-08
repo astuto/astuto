@@ -19,7 +19,8 @@
             feedbackApprovalPolicy: @tenant_setting.feedback_approval_policy,
             showRoadmapInHeader: @tenant_setting.show_roadmap_in_header,
             collapseBoardsInHeader: @tenant_setting.collapse_boards_in_header,
-            locale: @tenant.locale
+            locale: @tenant.locale,
+            useBrowserLocale: @tenant_setting.use_browser_locale,
           },
           boards: @tenant.boards.order(order: :asc),
           isMultiTenant: Rails.application.multi_tenancy?,
