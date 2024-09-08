@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     siteLogo: string,
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
+    useBrowserLocale: boolean,
     rootBoardId: number,
     customDomain: string,
     isPrivate: boolean,
@@ -33,6 +34,7 @@ const mapDispatchToProps = (dispatch: any) => ({
       siteLogo,
       tenantSetting: {
         brand_display: brandDisplaySetting,
+        use_browser_locale: useBrowserLocale,
         root_board_id: rootBoardId,
         is_private: isPrivate,
         allow_anonymous_feedback: allowAnonymousFeedback,

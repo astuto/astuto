@@ -25,6 +25,7 @@ export interface ISiteSettingsGeneralForm {
   siteLogo: string;
   brandDisplaySetting: string;
   locale: string;
+  useBrowserLocale: boolean;
   rootBoardId?: string;
   customDomain?: string;
   isPrivate: boolean;
@@ -51,6 +52,7 @@ interface Props {
     siteLogo: string,
     brandDisplaySetting: string,
     locale: string,
+    useBrowserLocale: boolean,
     rootBoardId: number,
     customDomain: string,
     isPrivate: boolean,
@@ -86,6 +88,7 @@ const GeneralSiteSettingsP = ({
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
+      useBrowserLocale: originForm.useBrowserLocale,
       rootBoardId: originForm.rootBoardId,
       customDomain: originForm.customDomain,
       isPrivate: originForm.isPrivate,
@@ -105,6 +108,7 @@ const GeneralSiteSettingsP = ({
       data.siteLogo,
       data.brandDisplaySetting,
       data.locale,
+      data.useBrowserLocale,
       Number(data.rootBoardId),
       data.customDomain,
       data.isPrivate,
@@ -211,6 +215,16 @@ const GeneralSiteSettingsP = ({
               <option value="ru">🇷🇺 Русский</option>
               <option value="vi">🇻🇳 Tiếng Việt</option>
             </select>
+          </div>
+
+          <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('useBrowserLocale')} type="checkbox" id="use_browser_locale_checkbox" />
+              <label htmlFor="use_browser_locale_checkbox">{ getLabel('tenant_setting', 'use_browser_locale') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.use_browser_locale_help') }
+              </SmallMutedText>
+            </div>
           </div>
 
           <div className="formGroup">
