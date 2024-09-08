@@ -5,6 +5,7 @@
       react_component(
         'SiteSettings/Roadmap',
         {
+          embeddedRoadmapUrl: get_url_for(method(:embedded_roadmap_url)),
           authenticityToken: form_authenticity_token
         }
       )

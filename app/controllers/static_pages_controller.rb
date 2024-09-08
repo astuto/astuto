@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   skip_before_action :load_tenant_data, only: [:showcase, :pending_tenant, :blocked_tenant]
+  before_action :allow_iframe_embedding, only: [:embedded_roadmap]
 
   def root
     @board = Board.find_by(id: Current.tenant.tenant_setting.root_board_id)
@@ -17,6 +18,13 @@ class StaticPagesController < ApplicationController
   def roadmap
     @page_title = t('roadmap.title')
     get_roadmap_data
+  end
+
+  def embedded_roadmap
+    @page_title = t('roadmap.title')
+    get_roadmap_data
+    
+    render 'static_pages/roadmap', layout: 'embedded'
   end
 
   def showcase
@@ -39,5 +47,9 @@ class StaticPagesController < ApplicationController
       @posts = Post
         .find_with_post_status_in(@post_statuses)
         .select(:id, :title, :board_id, :post_status_id, :user_id, :created_at)
+    end
+
+    def allow_iframe_embedding
+      response.headers['X-Frame-Options'] = 'ALLOWALL'
     end
 end
