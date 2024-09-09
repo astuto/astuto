@@ -118,6 +118,7 @@ zh-CN:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: '显示模式'
+        use_browser_locale: 'Use browser language'
         is_private: 'Private site'
         email_registration_policy: 'Email registration policy'
         allowed_email_domains: 'Allowed email domains'
