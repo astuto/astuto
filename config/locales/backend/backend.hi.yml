@@ -125,6 +125,7 @@ hi:
         custom_domain: 'Custom domain'
       tenant_setting:
         brand_display: 'Display'
+        use_browser_locale: 'Use browser language'
         is_private: 'Private site'
         email_registration_policy: 'Email registration policy'
         allowed_email_domains: 'Allowed email domains'
