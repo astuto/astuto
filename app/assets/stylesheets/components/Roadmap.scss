@@ -1,51 +1,69 @@
-.roadmapColumns {
-  @extend
-    .d-flex,
-    .justify-content-between,
-    .flex-wrap;
+// parent .container is 960px wide with 15px padding on each side => 930px available
+// each roadmap column is 31% wide => 930px * 0.31 = 288.3px * 3 = 864.9px plus 16px gap between columns (2 gaps) => 864.9px + 32px = 896.9px occupied
 
-  .roadmapColumn {
+.roadmap {
+  .filters {
     @extend
-      .card,
-      .my-2,
-      .p-0;
-
-    width: 32%;
-    background-color: var(--astuto-grey-light);
-
-    @include media-breakpoint-down(sm) {
-      width: 100%;
-    }
-  }
-
-  .columnHeader {
-    @extend
-      .card-header,
-      .d-flex;
-
-    .columnTitle {
-      color: white;
-      text-transform: uppercase;
-    }
-  }
-
-  .scrollContainer {
-    overflow-y: auto;
-    max-height: 350px;
-  }
-
-  .postLink {
-    @extend .my-2;
-
-    &:hover { text-decoration: none; }
-  }
-
-  .postListItem {
-    @extend
-      .card3D,
       .d-flex,
-      .flex-column,
-      .m-2,
-      .py-2;
+      .mb-4;
+
+    column-gap: 16px;
+
+    .boardSelect, .postStatusSelect {
+      width: 50%;
+    }
+  }
+
+  .roadmapColumns {
+    @extend
+      .d-flex,
+      .justify-content-start,
+      .flex-wrap;
+  
+    gap: 16px;
+  
+    .roadmapColumn {
+      @extend
+        .card,
+        .p-0;
+  
+      width: calc(33% - 9px); // each col takes 1/3 of the space minus 9px (to account for flex-gap: 16px, otherwise it'd wrap)
+      background-color: var(--astuto-grey-light);
+  
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+    }
+  
+    .columnHeader {
+      @extend
+        .card-header,
+        .d-flex;
+  
+      .columnTitle {
+        color: white;
+        text-transform: uppercase;
+      }
+    }
+  
+    .scrollContainer {
+      overflow-y: auto;
+      max-height: 350px;
+    }
+  
+    .postLink {
+      @extend .my-2;
+  
+      &:hover { text-decoration: none; }
+    }
+  
+    .postListItem {
+      @extend
+        .card3D,
+        .d-flex,
+        .flex-column,
+        .m-2,
+        .py-2;
+    }
   }
 }
