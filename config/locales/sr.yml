@@ -1,14 +1,14 @@
 sr:
   common:
     words:
-      or: 'or'
+      or: 'ili'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Naišli smo na problem, pokušajte ponovo'
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
-      url: 'Invalid URL'
-      password: 'Password must have at least %{n} characters'
+      required: '%{attribute} je obavezno'
+      email: 'Neispravna elektronska pošta'
+      url: 'Neispravan URL'
+      password: 'Lozinka mora imati najmanje %{n} karaktera'
       password_mismatch: 'Password and password confirmation must match'
     forms:
       auth:
