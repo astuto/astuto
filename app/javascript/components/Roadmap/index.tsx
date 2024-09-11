@@ -19,6 +19,9 @@ interface State {
 }
 
 class Roadmap extends React.Component<Props, State> {
+  private showBoardFilter: boolean;
+  private showPostStatusFilter: boolean;
+
   constructor(props: Props) {
     super(props);
 
@@ -26,6 +29,11 @@ class Roadmap extends React.Component<Props, State> {
       selectedBoards: props.boards.map(board => ({ value: board.id, label: board.name })),
       selectedPostStatuses: props.postStatuses.map(postStatus => ({ value: postStatus.id, label: postStatus.name, color: postStatus.color })),
     };
+
+    // read query params
+    const queryParams = new URLSearchParams(window.location.search);
+    this.showBoardFilter = queryParams.get('show_board_filter') !== 'false';
+    this.showPostStatusFilter = queryParams.get('show_post_status_filter') !== 'false';
 
     this.setSelectedBoards = this.setSelectedBoards.bind(this);
     this.setSelectedPostStatuses = this.setSelectedPostStatuses.bind(this);
@@ -65,19 +73,25 @@ class Roadmap extends React.Component<Props, State> {
     return (
       <div className="roadmap">
         <div className="filters">
-          <MultiSelect
-            options={boardSelectOptions}
-            defaultValue={selectedBoards}
-            onChange={this.setSelectedBoards}
-            className="boardSelect"
-          />
+          {
+            this.showBoardFilter &&
+              <MultiSelect
+                options={boardSelectOptions}
+                defaultValue={selectedBoards}
+                onChange={this.setSelectedBoards}
+                className="boardSelect"
+              />
+          }
 
-          <MultiSelect
-            options={postStatusSelectOptions}
-            defaultValue={selectedPostStatuses}
-            onChange={this.setSelectedPostStatuses}
-            className="postStatusSelect"
-          />
+          {
+            this.showPostStatusFilter &&
+              <MultiSelect
+                options={postStatusSelectOptions}
+                defaultValue={selectedPostStatuses}
+                onChange={this.setSelectedPostStatuses}
+                className="postStatusSelect"
+              />
+          }
         </div>
 
         <div className="roadmapColumns">

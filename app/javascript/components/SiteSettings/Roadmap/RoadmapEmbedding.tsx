@@ -4,20 +4,56 @@ import I18n from 'i18n-js';
 import Box from '../../common/Box';
 import { MutedText } from '../../common/CustomTexts';
 import CopyToClipboardButton from '../../common/CopyToClipboardButton';
+import Switch from '../../common/Switch';
 
 interface Props {
   embeddedRoadmapUrl: string;
 }
 
 const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
-  const embedCode = `<iframe src="${embeddedRoadmapUrl}" width="640" height="380" seamless frameborder="0"></iframe>`;
+  const [showBoardFilter, setShowBoardFilter] = React.useState(true);
+  const [showPostStatusFilter, setShowPostStatusFilter] = React.useState(false);
+  const [embedCode, setEmbedCode] = React.useState('');
+
+  React.useEffect(() => {
+    const code = `
+      <iframe
+        src="${embeddedRoadmapUrl}?show_board_filter=${showBoardFilter}&show_post_status_filter=${showPostStatusFilter}"
+        width="860"
+        height="600"
+        seamless
+        frameborder="0">
+      </iframe>
+    `;
+    setEmbedCode(code.replace(/\s+/g, ' ').trim());
+  }, [embeddedRoadmapUrl, showBoardFilter, showPostStatusFilter]);
 
   return (
     <Box>
       <h2>{I18n.t('site_settings.roadmap.title_embed')}</h2>
+
+      <Switch
+        label="Show board filter"
+        onClick={() => setShowBoardFilter(!showBoardFilter)}
+        checked={showBoardFilter}
+        htmlId="showBoardFilterCheckbox"
+      />
+
+      <Switch
+        label="Show post status filter"
+        onClick={() => setShowPostStatusFilter(!showPostStatusFilter)}
+        checked={showPostStatusFilter}
+        htmlId="showPostStatusFilterCheckbox"
+      />
+
       <MutedText>{I18n.t('site_settings.roadmap.embed_help')}</MutedText>
 
-      <textarea defaultValue={embedCode} id="roadmapEmbedCode">
+      <textarea
+        value={embedCode}
+        onChange={event => setEmbedCode(event.target.value)}
+        rows={5}
+        id="roadmapEmbedCode"
+      >
       </textarea>
 
       <div>
