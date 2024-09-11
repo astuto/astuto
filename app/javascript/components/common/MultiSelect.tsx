@@ -15,6 +15,18 @@ interface Props {
   className?: string;
 }
 
+const SELECTED_COLOR = '#e5e5e5';
+
+const ColoredOption = props => {
+  return (
+    <components.Option {...props}>
+      <span style={{ backgroundColor: props.data.color, color: 'white', padding: '4px', borderRadius: '4px' }}>
+        {props.data.label}
+      </span>
+    </components.Option>
+  );
+};
+
 const MultiSelect = ({
   options,
   defaultValue,
@@ -33,6 +45,7 @@ const MultiSelect = ({
       isSearchable
       noOptionsMessage={() => I18n.t('common.select_no_options_available')}
       placeholder={I18n.t('common.select_placeholder')}
+      components={{ Option: 'color' in options[0] ? ColoredOption : components.Option }}
       styles={{
         control: (provided, state) => ({
           ...provided,
@@ -45,13 +58,46 @@ const MultiSelect = ({
         }),
         option: (provided, state) => ({
           ...provided,
-          backgroundColor: state.isSelected ? '#e5e5e5' : 'white',
+          backgroundColor: state.isSelected ? SELECTED_COLOR : 'white',
           color: state.isSelected ? '#333333' : 'inherit',
           '&:hover': {
-            backgroundColor: '#333333',
-            color: 'white',
+            filter: 'brightness(0.8)',
+          },
+          '&:active': {
+            backgroundColor: SELECTED_COLOR,
           },
         }),
+        multiValue: (provided, state) => {
+          return {
+            ...provided,
+            marginRight: '4px',
+          };
+        },
+        multiValueLabel: (provided, state) => {
+          const option = options.find(opt => opt.value === state.data.value);
+          return {
+            ...provided,
+            backgroundColor: option.color ? option.color : 'inherit',
+            color: option.color ? 'white' : 'inherit',
+            borderTopRightRadius: '0px',
+            borderBottomRightRadius: '0px',
+          };
+        },
+        multiValueRemove: (provided, state) => {
+          const option = options.find(opt => opt.value === state.data.value);
+            return {
+            ...provided,
+            backgroundColor: option.color ? option.color : 'inherit',
+            color: option.color ? 'white' : 'inherit',
+            borderTopLeftRadius: '0px',
+            borderBottomLeftRadius: '0px',
+            '&:hover': {
+              backgroundColor: option.color ? option.color : '#fbfbfb',
+              color: option.color ? 'white' : 'inherit',
+              filter: 'brightness(0.8)',
+            },
+            };
+        },
       }}
     />
   );

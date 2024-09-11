@@ -7,11 +7,17 @@
       .d-flex,
       .mb-4;
 
-    column-gap: 16px;
+    gap: 16px;
+
+    @include media-breakpoint-down(sm) { flex-direction: column; }
 
     .boardSelect, .postStatusSelect {
       width: 50%;
+
+      @include media-breakpoint-down(sm) { width: 100%; }
     }
+
+    .boardSelect { @extend .align-self-end; }
   }
 
   .roadmapColumns {
