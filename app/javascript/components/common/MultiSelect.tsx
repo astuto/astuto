@@ -45,7 +45,7 @@ const MultiSelect = ({
       isSearchable
       noOptionsMessage={() => I18n.t('common.select_no_options_available')}
       placeholder={I18n.t('common.select_placeholder')}
-      components={{ Option: 'color' in options[0] ? ColoredOption : components.Option }}
+      components={{ Option: (options && options.length > 0 && 'color' in options[0]) ? ColoredOption : components.Option }}
       styles={{
         control: (provided, state) => ({
           ...provided,
