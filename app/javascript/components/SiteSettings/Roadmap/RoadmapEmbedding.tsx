@@ -18,7 +18,7 @@ const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
   React.useEffect(() => {
     const code = `
       <iframe
-        src="${embeddedRoadmapUrl}?show_board_filter=${showBoardFilter}&show_post_status_filter=${showPostStatusFilter}"
+        src="${embeddedRoadmapUrl}?show_board_filter=${showBoardFilter}&show_status_filter=${showPostStatusFilter}"
         width="860"
         height="600"
         seamless

@@ -31,9 +31,9 @@ class Roadmap extends React.Component<Props, State> {
     // read query params
     const queryParams = new URLSearchParams(window.location.search);
     this.showBoardFilter = queryParams.get('show_board_filter') !== 'false';
-    this.showPostStatusFilter = queryParams.get('show_post_status_filter') !== 'false';
+    this.showPostStatusFilter = queryParams.get('show_status_filter') !== 'false';
     this.boardsToShow = queryParams.get('show_boards') ? queryParams.get('show_boards').split(',').map(Number) : props.boards.map(board => board.id);
-    this.postStatusesToShow = queryParams.get('show_post_statuses') ? queryParams.get('show_post_statuses').split(',').map(Number) : props.postStatuses.map(postStatus => postStatus.id);
+    this.postStatusesToShow = queryParams.get('show_statuses') ? queryParams.get('show_statuses').split(',').map(Number) : props.postStatuses.map(postStatus => postStatus.id);
 
     this.state = {
       selectedBoards: props.boards.filter(board => this.boardsToShow.includes(board.id)).map(board => ({ value: board.id, label: board.name })),
