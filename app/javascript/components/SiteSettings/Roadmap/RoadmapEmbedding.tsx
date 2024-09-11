@@ -22,8 +22,7 @@ const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
         width="860"
         height="600"
         seamless
-        frameborder="0">
-      </iframe>
+        frameborder="0"></iframe>
     `;
     setEmbedCode(code.replace(/\s+/g, ' ').trim());
   }, [embeddedRoadmapUrl, showBoardFilter, showPostStatusFilter]);
@@ -33,20 +32,18 @@ const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
       <h2>{I18n.t('site_settings.roadmap.title_embed')}</h2>
 
       <Switch
-        label="Show board filter"
+        label={I18n.t('site_settings.roadmap.show_board_filter')}
         onClick={() => setShowBoardFilter(!showBoardFilter)}
         checked={showBoardFilter}
         htmlId="showBoardFilterCheckbox"
       />
 
       <Switch
-        label="Show post status filter"
+        label={I18n.t('site_settings.roadmap.show_post_status_filter')}
         onClick={() => setShowPostStatusFilter(!showPostStatusFilter)}
         checked={showPostStatusFilter}
         htmlId="showPostStatusFilterCheckbox"
       />
-
-      <MutedText>{I18n.t('site_settings.roadmap.embed_help')}</MutedText>
 
       <textarea
         value={embedCode}
@@ -55,6 +52,8 @@ const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
         id="roadmapEmbedCode"
       >
       </textarea>
+
+      <MutedText>{I18n.t('site_settings.roadmap.embed_help')}</MutedText>
 
       <div>
         <CopyToClipboardButton

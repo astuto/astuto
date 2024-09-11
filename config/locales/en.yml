@@ -222,7 +222,9 @@ en:
       title_embed: 'Embed roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
-      embed_help: 'You can embed the roadmap in your website by copying the code below.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show post status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
