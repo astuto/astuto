@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
   def embedded_roadmap
     @page_title = t('roadmap.title')
     get_roadmap_data
+    @is_embedded = true
     
     render 'static_pages/roadmap', layout: 'embedded'
   end

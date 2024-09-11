@@ -10,9 +10,10 @@ import IBoard from '../../interfaces/IBoard';
 interface Props {
   posts: Array<IPostJSON>;
   boards: Array<IBoard>;
+  openPostsInNewTab: boolean;
 }
 
-const PostList = ({ posts, boards }: Props) => (
+const PostList = ({ posts, boards, openPostsInNewTab }: Props) => (
   <div className="postList">
     {
       posts.length > 0 ?
@@ -21,7 +22,7 @@ const PostList = ({ posts, boards }: Props) => (
             id={post.id}
             title={post.title}
             boardName={boards.find(board => board.id === post.board_id).name}
-
+            openPostInNewTab={openPostsInNewTab}
             key={i}
           />
         ))

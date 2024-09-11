@@ -11,6 +11,7 @@ interface Props {
   postStatuses: Array<IPostStatus>;
   posts: Array<IPostJSON>;
   boards: Array<IBoard>;
+  isEmbedded: boolean;
 }
 
 interface State {
@@ -100,6 +101,7 @@ class Roadmap extends React.Component<Props, State> {
               postStatus={postStatus}
               posts={filteredPosts.filter(post => post.post_status_id === postStatus.id)}
               boards={boards}
+              openPostsInNewTab={this.props.isEmbedded}
               key={i}
             />
           ))}
