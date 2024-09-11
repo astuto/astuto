@@ -47,6 +47,8 @@ en:
       one: '1 comment'
       other: '%{count} comments'
     no_status: 'No status'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -70,6 +72,7 @@ en:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'just now'
       minutes:
@@ -216,8 +219,12 @@ en:
     roadmap:
       title: 'Roadmap'
       title2: 'Not in roadmap'
+      title_embed: 'Embed roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'

@@ -2,14 +2,16 @@ import * as React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import I18n from 'i18n-js';
 
-import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import Box from '../../common/Box';
+import RoadmapEmbedding from './RoadmapEmbedding';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 import RoadmapPostStatus from './RoadmapPostStatus';
 import IPostStatus from '../../../interfaces/IPostStatus';
+import { PostStatusesState } from "../../../reducers/postStatusesReducer";
 import { MutedText } from '../../common/CustomTexts';
 
 interface Props {
+  embeddedRoadmapUrl: string,
   authenticityToken: string,
   postStatuses: PostStatusesState,
   settingsAreUpdating: boolean,
@@ -83,7 +85,7 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
   }
 
   render() {
-    const { postStatuses, settingsAreUpdating, settingsError } = this.props;
+    const { embeddedRoadmapUrl, postStatuses, settingsAreUpdating, settingsError } = this.props;
     const { isDragging } = this.state;
 
     let statusesInRoadmap = postStatuses.items.filter(postStatus => postStatus.showInRoadmap);
@@ -157,6 +159,8 @@ class RoadmapSiteSettingsP extends React.Component<Props, State> {
             )}
           </Droppable>
         </Box>
+
+        <RoadmapEmbedding embeddedRoadmapUrl={embeddedRoadmapUrl} />
 
         <SiteSettingsInfoBox areUpdating={settingsAreUpdating || postStatuses.areLoading} error={settingsError} />
       </DragDropContext>
