@@ -22,19 +22,23 @@ interface State {
 class Roadmap extends React.Component<Props, State> {
   private showBoardFilter: boolean;
   private showPostStatusFilter: boolean;
+  private boardsToShow: Array<number>;
+  private postStatusesToShow: Array<number>;
 
   constructor(props: Props) {
     super(props);
-
-    this.state = {
-      selectedBoards: props.boards.map(board => ({ value: board.id, label: board.name })),
-      selectedPostStatuses: props.postStatuses.map(postStatus => ({ value: postStatus.id, label: postStatus.name, color: postStatus.color })),
-    };
 
     // read query params
     const queryParams = new URLSearchParams(window.location.search);
     this.showBoardFilter = queryParams.get('show_board_filter') !== 'false';
     this.showPostStatusFilter = queryParams.get('show_post_status_filter') !== 'false';
+    this.boardsToShow = queryParams.get('show_boards') ? queryParams.get('show_boards').split(',').map(Number) : props.boards.map(board => board.id);
+    this.postStatusesToShow = queryParams.get('show_post_statuses') ? queryParams.get('show_post_statuses').split(',').map(Number) : props.postStatuses.map(postStatus => postStatus.id);
+
+    this.state = {
+      selectedBoards: props.boards.filter(board => this.boardsToShow.includes(board.id)).map(board => ({ value: board.id, label: board.name })),
+      selectedPostStatuses: props.postStatuses.filter(postStatus => this.postStatusesToShow.includes(postStatus.id)).map(postStatus => ({ value: postStatus.id, label: postStatus.name, color: postStatus.color })),
+    };
 
     this.setSelectedBoards = this.setSelectedBoards.bind(this);
     this.setSelectedPostStatuses = this.setSelectedPostStatuses.bind(this);
@@ -58,8 +62,8 @@ class Roadmap extends React.Component<Props, State> {
     const { postStatuses, posts, boards } = this.props;
     const { selectedBoards, selectedPostStatuses } = this.state;
 
-    const boardSelectOptions = boards.map(board => ({ value: board.id, label: board.name }));
-    const postStatusSelectOptions = postStatuses.map(postStatus => ({ value: postStatus.id, label: postStatus.name, color: postStatus.color }));
+    const boardSelectOptions = boards.filter(board => this.boardsToShow.includes(board.id)).map(board => ({ value: board.id, label: board.name }));
+    const postStatusSelectOptions = postStatuses.filter(postStatus => this.postStatusesToShow.includes(postStatus.id)).map(postStatus => ({ value: postStatus.id, label: postStatus.name, color: postStatus.color }));
 
     // Filter by board
     const filteredPosts = posts.filter(post =>
