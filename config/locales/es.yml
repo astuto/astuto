@@ -47,6 +47,8 @@ es:
       one: '1 comentario'
       other: '%{count} comentarios'
     no_status: 'Sin estado'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Cargando...'
     confirmation: '¿Está seguro?'
     confirmation_board_delete: 'Advertencia: si hay mensajes de retroalimentación en este foro, entonces TODOS estos mensajes serán borrados también. Esta acción no se puede deshacer.'
@@ -70,6 +72,7 @@ es:
       clear: 'Restablecer'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'ahora mismo'
       minutes:
@@ -216,8 +219,12 @@ es:
     roadmap:
       title: 'Hoja de ruta'
       title2: 'No en la hoja de ruta'
+      title_embed: 'Embed roadmap'
       empty: 'La hoja de ruta está vacía.'
       help: 'Puedes agregar estados a la hoja de ruta arrastrándolos desde la sección de abajo. Si en cambio quieres crear un nuevo estado o cambiar su orden, ve a Configuración del sitio > Estados.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
