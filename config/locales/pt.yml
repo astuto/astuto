@@ -47,6 +47,8 @@ pt:
       one: '1 (um) comentário'
       other: '%{count} comentários'
     no_status: 'Nenhum status'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Carregando...'
     confirmation: 'Tem certeza?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -70,6 +72,7 @@ pt:
       clear: 'Limpar'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'agora mesmo'
       minutes:
@@ -216,8 +219,12 @@ pt:
     roadmap:
       title: 'Mapa'
       title2: 'Não está no mapa'
+      title_embed: 'Embed roadmap'
       empty: 'O mapa está vazio.'
       help: 'Você pode adicionar status ao mapa arrastando-os da seção abaixo.  Se, em vez disso, você quiser criar um novo status ou alterar sua ordem, vá para Configurações do site > Status.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
