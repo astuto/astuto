@@ -46,6 +46,8 @@ vi:
     comments_number:
       other: '%{count} bình luận'
     no_status: 'Không có trạng thái'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Đang tải...'
     confirmation: 'Bạn có chắc chắn?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -69,6 +71,7 @@ vi:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'Vừa xong'
       minutes:
@@ -210,8 +213,12 @@ vi:
     roadmap:
       title: 'Lộ trình'
       title2: 'Không có trong lộ trình'
+      title_embed: 'Embed roadmap'
       empty: 'Lộ trình rỗng.'
       help: 'Bạn có thể thêm trạng thái vào lộ trình bằng cách kéo chúng từ phần dưới. Nếu bạn muốn tạo trạng thái mới hoặc thay đổi thứ tự, hãy đến Cài đặt trang > Trạng thái.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
