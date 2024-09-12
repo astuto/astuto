@@ -49,6 +49,8 @@ ru:
       many: '%{count} комментариев'
       other: '%{count} комментариев'
     no_status: 'Нет статуса'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Загрузка...'
     confirmation: 'Вы уверены?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -72,6 +74,7 @@ ru:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'только что'
       minutes:
@@ -228,8 +231,12 @@ ru:
     roadmap:
       title: 'Дорожная Карта'
       title2: 'Не в дорожной карте'
+      title_embed: 'Embed roadmap'
       empty: 'Дорожная карта пуста.'
       help: 'Вы можете добавить статусы к дорожной карте, перетаскивая их из раздела ниже. Если вы хотите создать новый статус или изменить его порядок, перейдите в Настройки сайта > Статусы.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
