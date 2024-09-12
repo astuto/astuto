@@ -47,6 +47,8 @@ fr:
       one: '1 commentaire'
       other: '%{count} commentaires'
     no_status: 'Pas de statut'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Chargement ...'
     confirmation: 'Vous êtes sûr ?'
     confirmation_board_delete: 'Attention : s''il y a des commentaires dans ce tableau, alors TOUS ces messages seront également supprimés. Cette action ne peut pas être annulée.'
@@ -70,6 +72,7 @@ fr:
       clear: 'Effacer'
       approve: 'Approuver'
       reject: 'Rejeter'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'à l’instant'
       minutes:
@@ -216,8 +219,12 @@ fr:
     roadmap:
       title: 'Feuille de route'
       title2: 'Pas dans la feuille de route'
+      title_embed: 'Embed roadmap'
       empty: 'La feuille de route est vide.'
       help: 'Vous pouvez ajouter des statuts à la feuille de route en les faisant glisser depuis la section ci-dessous. Si vous voulez plutôt créer un nouveau statut ou modifier leur commande, allez dans Paramètres du site > Statuts.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'
