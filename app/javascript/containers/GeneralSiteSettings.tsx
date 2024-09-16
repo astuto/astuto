@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import GeneralSiteSettingsP from "../components/SiteSettings/General/GeneralSiteSettingsP";
 import { updateTenant } from "../actions/Tenant/updateTenant";
 import { State } from "../reducers/rootReducer";
-import { TenantSettingBrandDisplay, TenantSettingCollapseBoardsInHeader, TenantSettingFeedbackApprovalPolicy } from "../interfaces/ITenantSetting";
+import {
+  TenantSettingBrandDisplay,
+  TenantSettingCollapseBoardsInHeader,
+  TenantSettingFeedbackApprovalPolicy,
+  TenantSettingLogoLinksTo,
+} from "../interfaces/ITenantSetting";
 
 const mapStateToProps = (state: State) => ({
   areUpdating: state.siteSettings.general.areUpdating,
@@ -22,6 +27,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     isPrivate: boolean,
     allowAnonymousFeedback: boolean,
     feedbackApprovalPolicy: TenantSettingFeedbackApprovalPolicy,
+    logoLinksTo: TenantSettingLogoLinksTo,
+    logoCustomUrl: string,
     showRoadmapInHeader: boolean,
     collapseBoardsInHeader: TenantSettingCollapseBoardsInHeader,
     showVoteCount: boolean,
@@ -39,6 +46,8 @@ const mapDispatchToProps = (dispatch: any) => ({
         is_private: isPrivate,
         allow_anonymous_feedback: allowAnonymousFeedback,
         feedback_approval_policy: feedbackApprovalPolicy,
+        logo_links_to: logoLinksTo,
+        logo_custom_url: logoCustomUrl,
         show_roadmap_in_header: showRoadmapInHeader,
         collapse_boards_in_header: collapseBoardsInHeader,
         show_vote_count: showVoteCount,
