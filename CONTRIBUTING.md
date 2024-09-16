@@ -36,8 +36,8 @@ In order to contribute to Astuto, you need to run Astuto on your computer in dev
 0. Ensure you have Docker and Docker Compose installed
 1. Clone this repository
 2. Edit `docker-compose.yml` if you want to change the value of some environment variables. Note that this `docker-compose.yml` is already configured to run Astuto in development mode (`target: dev`).
-3. Run `docker-compose build`
-4. Run `docker-compose up`
+3. Run `docker compose build`
+4. Run `docker compose up`
 5. You should now have a running instance of Astuto at `localhost:3000`. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
 
 ### Technologies
