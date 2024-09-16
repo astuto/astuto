@@ -2,6 +2,7 @@ require 'uri'
 
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include HeaderHelper
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

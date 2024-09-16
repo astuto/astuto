@@ -12,6 +12,12 @@ class TenantSetting < ApplicationRecord
     :no_name_no_logo
   ]
 
+  enum logo_links_to: [
+    :root_page,
+    :custom_url,
+    :nothing
+  ]
+
   enum collapse_boards_in_header: [
     :no_collapse,
     :always_collapse

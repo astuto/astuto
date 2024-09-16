@@ -1,7 +1,7 @@
 <nav class="header">
   <div class="container">
     <%=
-      link_to @header_full_urls ? get_url_for(method(:root_url)) : root_path, class: 'brand' do
+      link_to get_url_for_logo, class: "brand#{@tenant_setting.logo_links_to == 'nothing' ? ' brandDisabled' : ''}", tabindex: @tenant_setting.logo_links_to == 'nothing' ? -1 : 0 do
         app_name = content_tag :span, @tenant.site_name
         logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo', skip_pipeline: true)
 

@@ -56,6 +56,18 @@
     .anonymousFeedbackLink {
       @extend .my-2;
     }
+
+    /* style lists */
+    ul {
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      li {
+        text-align: left;
+        position: relative;
+        left: -8px;
+      }
+    }
   }
   
   .sidebarFilters {
