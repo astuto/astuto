@@ -4,7 +4,7 @@
 
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <% unless Current.tenant.tenant_setting.email_registration_policy == "none_allowed" %>
+    <% if Current.tenant.tenant_setting.email_registration_policy != "none_allowed" || (params[:email].present? && params[:invitation_token].present?) %>
       <div class="form-group">
         <%= f.label :full_name, class: "sr-only" %>
         <%= f.text_field :full_name,
@@ -19,7 +19,10 @@
           autocomplete: "email",
           placeholder: t('common.forms.auth.email'),
           required: true,
-          class: "form-control" %>
+          class: "form-control",
+          value: params[:email],
+          readonly: params[:email].present?,
+          tabindex: (params[:email].present? ? -1 : nil) %>
       </div>
 
       <div class="form-group">
@@ -37,6 +40,10 @@
           required: true,
           class: "form-control" %>
       </div>
+
+      <% if params[:invitation_token].present? %>
+        <%= f.hidden_field :invitation_token, value: params[:invitation_token] %>
+      <% end %>
 
       <div class="actions">
         <%= f.submit t('common.forms.auth.sign_up'), class: "btnPrimary btn-block" %>

@@ -2,11 +2,12 @@ require 'uri'
 
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include HeaderHelper
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :check_tenant_is_private, if: :should_check_tenant_is_private?
   
   prepend_before_action :load_tenant_data
@@ -31,8 +32,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      additional_permitted_parameters = [:full_name, :notifications_enabled]
+    def configure_devise_permitted_parameters
+      additional_permitted_parameters = [:full_name, :notifications_enabled, :invitation_token]
 
       devise_parameter_sanitizer.permit(:sign_up, keys: additional_permitted_parameters)
       devise_parameter_sanitizer.permit(:account_update, keys: additional_permitted_parameters)
@@ -63,6 +64,18 @@ class ApplicationController < ActionController::Base
 
       # Set tenant locale
       I18n.locale = @tenant.locale
+
+      if @tenant_setting.use_browser_locale
+        user_preferred_language = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+        available_locales = I18n.available_locales.map { |locale| locale.to_s[0, 2] }
+
+        if available_locales.include?(user_preferred_language)
+          # special cases
+          user_preferred_language = 'zh-CN' if user_preferred_language == 'zh'
+             
+          I18n.locale = user_preferred_language
+        end
+      end
     end
 
     def load_oauths

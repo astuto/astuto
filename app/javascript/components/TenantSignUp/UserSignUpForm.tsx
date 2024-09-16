@@ -102,13 +102,15 @@ const UserSignUpForm = ({
 
           <div className="formRow">
             <input
-              {...register('fullName', { required: true, minLength: 2 })}
+              {...register('fullName', { required: true, minLength: 2, maxLength: 64 })}
               autoFocus
               placeholder={getLabel('user', 'full_name')}
               id="userFullName"
               className="formControl"
             />
-            <DangerText>{errors.fullName &&  getValidationMessage('required', 'user', 'full_name')}</DangerText>
+            <DangerText>{errors.fullName?.type === 'required' &&  getValidationMessage('required', 'user', 'full_name')}</DangerText>
+            <DangerText>{errors.fullName?.type === 'minLength' && (getLabel('user', 'full_name') + ' ' + I18n.t('activerecord.errors.messages.too_short', { count: 2 }))}</DangerText>
+            <DangerText>{errors.fullName?.type === 'maxLength' && (getLabel('user', 'full_name') + ' ' + I18n.t('activerecord.errors.messages.too_long', { count: 64 }))}</DangerText>
           </div>
 
           <div className="formRow">

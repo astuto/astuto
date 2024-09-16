@@ -30,6 +30,16 @@ export type TenantSettingFeedbackApprovalPolicy =
   typeof TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_NEVER_REQUIRE_APPROVAL |
   typeof TENANT_SETTING_FEEDBACK_APPROVAL_POLICY_ALWAYS_REQUIRE_APPROVAL;
 
+// Logo links to
+export const TENANT_SETTING_LOGO_LINKS_TO_ROOT_PAGE = 'root_page';
+export const TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL = 'custom_url';
+export const TENANT_SETTING_LOGO_LINKS_TO_NOTHING = 'nothing';
+
+export type TenantSettingLogoLinksTo =
+  typeof TENANT_SETTING_LOGO_LINKS_TO_ROOT_PAGE |
+  typeof TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL |
+  typeof TENANT_SETTING_LOGO_LINKS_TO_NOTHING;
+
 // Collapse boards in header
 export const TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE = 'no_collapse';
 export const TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE = 'always_collapse';
@@ -41,6 +51,7 @@ export type TenantSettingCollapseBoardsInHeader =
 
 interface ITenantSetting {
   brand_display?: TenantSettingBrandDisplay;
+  use_browser_locale?: boolean;
   root_board_id?: number;
   is_private?: boolean;
   email_registration_policy?: TenantSettingEmailRegistrationPolicy;
@@ -52,6 +63,8 @@ interface ITenantSetting {
   show_roadmap_in_header?: boolean;
   show_powered_by?: boolean;
   collapse_boards_in_header?: TenantSettingCollapseBoardsInHeader;
+  logo_links_to?: TenantSettingLogoLinksTo;
+  logo_custom_url?: string;
   custom_css?: string;
 }
 

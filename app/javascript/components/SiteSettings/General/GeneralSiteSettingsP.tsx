@@ -13,6 +13,9 @@ import {
   TENANT_SETTING_BRAND_DISPLAY_NONE,
   TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE,
   TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE,
+  TENANT_SETTING_LOGO_LINKS_TO_ROOT_PAGE,
+  TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL,
+  TENANT_SETTING_LOGO_LINKS_TO_NOTHING,
 } from '../../../interfaces/ITenantSetting';
 import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
@@ -25,11 +28,14 @@ export interface ISiteSettingsGeneralForm {
   siteLogo: string;
   brandDisplaySetting: string;
   locale: string;
+  useBrowserLocale: boolean;
   rootBoardId?: string;
   customDomain?: string;
   isPrivate: boolean;
   allowAnonymousFeedback: boolean;
   feedbackApprovalPolicy: string;
+  logoLinksTo: string;
+  logoCustomUrl?: string;
   showRoadmapInHeader: boolean;
   collapseBoardsInHeader: string;
   showVoteCount: boolean;
@@ -51,11 +57,14 @@ interface Props {
     siteLogo: string,
     brandDisplaySetting: string,
     locale: string,
+    useBrowserLocale: boolean,
     rootBoardId: number,
     customDomain: string,
     isPrivate: boolean,
     allowAnonymousFeedback: boolean,
     feedbackApprovalPolicy: string,
+    logoLinksTo: string,
+    logoCustomUrl: string,
     showRoadmapInHeader: boolean,
     collapseBoardsInHeader: string,
     showVoteCount: boolean,
@@ -86,11 +95,14 @@ const GeneralSiteSettingsP = ({
       siteLogo: originForm.siteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
+      useBrowserLocale: originForm.useBrowserLocale,
       rootBoardId: originForm.rootBoardId,
       customDomain: originForm.customDomain,
       isPrivate: originForm.isPrivate,
       allowAnonymousFeedback: originForm.allowAnonymousFeedback,
       feedbackApprovalPolicy: originForm.feedbackApprovalPolicy,
+      logoLinksTo: originForm.logoLinksTo,
+      logoCustomUrl: originForm.logoCustomUrl,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
       collapseBoardsInHeader: originForm.collapseBoardsInHeader,
       showVoteCount: originForm.showVoteCount,
@@ -105,11 +117,14 @@ const GeneralSiteSettingsP = ({
       data.siteLogo,
       data.brandDisplaySetting,
       data.locale,
+      data.useBrowserLocale,
       Number(data.rootBoardId),
       data.customDomain,
       data.isPrivate,
       data.allowAnonymousFeedback,
       data.feedbackApprovalPolicy,
+      data.logoLinksTo,
+      data.logoCustomUrl,
       data.showRoadmapInHeader,
       data.collapseBoardsInHeader,
       data.showVoteCount,
@@ -214,6 +229,16 @@ const GeneralSiteSettingsP = ({
           </div>
 
           <div className="formGroup">
+            <div className="checkboxSwitch">
+              <input {...register('useBrowserLocale')} type="checkbox" id="use_browser_locale_checkbox" />
+              <label htmlFor="use_browser_locale_checkbox">{ getLabel('tenant_setting', 'use_browser_locale') }</label>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.use_browser_locale_help') }
+              </SmallMutedText>
+            </div>
+          </div>
+
+          <div className="formGroup">
             <label htmlFor="rootBoardId">{ getLabel('tenant_setting', 'root_board_id') }</label>
             <select
               {...register('rootBoardId')}
@@ -287,29 +312,59 @@ const GeneralSiteSettingsP = ({
 
             <div className="formGroup">
               <label htmlFor="feedbackApprovalPolicy">{ getLabel('tenant_setting', 'feedback_approval_policy') }</label>
-                <select
-                  {...register('feedbackApprovalPolicy')}
-                  id="feedbackApprovalPolicy"
-                  className="selectPicker"
-                >
-                  <option value="anonymous_require_approval">
-                    { I18n.t('site_settings.general.feedback_approval_policy_anonymous_require_approval') }
-                  </option>
-                  <option value="never_require_approval">
-                    { I18n.t('site_settings.general.feedback_approval_policy_never_require_approval') }
-                  </option>
-                  <option value="always_require_approval">
-                    { I18n.t('site_settings.general.feedback_approval_policy_always_require_approval') }
-                  </option>
-                </select>
-                <SmallMutedText>
-                  { I18n.t('site_settings.general.feedback_approval_policy_help') }
-                </SmallMutedText>
+              <select
+                {...register('feedbackApprovalPolicy')}
+                id="feedbackApprovalPolicy"
+                className="selectPicker"
+              >
+                <option value="anonymous_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_anonymous_require_approval') }
+                </option>
+                <option value="never_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_never_require_approval') }
+                </option>
+                <option value="always_require_approval">
+                  { I18n.t('site_settings.general.feedback_approval_policy_always_require_approval') }
+                </option>
+              </select>
+              <SmallMutedText>
+                { I18n.t('site_settings.general.feedback_approval_policy_help') }
+              </SmallMutedText>
             </div>
           </div>
 
           <div id="header" className="settingsGroup">
             <h4>{ I18n.t('site_settings.general.subtitle_header') }</h4>
+
+            <div className="formGroup">
+              <label htmlFor="logoLinksTo">{ getLabel('tenant_setting', 'logo_links_to') }</label>
+              <select
+                {...register('logoLinksTo')}
+                id="logoLinksTo"
+                className="selectPicker"
+              >
+                <option value={TENANT_SETTING_LOGO_LINKS_TO_ROOT_PAGE}>
+                  { I18n.t('site_settings.general.logo_links_to_root_page') }
+                </option>
+                <option value={TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL}>
+                  { I18n.t('site_settings.general.logo_links_to_custom_url') }
+                </option>
+                <option value={TENANT_SETTING_LOGO_LINKS_TO_NOTHING}>
+                  { I18n.t('site_settings.general.logo_links_to_nothing') }
+                </option>
+              </select>
+            </div>
+
+            { watch('logoLinksTo') === TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL &&
+              <div className="formGroup">
+                <label htmlFor="logoCustomUrl">{ getLabel('tenant_setting', 'logo_custom_url') }</label>
+                <input
+                  {...register('logoCustomUrl')}
+                  id="logoCustomUrl"
+                  className="formControl"
+                />
+              </div>
+            }
             
             <div className="formGroup">
               <div className="checkboxSwitch">
@@ -320,18 +375,18 @@ const GeneralSiteSettingsP = ({
             
             <div className="formGroup">
               <label htmlFor="collapseBoardsInHeader">{ getLabel('tenant_setting', 'collapse_boards_in_header') }</label>
-                <select
-                  {...register('collapseBoardsInHeader')}
-                  id="collapseBoardsInHeader"
-                  className="selectPicker"
-                >
-                  <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE}>
-                    { I18n.t('site_settings.general.collapse_boards_in_header_no_collapse') }
-                  </option>
-                  <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE}>
-                    { I18n.t('site_settings.general.collapse_boards_in_header_always_collapse') }
-                  </option>
-                </select>
+              <select
+                {...register('collapseBoardsInHeader')}
+                id="collapseBoardsInHeader"
+                className="selectPicker"
+              >
+                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_NO_COLLAPSE}>
+                  { I18n.t('site_settings.general.collapse_boards_in_header_no_collapse') }
+                </option>
+                <option value={TENANT_SETTING_COLLAPSE_BOARDS_IN_HEADER_ALWAYS_COLLAPSE}>
+                  { I18n.t('site_settings.general.collapse_boards_in_header_always_collapse') }
+                </option>
+              </select>
             </div>
           </div>
 

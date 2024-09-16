@@ -10,6 +10,38 @@ class RegistrationsController < Devise::RegistrationsController
     ts = Current.tenant.tenant_setting
     email = sign_up_params[:email]
 
+    # Handle invitations
+    is_invitation = sign_up_params[:invitation_token].present?
+    is_invitation_valid = true
+    invitation = nil
+    if is_invitation
+      invitation = Invitation.find_by(email: email)
+      
+      if invitation.nil? || invitation.token_digest != Digest::SHA256.hexdigest(sign_up_params[:invitation_token]) || invitation.accepted_at.present?
+        flash[:alert] = t('errors.unauthorized')
+        redirect_to new_user_registration_path and return
+      end
+
+      ActiveRecord::Base.transaction do
+        invitation.accepted_at = Time.now
+        invitation.save!
+
+        # Sign up user without confirmation email and log them in
+        user = User.new(email: email, full_name: sign_up_params[:full_name], password: sign_up_params[:password], password_confirmation: sign_up_params[:password], status: "active")
+        user.skip_confirmation
+        user.save!
+        sign_in(user)
+
+        flash[:notice] = t('devise.registrations.signed_up')
+        redirect_to root_path
+      end
+
+      return
+    end
+
+    # ... if not an invitation, continue with normal registration ...
+    
+    # Check if email registration is allowed
     if ts.email_registration_policy == "none_allowed" || (ts.email_registration_policy == "custom_domains_allowed" && !allowed_domain?(email))
       flash[:alert] = t('errors.email_domain_not_allowed')
       redirect_to new_user_registration_path and return

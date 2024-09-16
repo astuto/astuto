@@ -1,0 +1,93 @@
+.newInvitationsBox {
+  textarea#body {
+    height: 280px;
+  }
+
+  .submitFormDiv {
+    button {
+      @extend .mr-4;
+
+      vertical-align: text-bottom;
+    }
+
+    .testInvitation {
+      @extend .mt-2;
+      
+      display: inline-block;
+  
+      a.actionLink { display: inline-block; }
+    }
+  }
+}
+
+.pastInvitationsBox {
+  .filterInvitationsNav {
+    @extend
+      .nav,
+      .nav-pills,
+      .align-self-center,
+      .px-2,
+      .py-1,
+      .mt-4;
+  
+    background-color: var(--astuto-grey-light);
+    border-radius: 0.5rem;
+  
+    .nav-item {
+      cursor: pointer;
+    }
+  
+    .nav-link {
+      @extend
+        .px-3,
+        .py-1;
+  
+      color: var(--astuto-black);
+  
+      &.active {
+        color: var(--astuto-black);
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  
+  ul.invitationsList {
+    @extend
+      .scroll-shadows,
+      .mt-4,
+      .pl-0;
+  
+    list-style: none;
+    height: 500px;
+    overflow-y: scroll;
+  
+    li.invitationListItem {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .my-2,
+        .p-2;
+  
+      div.invitationUserInfo {
+        @extend .d-flex;
+  
+        span.invitationEmail {
+          @extend
+            .align-self-center,
+            .ml-4;
+  
+          font-size: 18px;
+        }
+      }
+  
+      div.invitationInfo {
+        @extend .d-flex;
+  
+        span.invitationAcceptedAt, span.invitationSentAt {
+          @extend .align-self-center, .mutedText;
+        }
+      }
+    }
+  }
+}

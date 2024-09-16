@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     root to: 'static_pages#root'
     
     get '/roadmap', to: 'static_pages#roadmap'
+    get '/embedded_roadmap', to: 'static_pages#embedded_roadmap'
     get '/pending-tenant', to: 'static_pages#pending_tenant'
     get '/blocked-tenant', to: 'static_pages#blocked_tenant'
     
@@ -66,6 +67,9 @@ Rails.application.routes.draw do
     resources :post_statuses, only: [:index, :create, :update, :destroy] do
       patch 'update_order', on: :collection
     end
+
+    resources :invitations, only: [:create]
+    post '/invitations/test', to: 'invitations#test', as: :invitation_test
   
     namespace :site_settings do
       get 'general'
@@ -73,6 +77,7 @@ Rails.application.routes.draw do
       get 'boards'
       get 'post_statuses'
       get 'roadmap'
+      get 'invitations'
       get 'appearance'
     end
 

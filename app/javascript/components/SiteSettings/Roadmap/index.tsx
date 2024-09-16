@@ -7,6 +7,7 @@ import createStoreHelper from '../../../helpers/createStore';
 import { State } from '../../../reducers/rootReducer';
 
 interface Props {
+  embeddedRoadmapUrl: string;
   authenticityToken: string;
 }
 
@@ -23,6 +24,7 @@ class RoadmapSiteSettingsRoot extends React.Component<Props> {
     return (
       <Provider store={this.store}>
         <RoadmapSiteSettings
+          embeddedRoadmapUrl={this.props.embeddedRoadmapUrl}
           authenticityToken={this.props.authenticityToken}
         />
       </Provider>
