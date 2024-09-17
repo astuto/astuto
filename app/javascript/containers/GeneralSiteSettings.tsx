@@ -33,6 +33,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     collapseBoardsInHeader: TenantSettingCollapseBoardsInHeader,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
+    hideUnusedStatusesInFilterByStatus: boolean,
     showPoweredBy: boolean,
     authenticityToken: string
   ): Promise<any> {
@@ -52,6 +53,7 @@ const mapDispatchToProps = (dispatch: any) => ({
         collapse_boards_in_header: collapseBoardsInHeader,
         show_vote_count: showVoteCount,
         show_vote_button_in_board: showVoteButtonInBoard,
+        hide_unused_statuses_in_filter_by_status: hideUnusedStatusesInFilterByStatus,
         show_powered_by: showPoweredBy,
       },
       locale,

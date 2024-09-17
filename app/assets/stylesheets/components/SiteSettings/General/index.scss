@@ -4,4 +4,8 @@
 
     scroll-margin-top: 96px;
   }
+
+  .generalSiteSettingsSubmit {
+    @extend .mb-4;
+  }
 }

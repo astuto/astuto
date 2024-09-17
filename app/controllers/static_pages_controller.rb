@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  include BoardsHelper
+
   skip_before_action :load_tenant_data, only: [:showcase, :pending_tenant, :blocked_tenant]
   before_action :allow_iframe_embedding, only: [:embedded_roadmap]
 
@@ -7,6 +9,7 @@ class StaticPagesController < ApplicationController
 
     if @board
       @page_title = @board.name
+      @post_statuses_to_show_in_filter = get_post_statuses_to_show_in_filter
       render 'boards/show'
     else
       @page_title = t('roadmap.title')

@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   include ApplicationHelper
+  include BoardsHelper
   
   before_action :authenticate_user!, only: [:create, :update, :update_order, :destroy]
 
@@ -12,6 +13,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.friendly.find(params[:id])
     @page_title = @board.name
+    @post_statuses_to_show_in_filter = get_post_statuses_to_show_in_filter
   end
 
   def create
