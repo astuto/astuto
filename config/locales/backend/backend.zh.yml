@@ -128,6 +128,8 @@ zh-CN:
         show_vote_button_in_board: '在版块页面显示投票按钮'
         show_powered_by: '显示 "技术支持: Astuto"'
         root_board_id: '首页'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: '在页眉显示开发路线图链接'
         collapse_boards_in_header: '折叠页眉中的版块'
         custom_css: '自定义 CSS'
