@@ -135,6 +135,8 @@ pt:
         show_vote_button_in_board: 'Mostrar botões de voto na página do quadro'
         show_powered_by: 'Mostrar "Desenvolvido por Astuto"'
         root_board_id: 'Página principal'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: 'Mostrar link do planejamento no cabeçalho'
         collapse_boards_in_header: 'Recolher quadros no cabeçalho'
         custom_css: 'CSS Personalizado'
