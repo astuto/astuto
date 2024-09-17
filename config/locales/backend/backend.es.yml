@@ -135,6 +135,8 @@ es:
         show_vote_button_in_board: 'Mostrar botones de voto en la página del foro'
         show_powered_by: 'Mostrar "Powered by Astuto"'
         root_board_id: 'Página raíz'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: 'Mostrar enlace de mapa de ruta en el encabezado'
         collapse_boards_in_header: 'Colapsar foros en el encabezado'
         custom_css: 'CSS personalizado'
