@@ -135,6 +135,8 @@ de:
         show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
         show_powered_by: '"Powered by Astuto" anzeigen'
         root_board_id: 'Root-Page'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: 'Zeige den Übersichts-Link in der Kopfzeile an'
         collapse_boards_in_header: 'Stelle die Board-Übersicht in der Kopfzeile untereinander dar'
         custom_css: 'Benutzerdefiniertes CSS'
