@@ -135,6 +135,8 @@ fr:
         show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
         show_powered_by: 'Afficher "Powered by Astuto"'
         root_board_id: 'Page racine'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: 'Afficher le lien de la roadmap dans l''en-tête'
         collapse_boards_in_header: 'Fusionner les tableaux dans l''en-tête'
         custom_css: 'Custom CSS'
