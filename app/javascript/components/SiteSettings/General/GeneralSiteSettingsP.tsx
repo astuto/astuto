@@ -40,6 +40,7 @@ export interface ISiteSettingsGeneralForm {
   collapseBoardsInHeader: string;
   showVoteCount: boolean;
   showVoteButtonInBoard: boolean;
+  hideUnusedStatusesInFilterByStatus: boolean;
   showPoweredBy: boolean;
 }
 
@@ -69,6 +70,7 @@ interface Props {
     collapseBoardsInHeader: string,
     showVoteCount: boolean,
     showVoteButtonInBoard: boolean,
+    hideUnusedStatusesInFilterByStatus: boolean,
     showPoweredBy: boolean,
     authenticityToken: string
   ): Promise<any>;
@@ -107,6 +109,7 @@ const GeneralSiteSettingsP = ({
       collapseBoardsInHeader: originForm.collapseBoardsInHeader,
       showVoteCount: originForm.showVoteCount,
       showVoteButtonInBoard: originForm.showVoteButtonInBoard,
+      hideUnusedStatusesInFilterByStatus: originForm.hideUnusedStatusesInFilterByStatus,
       showPoweredBy: originForm.showPoweredBy,
     },
   });
@@ -129,6 +132,7 @@ const GeneralSiteSettingsP = ({
       data.collapseBoardsInHeader,
       data.showVoteCount,
       data.showVoteButtonInBoard,
+      data.hideUnusedStatusesInFilterByStatus,
       data.showPoweredBy,
       authenticityToken
     ).then(res => {
@@ -344,7 +348,7 @@ const GeneralSiteSettingsP = ({
                 className="selectPicker"
               >
                 <option value={TENANT_SETTING_LOGO_LINKS_TO_ROOT_PAGE}>
-                  { I18n.t('site_settings.general.logo_links_to_root_page') }
+                  { I18n.t('site_settings.general.logo_links_to_root_page') } ({watch('rootBoardId') === '0' ? I18n.t('roadmap.title') : boards.find(board => board.id === Number(watch('rootBoardId')))?.name})
                 </option>
                 <option value={TENANT_SETTING_LOGO_LINKS_TO_CUSTOM_URL}>
                   { I18n.t('site_settings.general.logo_links_to_custom_url') }
@@ -416,6 +420,16 @@ const GeneralSiteSettingsP = ({
 
             <div className="formGroup">
               <div className="checkboxSwitch">
+                <input {...register('hideUnusedStatusesInFilterByStatus')} type="checkbox" id="hide_unused_statuses_in_filter_by_status_checkbox" />
+                <label htmlFor="hide_unused_statuses_in_filter_by_status_checkbox">{ getLabel('tenant_setting', 'hide_unused_statuses_in_filter_by_status') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.hide_unused_statuses_in_filter_by_status_help') }
+                </SmallMutedText>
+              </div>
+            </div>
+
+            <div className="formGroup">
+              <div className="checkboxSwitch">
                 <input {...register('showPoweredBy')} type="checkbox" id="show_powered_by_checkbox" />
                 <label htmlFor="show_powered_by_checkbox">{ getLabel('tenant_setting', 'show_powered_by') }</label>
               </div>
@@ -424,7 +438,7 @@ const GeneralSiteSettingsP = ({
 
           <br />
 
-          <Button onClick={() => null} disabled={!isDirty}>
+          <Button onClick={() => null} disabled={!isDirty} className="generalSiteSettingsSubmit">
             {I18n.t('common.buttons.update')}
           </Button>
         </form>
