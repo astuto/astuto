@@ -128,6 +128,8 @@ vi:
         show_vote_button_in_board: 'Hiển thị nút phiếu bầu trên trang bảng'
         show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Trang gốc'
+        logo_links_to: 'Logo links to'
+        logo_custom_url: 'Logo custom URL'
         show_roadmap_in_header: 'Hiển thị liên kết lộ trình trên tiêu đề'
         collapse_boards_in_header: 'Thu gọn các bảng trong tiêu đề'
         custom_css: 'Tùy chỉnh CSS'
