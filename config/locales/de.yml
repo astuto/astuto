@@ -206,6 +206,7 @@ de:
       custom_domain_learn_more: 'Erfahren Sie, wie Sie eine eigene Domain konfigurieren'
       show_vote_count_help: 'Wird diese Einstellung aktiviert, können Nutzer*innen sehen, wie oft für einen Post gevotet wurde. Das kann Nutzer*innen dazu anregen, ebenfalls für beliebte Posts zu stimmen – das würde einem Schneeballeffekt entsprechen.'
       show_vote_button_in_board_help: 'Wenn Sie diese Einstellung aktivieren, können Nutzer*innen Beiträge von der Board-Seite bewerten. Dies kann Nutzer*innen dazu veranlassen, über mehr Beiträge abzustimmen, was zu einer höheren Anzahl von Stimmen führt – die Bedeutung indes verringert sich.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Boards'
       empty: 'Es existieren keine Boards. Erstelle unten eines!'
