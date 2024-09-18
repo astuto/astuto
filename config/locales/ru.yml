@@ -218,6 +218,7 @@ ru:
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'При включении этой настройки, пользователи смогут видеть количество голосов. Это может стимулировать пользователей голосовать за уже популярные записи, приводя к эффекту снежного кома (эффект накопления и усиления).'
       show_vote_button_in_board_help: 'Если включить эту опцию, пользователи смогут голосовать за сообщения со страницы форума. Это может стимулировать пользователей голосовать за больше записей, что приведет к большему количеству голосов, но менее значимому результату.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Доски'
       empty: 'Доски отсутствуют. Создайте доску!'
