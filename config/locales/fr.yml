@@ -206,6 +206,7 @@ fr:
       custom_domain_learn_more: 'Apprenez comment configurer un domaine personnalisé'
       show_vote_count_help: 'Si vous activez ce paramètre, les utilisateurs pourront voir le nombre de votes sur les publications. Cela peut inciter les utilisateurs à voter sur des publications déjà populaires, ce qui peut entraîner un effet boule de neige.'
       show_vote_button_in_board_help: 'Si vous activez ce paramètre, les utilisateurs seront en mesure de voter pour des publications depuis la page des tableaux. Cela peut inciter les utilisateurs à voter sur un plus grand nombre de publications, ce qui peut entraîner un nombre plus élevé de votes mais de moindre importance.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Tableaux'
       empty: 'Il n''y a pas de tableaux. Créez en un ci-dessous!'
