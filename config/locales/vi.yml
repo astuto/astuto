@@ -200,6 +200,7 @@ vi:
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ thấy số phiếu bầu của các bài viết. Điều này có thể khuyến khích người dùng bình chọn cho những bài viết đã phổ biến, dẫn đến hiệu ứng tuyết.'
       show_vote_button_in_board_help: 'Nếu bạn bật tùy chọn này, người dùng sẽ có thể bình chọn cho các bài viết từ trang bảng. Điều này có thể khuyến khích người dùng bình chọn cho nhiều bài viết hơn, dẫn đến một số lượng phiếu bầu cao hơn nhưng ý nghĩa thấp hơn.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Bảng'
       empty: 'Không có bảng nào. Tạo mới dưới đây!'
