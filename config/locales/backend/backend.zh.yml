@@ -126,6 +126,7 @@ zh-CN:
         feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: '对用户显示投票数'
         show_vote_button_in_board: '在版块页面显示投票按钮'
+        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
         show_powered_by: '显示 "技术支持: Astuto"'
         root_board_id: '首页'
         logo_links_to: 'Logo links to'
