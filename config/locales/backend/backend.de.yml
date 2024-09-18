@@ -133,6 +133,7 @@ de:
         feedback_approval_policy: 'Feedback-Freigaberichtlinie'
         show_vote_count: 'Stimmenanzahl für Nutzer*innen anzeigen'
         show_vote_button_in_board: 'Zeige Abstimm-Buttons auf der Übersichtsseite an'
+        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
         show_powered_by: '"Powered by Astuto" anzeigen'
         root_board_id: 'Root-Page'
         logo_links_to: 'Logo links to'
