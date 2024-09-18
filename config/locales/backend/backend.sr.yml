@@ -140,6 +140,7 @@ sr:
         feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Show vote count to users'
         show_vote_button_in_board: 'Show vote buttons in board page'
+        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
         show_powered_by: 'Show "Powered by Astuto"'
         root_board_id: 'Root page'
         logo_links_to: 'Logo links to'
