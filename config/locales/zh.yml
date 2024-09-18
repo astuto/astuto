@@ -200,6 +200,7 @@ zh-CN:
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: '如果您启用此设置，用户将可以看到帖子的投票数。 这可能会鼓励用户对已经很受欢迎的帖子进行投票，导致雪球效应。'
       show_vote_button_in_board_help: '如果您启用此设置，用户将能够从版块页面直接对帖子投票。 这可能会鼓励用户对更多的帖子投票，导致更多的票数，但会稀释每一票的重要性。'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: '网站版块'
       empty: '尚无版块，在下方创建板块！'
