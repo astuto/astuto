@@ -206,6 +206,7 @@ es:
       custom_domain_learn_more: 'Aprenda cómo configurar un dominio personalizado'
       show_vote_count_help: 'Si activa esta configuración, los usuarios podrán ver el recuento de votos de los mensajes. Esto puede incentivar a los usuarios a votar publicaciones ya populares, lo que provocaría un efecto bola de nieve.'
       show_vote_button_in_board_help: 'Si activas esta configuración, los usuarios podrán votar publicaciones desde la página del foro. Esto puede alentar a los usuarios a votar en más mensajes, lo que lleva a un mayor número de votos, pero de menor importancia.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Tableros'
       empty: 'No hay tableros. ¡Crea uno abajo!'
