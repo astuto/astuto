@@ -133,6 +133,7 @@ fr:
         feedback_approval_policy: 'Politique d''approbation des commentaires'
         show_vote_count: 'Afficher le nombre de votes aux utilisateurs'
         show_vote_button_in_board: 'Afficher les boutons de vote sur le panneau principal'
+        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
         show_powered_by: 'Afficher "Powered by Astuto"'
         root_board_id: 'Page racine'
         logo_links_to: 'Logo links to'
