@@ -206,6 +206,7 @@ it:
       custom_domain_learn_more: 'Scopri come configurare un dominio personalizzato'
       show_vote_count_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di vedere il numero di voti dei post. Questo può incentivare gli utenti a votare su post già popolari, portando a un effetto a valanga.'
       show_vote_button_in_board_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di votare i post dalla bacheca. Questo può incentivare gli utenti a votare su un maggior numero di post, risultando in un maggior numero di voti ma di minore importanza.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
