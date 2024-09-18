@@ -133,6 +133,7 @@ es:
         feedback_approval_policy: 'Feedback approval policy'
         show_vote_count: 'Mostrar el número de votos a los usuarios'
         show_vote_button_in_board: 'Mostrar botones de voto en la página del foro'
+        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
         show_powered_by: 'Mostrar "Powered by Astuto"'
         root_board_id: 'Página raíz'
         logo_links_to: 'Logo links to'
