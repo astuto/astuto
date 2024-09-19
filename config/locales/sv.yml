@@ -1,7 +1,7 @@
 sv:
   common:
     words:
-      or: 'or'
+      or: 'eller'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
