@@ -23,6 +23,7 @@ interface Props {
   currentUserFullName: string;
   tenantSetting: ITenantSetting;
   componentRenderedAt: number;
+  postStatusesToShowInFilter: Array<number>;
   authenticityToken: string;
   posts: PostsState;
   postStatuses: PostStatusesState;
@@ -96,6 +97,7 @@ class BoardP extends React.Component<Props> {
       currentUserFullName,
       tenantSetting,
       componentRenderedAt,
+      postStatusesToShowInFilter,
       authenticityToken,
       posts,
       postStatuses,
@@ -140,14 +142,19 @@ class BoardP extends React.Component<Props> {
               />
               </>
             }
-            <PostStatusFilter
-              postStatuses={postStatuses.items}
-              areLoading={postStatuses.areLoading}
-              error={postStatuses.error}
+            {
+              postStatusesToShowInFilter.length > 0 &&
+                <PostStatusFilter
+                  postStatuses={postStatuses.items.filter(postStatus => postStatusesToShowInFilter.includes(postStatus.id))}
+                  areLoading={postStatuses.areLoading}
+                  error={postStatuses.error}
 
-              currentFilter={filters.postStatusIds}
-              handleFilterClick={handlePostStatusFilterChange}
-            />
+                  currentFilter={filters.postStatusIds}
+                  handleFilterClick={handlePostStatusFilterChange}
+
+                  showNoStatusFilter={postStatusesToShowInFilter.includes(null)}
+                />
+            }
           </div>
 
           { tenantSetting.show_powered_by && <PoweredByLink /> }

@@ -47,6 +47,8 @@ en:
       one: '1 comment'
       other: '%{count} comments'
     no_status: 'No status'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -70,6 +72,7 @@ en:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'just now'
       minutes:
@@ -183,6 +186,7 @@ en:
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
+      use_browser_locale_help: "If you enable this setting, the feedback space will be displayed in the user's browser preferred language. If the language is not available, the default language will be used."
       subtitle_privacy: 'Privacy'
       is_private_help: 'If you enable this setting, only logged in users will be able to see the content of the feedback space.'
       subtitle_moderation: 'Moderation'
@@ -192,6 +196,9 @@ en:
       feedback_approval_policy_always_require_approval: 'Always require approval'
       feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Header'
+      logo_links_to_root_page: 'Root page'
+      logo_links_to_custom_url: 'Custom URL'
+      logo_links_to_nothing: 'Nothing'
       collapse_boards_in_header_no_collapse: 'Never'
       collapse_boards_in_header_always_collapse: 'Always'
       subtitle_visibility: 'Visibility'
@@ -199,6 +206,7 @@ en:
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
@@ -215,8 +223,12 @@ en:
     roadmap:
       title: 'Roadmap'
       title2: 'Not in roadmap'
+      title_embed: 'Embed roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
     invitations:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Invitations'

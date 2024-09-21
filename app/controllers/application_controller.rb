@@ -2,6 +2,7 @@ require 'uri'
 
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include HeaderHelper
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -63,6 +64,18 @@ class ApplicationController < ActionController::Base
 
       # Set tenant locale
       I18n.locale = @tenant.locale
+
+      if @tenant_setting.use_browser_locale
+        user_preferred_language = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+        available_locales = I18n.available_locales.map { |locale| locale.to_s[0, 2] }
+
+        if available_locales.include?(user_preferred_language)
+          # special cases
+          user_preferred_language = 'zh-CN' if user_preferred_language == 'zh'
+             
+          I18n.locale = user_preferred_language
+        end
+      end
     end
 
     def load_oauths

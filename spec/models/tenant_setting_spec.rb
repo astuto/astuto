@@ -80,4 +80,14 @@ RSpec.describe TenantSetting, type: :model do
     tenant_setting.email_registration_policy = 'custom_domains_allowed'
     expect(tenant_setting).to be_valid
   end
+
+  it 'has a setting for logo links to' do
+    expect(tenant_setting.logo_links_to).to eq('root_page')
+
+    tenant_setting.logo_links_to = 'custom_url'
+    expect(tenant_setting).to be_valid
+
+    tenant_setting.logo_links_to = 'nothing'
+    expect(tenant_setting).to be_valid
+  end
 end

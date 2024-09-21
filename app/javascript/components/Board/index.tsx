@@ -17,6 +17,7 @@ interface Props {
   currentUserFullName: string;
   tenantSetting: ITenantSetting;
   componentRenderedAt: number;
+  postStatusesToShowInFilter: Array<number>;
   authenticityToken: string;
 }
 
@@ -37,6 +38,7 @@ class BoardRoot extends React.Component<Props> {
       currentUserFullName,
       tenantSetting,
       componentRenderedAt,
+      postStatusesToShowInFilter,
       authenticityToken,
     } = this.props;
 
@@ -49,6 +51,7 @@ class BoardRoot extends React.Component<Props> {
           currentUserFullName={currentUserFullName}
           tenantSetting={tenantSetting}
           componentRenderedAt={componentRenderedAt}
+          postStatusesToShowInFilter={postStatusesToShowInFilter}
           authenticityToken={authenticityToken}
         />
       </Provider>

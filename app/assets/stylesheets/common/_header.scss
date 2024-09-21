@@ -34,6 +34,10 @@
     }
   }
 
+  .brandDisabled {
+    pointer-events: none;
+  }
+
   .navbarToggler {
     @extend .navbar-toggler;
 

@@ -94,6 +94,7 @@ class OAuthsController < ApplicationController
       @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
       if not @o_auth.json_user_name_path.blank?
         @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+        @user_name = @user_name || I18n.t('defaults.user_full_name')
       end
 
       @o_auth_login_completed = (not @user_email.blank?)

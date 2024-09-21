@@ -11,9 +11,10 @@ interface Props {
   postStatus: IPostStatus;
   posts: Array<IPostJSON>;
   boards: Array<IBoard>;
+  openPostsInNewTab: boolean;
 }
 
-const PostListByPostStatus = ({ postStatus, posts, boards }: Props) => (
+const PostListByPostStatus = ({ postStatus, posts, boards, openPostsInNewTab }: Props) => (
   <div className="roadmapColumn">
     <div className="columnHeader"
       style={{backgroundColor: postStatus.color}}>
@@ -23,6 +24,7 @@ const PostListByPostStatus = ({ postStatus, posts, boards }: Props) => (
       <PostList
         posts={posts}
         boards={boards}
+        openPostsInNewTab={openPostsInNewTab}
       />
     </div>
   </div>

@@ -15,6 +15,8 @@ interface Props {
   
   handleFilterClick(postStatusId: number): void;
   currentFilter: Array<number>;
+
+  showNoStatusFilter?: boolean;
 }
 
 const PostStatusFilter = ({
@@ -24,6 +26,8 @@ const PostStatusFilter = ({
   
   handleFilterClick,
   currentFilter,
+
+  showNoStatusFilter = true,
 }: Props) => (
   <SidebarBox title={I18n.t('board.filter_box.title')} customClass="postStatusFilterContainer">
     {
@@ -39,13 +43,18 @@ const PostStatusFilter = ({
         />
       ))
     }
-    <PostStatusListItem
-      name={I18n.t('common.no_status')}
-      color='black'
 
-      handleClick={() => handleFilterClick(0)}
-      isCurrentFilter={currentFilter.includes(0)}
-    />
+    {
+      showNoStatusFilter &&
+        <PostStatusListItem
+          name={I18n.t('common.no_status')}
+          color='black'
+
+          handleClick={() => handleFilterClick(0)}
+          isCurrentFilter={currentFilter.includes(0)}
+        />
+    }
+
     { areLoading ? <Spinner /> : null }
     { error ? <DangerText>{error}</DangerText> : null }
   </SidebarBox>

@@ -3,6 +3,7 @@ class TenantSettingPolicy < ApplicationPolicy
     if user.admin?
       [
         :brand_display,
+        :use_browser_locale,
         :root_board_id,
         :is_private,
         :email_registration_policy,
@@ -11,10 +12,13 @@ class TenantSettingPolicy < ApplicationPolicy
         :feedback_approval_policy,
         :show_vote_count,
         :show_vote_button_in_board,
+        :hide_unused_statuses_in_filter_by_status,
         :show_powered_by,
+        :logo_links_to,
+        :logo_custom_url,
         :show_roadmap_in_header,
         :collapse_boards_in_header,
-        :custom_css
+        :custom_css,
       ]
     else
       []
