@@ -190,7 +190,7 @@ it:
       subtitle_privacy: 'Privacy'
       is_private_help: 'Se abiliti questa impostazione, solo gli utenti registrati saranno in grado di vedere il contenuto del sito.'
       subtitle_moderation: 'Moderazione'
-      allow_anonymous_feedback_help: 'Se abiliti questa impostazione, gli utenti non registrati saranno in grado di inviare un feedback.'
+      allow_anonymous_feedback_help: 'Gli utenti non registrati potranno inviare feedback.'
       feedback_approval_policy_anonymous_require_approval: 'Richiedi approvazione solo per feedback anonimo'
       feedback_approval_policy_never_require_approval: 'Non richiedere mai l''approvazione'
       feedback_approval_policy_always_require_approval: 'Richiedi sempre l''approvazione'
