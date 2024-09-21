@@ -42,12 +42,15 @@ cs:
         resend_unlock_instructions: 'Resend unlock instructions'
         change_password: 'Change password'
         password_help: '%{count} characters minimum'
+        email_registration_not_allowed: 'Email registration not allowed'
     comments_number:
       one: '1 comment'
       few: '%{count} comments'
       many: '%{count} comments'
       other: '%{count} comments'
     no_status: 'No status'
+    select_no_options_available: 'No options available'
+    select_placeholder: 'Select...'
     loading: 'Loading...'
     confirmation: 'Are you sure?'
     confirmation_board_delete: 'Warning: if there are feedback posts inside this board, then ALL these posts will be deleted as well. This action cannot be undone.'
@@ -71,6 +74,7 @@ cs:
       clear: 'Clear'
       approve: 'Approve'
       reject: 'Reject'
+      copy_to_clipboard: 'Copy to clipboard'
     datetime:
       now: 'just now'
       minutes:
@@ -178,10 +182,11 @@ cs:
     menu:
       title: 'Site settings'
       general: 'General'
+      authentication: 'Authentication'
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
-      authentication: 'Authentication'
+      invitations: 'Invitations'
       appearance: 'Appearance'
     info_box:
       up_to_date: 'All changes saved'
@@ -193,13 +198,19 @@ cs:
       brand_setting_name: 'Name only'
       brand_setting_logo: 'Logo only'
       brand_setting_none: 'None'
+      use_browser_locale_help: "If you enable this setting, the feedback space will be displayed in the user's browser preferred language. If the language is not available, the default language will be used."
+      subtitle_privacy: 'Privacy'
+      is_private_help: 'If you enable this setting, only logged in users will be able to see the content of the feedback space.'
       subtitle_moderation: 'Moderation'
-      allow_anonymous_feedback_help: 'Unregistered users will be able to submit feedback.'
+      allow_anonymous_feedback_help: 'If you enable this setting, unregistered users will be able to submit feedback.'
       feedback_approval_policy_anonymous_require_approval: 'Require approval for anonymous feedback only'
       feedback_approval_policy_never_require_approval: 'Never require approval'
       feedback_approval_policy_always_require_approval: 'Always require approval'
       feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
       subtitle_header: 'Header'
+      logo_links_to_root_page: 'Root page'
+      logo_links_to_custom_url: 'Custom URL'
+      logo_links_to_nothing: 'Nothing'
       collapse_boards_in_header_no_collapse: 'Never'
       collapse_boards_in_header_always_collapse: 'Always'
       subtitle_visibility: 'Visibility'
@@ -207,6 +218,7 @@ cs:
       custom_domain_learn_more: 'Learn how to configure a custom domain'
       show_vote_count_help: 'If you enable this setting, users will be able to see the vote count of posts. This may incentivize users to vote on already popular posts, leading to a snowball effect.'
       show_vote_button_in_board_help: 'If you enable this setting, users will be able to vote posts from the board page. This may incentivize users to vote on more posts, leading to a higher number of votes but of lower significance.'
+      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
     boards:
       title: 'Boards'
       empty: 'There are no boards. Create one below!'
@@ -223,14 +235,59 @@ cs:
     roadmap:
       title: 'Roadmap'
       title2: 'Not in roadmap'
+      title_embed: 'Embed roadmap'
       empty: 'The roadmap is empty.'
       help: 'You can add statuses to the roadmap by dragging them from the section below. If you instead want to create a new status or change their order, go to Site settings > Statuses.'
+      show_board_filter: 'Show board filter'
+      show_post_status_filter: 'Show status filter'
+      embed_help: 'You can embed the roadmap in your website by copying the code above.'
+    invitations:
+      new_invitations_title: 'New invitations'
+      past_invitations_title: 'Invitations'
+      to: 'Send invitations to'
+      to_help: 'Email addresses of people you want to invite, separated by commas.'
+      subject: 'Email subject'
+      subject_default: 'We value your feedback! Join us in shaping %{name}!'
+      body: 'Email body'
+      body_default: |
+        Hello!
+
+        We truly appreciate your experience with %{name} and would love to hear your feedback. Your insights help us improve and continue delivering the best possible service.
+
+        Click the link below to share your thoughts and make your voice heard:
+
+        %link%
+
+        Have a great day!
+      send:
+        one: 'Send invitation'
+        few: 'Send %{count} invitations'
+        many: 'Send %{count} invitations'
+        other: 'Send %{count} invitations'
+      submit_success: 'Invitations sent!'
+      submit_failure: 'An error occurred while sending invitations'
+      invalid_emails: 'Invalid email addresses: %{emails}'
+      too_many_emails: 'You can only send %{count} invitations at a time.'
+      invitation_link_not_found: 'You must use the %link% placeholder in the email body'
+      test_invitation_button: 'Test send invitation'
+      test_invitation_help: 'This will send a test invitation email to %{email}'
+      test_invitation_success: 'A test invitation email has been sent to %{email}'
+      all: 'All'
+      pending: 'Pending'
+      accepted: 'Accepted'
+      sent_at: 'Sent %{when}'
+      accepted_at: 'Accepted %{when}'
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
     authentication:
       title: 'Authentication'
       learn_more: 'Learn how to configure custom OAuth providers'
+      email_registration_subtitle: 'Email registration'
+      email_registration_policy_all: 'Anyone can register with email'
+      email_registration_policy_none: 'No one can register with email'
+      email_registration_policy_custom: 'Only users with certain email domains can register with email'
+      allowed_email_domains_help: 'Separate domains with commas. Example: "gmail.com,yahoo.com,hotmail.com". Leave blank to allow any domain.'
       oauth_subtitle: 'OAuth providers'
       default_oauth: 'Default OAuth provider'
       copy_url: 'Copy URL'
