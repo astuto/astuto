@@ -12,7 +12,7 @@ ru:
       update_order: 'Произошла ошибка при изменении порядка досок'
   defaults:
     user_full_name: 'Анонимный пользователь'
-    deleted_user_full_name: 'Deleted User'
+    deleted_user_full_name: 'Удаленный пользователь'
   mailers:
     devise:
       welcome_greeting: 'Добро пожаловать на %{site_name}, %{email}!'
@@ -31,39 +31,39 @@ ru:
         body3: "Ваш пароль не изменится, пока вы не откроете ссылку выше и не создадите новый пароль."
         action: 'Изменить мой пароль'
     user:
-      opening_greeting: 'Hello %{name}!'
+      opening_greeting: 'Привет %{name}!'
       closing_greeting: 'Отличного дня!'
       learn_more: 'Нажми сюда, чтобы узнать подробности.'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
-      unsubscribe_link: 'here'
+      unsubscribe_from_post_html: 'Надело? Вы можете отключить уведомления для этого сообщения %{href}'
+      unsubscribe_from_site_html: 'Надело? Вы можете все уведомления %{href}'
+      unsubscribe_link: 'здесь'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+        subject: '[%{site_name}] Новый комментарий  "%{post}"'
+        body_html: 'Появился новый комментарий от <b>%{user}</b> по вашему обращению <b>%{post}</b>'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        subject: '[%{site_name}] Новый ответ на ваш комментарий к обращению "%{post}"'
+        body_html: 'Есть новый ответ от <b>%{user}</b> на ваш комментарий к обращению <b>%{post}</b>'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Новое обновление для обращения "%{post}"'
+        body_html: 'В обращении, которое вы отслеживаете, появилось новое обновление <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Изменение статуса обращения "%{post}"'
+        body_html: 'В обращении, за которым вы следите, есть обновление статуса <b>%{post}</b>'
   activerecord:
     models:
       board:
-        one: 'Board'
+        one: 'Доска'
         few: 'Доска'
-        many: 'Boards'
+        many: 'Доски'
         other: 'Доски'
       comment:
         one: 'Комментарий'
-        few: 'Комментарий'
+        few: 'Комментария'
         many: 'Комментарии'
         other: 'Комментарии'
       like:
         one: 'Голос'
-        few: 'Голосов'
+        few: 'Голоса'
         many: 'Голосов'
         other: 'Голоса'
       o_auth:
@@ -73,19 +73,19 @@ ru:
         other: 'OAuths'
       post_status:
         one: 'Статус'
-        few: 'Statuses'
-        many: 'Statuses'
-        other: 'Statuses'
+        few: 'Статусы'
+        many: 'Статусы'
+        other: 'Статусы'
       post:
-        one: 'Пост'
-        few: 'Posts'
-        many: 'Posts'
-        other: 'Posts'
+        one: 'Обращение'
+        few: 'Обращения'
+        many: 'Обращения'
+        other: 'Обращения'
       user:
         one: 'Пользователь'
-        few: 'Users'
-        many: 'Users'
-        other: 'Users'
+        few: 'Пользователи'
+        many: 'Пользователи'
+        other: 'Пользователи'
     attributes:
       board:
         name: 'Имя'
@@ -93,16 +93,16 @@ ru:
         order: 'Порядок'
       comment:
         body: 'Тело письма'
-        is_post_update: 'Обновление поста'
+        is_post_update: 'Обновление обращения'
         user_id: 'Автор'
         post_id: 'Публикация'
         parent_id: 'Родительский комментарий'
       follow:
         user_id: 'Пользователь'
-        post_id: 'Публикация'
+        post_id: 'Обращение'
       like:
         user_id: 'Пользователь'
-        post_id: 'Публикация'
+        post_id: 'Обращение'
       o_auth:
         name: 'Имя'
         logo: 'Логотип'
@@ -123,10 +123,10 @@ ru:
       post:
         title: 'Заголовок'
         description: 'Описание'
-        approval_status: 'Approval status'
-        approval_status_approved: 'Approved'
-        approval_status_pending: 'Pending approval'
-        approval_status_rejected: 'Rejected'
+        approval_status: 'Статус утверждения'
+        approval_status_approved: 'Утверждено'
+        approval_status_pending: 'Ожидает утверждения'
+        approval_status_rejected: 'Отклонено'
         board_id: 'Выложить доску'
         user_id: 'Автор сообщения'
         post_status_id: 'Статус сообщения'
@@ -135,14 +135,14 @@ ru:
         site_logo: 'Логотип сайта'
         subdomain: 'Поддомен'
         locale: 'Язык'
-        custom_domain: 'Custom domain'
+        custom_domain: 'Свой домен'
       tenant_setting:
         brand_display: 'Экран'
-        allow_anonymous_feedback: 'Allow anonymous feedback'
-        feedback_approval_policy: 'Feedback approval policy'
+        allow_anonymous_feedback: 'Разрешить анонимные обращения'
+        feedback_approval_policy: 'Политика утверждения обращений'
         show_vote_count: 'Показать количество голосов пользователям'
         show_vote_button_in_board: 'Показывать кнопки голосования на странице доски'
-        show_powered_by: 'Show "Powered by Astuto"'
+        show_powered_by: 'Показывать "Работает на Astuto"'
         root_board_id: 'Главная страница'
         show_roadmap_in_header: 'Показать roadmap в заголовке'
         collapse_boards_in_header: 'Сворачивать доски в заголовке'
