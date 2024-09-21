@@ -42,13 +42,13 @@ it:
         resend_unlock_instructions: 'Invia istruzioni di sblocco'
         change_password: 'Cambia password'
         password_help: '%{count} caratteri minimo'
-        email_registration_not_allowed: 'Email registration not allowed'
+        email_registration_not_allowed: 'Registrazione via email non consentita'
     comments_number:
       one: '1 commento'
       other: '%{count} commenti'
     no_status: 'Nessuno stato'
-    select_no_options_available: 'No options available'
-    select_placeholder: 'Select...'
+    select_no_options_available: 'Nessuna opzione disponibile'
+    select_placeholder: 'Seleziona...'
     loading: 'Caricamento...'
     confirmation: 'Sei sicuro?'
     confirmation_board_delete: 'Attenzione: se ci sono post di feedback all''interno di questa bacheca, anche TUTTI questi post saranno eliminati. Questa operazione non può essere annullata.'
@@ -72,7 +72,7 @@ it:
       clear: 'Reset'
       approve: 'Approva'
       reject: 'Rifiuta'
-      copy_to_clipboard: 'Copy to clipboard'
+      copy_to_clipboard: 'Copia negli appunti'
     datetime:
       now: 'adesso'
       minutes:
@@ -174,7 +174,7 @@ it:
       boards: 'Bacheche'
       post_statuses: 'Stati'
       roadmap: 'Roadmap'
-      invitations: 'Invitations'
+      invitations: 'Inviti'
       appearance: 'Tema'
     info_box:
       up_to_date: 'Tutte le modifiche sono state salvate'
@@ -186,19 +186,19 @@ it:
       brand_setting_name: 'Solo nome'
       brand_setting_logo: 'Solo logo'
       brand_setting_none: 'Nessuno'
-      use_browser_locale_help: "If you enable this setting, the feedback space will be displayed in the user's browser preferred language. If the language is not available, the default language will be used."
+      use_browser_locale_help: "Se abiliti questa impostazione, il sito verrà visualizzato nella lingua preferita del browser dell'utente. Se la lingua non è disponibile, verrà utilizzata la lingua predefinita."
       subtitle_privacy: 'Privacy'
-      is_private_help: 'If you enable this setting, only logged in users will be able to see the content of the feedback space.'
+      is_private_help: 'Se abiliti questa impostazione, solo gli utenti registrati saranno in grado di vedere il contenuto del sito.'
       subtitle_moderation: 'Moderazione'
-      allow_anonymous_feedback_help: 'If you enable this setting, unregistered users will be able to submit feedback.'
+      allow_anonymous_feedback_help: 'Se abiliti questa impostazione, gli utenti non registrati saranno in grado di inviare un feedback.'
       feedback_approval_policy_anonymous_require_approval: 'Richiedi approvazione solo per feedback anonimo'
       feedback_approval_policy_never_require_approval: 'Non richiedere mai l''approvazione'
       feedback_approval_policy_always_require_approval: 'Richiedi sempre l''approvazione'
       feedback_approval_policy_help: 'Se si richiede l''approvazione, il feedback inviato rimarrà nascosto al pubblico fino a quando un moderatore o un amministratore lo approva. Il feedback inviato da moderatori e amministratori è sempre approvato automaticamente.'
       subtitle_header: 'Menu in alto'
-      logo_links_to_root_page: 'Root page'
-      logo_links_to_custom_url: 'Custom URL'
-      logo_links_to_nothing: 'Nothing'
+      logo_links_to_root_page: 'Pagina principale'
+      logo_links_to_custom_url: 'URL personalizzato'
+      logo_links_to_nothing: 'Niente'
       collapse_boards_in_header_no_collapse: 'Mai'
       collapse_boards_in_header_always_collapse: 'Sempre'
       subtitle_visibility: 'Visibilità'
@@ -206,7 +206,7 @@ it:
       custom_domain_learn_more: 'Scopri come configurare un dominio personalizzato'
       show_vote_count_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di vedere il numero di voti dei post. Questo può incentivare gli utenti a votare su post già popolari, portando a un effetto a valanga.'
       show_vote_button_in_board_help: 'Se abiliti questa impostazione, gli utenti saranno in grado di votare i post dalla bacheca. Questo può incentivare gli utenti a votare su un maggior numero di post, risultando in un maggior numero di voti ma di minore importanza.'
-      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
+      hide_unused_statuses_in_filter_by_status_help: 'Se abiliti questa impostazione, solo gli stati assegnati ad almeno un post in quella bacheca saranno mostrati nel filtro per stato della barra laterale.'
     boards:
       title: 'Bacheche'
       empty: 'Non ci sono bacheche. Creane una qua sotto!'
@@ -223,57 +223,57 @@ it:
     roadmap:
       title: 'Roadmap'
       title2: 'Non in roadmap'
-      title_embed: 'Embed roadmap'
+      title_embed: 'Incorpora la roadmap'
       empty: 'La roadmap è vuota.'
       help: 'Puoi aggiungere stati alla roadmap trascinandoli dalla sezione sottostante. Se invece vuoi creare un nuovo stato o cambiarne l''ordine, vai in Impostazioni sito -> Stati.'
-      show_board_filter: 'Show board filter'
-      show_post_status_filter: 'Show status filter'
-      embed_help: 'You can embed the roadmap in your website by copying the code above.'
+      show_board_filter: 'Mostra filtro bacheca'
+      show_post_status_filter: 'Mostra filtro stato'
+      embed_help: 'Puoi incorporare la roadmap nel tuo sito web copiando il codice qui sopra.'
     invitations:
-      new_invitations_title: 'New invitations'
-      past_invitations_title: 'Invitations'
-      to: 'Send invitations to'
-      to_help: 'Email addresses of people you want to invite, separated by commas.'
-      subject: 'Email subject'
-      subject_default: 'We value your feedback! Join us in shaping %{name}!'
-      body: 'Email body'
+      new_invitations_title: 'Nuovi inviti'
+      past_invitations_title: 'Inviti'
+      to: 'Spedisci inviti a'
+      to_help: 'Indirizzi email delle persone che si desidera invitare, separati da virgola.'
+      subject: 'Oggetto email'
+      subject_default: 'Apprezziamo il tuo feedback! Unisciti a noi per migliorare insieme %{name}!'
+      body: 'Corpo email'
       body_default: |
-        Hello!
+        Ciao!
 
-        We truly appreciate your experience with %{name} and would love to hear your feedback. Your insights help us improve and continue delivering the best possible service.
+        Apprezziamo veramente la tua esperienza con %{name} e ci piacerebbe sapere cosa ne pensi. Le tue opinioni ci aiutano a migliorare e continuare a fornire il miglior servizio possibile.
 
-        Click the link below to share your thoughts and make your voice heard:
+        Clicca sul link qui sotto per condividere il tuo feedback:
 
         %link%
 
-        Have a great day!
+        Buona giornata!
       send:
-        one: 'Send invitation'
-        other: 'Send %{count} invitations'
-      submit_success: 'Invitations sent!'
-      submit_failure: 'An error occurred while sending invitations'
-      invalid_emails: 'Invalid email addresses: %{emails}'
-      too_many_emails: 'You can only send %{count} invitations at a time.'
-      invitation_link_not_found: 'You must use the %link% placeholder in the email body'
-      test_invitation_button: 'Test send invitation'
-      test_invitation_help: 'This will send a test invitation email to %{email}'
-      test_invitation_success: 'A test invitation email has been sent to %{email}'
-      all: 'All'
-      pending: 'Pending'
-      accepted: 'Accepted'
-      sent_at: 'Sent %{when}'
-      accepted_at: 'Accepted %{when}'
+        one: 'Spedisci invito'
+        other: 'Spedisci %{count} inviti'
+      submit_success: 'Inviti spediti!'
+      submit_failure: 'Si è verificato un errore durante la spedizione degli inviti'
+      invalid_emails: 'Indirizzi email non validi: %{emails}'
+      too_many_emails: 'Puoi spedire solo %{count} inviti alla volta.'
+      invitation_link_not_found: 'Devi usare il placeholder %link% nel corpo dell''email'
+      test_invitation_button: 'Spedisci un invito di prova'
+      test_invitation_help: 'Questo spedirà un''email di invito di prova a %{email}'
+      test_invitation_success: 'Una email di invito di prova è stata spedita a %{email}'
+      all: 'Tutti'
+      pending: 'In attesa'
+      accepted: 'Accettati'
+      sent_at: 'Inviato %{when}'
+      accepted_at: 'Accettato %{when}'
     appearance:
       title: 'Tema'
       learn_more: 'Scopri come personalizzare il tema'
     authentication:
       title: 'Autenticazione'
       learn_more: 'Scopri come configurare provider OAuth personalizzati'
-      email_registration_subtitle: 'Email registration'
-      email_registration_policy_all: 'Anyone can register with email'
-      email_registration_policy_none: 'No one can register with email'
-      email_registration_policy_custom: 'Only users with certain email domains can register with email'
-      allowed_email_domains_help: 'Separate domains with commas. Example: "gmail.com,yahoo.com,hotmail.com". Leave blank to allow any domain.'
+      email_registration_subtitle: 'Registrazione con email'
+      email_registration_policy_all: 'Chiunque può registrarsi con email'
+      email_registration_policy_none: 'Nessuno può registrarsi con email'
+      email_registration_policy_custom: 'Solo gli utenti con determinati domini di posta elettronica possono registrarsi con email'
+      allowed_email_domains_help: 'Separare i domini con le virgole. Esempio: "gmail.com,yahoo.com,hotmail.com". Lasciare vuoto per consentire qualsiasi dominio.'
       oauth_subtitle: 'Provider OAuth'
       default_oauth: 'Provider OAuth predefinito'
       copy_url: 'Copia URL'
