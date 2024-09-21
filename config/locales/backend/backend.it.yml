@@ -2,7 +2,7 @@ it:
   errors:
     unknown: 'Si è verificato un errore sconosciuto'
     unauthorized: 'Non sei autorizzato'
-    email_domain_not_allowed: 'You cannot register with the provided email address'
+    email_domain_not_allowed: 'Non puoi registrarti con l''indirizzo email fornito'
     not_logged_in: 'Devi effettuare l''accesso per visualizzare questa pagina'
     not_enough_privileges: 'Non hai i privilegi necessari per visualizzare questa pagina'
     user_blocked_or_deleted: 'Non puoi accedere al tuo account perché è stato bloccato o eliminato.'
@@ -125,8 +125,8 @@ it:
         custom_domain: 'Dominio personalizzato'
       tenant_setting:
         brand_display: 'Mostra'
-        use_browser_locale: 'Use browser language'
-        is_private: 'Private site'
+        use_browser_locale: 'Usa lingua del browser'
+        is_private: 'Sito privato'
         email_registration_policy: 'Email registration policy'
         allowed_email_domains: 'Allowed email domains'
         allow_anonymous_feedback: 'Consenti feedback anonimo'
