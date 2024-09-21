@@ -190,7 +190,7 @@ de:
       subtitle_privacy: 'Privacy'
       is_private_help: 'If you enable this setting, only logged in users will be able to see the content of the feedback space.'
       subtitle_moderation: 'Moderation'
-      allow_anonymous_feedback_help: 'If you enable this setting, unregistered users will be able to submit feedback.'
+      allow_anonymous_feedback_help: 'Nicht registrierte Benutzer können Feedback einreichen.'
       feedback_approval_policy_anonymous_require_approval: 'Nur für anonymes Feedback Freigabe erforderlich'
       feedback_approval_policy_never_require_approval: 'Freigabe ist nie erforderlich'
       feedback_approval_policy_always_require_approval: 'Freigabe immer erforderlich'
