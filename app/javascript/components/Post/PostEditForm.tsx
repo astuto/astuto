@@ -65,6 +65,7 @@ const PostEditForm = ({
         type="text"
         value={title}
         onChange={e => handleChangeTitle(e.target.value)}
+        autoFocus
         className="postTitle form-control"
       />
     </div>

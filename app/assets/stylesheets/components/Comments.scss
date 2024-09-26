@@ -1,5 +1,5 @@
 .commentsContainer {
-  @extend .my-3;
+  @extend .mt-2;
 
   .commentForm {
     @extend
@@ -20,7 +20,7 @@
     @extend
       .d-flex,
       .flex-column,
-      .my-3;
+      .mt-4;
 
     .commentBodyForm {
       @extend .d-flex;
@@ -71,8 +71,11 @@
       .text-secondary,
       .text-uppercase,
       .font-weight-lighter,
-      .my-2;
+      .mt-5,
+      .mb-2;
   }
+
+  .commentList { @extend .mb-4; }
 
   .commentList > .commentList {
     padding-left: 32px;
@@ -80,10 +83,15 @@
 
   .comment {
     @extend
-      .my-4;
+      .mb-2;
 
     .commentHeader {
-      @extend .titleText;
+      @extend
+        .d-flex,
+        .align-items-end,
+        .titleText;
+
+      height: 36px;
 
       .commentAuthor {
         @extend .ml-2;

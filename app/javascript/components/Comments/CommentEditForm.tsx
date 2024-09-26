@@ -59,6 +59,7 @@ class CommentEditForm extends React.Component<Props, State> {
           value={body}
           onChange={e => this.handleCommentBodyChange(e.target.value)}
           rows={3}
+          autoFocus
           className="commentForm"
         />
 

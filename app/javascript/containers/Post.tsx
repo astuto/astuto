@@ -34,8 +34,8 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestPost(postId: number) {
-    dispatch(requestPost(postId));
+  requestPost(postId: number): Promise<any> {
+    return dispatch(requestPost(postId));
   },
 
   updatePost(
@@ -69,8 +69,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changePostEditFormPostStatus(postStatusId));
   },
 
-  requestLikes(postId: number) {
-    dispatch(requestLikes(postId));
+  requestLikes(postId: number): Promise<any> {
+    return dispatch(requestLikes(postId));
   },
 
   requestFollow(postId: number) {

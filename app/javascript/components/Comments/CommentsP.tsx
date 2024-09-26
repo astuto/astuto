@@ -4,7 +4,7 @@ import I18n from 'i18n-js';
 import NewComment from './NewComment';
 import CommentList from './CommentList';
 import Spinner from '../common/Spinner';
-import { DangerText } from '../common/CustomTexts';
+import { DangerText, MutedText } from '../common/CustomTexts';
 
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
@@ -122,14 +122,15 @@ class CommentsP extends React.Component<Props> {
           userEmail={userEmail}
         />
 
-        { areLoading ? <Spinner /> : null }
-        { error ? <DangerText>{error}</DangerText> : null }
-
         <div className="commentsTitle">
           {I18n.t('post.comments.title')}
           <Separator />
           {I18n.t('common.comments_number', { count: comments.length })}
         </div>
+
+        { areLoading ? <Spinner /> : null }
+        { error ? <DangerText>{error}</DangerText> : null }
+        { comments.length === 0 && !areLoading && !error && <MutedText>{I18n.t('post.comments.empty')}</MutedText> }
 
         <CommentList
           comments={comments}
