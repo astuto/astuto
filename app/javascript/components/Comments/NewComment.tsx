@@ -51,6 +51,7 @@ const NewComment = ({
               <textarea
                 value={body}
                 onChange={handleChange}
+                autoFocus={parentId != null}
                 placeholder={I18n.t('post.new_comment.body_placeholder')}
                 className="commentForm"
               />

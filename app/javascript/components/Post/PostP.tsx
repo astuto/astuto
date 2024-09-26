@@ -2,7 +2,7 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import I18n from 'i18n-js';
 
-import IPost, { POST_APPROVAL_STATUS_APPROVED, POST_APPROVAL_STATUS_PENDING } from '../../interfaces/IPost';
+import IPost, { POST_APPROVAL_STATUS_APPROVED, POST_APPROVAL_STATUS_PENDING, postJSON2JS } from '../../interfaces/IPost';
 import IPostStatus from '../../interfaces/IPostStatus';
 import IBoard from '../../interfaces/IBoard';
 import ITenantSetting from '../../interfaces/ITenantSetting';
@@ -29,6 +29,7 @@ import HttpStatus from '../../constants/http_status';
 import ActionLink from '../common/ActionLink';
 import { EditIcon } from '../common/Icons';
 import Badge, { BADGE_TYPE_DANGER, BADGE_TYPE_WARNING } from '../common/Badge';
+import { likeJSON2JS } from '../../interfaces/ILike';
 
 interface Props {
   postId: number;
@@ -41,6 +42,7 @@ interface Props {
   postStatusChanges: PostStatusChangesState;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
+  originPost: any;
   isLoggedIn: boolean;
   isPowerUser: boolean;
   currentUserFullName: string;
@@ -48,7 +50,7 @@ interface Props {
   tenantSetting: ITenantSetting;
   authenticityToken: string;
 
-  requestPost(postId: number): void;
+  requestPost(postId: number): Promise<any>;
   updatePost(
     postId: number,
     title: string,
@@ -58,7 +60,7 @@ interface Props {
     authenticityToken: string,
   ): Promise<any>;
 
-  requestLikes(postId: number): void;
+  requestLikes(postId: number): Promise<any>;
   requestFollow(postId: number): void;
   requestPostStatusChanges(postId: number): void;
 
@@ -83,9 +85,19 @@ interface Props {
   ): void;
 }
 
-class PostP extends React.Component<Props> {
+interface State {
+  postLoaded: boolean;
+  likesLoaded: boolean;
+}
+
+class PostP extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
+    this.state = {
+      postLoaded: false,
+      likesLoaded: false,
+    }
 
     this._handleUpdatePost = this._handleUpdatePost.bind(this);
     this._handleDeletePost = this._handleDeletePost.bind(this);
@@ -94,8 +106,8 @@ class PostP extends React.Component<Props> {
   componentDidMount() {
     const { postId } = this.props;
 
-    this.props.requestPost(postId);
-    this.props.requestLikes(postId);
+    this.props.requestPost(postId).then(() => this.setState({ postLoaded: true }));
+    this.props.requestLikes(postId).then(() => this.setState({ likesLoaded: true }));
     this.props.requestFollow(postId);
     this.props.requestPostStatusChanges(postId);
   }
@@ -137,7 +149,10 @@ class PostP extends React.Component<Props> {
     this.props.deletePost(
       this.props.postId,
       this.props.authenticityToken
-    ).then(() => window.location.href = `/boards/${this.props.post.boardId}`);
+    ).then(() => {
+      const board = this.props.boards.find(board => board.id === this.props.post.boardId);
+      window.location.href = `/boards/${board.slug || board.id}`;
+    });
   }
 
   render() {
@@ -151,6 +166,7 @@ class PostP extends React.Component<Props> {
       postStatusChanges,
       boards,
       postStatuses,
+      originPost,
 
       isLoggedIn,
       isPowerUser,
@@ -166,6 +182,14 @@ class PostP extends React.Component<Props> {
       handleChangeEditFormPostStatus,
     } = this.props;
 
+    const {
+      postLoaded,
+      likesLoaded,
+    } = this.state;
+
+    const postToShow = postLoaded ? post : postJSON2JS(originPost.post);
+    const likesToShow = likesLoaded ? likes : { items: originPost.likes.map(l => likeJSON2JS(l)), areLoading: false, error: null };
+    
     const postUpdates = [
       ...comments.items.filter(comment => comment.isPostUpdate === true),
       ...postStatusChanges.items,
@@ -187,15 +211,15 @@ class PostP extends React.Component<Props> {
           {
             isPowerUser &&
               <LikeList
-                likes={likes.items}
-                areLoading={likes.areLoading}
-                error={likes.error}
+                likes={likesToShow.items}
+                areLoading={likesToShow.areLoading}
+                error={likesToShow.error}
               />
           }
 
           <ActionBox
             followed={followed}
-            submitFollow={() => submitFollow(post.id, !followed, authenticityToken)}
+            submitFollow={() => submitFollow(postToShow.id, !followed, authenticityToken)}
 
             isLoggedIn={isLoggedIn}
           />
@@ -225,24 +249,24 @@ class PostP extends React.Component<Props> {
             <>
               <div className="postHeader">
                 <LikeButton
-                  postId={post.id}
-                  likeCount={likes.items.length}
+                  postId={postToShow.id}
+                  likeCount={likesToShow.items.length}
                   showLikeCount={isPowerUser || tenantSetting.show_vote_count}
-                  liked={likes.items.find(like => like.email === currentUserEmail) ? 1 : 0}
+                  liked={likesToShow.items.find(like => like.email === currentUserEmail) ? 1 : 0}
                   size="large"
                   isLoggedIn={isLoggedIn}
                   authenticityToken={authenticityToken}
                 />
 
-                <h3>{post.title}</h3>
+                <h3>{postToShow.title}</h3>
               </div>
                 
               <div className="postInfo">
                 <PostBoardLabel
-                  {...boards.find(board => board.id === post.boardId)}
+                  {...boards.find(board => board.id === postToShow.boardId)}
                 />
                 <PostStatusLabel
-                  {...postStatuses.find(postStatus => postStatus.id === post.postStatusId)}
+                  {...postStatuses.find(postStatus => postStatus.id === postToShow.postStatusId)}
                 />
                 { isPowerUser &&
                   <ActionLink onClick={toggleEditMode} icon={<EditIcon />} customClass='editAction'>
@@ -252,10 +276,10 @@ class PostP extends React.Component<Props> {
               </div>
 
               {
-                (isPowerUser && post.approvalStatus !== POST_APPROVAL_STATUS_APPROVED) &&
+                (isPowerUser && postToShow.approvalStatus !== POST_APPROVAL_STATUS_APPROVED) &&
                   <div className="postInfo">
-                    <Badge type={post.approvalStatus === POST_APPROVAL_STATUS_PENDING ? BADGE_TYPE_WARNING : BADGE_TYPE_DANGER}>
-                      { I18n.t(`activerecord.attributes.post.approval_status_${post.approvalStatus.toLowerCase()}`) }
+                    <Badge type={postToShow.approvalStatus === POST_APPROVAL_STATUS_PENDING ? BADGE_TYPE_WARNING : BADGE_TYPE_DANGER}>
+                      { I18n.t(`activerecord.attributes.post.approval_status_${postToShow.approvalStatus.toLowerCase()}`) }
                     </Badge>
                   </div>
               }
@@ -265,17 +289,17 @@ class PostP extends React.Component<Props> {
                 disallowedTypes={['heading', 'image', 'html']}
                 unwrapDisallowed
               >
-                {post.description}
+                {postToShow.description}
               </ReactMarkdown>
 
               <PostFooter
-                createdAt={post.createdAt}
+                createdAt={postToShow.createdAt}
                 handleDeletePost={this._handleDeletePost}
                 toggleEditMode={toggleEditMode}
 
                 isPowerUser={isPowerUser}
-                authorEmail={post.userEmail}
-                authorFullName={post.userFullName}
+                authorEmail={postToShow.userEmail}
+                authorFullName={postToShow.userFullName}
                 currentUserEmail={currentUserEmail}
               />
             </>
