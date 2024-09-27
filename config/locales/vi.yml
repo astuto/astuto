@@ -152,6 +152,7 @@ vi:
       not_following_description: "you won't receive notifications about this post"
     comments:
       title: 'Hoạt động'
+      empty: 'There are no comments yet'
       post_update_badge: 'Cập nhật'
       reply_button: 'Trả lời'
     new_comment:
