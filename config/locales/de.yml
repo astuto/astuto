@@ -158,6 +158,7 @@ de:
       not_following_description: "Du erhältst keine Benachrichtigungen zu diesem Beitrag"
     comments:
       title: 'Aktivität'
+      empty: 'There are no comments yet'
       post_update_badge: 'Aktualisierung'
       reply_button: 'Antworten'
     new_comment:

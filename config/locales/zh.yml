@@ -152,6 +152,7 @@ zh-CN:
       not_following_description: "您不会收到关于此帖的更新的通知"
     comments:
       title: '活动'
+      empty: 'There are no comments yet'
       post_update_badge: '更新'
       reply_button: '回复'
     new_comment:

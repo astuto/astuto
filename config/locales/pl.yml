@@ -170,6 +170,7 @@ pl:
       not_following_description: "you won't receive notifications about this post"
     comments:
       title: 'Activity'
+      empty: 'There are no comments yet'
       post_update_badge: 'Update'
       reply_button: 'Reply'
     new_comment:
