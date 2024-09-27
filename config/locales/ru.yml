@@ -170,6 +170,7 @@ ru:
       not_following_description: "Вы не подписаны на уведомления об активности в этом посте."
     comments:
       title: 'Активность'
+      empty: 'There are no comments yet'
       post_update_badge: 'Обновление'
       reply_button: 'Ответить'
     new_comment:
