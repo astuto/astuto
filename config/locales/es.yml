@@ -158,6 +158,7 @@ es:
       not_following_description: "no recibirás notificaciones sobre esta publicación"
     comments:
       title: 'Actividad'
+      empty: 'There are no comments yet'
       post_update_badge: 'Actualización'
       reply_button: 'Responder'
     new_comment:
