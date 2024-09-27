@@ -158,6 +158,7 @@ pt:
       not_following_description: "você não receberá as atualizações desta publicação"
     comments:
       title: 'Atividades recentes'
+      empty: 'There are no comments yet'
       post_update_badge: 'Atualizar'
       reply_button: 'Responder'
     new_comment:
