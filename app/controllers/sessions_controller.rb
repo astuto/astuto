@@ -4,6 +4,12 @@ class SessionsController < Devise::SessionsController
   before_action :load_oauths, only: [:new]
   before_action :set_page_title, only: [:new]
 
+
+  def new
+    session[:return_to] = request.referer
+    super
+  end
+
   private
 
     def set_page_title
