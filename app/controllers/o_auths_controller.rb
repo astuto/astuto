@@ -8,7 +8,7 @@ class OAuthsController < ApplicationController
 
   TOKEN_STATE_SEPARATOR = ','
 
-  # [subdomain.]base_url/o_auths/:id/start?reason=login|test|tenantsignup&redirect=<current_page_url>
+  # [subdomain.]base_url/o_auths/:id/start?reason=login|test|tenantsignup
   # Generates authorize url with required parameters and redirects to provider
   def start
     if params[:reason] == 'tenantsignup'
@@ -16,16 +16,12 @@ class OAuthsController < ApplicationController
     else
       @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
-    
+
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
 
     # Generate random state + other query params
     tenant_domain = Current.tenant ? Current.tenant_or_raise!.subdomain : "null"
     token_state = "#{params[:reason]}#{TOKEN_STATE_SEPARATOR}#{tenant_domain}#{TOKEN_STATE_SEPARATOR}#{Devise.friendly_token(30)}"
-    
-    # Append the redirect URL if present
-    token_state += "#{TOKEN_STATE_SEPARATOR}#{params[:redirect]}" if params[:redirect].present?
-
     cookies[:token_state] = { value: token_state, domain: ".#{request.domain}", httponly: true } unless params[:reason] == 'test'
     @o_auth.state = token_state
 
@@ -35,16 +31,31 @@ class OAuthsController < ApplicationController
   # [subdomain.]base_url/o_auths/:id/callback
   # Exchange authorization code for access token, fetch user info and sign in/up
   def callback
-    reason, tenant_domain, token_state, redirect_url = params[:state].split(TOKEN_STATE_SEPARATOR, 4)
+    reason, tenant_domain, token_state = params[:state].split(TOKEN_STATE_SEPARATOR, 3)
 
     unless reason == "test"
       return unless cookies[:token_state] == params[:state]
       cookies.delete(:token_state, domain: ".#{request.domain}")
     end
 
+    # if it is a default oauth, tenant is not yet set
     Current.tenant ||= Tenant.find_by(subdomain: tenant_domain)
 
+    if reason == 'tenantsignup'
+      @o_auth = OAuth.include_only_defaults.friendly.find(params[:id])
+    else
+      @o_auth = OAuth.include_defaults.friendly.find(params[:id])
+    end
+
+    return if reason != 'test' and not @o_auth.is_enabled?
+
+    user_profile = OAuthExchangeAuthCodeForProfileWorkflow.new(
+      authorization_code: params[:code],
+      o_auth: @o_auth
+    ).run
+
     if reason == 'login'
+
       user = OAuthSignInUserWorkflow.new(
         user_profile: user_profile,
         o_auth: @o_auth
@@ -52,23 +63,65 @@ class OAuthsController < ApplicationController
 
       if user
         oauth_token = user.generate_oauth_token
-
-        # If redirect URL exists and is valid, redirect the user there; else, redirect to the default path
-        if redirect_url.present? && valid_internal_url?(redirect_url)
-          redirect_to redirect_url
-        else
-          redirect_to get_url_for(method(:o_auth_sign_in_from_oauth_token_url), options: { user_id: user.id, token: oauth_token })
-        end
+        redirect_to get_url_for(method(:o_auth_sign_in_from_oauth_token_url), options: { user_id: user.id, token: oauth_token })
       else
         flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
         redirect_to get_url_for(method(:new_user_session_url))
       end
+
+    elsif reason == 'test'
+
+      unless user_signed_in? and current_user.admin?
+        flash[:alert] = I18n.t('errors.unauthorized')
+        redirect_to get_url_for(method(:root_url))
+        return
+      end
+
+      @user_profile = user_profile
+      @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
+      @email_valid = URI::MailTo::EMAIL_REGEXP.match?(@user_email)
+      if not @o_auth.json_user_name_path.blank?
+        @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+        @name_valid = !@user_name.nil?
+      end
+
+      render 'o_auths/test', layout: false
+
+    elsif reason == 'tenantsignup'
+
+      @o_auths = OAuth.unscoped.where(tenant_id: nil, is_enabled: true)
+
+      @user_email = query_path_from_object(user_profile, @o_auth.json_user_email_path)
+      if not @o_auth.json_user_name_path.blank?
+        @user_name = query_path_from_object(user_profile, @o_auth.json_user_name_path)
+        @user_name = @user_name || I18n.t('defaults.user_full_name')
+      end
+
+      @o_auth_login_completed = (not @user_email.blank?)
+
+      if not @o_auth_login_completed
+        flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
+        redirect_to signup_url
+        return
+      end
+
+      session[:o_auth_sign_up] = "#{@user_email},#{@user_name}"
+
+      @page_title = "Create your feedback space"
+      render 'tenants/new'
+
     else
-      # Handle other reasons like 'test' or 'tenantsignup'
+
+      flash[:alert] = I18n.t('errors.unknown')
+      redirect_to root_url
+
     end
   end
 
   # [subdomain.]base_url/o_auths/sign_in_from_oauth_token?user_id=<id>&token=<token>
+  # Used for OAuth with reason 'login'
+  # It has been introduced because of default OAuth providers,
+  # since they must redirect to a common domain for all tenants.
   def sign_in_from_oauth_token
     return unless params[:user_id] and params[:token]
 
@@ -79,7 +132,9 @@ class OAuthsController < ApplicationController
       remember_me user
       user.invalidate_oauth_token
       flash[:notice] = I18n.t('devise.sessions.signed_in')
-      redirect_to after_sign_in_path_for(user)
+
+      # Redirect to the stored URL or the root path if no stored URL
+      redirect_to safe_redirect_url(session[:return_to]) || root_path
     else
       flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
       redirect_to new_user_session_path
@@ -142,14 +197,6 @@ class OAuthsController < ApplicationController
 
   private
 
-    # Ensure that the redirect URL is safe and internal (relative paths)
-    def valid_internal_url?(url)
-      uri = URI.parse(url)
-      uri.host.nil? && uri.path.present? # Only allow relative URLs
-    rescue URI::InvalidURIError
-      false
-    end
-
     def to_json_custom(o_auth)
       o_auth.as_json(
         methods: [:callback_url, :default_o_auth_is_enabled],
@@ -161,5 +208,12 @@ class OAuthsController < ApplicationController
       params
         .require(:o_auth)
         .permit(policy(@o_auth).permitted_attributes)
+    end
+
+    def safe_redirect_url(url)
+      uri = URI.parse(url)
+      uri.host.present? && uri.host != request.host ? root_url : url
+    rescue URI::InvalidURIError
+      root_url
     end
 end
