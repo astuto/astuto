@@ -4,9 +4,11 @@ class SessionsController < Devise::SessionsController
   before_action :load_oauths, only: [:new]
   before_action :set_page_title, only: [:new]
 
-
   def new
-    session[:return_to] = request.referer
+    if request.referer.present? && !request.referer.include?('users')
+      session[:return_to] = request.referer
+    end
+    
     super
   end
 
