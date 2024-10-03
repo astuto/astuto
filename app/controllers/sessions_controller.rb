@@ -5,7 +5,8 @@ class SessionsController < Devise::SessionsController
   before_action :set_page_title, only: [:new]
 
   def new
-    if request.referer.present? && !request.referer.include?('users')
+    # Update return_to path if not coming from Devise user pages
+    if request.referer.present? && !request.referer.include?('/users/')
       session[:return_to] = request.referer
     end
     
