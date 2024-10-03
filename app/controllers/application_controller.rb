@@ -18,7 +18,12 @@ class ApplicationController < ActionController::Base
       root_path(tour: true)
     else
       # Redirect to previous page, if present
-      safe_return_to_redirect(session[:return_to])
+      begin
+        uri = URI.parse(session[:return_to])
+        uri.host.present? && uri.host != request.host ? super : session[:return_to]
+      rescue URI::InvalidURIError
+        super
+      end
     end
   end
 
@@ -118,12 +123,5 @@ class ApplicationController < ActionController::Base
       controller_name == 'comments' ||
       (controller_name == 'static_pages' && action_name == 'root') ||
       (controller_name == 'static_pages' && action_name == 'roadmap')
-    end
-
-    def safe_return_to_redirect(url)
-      uri = URI.parse(url)
-      uri.host.present? && uri.host != request.host ? root_path : url
-    rescue URI::InvalidURIError
-      root_path
     end
 end
