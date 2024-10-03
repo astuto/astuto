@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
     if resource.admin? && resource.sign_in_count == 1
       root_path(tour: true)
     else
-      super
+      # Redirect to previous page, if present
+      safe_return_to_redirect(session[:return_to])
     end
   end
 
@@ -117,5 +118,12 @@ class ApplicationController < ActionController::Base
       controller_name == 'comments' ||
       (controller_name == 'static_pages' && action_name == 'root') ||
       (controller_name == 'static_pages' && action_name == 'roadmap')
+    end
+
+    def safe_return_to_redirect(url)
+      uri = URI.parse(url)
+      uri.host.present? && uri.host != request.host ? root_path : url
+    rescue URI::InvalidURIError
+      root_path
     end
 end

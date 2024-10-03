@@ -133,8 +133,7 @@ class OAuthsController < ApplicationController
       user.invalidate_oauth_token
       flash[:notice] = I18n.t('devise.sessions.signed_in')
 
-      # Redirect to the stored URL or the root path if no stored URL
-      redirect_to safe_redirect_url(session[:return_to]) || root_path
+      redirect_to after_sign_in_path_for(user)
     else
       flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)
       redirect_to new_user_session_path
@@ -208,12 +207,5 @@ class OAuthsController < ApplicationController
       params
         .require(:o_auth)
         .permit(policy(@o_auth).permitted_attributes)
-    end
-
-    def safe_redirect_url(url)
-      uri = URI.parse(url)
-      uri.host.present? && uri.host != request.host ? root_url : url
-    rescue URI::InvalidURIError
-      root_url
     end
 end
