@@ -16,7 +16,7 @@ class OAuthsController < ApplicationController
     else
       @o_auth = OAuth.include_defaults.friendly.find(params[:id])
     end
-    
+
     return if params[:reason] != 'test' and not @o_auth.is_enabled?
 
     # Generate random state + other query params
@@ -53,9 +53,9 @@ class OAuthsController < ApplicationController
       authorization_code: params[:code],
       o_auth: @o_auth
     ).run
-    
+
     if reason == 'login'
-      
+
       user = OAuthSignInUserWorkflow.new(
         user_profile: user_profile,
         o_auth: @o_auth
@@ -70,7 +70,7 @@ class OAuthsController < ApplicationController
       end
 
     elsif reason == 'test'
-      
+
       unless user_signed_in? and current_user.admin?
         flash[:alert] = I18n.t('errors.unauthorized')
         redirect_to get_url_for(method(:root_url))
@@ -132,6 +132,7 @@ class OAuthsController < ApplicationController
       remember_me user
       user.invalidate_oauth_token
       flash[:notice] = I18n.t('devise.sessions.signed_in')
+
       redirect_to after_sign_in_path_for(user)
     else
       flash[:alert] = I18n.t('errors.o_auth_login_error', name: @o_auth.name)

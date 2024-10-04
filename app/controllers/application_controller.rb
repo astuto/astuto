@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
     if resource.admin? && resource.sign_in_count == 1
       root_path(tour: true)
     else
-      super
+      safe_return_to_redirect(session[:return_to]) do
+        super
+      end
     end
   end
 
