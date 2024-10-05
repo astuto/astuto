@@ -222,18 +222,26 @@ const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToke
                 <span className="invitationEmail">{ invitation.email }</span>
               </div>
 
-              <div className="invitationInfo">
-                {
-                  invitation.accepted_at ?
-                    <span className="invitationAcceptedAt" title={invitation.accepted_at}>
-                      { I18n.t('site_settings.invitations.accepted_at', { when: friendlyDate(invitation.accepted_at) }) }
-                    </span>
-                  :
-                    <span className="invitationSentAt" title={invitation.updated_at}>
-                      { I18n.t('site_settings.invitations.sent_at', { when: friendlyDate(invitation.updated_at) }) }
-                    </span>
-                }
-              </div>
+            <div className="invitationInfo">
+              {
+                invitation.accepted_at ?
+                  <span className="invitationAcceptedAt" title={invitation.accepted_at}>
+                    { I18n.t('site_settings.invitations.accepted_at', { when: friendlyDate(invitation.accepted_at) }) }
+                  </span>
+                :
+                  <span className="invitationSentAt" title={invitation.updated_at}>
+                    { I18n.t('site_settings.invitations.sent_at', { when: friendlyDate(invitation.updated_at) }) }
+                  </span>
+              }
+              <span className="invitationExpiresAt" title={invitation.created_at}>
+                { I18n.t('site_settings.invitations.expires_at', { when: friendlyDate(invitation.created_at + 3 * 30 * 24 * 60 * 60 * 1000) }) }
+              </span>
+              { invitation.expired ?
+                <span className="invitationExpired">
+                  { I18n.t('site_settings.invitations.expired') }
+                </span>
+              : null }
+            </div>
             </li>
           ))
         }
