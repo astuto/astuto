@@ -20,6 +20,9 @@ class InvitationsController < ApplicationController
       # skip if invitation already exists and accepted
       next if invitation.persisted? && invitation.accepted_at.present?
 
+      # skip if invitation is expired
+      next if invitation.persisted? && invitation.expired?
+
       invitation.token_digest = invitation_token_digest
       invitation.save!
 
@@ -55,7 +58,6 @@ class InvitationsController < ApplicationController
 
     render json: {}, status: :ok
   end
-
 
   private
 
