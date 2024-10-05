@@ -70,6 +70,8 @@ Rails.application.routes.draw do
 
     resources :invitations, only: [:create]
     post '/invitations/test', to: 'invitations#test', as: :invitation_test
+
+    resources :api_keys, only: [:create]
   
     namespace :site_settings do
       get 'general'

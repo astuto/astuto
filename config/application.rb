@@ -29,6 +29,10 @@ module App
       ENV["BASE_URL"]
     end
 
+    def secret_key_base
+      ENV["SECRET_KEY_BASE"]
+    end
+
     def multi_tenancy?
       ENV["MULTI_TENANCY"] == "true"
     end

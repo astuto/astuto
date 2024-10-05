@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_17_140122) do
+ActiveRecord::Schema.define(version: 2024_10_04_170520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_keys", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.bigint "user_id", null: false
+    t.string "common_token_prefix", null: false
+    t.string "random_token_prefix", null: false
+    t.string "token_digest", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tenant_id"], name: "index_api_keys_on_tenant_id"
+    t.index ["token_digest"], name: "index_api_keys_on_token_digest", unique: true
+    t.index ["user_id", "tenant_id"], name: "index_api_keys_on_user_id_and_tenant_id", unique: true
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
 
   create_table "boards", force: :cascade do |t|
     t.string "name", null: false
@@ -231,6 +245,8 @@ ActiveRecord::Schema.define(version: 2024_09_17_140122) do
     t.index ["tenant_id"], name: "index_users_on_tenant_id"
   end
 
+  add_foreign_key "api_keys", "tenants"
+  add_foreign_key "api_keys", "users"
   add_foreign_key "boards", "tenants"
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "posts"

@@ -75,6 +75,22 @@
   <% end %>
 <% end %>
 
+<% if current_user.moderator? %>
+  <br />
+  <div class="edit_user">
+    <%=
+      react_component(
+        'UserProfile/GenerateApiKeyDialog',
+        {
+          currentApiKey: current_user.api_key.present? ? token_mask(current_user.api_key.token_prefix) : nil,
+          generateApiKeyEndpoint: api_keys_path,
+          authenticityToken: form_authenticity_token
+        },
+      )
+    %>
+  </div>
+<% end %>
+
 <br />
 
 <div class="edit_user">
