@@ -79,4 +79,12 @@ module ApplicationHelper
     
     tenant
   end
+
+  # Redirect to previous page if present; otherwise redirect to root
+  def safe_return_to_redirect(url)
+    uri = URI.parse(url)
+    uri.host.present? && uri.host != request.host ? yield : url
+  rescue URI::InvalidURIError
+    yield
+  end
 end

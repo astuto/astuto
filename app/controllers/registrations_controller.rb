@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  include ApplicationHelper
+
   # Needed to have Current.tenant available in Devise's controllers
   prepend_before_action :load_tenant_data
   before_action :load_oauths, only: [:new]
@@ -88,12 +90,15 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
+    # Override Devise after inactive sign up path
     def after_inactive_sign_up_path_for(resource)
       if Current.tenant.tenant_setting.is_private
         # Redirect to log in page, since root page only visible to logged in users
         new_user_session_path
       else
-        super
+        safe_return_to_redirect(session[:return_to]) do
+          super
+        end
       end
     end
     
