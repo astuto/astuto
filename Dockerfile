@@ -38,8 +38,8 @@ RUN yarn install --check-files
 COPY . ${APP_ROOT}/
 
 # Compile assets if production
-# RAILS_ENV set to dev otherwise secret_key_base is not defined
-RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development ./bin/rails assets:precompile; fi
+# SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
+RUN if [ "$ENVIRONMENT" = "production" ]; then SECRET_KEY_BASE=1 ./bin/rails assets:precompile; fi
 
 ###
 ### Dev stage ###
