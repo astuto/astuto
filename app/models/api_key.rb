@@ -1,7 +1,7 @@
 class ApiKey < ApplicationRecord
   include TenantOwnable
 
-  HMAC_SECRET_KEY = Rails.application.secret_key_base
+  HMAC_SECRET_KEY = Rails.application.secrets.secret_key_base
   TOKEN_NAMESPACE = 'tkn'
 
   belongs_to :user
