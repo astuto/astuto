@@ -113,11 +113,11 @@ class ApplicationController < ActionController::Base
       }, status: :unauthorized
     end
 
-    def should_check_tenant_is_private?
-      controller_name == 'posts' ||
-      controller_name == 'boards' ||
-      controller_name == 'comments' ||
-      (controller_name == 'static_pages' && action_name == 'root') ||
-      (controller_name == 'static_pages' && action_name == 'roadmap')
-    end
+    # def should_check_tenant_is_private?
+    #   controller_name == 'posts' ||
+    #   controller_name == 'boards' ||
+    #   controller_name == 'comments' ||
+    #   (controller_name == 'static_pages' && action_name == 'root') ||
+    #   (controller_name == 'static_pages' && action_name == 'roadmap')
+    # end
 end
