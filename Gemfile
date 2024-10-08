@@ -66,9 +66,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '3.36.0'
-  gem 'selenium-webdriver', '4.1.0'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers', '5.3.1'
+  gem 'selenium-webdriver', '4.11.0'
 end
 
 # If not bundled, webpack compilation in production fails
