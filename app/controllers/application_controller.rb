@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
-  # before_action :check_tenant_is_private, if: :should_check_tenant_is_private?
+  before_action :check_tenant_is_private, if: :should_check_tenant_is_private?
   
   prepend_before_action :load_tenant_data
 
@@ -113,11 +113,11 @@ class ApplicationController < ActionController::Base
       }, status: :unauthorized
     end
 
-    # def should_check_tenant_is_private?
-    #   controller_name == 'posts' ||
-    #   controller_name == 'boards' ||
-    #   controller_name == 'comments' ||
-    #   (controller_name == 'static_pages' && action_name == 'root') ||
-    #   (controller_name == 'static_pages' && action_name == 'roadmap')
-    # end
+    def should_check_tenant_is_private?
+      controller_name == 'posts' ||
+      controller_name == 'boards' ||
+      controller_name == 'comments' ||
+      (controller_name == 'static_pages' && action_name == 'root') ||
+      (controller_name == 'static_pages' && action_name == 'roadmap')
+    end
 end
