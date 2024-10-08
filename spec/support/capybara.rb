@@ -6,7 +6,7 @@ Capybara.register_driver :chrome_headless do |app|
 
   options.add_argument('--headless')
   options.add_argument('--no-sandbox')
-  # options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--window-size=1400,1400')
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
@@ -15,7 +15,7 @@ end
 Capybara.javascript_driver = :chrome_headless
 
 # Max wait time for a match to be found by capybara selectors
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 15
 
 # Remove whitespaces characters (\n, etc...) from "page" variable
 Capybara.default_normalize_ws = true
