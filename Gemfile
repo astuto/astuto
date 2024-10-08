@@ -67,6 +67,9 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '3.40.0'
   gem 'selenium-webdriver', '4.17.0'
+
+  # Retry flaky Capybara tests
+  gem 'rspec-retry', '0.6.2'
 end
 
 # If not bundled, webpack compilation in production fails
