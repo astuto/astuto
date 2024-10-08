@@ -11,7 +11,7 @@ Capybara.register_driver :chrome_headless do |app|
 
   capabilities = [
     options,
-    Selenium::WebDriver::Remote::Capabilities.chrome
+    Selenium::WebDriver::Options.chrome
   ]
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: capabilities)
