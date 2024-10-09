@@ -87,6 +87,12 @@ Rails.application.routes.draw do
       get 'feedback'
       get 'users'
     end
+
+    namespace :api do
+      namespace :v1 do
+        resource :api_key, only: [:show]
+      end
+    end
   end
 
   # Healthcheck endpoint
