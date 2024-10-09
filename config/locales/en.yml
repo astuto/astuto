@@ -43,6 +43,13 @@ en:
         change_password: 'Change password'
         password_help: '%{count} characters minimum'
         email_registration_not_allowed: 'Email registration not allowed'
+      api_key:
+        title: 'API key'
+        current_api_key_help: 'You have already generated an API key and, for security reasons, it cannot be shown again. If you lost it, you can generate a new one below.'
+        generate_api_key: 'Generate API key'
+        generated_api_key_help: 'Save this API key in a safe place, as you will not be able to see it again.'
+        generated_api_key_successfully: 'API key generated successfully!'
+        confirm_generate_new_api_key: 'Are you sure you want to generate a new API key? The old one will be invalidated.'
     comments_number:
       one: '1 comment'
       other: '%{count} comments'

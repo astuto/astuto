@@ -39,7 +39,7 @@ COPY . ${APP_ROOT}/
 
 # Compile assets if production
 # SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
-RUN if [ "$ENVIRONMENT" = "production" ]; then RAILS_ENV=development ./bin/rails assets:precompile; fi
+RUN if [ "$ENVIRONMENT" = "production" ]; then SECRET_KEY_BASE=1 ./bin/rails assets:precompile; fi
 
 ###
 ### Dev stage ###
