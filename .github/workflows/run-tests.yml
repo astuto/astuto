@@ -36,6 +36,9 @@ jobs:
       - name: Verify swap space
         run: free -h
 
+      - name: Verify swap space inside Docker container
+        run: docker compose exec web free -h
+
       - name: Install required packages
         run: |
           docker compose exec web apt-get update
