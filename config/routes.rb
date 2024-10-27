@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  mount Rswag::Api::Engine => '/api-docs'
+
   if Rails.application.multi_tenancy?
     constraints subdomain: 'showcase' do
       root to: 'static_pages#showcase', as: :showcase
+    end
+
+    constraints subdomain: 'api' do
+      mount Rswag::Api::Engine => '/api-docs'
     end
 
     constraints subdomain: 'login' do

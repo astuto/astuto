@@ -27,3 +27,8 @@ else
   bundle exec rake db:migrate
 fi
 echo "Database prepared."
+
+# Generate Swagger documentation
+echo "Generating Swagger documentation..."
+bundle exec rake rswag:specs:swaggerize
+echo "Swagger documentation generated."

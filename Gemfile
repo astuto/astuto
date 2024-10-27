@@ -50,11 +50,18 @@ gem 'friendly_id', '5.5.1'
 # Billing
 gem 'stripe', '11.2.0'
 
+# Serve swagger docs
+gem 'rswag-api', '2.15.0'
+
+# CORS policy
+gem 'rack-cors', '2.0.2'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '4.0.2'
   gem 'factory_bot_rails', '5.0.2'
+  gem 'rswag-specs', '2.15.0'
 end
 
 group :development do
