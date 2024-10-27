@@ -19,7 +19,7 @@ jobs:
 
       - name: Allocate swap space
         run: |
-          sudo fallocate -l 8G /swapfile
+          sudo fallocate -l 4G /swapfile
           sudo chmod 600 /swapfile
           sudo mkswap /swapfile
           sudo swapon /swapfile
@@ -31,7 +31,9 @@ jobs:
         run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
       - name: Run Docker containers
-        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
+          docker update --memory 8g --memory-swap 4g astuto-web-1
 
       - name: Verify swap space
         run: free -h
