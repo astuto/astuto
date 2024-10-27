@@ -33,7 +33,7 @@ jobs:
       - name: Run Docker containers
         run: |
           docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
-          docker update --memory 8g --memory-swap 4g astuto-web-1
+          docker update --memory 8g --memory-swap 12g astuto-web-1
 
       - name: Verify swap space
         run: free -h
