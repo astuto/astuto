@@ -31,7 +31,7 @@ jobs:
         run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
       - name: Run Docker containers
-        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach --memory=4g
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
 
       - name: Verify swap space
         run: free -h
