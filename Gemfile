@@ -52,6 +52,8 @@ gem 'stripe', '11.2.0'
 
 # Serve swagger docs
 gem 'rswag-api', '2.15.0'
+
+# We need those gems here, so we can Swaggerize in production
 gem 'rswag-specs', '2.15.0'
 gem 'rspec-rails', '4.0.2'
 gem 'capybara', '3.40.0'
@@ -61,7 +63,6 @@ gem 'rack-cors', '2.0.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
   
   gem 'factory_bot_rails', '5.0.2'
 end
@@ -73,8 +74,6 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  
   gem 'selenium-webdriver', '4.17.0'
 
   # Retry flaky Capybara tests

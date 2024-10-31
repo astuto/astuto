@@ -37,6 +37,9 @@ RUN yarn install --check-files
 # Copy all files
 COPY . ${APP_ROOT}/
 
+# Build Swagger API documentation
+RUN RSWAG_SWAGGERIZE=true RAILS_ENV=test bundle exec rake rswag:specs:swaggerize
+
 # Compile assets if production
 # SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
 RUN if [ "$ENVIRONMENT" = "production" ]; then SECRET_KEY_BASE=1 ./bin/rails assets:precompile; fi
@@ -90,6 +93,9 @@ COPY --from=builder ${APP_ROOT}/config.ru ${APP_ROOT}/
 COPY --from=builder ${APP_ROOT}/Rakefile ${APP_ROOT}/
 COPY --from=builder ${APP_ROOT}/lib/tasks/ ${APP_ROOT}/lib/tasks/
 COPY --from=builder /usr/local/bundle/config /usr/local/bundle/config
+
+# Copy Swagger API documentation
+COPY --from=builder ${APP_ROOT}/swagger/ ${APP_ROOT}/swagger/
 
 ENTRYPOINT ["./docker-entrypoint-prod.sh"]
 

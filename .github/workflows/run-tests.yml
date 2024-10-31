@@ -17,32 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Allocate swap space
-        run: |
-          sudo fallocate -l 4G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-
-      - name: Verify swap space
-        run: free -h
-
       - name: Build Docker production image
         run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
       - name: Run Docker containers
-        run: |
-          docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
-          docker update --memory 8g --memory-swap 12g astuto-web-1
-
-      - name: Verify swap space
-        run: free -h
-
-      - name: Verify swap space inside Docker container
-        run: docker compose exec web free -h
-
-      - name: Verify docker stats
-        run: docker stats --no-stream
+        run: docker compose -f docker-compose.yml -f docker-compose-prod.yml up --detach
 
       - name: Install required packages
         run: |
@@ -64,9 +43,3 @@ jobs:
         
       - name: Run tests
         run: docker compose exec web bundle exec rspec
-
-      - name: Disable and remove swap
-        if: always()
-        run: |
-          sudo swapoff /swapfile
-          sudo rm /swapfile
