@@ -5,8 +5,8 @@ RSpec.describe 'api/v1/api_keys', type: :request do
 
   path '/api/v1/api_key' do
 
-    get('Show API key') do
-      description "Show the API key of the current user. <br> Requires admin role."
+    get('Get API key') do
+      description 'Get the API key of the current user. <br> Requires admin role.'
       security [{ api_key: [] }]
       tags 'API Keys'
       produces 'application/json'

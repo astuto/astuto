@@ -2,6 +2,38 @@
 
 require 'rails_helper'
 
+# Define reusable schemas
+module Swagger
+  module Schemas
+    # Board schema
+    def self.Board
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer },
+          name: { type: :string },
+          slug: { type: :string },
+          description: { type: :string },
+          created_at: { type: :string },
+          updated_at: { type: :string }
+        },
+        required: %w[id name slug description created_at updated_at]
+      }
+    end
+  end
+end
+
+# Define shared examples
+RSpec.shared_examples 'a response with example' do
+  after do |example|
+    example.metadata[:response][:content] = {
+      'application/json' => {
+        example: JSON.parse(response.body, symbolize_names: true)
+      }
+    }
+  end
+end
+
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
@@ -29,13 +61,14 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
+          Board: Swagger::Schemas.Board,
           error: {
             type: :object,
             properties: {
               errors: { type: :array, items: { type: :string } }
             },
             required: ['errors']
-          }
+          },
         },
         securitySchemes: {
           api_key: {
