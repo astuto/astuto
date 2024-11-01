@@ -20,7 +20,6 @@ RSpec.describe 'api/v1/boards', type: :request do
 
         schema type: :array, items: { '$ref' => '#/components/schemas/Board' }
 
-        include_examples 'a response with example'
         run_test!
       end
 
@@ -29,7 +28,63 @@ RSpec.describe 'api/v1/boards', type: :request do
 
         schema '$ref' => '#/components/schemas/error'
 
-        include_examples 'a response with example'
+        run_test!
+      end
+    end
+
+    post('Create board') do
+      description 'Create a new board. <br> Requires admin role.'
+      security [{ api_key: [] }]
+      tags 'Boards'
+      consumes 'application/json'
+      produces 'application/json'
+
+      parameter name: :board, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          slug: { type: :string, nullable: true },
+          description: { type: :string, nullable: true }
+        },
+        required: ['name']
+      }
+
+      response(201, 'successful') do
+        let(:Authorization) { "Bearer #{@admin_api_token}" }
+        let(:board) { { name: 'New board' } }
+
+        schema '$ref' => '#/components/schemas/Board'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          @board_count_before = Board.count
+        end
+
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data['name']).to eq(board[:name])
+
+          Current.tenant = @current_tenant # Restore the current tenant
+          expect(Board.count).to eq(@board_count_before + 1)
+          expect(Board.find(data['id'])).to be_present
+        end
+      end
+
+      response(400, 'bad request') do
+        let(:Authorization) { "Bearer #{@admin_api_token}" }
+        let(:board) { { description: 'Only description, not name' } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+
+      response(401, 'unauthorized') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:board) { { name: 'New board' } }
+
+        schema '$ref' => '#/components/schemas/error'
+
         run_test!
       end
     end
@@ -45,14 +100,32 @@ RSpec.describe 'api/v1/boards', type: :request do
 
       parameter name: :id, in: :path, type: :string, required: true, description: 'ID or slug of the board'
 
+      # Test with slug
       response(200, 'successful') do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { @board.slug }
 
         schema '$ref' => '#/components/schemas/Board'
 
-        include_examples 'a response with example'
-        run_test!
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data['id']).to eq(@board.id)
+          expect(data['name']).to eq(@board.name)
+        end
+      end
+
+      # Test with id
+      response(200, 'successful') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { @board.id }
+
+        schema '$ref' => '#/components/schemas/Board'
+
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data['id']).to eq(@board.id)
+          expect(data['name']).to eq(@board.name)
+        end
       end
 
       response(404, 'not found') do
@@ -61,7 +134,6 @@ RSpec.describe 'api/v1/boards', type: :request do
 
         schema '$ref' => '#/components/schemas/error'
 
-        include_examples 'a response with example'
         run_test!
       end
 
@@ -71,7 +143,6 @@ RSpec.describe 'api/v1/boards', type: :request do
 
         schema '$ref' => '#/components/schemas/error'
 
-        include_examples 'a response with example'
         run_test!
       end
     end

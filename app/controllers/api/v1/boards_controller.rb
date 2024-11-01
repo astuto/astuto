@@ -25,6 +25,26 @@ module Api
 
         render json: board.slice(*BOARD_JSON_ATTRIBUTES)
       end
+
+      # Create a new board
+      def create
+        board = Board.new(board_params)
+
+        authorize([:api, board])
+
+        if board.save
+          render json: board.slice(*BOARD_JSON_ATTRIBUTES), status: :created
+        else
+          render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      private
+
+        def board_params
+          params.require(:name)
+          params.permit(:name, :slug, :description)
+        end
     end
   end
 end

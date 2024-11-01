@@ -4,6 +4,7 @@ module Api
     include Pundit::Authorization
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+    rescue_from ActionController::ParameterMissing, with: :parameter_missing
 
     skip_before_action :verify_authenticity_token
     skip_before_action :check_tenant_is_private
@@ -31,7 +32,13 @@ module Api
 
       def not_authorized
         render status: :unauthorized, json: {
-          errors: ["You are not authorized to perform this action"]
+          errors: ['You are not authorized to perform this action.']
+        }
+      end
+
+      def parameter_missing
+        render status: :bad_request, json: {
+          errors: ['Some parameters are missing from the request. Please check the documentation.']
         }
       end
  
@@ -46,7 +53,7 @@ module Api
       # with request for Bearer token
       # https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Token/ControllerMethods.html
       def request_http_token_authentication(realm = "Application", message = nil)
-        json_response = { errors: [message || "Access denied"] }
+        json_response = { errors: [message || "Access denied."] }
         headers["WWW-Authenticate"] = %(Bearer realm="#{realm.tr('"', "")}")
         render json: json_response, status: :unauthorized
       end

@@ -7,5 +7,9 @@ module Api
     def show?
       api_key.user.moderator?
     end
+
+    def create?
+      api_key.user.admin?
+    end
   end
 end

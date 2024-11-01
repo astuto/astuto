@@ -13,24 +13,13 @@ module Swagger
           id: { type: :integer },
           name: { type: :string },
           slug: { type: :string },
-          description: { type: :string },
+          description: { type: [:string, :null] },
           created_at: { type: :string },
           updated_at: { type: :string }
         },
         required: %w[id name slug description created_at updated_at]
       }
     end
-  end
-end
-
-# Define shared examples
-RSpec.shared_examples 'a response with example' do
-  after do |example|
-    example.metadata[:response][:content] = {
-      'application/json' => {
-        example: JSON.parse(response.body, symbolize_names: true)
-      }
-    }
   end
 end
 
