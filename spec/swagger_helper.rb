@@ -28,12 +28,21 @@ RSpec.configure do |config|
         }
       ],
       components: {
+        schemas: {
+          error: {
+            type: :object,
+            properties: {
+              errors: { type: :array, items: { type: :string } }
+            },
+            required: ['errors']
+          }
+        },
         securitySchemes: {
           api_key: {
             type: :apiKey,
             name: 'Authorization',
             in: :header,
-            description: 'API key in the format of `Bearer {token}`'
+            description: 'Pass your API key in the `Authorization` header using format: `Bearer {your-api-key}`'
           }
         },
       }
