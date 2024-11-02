@@ -98,6 +98,12 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :boards, only: [:index, :show, :create]
         resources :post_statuses, only: [:index]
+        resources :posts, only: [:index, :show, :update, :destroy] do
+          member do
+            put :update_board
+            put :update_status
+          end
+        end
         resource :api_key, only: [:show]
       end
     end

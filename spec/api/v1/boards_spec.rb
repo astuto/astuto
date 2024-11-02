@@ -42,9 +42,9 @@ RSpec.describe 'api/v1/boards', type: :request do
       parameter name: :board, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
-          slug: { type: :string, nullable: true },
-          description: { type: :string, nullable: true }
+          name: { type: :string, description: 'Name of the board' },
+          slug: { type: :string, nullable: true, description: 'URL-friendly identifier for the board (optional; if not provided, one will be created automatically from provided board name)' },
+          description: { type: :string, nullable: true, description: 'Description of the board (optional)' },
         },
         required: ['name']
       }
@@ -53,7 +53,7 @@ RSpec.describe 'api/v1/boards', type: :request do
         let(:Authorization) { "Bearer #{@admin_api_token}" }
         let(:board) { { name: 'New board' } }
 
-        schema '$ref' => '#/components/schemas/Board'
+        schema '$ref' => '#/components/schemas/Id'
 
         before do
           @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
@@ -61,10 +61,9 @@ RSpec.describe 'api/v1/boards', type: :request do
         end
 
         run_test! do |response|
-          data = JSON.parse(response.body)
-          expect(data['name']).to eq(board[:name])
-
           Current.tenant = @current_tenant # Restore the current tenant
+          data = JSON.parse(response.body)
+          
           expect(Board.count).to eq(@board_count_before + 1)
           expect(Board.find(data['id'])).to be_present
         end

@@ -1,7 +1,7 @@
 module Api
   module V1
     class BoardsController < BaseController
-      BOARD_JSON_ATTRIBUTES = [:id, :name, :slug, :description, :created_at, :updated_at].freeze
+      include Api::V1::Serializers
 
       # List all boards
       def index
@@ -16,9 +16,8 @@ module Api
       def show
         board = Board.find_by(id: params[:id]) || Board.find_by(slug: params[:id])
 
-        if board.nil?
-          render json: { errors: ["Board with id '#{params[:id]}' not found"] }, status: :not_found
-          return
+        unless board
+          raise ActiveRecord::RecordNotFound, "Board with id #{params[:id]} not found"
         end
 
         authorize([:api, board])
@@ -33,7 +32,7 @@ module Api
         authorize([:api, board])
 
         if board.save
-          render json: board.slice(*BOARD_JSON_ATTRIBUTES), status: :created
+          render json: { id: board.id }, status: :created
         else
           render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
         end

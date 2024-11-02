@@ -3,9 +3,12 @@ module Api
     include ApplicationHelper
     include Pundit::Authorization
 
-    rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+    rescue_from StandardError, with: :unexpected_error # Must be at the top, catches exceptions not caught by other rescue_from
+    rescue_from ActiveRecord::InvalidForeignKey, with: :parameter_wrong
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from ActionController::ParameterMissing, with: :parameter_missing
-
+    rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+    
     skip_before_action :verify_authenticity_token
     skip_before_action :check_tenant_is_private
     skip_before_action :load_tenant_data
@@ -39,6 +42,24 @@ module Api
       def parameter_missing
         render status: :bad_request, json: {
           errors: ['Some parameters are missing from the request. Please check the documentation.']
+        }
+      end
+
+      def parameter_wrong
+        render status: :bad_request, json: {
+          errors: ['Some parameters are wrong in the request. Please check the documentation.']
+        }
+      end
+
+      def not_found(exception)
+        render status: :not_found, json: {
+          errors: [exception.message]
+        }
+      end
+
+      def unexpected_error
+        render status: :internal_server_error, json: {
+          errors: ['An unexpected error occurred.']
         }
       end
  

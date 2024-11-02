@@ -1,7 +1,7 @@
 module Api
   module V1
     class PostStatusesController < BaseController
-      POST_STATUS_JSON_ATTRIBUTES = [:id, :name, :color, :show_in_roadmap, :created_at, :updated_at].freeze
+      include Api::V1::Serializers
 
       # List all post statuses
       def index

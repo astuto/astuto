@@ -5,17 +5,28 @@ require 'rails_helper'
 # Define reusable schemas
 module Swagger
   module Schemas
+    # Generic schema for returning an ID
+    def self.Id
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer, description: 'Unique ID' }
+        },
+        required: ['id']
+      }
+    end
+
     # Board schema
     def self.Board
       {
         type: :object,
         properties: {
-          id: { type: :integer },
-          name: { type: :string },
-          slug: { type: :string },
-          description: { type: [:string, :null] },
-          created_at: { type: :string },
-          updated_at: { type: :string }
+          id: { type: :integer, description: 'Unique ID for the board' },
+          name: { type: :string, description: 'Name of the board' },
+          slug: { type: :string, description: 'Slug of the board' },
+          description: { type: [:string, :null], description: 'Description of the board' },
+          created_at: { type: :string, description: 'Date and time when the board was created' },
+          updated_at: { type: :string, description: 'Date and time when the board was last updated' }
         },
         required: %w[id name slug description created_at updated_at]
       }
@@ -26,14 +37,49 @@ module Swagger
       {
         type: :object,
         properties: {
-          id: { type: :integer },
-          name: { type: :string },
-          color: { type: :string },
-          show_in_roadmap: { type: :boolean },
-          created_at: { type: :string },
-          updated_at: { type: :string }
+          id: { type: :integer, description: 'Unique ID for the post status' },
+          name: { type: :string, description: 'Name of the post status' },
+          color: { type: :string, description: 'Color of the post status' },
+          show_in_roadmap: { type: :boolean, description: 'Whether the post status should be shown in the roadmap or not' },
+          created_at: { type: :string, description: 'Date and time when the post status was created' },
+          updated_at: { type: :string, description: 'Date and time when the post status was last updated' }
         },
         required: %w[id name color show_in_roadmap created_at updated_at]
+      }
+    end
+
+    # User schema
+    def self.User
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer, description: 'Unique ID for the user' },
+          email: { type: :string, description: 'Email of the user' },
+          full_name: { type: :string, description: 'Full name of the user' },
+          created_at: { type: :string, description: 'Date and time when the user was created' },
+          updated_at: { type: :string, description: 'Date and time when the user was last updated' }
+        },
+        required: %w[id email full_name created_at updated_at]
+      }
+    end
+
+    # Post schema
+    def self.Post
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer, description: 'Unique ID for the post' },
+          title: { type: :string, description: 'Title of the post' },
+          description: { type: :string, description: 'Content of the post' },
+          board: { '$ref' => '#/components/schemas/Board' },
+          post_status: { '$ref' => '#/components/schemas/PostStatus' },
+          user: { '$ref' => '#/components/schemas/User' },
+          approval_status: { type: :string, description: 'Approval status of the post (approved, pending or rejected)' },
+          slug: { type: :string, description: 'Slug of the post' },
+          created_at: { type: :string, description: 'Date and time when the post was created' },
+          updated_at: { type: :string, description: 'Date and time when the post was last updated' }
+        },
+        required: %w[id title description board post_status user approval_status slug created_at updated_at]
       }
     end
   end
@@ -66,8 +112,11 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
+          Id: Swagger::Schemas.Id,
           Board: Swagger::Schemas.Board,
           PostStatus: Swagger::Schemas.PostStatus,
+          User: Swagger::Schemas.User,
+          Post: Swagger::Schemas.Post,
           error: {
             type: :object,
             properties: {
