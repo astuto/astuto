@@ -351,7 +351,8 @@ RSpec.describe 'api/v1/posts', type: :request do
       parameter name: :post, in: :body, schema: {
         type: :object,
         properties: {
-          post_status_id: { type: :integer, description: 'ID of the new post status. Send null if you want to remove current status.' }
+          post_status_id: { type: :integer, description: 'ID of the new post status. Send null if you want to remove current status.' },
+          impersonated_user_id: { type: :integer, nullable: true, description: 'ID of the user to impersonate (optional; requires admin role)' }
         },
         required: %w[post_status_id]
       }
@@ -371,7 +372,33 @@ RSpec.describe 'api/v1/posts', type: :request do
         run_test! do |response|
           Current.tenant = @current_tenant # Restore the current tenant
           @post = Post.find(@post.id)
+          @post_status_change = PostStatusChange.where(post_id: @post.id).order(created_at: :desc).first
+          
           expect(@post.post_status_id).to eq(post[:post_status_id])
+          expect(@post_status_change.user_id).to eq(@moderator.id)
+        end
+      end
+
+      # Impersonation
+      response(200, 'successful') do
+        let(:Authorization) { "Bearer #{@admin_api_token}" }
+        let(:id) { @post.id }
+        let(:post) { { post_status_id: FactoryBot.create(:post_status).id, impersonated_user_id: FactoryBot.create(:user).id } }
+
+        schema '$ref' => '#/components/schemas/Id'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          expect(@post.post_status_id).not_to eq(post[:post_status_id])
+        end
+
+        run_test! do |response|
+          Current.tenant = @current_tenant # Restore the current tenant
+          @post = Post.find(@post.id)
+          @post_status_change = PostStatusChange.where(post_id: @post.id).order(created_at: :desc).first
+
+          expect(@post.post_status_id).to eq(post[:post_status_id])
+          expect(@post_status_change.user_id).to eq(post[:impersonated_user_id])
         end
       end
 

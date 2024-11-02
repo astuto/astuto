@@ -113,11 +113,13 @@ module Api
 
         authorize([:api, post])
 
+        user_id = impersonate_user_if_requested(params[:impersonated_user_id], current_api_key.user_id)
+
         post.update!(post_update_status_params)
 
         if post.post_status_id_previously_changed?
           ExecutePostStatusChangeLogicWorkflow.new(
-            user_id: current_api_key.user_id,
+            user_id: user_id,
             post: post,
             post_status_id: post.post_status_id
           ).run
