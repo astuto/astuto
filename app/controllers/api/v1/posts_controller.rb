@@ -2,6 +2,7 @@ module Api
   module V1
     class PostsController < BaseController
       include Api::V1::Serializers
+      include Api::V1::Helpers
 
       # List posts
       def index
@@ -40,6 +41,21 @@ module Api
           post_status: { only: POST_STATUS_JSON_ATTRIBUTES },
           user: { only: USER_JSON_ATTRIBUTES }
         })
+      end
+
+      # Create a new post
+      def create
+        post = Post.new(post_params)
+
+        authorize([:api, post])
+
+        post.user_id = impersonate_user_if_requested(params[:impersonated_user_id], current_api_key.user_id)
+
+        if post.save
+          render json: { id: post.id }, status: :created
+        else
+          render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+        end
       end
 
       # Update a post
@@ -111,6 +127,11 @@ module Api
       end
 
       private
+
+      def post_params
+        params.require(:title)
+        params.permit(:title, :description, :board_id)
+      end
 
       def post_update_params
         params.permit(:title, :description)

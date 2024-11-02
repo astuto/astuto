@@ -8,6 +8,7 @@ module Api
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from ActionController::ParameterMissing, with: :parameter_missing
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+    rescue_from Api::V1::Helpers::ImpersonationError, with: :impersonation_error
     
     skip_before_action :verify_authenticity_token
     skip_before_action :check_tenant_is_private
@@ -57,9 +58,21 @@ module Api
         }
       end
 
-      def unexpected_error
+      def impersonation_error(exception)
+        render status: :unauthorized, json: {
+          errors: ["Impersonation error: #{exception.message}"]
+        }
+      end
+
+      def unexpected_error(exception)
+        if Rails.env.development?
+          error = exception.message
+        else
+          error = 'An unexpected error occurred.'
+        end
+        
         render status: :internal_server_error, json: {
-          errors: ['An unexpected error occurred.']
+          errors: [error]
         }
       end
  

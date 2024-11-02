@@ -35,6 +35,98 @@ RSpec.describe 'api/v1/posts', type: :request do
         run_test!
       end
     end
+
+    post('Create post') do
+      description 'Create a new post.'
+      security [{ api_key: [] }]
+      tags 'Posts'
+      consumes 'application/json'
+      produces 'application/json'
+
+      parameter name: :post_parameter, in: :body, schema: {
+        type: :object,
+        properties: {
+          title: { type: :string, description: 'Title of the post' },
+          description: { type: :string, description: 'Content of the post' },
+          board_id: { type: :integer, description: 'ID of the board where the post will be created' },
+          impersonated_user_id: { type: :integer, nullable: true, description: 'ID of the user to impersonate (optional; requires admin role)' }
+        },
+        required: %w[title board_id]
+      }
+
+      response(201, 'successful') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id } }
+
+        schema '$ref' => '#/components/schemas/Id'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          @post_count_before = Post.count
+        end
+
+        run_test! do |response|
+          Current.tenant = @current_tenant # Restore the current tenant
+          created_post = Post.find(JSON.parse(response.body)['id'])
+
+          expect(Post.count).to eq(@post_count_before + 1)
+          expect(created_post.title).to eq(post_parameter[:title])
+          expect(created_post.board_id).to eq(post_parameter[:board_id])
+          expect(created_post.user_id).to eq(@moderator.id)
+        end
+      end
+
+      response(400, 'bad request') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:post_parameter) { { title: nil } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+
+      response(401, 'unauthorized') do
+        let(:Authorization) { nil }
+        let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+
+      # Impersonation works for admin users
+      response(201, 'successful') do
+        let(:Authorization) { "Bearer #{@admin_api_token}" }
+        let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id, impersonated_user_id: FactoryBot.create(:user).id } }
+
+        schema '$ref' => '#/components/schemas/Id'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          @post_count_before = Post.count
+        end
+
+        run_test! do |response|
+          Current.tenant = @current_tenant # Restore the current tenant
+          created_post = Post.find(JSON.parse(response.body)['id'])
+
+          expect(Post.count).to eq(@post_count_before + 1)
+          expect(created_post.title).to eq(post_parameter[:title])
+          expect(created_post.board_id).to eq(post_parameter[:board_id])
+          expect(created_post.user_id).to eq(post_parameter[:impersonated_user_id])
+        end
+      end
+
+      # Impersonation doesn't work for non-admin users
+      response(401, 'unauthorized') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id, impersonated_user_id: FactoryBot.create(:user).id } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+    end
   end
 
   path '/api/v1/posts/{id}' do

@@ -8,6 +8,10 @@ module Api
       api_key.user.moderator?
     end
 
+    def create?
+      api_key.user.moderator?
+    end
+
     def update?
       api_key.user.moderator?
     end
