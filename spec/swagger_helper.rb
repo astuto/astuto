@@ -20,6 +20,22 @@ module Swagger
         required: %w[id name slug description created_at updated_at]
       }
     end
+
+    # PostStatus schema
+    def self.PostStatus
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer },
+          name: { type: :string },
+          color: { type: :string },
+          show_in_roadmap: { type: :boolean },
+          created_at: { type: :string },
+          updated_at: { type: :string }
+        },
+        required: %w[id name color show_in_roadmap created_at updated_at]
+      }
+    end
   end
 end
 
@@ -51,6 +67,7 @@ RSpec.configure do |config|
       components: {
         schemas: {
           Board: Swagger::Schemas.Board,
+          PostStatus: Swagger::Schemas.PostStatus,
           error: {
             type: :object,
             properties: {
