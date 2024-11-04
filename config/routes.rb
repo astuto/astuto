@@ -100,8 +100,7 @@ Rails.application.routes.draw do
         resources :post_statuses, only: [:index]
         resources :posts, only: [:index, :show, :create, :update, :destroy] do
           member do
-            put :update_board
-            put :update_status
+            put :update_board, :update_status, :approve, :reject
           end
         end
         resource :api_key, only: [:show]

@@ -66,7 +66,7 @@ module Api
 
       def unexpected_error(exception)
         if Rails.env.development?
-          error = exception.message
+          error = '[DEV-ONLY MESSAGE] ' + exception.message
         else
           error = 'An unexpected error occurred.'
         end

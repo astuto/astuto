@@ -128,6 +128,44 @@ module Api
         render json: { id: post.id }, status: :ok
       end
 
+      # Approve post
+      def approve
+        post = Post.find_by(id: params[:id])
+
+        unless post
+          raise ActiveRecord::RecordNotFound, "Post with id #{params[:id]} not found"
+        end
+
+        unless post.approval_status == 'pending'
+          raise StandardError, "Post with id #{params[:id]} is not pending approval"
+        end
+
+        authorize([:api, post])
+
+        post.update!(approval_status: 'approved')
+
+        render json: { id: post.id }, status: :ok
+      end
+
+      # Reject post
+      def reject
+        post = Post.find_by(id: params[:id])
+
+        unless post
+          raise ActiveRecord::RecordNotFound, "Post with id #{params[:id]} not found"
+        end
+
+        unless post.approval_status == 'pending'
+          raise StandardError, "Post with id #{params[:id]} is not pending approval"
+        end
+
+        authorize([:api, post])
+
+        post.update!(approval_status: 'rejected')
+
+        render json: { id: post.id }, status: :ok
+      end
+
       private
 
       def post_params

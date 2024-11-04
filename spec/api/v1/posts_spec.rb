@@ -5,6 +5,7 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   before(:each) do
     @post = FactoryBot.create(:post)
+    @pending_post = FactoryBot.create(:post, approval_status: 'pending')
   end
 
   path '/api/v1/posts' do
@@ -416,6 +417,100 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { -1 }
         let(:post) { { post_status_id: FactoryBot.create(:post_status).id } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/posts/{id}/approve' do
+    put('Approve post') do
+      description 'Approve a post that is pending approval.'
+      security [{ api_key: [] }]
+      tags 'Posts'
+      produces 'application/json'
+
+      parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
+
+      response(200, 'successful') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { @pending_post.id }
+
+        schema '$ref' => '#/components/schemas/Id'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          expect(@pending_post.approval_status).to eq('pending')
+        end
+
+        run_test! do |response|
+          Current.tenant = @current_tenant # Restore the current tenant
+          @post = Post.find(@pending_post.id)
+          expect(@post.approval_status).to eq('approved')
+        end
+      end
+
+      response(401, 'unauthorized') do
+        let(:Authorization) { nil }
+        let(:id) { @pending_post.id }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+
+      response(404, 'not found') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { -1 }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/posts/{id}/reject' do
+    put('Reject post') do
+      description 'Reject a post that is pending approval.'
+      security [{ api_key: [] }]
+      tags 'Posts'
+      produces 'application/json'
+
+      parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
+
+      response(200, 'successful') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { @pending_post.id }
+
+        schema '$ref' => '#/components/schemas/Id'
+
+        before do
+          @current_tenant = Current.tenant # Need to store the current tenant to use it later after request
+          expect(@pending_post.approval_status).to eq('pending')
+        end
+
+        run_test! do |response|
+          Current.tenant = @current_tenant # Restore the current tenant
+          @post = Post.find(@pending_post.id)
+          expect(@post.approval_status).to eq('rejected')
+        end
+      end
+
+      response(401, 'unauthorized') do
+        let(:Authorization) { nil }
+        let(:id) { @pending_post.id }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
+
+      response(404, 'not found') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { -1 }
 
         schema '$ref' => '#/components/schemas/error'
 

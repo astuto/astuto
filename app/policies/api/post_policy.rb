@@ -27,5 +27,13 @@ module Api
     def update_status?
       api_key.user.moderator?
     end
+
+    def approve?
+      api_key.user.moderator?
+    end
+
+    def reject?
+      api_key.user.moderator?
+    end
   end
 end
