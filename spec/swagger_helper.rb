@@ -32,6 +32,23 @@ module Swagger
       }
     end
 
+    # Comment schema
+    def self.Comment
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer, description: 'Unique ID for the comment' },
+          body: { type: :string, description: 'Content of the comment' },
+          post_id: { type: :integer, description: 'ID of the post the comment belongs to' },
+          is_post_update: { type: :boolean, description: 'Whether the comment is a post update or not' },
+          user: { '$ref' => '#/components/schemas/User' },
+          created_at: { type: :string, description: 'Date and time when the comment was created' },
+          updated_at: { type: :string, description: 'Date and time when the comment was last updated' }
+        },
+        required: %w[id body is_post_update post_id user created_at updated_at]
+      }
+    end
+
     # PostStatus schema
     def self.PostStatus
       {
@@ -114,6 +131,7 @@ RSpec.configure do |config|
         schemas: {
           Id: Swagger::Schemas.Id,
           Board: Swagger::Schemas.Board,
+          Comment: Swagger::Schemas.Comment,
           PostStatus: Swagger::Schemas.PostStatus,
           User: Swagger::Schemas.User,
           Post: Swagger::Schemas.Post,

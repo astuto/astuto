@@ -10,6 +10,16 @@ module Api
         :updated_at
       ].freeze
 
+      COMMENT_JSON_ATTRIBUTES = [
+        :id,
+        :body,
+        :is_post_update,
+        :post_id,
+        :user,
+        :created_at,
+        :updated_at
+      ].freeze
+
       POST_STATUS_JSON_ATTRIBUTES = [
         :id,
         :name,

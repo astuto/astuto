@@ -103,6 +103,8 @@ Rails.application.routes.draw do
             put :update_board, :update_status, :approve, :reject
           end
         end
+        resources :comments, only: [:index, :show, :create]
+
         resource :api_key, only: [:show]
       end
     end

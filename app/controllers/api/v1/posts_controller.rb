@@ -168,23 +168,23 @@ module Api
 
       private
 
-      def post_params
-        params.require(:title)
-        params.permit(:title, :description, :board_id)
-      end
+        def post_params
+          params.require(:title)
+          params.permit(:title, :description, :board_id)
+        end
 
-      def post_update_params
-        params.permit(:title, :description)
-      end
+        def post_update_params
+          params.permit(:title, :description)
+        end
 
-      def post_update_board_params
-        params.require(:board_id)
-        params.permit(:board_id)
-      end
+        def post_update_board_params
+          params.require(:board_id)
+          params.permit(:board_id)
+        end
 
-      def post_update_status_params
-        params.permit(:post_status_id)
-      end
+        def post_update_status_params
+          params.permit(:post_status_id)
+        end
     end
   end
 end
