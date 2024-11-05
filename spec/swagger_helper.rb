@@ -28,6 +28,28 @@ RSpec.configure do |config|
           url: 'https://subdomain.astuto.io'
         }
       ],
+      tags: [
+        {
+          name: 'Boards',
+          description: 'A Board is an entity that groups related Posts together.'
+        },
+        {
+          name: 'Comments',
+          description: 'A Comment can be written to reply to a Post or to another Comment. Moreover, administrators and moderators can mark a Comment as a "Post update": this is usually used to notify Users that some progress has been made in a Post.'
+        },
+        {
+          name: 'Post Statuses',
+          description: 'A Post Status is a label that can be assigned to a Post to indicate its current status (e.g. "In progress", "Completed", etc.).'
+        },
+        {
+          name: 'Posts',
+          description: 'A Post is a piece of content that can be created by Users. It usually represents ideas, suggestions, feedback or reports from your Users. Posts must be associated with a Board and can have Comments.'
+        },
+        {
+          name: 'Users',
+          description: 'A User is a person who interacts with the feedback space. Users can create and vote Posts, write Comments, and more.'
+        }
+      ],
       components: {
         # Schemas are defined in spec/support/swagger_schemas.rb
         schemas: {
@@ -36,8 +58,8 @@ RSpec.configure do |config|
           Board: Swagger::Schemas.Board,
           Comment: Swagger::Schemas.Comment,
           PostStatus: Swagger::Schemas.PostStatus,
-          User: Swagger::Schemas.User,
-          Post: Swagger::Schemas.Post
+          Post: Swagger::Schemas.Post,
+          User: Swagger::Schemas.User
         },
         securitySchemes: {
           api_key: {
