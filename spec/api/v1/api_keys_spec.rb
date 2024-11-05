@@ -33,7 +33,7 @@ RSpec.describe 'api/v1/api_keys', type: :request do
 
       response(401, 'unauthorized') do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         after do |example|
           example.metadata[:response][:content] = {
@@ -47,7 +47,7 @@ RSpec.describe 'api/v1/api_keys', type: :request do
 
       response(401, 'unauthorized') do
         let(:Authorization) { nil }
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         after do |example|
           example.metadata[:response][:content] = {

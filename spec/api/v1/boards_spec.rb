@@ -26,7 +26,7 @@ RSpec.describe 'api/v1/boards', type: :request do
       response(401, 'unauthorized') do
         let(:Authorization) { nil }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -73,7 +73,7 @@ RSpec.describe 'api/v1/boards', type: :request do
         let(:Authorization) { "Bearer #{@admin_api_token}" }
         let(:board) { { description: 'Only description, not name' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -82,7 +82,7 @@ RSpec.describe 'api/v1/boards', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:board) { { name: 'New board' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -131,7 +131,7 @@ RSpec.describe 'api/v1/boards', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { 'invalid-id' }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -140,7 +140,7 @@ RSpec.describe 'api/v1/boards', type: :request do
         let(:Authorization) { nil }
         let(:id) { @board.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end

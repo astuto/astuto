@@ -63,7 +63,7 @@ RSpec.describe 'api/v1/comments', type: :request do
       response(401, 'Unauthorized') do
         let(:Authorization) { nil }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -113,7 +113,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { nil }
         let(:comment) { { body: 'This is a comment', post_id: @post_1.id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -122,7 +122,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:comment) { { body: '', post_id: @post_1.id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -155,7 +155,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:comment) { { body: 'This is a comment', post_id: @post_1.id, impersonated_user_id: FactoryBot.create(:user).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -184,7 +184,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { 0 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -193,7 +193,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { nil }
         let(:id) { @comment_1.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -233,7 +233,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:id) { 0 }
         let(:comment) { { body: 'Updated comment' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -243,7 +243,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:id) { @comment_1.id }
         let(:comment) { { body: 'Updated comment' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -253,7 +253,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:id) { @comment_1.id }
         let(:comment) { { body: '' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -286,7 +286,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { 0 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -295,7 +295,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { nil }
         let(:id) { @comment_1.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -331,7 +331,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { 0 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -340,7 +340,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { nil }
         let(:id) { @comment_1.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -377,7 +377,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { 0 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -386,7 +386,7 @@ RSpec.describe 'api/v1/comments', type: :request do
         let(:Authorization) { nil }
         let(:id) { @comment_1.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end

@@ -33,7 +33,7 @@ RSpec.describe 'api/v1/post_statuses', type: :request do
       response(401, 'unauthorized') do
         let(:Authorization) { nil }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end

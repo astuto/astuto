@@ -31,7 +31,7 @@ RSpec.describe 'api/v1/posts', type: :request do
       response(401, 'unauthorized') do
         let(:Authorization) { nil }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -81,7 +81,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:post_parameter) { { title: nil } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -90,7 +90,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { nil }
         let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -123,7 +123,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:post_parameter) { { title: 'New post', board_id: FactoryBot.create(:board).id, impersonated_user_id: FactoryBot.create(:user).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -152,7 +152,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { nil }
         let(:id) { @post.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -161,7 +161,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { -1 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -210,7 +210,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { @post.id }
         let(:post) { { title: 'New title', description: 'New description' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -220,7 +220,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { -1 }
         let(:post) { { title: 'New title', description: 'New description' } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -230,7 +230,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { @post.id }
         let(:post) { { title: nil, description: nil } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -265,7 +265,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { nil }
         let(:id) { @post.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -274,7 +274,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { -1 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -323,7 +323,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { @post.id }
         let(:post) { { board_id: nil } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -333,7 +333,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { @post.id }
         let(:post) { { board_id: FactoryBot.create(:board).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -343,7 +343,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { -1 }
         let(:post) { { board_id: FactoryBot.create(:board).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -419,7 +419,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { @post.id }
         let(:post) { { post_status_id: FactoryBot.create(:post_status).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -429,7 +429,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:id) { -1 }
         let(:post) { { post_status_id: FactoryBot.create(:post_status).id } }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -467,7 +467,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { nil }
         let(:id) { @pending_post.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -476,7 +476,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { -1 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -514,7 +514,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { nil }
         let(:id) { @pending_post.id }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
@@ -523,7 +523,7 @@ RSpec.describe 'api/v1/posts', type: :request do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:id) { -1 }
 
-        schema '$ref' => '#/components/schemas/error'
+        schema '$ref' => '#/components/schemas/Error'
 
         run_test!
       end
