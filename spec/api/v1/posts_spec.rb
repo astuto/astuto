@@ -237,9 +237,10 @@ RSpec.describe 'api/v1/posts', type: :request do
     end
 
     delete('Delete a post') do
-      description 'Delete a post.'
+      description 'Delete a post by id.'
       security [{ api_key: [] }]
       tags 'Posts'
+      produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
 
