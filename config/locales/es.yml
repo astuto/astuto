@@ -1,7 +1,7 @@
 es:
   common:
     words:
-      or: 'or'
+      or: 'o'
     errors:
       unknown: 'Error no determinado, intente nuevamente'
     validations:
