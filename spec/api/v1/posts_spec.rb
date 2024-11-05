@@ -224,6 +224,16 @@ RSpec.describe 'api/v1/posts', type: :request do
 
         run_test!
       end
+
+      response(422, 'unprocessable entity') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:id) { @post.id }
+        let(:post) { { title: nil, description: nil } }
+
+        schema '$ref' => '#/components/schemas/error'
+
+        run_test!
+      end
     end
 
     delete('Delete a post') do

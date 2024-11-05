@@ -68,9 +68,11 @@ module Api
 
         authorize([:api, post])
 
-        post.update!(post_update_params)
-
-        render json: { id: post.id }, status: :ok
+        if post.update(post_update_params)
+          render json: { id: post.id }, status: :ok
+        else
+          render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+        end
       end
 
       # Delete a post

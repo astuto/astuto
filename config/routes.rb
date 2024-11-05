@@ -105,7 +105,11 @@ Rails.application.routes.draw do
             put :update_board, :update_status, :approve, :reject
           end
         end
-        resources :comments, only: [:index, :show, :create]
+        resources :comments, only: [:index, :show, :create, :update, :destroy] do
+          member do
+            put :mark_as_post_update, :unmark_as_post_update
+          end
+        end
 
         resource :api_key, only: [:show]
       end

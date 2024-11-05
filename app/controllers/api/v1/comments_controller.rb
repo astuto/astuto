@@ -53,10 +53,76 @@ module Api
         end
       end
 
+      # Update a comment
+      def update
+        comment = Comment.find_by(id: params[:id])
+
+        unless comment
+          raise ActiveRecord::RecordNotFound, "Comment with id #{params[:id]} not found"
+        end
+
+        authorize([:api, comment])
+
+        if comment.update(comment_update_params)
+          render json: { id: comment.id }, status: :ok
+        else
+          render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      # Delete a comment
+      def destroy
+        comment = Comment.find_by(id: params[:id])
+
+        unless comment
+          raise ActiveRecord::RecordNotFound, "Comment with id #{params[:id]} not found"
+        end
+
+        authorize([:api, comment])
+
+        comment.destroy!
+
+        render json: { id: comment.id }, status: :ok
+      end
+
+      # Mark comment as post update
+      def mark_as_post_update
+        comment = Comment.find_by(id: params[:id])
+
+        unless comment
+          raise ActiveRecord::RecordNotFound, "Comment with id #{params[:id]} not found"
+        end
+
+        authorize([:api, comment])
+
+        comment.update!(is_post_update: true)
+
+        render json: { id: comment.id }, status: :ok
+      end
+
+      # Unmark comment as post update
+      def unmark_as_post_update
+        comment = Comment.find_by(id: params[:id])
+
+        unless comment
+          raise ActiveRecord::RecordNotFound, "Comment with id #{params[:id]} not found"
+        end
+
+        authorize([:api, comment])
+
+        comment.update!(is_post_update: false)
+
+        render json: { id: comment.id }, status: :ok
+      end
+
       private
 
         def comment_params
           params.permit(:body, :is_post_update, :post_id, :parent_id)
+        end
+
+        def comment_update_params
+          params.permit(:body)
         end
     end
   end
