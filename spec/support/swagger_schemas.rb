@@ -105,5 +105,20 @@ module Swagger
         required: %w[id title description board post_status user approval_status slug created_at updated_at]
       }
     end
+
+    # Vote schema
+    def self.Vote
+      {
+        type: :object,
+        properties: {
+          id: { type: :integer, description: 'Unique ID for the vote' },
+          post_id: { type: :integer, description: 'ID of the post the vote belongs to' },
+          user: { '$ref' => '#/components/schemas/User' },
+          created_at: { type: :string, description: 'Date and time when the vote was created' },
+          updated_at: { type: :string, description: 'Date and time when the vote was last updated' }
+        },
+        required: %w[id post_id user created_at updated_at]
+      }
+    end
   end
 end

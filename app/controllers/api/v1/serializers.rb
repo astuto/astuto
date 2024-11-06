@@ -49,6 +49,14 @@ module Api
         :created_at,
         :updated_at
       ].freeze
+
+      LIKE_JSON_ATTRIBUTES = [
+        :id,
+        :user,
+        :post_id,
+        :created_at,
+        :updated_at
+      ].freeze
     end
   end
 end

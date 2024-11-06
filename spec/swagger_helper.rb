@@ -25,7 +25,7 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://subdomain.astuto.io'
+          url: 'https://your-company.astuto.io'
         }
       ],
       tags: [
@@ -48,6 +48,10 @@ RSpec.configure do |config|
         {
           name: 'Users',
           description: 'A User is a person who interacts with the feedback space. Users can create and vote Posts, write Comments, and more.'
+        },
+        {
+          name: 'Votes',
+          description: 'A Vote is a way for Users to express their agreement/support for a Post.'
         }
       ],
       components: {
@@ -59,7 +63,8 @@ RSpec.configure do |config|
           Comment: Swagger::Schemas.Comment,
           PostStatus: Swagger::Schemas.PostStatus,
           Post: Swagger::Schemas.Post,
-          User: Swagger::Schemas.User
+          User: Swagger::Schemas.User,
+          Vote: Swagger::Schemas.Vote
         },
         securitySchemes: {
           api_key: {

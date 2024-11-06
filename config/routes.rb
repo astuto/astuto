@@ -110,6 +110,7 @@ Rails.application.routes.draw do
             put :mark_as_post_update, :unmark_as_post_update
           end
         end
+        resources :votes, only: [:index, :show, :create, :destroy], controller: 'likes'
 
         resource :api_key, only: [:show]
       end

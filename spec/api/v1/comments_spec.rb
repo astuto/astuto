@@ -20,7 +20,7 @@ RSpec.describe 'api/v1/comments', type: :request do
 
       parameter name: :post_id, in: :query, type: :integer, required: false, description: 'Return only comments for the specified post.'
       parameter name: :limit, in: :query, type: :integer, required: false, description: 'Number of comments to return. Defaults to 100.'
-      parameter name: :offset, in: :query, type: :integer, required: false, description: 'Offset the starting point of posts to return. Defaults to 0.'
+      parameter name: :offset, in: :query, type: :integer, required: false, description: 'Offset the starting point of comments to return. Defaults to 0.'
 
       # No filters
       response(200, 'successful') do
