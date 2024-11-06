@@ -306,7 +306,7 @@ RSpec.describe 'api/v1/comments', type: :request do
     parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the comment.'
 
     put('Mark comment as post update') do
-      description 'Mark a comment as a post update.'
+      description 'Mark a comment as a post update.<br><br><b>Note</b>: email notification to post followers will NOT be sent when using this endpoint. To send email notifications, use the "Create a comment" endpoint with the "is_post_update" parameter set to true.'
       security [{ api_key: [] }]
       tags 'Comments'
       produces 'application/json'

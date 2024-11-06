@@ -33,7 +33,7 @@ RSpec.describe 'api/v1/boards', type: :request do
     end
 
     post('Create board') do
-      description 'Create a new board. <br> Requires admin role.'
+      description 'Create a new board.<br><br><b>Note</b>: requires admin role.'
       security [{ api_key: [] }]
       tags 'Boards'
       consumes 'application/json'
