@@ -47,6 +47,8 @@ module Api
         comment.user_id = impersonate_user_if_requested(params[:impersonated_user_id], current_api_key.user_id)
 
         if comment.save
+          SendNotificationForCommentWorkflow.new(comment: comment).run
+
           render json: { id: comment.id }, status: :created
         else
           render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
