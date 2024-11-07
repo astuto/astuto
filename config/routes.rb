@@ -111,8 +111,6 @@ Rails.application.routes.draw do
           end
         end
         resources :votes, only: [:index, :show, :create, :destroy], controller: 'likes'
-
-        resource :api_key, only: [:show]
       end
     end
   end
