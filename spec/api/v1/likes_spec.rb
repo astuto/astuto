@@ -12,9 +12,9 @@ RSpec.describe 'api/v1/votes', type: :request do
 
   path '/api/v1/votes' do
     get('List votes') do
-      description 'List votes with optional filters. In particular, you may want to filter by post_id to get votes for a specific post.'
-      security [{ api_key: [] }]
       tags 'Votes'
+      description 'List votes with optional filters. In particular, you may want to filter by post_id to get votes for a specific post. Votes are returned from newest to oldest.'
+      security [{ api_key: [] }]
       produces 'application/json'
 
       parameter name: :post_id, in: :query, type: :integer, required: false, description: 'Return only votes for the specified post.'
@@ -70,9 +70,9 @@ RSpec.describe 'api/v1/votes', type: :request do
     end
 
     post('Create a vote') do
+      tags 'Votes'
       description 'Create a new vote.'
       security [{ api_key: [] }]
-      tags 'Votes'
       consumes 'application/json'
       produces 'application/json'
 
@@ -155,9 +155,9 @@ RSpec.describe 'api/v1/votes', type: :request do
 
   path '/api/v1/votes/{id}' do
     get('Show a vote') do
+      tags 'Votes'
       description 'Show a vote by ID.'
       security [{ api_key: [] }]
-      tags 'Votes'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the vote to show.'
@@ -192,9 +192,9 @@ RSpec.describe 'api/v1/votes', type: :request do
     end
 
     delete('Delete a vote') do
+      tags 'Votes'
       description 'Delete a vote by ID.'
       security [{ api_key: [] }]
-      tags 'Votes'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the vote to delete.'

@@ -13,9 +13,9 @@ RSpec.describe 'api/v1/comments', type: :request do
   path '/api/v1/comments' do
 
     get('List comments') do
-      description 'List comments with optional filters. In particular, you may want to filter by post_id to get comments for a specific post.'
-      security [{ api_key: [] }]
       tags 'Comments'
+      description 'List comments with optional filters. In particular, you may want to filter by post_id to get comments for a specific post. Comments are returned from newest to oldest.'
+      security [{ api_key: [] }]
       produces 'application/json'
 
       parameter name: :post_id, in: :query, type: :integer, required: false, description: 'Return only comments for the specified post.'
@@ -70,9 +70,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     end
 
     post('Create a comment') do
+      tags 'Comments'
       description 'Create a new comment.'
       security [{ api_key: [] }]
-      tags 'Comments'
       consumes 'application/json'
       produces 'application/json'
 
@@ -166,9 +166,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the comment.'
 
     get('Get a comment') do
+      tags 'Comments'
       description 'Get a comment by id.'
       security [{ api_key: [] }]
-      tags 'Comments'
       produces 'application/json'
 
       response(200, 'successful') do
@@ -201,9 +201,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     end
 
     put('Update a comment') do
+      tags 'Comments'
       description 'Update a comment by id.'
       security [{ api_key: [] }]
-      tags 'Comments'
       consumes 'application/json'
       produces 'application/json'
 
@@ -260,9 +260,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     end
 
     delete('Delete a comment') do
+      tags 'Comments'
       description 'Delete a comment by id.'
       security [{ api_key: [] }]
-      tags 'Comments'
       produces 'application/json'
 
       response(200, 'successful') do
@@ -306,9 +306,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the comment.'
 
     put('Mark comment as post update') do
+      tags 'Comments'
       description 'Mark a comment as a post update.<br><br><b>Note</b>: email notification to post followers will NOT be sent when using this endpoint. To send email notifications, use the "Create a comment" endpoint with the "is_post_update" parameter set to true.'
       security [{ api_key: [] }]
-      tags 'Comments'
       produces 'application/json'
 
       response(200, 'successful') do
@@ -352,9 +352,9 @@ RSpec.describe 'api/v1/comments', type: :request do
     parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the comment.'
 
     put('Unmark comment as post update') do
+      tags 'Comments'
       description 'Unmark a comment as a post update.'
       security [{ api_key: [] }]
-      tags 'Comments'
       produces 'application/json'
 
       response(200, 'successful') do

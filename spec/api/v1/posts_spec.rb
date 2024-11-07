@@ -10,9 +10,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts' do
     get('List posts') do
-      description 'List posts with optional filters.'
-      security [{ api_key: [] }]
       tags 'Posts'
+      description 'List posts with optional filters. Posts are returned from newest to oldest.'
+      security [{ api_key: [] }]
       produces 'application/json'
 
       parameter name: :limit, in: :query, type: :integer, required: false, description: 'Number of posts to return. Defaults to 20.'
@@ -38,9 +38,9 @@ RSpec.describe 'api/v1/posts', type: :request do
     end
 
     post('Create post') do
+      tags 'Posts'
       description 'Create a new post.'
       security [{ api_key: [] }]
-      tags 'Posts'
       consumes 'application/json'
       produces 'application/json'
 
@@ -132,9 +132,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts/{id}' do
     get('Get a post') do
+      tags 'Posts'
       description 'Get a post by id.'
       security [{ api_key: [] }]
-      tags 'Posts'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
@@ -168,9 +168,9 @@ RSpec.describe 'api/v1/posts', type: :request do
     end
 
     put('Update a post') do
+      tags 'Posts'
       description 'Update a post.'
       security [{ api_key: [] }]
-      tags 'Posts'
       consumes 'application/json'
       produces 'application/json'
 
@@ -237,9 +237,9 @@ RSpec.describe 'api/v1/posts', type: :request do
     end
 
     delete('Delete a post') do
+      tags 'Posts'
       description 'Delete a post by id.'
       security [{ api_key: [] }]
-      tags 'Posts'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
@@ -283,9 +283,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts/{id}/update_board' do
     put('Update post board') do
+      tags 'Posts'
       description 'Move post to another board.'
       security [{ api_key: [] }]
-      tags 'Posts'
       consumes 'application/json'
       produces 'application/json'
 
@@ -352,9 +352,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts/{id}/update_status' do
     put('Update post status') do
+      tags 'Posts'
       description 'Update post status.'
       security [{ api_key: [] }]
-      tags 'Posts'
       consumes 'application/json'
       produces 'application/json'
 
@@ -438,9 +438,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts/{id}/approve' do
     put('Approve post') do
+      tags 'Posts'
       description 'Approve a post that is pending approval.'
       security [{ api_key: [] }]
-      tags 'Posts'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'
@@ -485,9 +485,9 @@ RSpec.describe 'api/v1/posts', type: :request do
 
   path '/api/v1/posts/{id}/reject' do
     put('Reject post') do
+      tags 'Posts'
       description 'Reject a post that is pending approval.'
       security [{ api_key: [] }]
-      tags 'Posts'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :integer, required: true, description: 'ID of the post.'

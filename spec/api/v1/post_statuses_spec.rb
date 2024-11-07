@@ -11,9 +11,9 @@ RSpec.describe 'api/v1/post_statuses', type: :request do
   path '/api/v1/post_statuses' do
 
     get('List post statuses') do
+      tags 'Post Statuses'
       description 'List all post statuses.'
       security [{ api_key: [] }]
-      tags 'Post Statuses'
       produces 'application/json'
 
       response(200, 'successful') do

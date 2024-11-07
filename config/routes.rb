@@ -111,6 +111,14 @@ Rails.application.routes.draw do
           end
         end
         resources :votes, only: [:index, :show, :create, :destroy], controller: 'likes'
+        resources :users, only: [:index, :show, :create] do
+          collection do
+            get :get_by_email, controller: 'users', action: 'show_by_email'
+          end
+          member do
+            put :block
+          end
+        end 
       end
     end
   end

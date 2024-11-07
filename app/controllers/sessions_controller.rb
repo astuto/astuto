@@ -6,7 +6,7 @@ class SessionsController < Devise::SessionsController
 
   def new
     # Update return_to path if not coming from Devise user pages
-    if request.referer.present? && !request.referer.include?('/users/')
+    if request.referer.present? && !request.referer.include?('/users')
       session[:return_to] = request.referer
     end
     

@@ -10,9 +10,9 @@ RSpec.describe 'api/v1/boards', type: :request do
   path '/api/v1/boards' do
 
     get('List boards') do
+      tags 'Boards'
       description 'List all boards.'
       security [{ api_key: [] }]
-      tags 'Boards'
       produces 'application/json'
 
       response(200, 'successful') do
@@ -33,9 +33,9 @@ RSpec.describe 'api/v1/boards', type: :request do
     end
 
     post('Create board') do
+      tags 'Boards'
       description 'Create a new board.<br><br><b>Note</b>: requires admin role.'
       security [{ api_key: [] }]
-      tags 'Boards'
       consumes 'application/json'
       produces 'application/json'
 
@@ -92,9 +92,9 @@ RSpec.describe 'api/v1/boards', type: :request do
   path '/api/v1/boards/{id}' do
 
     get('Get board') do
+      tags 'Boards'
       description 'Get the specified board.'
       security [{ api_key: [] }]
-      tags 'Boards'
       produces 'application/json'
 
       parameter name: :id, in: :path, type: :string, required: true, description: 'ID or slug of the board'
