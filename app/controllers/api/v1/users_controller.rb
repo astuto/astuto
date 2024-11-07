@@ -44,9 +44,18 @@ module Api
 
       # Create user
       def create
+        # Check whether user already exists and return its id
+        user = User.find_by(email: params[:email])
+
+        if user
+          render json: { id: user.id }, status: :ok
+          return
+        end
+
+        # ... otherwise, create a new user
         user = User.new(
           email: params[:email],
-          full_name: params[:full_name],
+          full_name: params[:full_name] || params[:email],
           password: Devise.friendly_token,
           has_set_password: false,
           status: 'active'

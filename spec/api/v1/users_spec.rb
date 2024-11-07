@@ -37,9 +37,9 @@ RSpec.describe 'api/v1/users', type: :request do
       end
     end
 
-    post('Create user') do
+    post('Create/get user') do
       tags 'Users'
-      description 'Create a new user. A password will be randomly generated, so the user will be able to log in using an OAuth provider or by email after resetting the password.'
+      description 'Create a new user or, if it already exists, get it.<br><br>This endpoint is useful for the impersonation technique.<br>In the case of creation, a password will be randomly generated so the user will be able to log in using an OAuth provider or by email after resetting the password.<br>The full_name parameter is optional, but it is recommended to provide it if you are creating a new user.'
       security [{ api_key: [] }]
       consumes 'application/json'
       produces 'application/json'
@@ -50,9 +50,10 @@ RSpec.describe 'api/v1/users', type: :request do
           email: { type: :string, description: 'Email of the user' },
           full_name: { type: :string, description: 'Full name of the user' }
         },
-        required: %w[email full_name]
+        required: %w[email]
       }
 
+      # Create user if it does not exist
       response(201, 'created') do
         let(:Authorization) { "Bearer #{@moderator_api_token}" }
         let(:user) { { email: 'new-user@example.com', full_name: 'New User' } }
@@ -74,19 +75,19 @@ RSpec.describe 'api/v1/users', type: :request do
         end
       end
 
-      response(401, 'unauthorized') do
-        let(:Authorization) { nil }
-        let(:user) { { email: 'new-user@example.com', full_name: 'New User' } }
+      # Return existing user ID if it already exists
+      response(200, 'ok') do
+        let(:Authorization) { "Bearer #{@moderator_api_token}" }
+        let(:user) { { email: @user.email } }
 
-        schema '$ref' => '#/components/schemas/Error'
+        schema '$ref' => '#/components/schemas/Id'
 
         run_test!
       end
 
-      # e.g. email already taken
-      response(422, 'unprocessable entity') do
-        let(:Authorization) { "Bearer #{@moderator_api_token}" }
-        let(:user) { { email: @user.email, full_name: 'New User' } }
+      response(401, 'unauthorized') do
+        let(:Authorization) { nil }
+        let(:user) { { email: 'new-user@example.com', full_name: 'New User' } }
 
         schema '$ref' => '#/components/schemas/Error'
 

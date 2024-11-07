@@ -20,7 +20,8 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'Astuto API',
-        version: 'v1'
+        version: 'v1',
+        description: 'The Astuto API allows you to interact programmatically with the feedback space. You can manage Boards, Posts, Comments, Users, Votes, and more.'
       },
       paths: {},
       servers: [
@@ -29,6 +30,42 @@ RSpec.configure do |config|
         }
       ],
       tags: [
+        {
+          name: 'Get started',
+          description: <<~DESC
+            ### How to obtain an API key
+            
+            You can obtain an API key only if you are an administrator or moderator of the feedback space. To get an API key, follow these steps:
+
+              1. Log in to the feedback space.
+              2. Click on your name in the top right corner and then click on Profile settings.
+              3. In the API key section, click on the Generate API key button.
+              4. Copy the API key and store it in a safe place. It cannot be shown again. If you lose it, you will have to generate a new one.
+
+            ### How to use the API key
+
+            To use the API key, you need to pass it in the `Authorization` header of your requests. The header must be in the following format:
+
+            `Bearer {your-api-key}`
+
+            ### Moderator vs administrator API key
+
+            Moderators and administrators can do almost the same operations through the API. Some notable differences are:
+              
+              - Only administrators can impersonate other users (see the following section).
+              - Only administrators can create Boards.
+              - Moderators cannot block administrators, whereas administrators can block moderators.
+
+            ### The impersonation technique
+
+            Administrators can impersonate other users through the API. This is useful if you want to submit a post or cast a vote on behalf of another user.
+
+            Some endpoints accept an `impersonated_user_id` parameter. If you pass this parameter, the API will act as if the request was made by the user with the specified ID. For example, if you want to create a post on behalf of a user with ID 123, you can pass `impersonated_user_id=123` in the request body.
+
+            Since you need to know the ID of the user you want to impersonate, this technique is usually used in combination with the Create/Get user endpoint. This endpoint creates a new user and returns its ID if it does not exist or it just returns the ID of the existing user. You can then use the returned ID to impersonate the user in other requests.
+
+          DESC
+        },
         {
           name: 'Boards',
           description: 'A Board is an entity that groups related Posts together.'
