@@ -8,7 +8,20 @@ def get_tenants_to_notify(period)
     trial_ends_at: date_to_check.beginning_of_day..date_to_check.end_of_day,
     status: 'trial'
   )
-  Tenant.where(id: tbs.map(&:tenant_id))
+  tenants_to_notify = Tenant.where(id: tbs.map(&:tenant_id))
+
+  # If notifying for "mid" trial period, check whether tenant has not been granted an extension of the trial period
+  # An extended trial period usually means that the tenant contacted me personally, so there is no need to send
+  # a "mid" trial period notification (which could also be sent multiple times in the case of an extension)
+  # So we filter out tenants whose trial_ends_at is not 7 days after the tenant created at date
+  if period == "mid"
+    tenants_to_notify = tenants_to_notify.select do |tenant|
+      tenant_billing = TenantBilling.unscoped.find_by(tenant_id: tenant.id)
+      tenant_billing.trial_ends_at.to_date == tenant.created_at.to_date + 7.days
+    end
+  end
+
+  tenants_to_notify
 end
 
 task notify_tenants_trial_period: [:environment] do
