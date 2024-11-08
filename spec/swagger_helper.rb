@@ -48,6 +48,8 @@ RSpec.configure do |config|
 
             `Bearer {your-api-key}`
 
+            Note: all API endpoints require authentication, so you must pass the API key in all your requests.
+
             ### Moderator vs administrator API key
 
             Moderators and administrators can do almost the same operations through the API. Some notable differences are:

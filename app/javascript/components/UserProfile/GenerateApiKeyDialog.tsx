@@ -6,6 +6,8 @@ import Button from '../common/Button';
 import CopyToClipboardButton from '../common/CopyToClipboardButton';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import HttpStatus from '../../constants/http_status';
+import ActionLink from '../common/ActionLink';
+import { LearnMoreIcon } from '../common/Icons';
 
 interface Props {
   currentApiKey?: string;
@@ -78,6 +80,14 @@ const GenerateApiKeyDialog = ({
         </Button>
       </>
     }
+
+    <br /><br />
+    <ActionLink
+      icon={<LearnMoreIcon />}
+      onClick={() => window.open('https://docs.astuto.io/api', '_blank')}
+    >
+      {I18n.t('common.forms.api_key.api_key_learn_more')}
+    </ActionLink>
 
     { error && <DangerText>{error}</DangerText> }
     </>
