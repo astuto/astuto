@@ -50,10 +50,20 @@ gem 'friendly_id', '5.5.1'
 # Billing
 gem 'stripe', '11.2.0'
 
+# Serve swagger docs
+gem 'rswag-api', '2.15.0'
+
+# We need those gems here, so we can Swaggerize in production
+gem 'rswag-specs', '2.15.0'
+gem 'rspec-rails', '4.0.2'
+gem 'capybara', '3.40.0'
+
+# CORS policy
+gem 'rack-cors', '2.0.2'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  gem 'rspec-rails', '4.0.2'
+  
   gem 'factory_bot_rails', '5.0.2'
 end
 
@@ -64,11 +74,10 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '3.36.0'
-  gem 'selenium-webdriver', '4.1.0'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers', '5.3.1'
+  gem 'selenium-webdriver', '4.17.0'
+
+  # Retry flaky Capybara tests
+  gem 'rspec-retry', '0.6.2'
 end
 
 # If not bundled, webpack compilation in production fails

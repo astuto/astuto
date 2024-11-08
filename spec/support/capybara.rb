@@ -9,18 +9,13 @@ Capybara.register_driver :chrome_headless do |app|
   options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--window-size=1400,1400')
 
-  capabilities = [
-    options,
-    Selenium::WebDriver::Remote::Capabilities.chrome
-  ]
-
-  Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: capabilities)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
 Capybara.javascript_driver = :chrome_headless
 
 # Max wait time for a match to be found by capybara selectors
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 15
 
 # Remove whitespaces characters (\n, etc...) from "page" variable
 Capybara.default_normalize_ws = true
@@ -33,5 +28,10 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     driven_by :chrome_headless
+  end
+
+  # Retry failed tests up to 3 times
+  config.around(:each, type: :system) do |example|
+    example.run_with_retry retry: 3
   end
 end

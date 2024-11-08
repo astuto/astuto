@@ -41,3 +41,6 @@ yarn-debug.log*
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore Swagger spec file
+/swagger/*

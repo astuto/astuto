@@ -9,11 +9,26 @@ class Rack::Attack
   # counted by rack-attack and this throttle may be activated too
   # quickly. If so, enable the condition to exclude them from tracking.
 
-  # Throttle all requests by IP (60rpm)
+  # Throttle all requests by IP (60rpm) except API endpoints requests
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
   throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-    req.get_header("action_dispatch.remote_ip") # unless req.path.start_with?('/assets')
+    req.get_header("action_dispatch.remote_ip") unless req.path.start_with?('/api/v1/')
+  end
+
+  # Throttle requests to API endpoints by IP address
+  throttle('api/ip', limit: 100, period: 5.minutes) do |req|
+    if req.path.start_with?('/api/v1/')
+      req.get_header("action_dispatch.remote_ip")
+    end
+  end
+
+  # Throttle requests to API endpoints by api key
+  throttle('api/key', limit: 100, period: 5.minutes) do |req|
+    if req.path.start_with?('/api/v1/')
+      authorization = req.get_header("HTTP_AUTHORIZATION")
+      authorization&.split(' ')&.last if authorization.present?
+    end
   end
 
   ### Prevent Brute-Force Login Attacks ###
