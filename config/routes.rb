@@ -96,6 +96,7 @@ Rails.application.routes.draw do
       get 'users'
     end
 
+    # API routes
     namespace :api do
       namespace :v1 do
         resources :boards, only: [:index, :show, :create]
