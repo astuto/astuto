@@ -48,6 +48,8 @@ RSpec.configure do |config|
 
             `Bearer {your-api-key}`
 
+            The API endpoint path is `/api/v1/`.
+            
             Note: all API endpoints require authentication, so you must pass the API key in all your requests.
 
             ### Moderator vs administrator API key
@@ -65,6 +67,13 @@ RSpec.configure do |config|
             Some endpoints accept an `impersonated_user_id` parameter. If you pass this parameter, the API will act as if the request was made by the user with the specified ID. For example, if you want to create a post on behalf of a user with ID 123, you can pass `impersonated_user_id=123` in the request body.
 
             Since you need to know the ID of the user you want to impersonate, this technique is usually used in combination with the Create/Get user endpoint. This endpoint creates a new user and returns its ID if it does not exist or it just returns the ID of the existing user. You can then use the returned ID to impersonate the user in other requests.
+
+            ### Rate limits
+
+            The API has rate limits to prevent abuse. The following limits are in place simultaneously:
+
+              - 100 requests every 5 minutes per API key.
+              - 100 requests every 5 minutes per IP address.
 
           DESC
         },
