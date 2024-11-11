@@ -48,3 +48,18 @@ export const fromRailsStringToJavascriptDate = date => {
 export const fromJavascriptDateToRailsString = (date: Date) => {
   return date.toJSON();
 }
+
+export const nMonthsAgo = (n: number) => {
+  const currentDate = new Date();
+
+  return new Date(
+    Date.UTC(
+      currentDate.getFullYear(),
+      currentDate.getMonth() - n,
+      currentDate.getDate(),
+      currentDate.getHours(),
+      currentDate.getMinutes(),
+      currentDate.getSeconds()
+    )
+  );
+}

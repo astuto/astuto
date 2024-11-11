@@ -10,7 +10,7 @@ import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 import HttpStatus from '../../../constants/http_status';
 import { isValidEmail } from '../../../helpers/regex';
 import IInvitation from '../../../interfaces/IInvitation';
-import friendlyDate from '../../../helpers/datetime';
+import friendlyDate, { fromRailsStringToJavascriptDate, nMonthsAgo } from '../../../helpers/datetime';
 import ActionLink from '../../common/ActionLink';
 import { TestIcon } from '../../common/Icons';
 
@@ -229,9 +229,14 @@ const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToke
                       { I18n.t('site_settings.invitations.accepted_at', { when: friendlyDate(invitation.accepted_at) }) }
                     </span>
                   :
-                    <span className="invitationSentAt" title={invitation.updated_at}>
-                      { I18n.t('site_settings.invitations.sent_at', { when: friendlyDate(invitation.updated_at) }) }
-                    </span>
+                    fromRailsStringToJavascriptDate(invitation.updated_at) > nMonthsAgo(3) ?
+                      <span className="invitationSentAt" title={invitation.updated_at}>
+                        { I18n.t('site_settings.invitations.sent_at', { when: friendlyDate(invitation.updated_at) }) }
+                      </span>
+                    :
+                      <span className="invitationExpired">
+                        { I18n.t('site_settings.invitations.expired') }
+                      </span>
                 }
               </div>
             </li>
