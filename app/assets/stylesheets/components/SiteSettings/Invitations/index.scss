@@ -84,8 +84,12 @@
       div.invitationInfo {
         @extend .d-flex;
   
-        span.invitationAcceptedAt, span.invitationSentAt {
+        span.invitationAcceptedAt, span.invitationSentAt, span.invitationExpired {
           @extend .align-self-center, .mutedText;
+        }
+
+        span.invitationExpired {
+          @extend .text-danger;
         }
       }
     }

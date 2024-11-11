@@ -1,7 +1,9 @@
 class Invitation < ApplicationRecord
+  include TenantOwnable
+
   belongs_to :tenant
 
   def expired?
-    created_at < 3.months.ago
+    updated_at <= 3.months.ago
   end
 end

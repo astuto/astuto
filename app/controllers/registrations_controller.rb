@@ -14,12 +14,11 @@ class RegistrationsController < Devise::RegistrationsController
 
     # Handle invitations
     is_invitation = sign_up_params[:invitation_token].present?
-    is_invitation_valid = true
     invitation = nil
     if is_invitation
       invitation = Invitation.find_by(email: email)
       
-      if invitation.nil? || invitation.token_digest != Digest::SHA256.hexdigest(sign_up_params[:invitation_token]) || invitation.accepted_at.present?
+      if invitation.nil? || invitation.expired? || invitation.token_digest != Digest::SHA256.hexdigest(sign_up_params[:invitation_token]) || invitation.accepted_at.present?
         flash[:alert] = t('errors.unauthorized')
         redirect_to new_user_registration_path and return
       end
