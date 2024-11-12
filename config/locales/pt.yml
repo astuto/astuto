@@ -272,6 +272,7 @@ pt:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Aparência'
       learn_more: 'Saiba como personalizar a aparência'
