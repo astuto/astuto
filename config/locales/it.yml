@@ -272,6 +272,7 @@ it:
       accepted: 'Accettati'
       sent_at: 'Inviato %{when}'
       accepted_at: 'Accettato %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Tema'
       learn_more: 'Scopri come personalizzare il tema'
