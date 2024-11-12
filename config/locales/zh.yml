@@ -265,6 +265,7 @@ zh-CN:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: '外观定制'
       learn_more: '了解如何自定义外观'
