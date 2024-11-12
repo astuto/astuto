@@ -286,6 +286,7 @@ pl:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Appearance'
       learn_more: 'Learn how to customize appearance'
