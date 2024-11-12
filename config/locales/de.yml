@@ -272,6 +272,7 @@ de:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Erscheinung'
       learn_more: 'Erfahren Sie, wie man das Aussehen anpassen kann'
