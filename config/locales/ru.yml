@@ -286,6 +286,7 @@ ru:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Внешний вид'
       learn_more: 'Узнайте, как настроить внешний вид'
