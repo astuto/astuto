@@ -61,6 +61,9 @@ gem 'capybara', '3.40.0'
 # CORS policy
 gem 'rack-cors', '2.0.2'
 
+# ActiveJob backend
+gem 'sidekiq', '7.3.5'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   

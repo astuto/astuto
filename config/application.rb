@@ -14,6 +14,9 @@ module App
     # Set default locale
     config.i18n.default_locale = :en
 
+    # Set sidekiq as ActiveJob backend
+    config.active_job.queue_adapter = ENV["ACTIVE_JOB_BACKEND"] == "sidekiq" ? :sidekiq : :async
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
