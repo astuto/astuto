@@ -77,6 +77,7 @@ class BillingController < ApplicationController
       mode: 'subscription',
       return_url: "#{return_url}?session_id={CHECKOUT_SESSION_ID}&tenant_id=#{params[:tenant_id]}",
       customer: Current.tenant.tenant_billing.customer_id,
+      allow_promotion_codes: true,
     })
 
     render json: { clientSecret: session.client_secret }
