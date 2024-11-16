@@ -1,7 +1,7 @@
 ja:
   common:
     words:
-      or: 'or'
+      or: 'か'
     errors:
       unknown: 'An unknown error occurred, please try again'
     validations:
