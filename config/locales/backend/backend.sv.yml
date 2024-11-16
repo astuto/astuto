@@ -94,7 +94,7 @@ sv:
         name: 'Namn'
         logo: 'Logo'
         is_enabled: 'Enabled'
-        client_id: 'Client ID'
+        client_id: 'Klient-ID'
         client_secret: 'Client secret'
         authorize_url: 'Authorize URL'
         token_url: 'Token URL'
