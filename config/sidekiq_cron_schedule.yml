@@ -1,0 +1,5 @@
+send_recap_emails:
+  # cron: "0 15 * * *" # At 15:00 every day
+  cron: "*/30 * * * * *"
+  class: "SendRecapEmails"
+  queue: default

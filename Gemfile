@@ -64,6 +64,9 @@ gem 'rack-cors', '2.0.2'
 # ActiveJob backend
 gem 'sidekiq', '7.3.5'
 
+# Cron jobs with sidekiq
+gem 'sidekiq-cron', '2.0.1'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   
