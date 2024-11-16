@@ -18,7 +18,7 @@ sv:
         password_confirmation: 'Password confirmation'
         new_password: 'Nytt lösenord'
         new_password_confirmation: 'New password confirmation'
-        current_password: 'Current password'
+        current_password: 'Nuvarande lösenord'
         notifications_enabled: 'Notifications enabled'
         notifications_enabled_help: "if disabled, you won't receive any notification"
         waiting_confirmation: 'Currently waiting confirmation for %{email}'
@@ -54,7 +54,7 @@ sv:
     comments_number:
       one: '1 kommentar'
       other: '%{count} kommentarer'
-    no_status: 'No status'
+    no_status: 'Ingen status'
     select_no_options_available: 'No options available'
     select_placeholder: 'Select...'
     loading: 'Loading...'
@@ -107,7 +107,7 @@ sv:
       profile_settings: 'Profilinställningar'
       help_header: 'Hjälp'
       tour: 'Tour'
-      docs: 'Documentation'
+      docs: 'Dokumentation'
       support: 'Support'
       sign_out: 'Logga ut'
     log_in: 'Logga in/Registrera dig'
