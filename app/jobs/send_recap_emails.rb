@@ -14,6 +14,7 @@ class SendRecapEmails < ActiveJob::Base
     
     tenants.each do |tenant|
       Current.tenant = tenant
+      I18n.locale = tenant.locale
 
       # Get users with recap notifications enabled
       users = tenant.users.where(
