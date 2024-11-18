@@ -11,7 +11,7 @@ class SendRecapEmails < ActiveJob::Base
     frequencies_to_notify = ['daily']
     frequencies_to_notify.push('weekly') if Date.today.monday? # Send weekly recap on Mondays
     frequencies_to_notify.push('monthly') if Date.today.day == 1 # Send monthly recap on the 1st of the month
-    
+
     tenants.each do |tenant|
       Current.tenant = tenant
       I18n.locale = tenant.locale
@@ -25,7 +25,7 @@ class SendRecapEmails < ActiveJob::Base
 
       # Get the different recap notification frequencies for users
       users_recap_notification_frequencies = users.map(&:recap_notification_frequency).flatten.uniq
-
+    
       # Get only needed posts
       if users_recap_notification_frequencies.include?('daily')
         published_posts_daily = Post.where(approval_status: 'approved', created_at: 1.day.ago..Time.now)
@@ -45,8 +45,6 @@ class SendRecapEmails < ActiveJob::Base
 
       # Notify each user based on their recap notification frequency
       users.each do |user|
-        print("Sending recap email to #{user.email} with frequency #{user.recap_notification_frequency}\n")
-
         if user.recap_notification_frequency == 'daily' && should_send_daily_recap
           UserMailer.recap(
             frequency: I18n.t('common.forms.auth.recap_notification_frequency_daily'),
@@ -66,7 +64,7 @@ class SendRecapEmails < ActiveJob::Base
             frequency: I18n.t('common.forms.auth.recap_notification_frequency_monthly'),
             user: user,
             published_posts_count: published_posts_monthly.count,
-            pending_posts_monthly: pending_posts_monthly.count,
+            pending_posts_count: pending_posts_monthly.count,
           ).deliver_later
         end
       end
