@@ -35,7 +35,12 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_devise_permitted_parameters
-      additional_permitted_parameters = [:full_name, :notifications_enabled, :invitation_token]
+      additional_permitted_parameters = [
+        :full_name,
+        :notifications_enabled,
+        :recap_notification_frequency,
+        :invitation_token
+      ]
 
       devise_parameter_sanitizer.permit(:sign_up, keys: additional_permitted_parameters)
       devise_parameter_sanitizer.permit(:account_update, keys: additional_permitted_parameters)
