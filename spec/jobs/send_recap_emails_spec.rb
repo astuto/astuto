@@ -29,6 +29,42 @@ RSpec.describe SendRecapEmails, type: :job do
     ).once
   end
 
+  it 'sends a recap email for every owner/admin/mod with notifications enabled and recap_notification_frequency set' do
+    @admin.recap_notification_frequency = 'daily'
+    @admin.save
+    owner = FactoryBot.create(:user, role: 'owner', notifications_enabled: true, recap_notification_frequency: 'daily')
+    mod = FactoryBot.create(:user, role: 'moderator', notifications_enabled: false, recap_notification_frequency: 'daily') # Should not receive recap
+
+    # Published posts
+    FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago)
+    FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
+    FactoryBot.create(:post, approval_status: 'approved', created_at: 30.hours.ago) # Should not be included in recap
+
+    # Pending posts
+    FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
+    FactoryBot.create(:post, approval_status: 'pending', created_at: 30.hours.ago) # Should not be included in recap
+
+    SendRecapEmails.perform_now
+    expect(UserMailer).to have_received(:recap).with(
+      frequency: 'Daily',
+      user: @admin,
+      published_posts_count: 2,
+      pending_posts_count: 1
+    ).once
+    expect(UserMailer).to have_received(:recap).with(
+      frequency: 'Daily',
+      user: owner,
+      published_posts_count: 2,
+      pending_posts_count: 1
+    ).once
+    expect(UserMailer).not_to have_received(:recap).with(
+      frequency: 'Daily',
+      user: mod,
+      published_posts_count: 2,
+      pending_posts_count: 1
+    )
+  end
+
   it 'sends a weekly recap email with published posts count and pending posts count on Monday' do
     @admin.recap_notification_frequency = 'weekly'
     @admin.save
