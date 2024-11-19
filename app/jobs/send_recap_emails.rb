@@ -2,6 +2,12 @@ class SendRecapEmails < ActiveJob::Base
   queue_as :default
 
   def perform(*args)
+    # Fix times to 15:00 UTC
+    time_now = Time.now.utc.change(hour: 15, min: 0, sec: 0)
+    one_day_ago = 1.day.ago.utc.change(hour: 15, min: 0, sec: 0)
+    one_week_ago = 1.week.ago.utc.change(hour: 15, min: 0, sec: 0)
+    one_month_ago = 1.month.ago.utc.change(hour: 15, min: 0, sec: 0)
+
     # Get tenants with active subscriptions
     tbs = TenantBilling.unscoped.all
     tbs = tbs.select { |tb| tb.has_active_subscription? }
@@ -28,18 +34,18 @@ class SendRecapEmails < ActiveJob::Base
     
       # Get only needed posts
       if users_recap_notification_frequencies.include?('daily')
-        published_posts_daily = Post.where(approval_status: 'approved', created_at: 1.day.ago..Time.now)
-        pending_posts_daily = Post.where(approval_status: 'pending', created_at: 1.day.ago..Time.now)
+        published_posts_daily = Post.where(approval_status: 'approved', created_at: one_day_ago..time_now)
+        pending_posts_daily = Post.where(approval_status: 'pending', created_at: one_day_ago..time_now)
         should_send_daily_recap = published_posts_daily.any? || pending_posts_daily.any?
       end
       if frequencies_to_notify.include?('weekly') && users_recap_notification_frequencies.include?('weekly')
-        published_posts_weekly = Post.where(approval_status: 'approved', created_at: 1.week.ago..Time.now)
-        pending_posts_weekly = Post.where(approval_status: 'pending', created_at: 1.week.ago..Time.now)
+        published_posts_weekly = Post.where(approval_status: 'approved', created_at: one_week_ago..time_now)
+        pending_posts_weekly = Post.where(approval_status: 'pending', created_at: one_week_ago..time_now)
         should_send_weekly_recap = published_posts_weekly.any? || pending_posts_weekly.any?
       end
       if frequencies_to_notify.include?('monthly') && users_recap_notification_frequencies.include?('monthly')
-        published_posts_monthly = Post.where(approval_status: 'approved', created_at: 1.month.ago..Time.now)
-        pending_posts_monthly = Post.where(approval_status: 'pending', created_at: 1.month.ago..Time.now)
+        published_posts_monthly = Post.where(approval_status: 'approved', created_at: one_month_ago..time_now)
+        pending_posts_monthly = Post.where(approval_status: 'pending', created_at: one_month_ago..time_now)
         should_send_monthly_recap = published_posts_monthly.any? || pending_posts_monthly.any?
       end
 
