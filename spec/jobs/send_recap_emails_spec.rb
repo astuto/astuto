@@ -13,22 +13,46 @@ RSpec.describe SendRecapEmails, type: :job do
     @admin.recap_notification_frequency = 'daily'
     @admin.save
 
-    # Published posts
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago)
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 30.hours.ago) # Should not be included in recap
+    travel_to Time.now.utc.change(hour: @hour_of_execution) do
+      # Published posts
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 30.hours.ago) # Should not be included in recap
 
-    # Pending posts
-    FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
-    FactoryBot.create(:post, approval_status: 'pending', created_at: 30.hours.ago) # Should not be included in recap
+      # Pending posts
+      FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
+      FactoryBot.create(:post, approval_status: 'pending', created_at: 30.hours.ago) # Should not be included in recap
 
-    SendRecapEmails.perform_now(@hour_of_execution)
-    expect(UserMailer).to have_received(:recap).with(
-      frequency: 'Daily',
-      user: @admin,
-      published_posts_count: 2,
-      pending_posts_count: 1
-    ).once
+      SendRecapEmails.perform_now(@hour_of_execution)
+      expect(UserMailer).to have_received(:recap).with(
+        frequency: 'Daily',
+        user: @admin,
+        published_posts_count: 2,
+        pending_posts_count: 1
+      ).once
+    end
+  end
+
+  it 'does not count posts published by the user receiving the recap email' do
+    @admin.recap_notification_frequency = 'daily'
+    @admin.save
+
+    travel_to Time.now.utc.change(hour: @hour_of_execution) do
+      # Published posts
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago, user: @admin) # Should not be included in recap
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
+
+      # Pending posts
+      FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
+
+      SendRecapEmails.perform_now(@hour_of_execution)
+      expect(UserMailer).to have_received(:recap).with(
+        frequency: 'Daily',
+        user: @admin,
+        published_posts_count: 1,
+        pending_posts_count: 1
+      ).once
+    end
   end
 
   it 'sends a recap email for every owner/admin/mod with notifications enabled and recap_notification_frequency set' do
@@ -37,41 +61,43 @@ RSpec.describe SendRecapEmails, type: :job do
     owner = FactoryBot.create(:user, role: 'owner', notifications_enabled: true, recap_notification_frequency: 'daily')
     mod = FactoryBot.create(:user, role: 'moderator', notifications_enabled: false, recap_notification_frequency: 'daily') # Should not receive recap
 
-    # Published posts
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago)
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
-    FactoryBot.create(:post, approval_status: 'approved', created_at: 30.hours.ago) # Should not be included in recap
+    travel_to Time.now.utc.change(hour: @hour_of_execution) do
+      # Published posts
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 23.hours.ago)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 16.hours.ago)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 30.hours.ago) # Should not be included in recap
 
-    # Pending posts
-    FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
-    FactoryBot.create(:post, approval_status: 'pending', created_at: 30.hours.ago) # Should not be included in recap
+      # Pending posts
+      FactoryBot.create(:post, approval_status: 'pending', created_at: 23.hours.ago)
+      FactoryBot.create(:post, approval_status: 'pending', created_at: 30.hours.ago) # Should not be included in recap
 
-    SendRecapEmails.perform_now(@hour_of_execution)
-    expect(UserMailer).to have_received(:recap).with(
-      frequency: 'Daily',
-      user: @admin,
-      published_posts_count: 2,
-      pending_posts_count: 1
-    ).once
-    expect(UserMailer).to have_received(:recap).with(
-      frequency: 'Daily',
-      user: owner,
-      published_posts_count: 2,
-      pending_posts_count: 1
-    ).once
-    expect(UserMailer).not_to have_received(:recap).with(
-      frequency: 'Daily',
-      user: mod,
-      published_posts_count: 2,
-      pending_posts_count: 1
-    )
+      SendRecapEmails.perform_now(@hour_of_execution)
+      expect(UserMailer).to have_received(:recap).with(
+        frequency: 'Daily',
+        user: @admin,
+        published_posts_count: 2,
+        pending_posts_count: 1
+      ).once
+      expect(UserMailer).to have_received(:recap).with(
+        frequency: 'Daily',
+        user: owner,
+        published_posts_count: 2,
+        pending_posts_count: 1
+      ).once
+      expect(UserMailer).not_to have_received(:recap).with(
+        frequency: 'Daily',
+        user: mod,
+        published_posts_count: 2,
+        pending_posts_count: 1
+      )
+    end
   end
 
   it 'sends a weekly recap email with published posts count and pending posts count on Monday' do
     @admin.recap_notification_frequency = 'weekly'
     @admin.save
 
-    travel_to Time.zone.local(2024, 11, 18, 10, 0, 0) do # Monday
+    travel_to Time.zone.local(2024, 11, 18, @hour_of_execution, 0, 0) do # Monday
       # Published posts
       FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       FactoryBot.create(:post, approval_status: 'approved', created_at: 6.days.ago)
@@ -96,33 +122,39 @@ RSpec.describe SendRecapEmails, type: :job do
     @admin.recap_notification_frequency = 'weekly'
     @admin.save
 
-    travel_to Time.zone.local(2024, 11, 19, 10, 0, 0) do # Tuesday
+    travel_to Time.zone.local(2024, 11, 19, @hour_of_execution, 0, 0) do # Tuesday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
 
-    travel_to Time.zone.local(2024, 11, 20, 10, 0, 0) do # Wednesday
+    travel_to Time.zone.local(2024, 11, 20, @hour_of_execution, 0, 0) do # Wednesday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
 
-    travel_to Time.zone.local(2024, 11, 21, 10, 0, 0) do # Thursday
+    travel_to Time.zone.local(2024, 11, 21, @hour_of_execution, 0, 0) do # Thursday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
 
-    travel_to Time.zone.local(2024, 11, 22, 10, 0, 0) do # Friday
+    travel_to Time.zone.local(2024, 11, 22, @hour_of_execution, 0, 0) do # Friday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
 
-    travel_to Time.zone.local(2024, 11, 23, 10, 0, 0) do # Saturday
+    travel_to Time.zone.local(2024, 11, 23, @hour_of_execution, 0, 0) do # Saturday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
 
-    travel_to Time.zone.local(2024, 11, 24, 10, 0, 0) do # Sunday
+    travel_to Time.zone.local(2024, 11, 24, @hour_of_execution, 0, 0) do # Sunday
       SendRecapEmails.perform_now(@hour_of_execution)
+      FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
       expect(UserMailer).not_to have_received(:recap)
     end
   end
@@ -131,7 +163,7 @@ RSpec.describe SendRecapEmails, type: :job do
     @admin.recap_notification_frequency = 'monthly'
     @admin.save
 
-    travel_to Time.zone.local(2024, 11, 1, 10, 0, 0) do # First day of the month
+    travel_to Time.zone.local(2024, 11, 1, @hour_of_execution, 0, 0) do # First day of the month
       # Published posts
       FactoryBot.create(:post, approval_status: 'approved', created_at: 1.hour.ago)
       FactoryBot.create(:post, approval_status: 'approved', created_at: 2.days.ago)
