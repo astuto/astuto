@@ -43,7 +43,8 @@ class TenantsController < ApplicationController
         email: params[:user][:email],
         password: is_o_auth_login ? Devise.friendly_token : params[:user][:password],
         has_set_password: !is_o_auth_login,
-        role: "owner"
+        role: "owner",
+        recap_notification_frequency: "daily"
       )
 
       if is_o_auth_login

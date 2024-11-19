@@ -43,6 +43,21 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def recap(frequency:, user:, published_posts_count:, pending_posts_count:)
+    Current.tenant = user.tenant
+
+    @frequency = frequency
+    @user = user
+    @published_posts_count = published_posts_count
+    @pending_posts_count = pending_posts_count
+
+    mail(
+      to: user.email,
+      subject: t('mailers.user.recap.subject', site_name: site_name, frequency: frequency)
+    )
+  end
+
+
   private
 
     def site_name

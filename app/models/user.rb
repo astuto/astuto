@@ -15,6 +15,8 @@ class User < ApplicationRecord
   enum role: [:user, :moderator, :admin, :owner]
   enum status: [:active, :blocked, :deleted]
 
+  enum recap_notification_frequency: [:never, :daily, :weekly, :monthly]
+
   after_initialize :set_default_role, if: :new_record?
   after_initialize :set_default_status, if: :new_record?
 

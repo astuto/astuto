@@ -67,5 +67,9 @@ module App
     def stripe_yearly_lookup_key
       ENV["STRIPE_YEARLY_LOOKUP_KEY"]
     end
+
+    def sidekiq_enabled?
+      ENV["ACTIVE_JOB_BACKEND"] == "sidekiq"
+    end
   end
 end
