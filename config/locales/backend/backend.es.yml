@@ -50,6 +50,11 @@ es:
       notify_follower_of_post_status_change:
         subject: '[%{site_name}] Cambio de estado en la publicación "%{post}"'
         body_html: 'Hay una nueva actualización en la publicación que estás siguiendo <b>%{post}</b>'
+      recap:
+        subject: '[%{site_name}] %{frequency} recap of feedback space activity'
+        body_html: 'Here is the %{frequency} recap of activities in your feedback space'
+        published_posts_count_html: 'New published feedback: %{count}'
+        pending_posts_count_html: 'New feedback pending approval: %{count}'
   activerecord:
     models:
       board:
@@ -148,6 +153,7 @@ es:
         password_confirmation: 'Confirmación de contraseña'
         role: 'Rol'
         notifications_enabled: 'Notificaciones habilitadas'
+        recap_notification_frequency: 'Recap notification frequency'
     errors:
       messages:
         invalid: 'no es válido'
