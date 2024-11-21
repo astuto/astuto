@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  if !Rails.application.multi_tenancy?
+    mount Rswag::Api::Engine => '/api-docs'
+  end
+
   if Rails.application.multi_tenancy?
     constraints subdomain: 'showcase' do
       root to: 'static_pages#showcase', as: :showcase
+    end
+
+    constraints subdomain: 'api' do
+      mount Rswag::Api::Engine => '/api-docs'
     end
 
     constraints subdomain: 'login' do
@@ -70,6 +78,8 @@ Rails.application.routes.draw do
 
     resources :invitations, only: [:create]
     post '/invitations/test', to: 'invitations#test', as: :invitation_test
+
+    resources :api_keys, only: [:create]
   
     namespace :site_settings do
       get 'general'
@@ -84,6 +94,33 @@ Rails.application.routes.draw do
     namespace :moderation do
       get 'feedback'
       get 'users'
+    end
+
+    # API routes
+    namespace :api do
+      namespace :v1 do
+        resources :boards, only: [:index, :show, :create]
+        resources :post_statuses, only: [:index]
+        resources :posts, only: [:index, :show, :create, :update, :destroy] do
+          member do
+            put :update_board, :update_status, :approve, :reject
+          end
+        end
+        resources :comments, only: [:index, :show, :create, :update, :destroy] do
+          member do
+            put :mark_as_post_update, :unmark_as_post_update
+          end
+        end
+        resources :votes, only: [:index, :show, :create, :destroy], controller: 'likes'
+        resources :users, only: [:index, :show, :create] do
+          collection do
+            get :get_by_email, controller: 'users', action: 'show_by_email'
+          end
+          member do
+            put :block
+          end
+        end 
+      end
     end
   end
 

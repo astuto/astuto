@@ -23,7 +23,13 @@
 
   padding: 15px;
   margin: 0 auto;
+
+  label[for=user_notifications_enabled] {
+    @extend .mb-0;
+  }
 }
+
+.apiKeyGenerateButton { width: 100%; }
 
 .deviseLinks {
   @extend .new_user;

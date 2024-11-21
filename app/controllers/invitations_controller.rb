@@ -56,7 +56,6 @@ class InvitationsController < ApplicationController
     render json: {}, status: :ok
   end
 
-
   private
 
     def invitation_params

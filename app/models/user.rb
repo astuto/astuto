@@ -10,9 +10,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :api_key, dependent: :destroy
 
   enum role: [:user, :moderator, :admin, :owner]
   enum status: [:active, :blocked, :deleted]
+
+  enum recap_notification_frequency: [:never, :daily, :weekly, :monthly]
 
   after_initialize :set_default_role, if: :new_record?
   after_initialize :set_default_status, if: :new_record?

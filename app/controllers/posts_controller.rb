@@ -108,15 +108,11 @@ class PostsController < ApplicationController
 
     if @post.save
       if @post.post_status_id_previously_changed?
-        PostStatusChange.create(
+        ExecutePostStatusChangeLogicWorkflow.new(
           user_id: current_user.id,
-          post_id: @post.id,
+          post: @post,
           post_status_id: @post.post_status_id
-        )
-  
-        @post.followers.each do |follower|
-          UserMailer.notify_follower_of_post_status_change(post: @post, follower: follower).deliver_later
-        end
+        ).run
       end
 
       render json: @post

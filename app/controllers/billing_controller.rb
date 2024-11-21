@@ -77,6 +77,7 @@ class BillingController < ApplicationController
       mode: 'subscription',
       return_url: "#{return_url}?session_id={CHECKOUT_SESSION_ID}&tenant_id=#{params[:tenant_id]}",
       customer: Current.tenant.tenant_billing.customer_id,
+      allow_promotion_codes: true,
     })
 
     render json: { clientSecret: session.client_secret }
@@ -123,17 +124,18 @@ class BillingController < ApplicationController
         TenantMailer.subscription_confirmation(tenant: Current.tenant).deliver_later
       end
     elsif event['type'] == 'customer.subscription.updated'
+      # This event is triggered when:
+      # (1) A subscription is canceled OR a subscription is reactivated after being canceled
+      # (2) A subscription is updated (e.g. switching from monthly to yearly plan or vice versa)
+      # (3) A subscription is automatically renewed at the end of the billing period (e.g. every month for a monthly subscription)
+      # Since it is difficult to distinguish between these cases, we only update the status if the subscription is active or canceled
+      # and we do not send any emails notifications.
+
       Current.tenant = get_tenant_from_customer_id(event.data.object.customer)
 
       if Current.tenant.tenant_billing.status == 'active' || Current.tenant.tenant_billing.status == 'canceled'
         has_canceled = event.data.object.cancel_at_period_end
         Current.tenant.tenant_billing.update!(status: has_canceled ? 'canceled' : 'active')
-
-        if has_canceled
-          TenantMailer.cancellation_confirmation(tenant: Current.tenant).deliver_later
-        else
-          TenantMailer.renewal_confirmation(tenant: Current.tenant).deliver_later
-        end
       end
     end
 

@@ -1,0 +1,18 @@
+<%= render 'user_mailer/opening', user_name: @user.full_name_or_email %>
+
+<p>
+  <%= t('mailers.user.recap.body_html', frequency: @frequency.downcase) %>:
+</p>
+
+<ul>
+  <li><%= t('mailers.user.recap.published_posts_count_html', count: @published_posts_count) %></li>
+  <li><%= t('mailers.user.recap.pending_posts_count_html', count: @pending_posts_count) %></li>
+</ul>
+
+<p>
+  <%= link_to t('mailers.user.learn_more'), get_url_for(method(:root_url)) %>
+</p>
+
+<%= render 'user_mailer/closing' %>
+
+<%= render 'user_mailer/unsubscribe_from_site' %>

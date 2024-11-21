@@ -20,9 +20,15 @@ class UsersController < ApplicationController
     # Handle special case: trying to set user role to 'owner'
     raise Pundit::NotAuthorizedError if @user.owner?
 
-    if @user.save
-      render json: @user
-    else
+    ActiveRecord::Base.transaction do
+      DestroyApiKeyIfNeededWorkflow.new(user: @user).run
+
+      if @user.save
+        render json: @user
+      else
+        raise ActiveRecord::Rollback
+      end
+    rescue ActiveRecord::Rollback
       render json: {
         error: @user.errors.full_messages
       }, status: :unprocessable_entity

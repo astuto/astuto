@@ -35,15 +35,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :notifications_enabled, t('common.forms.auth.notifications_enabled') %>
-    &nbsp;
-    <%= f.check_box :notifications_enabled, style: "transform: scale(1.5)" %>
-    <small id="notificationsHelp" class="form-text text-muted">
-      <%= t('common.forms.auth.notifications_enabled_help') %>
-    </small>
-  </div>
-
-  <div class="form-group">
     <%= f.label :password, t('common.forms.auth.password') %>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <small id="passwordEditHelp" class="form-text text-muted">
@@ -55,6 +46,39 @@
     <%= f.label :password_confirmation, t('common.forms.auth.password_confirmation') %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
+
+  <hr />
+
+  <h3><%= t('common.forms.auth.notifications') %></h3>
+  <br />
+  <div class="form-group">
+    <%= f.label :notifications_enabled, t('activerecord.attributes.user.notifications_enabled') %>
+    &nbsp;
+    <%= f.check_box :notifications_enabled, style: "transform: scale(1.5)" %>
+    <small id="notificationsHelp" class="form-text text-muted">
+      <%= t('common.forms.auth.notifications_enabled_help') %>
+    </small>
+  </div>
+
+  <% if Rails.application.sidekiq_enabled? %>
+    <div class="form-group">
+      <%= f.label :recap_notification_frequency, t('activerecord.attributes.user.recap_notification_frequency') %>
+      <%= f.select :recap_notification_frequency,
+        [
+          [t('common.forms.auth.recap_notification_frequency_never'), "never"],
+          [t('common.forms.auth.recap_notification_frequency_daily'), "daily"],
+          [t('common.forms.auth.recap_notification_frequency_weekly'), "weekly"],
+          [t('common.forms.auth.recap_notification_frequency_monthly'), "monthly"]
+        ],
+        { include_blank: false },
+         class: "form-control" %>
+      <small id="recapNotificationFrequencyHelp" class="form-text text-muted">
+        <%= t('common.forms.auth.recap_notification_frequency_help') %>
+      </small>
+    </div>
+  <% else %>
+    <p>You have to <a href="https://docs.astuto.io/deploy-with-sidekiq">enable Sidekiq</a> to receive recap notifications.</p>
+  <% end %>
 
   <hr />
 
@@ -73,6 +97,22 @@
   <% if not current_user.has_set_password? %>
     </fieldset>
   <% end %>
+<% end %>
+
+<% if current_user.moderator? %>
+  <br />
+  <div class="edit_user">
+    <%=
+      react_component(
+        'UserProfile/GenerateApiKeyDialog',
+        {
+          currentApiKey: current_user.api_key.present? ? token_mask(current_user.api_key.token_prefix) : nil,
+          generateApiKeyEndpoint: api_keys_path,
+          authenticityToken: form_authenticity_token
+        },
+      )
+    %>
+  </div>
 <% end %>
 
 <br />
