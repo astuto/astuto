@@ -3,10 +3,11 @@ class SendRecapEmails < ActiveJob::Base
 
   def perform(*args)
     # Fix times to 15:00 UTC
-    time_now = Time.now.utc.change(hour: args[0], min: 0, sec: 0)
-    one_day_ago = 1.day.ago.utc.change(hour: args[0], min: 0, sec: 0)
-    one_week_ago = 1.week.ago.utc.change(hour: args[0], min: 0, sec: 0)
-    one_month_ago = 1.month.ago.utc.change(hour: args[0], min: 0, sec: 0)
+    hour = 15
+    time_now = Time.now.utc.change(hour: hour, min: 0, sec: 0)
+    one_day_ago = 1.day.ago.utc.change(hour: hour, min: 0, sec: 0)
+    one_week_ago = 1.week.ago.utc.change(hour: hour, min: 0, sec: 0)
+    one_month_ago = 1.month.ago.utc.change(hour: hour, min: 0, sec: 0)
 
     # Get tenants with active subscriptions
     tbs = TenantBilling.unscoped.all

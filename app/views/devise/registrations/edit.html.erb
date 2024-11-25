@@ -77,7 +77,9 @@
       </small>
     </div>
   <% else %>
-    <p>You have to <a href="https://docs.astuto.io/deploy-with-sidekiq">enable Sidekiq</a> to receive recap notifications.</p>
+    <% if not Rails.application.multi_tenancy? %>
+      <p>You have to <a href="https://docs.astuto.io/deploy-with-sidekiq">enable Sidekiq</a> to receive recap notifications.</p>
+    <% end %>
   <% end %>
 
   <hr />
