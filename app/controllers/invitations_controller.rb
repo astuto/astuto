@@ -32,7 +32,7 @@ class InvitationsController < ApplicationController
         )
       )
 
-      InvitationMailer.invite(invitation: invitation, subject: subject, body: body_with_link).deliver_now
+      InvitationMailer.invite(invitation: invitation, subject: subject, body: body_with_link).deliver_later
 
       num_invitations_sent += 1
     end
