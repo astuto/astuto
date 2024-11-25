@@ -39,23 +39,36 @@ module ApplicationHelper
   end
 
   def get_url_for(url_helper, resource: nil, disallow_custom_domain: false, options: {})
-    custom_domain = Current.tenant.custom_domain if not disallow_custom_domain and Current.tenant
+    logger.info { "(start) Call to get_url_for with tenant: #{Current.tenant&.inspect}, url_helper = #{url_helper}, resource = #{resource}, disallow_custom_domain = #{disallow_custom_domain}, options = #{options}" }
 
+    custom_domain = Current.tenant.custom_domain if not disallow_custom_domain and Current.tenant
+    subdomain = ''
+    host = ''
+
+    if not options[:subdomain].blank?
+      subdomain = options[:subdomain]
+    end
     if options[:subdomain].blank? && Rails.application.multi_tenancy? && (custom_domain.blank? || disallow_custom_domain)
-      options[:subdomain] = Current.tenant.subdomain
+      subdomain = Current.tenant.subdomain
     end
 
     if custom_domain.blank? || disallow_custom_domain
-      options[:host] = Rails.application.base_url
+      host = Rails.application.base_url
+      host = host.gsub(%r{\Ahttps?://|/$}, '')
+      host = "#{subdomain}.#{host}" if subdomain.present?
     else
-      options[:host] = custom_domain
+      host = custom_domain
     end
+
+    options[:host] = host
 
     if Rails.application.base_url.include?('https')
       options[:protocol] = 'https'
     else
       options[:protocol] = 'http'
     end
+
+    logger.info { "(end) Call to get_url_for with options = #{options}, resulting url = #{resource ? url_helper.call(resource, options) : url_helper.call(options)}" }
 
     resource ? url_helper.call(resource, options) : url_helper.call(options)
   end
