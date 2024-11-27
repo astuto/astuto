@@ -2,6 +2,8 @@ class SendRecapEmails < ActiveJob::Base
   queue_as :default
 
   def perform(*args)
+    logger.info { "Performing SendRecapEmails ActiveJob" }
+    
     # Fix times to 15:00 UTC
     hour = 15
     time_now = Time.now.utc.change(hour: hour, min: 0, sec: 0)
@@ -49,6 +51,8 @@ class SendRecapEmails < ActiveJob::Base
 
       # Notify each user based on their recap notification frequency
       users.each do |user|
+        logger.info { "[#{tenant.subdomain}] Sending recap email to #{user.inspect}" }
+
         # Remove from published_posts the posts published by the user
         published_posts_daily_user = published_posts_daily&.select { |post| post.user_id != user.id }
         should_send_daily_recap = published_posts_daily_user&.any? || pending_posts_daily&.any?
