@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['POSTGRES_USER'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
 
 test:
   <<: *default
-  database: <%= ENV['POSTGRES_USER'] %>_test
+  database: <%= ENV['POSTGRES_DB'] %>_test
   
 production:
   <<: *default
-  database: <%= ENV['POSTGRES_USER'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
