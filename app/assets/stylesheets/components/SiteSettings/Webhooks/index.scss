@@ -1,0 +1,57 @@
+.webhooksIndexPage {
+  .webhooksTitle {
+    @extend .d-flex;
+
+    button {
+      @extend .ml-2;
+
+      height: min-content;
+    }
+  }
+
+  .webhooksList {
+    @extend .pl-1;
+
+    list-style: none;
+
+    ul { @extend .pl-0; }
+
+    .webhookListItem {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .my-2,
+        .p-3;
+
+      .webhookInfo {
+        @extend .d-flex;
+
+        column-gap: 32px;
+
+        .webhookName { font-size: 18px; }
+        .webhookDescription {
+          @extend .mutedText, .mb-1;
+          font-size: smaller;
+        }
+      }
+      
+      .webhookActions {
+        @extend .d-flex;
+
+        align-self: center;
+      }
+    }
+  }
+}
+
+.webhookFormPage {
+  a.backButton {
+    @extend .mb-2, .align-self-start;
+
+    font-size: 18px;
+  }
+
+  #httpBody {
+    min-height: 100px;
+  }
+}

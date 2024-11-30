@@ -88,6 +88,8 @@ import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from '
 import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSettings/roadmapReducer';
 import siteSettingsAuthenticationReducer, { SiteSettingsAuthenticationState } from './SiteSettings/authenticationReducer';
 import siteSettingsAppearanceReducer, { SiteSettingsAppearanceState } from './SiteSettings/appearanceReducer';
+import siteSettingsWebhooksReducer, { SiteSettingsWebhooksState } from './SiteSettings/webhooksReducer';
+import { WEBHOOK_SUBMIT_FAILURE, WEBHOOK_SUBMIT_START, WEBHOOK_SUBMIT_SUCCESS, WebhookSubmitActionTypes } from '../actions/Webhook/submitWebhook';
 
 interface SiteSettingsState {
   general: SiteSettingsGeneralState;
@@ -95,6 +97,7 @@ interface SiteSettingsState {
   boards: SiteSettingsBoardsState;
   postStatuses: SiteSettingsPostStatusesState;
   roadmap: SiteSettingsRoadmapState;
+  webhooks: SiteSettingsWebhooksState;
   appearance: SiteSettingsAppearanceState;
 }
 
@@ -104,6 +107,7 @@ const initialState: SiteSettingsState = {
   boards: siteSettingsBoardsReducer(undefined, {} as any),
   postStatuses: siteSettingsPostStatusesReducer(undefined, {} as any),
   roadmap: siteSettingsRoadmapReducer(undefined, {} as any),
+  webhooks: siteSettingsWebhooksReducer(undefined, {} as any),
   appearance: siteSettingsAppearanceReducer(undefined, {} as any),
 };
 
@@ -121,7 +125,8 @@ const siteSettingsReducer = (
     PostStatusOrderUpdateActionTypes |
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
-    PostStatusUpdateActionTypes
+    PostStatusUpdateActionTypes |
+    WebhookSubmitActionTypes,
 ): SiteSettingsState => {
   switch (action.type) {
     case TENANT_UPDATE_START:
@@ -185,6 +190,14 @@ const siteSettingsReducer = (
         ...state,
         postStatuses: siteSettingsPostStatusesReducer(state.postStatuses, action),
         roadmap: siteSettingsRoadmapReducer(state.roadmap, action),
+      };
+
+    case WEBHOOK_SUBMIT_START:
+    case WEBHOOK_SUBMIT_SUCCESS:
+    case WEBHOOK_SUBMIT_FAILURE:
+      return {
+        ...state,
+        webhooks: siteSettingsWebhooksReducer(state.webhooks, action),
       };
 
     default:
