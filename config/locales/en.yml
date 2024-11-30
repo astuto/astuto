@@ -188,6 +188,7 @@ en:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
+      webhooks: 'Webhooks'
       invitations: 'Invitations'
       appearance: 'Appearance'
     info_box:

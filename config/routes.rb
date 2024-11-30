@@ -87,6 +87,7 @@ Rails.application.routes.draw do
       get 'boards'
       get 'post_statuses'
       get 'roadmap'
+      get 'webhooks'
       get 'invitations'
       get 'appearance'
     end
