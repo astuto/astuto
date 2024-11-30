@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_18_082824) do
+ActiveRecord::Schema.define(version: 2024_11_30_112415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -246,6 +246,22 @@ ActiveRecord::Schema.define(version: 2024_11_18_082824) do
     t.index ["tenant_id"], name: "index_users_on_tenant_id"
   end
 
+  create_table "webhooks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.boolean "is_enabled", default: false, null: false
+    t.integer "trigger", default: 0, null: false
+    t.string "url", null: false
+    t.text "http_body"
+    t.integer "http_method", default: 0, null: false
+    t.json "http_headers"
+    t.bigint "tenant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "tenant_id"], name: "index_webhooks_on_name_and_tenant_id", unique: true
+    t.index ["tenant_id"], name: "index_webhooks_on_tenant_id"
+  end
+
   add_foreign_key "api_keys", "tenants"
   add_foreign_key "api_keys", "users"
   add_foreign_key "boards", "tenants"
@@ -275,4 +291,5 @@ ActiveRecord::Schema.define(version: 2024_11_18_082824) do
   add_foreign_key "tenant_default_o_auths", "tenants"
   add_foreign_key "tenant_settings", "tenants"
   add_foreign_key "users", "tenants"
+  add_foreign_key "webhooks", "tenants"
 end
