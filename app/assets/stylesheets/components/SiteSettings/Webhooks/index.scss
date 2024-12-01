@@ -1,6 +1,8 @@
 .webhooksIndexPage {
   .webhooksTitle {
-    @extend .d-flex;
+    @extend
+      .d-flex,
+      .mb-2;
 
     button {
       @extend .ml-2;
@@ -14,14 +16,15 @@
 
     list-style: none;
 
+    h4 { @extend .mb-0, .mt-2; }
     ul { @extend .pl-0; }
 
     .webhookListItem {
       @extend
         .d-flex,
         .justify-content-between,
-        .my-2,
-        .p-3;
+        .mb-2,
+        .p-2;
 
       .webhookInfo {
         @extend .d-flex;

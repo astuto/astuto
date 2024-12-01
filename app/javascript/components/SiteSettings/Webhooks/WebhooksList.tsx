@@ -17,20 +17,31 @@ const WebhooksList = ({
   setSelectedWebhook,
   setPage,
 }: Props) => {
+  // from webhooks, get a unique list of triggers
+  const triggers = Array.from(new Set(webhooks.map(webhook => webhook.trigger)));
+
   return (
     <div className="webhooksList">
-      <ul>
-        {
-          webhooks.map((webhook, i) => (
-            <WebhookListItem
-              webhook={webhook}
-              setSelectedWebhook={setSelectedWebhook}
-              setPage={setPage}
-              key={i}
-            />
-          ))
-        }
-      </ul>
+      {
+        triggers.map((trigger, i) => (
+          <div key={i}>
+            <h4>{I18n.t(`site_settings.webhooks.triggers.${trigger}`)}</h4>
+
+            <ul>
+              {
+                webhooks.filter(webhook => webhook.trigger === trigger).map((webhook, j) => (
+                  <WebhookListItem
+                    webhook={webhook}
+                    setSelectedWebhook={setSelectedWebhook}
+                    setPage={setPage}
+                    key={j}
+                  />
+                ))
+              }
+            </ul>
+          </div>
+        ))
+      }
     </div>
   );
 };
