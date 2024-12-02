@@ -6,6 +6,7 @@ import { WebhooksState } from '../../../reducers/webhooksReducer';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import Button from '../../common/Button';
 import WebhooksList from './WebhooksList';
+import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 
 interface Props {
   webhooks: WebhooksState;
@@ -20,6 +21,7 @@ const WebhooksIndexPage = ({
   setPage,
 }: Props) => {
   return (
+    <>
     <Box customClass="webhooksIndexPage">
       <div className="webhooksTitle">
         <h2>{I18n.t('site_settings.webhooks.title')}</h2>
@@ -35,6 +37,11 @@ const WebhooksIndexPage = ({
         setPage={setPage}
       />
     </Box>
+    <SiteSettingsInfoBox
+      areUpdating={webhooks.areLoading}
+      error={webhooks.error}
+    />
+    </>
   );
 };
 
