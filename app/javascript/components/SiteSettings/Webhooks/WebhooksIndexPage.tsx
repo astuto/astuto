@@ -10,6 +10,8 @@ import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
 
 interface Props {
   webhooks: WebhooksState;
+  
+  handleDeleteWebhook: (id: number) => void;
 
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
@@ -17,6 +19,7 @@ interface Props {
 
 const WebhooksIndexPage = ({
   webhooks,
+  handleDeleteWebhook,
   setSelectedWebhook,
   setPage,
 }: Props) => {
@@ -33,10 +36,12 @@ const WebhooksIndexPage = ({
 
       <WebhooksList
         webhooks={webhooks.items}
+        handleDeleteWebhook={handleDeleteWebhook}
         setSelectedWebhook={setSelectedWebhook}
         setPage={setPage}
       />
     </Box>
+
     <SiteSettingsInfoBox
       areUpdating={webhooks.areLoading}
       error={webhooks.error}

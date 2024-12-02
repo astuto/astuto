@@ -12,12 +12,15 @@ const WEBHOOK_DESCRIPTION_MAX_LENGTH = 100;
 interface Props {
   webhook: IWebhook;
 
+  handleDeleteWebhook: (id: number) => void;
+
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
 }
 
 const WebhookListItem = ({
   webhook,
+  handleDeleteWebhook,
   setSelectedWebhook,
   setPage
 }: Props) => (
@@ -59,7 +62,7 @@ const WebhookListItem = ({
       </ActionLink>
 
       <ActionLink
-        onClick={() => console.log('clicked')}
+        onClick={() => confirm(I18n.t('common.confirmation')) && handleDeleteWebhook(webhook.id)}
         icon={<DeleteIcon />}
         customClass="deleteAction"
       >

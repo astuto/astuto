@@ -12,6 +12,7 @@ interface Props {
 
   requestWebhooks(): void;
   onSubmitWebhook(webhook: IWebhook, authenticityToken: string): Promise<any>;
+  onDeleteWebhook(id: number, authenticityToken: string): void;
 
   authenticityToken: string;
 }
@@ -22,6 +23,7 @@ const WebhooksSiteSettingsP = ({
   webhooks,
   requestWebhooks,
   onSubmitWebhook,
+  onDeleteWebhook,
   authenticityToken,
 }: Props) => {
   const [page, setPage] = useState<WebhookPages>('index');
@@ -35,10 +37,15 @@ const WebhooksSiteSettingsP = ({
     });
   };
 
+  const handleDeleteWebhook = (id: number) => {
+    onDeleteWebhook(id, authenticityToken);
+  }
+
   return (
     page === 'index' ?
       <WebhooksIndexPage
         webhooks={webhooks}
+        handleDeleteWebhook={handleDeleteWebhook}
         setSelectedWebhook={setSelectedWebhook}
         setPage={setPage}
       />

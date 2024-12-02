@@ -1,3 +1,4 @@
+import { WEBHOOK_DELETE_SUCCESS, WebhookDeleteActionTypes } from '../actions/Webhook/deleteWebhook';
 import {
   WebhooksRequestActionTypes,
   WEBHOOKS_REQUEST_START,
@@ -28,7 +29,8 @@ const webhooksReducer = (
   state = initialState,
   action:
     WebhooksRequestActionTypes |
-    WebhookSubmitActionTypes,
+    WebhookSubmitActionTypes |
+    WebhookDeleteActionTypes
 ) => {
   switch (action.type) {
     case WEBHOOKS_REQUEST_START:
@@ -56,6 +58,12 @@ const webhooksReducer = (
       return {
         ...state,
         items: [...state.items, webhookJSON2JS(action.webhook)],
+      };
+
+    case WEBHOOK_DELETE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(webhook => webhook.id !== action.id),
       };
 
     default:

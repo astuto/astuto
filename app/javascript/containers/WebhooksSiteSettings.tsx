@@ -5,6 +5,7 @@ import { State } from "../reducers/rootReducer";
 import { requestWebhooks } from "../actions/Webhook/requestWebhooks";
 import { IWebhook } from "../interfaces/IWebhook";
 import { submitWebhook } from "../actions/Webhook/submitWebhook";
+import { deleteWebhook } from "../actions/Webhook/deleteWebhook";
 
 const mapStateToProps = (state: State) => ({
   webhooks: state.webhooks
@@ -17,6 +18,10 @@ const mapDispatchToProps = (dispatch: any) => ({
 
   onSubmitWebhook(webhook: IWebhook, authenticityToken: string): Promise<any> {
     return dispatch(submitWebhook(webhook, authenticityToken));
+  },
+
+  onDeleteWebhook(id: number, authenticityToken: string) {
+    dispatch(deleteWebhook(id, authenticityToken));
   }
 });
 
