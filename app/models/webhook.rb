@@ -2,7 +2,7 @@ class Webhook < ApplicationRecord
   include TenantOwnable
 
   validates :name, presence: true, uniqueness: { scope: :tenant_id }, length: { maximum: 255 }
-  validates :url, presence: true
+  validates :url, presence: true, format: { with: URI::regexp(%w(http https)), message: I18n.t('common.validations.url') }
   validates :trigger, presence: true
   validates :http_method, presence: true
 

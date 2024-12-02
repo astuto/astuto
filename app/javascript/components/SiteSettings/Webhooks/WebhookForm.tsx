@@ -9,6 +9,7 @@ import { BackIcon } from '../../common/Icons';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
+import { URL_REGEX } from '../../../constants/regex';
 
 interface Props {
   selectedWebhook: IWebhook;
@@ -100,20 +101,22 @@ const WebhookFormPage = ({
         <div className="formGroup col-6">
           <label htmlFor="name">{ getLabel('webhook', 'name') }</label>
           <input
-            {...register('name', { required: true })}
+            {...register('name', { required: true, maxLength: 255 })}
             id="name"
             className="formControl"
           />
-          <DangerText>{errors.name && getValidationMessage(errors.name.type, 'webhook', 'name')}</DangerText>
+          <DangerText>{errors.name?.type === 'required' && getValidationMessage(errors.name.type, 'webhook', 'name')}</DangerText>
+          <DangerText>{errors.name?.type === 'maxLength' && (getLabel('webhook', 'name') + ' ' + I18n.t('activerecord.errors.messages.too_long', { count: 255 }))}</DangerText>
         </div>
 
         <div className="formGroup col-6">
           <label htmlFor="description">{ getLabel('webhook', 'description') }</label>
           <input
-            {...register('description')}
+            {...register('description', { maxLength: 255 })}
             id="description"
             className="formControl"
           />
+          <DangerText>{errors.description?.type === 'maxLength' && (getLabel('webhook', 'description') + ' ' + I18n.t('activerecord.errors.messages.too_long', { count: 255 }))}</DangerText>
         </div>
       </div>
 
@@ -131,7 +134,7 @@ const WebhookFormPage = ({
             {I18n.t('site_settings.webhooks.triggers.new_post_pending_approval')}
           </option>
           <option value={WEBHOOK_TRIGGER_DELETED_POST}>
-            {I18n.t('site_settings.webhooks.triggers.deleted_post')}
+            {I18n.t('site_settings.webhooks.triggers.delete_post')}
           </option>
           <option value={WEBHOOK_TRIGGER_POST_STATUS_CHANGE}>
             {I18n.t('site_settings.webhooks.triggers.post_status_change')}
@@ -175,11 +178,12 @@ const WebhookFormPage = ({
         <div className="formGroup col-9">
           <label htmlFor="url">{ getLabel('webhook', 'url') }</label>
           <input
-            {...register('url', { required: true })}
+            {...register('url', { required: true, pattern: URL_REGEX })}
             id="url"
             className="formControl"
           />
-          <DangerText>{errors.url && getValidationMessage(errors.url.type, 'webhook', 'url')}</DangerText>
+          <DangerText>{errors.url?.type === 'required' && getValidationMessage(errors.url.type, 'webhook', 'url')}</DangerText>
+          <DangerText>{errors.url?.type === 'pattern' && I18n.t('common.validations.url')}</DangerText>
         </div>
       </div>
 
