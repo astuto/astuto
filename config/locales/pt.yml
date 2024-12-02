@@ -19,8 +19,13 @@ pt:
         new_password: 'Nova senha'
         new_password_confirmation: 'Confirmação da nova senha'
         current_password: 'Senha atual'
-        notifications_enabled: 'Notificações ativadas'
+        notifications: 'Notifications'
         notifications_enabled_help: "se desativado, você não receberá nenhuma notificação"
+        recap_notification_frequency_never: 'Never'
+        recap_notification_frequency_daily: 'Daily'
+        recap_notification_frequency_weekly: 'Weekly'
+        recap_notification_frequency_monthly: 'Monthly'
+        recap_notification_frequency_help: 'recap notifications let you know if new feedback has been submitted or is waiting for your approval'
         waiting_confirmation: 'Aguardando confirmação do e-mail: %{email}'
         no_password_set: 'You must set a password to update your profile'
         set_password: 'Set password'
@@ -43,6 +48,14 @@ pt:
         change_password: 'Alterar senha'
         password_help: 'Mínimo de %{count} caracteres'
         email_registration_not_allowed: 'Email registration not allowed'
+      api_key:
+        title: 'API key'
+        current_api_key_help: 'You have already generated an API key and, for security reasons, it cannot be shown again. If you lost it, you can generate a new one below.'
+        generate_api_key: 'Generate API key'
+        generated_api_key_help: 'Save this API key in a safe place, as you will not be able to see it again.'
+        generated_api_key_successfully: 'API key generated successfully!'
+        confirm_generate_new_api_key: 'Are you sure you want to generate a new API key? The old one will be invalidated.'
+        api_key_learn_more: 'Learn how to use the API'
     comments_number:
       one: '1 (um) comentário'
       other: '%{count} comentários'
@@ -158,6 +171,7 @@ pt:
       not_following_description: "você não receberá as atualizações desta publicação"
     comments:
       title: 'Atividades recentes'
+      empty: 'There are no comments yet'
       post_update_badge: 'Atualizar'
       reply_button: 'Responder'
     new_comment:
@@ -263,6 +277,7 @@ pt:
       accepted: 'Accepted'
       sent_at: 'Sent %{when}'
       accepted_at: 'Accepted %{when}'
+      expired: 'Expired'
     appearance:
       title: 'Aparência'
       learn_more: 'Saiba como personalizar a aparência'
