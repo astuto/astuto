@@ -1,7 +1,7 @@
 // Trigger
 export const WEBHOOK_TRIGGER_NEW_POST = 'new_post';
 export const WEBHOOK_TRIGGER_NEW_POST_PENDING_APPROVAL = 'new_post_pending_approval';
-export const WEBHOOK_TRIGGER_DELETED_POST = 'deleted_post';
+export const WEBHOOK_TRIGGER_DELETED_POST = 'delete_post';
 export const WEBHOOK_TRIGGER_POST_STATUS_CHANGE = 'post_status_change';
 export const WEBHOOK_TRIGGER_NEW_COMMENT = 'new_comment';
 export const WEBHOOK_TRIGGER_NEW_VOTE = 'new_vote';

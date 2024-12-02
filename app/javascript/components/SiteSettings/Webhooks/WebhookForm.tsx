@@ -11,10 +11,12 @@ import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
 
 interface Props {
-  handleSubmitWebhook(webhook: IWebhook): void;
   selectedWebhook: IWebhook;
   page: WebhookPages;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
+
+  handleSubmitWebhook(webhook: IWebhook): void;
+  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookForm): void;
 }
 
 export interface ISiteSettingsWebhookForm {
@@ -28,10 +30,11 @@ export interface ISiteSettingsWebhookForm {
 }
 
 const WebhookFormPage = ({
-  handleSubmitWebhook,
   selectedWebhook,
   page,
   setPage,
+  handleSubmitWebhook,
+  handleUpdateWebhook,
 }: Props) => {
   const {
     register,
@@ -71,6 +74,8 @@ const WebhookFormPage = ({
     
     if (page === 'new') {
       handleSubmitWebhook(webhook);
+    } else if (page === 'edit') {
+      handleUpdateWebhook(selectedWebhook.id, webhook);
     }
   };
 

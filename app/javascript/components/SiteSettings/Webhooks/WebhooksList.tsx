@@ -8,6 +8,7 @@ import WebhookListItem from './WebhookListItem';
 interface Props {
   webhooks: Array<IWebhook>;
 
+  handleToggleEnabledWebhook: (id: number, enabled: boolean) => void;
   handleDeleteWebhook: (id: number) => void;
 
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
@@ -16,6 +17,7 @@ interface Props {
 
 const WebhooksList = ({
   webhooks,
+  handleToggleEnabledWebhook,
   handleDeleteWebhook,
   setSelectedWebhook,
   setPage,
@@ -35,6 +37,7 @@ const WebhooksList = ({
                 webhooks.filter(webhook => webhook.trigger === trigger).map((webhook, j) => (
                   <WebhookListItem
                     webhook={webhook}
+                    handleToggleEnabledWebhook={handleToggleEnabledWebhook}
                     handleDeleteWebhook={handleDeleteWebhook}
                     setSelectedWebhook={setSelectedWebhook}
                     setPage={setPage}

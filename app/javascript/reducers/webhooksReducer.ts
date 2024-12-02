@@ -1,4 +1,3 @@
-import { WEBHOOK_DELETE_SUCCESS, WebhookDeleteActionTypes } from '../actions/Webhook/deleteWebhook';
 import {
   WebhooksRequestActionTypes,
   WEBHOOKS_REQUEST_START,
@@ -10,6 +9,16 @@ import {
   WebhookSubmitActionTypes,
   WEBHOOK_SUBMIT_SUCCESS,
 } from '../actions/Webhook/submitWebhook';
+
+import {
+  WebhookUpdateActionTypes,
+  WEBHOOK_UPDATE_SUCCESS,
+} from '../actions/Webhook/updateWebhook';
+
+import {
+  WebhookDeleteActionTypes,
+  WEBHOOK_DELETE_SUCCESS,
+} from '../actions/Webhook/deleteWebhook';
 
 import { IWebhook, webhookJSON2JS } from '../interfaces/IWebhook';
 
@@ -30,6 +39,7 @@ const webhooksReducer = (
   action:
     WebhooksRequestActionTypes |
     WebhookSubmitActionTypes |
+    WebhookUpdateActionTypes |
     WebhookDeleteActionTypes
 ) => {
   switch (action.type) {
@@ -59,6 +69,15 @@ const webhooksReducer = (
         ...state,
         items: [...state.items, webhookJSON2JS(action.webhook)],
       };
+
+    case WEBHOOK_UPDATE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.map(webhook => {
+          if (webhook.id !== parseInt(action.webhook.id)) return webhook;
+          return webhookJSON2JS(action.webhook);
+        }),
+      }
 
     case WEBHOOK_DELETE_SUCCESS:
       return {

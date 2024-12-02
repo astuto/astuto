@@ -12,6 +12,7 @@ const WEBHOOK_DESCRIPTION_MAX_LENGTH = 100;
 interface Props {
   webhook: IWebhook;
 
+  handleToggleEnabledWebhook: (id: number, enabled: boolean) => void;
   handleDeleteWebhook: (id: number) => void;
 
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
@@ -20,6 +21,7 @@ interface Props {
 
 const WebhookListItem = ({
   webhook,
+  handleToggleEnabledWebhook,
   handleDeleteWebhook,
   setSelectedWebhook,
   setPage
@@ -42,7 +44,7 @@ const WebhookListItem = ({
 
         <Switch
           label={I18n.t(`common.${webhook.isEnabled ? 'enabled' : 'disabled'}`)}
-          onClick={() => console.log('clicked')}
+          onClick={() => handleToggleEnabledWebhook(webhook.id, !webhook.isEnabled)}
           checked={webhook.isEnabled}
           htmlId={`webhook${webhook.name}EnabledSwitch`}
         />

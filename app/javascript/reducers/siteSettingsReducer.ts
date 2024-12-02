@@ -82,6 +82,27 @@ import {
   OAUTH_DELETE_FAILURE,
 } from '../actions/OAuth/deleteOAuth';
 
+import {
+  WebhookSubmitActionTypes,
+  WEBHOOK_SUBMIT_FAILURE,
+  WEBHOOK_SUBMIT_START,
+  WEBHOOK_SUBMIT_SUCCESS,
+} from '../actions/Webhook/submitWebhook';
+
+import {
+  WebhookUpdateActionTypes,
+  WEBHOOK_UPDATE_START,
+  WEBHOOK_UPDATE_SUCCESS,
+  WEBHOOK_UPDATE_FAILURE,
+} from '../actions/Webhook/updateWebhook';
+
+import {
+  WebhookDeleteActionTypes,
+  WEBHOOK_DELETE_FAILURE,
+  WEBHOOK_DELETE_START,
+  WEBHOOK_DELETE_SUCCESS,
+} from '../actions/Webhook/deleteWebhook';
+
 import siteSettingsGeneralReducer, { SiteSettingsGeneralState } from './SiteSettings/generalReducer';
 import siteSettingsBoardsReducer, { SiteSettingsBoardsState } from './SiteSettings/boardsReducer';
 import siteSettingsPostStatusesReducer, { SiteSettingsPostStatusesState } from './SiteSettings/postStatusesReducer';
@@ -89,7 +110,6 @@ import siteSettingsRoadmapReducer, { SiteSettingsRoadmapState } from './SiteSett
 import siteSettingsAuthenticationReducer, { SiteSettingsAuthenticationState } from './SiteSettings/authenticationReducer';
 import siteSettingsAppearanceReducer, { SiteSettingsAppearanceState } from './SiteSettings/appearanceReducer';
 import siteSettingsWebhooksReducer, { SiteSettingsWebhooksState } from './SiteSettings/webhooksReducer';
-import { WEBHOOK_SUBMIT_FAILURE, WEBHOOK_SUBMIT_START, WEBHOOK_SUBMIT_SUCCESS, WebhookSubmitActionTypes } from '../actions/Webhook/submitWebhook';
 
 interface SiteSettingsState {
   general: SiteSettingsGeneralState;
@@ -126,7 +146,9 @@ const siteSettingsReducer = (
     PostStatusDeleteActionTypes |
     PostStatusSubmitActionTypes |
     PostStatusUpdateActionTypes |
-    WebhookSubmitActionTypes,
+    WebhookSubmitActionTypes |
+    WebhookUpdateActionTypes |
+    WebhookDeleteActionTypes
 ): SiteSettingsState => {
   switch (action.type) {
     case TENANT_UPDATE_START:
@@ -195,6 +217,12 @@ const siteSettingsReducer = (
     case WEBHOOK_SUBMIT_START:
     case WEBHOOK_SUBMIT_SUCCESS:
     case WEBHOOK_SUBMIT_FAILURE:
+    case WEBHOOK_UPDATE_START:
+    case WEBHOOK_UPDATE_SUCCESS:
+    case WEBHOOK_UPDATE_FAILURE:
+    case WEBHOOK_DELETE_START:
+    case WEBHOOK_DELETE_SUCCESS:
+    case WEBHOOK_DELETE_FAILURE:
       return {
         ...state,
         webhooks: siteSettingsWebhooksReducer(state.webhooks, action),

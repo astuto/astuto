@@ -312,7 +312,7 @@ en:
       triggers:
         new_post: 'New post'
         new_post_pending_approval: 'New post (pending approval)'
-        deleted_post: 'Delete post'
+        delete_post: 'Delete post'
         post_status_change: 'Post status change'
         new_comment: 'New comment'
         new_vote: 'New vote'

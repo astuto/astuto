@@ -3,10 +3,12 @@ import * as React from 'react';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import Box from '../../common/Box';
 import { IWebhook } from '../../../interfaces/IWebhook';
-import WebhookForm from './WebhookForm';
+import WebhookForm, { ISiteSettingsWebhookForm } from './WebhookForm';
 
 interface Props {
   handleSubmitWebhook(webhook: IWebhook): void;
+  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookForm): void;
+
   selectedWebhook: IWebhook;
   page: WebhookPages;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
@@ -14,6 +16,7 @@ interface Props {
 
 const WebhookFormPage = ({
   handleSubmitWebhook,
+  handleUpdateWebhook,
   selectedWebhook,
   page,
   setPage,
@@ -22,6 +25,7 @@ const WebhookFormPage = ({
     <Box customClass="webhookFormPage">
       <WebhookForm
         handleSubmitWebhook={handleSubmitWebhook}
+        handleUpdateWebhook={handleUpdateWebhook}
         selectedWebhook={selectedWebhook}
         page={page}
         setPage={setPage}

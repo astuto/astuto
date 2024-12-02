@@ -6,6 +6,13 @@ import {
 } from '../../actions/Webhook/submitWebhook';
 
 import {
+  WebhookUpdateActionTypes,
+  WEBHOOK_UPDATE_START,
+  WEBHOOK_UPDATE_SUCCESS,
+  WEBHOOK_UPDATE_FAILURE,
+} from '../../actions/Webhook/updateWebhook';
+
+import {
   WebhookDeleteActionTypes,
   WEBHOOK_DELETE_FAILURE,
   WEBHOOK_DELETE_START,
@@ -26,10 +33,12 @@ const siteSettingsWebhooksReducer = (
   state = initialState,
   action:
     WebhookSubmitActionTypes |
+    WebhookUpdateActionTypes |
     WebhookDeleteActionTypes
 ) => {
   switch (action.type) {
     case WEBHOOK_SUBMIT_START:
+    case WEBHOOK_UPDATE_START:
     case WEBHOOK_DELETE_START:
       return {
         ...state,
@@ -37,6 +46,7 @@ const siteSettingsWebhooksReducer = (
       };
 
     case WEBHOOK_SUBMIT_SUCCESS:
+    case WEBHOOK_UPDATE_SUCCESS:
     case WEBHOOK_DELETE_SUCCESS:
       return {
         ...state,
@@ -45,6 +55,7 @@ const siteSettingsWebhooksReducer = (
       };
 
     case WEBHOOK_SUBMIT_FAILURE:
+    case WEBHOOK_UPDATE_FAILURE:
     case WEBHOOK_DELETE_FAILURE:
       return {
         ...state,
