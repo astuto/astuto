@@ -6,7 +6,7 @@ import { requestWebhooks } from "../actions/Webhook/requestWebhooks";
 import { IWebhook } from "../interfaces/IWebhook";
 import { submitWebhook } from "../actions/Webhook/submitWebhook";
 import { deleteWebhook } from "../actions/Webhook/deleteWebhook";
-import { ISiteSettingsWebhookForm } from "../components/SiteSettings/Webhooks/WebhookForm";
+import { ISiteSettingsWebhookFormUpdate } from "../components/SiteSettings/Webhooks/WebhookForm";
 import { updateWebhook } from "../actions/Webhook/updateWebhook";
 
 const mapStateToProps = (state: State) => ({
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     return dispatch(submitWebhook(webhook, authenticityToken));
   },
 
-  onUpdateWebhook(id: number, form: ISiteSettingsWebhookForm, authenticityToken: string): Promise<any> {
+  onUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate, authenticityToken: string): Promise<any> {
     return dispatch(updateWebhook({id, form, authenticityToken}));
   },
 

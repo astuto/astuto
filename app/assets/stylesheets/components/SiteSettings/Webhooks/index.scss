@@ -57,4 +57,22 @@
   #httpBody {
     min-height: 100px;
   }
+
+  .formGroupHttpHeaders {
+    @extend .mb-0;
+
+    div.formRow { @extend .mb-0; }
+
+    div.formRow:last-child {
+      div.formGroup { @extend .mb-1; }
+    }
+  }
+
+  .deleteHeaderActionLinkContainer {
+    @extend
+      .d-flex,
+      .align-self-end;
+  }
+
+  .submitWebhookFormButton { @extend .mt-4; }
 }

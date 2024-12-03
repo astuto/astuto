@@ -6,7 +6,7 @@ import WebhooksIndexPage from './WebhooksIndexPage';
 import WebhookFormPage from './WebhookFormPage';
 import { IWebhook } from '../../../interfaces/IWebhook';
 import HttpStatus from '../../../constants/http_status';
-import { ISiteSettingsWebhookForm } from './WebhookForm';
+import { ISiteSettingsWebhookFormUpdate } from './WebhookForm';
 
 interface Props {
   webhooks: WebhooksState;
@@ -15,7 +15,7 @@ interface Props {
 
   requestWebhooks(): void;
   onSubmitWebhook(webhook: IWebhook, authenticityToken: string): Promise<any>;
-  onUpdateWebhook(id: number, form: ISiteSettingsWebhookForm, authenticityToken: string): Promise<any>;
+  onUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate, authenticityToken: string): Promise<any>;
   onToggleEnabledWebhook(id: number, isEnabled: boolean, authenticityToken: string): void;
   onDeleteWebhook(id: number, authenticityToken: string): void;
 
@@ -46,7 +46,7 @@ const WebhooksSiteSettingsP = ({
     });
   };
 
-  const handleUpdateWebhook = (id: number, form: ISiteSettingsWebhookForm) => {
+  const handleUpdateWebhook = (id: number, form: ISiteSettingsWebhookFormUpdate) => {
     onUpdateWebhook(id, form, authenticityToken).then(res => {
       if (res?.status === HttpStatus.OK) setPage('index');
     });

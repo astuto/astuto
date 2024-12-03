@@ -3,11 +3,11 @@ import * as React from 'react';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import Box from '../../common/Box';
 import { IWebhook } from '../../../interfaces/IWebhook';
-import WebhookForm, { ISiteSettingsWebhookForm } from './WebhookForm';
+import WebhookForm, { ISiteSettingsWebhookFormUpdate } from './WebhookForm';
 
 interface Props {
   handleSubmitWebhook(webhook: IWebhook): void;
-  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookForm): void;
+  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate): void;
 
   selectedWebhook: IWebhook;
   page: WebhookPages;

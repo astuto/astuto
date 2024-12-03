@@ -15,6 +15,7 @@ import {
   MdVerified,
   MdCheck,
   MdClear,
+  MdAdd,
 } from 'react-icons/md';
 import { FaUserNinja } from "react-icons/fa";
 
@@ -59,3 +60,5 @@ export const AnonymousIcon = ({size = 32, title=I18n.t('defaults.user_full_name'
 export const ApproveIcon = () => <MdCheck />;
 
 export const RejectIcon = () => <MdClear />;
+
+export const AddIcon = () => <MdAdd />;

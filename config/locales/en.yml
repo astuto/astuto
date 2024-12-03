@@ -324,7 +324,10 @@ en:
         delete: 'DELETE'
       form:
         title_new: 'New webhook'
-        title_edit: 'Edit webhook' 
+        title_edit: 'Edit webhook'
+        add_header: 'Add header'
+        header_n_key: 'Header %{n} key'
+        header_n_value: 'Header %{n} value'
   moderation:
     menu:
       feedback: 'Feedback'

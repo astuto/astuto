@@ -1,11 +1,11 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 
 import { IWebhook, WEBHOOK_HTTP_METHOD_DELETE, WEBHOOK_HTTP_METHOD_PATCH, WEBHOOK_HTTP_METHOD_POST, WEBHOOK_HTTP_METHOD_PUT, WEBHOOK_TRIGGER_DELETED_POST, WEBHOOK_TRIGGER_NEW_COMMENT, WEBHOOK_TRIGGER_NEW_POST, WEBHOOK_TRIGGER_NEW_POST_PENDING_APPROVAL, WEBHOOK_TRIGGER_NEW_USER, WEBHOOK_TRIGGER_NEW_VOTE, WEBHOOK_TRIGGER_POST_STATUS_CHANGE, WebhookHttpMethod, WebhookTrigger } from '../../../interfaces/IWebhook';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import ActionLink from '../../common/ActionLink';
-import { BackIcon } from '../../common/Icons';
+import { AddIcon, BackIcon, DeleteIcon } from '../../common/Icons';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
@@ -17,17 +17,33 @@ interface Props {
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
 
   handleSubmitWebhook(webhook: IWebhook): void;
-  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookForm): void;
+  handleUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate): void;
 }
 
-export interface ISiteSettingsWebhookForm {
+interface ISiteSettingsWebhookFormBase {
   name: string;
   description: string;
   trigger: string;
   url: string;
   httpBody: string;
   httpMethod: string;
+}
+
+interface ISiteSettingsWebhookForm extends ISiteSettingsWebhookFormBase {
+  httpHeaders: Array<{ key: string, value: string }>;
+}
+
+export interface ISiteSettingsWebhookFormUpdate extends ISiteSettingsWebhookFormBase {
   httpHeaders: string;
+}
+
+// This method tries to parse httpHeaders JSON, otherwise returns [{ key: '', value: '' }]
+const parseHttpHeaders = (httpHeaders: string) => {
+  try {
+    return JSON.parse(httpHeaders);
+  } catch (e) {
+    return [{ key: '', value: '' }];
+  }
 }
 
 const WebhookFormPage = ({
@@ -40,6 +56,7 @@ const WebhookFormPage = ({
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isDirty }
   } = useForm<ISiteSettingsWebhookForm>({
     defaultValues: page === 'new' ? {
@@ -49,7 +66,7 @@ const WebhookFormPage = ({
       url: '',
       httpBody: '',
       httpMethod: WEBHOOK_HTTP_METHOD_POST,
-      httpHeaders: '',
+      httpHeaders: [{ key: '', value: '' }],
     } : {
       name: selectedWebhook.name,
       description: selectedWebhook.description,
@@ -57,8 +74,13 @@ const WebhookFormPage = ({
       url: selectedWebhook.url,
       httpBody: selectedWebhook.httpBody,
       httpMethod: selectedWebhook.httpMethod,
-      httpHeaders: selectedWebhook.httpHeaders,
+      httpHeaders: parseHttpHeaders(selectedWebhook.httpHeaders),
     }
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'httpHeaders', // The name of the httpHeaders field
   });
 
   const onSubmit: SubmitHandler<ISiteSettingsWebhookForm> = data => {
@@ -70,8 +92,8 @@ const WebhookFormPage = ({
       url: data.url,
       httpBody: data.httpBody,
       httpMethod: data.httpMethod as WebhookHttpMethod,
-      httpHeaders: data.httpHeaders,
-    }
+      httpHeaders: JSON.stringify(data.httpHeaders),
+    };
     
     if (page === 'new') {
       handleSubmitWebhook(webhook);
@@ -196,16 +218,48 @@ const WebhookFormPage = ({
         />
       </div>
 
-      <div className="formGroup">
-        <label htmlFor="httpHeaders">{ getLabel('webhook', 'http_headers') }</label>
-        <textarea
-          {...register('httpHeaders')}
-          id="httpHeaders"
-          className="formControl"
-        />
-      </div>
+      <div className="formGroup formGroupHttpHeaders">
+          {
+            fields.map((field, index) => (
+              <div className="formRow" key={field.id}>
+                <div className="formGroup col-5">
+                  <label htmlFor={`httpHeaders${index+1}Key`}>{ I18n.t('site_settings.webhooks.form.header_n_key', { n: index+1 }) }</label>
+                  <input
+                    {...register(`httpHeaders.${index}.key`, { required: true })}
+                    id={`httpHeaders${index+1}Key`}
+                    className="formControl"
+                  />
+                  <DangerText>
+                    {errors.httpHeaders && errors.httpHeaders[index]?.key?.type === 'required' && getValidationMessage(errors.httpHeaders[index]?.key?.type, 'webhook', 'http_headers')}
+                  </DangerText>
+                </div>
 
-      <Button onClick={() => null} type="submit">
+                <div className="formGroup col-5">
+                  <label htmlFor={`httpHeaders${index+1}Value`}>{ I18n.t('site_settings.webhooks.form.header_n_value', { n: index+1 }) }</label>
+                  <input
+                    {...register(`httpHeaders.${index}.value`, { required: true })}
+                    id={`httpHeaders${index+1}Value`}
+                    className="formControl"
+                  />
+                  <DangerText>
+                    {errors.httpHeaders && errors.httpHeaders[index]?.value?.type === 'required' && getValidationMessage(errors.httpHeaders[index]?.value?.type, 'webhook', 'http_headers')}
+                  </DangerText>
+                </div>
+
+                <div className="formGroup col-2 deleteHeaderActionLinkContainer">
+                  <ActionLink icon={<DeleteIcon />} onClick={() => remove(index)}>
+                    {I18n.t('common.buttons.delete')}
+                  </ActionLink>
+                </div>
+              </div>
+            ))
+          }
+      </div>
+      <ActionLink icon={<AddIcon />} onClick={() => append({ key: "", value: "" })}>
+        {I18n.t('site_settings.webhooks.form.add_header')}
+      </ActionLink>
+
+      <Button onClick={() => null} type="submit" className="submitWebhookFormButton">
         {
           page === 'new' ?
             I18n.t('common.buttons.create')

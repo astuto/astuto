@@ -5,7 +5,7 @@ import HttpStatus from "../../constants/http_status";
 import buildRequestHeaders from "../../helpers/buildRequestHeaders";
 import { State } from "../../reducers/rootReducer";
 import { IWebhookJSON } from "../../interfaces/IWebhook";
-import { ISiteSettingsWebhookForm } from "../../components/SiteSettings/Webhooks/WebhookForm";
+import { ISiteSettingsWebhookFormUpdate } from "../../components/SiteSettings/Webhooks/WebhookForm";
 
 export const WEBHOOK_UPDATE_START = 'WEBHOOK_UPDATE_START';
 interface WebhookUpdateStartAction {
@@ -47,7 +47,7 @@ const webhookUpdateFailure = (error: string): WebhookUpdateFailureAction => ({
 
 interface UpdateWebhookParams {
   id: number;
-  form?: ISiteSettingsWebhookForm;
+  form?: ISiteSettingsWebhookFormUpdate;
   isEnabled?: boolean;
   authenticityToken: string;
 }
