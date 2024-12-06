@@ -6,6 +6,9 @@ import { IWebhook } from '../../../interfaces/IWebhook';
 import WebhookForm, { ISiteSettingsWebhookFormUpdate } from './WebhookForm';
 
 interface Props {
+  isSubmitting: boolean;
+  submitError: string;
+
   handleSubmitWebhook(webhook: IWebhook): void;
   handleUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate): void;
 
@@ -15,6 +18,8 @@ interface Props {
 }
 
 const WebhookFormPage = ({
+  isSubmitting,
+  submitError,
   handleSubmitWebhook,
   handleUpdateWebhook,
   selectedWebhook,
@@ -24,6 +29,8 @@ const WebhookFormPage = ({
   <>
     <Box customClass="webhookFormPage">
       <WebhookForm
+        isSubmitting={isSubmitting}
+        submitError={submitError}
         handleSubmitWebhook={handleSubmitWebhook}
         handleUpdateWebhook={handleUpdateWebhook}
         selectedWebhook={selectedWebhook}

@@ -10,8 +10,12 @@ import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
+import Spinner from '../../common/Spinner';
 
 interface Props {
+  isSubmitting: boolean;
+  submitError: string;
+
   selectedWebhook: IWebhook;
   page: WebhookPages;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
@@ -47,6 +51,8 @@ const parseHttpHeaders = (httpHeaders: string) => {
 }
 
 const WebhookFormPage = ({
+  isSubmitting,
+  submitError,
   selectedWebhook,
   page,
   setPage,
@@ -84,6 +90,9 @@ const WebhookFormPage = ({
   });
 
   const onSubmit: SubmitHandler<ISiteSettingsWebhookForm> = data => {
+    // Remove empty headers
+    let httpHeaders = data.httpHeaders.filter(header => header.key !== '' && header.value !== '');
+    
     const webhook = {
       isEnabled: false,
       name: data.name,
@@ -92,7 +101,7 @@ const WebhookFormPage = ({
       url: data.url,
       httpBody: data.httpBody,
       httpMethod: data.httpMethod as WebhookHttpMethod,
-      httpHeaders: JSON.stringify(data.httpHeaders),
+      httpHeaders: JSON.stringify(httpHeaders),
     };
     
     if (page === 'new') {
@@ -225,7 +234,7 @@ const WebhookFormPage = ({
                 <div className="formGroup col-5">
                   <label htmlFor={`httpHeaders${index+1}Key`}>{ I18n.t('site_settings.webhooks.form.header_n_key', { n: index+1 }) }</label>
                   <input
-                    {...register(`httpHeaders.${index}.key`, { required: true })}
+                    {...register(`httpHeaders.${index}.key`, { required: (index!==0) })}
                     id={`httpHeaders${index+1}Key`}
                     className="formControl"
                   />
@@ -237,7 +246,7 @@ const WebhookFormPage = ({
                 <div className="formGroup col-5">
                   <label htmlFor={`httpHeaders${index+1}Value`}>{ I18n.t('site_settings.webhooks.form.header_n_value', { n: index+1 }) }</label>
                   <input
-                    {...register(`httpHeaders.${index}.value`, { required: true })}
+                    {...register(`httpHeaders.${index}.value`, { required: (index!==0) })}
                     id={`httpHeaders${index+1}Value`}
                     className="formControl"
                   />
@@ -261,6 +270,9 @@ const WebhookFormPage = ({
 
       <Button onClick={() => null} type="submit" className="submitWebhookFormButton">
         {
+          isSubmitting ?
+            <Spinner color="light" />
+          :
           page === 'new' ?
             I18n.t('common.buttons.create')
           :
@@ -268,6 +280,8 @@ const WebhookFormPage = ({
         }
       </Button>
     </form>
+    
+    { submitError && <p style={{marginTop: '1rem', marginBottom: '0'}}><DangerText>{submitError}</DangerText></p> }
     </>
   );
 }

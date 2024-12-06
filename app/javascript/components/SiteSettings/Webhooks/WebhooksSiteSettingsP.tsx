@@ -73,6 +73,8 @@ const WebhooksSiteSettingsP = ({
       />
     :
       <WebhookFormPage
+        isSubmitting={isSubmitting}
+        submitError={submitError}
         handleSubmitWebhook={handleSubmitWebhook}
         handleUpdateWebhook={handleUpdateWebhook}
         selectedWebhook={webhooks.items.find(webhook => webhook.id === selectedWebhook)}
