@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.6'
 
-gem 'rake', '12.3.3'
+gem 'rake', '13.2.1'
 
 gem 'rails', '6.1.7.9'
 
@@ -66,6 +66,9 @@ gem 'sidekiq', '7.3.5'
 
 # Cron jobs with sidekiq
 gem 'sidekiq-cron', '2.0.1'
+
+# Template language
+gem 'liquid', '5.5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
