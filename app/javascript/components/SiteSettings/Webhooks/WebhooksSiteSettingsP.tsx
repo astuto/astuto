@@ -80,6 +80,7 @@ const WebhooksSiteSettingsP = ({
         selectedWebhook={webhooks.items.find(webhook => webhook.id === selectedWebhook)}
         page={page}
         setPage={setPage}
+        authenticityToken={authenticityToken}
       />
   );
 };

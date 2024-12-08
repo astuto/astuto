@@ -86,6 +86,7 @@ en:
       approve: 'Approve'
       reject: 'Reject'
       copy_to_clipboard: 'Copy to clipboard'
+      preview: 'Preview'
     datetime:
       now: 'just now'
       minutes:

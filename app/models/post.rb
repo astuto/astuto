@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   include TenantOwnable
+  include ApplicationHelper
+  include Rails.application.routes.url_helpers
   extend FriendlyId
   
   belongs_to :board
@@ -23,6 +25,15 @@ class Post < ApplicationRecord
   paginates_per Rails.application.posts_per_page
 
   friendly_id :title, use: :scoped, scope: :tenant_id
+
+  def url
+    get_url_for(method(:post_url), resource: self)
+  end
+
+  # Override attributes method to include url
+  def attributes
+    super.merge("url" => url)
+  end
 
   class << self
     def find_with_post_status_in(post_statuses)

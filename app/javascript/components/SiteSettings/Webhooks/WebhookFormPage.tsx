@@ -15,6 +15,8 @@ interface Props {
   selectedWebhook: IWebhook;
   page: WebhookPages;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
+
+  authenticityToken: string;
 }
 
 const WebhookFormPage = ({
@@ -25,6 +27,7 @@ const WebhookFormPage = ({
   selectedWebhook,
   page,
   setPage,
+  authenticityToken,
 }: Props) => (
   <>
     <Box customClass="webhookFormPage">
@@ -36,6 +39,7 @@ const WebhookFormPage = ({
         selectedWebhook={selectedWebhook}
         page={page}
         setPage={setPage}
+        authenticityToken={authenticityToken}
       />
     </Box>
   </>

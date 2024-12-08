@@ -5,12 +5,14 @@ import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import { IWebhook, WEBHOOK_HTTP_METHOD_DELETE, WEBHOOK_HTTP_METHOD_PATCH, WEBHOOK_HTTP_METHOD_POST, WEBHOOK_HTTP_METHOD_PUT, WEBHOOK_TRIGGER_DELETED_POST, WEBHOOK_TRIGGER_NEW_COMMENT, WEBHOOK_TRIGGER_NEW_POST, WEBHOOK_TRIGGER_NEW_POST_PENDING_APPROVAL, WEBHOOK_TRIGGER_NEW_USER, WEBHOOK_TRIGGER_NEW_VOTE, WEBHOOK_TRIGGER_POST_STATUS_CHANGE, WebhookHttpMethod, WebhookTrigger } from '../../../interfaces/IWebhook';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import ActionLink from '../../common/ActionLink';
-import { AddIcon, BackIcon, DeleteIcon } from '../../common/Icons';
+import { AddIcon, BackIcon, DeleteIcon, PreviewIcon } from '../../common/Icons';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
 import { URL_REGEX } from '../../../constants/regex';
 import Spinner from '../../common/Spinner';
+import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
+import HttpStatus from '../../../constants/http_status';
 
 interface Props {
   isSubmitting: boolean;
@@ -22,6 +24,8 @@ interface Props {
 
   handleSubmitWebhook(webhook: IWebhook): void;
   handleUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate): void;
+
+  authenticityToken: string;
 }
 
 interface ISiteSettingsWebhookFormBase {
@@ -58,12 +62,14 @@ const WebhookFormPage = ({
   setPage,
   handleSubmitWebhook,
   handleUpdateWebhook,
+  authenticityToken,
 }: Props) => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty }
+    formState: { errors, isDirty },
+    watch,
   } = useForm<ISiteSettingsWebhookForm>({
     defaultValues: page === 'new' ? {
       name: '',
@@ -110,6 +116,10 @@ const WebhookFormPage = ({
       handleUpdateWebhook(selectedWebhook.id, webhook);
     }
   };
+
+  const trigger = watch('trigger');
+  const url = watch('url');
+  const httpBody = watch('httpBody');
 
   return (
     <>
@@ -225,6 +235,35 @@ const WebhookFormPage = ({
           id="httpBody"
           className="formControl"
         />
+
+        <ActionLink
+          icon={<PreviewIcon />}
+          onClick={async () => {
+            const res = await fetch(`/webhooks_preview`, {
+              method: 'PUT',
+              headers: buildRequestHeaders(authenticityToken),
+              body: JSON.stringify({
+                webhook: {
+                  trigger: trigger,
+                  url: url,
+                  http_body: httpBody,
+                }
+              }),
+            });
+
+            const json = await res.json();
+
+            if (res.status === HttpStatus.OK) {
+              alert("URL: " + json.url_preview + "\n\nHTTP Body: " + json.http_body_preview);
+            } else {
+              alert(json.error);
+            }
+          }}
+          customClass="previewHttpBody"
+        >
+          {I18n.t('common.buttons.preview')}
+        </ActionLink>
+
       </div>
 
       <div className="formGroup formGroupHttpHeaders">
