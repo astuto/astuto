@@ -27,7 +27,7 @@ const OAuthProvidersList = ({
 }: Props) => (
   <>
     <div className="oauthProvidersTitle">
-      <h3>{ I18n.t('site_settings.authentication.oauth_subtitle') }</h3>
+      <h4>{ I18n.t('site_settings.authentication.oauth_subtitle') }</h4>
       <Button onClick={() => setPage('new')}>
         { I18n.t('common.buttons.new') }
       </Button>

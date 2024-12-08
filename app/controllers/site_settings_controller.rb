@@ -19,6 +19,9 @@ class SiteSettingsController < ApplicationController
   def roadmap
   end
 
+  def webhooks
+  end
+
   def invitations
     @invitations = Invitation.all.order(updated_at: :desc)
   end
