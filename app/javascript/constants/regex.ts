@@ -1,2 +1,2 @@
-export const EMAIL_REGEX = /(.+)@(.+){2,}\.(.+){2,}/;
+export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const URL_REGEX = /^(ftp|http|https):\/\/[^ "]+$/;
