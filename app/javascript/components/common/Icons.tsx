@@ -5,7 +5,7 @@ import { BsReply } from 'react-icons/bs';
 import { FiEdit, FiDelete, FiSettings } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
-import { GrTest, GrClearOption } from 'react-icons/gr';
+import { GrTest, GrClearOption, GrOverview } from 'react-icons/gr';
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import {
   MdContentCopy,
@@ -15,6 +15,7 @@ import {
   MdVerified,
   MdCheck,
   MdClear,
+  MdAdd,
 } from 'react-icons/md';
 import { FaUserNinja } from "react-icons/fa";
 
@@ -59,3 +60,7 @@ export const AnonymousIcon = ({size = 32, title=I18n.t('defaults.user_full_name'
 export const ApproveIcon = () => <MdCheck />;
 
 export const RejectIcon = () => <MdClear />;
+
+export const AddIcon = () => <MdAdd />;
+
+export const PreviewIcon = ({size = 24}) => <GrOverview size={size} />;

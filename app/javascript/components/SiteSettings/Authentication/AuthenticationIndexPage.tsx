@@ -79,7 +79,7 @@ const AuthenticationIndexPage = ({
         <h2>{ I18n.t('site_settings.authentication.title') }</h2>
 
         <div className="emailRegistrationPolicy">
-          <h3>{ I18n.t('site_settings.authentication.email_registration_subtitle') }</h3>
+          <h4>{ I18n.t('site_settings.authentication.email_registration_subtitle') }</h4>
 
           <form onSubmit={handleSubmit(onSubmit)} onChange={handleSubmit(onSubmit)}>
             <div className="formGroup">

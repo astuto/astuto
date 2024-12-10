@@ -8,6 +8,7 @@ import postStatusesReducer from './postStatusesReducer';
 import usersReducer from './usersReducer';
 import currentPostReducer from './currentPostReducer';
 import oAuthsReducer from './oAuthsReducer';
+import webhooksReducer from './webhooksReducer';
 import siteSettingsReducer from './siteSettingsReducer';
 import moderationReducer from './moderationReducer';
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   currentPost: currentPostReducer,
   oAuths: oAuthsReducer,
+  webhooks: webhooksReducer,
   
   siteSettings: siteSettingsReducer,
   moderation: moderationReducer,
