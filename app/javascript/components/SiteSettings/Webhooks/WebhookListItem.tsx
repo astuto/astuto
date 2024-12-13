@@ -5,7 +5,8 @@ import { IWebhook } from '../../../interfaces/IWebhook';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import Switch from '../../common/Switch';
 import ActionLink from '../../common/ActionLink';
-import { DeleteIcon, EditIcon } from '../../common/Icons';
+import { DeleteIcon, EditIcon, TestIcon } from '../../common/Icons';
+import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 
 const WEBHOOK_DESCRIPTION_MAX_LENGTH = 100;
 
@@ -14,6 +15,7 @@ interface Props {
 
   handleToggleEnabledWebhook: (id: number, enabled: boolean) => void;
   handleDeleteWebhook: (id: number) => void;
+  handleTestWebhook: (id: number) => void;
 
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
@@ -23,8 +25,9 @@ const WebhookListItem = ({
   webhook,
   handleToggleEnabledWebhook,
   handleDeleteWebhook,
+  handleTestWebhook,
   setSelectedWebhook,
-  setPage
+  setPage,
 }: Props) => (
   <li className="webhookListItem">
     <div className="webhookInfo">
@@ -53,9 +56,17 @@ const WebhookListItem = ({
 
     <div className="webhookActions">
       <ActionLink
+        onClick={() => handleTestWebhook(webhook.id)}
+        icon={<TestIcon />}
+        customClass='testAction'
+      >
+        {I18n.t('common.buttons.test')}
+      </ActionLink>
+      
+      <ActionLink
         onClick={() => {
-          setSelectedWebhook(webhook.id)
-          setPage('edit')
+          setSelectedWebhook(webhook.id);
+          setPage('edit');
         }}
         icon={<EditIcon />}
         customClass="editAction"

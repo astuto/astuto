@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :update]
     resources :webhooks, only: [:index, :create, :update, :destroy]
     put '/webhooks_preview', to: 'webhooks#preview'
+    put '/webhooks/:id/test', to: 'webhooks#test'
     resources :o_auths, only: [:index, :create, :update, :destroy] do
       resource :tenant_default_o_auths, only: [:create, :destroy]
     end

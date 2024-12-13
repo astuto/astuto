@@ -10,6 +10,7 @@ interface Props {
 
   handleToggleEnabledWebhook: (id: number, enabled: boolean) => void;
   handleDeleteWebhook: (id: number) => void;
+  handleTestWebhook: (id: number) => void;
 
   setSelectedWebhook: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<WebhookPages>>;
@@ -19,6 +20,7 @@ const WebhooksList = ({
   webhooks,
   handleToggleEnabledWebhook,
   handleDeleteWebhook,
+  handleTestWebhook,
   setSelectedWebhook,
   setPage,
 }: Props) => {
@@ -39,6 +41,7 @@ const WebhooksList = ({
                     webhook={webhook}
                     handleToggleEnabledWebhook={handleToggleEnabledWebhook}
                     handleDeleteWebhook={handleDeleteWebhook}
+                    handleTestWebhook={handleTestWebhook}
                     setSelectedWebhook={setSelectedWebhook}
                     setPage={setPage}
                     key={j}

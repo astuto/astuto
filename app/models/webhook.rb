@@ -1,6 +1,9 @@
 class Webhook < ApplicationRecord
   include TenantOwnable
 
+  before_save :encrypt_http_headers
+  after_find :decrypt_http_headers
+
   validates :name, presence: true, uniqueness: { scope: :tenant_id }, length: { maximum: 255 }
   validates :url, presence: true, format: { with: URI::regexp(%w(http https)), message: I18n.t('common.validations.url') }
   validates :trigger, presence: true
@@ -22,4 +25,26 @@ class Webhook < ApplicationRecord
     :http_patch,
     :http_delete
   ]
+
+  def encrypt_http_headers
+    return if http_headers.nil?
+
+    # Derive a 32-byte key from the secret_key_base
+    key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+
+    encryptor = ActiveSupport::MessageEncryptor.new(key)
+    self.http_headers = encryptor.encrypt_and_sign(http_headers.to_json)
+  end
+
+  def decrypt_http_headers
+    return if http_headers.nil?
+
+    # Derive a 32-byte key from the secret_key_base
+    key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+
+    encryptor = ActiveSupport::MessageEncryptor.new(key)
+    self.http_headers = JSON.parse(encryptor.decrypt_and_verify(http_headers)) if http_headers.present?
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    errors.add(:http_headers, 'could not be decrypted')
+  end
 end

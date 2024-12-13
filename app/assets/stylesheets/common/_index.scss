@@ -173,6 +173,7 @@ body {
 }
 .badgeWarning { @extend .badge-warning; }
 .badgeDanger { @extend .badge-danger; }
+.badgeSuccess { @extend .badge-success; }
 
 .container {
   max-width: 960px;

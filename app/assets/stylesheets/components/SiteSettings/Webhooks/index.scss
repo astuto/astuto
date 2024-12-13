@@ -1,3 +1,9 @@
+a.backButton {
+  @extend .mb-2, .align-self-start;
+
+  font-size: 18px;
+}
+
 .webhooksIndexPage {
   .webhooksTitle {
     @extend
@@ -48,12 +54,6 @@
 }
 
 .webhookFormPage {
-  a.backButton {
-    @extend .mb-2, .align-self-start;
-
-    font-size: 18px;
-  }
-
   #httpBody {
     min-height: 100px;
   }
@@ -80,4 +80,25 @@
   }
 
   .submitWebhookFormButton { @extend .mt-4; }
+}
+
+.webhookTestPage {
+  .webhookActions {
+    @extend .d-flex;
+  }
+
+  .webhookTestResponse {
+    @extend .mt-4;
+
+    #testHttpResponse {
+      @extend .mt-4, .p-2;
+
+      max-height: 400px;
+      max-width: 600px;
+
+      background-color: #f4f4f4;
+
+      border-radius: 8px;
+    }
+  }
 }
