@@ -1,10 +1,11 @@
 class CreateLiquidTemplateContextWorkflow
-  TENANT_SAFE_ATTRIBUTES = ['site_name', 'subdomain', 'custom_domain']
-  BOARD_SAFE_ATTRIBUTES = ['id', 'name', 'description', 'slug', 'created_at', 'updated_at']
-  POST_STATUS_SAFE_ATTRIBUTES = ['id', 'name', 'color', 'show_in_roadmap', 'created_at', 'updated_at']
-  USER_SAFE_ATTRIBUTES = ['id', 'email', 'full_name', 'role', 'status', 'created_at', 'updated_at']
-  POST_SAFE_ATTRIBUTES = ['id', 'title', 'description', 'slug', 'url', 'board_id', 'user_id', 'created_at', 'updated_at']
-  COMMENT_SAFE_ATTRIBUTES = ['id', 'body', 'user_id', 'post_id', 'created_at', 'updated_at']
+  TENANT_ATTRIBUTES = [:site_name, :subdomain, :custom_domain].freeze
+  BOARD_ATTRIBUTES = [:id, :name, :description, :slug, :created_at, :updated_at].freeze
+  POST_STATUS_ATTRIBUTES = [:id, :name, :color, :show_in_roadmap, :created_at, :updated_at].freeze
+  USER_ATTRIBUTES = [:id, :email, :full_name, :role, :status, :created_at, :updated_at].freeze
+  POST_ATTRIBUTES = [:id, :title, :description, :slug, :board_id, :user_id, :created_at, :updated_at].freeze
+  POST_VIRTUAL_ATTRIBUTES = [:url].freeze
+  COMMENT_ATTRIBUTES = [:id, :body, :user_id, :post_id, :created_at, :updated_at].freeze
 
   attr_accessor :webhook_trigger, :is_test, :entities
 
@@ -109,46 +110,46 @@ class CreateLiquidTemplateContextWorkflow
     context = {}
 
     # Add general context variables
-    context['tenant'] = tenant.attributes.slice(*TENANT_SAFE_ATTRIBUTES)
+    context['tenant'] = tenant.attributes.slice(*TENANT_ATTRIBUTES)
 
     # Add context variables specific to the webhook trigger
     case webhook_trigger
     when 'new_post'
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'new_post_pending_approval'
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES) : nil
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].as_json(only: USER_ATTRIBUTES) : nil
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'delete_post'
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'post_status_change'
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
-      context['post_status'] = @entities[:post_status].attributes.slice(*POST_STATUS_SAFE_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
+      context['post_status'] = @entities[:post_status].as_json(only: POST_STATUS_ATTRIBUTES)
 
     when 'new_comment'
-      context['comment'] = @entities[:comment].attributes.slice(*COMMENT_SAFE_ATTRIBUTES)
-      context['comment_author'] = @entities[:comment_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
+      context['comment'] = @entities[:comment].as_json(only: COMMENT_ATTRIBUTES)
+      context['comment_author'] = @entities[:comment_author].as_json(only: USER_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'new_vote'
-      context['vote_author'] = @entities[:vote_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['post'] = @entities[:post].attributes.slice(*POST_SAFE_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].attributes.slice(*USER_SAFE_ATTRIBUTES)
-      context['board'] = @entities[:board].attributes.slice(*BOARD_SAFE_ATTRIBUTES)
+      context['vote_author'] = @entities[:vote_author].as_json(only: USER_ATTRIBUTES)
+      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
+      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'new_user'
-      context['user'] = @entities[:user].attributes.slice(*USER_SAFE_ATTRIBUTES)
+      context['user'] = @entities[:user].as_json(only: USER_ATTRIBUTES)
     end
 
     context

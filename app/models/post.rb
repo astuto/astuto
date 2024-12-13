@@ -30,11 +30,6 @@ class Post < ApplicationRecord
     get_url_for(method(:post_url), resource: self)
   end
 
-  # Override attributes method to include url
-  def attributes
-    super.merge("url" => url)
-  end
-
   class << self
     def find_with_post_status_in(post_statuses)
       where(post_status_id: post_statuses.pluck(:id))
