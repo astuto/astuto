@@ -1,9 +1,9 @@
 pl:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
-    email_domain_not_allowed: 'You cannot register with the provided email address'
-    not_logged_in: 'You must be logged in to access this page'
+    unknown: 'Wystąpił nieznany błąd'
+    unauthorized: 'Nie jesteś zalogowany'
+    email_domain_not_allowed: 'Nie możesz się zarejestrować z podanym adresem e-mail'
+    not_logged_in: 'Musisz być zalogowany aby uzyskać dostęp do tej strony'
     not_enough_privileges: 'You do not have the privilegies to access this page'
     user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
     o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
@@ -12,23 +12,23 @@ pl:
     post_status:
       update_order: 'There was an error in reordering statuses'
   defaults:
-    user_full_name: 'Anonymous User'
-    deleted_user_full_name: 'Deleted User'
+    user_full_name: 'Użytkownik anonimowy'
+    deleted_user_full_name: 'Usunięty użytkownik'
   mailers:
     devise:
       welcome_greeting: 'Welcome to %{site_name}, %{email}!'
       opening_greeting: 'Hello %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'Możesz potwierdzić swój adres e-mail za pomocą linku poniżej:'
+        action: 'Potwierdź moje konto'
       email_changed:
         body: "We're contacting you to notify you that your email is being changed to %{email}."
         body2: "We're contacting you to notify you that your email has been changed to %{email}."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Kontaktujemy się z Tobą, aby powiadomić Cię, że Twoje hasło zostało zmienione."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
+        body: 'Ktoś poprosił o link do zmiany Twojego hasła. Możesz to zrobić za pomocą linku poniżej.'
+        body2: "Jeśli to nie Ty poprosiłeś(aś) o zmianę hasła, zignoruj tę wiadomość."
         body3: "Your password won't change until you access the link above and create a new one."
         action: 'Change my password'
     user:
