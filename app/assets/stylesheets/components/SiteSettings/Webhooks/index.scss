@@ -57,7 +57,18 @@ a.backButton {
   #httpBody {
     min-height: 200px;
   }
+  
+  .httpBodyActions {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .mt-1;
 
+    div:first-child {
+      min-width: 250px;
+    }
+  }
+  
   .previewHttpBody {
     display: block;
     text-align: right;

@@ -329,6 +329,7 @@ en:
         add_header: 'Add header'
         header_n_key: 'Header %{n} key'
         header_n_value: 'Header %{n} value'
+        template_variables_selector_placeholder: 'Select a template variable...'
       test_page:
         title: 'Webhook test results'
   moderation:

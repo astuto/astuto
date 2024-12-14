@@ -110,9 +110,10 @@ class CreateLiquidTemplateContextWorkflow
     context = {}
 
     # Add general context variables
-    context['tenant'] = tenant.attributes.slice(*TENANT_ATTRIBUTES)
+    context['tenant'] = tenant.as_json(only: TENANT_ATTRIBUTES)
 
     # Add context variables specific to the webhook trigger
+    # To keep in sync with app/javascript/components/SiteSettings/Webhooks/TemplateVariablesSelector.tsx
     case webhook_trigger
     when 'new_post'
       context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)

@@ -13,6 +13,8 @@ import { URL_REGEX } from '../../../constants/regex';
 import Spinner from '../../common/Spinner';
 import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 import HttpStatus from '../../../constants/http_status';
+import { useRef } from 'react';
+import TemplateVariablesSelector from './TemplateVariablesSelector';
 
 interface Props {
   isSubmitting: boolean;
@@ -70,6 +72,8 @@ const WebhookFormPage = ({
     control,
     formState: { errors, isDirty },
     watch,
+    getValues,
+    setValue,
   } = useForm<ISiteSettingsWebhookForm>({
     defaultValues: page === 'new' ? {
       name: '',
@@ -120,6 +124,36 @@ const WebhookFormPage = ({
   const trigger = watch('trigger');
   const url = watch('url');
   const httpBody = watch('httpBody');
+
+  const httpBodyTextAreaRef = useRef(null);
+  const [cursorPosition, setCursorPosition] = React.useState(0);
+
+  const handleCursorPosition = e => {
+    setCursorPosition(e.target.selectionStart);
+  };
+
+  // Insert custom string at the last cursor position
+  const insertString = (stringToInsert: string) => {
+    const currentValue = getValues('httpBody'); // Get the current textarea value
+    const start = currentValue.slice(0, cursorPosition);
+    const end = currentValue.slice(cursorPosition);
+    const newValue = start + stringToInsert + end;
+
+    // Update textarea value with react-hook-form
+    setValue('httpBody', newValue, { shouldDirty: true });
+
+    // Update cursor position after the custom string
+    const newCursorPosition = cursorPosition + stringToInsert.length;
+    setCursorPosition(newCursorPosition);
+
+    // Update the DOM to reflect the cursor position
+    if (httpBodyTextAreaRef.current) {
+      setTimeout(() => {
+        httpBodyTextAreaRef.current.setSelectionRange(newCursorPosition, newCursorPosition);
+        httpBodyTextAreaRef.current.focus();
+      }, 0);
+    }
+  };
 
   return (
     <>
@@ -232,41 +266,50 @@ const WebhookFormPage = ({
         <label htmlFor="httpBody">{ getLabel('webhook', 'http_body') }</label>
         <textarea
           {...register('httpBody')}
+          ref={(e) => {
+            register('httpBody').ref(e); // Combine react-hook-form's ref with custom ref
+            httpBodyTextAreaRef.current = e; // Store a local reference
+          }}
+          onClick={handleCursorPosition}
+          onKeyUp={handleCursorPosition}
           id="httpBody"
           className="formControl"
         />
 
-        <ActionLink
-          icon={<PreviewIcon />}
-          onClick={async () => {
-            if (httpBody === '') return;
-            
-            const res = await fetch(`/webhooks_preview`, {
-              method: 'PUT',
-              headers: buildRequestHeaders(authenticityToken),
-              body: JSON.stringify({
-                webhook: {
-                  trigger: trigger,
-                  url: url,
-                  http_body: httpBody,
-                }
-              }),
-            });
+        <div className="httpBodyActions">
+          <TemplateVariablesSelector webhookTrigger={trigger} onChange={insertString} />
 
-            const json = await res.json();
+          <ActionLink
+            icon={<PreviewIcon />}
+            onClick={async () => {
+              if (httpBody === '') return;
 
-            if (res.status === HttpStatus.OK) {
-              alert("URL: " + json.url_preview + "\n\nHTTP Body: " + json.http_body_preview);
-            } else {
-              alert(json.error);
-            }
-          }}
-          disabled={httpBody === ''}
-          customClass="previewHttpBody"
-        >
-          {I18n.t('common.buttons.preview')}
-        </ActionLink>
+              const res = await fetch(`/webhooks_preview`, {
+                method: 'PUT',
+                headers: buildRequestHeaders(authenticityToken),
+                body: JSON.stringify({
+                  webhook: {
+                    trigger: trigger,
+                    url: url,
+                    http_body: httpBody,
+                  }
+                }),
+              });
 
+              const json = await res.json();
+
+              if (res.status === HttpStatus.OK) {
+                alert("URL: " + json.url_preview + "\n\nHTTP Body: " + json.http_body_preview);
+              } else {
+                alert(json.error);
+              }
+            }}
+            disabled={httpBody === ''}
+            customClass="previewHttpBody"
+          >
+            {I18n.t('common.buttons.preview')}
+          </ActionLink>
+        </div>
       </div>
 
       <div className="formGroup formGroupHttpHeaders">
