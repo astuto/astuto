@@ -13,7 +13,7 @@ pl:
       not_found_in_database: "Błędny adres %{authentication_keys} lub hasło."
       timeout: "Sesja wygasła, aby kontynuować zaloguj się ponownie."
       unauthenticated: "Aby kontynuować zaloguj lub zarejestruj się."
-      unconfirmed: "Aby kontynuować aktywuj konto."
+      unconfirmed: "Musisz potwierdzić swój adres email, zanim będziesz mógł kontynuować."
     mailer:
       confirmation_instructions:
         subject: "Instrukcja aktywacji konta"
@@ -59,7 +59,7 @@ pl:
       not_found: "nie znaleziono"
       not_locked: "nie był zablokowany"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "1 błąd uniemożliwiał zapisanie %{resource}:"
         few: "%{count} errors prohibited this %{resource} from being saved:"
         many: "%{count} errors prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
