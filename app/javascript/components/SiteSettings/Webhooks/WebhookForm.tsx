@@ -239,6 +239,8 @@ const WebhookFormPage = ({
         <ActionLink
           icon={<PreviewIcon />}
           onClick={async () => {
+            if (httpBody === '') return;
+            
             const res = await fetch(`/webhooks_preview`, {
               method: 'PUT',
               headers: buildRequestHeaders(authenticityToken),
@@ -259,6 +261,7 @@ const WebhookFormPage = ({
               alert(json.error);
             }
           }}
+          disabled={httpBody === ''}
           customClass="previewHttpBody"
         >
           {I18n.t('common.buttons.preview')}
