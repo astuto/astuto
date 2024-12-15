@@ -127,7 +127,24 @@ const TemplateVariablesSelector = ({
       value={selectedOption}
       onChange={handleChange}
       isClearable={false}
+      isSearchable
       placeholder={I18n.t('site_settings.webhooks.form.template_variables_selector_placeholder')}
+      styles={{
+        control: (provided, state) => ({
+          ...provided,
+          boxShadow: 'none',
+          borderColor: state.isFocused ? '#333333' : '#cdcdcd',
+          '&:hover': {
+            boxShadow: 'none',
+            borderColor: '#333333',
+          },
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          color: 'inherit',
+          backgroundColor: state.isFocused ? '#f2f2f2' : 'white',
+        }),
+      }}
     />
   );
 };
