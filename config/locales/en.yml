@@ -71,6 +71,7 @@ en:
     disabled: 'Disabled'
     copied: 'Copied!'
     user_staff: 'Staff'
+    liquid_template: 'Supports Liquid template'
     powered_by: 'Powered by'
     buttons:
       new: 'New'

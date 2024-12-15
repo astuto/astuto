@@ -5,7 +5,7 @@ import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import { IWebhook, WEBHOOK_HTTP_METHOD_DELETE, WEBHOOK_HTTP_METHOD_PATCH, WEBHOOK_HTTP_METHOD_POST, WEBHOOK_HTTP_METHOD_PUT, WEBHOOK_TRIGGER_DELETED_POST, WEBHOOK_TRIGGER_NEW_COMMENT, WEBHOOK_TRIGGER_NEW_POST, WEBHOOK_TRIGGER_NEW_POST_PENDING_APPROVAL, WEBHOOK_TRIGGER_NEW_USER, WEBHOOK_TRIGGER_NEW_VOTE, WEBHOOK_TRIGGER_POST_STATUS_CHANGE, WebhookHttpMethod, WebhookTrigger } from '../../../interfaces/IWebhook';
 import { WebhookPages } from './WebhooksSiteSettingsP';
 import ActionLink from '../../common/ActionLink';
-import { AddIcon, BackIcon, DeleteIcon, PreviewIcon } from '../../common/Icons';
+import { AddIcon, BackIcon, DeleteIcon, LiquidIcon, PreviewIcon } from '../../common/Icons';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
@@ -251,7 +251,11 @@ const WebhookFormPage = ({
         </div>
 
         <div className="formGroup col-9">
-          <label htmlFor="url">{ getLabel('webhook', 'url') }</label>
+          <label htmlFor="url">
+            { getLabel('webhook', 'url') }
+            &nbsp;
+            { <LiquidIcon /> }
+          </label>
           <input
             {...register('url', { required: true, pattern: URL_REGEX })}
             id="url"
@@ -263,7 +267,11 @@ const WebhookFormPage = ({
       </div>
 
       <div className="formGroup">
-        <label htmlFor="httpBody">{ getLabel('webhook', 'http_body') }</label>
+        <label htmlFor="httpBody">
+          { getLabel('webhook', 'http_body') }
+          &nbsp;
+          { <LiquidIcon /> }
+        </label>
         <textarea
           {...register('httpBody')}
           ref={(e) => {
