@@ -102,6 +102,68 @@ const optionsByWebhookTrigger = {
   ],
 };
 
+const liquidTagsOptions = {
+  label: 'Liquid tags',
+  options: [
+    { value: '{% if <condition> %}\n\n{% endif %}', label: 'If condition' },
+    { value: '{% for <item> in <collection> %}\n\n{% endfor %}', label: 'For loop' },
+    { value: '{% tablerow <item> in <collection> %}\n\n{% endtablerow %}', label: 'Tablerow loop' },
+    { value: '{% assign <variable> = <value> %}', label: 'Assign variable' },
+  ]
+};
+
+const liquidFiltersOptions = {
+  label: 'Liquid filters',
+  options: [
+    { value: ' | abs', label: 'Absolute value' },
+    { value: ' | append: <value>', label: 'Append' },
+    { value: ' | capitalize', label: 'Capitalize' },
+    { value: ' | ceil', label: 'Ceil' },
+    { value: ' | compact', label: 'Compact' },
+    { value: ' | concat: <array>', label: 'Concat' },
+    { value: ' | date: <format>', label: 'Date' },
+    { value: ' | default: <value>', label: 'Default' },
+    { value: ' | divided_by: <value>', label: 'Divided by' },
+    { value: ' | downcase', label: 'Downcase' },
+    { value: ' | escape', label: 'Escape' },
+    { value: ' | escape_once', label: 'Escape once' },
+    { value: ' | first', label: 'First' },
+    { value: ' | floor', label: 'Floor' },
+    { value: ' | join: <value>', label: 'Join' },
+    { value: ' | last', label: 'Last' },
+    { value: ' | lstrip', label: 'Lstrip' },
+    { value: ' | map: <value>', label: 'Map' },
+    { value: ' | minus: <value>', label: 'Minus' },
+    { value: ' | modulo: <value>', label: 'Modulo' },
+    { value: ' | newline_to_br', label: 'Newline to br' },
+    { value: ' | plus: <value>', label: 'Plus' },
+    { value: ' | prepend: <value>', label: 'Prepend' },
+    { value: ' | remove: <value>', label: 'Remove' },
+    { value: ' | remove_first: <value>', label: 'Remove first' },
+    { value: ' | replace: <value>', label: 'Replace' },
+    { value: ' | replace_first: <value>', label: 'Replace first' },
+    { value: ' | reverse', label: 'Reverse' },
+    { value: ' | round', label: 'Round' },
+    { value: ' | rstrip', label: 'Rstrip' },
+    { value: ' | size', label: 'Size' },
+    { value: ' | slice: <value>', label: 'Slice' },
+    { value: ' | sort', label: 'Sort' },
+    { value: ' | sort_natural', label: 'Sort natural' },
+    { value: ' | split: <value>', label: 'Split' },
+    { value: ' | strip', label: 'Strip' },
+    { value: ' | strip_html', label: 'Strip html' },
+    { value: ' | strip_newlines', label: 'Strip newlines' },
+    { value: ' | times: <value>', label: 'Times' },
+    { value: ' | truncate: <value>', label: 'Truncate' },
+    { value: ' | truncatewords: <value>', label: 'Truncate words' },
+    { value: ' | uniq', label: 'Uniq' },
+    { value: ' | upcase', label: 'Upcase' },
+    { value: ' | url_decode', label: 'Url decode' },
+    { value: ' | url_encode', label: 'Url encode' },
+    { value: ' | where: <value>', label: 'Where' },
+  ]
+};
+
 interface Props {
   webhookTrigger: string;
   onChange: (option: any) => void;
@@ -111,7 +173,20 @@ const TemplateVariablesSelector = ({
   webhookTrigger,
   onChange,
 }: Props) => {
-  const options = optionsByWebhookTrigger[webhookTrigger] || [];
+  const options = [
+    {
+      label: 'Astuto variables',
+      options: optionsByWebhookTrigger[webhookTrigger] || [],
+    },
+    {
+      label: 'Liquid tags',
+      options: liquidTagsOptions.options,
+    },
+    {
+      label: 'Liquid filters',
+      options: liquidFiltersOptions.options,
+    },
+  ];
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = (option) => {
