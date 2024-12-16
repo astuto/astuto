@@ -3,7 +3,7 @@ import I18n from 'i18n-js';
 import Button from '../common/Button';
 import Switch from '../common/Switch';
 import ActionLink from '../common/ActionLink';
-import { CancelIcon } from '../common/Icons';
+import { CancelIcon, MarkdownIcon } from '../common/Icons';
 
 interface Props {
   id: number;
@@ -55,13 +55,19 @@ class CommentEditForm extends React.Component<Props, State> {
 
     return (
       <div className="editCommentForm">
-        <textarea
-          value={body}
-          onChange={e => this.handleCommentBodyChange(e.target.value)}
-          rows={3}
-          autoFocus
-          className="commentForm"
-        />
+        
+        <div className="commentFormContainer">
+          <textarea
+            value={body}
+            onChange={e => this.handleCommentBodyChange(e.target.value)}
+            rows={3}
+            autoFocus
+            className="commentForm"
+          />
+          <div style={{position: 'relative', width: 0, height: 0}}>
+            <MarkdownIcon style={{position: 'absolute', left: '6px', top: '-36px'}} />
+          </div>
+        </div>
 
         <div>
           <div>

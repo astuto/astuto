@@ -4,6 +4,7 @@ import I18n from 'i18n-js';
 
 import Button from '../../common/Button';
 import { DangerText } from '../../common/CustomTexts';
+import { MarkdownIcon } from '../../common/Icons';
 
 interface Props {
   mode: 'create' | 'update';
@@ -95,11 +96,17 @@ const BoardForm = ({
         </Button>
       </div>
       
-      <textarea
-        {...register('description')}
-        placeholder={I18n.t('site_settings.boards.form.description')}
-        className="boardDescriptionTextArea formControl"
-      />
+      <div>
+        <textarea
+          {...register('description')}
+          placeholder={I18n.t('site_settings.boards.form.description')}
+          className="boardDescriptionTextArea formControl"
+        />
+        <div style={{position: 'relative', width: 0, height: 0}}>
+          <MarkdownIcon style={{position: 'absolute', left: '6px', top: '-28px'}} />
+        </div>
+      </div>
+      
 
       {mode === 'update' && (
         <>

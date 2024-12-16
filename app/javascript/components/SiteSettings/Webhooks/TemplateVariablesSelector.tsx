@@ -102,6 +102,7 @@ const optionsByWebhookTrigger = {
   ],
 };
 
+// Non-exhaustive list of Liquid tags
 const liquidTagsOptions = {
   label: 'Liquid tags',
   options: [
@@ -112,6 +113,7 @@ const liquidTagsOptions = {
   ]
 };
 
+// Non-exhaustive list of Liquid filters
 const liquidFiltersOptions = {
   label: 'Liquid filters',
   options: [

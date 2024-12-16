@@ -18,7 +18,7 @@ import {
   MdClear,
   MdAdd,
 } from 'react-icons/md';
-import { FaUserNinja } from "react-icons/fa";
+import { FaUserNinja, FaMarkdown } from "react-icons/fa";
 import { FaDroplet } from "react-icons/fa6";
 
 export const EditIcon = () => <FiEdit />;
@@ -79,9 +79,23 @@ export const PreviewIcon = ({size = 24}) => <GrOverview size={size} />;
 
 export const LiquidIcon = ({size = 18}) => (
   <>
-  <span data-tooltip-id="liquid-tooltip" data-tooltip-content={I18n.t('common.liquid_template')} className="liquidIcon">
+  <span data-tooltip-id="liquid-tooltip" data-tooltip-content={I18n.t('common.liquid_supported')} className="liquidIcon">
     <FaDroplet size={size} />
   </span>
   <Tooltip id="liquid-tooltip" />
   </>
-)
+);
+
+export const MarkdownIcon = ({size = 24, style = {}}) => (
+  <>
+  <span
+    data-tooltip-id="markdown-tooltip"
+    data-tooltip-content={I18n.t('common.markdown_supported')}
+    style={{...style, ...{opacity: 0.75}}}
+    className="markdownIcon"
+  >
+    <FaMarkdown size={size} />
+  </span>
+  <Tooltip id="markdown-tooltip" />
+  </>
+);

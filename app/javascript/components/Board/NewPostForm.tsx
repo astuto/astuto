@@ -3,6 +3,7 @@ import I18n from 'i18n-js';
 
 import Button from '../common/Button';
 import { SmallMutedText } from '../common/CustomTexts';
+import { MarkdownIcon } from '../common/Icons';
 
 interface Props {
   title: string;
@@ -93,6 +94,9 @@ const NewPostForm = ({
           className="form-control"
           id="postDescription"
         ></textarea>
+        <div style={{position: 'relative', width: 0, height: 0}}>
+          <MarkdownIcon style={{position: 'absolute', left: '6px', top: '-28px'}} />
+        </div>
       </div>
 
       <Button onClick={e => handleSubmit(e)} className="submitBtn d-block mx-auto">

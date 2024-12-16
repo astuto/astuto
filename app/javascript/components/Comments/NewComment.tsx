@@ -7,6 +7,7 @@ import NewCommentUpdateSection from './NewCommentUpdateSection';
 import Button from '../common/Button';
 import Spinner from '../common/Spinner';
 import { DangerText } from '../common/CustomTexts';
+import { MarkdownIcon } from '../common/Icons';
 
 interface Props {
   body: string;
@@ -48,13 +49,20 @@ const NewComment = ({
           <>
             <div className="commentBodyForm">
               <Gravatar email={userEmail} size={48} className="currentUserAvatar" />
-              <textarea
-                value={body}
-                onChange={handleChange}
-                autoFocus={parentId != null}
-                placeholder={I18n.t('post.new_comment.body_placeholder')}
-                className="commentForm"
-              />
+              
+              <div style={{width: '100%', marginRight: '8px'}}>
+                <textarea
+                  value={body}
+                  onChange={handleChange}
+                  autoFocus={parentId != null}
+                  placeholder={I18n.t('post.new_comment.body_placeholder')}
+                  className="commentForm"
+                />
+                <div style={{position: 'relative', width: 0, height: 0}}>
+                  <MarkdownIcon style={{position: 'absolute', left: '6px', top: '-28px'}} />
+                </div>
+              </div>
+              
               <Button
                 onClick={() => handleSubmit(body, parentId, postUpdateFlagValue)}
                 className="submitCommentButton">

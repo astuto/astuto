@@ -1,3 +1,14 @@
+.previewStyling {
+  @extend .mt-4, .p-3;
+
+  max-height: 400px;
+  max-width: 600px;
+
+  background-color: #f4f4f4;
+
+  border-radius: 8px;
+}
+
 a.backButton {
   @extend .mb-2, .align-self-start;
 
@@ -74,6 +85,10 @@ a.backButton {
     text-align: right;
   }
 
+  .urlAndHttpBodyPreview {
+    #preview { @extend .previewStyling; }
+  }
+
   .formGroupHttpHeaders {
     @extend .mb-0;
 
@@ -101,15 +116,6 @@ a.backButton {
   .webhookTestResponse {
     @extend .mt-4;
 
-    #testHttpResponse {
-      @extend .mt-4, .p-2;
-
-      max-height: 400px;
-      max-width: 600px;
-
-      background-color: #f4f4f4;
-
-      border-radius: 8px;
-    }
+    #testHttpResponse { @extend .previewStyling; }
   }
 }

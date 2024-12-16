@@ -71,7 +71,8 @@ en:
     disabled: 'Disabled'
     copied: 'Copied!'
     user_staff: 'Staff'
-    liquid_template: 'Supports Liquid template'
+    markdown_supported: 'Markdown supported'
+    liquid_supported: 'Liquid supported'
     powered_by: 'Powered by'
     buttons:
       new: 'New'
@@ -331,6 +332,7 @@ en:
         header_n_key: 'Header %{n} key'
         header_n_value: 'Header %{n} value'
         template_variables_selector_placeholder: 'Select a template variable...'
+        preview_error: 'There is an error in your template'
       test_page:
         title: 'Webhook test results'
   moderation:

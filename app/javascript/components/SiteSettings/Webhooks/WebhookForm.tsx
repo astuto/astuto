@@ -13,7 +13,7 @@ import { URL_REGEX } from '../../../constants/regex';
 import Spinner from '../../common/Spinner';
 import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 import HttpStatus from '../../../constants/http_status';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import TemplateVariablesSelector from './TemplateVariablesSelector';
 
 interface Props {
@@ -141,6 +141,7 @@ const WebhookFormPage = ({
 
     // Update textarea value with react-hook-form
     setValue('httpBody', newValue, { shouldDirty: true });
+    setIsPreviewOutdated(true);
 
     // Update cursor position after the custom string
     const newCursorPosition = cursorPosition + stringToInsert.length;
@@ -154,6 +155,11 @@ const WebhookFormPage = ({
       }, 0);
     }
   };
+
+  // State for URL and body preview
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
+  const [previewContent, setPreviewContent] = useState('');
+  const [isPreviewOutdated, setIsPreviewOutdated] = useState(true);
 
   return (
     <>
@@ -257,7 +263,11 @@ const WebhookFormPage = ({
             { <LiquidIcon /> }
           </label>
           <input
-            {...register('url', { required: true, pattern: URL_REGEX })}
+            {...register('url', {
+              required: true,
+              pattern: URL_REGEX,
+              onChange: () => setIsPreviewOutdated(true),
+            })}
             id="url"
             className="formControl"
           />
@@ -273,7 +283,9 @@ const WebhookFormPage = ({
           { <LiquidIcon /> }
         </label>
         <textarea
-          {...register('httpBody')}
+          {...register('httpBody', {
+            onChange: () => setIsPreviewOutdated(true)
+          })}
           ref={(e) => {
             register('httpBody').ref(e); // Combine react-hook-form's ref with custom ref
             httpBodyTextAreaRef.current = e; // Store a local reference
@@ -290,7 +302,7 @@ const WebhookFormPage = ({
           <ActionLink
             icon={<PreviewIcon />}
             onClick={async () => {
-              if (httpBody === '') return;
+              if (httpBody === '' || !isPreviewOutdated) return;
 
               const res = await fetch(`/webhooks_preview`, {
                 method: 'PUT',
@@ -307,17 +319,35 @@ const WebhookFormPage = ({
               const json = await res.json();
 
               if (res.status === HttpStatus.OK) {
-                alert("URL: " + json.url_preview + "\n\nHTTP Body: " + json.http_body_preview);
+                setPreviewContent(
+                  getLabel('webhook', 'url') + ":\n" +
+                  json.url_preview + "\n\n" +
+                  getLabel('webhook', 'http_body') + ":\n" +
+                  json.http_body_preview
+                );
               } else {
-                alert(json.error);
+                setPreviewContent(
+                  I18n.t('site_settings.webhooks.form.preview_error') + "\n" +
+                  json.error
+                )
               }
+
+              setIsPreviewOutdated(false);
+              setIsPreviewVisible(true);
             }}
-            disabled={httpBody === ''}
+            disabled={httpBody === '' || !isPreviewOutdated}
             customClass="previewHttpBody"
           >
             {I18n.t('common.buttons.preview')}
           </ActionLink>
         </div>
+
+        {
+          isPreviewVisible && 
+            <div className="urlAndHttpBodyPreview">
+              <pre id="preview">{previewContent}</pre>
+            </div>
+        }
       </div>
 
       <div className="formGroup formGroupHttpHeaders">
