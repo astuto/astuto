@@ -18,7 +18,7 @@ interface Props {
   requestWebhooks(): void;
   onSubmitWebhook(webhook: IWebhook, authenticityToken: string): Promise<any>;
   onUpdateWebhook(id: number, form: ISiteSettingsWebhookFormUpdate, authenticityToken: string): Promise<any>;
-  onToggleEnabledWebhook(id: number, isEnabled: boolean, authenticityToken: string): void;
+  onToggleEnabledWebhook(id: number, isEnabled: boolean, authenticityToken: string): Promise<any>;
   onDeleteWebhook(id: number, authenticityToken: string): void;
 
   authenticityToken: string;
@@ -59,7 +59,9 @@ const WebhooksSiteSettingsP = ({
   };
 
   const handleToggleEnabledWebhook = (id: number, enabled: boolean) => {
-    onToggleEnabledWebhook(id, enabled, authenticityToken);
+    onToggleEnabledWebhook(id, enabled, authenticityToken).then(res => {
+      if (res?.status === HttpStatus.OK) window.location.reload();
+    });
   };
 
   const handleDeleteWebhook = (id: number) => {

@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     return dispatch(updateWebhook({id, form, authenticityToken}));
   },
 
-  onToggleEnabledWebhook(id: number, isEnabled: boolean, authenticityToken: string) {
-    dispatch(updateWebhook({id, isEnabled, authenticityToken}));
+  onToggleEnabledWebhook(id: number, isEnabled: boolean, authenticityToken: string): Promise<any> {
+    return dispatch(updateWebhook({id, isEnabled, authenticityToken}));
   },
 
   onDeleteWebhook(id: number, authenticityToken: string) {
