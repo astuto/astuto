@@ -72,7 +72,11 @@ class WebhooksController < ApplicationController
   end
 
   def test
-    response = RunWebhook.perform_now(params[:id], true)
+    response = RunWebhook.perform_now(
+      webhook_id: params[:id],
+      current_tenant_id: Current.tenant.id,
+      is_test: true
+    )
 
     render json: {
       response: response,

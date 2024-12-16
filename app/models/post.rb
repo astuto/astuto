@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_status_changes, dependent: :destroy
 
+  after_create :run_webhooks
+
   enum approval_status: [
     :approved,
     :pending,
@@ -60,4 +62,36 @@ class Post < ApplicationRecord
       where(approval_status: "pending")
     end
   end
+
+  private
+
+    def run_webhooks
+      entities = {
+        post: self.id,
+        board: self.board.id
+      }
+      entities[:post_author] = self.user.id if self.user_id
+
+      # New post (approved)
+      if self.approval_status == 'approved'
+        Webhook.where(trigger: :new_post, is_enabled: true).each do |webhook|        
+          RunWebhook.perform_later(
+            webhook_id: webhook.id,
+            current_tenant_id: Current.tenant.id,
+            entities: entities
+          )
+        end
+      end
+
+      # New post (pending approval)
+      if self.approval_status == 'pending'
+        Webhook.where(trigger: :new_post_pending_approval, is_enabled: true).each do |webhook|
+          RunWebhook.perform_later(
+            webhook_id: webhook.id,
+            current_tenant_id: Current.tenant.id,
+            entities: entities
+          )
+        end
+      end
+    end
 end

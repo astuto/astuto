@@ -1,16 +1,34 @@
 class RunWebhook < ActiveJob::Base
   queue_as :webhook
 
-  def perform(webhook_id, is_test = false)
-    logger.info { "Performing RunWebhook ActiveJob" }
+  def perform(webhook_id:, current_tenant_id:, is_test: false, entities: {})
+    Current.tenant = Tenant.find(current_tenant_id)
+
+    logger.info { "[#{Current.tenant.subdomain}] Performing RunWebhook ActiveJob for webhook ID #{webhook_id}" }
 
     # Find webhook from DB
     webhook = Webhook.find(webhook_id)
+
+    # Skip if webhook is disabled and is not a test
+    return if !is_test && !webhook.is_enabled
+
+    print("\n\nentities: #{entities}\n\n")
+
+    # Load entities from DB
+    loaded_entities = {}
+    entities.each do |entity_name, entity_id|
+      entity_class = map_entity_name_to_class(entity_name)
+      print("\n\n\n", entity_name, entity_id, entity_class)
+      loaded_entities[entity_name] = entity_class.find(entity_id)
+    end
+
+    print("\n\nloaded_entities: #{loaded_entities}\n\n")
 
     # Build context based on webhook's trigger
     context = CreateLiquidTemplateContextWorkflow.new(
       webhook_trigger: webhook.trigger,
       is_test: is_test,
+      entities: loaded_entities,
     ).run
 
     # Parse and render template for webhook's URL
@@ -62,6 +80,23 @@ class RunWebhook < ActiveJob::Base
         'DELETE'
       else
         'POST'
+      end
+    end
+
+    def map_entity_name_to_class(entity_name)
+      case entity_name
+      when :post
+        Post
+      when :post_author, :comment_author, :vote_author
+        User
+      when :board
+        Board
+      when :post_status
+        PostStatus
+      when :comment
+        Comment
+      else
+        nil
       end
     end
 end
