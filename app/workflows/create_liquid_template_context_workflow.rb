@@ -132,21 +132,21 @@ class CreateLiquidTemplateContextWorkflow
 
     when 'post_status_change'
       context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].as_json(only: USER_ATTRIBUTES) : nil
       context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
-      context['post_status'] = @entities[:post_status].as_json(only: POST_STATUS_ATTRIBUTES)
+      context['post_status'] = @entities.key?(:post_status) ? @entities[:post_status].as_json(only: POST_STATUS_ATTRIBUTES) : { name: I18n.t('post.post_status_select.no_post_status'), color: '#000000' }.as_json
 
     when 'new_comment'
       context['comment'] = @entities[:comment].as_json(only: COMMENT_ATTRIBUTES)
       context['comment_author'] = @entities[:comment_author].as_json(only: USER_ATTRIBUTES)
       context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].as_json(only: USER_ATTRIBUTES) : nil
       context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'new_vote'
       context['vote_author'] = @entities[:vote_author].as_json(only: USER_ATTRIBUTES)
       context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
-      context['post_author'] = @entities[:post_author].as_json(only: USER_ATTRIBUTES)
+      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].as_json(only: USER_ATTRIBUTES) : nil
       context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'new_user'
