@@ -71,8 +71,7 @@ en:
     disabled: 'Disabled'
     copied: 'Copied!'
     user_staff: 'Staff'
-    markdown_supported: 'Markdown supported'
-    liquid_supported: 'Liquid supported'
+    language_supported: '%{language} supported'
     powered_by: 'Powered by'
     buttons:
       new: 'New'

@@ -79,7 +79,11 @@ export const PreviewIcon = ({size = 24}) => <GrOverview size={size} />;
 
 export const LiquidIcon = ({size = 18}) => (
   <>
-  <span data-tooltip-id="liquid-tooltip" data-tooltip-content={I18n.t('common.liquid_supported')} className="liquidIcon">
+  <span
+    data-tooltip-id="liquid-tooltip"
+    data-tooltip-content={I18n.t('common.language_supported', { language: 'Liquid' })}
+    className="liquidIcon"
+  >
     <FaDroplet size={size} />
   </span>
   <Tooltip id="liquid-tooltip" />
@@ -90,7 +94,7 @@ export const MarkdownIcon = ({size = 24, style = {}}) => (
   <>
   <span
     data-tooltip-id="markdown-tooltip"
-    data-tooltip-content={I18n.t('common.markdown_supported')}
+    data-tooltip-content={I18n.t('common.language_supported', { language: 'Markdown' })}
     style={{...style, ...{opacity: 0.75}}}
     className="markdownIcon"
   >
