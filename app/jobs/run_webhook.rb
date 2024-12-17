@@ -1,5 +1,5 @@
 class RunWebhook < ActiveJob::Base
-  queue_as :webhook
+  queue_as :webhooks
 
   def perform(webhook_id:, current_tenant_id:, is_test: false, entities: {})
     Current.tenant = Tenant.find(current_tenant_id)
