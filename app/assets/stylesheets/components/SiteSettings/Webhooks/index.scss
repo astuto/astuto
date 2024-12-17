@@ -86,7 +86,12 @@ a.backButton {
   }
 
   .urlAndHttpBodyPreview {
-    #preview { @extend .previewStyling; }
+    @extend .mt-3;
+
+    #preview {
+      @extend .previewStyling;
+      margin-top: 0 !important;
+    }
   }
 
   .formGroupHttpHeaders {

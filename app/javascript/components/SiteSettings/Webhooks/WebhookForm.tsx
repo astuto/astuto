@@ -302,7 +302,7 @@ const WebhookFormPage = ({
           <ActionLink
             icon={<PreviewIcon />}
             onClick={async () => {
-              if (httpBody === '' || !isPreviewOutdated) return;
+              if ((url === '' && httpBody === '') || !isPreviewOutdated) return;
 
               const res = await fetch(`/webhooks_preview`, {
                 method: 'PUT',
@@ -335,7 +335,7 @@ const WebhookFormPage = ({
               setIsPreviewOutdated(false);
               setIsPreviewVisible(true);
             }}
-            disabled={httpBody === '' || !isPreviewOutdated}
+            disabled={(url === '' && httpBody === '') || !isPreviewOutdated}
             customClass="previewHttpBody"
           >
             {I18n.t('common.buttons.preview')}
@@ -345,6 +345,7 @@ const WebhookFormPage = ({
         {
           isPreviewVisible && 
             <div className="urlAndHttpBodyPreview">
+              <label>{ I18n.t('common.buttons.preview') }</label>
               <pre id="preview">{previewContent}</pre>
             </div>
         }
@@ -370,6 +371,7 @@ const WebhookFormPage = ({
                   <label htmlFor={`httpHeaders${index+1}Value`}>{ I18n.t('site_settings.webhooks.form.header_n_value', { n: index+1 }) }</label>
                   <input
                     {...register(`httpHeaders.${index}.value`, { required: (index!==0) })}
+                    autoComplete="off"
                     id={`httpHeaders${index+1}Value`}
                     className="formControl"
                   />
