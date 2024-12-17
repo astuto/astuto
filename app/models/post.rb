@@ -14,7 +14,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_status_changes, dependent: :destroy
 
-  after_create :run_webhooks
+  after_create :run_new_post_webhooks
+  after_destroy :run_delete_post_webhooks
 
   enum approval_status: [
     :approved,
@@ -65,7 +66,7 @@ class Post < ApplicationRecord
 
   private
 
-    def run_webhooks
+    def run_new_post_webhooks
       entities = {
         post: self.id,
         board: self.board.id
@@ -92,6 +93,20 @@ class Post < ApplicationRecord
             entities: entities
           )
         end
+      end
+    end
+
+    def run_delete_post_webhooks
+      # Since the post has already been deleted from DB
+      # we only provide its ID
+      entities = { post_id: self.id }
+
+      Webhook.where(trigger: :delete_post, is_enabled: true).each do |webhook|
+        RunWebhook.perform_later(
+          webhook_id: webhook.id,
+          current_tenant_id: Current.tenant.id,
+          entities: entities
+        )
       end
     end
 end

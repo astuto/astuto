@@ -69,9 +69,8 @@ const optionsByWebhookTrigger = {
     ...tenantOptions,
   ],
   'delete_post': [
-    ...postOptions,
-    ...userOptions('post_author', 'Post author'),
-    ...boardOptions,
+    // only post.id is available on delete_post
+    postOptions.find(option => option.value === '{{ post.id }}'),
     ...tenantOptions,
   ],
   'post_status_change': [

@@ -19,7 +19,14 @@ class RunWebhook < ActiveJob::Base
     entities.each do |entity_name, entity_id|
       entity_class = map_entity_name_to_class(entity_name)
       print("\n\n\n", entity_name, entity_id, entity_class)
-      loaded_entities[entity_name] = entity_class.find(entity_id)
+
+      # If there is an ActiveRecord class for that entity_name, load it from DB
+      # Otherwise, just pass the ID (this is the special case of trigger 'delete_post')
+      if entity_class
+        loaded_entities[entity_name] = entity_class.find(entity_id)
+      else
+        loaded_entities[entity_name] = entity_id
+      end
     end
 
     print("\n\nloaded_entities: #{loaded_entities}\n\n")

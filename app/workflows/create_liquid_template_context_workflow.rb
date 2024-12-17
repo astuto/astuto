@@ -101,6 +101,9 @@ class CreateLiquidTemplateContextWorkflow
         vote_author: vote_author_test_entity,
         post: post_test_entity,
         comment: comment_test_entity,
+
+        # for delete_post trigger
+        post_id: 0,
       }
     end
   end
@@ -126,9 +129,7 @@ class CreateLiquidTemplateContextWorkflow
       context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
 
     when 'delete_post'
-      context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
-      context['post_author'] = @entities.key?(:post_author) ? @entities[:post_author].as_json(only: USER_ATTRIBUTES) : nil
-      context['board'] = @entities[:board].as_json(only: BOARD_ATTRIBUTES)
+      context['post'] = { id: @entities[:post_id] }.as_json
 
     when 'post_status_change'
       context['post'] = @entities[:post].as_json(only: POST_ATTRIBUTES, methods: POST_VIRTUAL_ATTRIBUTES)
