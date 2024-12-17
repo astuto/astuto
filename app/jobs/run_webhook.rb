@@ -87,7 +87,7 @@ class RunWebhook < ActiveJob::Base
       case entity_name
       when :post
         Post
-      when :post_author, :comment_author, :vote_author
+      when :user, :post_author, :comment_author, :vote_author
         User
       when :board
         Board
