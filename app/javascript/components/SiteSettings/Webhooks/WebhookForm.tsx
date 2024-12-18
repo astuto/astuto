@@ -9,7 +9,7 @@ import { AddIcon, BackIcon, DeleteIcon, LiquidIcon, PreviewIcon } from '../../co
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import { DangerText } from '../../common/CustomTexts';
 import Button from '../../common/Button';
-import { URL_REGEX } from '../../../constants/regex';
+import { URL_REGEX_WHITESPACE_ALLOWED } from '../../../constants/regex';
 import Spinner from '../../common/Spinner';
 import buildRequestHeaders from '../../../helpers/buildRequestHeaders';
 import HttpStatus from '../../../constants/http_status';
@@ -108,7 +108,7 @@ const WebhookFormPage = ({
       name: data.name,
       description: data.description,
       trigger: data.trigger as WebhookTrigger,
-      url: data.url,
+      url: data.url.replace(/\s/g, ''),
       httpBody: data.httpBody,
       httpMethod: data.httpMethod as WebhookHttpMethod,
       httpHeaders: JSON.stringify(httpHeaders),
@@ -265,9 +265,10 @@ const WebhookFormPage = ({
           <input
             {...register('url', {
               required: true,
-              pattern: URL_REGEX,
+              pattern: URL_REGEX_WHITESPACE_ALLOWED,
               onChange: () => setIsPreviewOutdated(true),
             })}
+            autoComplete="off"
             id="url"
             className="formControl"
           />
