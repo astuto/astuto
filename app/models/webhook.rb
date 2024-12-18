@@ -1,6 +1,8 @@
 class Webhook < ApplicationRecord
   include TenantOwnable
 
+  before_save :encrypt_url
+  after_find :decrypt_url
   before_save :encrypt_http_headers
   after_find :decrypt_http_headers
 
@@ -26,25 +28,49 @@ class Webhook < ApplicationRecord
     :http_delete
   ]
 
-  def encrypt_http_headers
-    return if http_headers.nil?
+  private
 
-    # Derive a 32-byte key from the secret_key_base
-    key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+    def encrypt_url
+      return if url.nil?
 
-    encryptor = ActiveSupport::MessageEncryptor.new(key)
-    self.http_headers = encryptor.encrypt_and_sign(http_headers.to_json)
-  end
+      # Derive a 32-byte key from the secret_key_base
+      key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+      encryptor = ActiveSupport::MessageEncryptor.new(key)
 
-  def decrypt_http_headers
-    return if http_headers.nil?
+      self.url = encryptor.encrypt_and_sign(url)
+    end
 
-    # Derive a 32-byte key from the secret_key_base
-    key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+    def decrypt_url
+      return if url.nil?
 
-    encryptor = ActiveSupport::MessageEncryptor.new(key)
-    self.http_headers = JSON.parse(encryptor.decrypt_and_verify(http_headers)) if http_headers.present?
-  rescue ActiveSupport::MessageVerifier::InvalidSignature
-    errors.add(:http_headers, 'could not be decrypted')
-  end
+      # Derive a 32-byte key from the secret_key_base
+      key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+      encryptor = ActiveSupport::MessageEncryptor.new(key)
+
+      self.url = encryptor.decrypt_and_verify(url)
+    rescue ActiveSupport::MessageVerifier::InvalidSignature
+      errors.add(:url, 'could not be decrypted')
+    end
+
+    def encrypt_http_headers
+      return if http_headers.nil?
+
+      # Derive a 32-byte key from the secret_key_base
+      key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+      encryptor = ActiveSupport::MessageEncryptor.new(key)
+
+      self.http_headers = encryptor.encrypt_and_sign(http_headers.to_json)
+    end
+
+    def decrypt_http_headers
+      return if http_headers.nil?
+
+      # Derive a 32-byte key from the secret_key_base
+      key = Digest::SHA256.digest(Rails.application.secrets.secret_key_base)
+      encryptor = ActiveSupport::MessageEncryptor.new(key)
+
+      self.http_headers = JSON.parse(encryptor.decrypt_and_verify(http_headers)) if http_headers.present?
+    rescue ActiveSupport::MessageVerifier::InvalidSignature
+      errors.add(:http_headers, 'could not be decrypted')
+    end
 end
