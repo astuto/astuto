@@ -79,27 +79,31 @@ export const PreviewIcon = ({size = 24}) => <GrOverview size={size} />;
 
 export const LiquidIcon = ({size = 18}) => (
   <>
-  <span
-    data-tooltip-id="liquid-tooltip"
-    data-tooltip-content={I18n.t('common.language_supported', { language: 'Liquid' })}
-    className="liquidIcon"
-  >
-    <FaDroplet size={size} />
-  </span>
+  <a href="https://shopify.github.io/liquid/" target="_blank" rel="noreferrer" className="link">
+    <span
+      data-tooltip-id="liquid-tooltip"
+      data-tooltip-content={I18n.t('common.language_supported', { language: 'Liquid' })}
+      className="liquidIcon"
+    >
+      <FaDroplet size={size} />
+    </span>
+  </a>
   <Tooltip id="liquid-tooltip" />
   </>
 );
 
 export const MarkdownIcon = ({size = 24, style = {}}) => (
   <>
-  <span
-    data-tooltip-id="markdown-tooltip"
-    data-tooltip-content={I18n.t('common.language_supported', { language: 'Markdown' })}
-    style={{...style, ...{opacity: 0.75}}}
-    className="markdownIcon"
-  >
-    <FaMarkdown size={size} />
-  </span>
+  <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="noreferrer" className="link">
+    <span
+      data-tooltip-id="markdown-tooltip"
+      data-tooltip-content={I18n.t('common.language_supported', { language: 'Markdown' })}
+      style={{...style, ...{opacity: 0.75}}}
+      className="markdownIcon"
+    >
+      <FaMarkdown size={size} />
+    </span>
+  </a>
   <Tooltip id="markdown-tooltip" />
   </>
 );
