@@ -141,8 +141,9 @@ const liquidFiltersOptions = {
     { value: ' | prepend: <value>', label: 'Prepend' },
     { value: ' | remove: <value>', label: 'Remove' },
     { value: ' | remove_first: <value>', label: 'Remove first' },
-    { value: ' | replace: <value>', label: 'Replace' },
-    { value: ' | replace_first: <value>', label: 'Replace first' },
+    { value: ' | replace: <value>, <new_value>', label: 'Replace' },
+    { value: ' | replace_first: <value>, <new_value>', label: 'Replace first' },
+    { value: ' | replace_last: <value>, <new_value>', label: 'Replace last' },
     { value: ' | reverse', label: 'Reverse' },
     { value: ' | round', label: 'Round' },
     { value: ' | rstrip', label: 'Rstrip' },
@@ -162,6 +163,14 @@ const liquidFiltersOptions = {
     { value: ' | url_decode', label: 'Url decode' },
     { value: ' | url_encode', label: 'Url encode' },
     { value: ' | where: <value>', label: 'Where' },
+  ]
+};
+
+// Custom Liquid filters
+const customLiquidFiltersOptions = {
+  label: 'Custom Liquid filters',
+  options: [
+    { value: ' | escape_json', label: 'Escape JSON' },
   ]
 };
 
@@ -186,6 +195,10 @@ const TemplateVariablesSelector = ({
     {
       label: 'Liquid filters',
       options: liquidFiltersOptions.options,
+    },
+    {
+      label: 'Custom Liquid filters',
+      options: customLiquidFiltersOptions.options,
     },
   ];
   const [selectedOption, setSelectedOption] = useState(null);
