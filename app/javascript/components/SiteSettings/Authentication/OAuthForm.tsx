@@ -1,6 +1,7 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { DangerText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import Button from '../../common/Button';
@@ -102,6 +103,7 @@ const OAuthForm = ({
     >
       {I18n.t('common.buttons.back')}
     </ActionLink>
+    
     <h2>{ I18n.t(`site_settings.authentication.form.title_${page}`) }</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="formRow">

@@ -1,0 +1,126 @@
+.previewStyling {
+  @extend .mt-4, .p-3;
+
+  max-height: 400px;
+  max-width: 600px;
+
+  background-color: #f4f4f4;
+
+  border-radius: 8px;
+}
+
+a.backButton {
+  @extend .mb-2, .align-self-start;
+
+  font-size: 18px;
+}
+
+.webhooksIndexPage {
+  .webhooksTitle {
+    @extend
+      .d-flex,
+      .mb-2;
+
+    button {
+      @extend .ml-2;
+
+      height: min-content;
+    }
+  }
+
+  .webhooksList {
+    @extend .pl-1;
+
+    list-style: none;
+
+    h4 { @extend .mb-0, .mt-2; }
+    ul { @extend .pl-0; }
+
+    .webhookListItem {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .mb-2,
+        .p-2;
+
+      .webhookInfo {
+        @extend .d-flex;
+
+        column-gap: 32px;
+
+        .webhookName { font-size: 18px; }
+        .webhookDescription {
+          @extend .mutedText, .mb-1;
+          font-size: smaller;
+        }
+      }
+      
+      .webhookActions {
+        @extend .d-flex;
+
+        align-self: center;
+      }
+    }
+  }
+}
+
+.webhookFormPage {
+  #httpBody {
+    min-height: 200px;
+  }
+  
+  .httpBodyActions {
+    @extend
+      .d-flex,
+      .justify-content-between,
+      .mt-1;
+
+    div:first-child {
+      min-width: 250px;
+    }
+  }
+  
+  .previewHttpBody {
+    display: block;
+    text-align: right;
+  }
+
+  .urlAndHttpBodyPreview {
+    @extend .mt-3;
+
+    #preview {
+      @extend .previewStyling;
+      margin-top: 0 !important;
+    }
+  }
+
+  .formGroupHttpHeaders {
+    @extend .mb-0;
+
+    div.formRow { @extend .mb-0; }
+
+    div.formRow:last-child {
+      div.formGroup { @extend .mb-1; }
+    }
+  }
+
+  .deleteHeaderActionLinkContainer {
+    @extend
+      .d-flex,
+      .align-self-end;
+  }
+
+  .submitWebhookFormButton { @extend .mt-4; }
+}
+
+.webhookTestPage {
+  .webhookActions {
+    @extend .d-flex;
+  }
+
+  .webhookTestResponse {
+    @extend .mt-4;
+
+    #testHttpResponse { @extend .previewStyling; }
+  }
+}

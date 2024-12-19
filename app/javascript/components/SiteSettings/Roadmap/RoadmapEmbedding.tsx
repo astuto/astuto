@@ -50,6 +50,7 @@ const RoadmapEmbedding: React.FC<Props> = ({ embeddedRoadmapUrl }) => {
         onChange={event => setEmbedCode(event.target.value)}
         rows={5}
         id="roadmapEmbedCode"
+        className="formControl"
       >
       </textarea>
 
