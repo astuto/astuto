@@ -1,6 +1,7 @@
 class RunWebhook < ActiveJob::Base
   queue_as :webhooks
 
+  # entities is a hash with entity_name as key and entity_id as value (entity_name will be mapped to an ActiveRecord class)
   def perform(webhook_id:, current_tenant_id:, is_test: false, entities: {})
     Current.tenant = Tenant.find(current_tenant_id)
 
