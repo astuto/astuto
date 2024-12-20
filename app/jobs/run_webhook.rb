@@ -12,13 +12,10 @@ class RunWebhook < ActiveJob::Base
     # Skip if webhook is disabled and is not a test
     return if !is_test && !webhook.is_enabled
 
-    print("\n\nentities: #{entities}\n\n")
-
     # Load entities from DB
     loaded_entities = {}
     entities.each do |entity_name, entity_id|
       entity_class = map_entity_name_to_class(entity_name)
-      print("\n\n\n", entity_name, entity_id, entity_class)
 
       # If there is an ActiveRecord class for that entity_name, load it from DB
       # Otherwise, just pass the ID (this is the special case of trigger 'delete_post')
@@ -28,8 +25,6 @@ class RunWebhook < ActiveJob::Base
         loaded_entities[entity_name] = entity_id
       end
     end
-
-    print("\n\nloaded_entities: #{loaded_entities}\n\n")
 
     # Build context based on webhook's trigger
     context = CreateLiquidTemplateContextWorkflow.new(
