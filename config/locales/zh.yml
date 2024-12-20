@@ -70,6 +70,7 @@ zh-CN:
     disabled: '已禁用'
     copied: '已复制！'
     user_staff: '工作人员'
+    language_supported: '%{language} supported'
     powered_by: '技术支持:'
     buttons:
       new: '新建'
@@ -85,6 +86,7 @@ zh-CN:
       approve: 'Approve'
       reject: 'Reject'
       copy_to_clipboard: 'Copy to clipboard'
+      preview: 'Preview'
     datetime:
       now: '刚刚'
       minutes:
@@ -182,6 +184,7 @@ zh-CN:
       boards: '网站版块'
       post_statuses: '帖子状态'
       roadmap: '开发路线'
+      webhooks: 'Webhooks'
       invitations: 'Invitations'
       appearance: '外观定制'
     info_box:
@@ -299,6 +302,33 @@ zh-CN:
         subtitle_oauth_config: 'OAuth 配置'
         subtitle_user_profile_config: '用户资料配置'
         client_secret_help: '出于安全隐藏'
+    webhooks:
+      title: 'Webhooks'
+      learn_more: 'Learn how to configure and use webhooks'
+      empty: 'There are no webhooks.'
+      triggers:
+        new_post: 'New post'
+        new_post_pending_approval: 'New post (pending approval)'
+        delete_post: 'Delete post'
+        post_status_change: 'Post status change'
+        new_comment: 'New comment'
+        new_vote: 'New vote'
+        new_user: 'New user'
+      http_methods:
+        post: 'POST'
+        put: 'PUT'
+        patch: 'PATCH'
+        delete: 'DELETE'
+      form:
+        title_new: 'New webhook'
+        title_edit: 'Edit webhook'
+        add_header: 'Add header'
+        header_n_key: 'Header %{n} key'
+        header_n_value: 'Header %{n} value'
+        template_variables_selector_placeholder: 'Select a template variable...'
+        preview_error: 'There is an error in your template'
+      test_page:
+        title: 'Webhook test results'
   moderation:
     menu:
       feedback: 'Feedback'
