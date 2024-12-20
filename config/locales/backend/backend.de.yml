@@ -78,6 +78,9 @@ de:
       user:
         one: 'Nutzer/in'
         other: 'Nutzer/innen'
+      webhook:
+        one: 'Webhook'
+        other: 'Webhooks'
     attributes:
       board:
         name: 'Name'
@@ -154,6 +157,15 @@ de:
         role: 'Rolle'
         notifications_enabled: 'Benachrichtigungen aktiviert'
         recap_notification_frequency: 'Recap notification frequency'
+      webhook:
+        name: 'Name'
+        description: 'Description'
+        is_enabled: 'Enabled'
+        trigger: 'Trigger'
+        url: 'URL'
+        http_body: 'HTTP request body'
+        http_method: 'HTTP method'
+        http_headers: 'HTTP request headers'
     errors:
       messages:
         invalid: 'ist gültig'
