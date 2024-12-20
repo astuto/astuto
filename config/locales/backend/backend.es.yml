@@ -78,6 +78,9 @@ es:
       user:
         one: 'Usuario'
         other: 'Usuarios'
+      webhook:
+        one: 'Webhook'
+        other: 'Webhooks'
     attributes:
       board:
         name: 'Nombre'
@@ -154,6 +157,15 @@ es:
         role: 'Rol'
         notifications_enabled: 'Notificaciones habilitadas'
         recap_notification_frequency: 'Recap notification frequency'
+      webhook:
+        name: 'Name'
+        description: 'Description'
+        is_enabled: 'Enabled'
+        trigger: 'Trigger'
+        url: 'URL'
+        http_body: 'HTTP request body'
+        http_method: 'HTTP method'
+        http_headers: 'HTTP request headers'
     errors:
       messages:
         invalid: 'no es válido'
