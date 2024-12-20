@@ -53,6 +53,8 @@
   }
 
   .editCommentForm {
+    .commentFormContainer { @extend .d-block; }
+
     textarea {
       @extend .my-2;
     }
