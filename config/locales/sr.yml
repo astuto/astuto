@@ -72,6 +72,7 @@ sr:
     disabled: 'Disabled'
     copied: 'Copied!'
     user_staff: 'Staff'
+    language_supported: '%{language} supported'
     powered_by: 'Powered by'
     buttons:
       new: 'New'
@@ -87,6 +88,7 @@ sr:
       approve: 'Approve'
       reject: 'Reject'
       copy_to_clipboard: 'Copy to clipboard'
+      preview: 'Preview'
     datetime:
       now: 'just now'
       minutes:
@@ -194,6 +196,7 @@ sr:
       boards: 'Boards'
       post_statuses: 'Statuses'
       roadmap: 'Roadmap'
+      webhooks: 'Webhooks'
       invitations: 'Invitations'
       appearance: 'Appearance'
     info_box:
@@ -313,6 +316,33 @@ sr:
         subtitle_oauth_config: 'OAuth configuration'
         subtitle_user_profile_config: 'User profile configuration'
         client_secret_help: 'hidden for security purposes'
+    webhooks:
+      title: 'Webhooks'
+      learn_more: 'Learn how to configure and use webhooks'
+      empty: 'There are no webhooks.'
+      triggers:
+        new_post: 'New post'
+        new_post_pending_approval: 'New post (pending approval)'
+        delete_post: 'Delete post'
+        post_status_change: 'Post status change'
+        new_comment: 'New comment'
+        new_vote: 'New vote'
+        new_user: 'New user'
+      http_methods:
+        post: 'POST'
+        put: 'PUT'
+        patch: 'PATCH'
+        delete: 'DELETE'
+      form:
+        title_new: 'New webhook'
+        title_edit: 'Edit webhook'
+        add_header: 'Add header'
+        header_n_key: 'Header %{n} key'
+        header_n_value: 'Header %{n} value'
+        template_variables_selector_placeholder: 'Select a template variable...'
+        preview_error: 'There is an error in your template'
+      test_page:
+        title: 'Webhook test results'
   moderation:
     menu:
       feedback: 'Feedback'
