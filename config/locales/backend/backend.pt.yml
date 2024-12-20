@@ -78,6 +78,9 @@ pt:
       user:
         one: 'Usuário'
         other: 'Usuários'
+      webhook:
+        one: 'Webhook'
+        other: 'Webhooks'
     attributes:
       board:
         name: 'Nome'
@@ -154,6 +157,15 @@ pt:
         role: 'Papel'
         notifications_enabled: 'Notificações ativadas'
         recap_notification_frequency: 'Recap notification frequency'
+      webhook:
+        name: 'Name'
+        description: 'Description'
+        is_enabled: 'Enabled'
+        trigger: 'Trigger'
+        url: 'URL'
+        http_body: 'HTTP request body'
+        http_method: 'HTTP method'
+        http_headers: 'HTTP request headers'
     errors:
       messages:
         invalid: 'é inválido'
