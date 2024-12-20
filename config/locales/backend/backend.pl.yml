@@ -92,6 +92,11 @@ pl:
         few: 'Users'
         many: 'Users'
         other: 'Users'
+      webhook:
+        one: 'Webhook'
+        few: 'Webhooks'
+        many: 'Webhooks'
+        other: 'Webhooks'
     attributes:
       board:
         name: 'Name'
@@ -168,6 +173,15 @@ pl:
         role: 'Rola'
         notifications_enabled: 'Notifications enabled'
         recap_notification_frequency: 'Recap notification frequency'
+      webhook:
+        name: 'Name'
+        description: 'Description'
+        is_enabled: 'Enabled'
+        trigger: 'Trigger'
+        url: 'URL'
+        http_body: 'HTTP request body'
+        http_method: 'HTTP method'
+        http_headers: 'HTTP request headers'
     errors:
       messages:
         invalid: 'is invalid'
