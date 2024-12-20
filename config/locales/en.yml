@@ -311,6 +311,8 @@ en:
         client_secret_help: 'hidden for security purposes'
     webhooks:
       title: 'Webhooks'
+      learn_more: 'Learn how to configure and use webhooks'
+      empty: 'There are no webhooks.'
       triggers:
         new_post: 'New post'
         new_post_pending_approval: 'New post (pending approval)'

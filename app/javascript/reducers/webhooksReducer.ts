@@ -30,7 +30,7 @@ export interface WebhooksState {
 
 const initialState: WebhooksState = {
   items: [],
-  areLoading: false,
+  areLoading: true,
   error: '',
 };
 

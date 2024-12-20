@@ -7,6 +7,8 @@ import { WebhookPages } from './WebhooksSiteSettingsP';
 import Button from '../../common/Button';
 import WebhooksList from './WebhooksList';
 import SiteSettingsInfoBox from '../../common/SiteSettingsInfoBox';
+import ActionLink from '../../common/ActionLink';
+import { LearnMoreIcon } from '../../common/Icons';
 
 interface Props {
   webhooks: WebhooksState;
@@ -44,8 +46,18 @@ const WebhooksIndexPage = ({
         </Button>
       </div>
 
+      <p style={{textAlign: 'left'}}>
+        <ActionLink
+          onClick={() => window.open('https://docs.astuto.io/webhooks/webhooks-introduction/', '_blank')}
+          icon={<LearnMoreIcon />}
+        >
+          {I18n.t('site_settings.webhooks.learn_more')}
+        </ActionLink>
+      </p>
+
       <WebhooksList
         webhooks={webhooks.items}
+        webhooksAreLoading={webhooks.areLoading}
         handleToggleEnabledWebhook={handleToggleEnabledWebhook}
         handleDeleteWebhook={handleDeleteWebhook}
         handleTestWebhook={handleTestWebhook}
