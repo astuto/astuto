@@ -1,11 +1,12 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
+import { Tooltip } from 'react-tooltip'
 
 import { BsReply } from 'react-icons/bs';
 import { FiEdit, FiDelete, FiSettings } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { TbLock, TbLockOpen } from 'react-icons/tb';
-import { GrTest, GrClearOption } from 'react-icons/gr';
+import { GrTest, GrClearOption, GrOverview } from 'react-icons/gr';
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import {
   MdContentCopy,
@@ -15,8 +16,10 @@ import {
   MdVerified,
   MdCheck,
   MdClear,
+  MdAdd,
 } from 'react-icons/md';
-import { FaUserNinja } from "react-icons/fa";
+import { FaUserNinja, FaMarkdown } from "react-icons/fa";
+import { FaDroplet } from "react-icons/fa6";
 
 export const EditIcon = () => <FiEdit />;
 
@@ -41,9 +44,12 @@ export const ReplyIcon = () => <BsReply />;
 export const LearnMoreIcon = () => <MdOutlineLibraryBooks />;
 
 export const StaffIcon = () => (
-  <span title={I18n.t('common.user_staff')} className="staffIcon">
+  <>
+  <span data-tooltip-id="staff-tooltip" data-tooltip-content={I18n.t('common.user_staff')} className="staffIcon">
     <MdVerified />
   </span>
+  <Tooltip id="staff-tooltip" />
+  </>
 );
 
 export const ClearIcon = () => <GrClearOption />;
@@ -54,8 +60,50 @@ export const SolidLikeIcon = ({size = 32}) => <BiSolidLike size={size} />;
 
 export const SettingsIcon = () => <FiSettings />;
 
-export const AnonymousIcon = ({size = 32, title=I18n.t('defaults.user_full_name')}) => <FaUserNinja size={size} title={title} />;
+export const AnonymousIcon = ({size = 32}) => (
+  <>
+  <span data-tooltip-id="anonymous-tooltip" data-tooltip-content={I18n.t('defaults.user_full_name')} className="anonymousIcon">
+    <FaUserNinja size={size} />
+  </span>
+  <Tooltip id="anonymous-tooltip" />
+  </>
+);
 
 export const ApproveIcon = () => <MdCheck />;
 
 export const RejectIcon = () => <MdClear />;
+
+export const AddIcon = () => <MdAdd />;
+
+export const PreviewIcon = ({size = 24}) => <GrOverview size={size} />;
+
+export const LiquidIcon = ({size = 18}) => (
+  <>
+  <a href="https://shopify.github.io/liquid/" target="_blank" rel="noreferrer" className="link">
+    <span
+      data-tooltip-id="liquid-tooltip"
+      data-tooltip-content={I18n.t('common.language_supported', { language: 'Liquid' })}
+      className="liquidIcon"
+    >
+      <FaDroplet size={size} />
+    </span>
+  </a>
+  <Tooltip id="liquid-tooltip" />
+  </>
+);
+
+export const MarkdownIcon = ({size = 24, style = {}}) => (
+  <>
+  <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="noreferrer" className="link">
+    <span
+      data-tooltip-id="markdown-tooltip"
+      data-tooltip-content={I18n.t('common.language_supported', { language: 'Markdown' })}
+      style={{...style, ...{opacity: 0.75}}}
+      className="markdownIcon"
+    >
+      <FaMarkdown size={size} />
+    </span>
+  </a>
+  <Tooltip id="markdown-tooltip" />
+  </>
+);
