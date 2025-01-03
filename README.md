@@ -19,6 +19,16 @@ Astuto is an open source customer feedback tool. It helps you collect, manage an
   <img src="./images/hero-image.png" />
 </a>
 
+## Features
+
+- **Roadmap**: show users what you're working on
+- **Simple Sign In**: let users log in with email or any OAuth2 provider
+- **Webhooks**: integrate with your existing tools (e.g. Jira, Trello, Slack)
+- **API**: programmatically manage your feedback space with our REST API
+- **Moderation Queue**: decide whether to show new feedback immediately or request approval
+- **Anonymous Feedback**: enable unregistered users to publish feedback
+- **... and more**: invitation system, brand customization, recap emails for administrators, private site settings, and more!
+
 ## Get started
 
 ### Hosted
@@ -73,7 +83,7 @@ volumes:
 
 ## Documentation
 
-Check out [docs.astuto.io](https://docs.astuto.io/) to learn how to deploy Astuto, configure custom OAuth providers, customize appearance and more!
+Check out [docs.astuto.io](https://docs.astuto.io/) to learn how to deploy Astuto, configure custom OAuth providers and webhooks, use our REST API and more!
 
 ## Contributing
 
