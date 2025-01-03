@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :api_key, dependent: :destroy
+  has_one_attached :avatar
 
   enum role: [:user, :moderator, :admin, :owner]
   enum status: [:active, :blocked, :deleted]
@@ -28,6 +29,9 @@ class User < ApplicationRecord
     format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_blank: true, length: { in: 6..128 }
   validates :password, presence: true, on: :create
+  validates :avatar,
+            content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+            size: { less_than: 100.kilobytes }
 
   def set_default_role
     self.role ||= :user

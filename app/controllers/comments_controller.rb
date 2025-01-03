@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
         :is_post_update,
         :created_at,
         :updated_at,
+        'users.id as user_id', # required for avatar_url
         'users.full_name as user_full_name',
         'users.email as user_email',
         'users.role as user_role',
@@ -18,6 +19,12 @@ class CommentsController < ApplicationController
       .where(post_id: params[:post_id])
       .left_outer_joins(:user)
       .order(created_at: :desc)
+      .includes(user: { avatar_attachment: :blob }) # Preload avatars
+
+    comments = comments.map do |comment|
+      user_avatar_url = comment.user.avatar.attached? ? url_for(comment.user.avatar) : nil
+      comment.attributes.merge(user_avatar: user_avatar_url)
+    end
 
     render json: comments
   end

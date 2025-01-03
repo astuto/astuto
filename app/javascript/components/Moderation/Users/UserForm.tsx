@@ -44,7 +44,7 @@ class UserForm extends React.Component<Props, State> {
 
     return (
       <div className="userForm">
-        <Gravatar email={user.email} size={42} className="gravatar userGravatar" />
+        <Gravatar email={user.email} size={42} className="avatar userAvatar" />
 
         <div className="userFullNameRoleForm">
           <span className="userFullName">{ user.fullName }</span>

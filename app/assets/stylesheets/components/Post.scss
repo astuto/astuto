@@ -71,7 +71,7 @@
             .p-2,
             .my-1;
 
-          .gravatar {
+          .avatar {
             @extend .align-self-center;
           }
 
@@ -155,7 +155,7 @@
           .mutedText,
           .mb-2;
 
-        .postAuthorAvatar { @extend .gravatar; }
+        .postAuthorAvatar { @extend .avatar; }
       }
 
       .postFooterActions { @extend .d-flex; }
