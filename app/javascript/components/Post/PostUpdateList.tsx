@@ -42,7 +42,7 @@ const PostUpdateList = ({
         postUpdates.map((postUpdate, i) => (
           <div className="postUpdateListItem" key={i}>
             <div className="postUpdateListItemHeader">
-              <Gravatar email={postUpdate.userEmail} size={28} className="gravatar" />
+              <Gravatar email={postUpdate.userEmail} size={28} className="avatar" />
               <span>{postUpdate.userFullName}</span>
             </div>
 

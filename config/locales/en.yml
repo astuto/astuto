@@ -13,6 +13,7 @@ en:
     forms:
       auth:
         email: 'Email'
+        avatar: 'Avatar'
         full_name: 'Full name'
         password: 'Password'
         password_confirmation: 'Password confirmation'

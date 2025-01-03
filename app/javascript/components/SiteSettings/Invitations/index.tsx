@@ -218,7 +218,7 @@ const Invitations = ({ siteName, invitations, currentUserEmail, authenticityToke
           invitationsToDisplay.map((invitation, i) => (
             <li key={i} className="invitationListItem">
               <div className="invitationUserInfo">
-                <Gravatar email={invitation.email} size={42} className="gravatar userGravatar" />
+                <Gravatar email={invitation.email} size={42} className="avatar userAvatar" />
                 <span className="invitationEmail">{ invitation.email }</span>
               </div>
 

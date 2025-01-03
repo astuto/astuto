@@ -37,7 +37,7 @@
 
     .currentUserAvatar {
       @extend
-        .gravatar,
+        .avatar,
         .align-self-end,
         .mr-2;
     }

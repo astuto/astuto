@@ -41,6 +41,7 @@ const CommentList = ({
 }: Props) => (
   <>
     {comments.map((comment, i) => {
+      console.log('comment', comment);
       if (comment.parentId === parentId) {
         return (
           <div className="commentList" key={i}>

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
 import NewComment from './NewComment';
@@ -10,6 +9,7 @@ import { ReplyFormState } from '../../reducers/replyFormReducer';
 import CommentEditForm from './CommentEditForm';
 import CommentFooter from './CommentFooter';
 import { StaffIcon } from '../common/Icons';
+import Avatar from '../common/Avatar';
 
 interface Props {
   id: number;
@@ -17,6 +17,7 @@ interface Props {
   isPostUpdate: boolean;
   userFullName: string;
   userEmail: string;
+  userAvatar?: string;
   userRole: number;
   createdAt: string;
   updatedAt: string;
@@ -70,6 +71,7 @@ class Comment extends React.Component<Props, State> {
       isPostUpdate,
       userFullName,
       userEmail,
+      userAvatar,
       userRole,
       createdAt,
       updatedAt,
@@ -89,7 +91,7 @@ class Comment extends React.Component<Props, State> {
     return (
       <div className="comment">
         <div className="commentHeader">
-          <Gravatar email={userEmail} size={28} className="gravatar" />
+          <Avatar avatar={userAvatar} email={userEmail} size={28} />
           <span className="commentAuthor">{userFullName}</span>
           
           { userRole > 0 && <StaffIcon /> }

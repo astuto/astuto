@@ -42,7 +42,12 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag(current_user.gravatar_url, class: 'gravatar', alt: current_user.full_name, size: 24) %>
+              <% if current_user.avatar.attached? %>
+                <%= image_tag url_for(current_user.avatar), class: 'avatar', size: 24 %>
+              <% else %>
+                <%= image_tag current_user.gravatar_url, class: 'avatar', alt: current_user.full_name, size: 24 %>
+              <% end %>
+              
               <span class="fullname"><%= current_user.full_name.truncate(24) %></span>
               <% if current_user.moderator? && Post.pending.length > 0 %>
                 <span class="notificationDot notificationDotTop"><%= Post.pending.length %></span>
