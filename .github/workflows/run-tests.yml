@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set ACTIVE_STORAGE_SERVICE to local in docker-compose.yml
-        uses: mikefarah/yq@4.44.6
+        uses: mikefarah/yq@master
         with:
           cmd: yq eval '.services.web.environment["ACTIVE_STORAGE_SERVICE"] = "test"' -i docker-compose.yml
 
