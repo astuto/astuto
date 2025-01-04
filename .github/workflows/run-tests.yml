@@ -22,6 +22,9 @@ jobs:
         with:
           cmd: yq eval '.services.web.environment["ACTIVE_STORAGE_SERVICE"] = "test"' -i docker-compose.yml
 
+      - name: TEST verify docker compose
+        run: echo docker-compose.yml
+
       - name: Build Docker production image
         run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
