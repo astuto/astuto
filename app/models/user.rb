@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :api_key, dependent: :destroy
-  has_one_attached :avatar, service: ENV.fetch('PUBLIC_ACTIVE_STORAGE_SERVICE', :local).to_sym
+  has_one_attached :avatar, service: ENV.fetch('ACTIVE_STORAGE_PUBLIC_SERVICE', :local).to_sym
 
   enum role: [:user, :moderator, :admin, :owner]
   enum status: [:active, :blocked, :deleted]
