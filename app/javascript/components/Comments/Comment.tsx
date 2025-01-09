@@ -33,6 +33,7 @@ interface Props {
   isLoggedIn: boolean;
   isPowerUser: boolean;
   currentUserEmail: string;
+  currentUserAvatar?: string;
 }
 
 interface State {
@@ -86,12 +87,13 @@ class Comment extends React.Component<Props, State> {
       isLoggedIn,
       isPowerUser,
       currentUserEmail,
+      currentUserAvatar,
     } = this.props;
 
     return (
       <div className="comment">
         <div className="commentHeader">
-          <Avatar avatar={userAvatar} email={userEmail} size={28} />
+          <Avatar avatarUrl={userAvatar} email={userEmail} size={28} />
           <span className="commentAuthor">{userFullName}</span>
           
           { userRole > 0 && <StaffIcon /> }
@@ -158,6 +160,7 @@ class Comment extends React.Component<Props, State> {
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               userEmail={currentUserEmail}
+              userAvatar={currentUserAvatar}
             />
             :
             null

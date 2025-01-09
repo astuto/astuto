@@ -15,6 +15,7 @@ interface Props {
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
+  userAvatar?: string;
   authenticityToken: string;
 
   comments: Array<IComment>;
@@ -88,6 +89,7 @@ class CommentsP extends React.Component<Props> {
       isLoggedIn,
       isPowerUser,
       userEmail,
+      userAvatar,
 
       comments,
       replyForms,
@@ -120,6 +122,7 @@ class CommentsP extends React.Component<Props> {
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
           userEmail={userEmail}
+          userAvatar={userAvatar}
         />
 
         <div className="commentsTitle">
@@ -145,6 +148,7 @@ class CommentsP extends React.Component<Props> {
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
           userEmail={userEmail}
+          userAvatar={userAvatar}
         />
       </div>
     );

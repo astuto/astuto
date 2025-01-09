@@ -21,6 +21,7 @@ interface Props {
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
+  userAvatar?: string;
 }
 
 const CommentList = ({
@@ -38,10 +39,10 @@ const CommentList = ({
   isLoggedIn,
   isPowerUser,
   userEmail,
+  userAvatar,
 }: Props) => (
   <>
     {comments.map((comment, i) => {
-      console.log('comment', comment);
       if (comment.parentId === parentId) {
         return (
           <div className="commentList" key={i}>
@@ -63,6 +64,7 @@ const CommentList = ({
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               currentUserEmail={userEmail}
+              currentUserAvatar={userAvatar}
             />
 
             <CommentList
@@ -81,6 +83,7 @@ const CommentList = ({
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               userEmail={userEmail}
+              userAvatar={userAvatar}
             />
           </div>
         );

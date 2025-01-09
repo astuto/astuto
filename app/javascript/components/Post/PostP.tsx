@@ -47,6 +47,7 @@ interface Props {
   isPowerUser: boolean;
   currentUserFullName: string;
   currentUserEmail: string;
+  currentUserAvatar?: string;
   tenantSetting: ITenantSetting;
   authenticityToken: string;
 
@@ -171,6 +172,7 @@ class PostP extends React.Component<Props, State> {
       isLoggedIn,
       isPowerUser,
       currentUserEmail,
+      currentUserAvatar,
       tenantSetting,
       authenticityToken,
 
@@ -300,6 +302,7 @@ class PostP extends React.Component<Props, State> {
                 isPowerUser={isPowerUser}
                 authorEmail={postToShow.userEmail}
                 authorFullName={postToShow.userFullName}
+                authorAvatar={originPost.authorAvatar}
                 currentUserEmail={currentUserEmail}
               />
             </>
@@ -310,6 +313,7 @@ class PostP extends React.Component<Props, State> {
             isLoggedIn={isLoggedIn}
             isPowerUser={isPowerUser}
             userEmail={currentUserEmail}
+            userAvatar={currentUserAvatar}
             authenticityToken={authenticityToken}
           />
         </div>

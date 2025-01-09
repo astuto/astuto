@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Gravatar from 'react-gravatar';
 import I18n from 'i18n-js';
 
 import NewCommentUpdateSection from './NewCommentUpdateSection';
@@ -8,6 +7,7 @@ import Button from '../common/Button';
 import Spinner from '../common/Spinner';
 import { DangerText } from '../common/CustomTexts';
 import { MarkdownIcon } from '../common/Icons';
+import Avatar from '../common/Avatar';
 
 interface Props {
   body: string;
@@ -26,6 +26,7 @@ interface Props {
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
+  userAvatar?: string;
 }
 
 const NewComment = ({
@@ -41,6 +42,7 @@ const NewComment = ({
   isLoggedIn,
   isPowerUser,
   userEmail,
+  userAvatar,
 }: Props) => (
   <>
     <div className="newCommentForm">
@@ -48,7 +50,7 @@ const NewComment = ({
         isLoggedIn ?
           <>
             <div className="commentBodyForm">
-              <Gravatar email={userEmail} size={48} className="currentUserAvatar" />
+              <Avatar avatarUrl={userAvatar} email={userEmail} size={48} customClass="currentUserAvatar" />
               
               <div style={{width: '100%', marginRight: '8px'}}>
                 <textarea

@@ -25,6 +25,7 @@ const initialState: IPost = {
   userId: 0,
   userEmail: '',
   userFullName: '',
+  userAvatar: '',
   createdAt: '',
 };
 
@@ -51,6 +52,7 @@ const postReducer = (
         userId: action.post.user_id,
         userEmail: action.post.user_email,
         userFullName: action.post.user_full_name,
+        userAvatar: action.post.user_avatar,
         createdAt: action.post.created_at,
       };
 

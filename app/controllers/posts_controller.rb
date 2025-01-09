@@ -150,6 +150,7 @@ class PostsController < ApplicationController
         :user_id,
         :board_id,
         :created_at,
+        'users.id as user_id', # required for avatar_url
         'users.email as user_email',
         'users.full_name as user_full_name'
       )
@@ -157,6 +158,12 @@ class PostsController < ApplicationController
       .where(approval_status: ["pending", "rejected"])
       .order_by(created_at: :desc)
       .limit(100)
+      .includes(user: { avatar_attachment: :blob }) # Preload avatars
+
+      posts = posts.map do |post|
+      user_avatar_url = post.user.avatar.attached? ? url_for(post.user.avatar) : nil
+      post.attributes.merge(user_avatar: user_avatar_url)
+    end
 
     render json: posts
   end
