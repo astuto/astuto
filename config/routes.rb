@@ -43,9 +43,10 @@ Rails.application.routes.draw do
       :sessions => 'sessions',
       :passwords => 'passwords'
     }
-
+    
     devise_scope :user do
       get '/users/send_set_password_instructions', to: 'registrations#send_set_password_instructions', as: :send_set_password_instructions
+      delete '/users/delete_avatar', to: 'registrations#delete_avatar', as: :delete_avatar
     end
     
     resources :tenants, only: [:show, :update]

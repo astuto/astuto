@@ -33,6 +33,17 @@
     <p>
       <% if resource.avatar.attached? %>
         <%= image_tag url_for(resource.avatar), class: 'avatar', size: 48 %>
+
+        <%=
+          react_component(
+            'UserProfile/DeleteAvatarButton',
+            {
+              deleteAvatarEndpoint: delete_avatar_path,
+              authenticityToken: form_authenticity_token
+            }
+          )
+        %>
+
       <% else %>
         <%= image_tag current_user.gravatar_url, class: 'avatar', size: 48 %>
       <% end %>
