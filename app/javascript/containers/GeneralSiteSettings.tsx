@@ -21,6 +21,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     siteLogo: File,
     shouldDeleteSiteLogo: boolean,
     oldSiteLogo: string,
+    siteFavicon: File,
+    shouldDeleteSiteFavicon: boolean,
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
     useBrowserLocale: boolean,
@@ -44,6 +46,8 @@ const mapDispatchToProps = (dispatch: any) => ({
       siteLogo,
       shouldDeleteSiteLogo,
       oldSiteLogo,
+      siteFavicon,
+      shouldDeleteSiteFavicon,
       tenantSetting: {
         brand_display: brandDisplaySetting,
         use_browser_locale: useBrowserLocale,

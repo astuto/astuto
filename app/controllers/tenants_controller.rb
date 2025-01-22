@@ -96,12 +96,20 @@ class TenantsController < ApplicationController
     # to avoid unique constraint violation
     params[:tenant][:custom_domain] = nil if params[:tenant][:custom_domain].blank?
 
+    # Handle site logo attachment
     if params[:tenant][:should_delete_site_logo] == "true"
       @tenant.site_logo.purge if @tenant.site_logo.attached?
     elsif params[:tenant][:site_logo].present?
-      # If site_logo is provided, remove the old one if it exists and attach the new one
       @tenant.site_logo.purge if @tenant.site_logo.attached?
       @tenant.site_logo.attach(params[:tenant][:site_logo])
+    end
+
+    # Handle site favicon attachment
+    if params[:tenant][:should_delete_site_favicon] == "true"
+      @tenant.site_favicon.purge if @tenant.site_favicon.attached?
+    elsif params[:tenant][:site_favicon].present?
+      @tenant.site_favicon.purge if @tenant.site_favicon.attached?
+      @tenant.site_favicon.attach(params[:tenant][:site_favicon])
     end
 
     if @tenant.update(tenant_update_params)
@@ -141,7 +149,7 @@ class TenantsController < ApplicationController
           .permitted_attributes_for_update
           .concat([{
             tenant_setting_attributes: policy(@tenant.tenant_setting).permitted_attributes_for_update,
-            additional_params: [:should_delete_site_logo]
+            additional_params: [:should_delete_site_logo, :should_delete_site_favicon]
           }]) # in order to permit nested attributes for tenant_setting
         )
     end

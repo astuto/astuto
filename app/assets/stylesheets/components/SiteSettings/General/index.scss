@@ -9,7 +9,7 @@
     @extend .mb-4;
   }
 
-  .siteLogoPreview {
+  .siteLogoPreview, .siteFaviconPreview {
     @extend .d-block, .my-2;
   
     position: relative;
@@ -18,21 +18,19 @@
     height: fit-content; /* Adjusts height to match the image */
   }
   
-  .siteLogoPreview .siteLogoPreviewImg {
+  .siteLogoPreview .siteLogoPreviewImg, .siteFaviconPreview .siteFaviconPreviewImg {
     display: block;
     height: 50px; /* Fixed height for the image */
     width: auto; /* Maintain the aspect ratio */
   }
   
-  .siteLogoPreview.siteLogoPreviewShouldDelete {
+  .siteLogoPreview.siteLogoPreviewShouldDelete, .siteFaviconPreview.siteFaviconPreviewShouldDelete {
     border: 2px solid red;
     
-    .siteLogoPreviewImg {
+    .siteFaviconPreviewImg {
       filter: grayscale(100%);
     }
   }
 
-  .siteLogoActions {
-    @extend .d-flex;
-  }
+  .siteLogoActions, .siteFaviconActions { @extend .d-flex; }
 }

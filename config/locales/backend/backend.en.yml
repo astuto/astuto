@@ -128,6 +128,7 @@ en:
       tenant:
         site_name: 'Site name'
         site_logo: 'Site logo'
+        site_favicon: 'Site favicon'
         subdomain: 'Subdomain'
         locale: 'Language'
         custom_domain: 'Custom domain'

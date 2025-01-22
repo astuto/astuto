@@ -2,7 +2,6 @@ import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 import HttpStatus from "../../constants/http_status";
-import buildRequestHeaders from "../../helpers/buildRequestHeaders";
 import ITenantSetting from "../../interfaces/ITenantSetting";
 import ITenantJSON from "../../interfaces/json/ITenant";
 import { State } from "../../reducers/rootReducer";
@@ -50,6 +49,8 @@ interface UpdateTenantParams {
   siteLogo?: File;
   shouldDeleteSiteLogo?: boolean;
   oldSiteLogo?: string;
+  siteFavicon?: File;
+  shouldDeleteSiteFavicon?: boolean;
   tenantSetting?: ITenantSetting;
   locale?: string;
   customDomain?: string;
@@ -61,6 +62,8 @@ export const updateTenant = ({
   siteLogo = null,
   shouldDeleteSiteLogo = null,
   oldSiteLogo = null,
+  siteFavicon = null,
+  shouldDeleteSiteFavicon = null,
   tenantSetting = null,
   locale = null,
   customDomain = null,
@@ -79,6 +82,10 @@ export const updateTenant = ({
       body.append('tenant[should_delete_site_logo]', shouldDeleteSiteLogo.toString());
     if (oldSiteLogo)
       body.append('tenant[old_site_logo]', oldSiteLogo);
+    if (siteFavicon)
+      body.append('tenant[site_favicon]', siteFavicon);
+    if (shouldDeleteSiteFavicon)
+      body.append('tenant[should_delete_site_favicon]', shouldDeleteSiteFavicon.toString());
     if (locale)
       body.append('tenant[locale]', locale);
     if (customDomain)

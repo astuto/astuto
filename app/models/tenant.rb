@@ -13,6 +13,7 @@ class Tenant < ApplicationRecord
   has_many :default_o_auths, -> { where tenant_id: nil, is_enabled: true }, through: :tenant_default_o_auths, source: :o_auth
 
   has_one_attached :site_logo, service: ENV.fetch('ACTIVE_STORAGE_PUBLIC_SERVICE', :local).to_sym
+  has_one_attached :site_favicon, service: ENV.fetch('ACTIVE_STORAGE_PUBLIC_SERVICE', :local).to_sym
 
   enum status: [:active, :pending, :blocked]
 
@@ -23,6 +24,12 @@ class Tenant < ApplicationRecord
   validates :subdomain, presence: true, uniqueness: true
   validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
   validates :custom_domain, format: { with: /\A[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/ }, uniqueness: true, allow_blank: true, allow_nil: true
+  validates :site_logo,
+    content_type: Rails.application.accepted_image_types,
+    size: { less_than: 256.kilobytes }
+  validates :site_favicon,
+    content_type: Rails.application.accepted_image_types,
+    size: { less_than: 64.kilobytes }
 
   accepts_nested_attributes_for :tenant_setting, update_only: true
 

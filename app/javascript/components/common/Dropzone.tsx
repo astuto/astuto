@@ -9,6 +9,7 @@ interface Props {
   onDrop?: any;
   maxSizeKB?: number;
   maxFiles?: number;
+  accept?: string[];
 }
 
 const Dropzone = ({
@@ -17,18 +18,20 @@ const Dropzone = ({
   onDrop,
   maxSizeKB = 256,
   maxFiles = 1,
+  accept = ['image/png', 'image/jpeg', 'image/jpg', 'image/x-icon', 'image/icon', 'image/svg+xml', 'image/svg', 'image/webp'],
 }: Props) => {
+  const acceptDict = accept.reduce((acc, type) => {
+    acc[type] = [];
+    return acc;
+  }, {});
+
   const {
     getRootProps,
     getInputProps,
     isDragAccept,
     isDragReject
   } = useDropzone({
-    accept: {
-      'image/png': [],
-      'image/jpeg': [],
-      'image/jpg': [],
-    },
+    accept: acceptDict,
     maxSize: maxSizeKB * 1024,
     maxFiles: maxFiles,
     onDrop: (acceptedFiles, fileRejections) => {

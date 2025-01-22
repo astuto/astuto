@@ -30,8 +30,8 @@ class User < ApplicationRecord
   validates :password, allow_blank: true, length: { in: 6..128 }
   validates :password, presence: true, on: :create
   validates :avatar,
-            content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-            size: { less_than: 100.kilobytes }
+    content_type: Rails.application.accepted_image_types,
+    size: { less_than: 128.kilobytes }
 
   def set_default_role
     self.role ||= :user

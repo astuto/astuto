@@ -75,7 +75,7 @@ en:
     user_staff: 'Staff'
     language_supported: '%{language} supported'
     powered_by: 'Powered by'
-    drag_and_drop: 'Drag and drop or click to upload images (only .png or .jpg, max %{maxCount} files, max %{maxSize}KB each)'
+    drag_and_drop: 'Drag and drop or click to upload images (max %{maxCount} files, max %{maxSize}KB each)'
     buttons:
       new: 'New'
       edit: 'Edit'
