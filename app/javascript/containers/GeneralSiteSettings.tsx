@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   updateTenant(
     siteName: string,
     siteLogo: File,
+    shouldDeleteSiteLogo: boolean,
     oldSiteLogo: string,
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
@@ -41,6 +42,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     return dispatch(updateTenant({
       siteName,
       siteLogo,
+      shouldDeleteSiteLogo,
       oldSiteLogo,
       tenantSetting: {
         brand_display: brandDisplaySetting,

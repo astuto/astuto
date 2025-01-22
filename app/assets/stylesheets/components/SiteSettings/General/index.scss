@@ -11,7 +11,28 @@
 
   .siteLogoPreview {
     @extend .d-block, .my-2;
+  
+    position: relative;
+    display: inline-block;
+    width: fit-content; /* Container matches the image size */
+    height: fit-content; /* Adjusts height to match the image */
+  }
+  
+  .siteLogoPreview .siteLogoPreviewImg {
+    display: block;
+    height: 50px; /* Fixed height for the image */
+    width: auto; /* Maintain the aspect ratio */
+  }
+  
+  .siteLogoPreview.siteLogoPreviewShouldDelete {
+    border: 2px solid red;
     
-    height: 50px;
+    .siteLogoPreviewImg {
+      filter: grayscale(100%);
+    }
+  }
+
+  .siteLogoActions {
+    @extend .d-flex;
   }
 }

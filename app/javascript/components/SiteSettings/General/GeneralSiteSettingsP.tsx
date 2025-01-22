@@ -21,12 +21,12 @@ import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import IBoardJSON from '../../../interfaces/json/IBoard';
 import ActionLink from '../../common/ActionLink';
-import { CancelIcon, EditIcon, LearnMoreIcon } from '../../common/Icons';
+import { CancelIcon, DeleteIcon, EditIcon, LearnMoreIcon } from '../../common/Icons';
 import Dropzone from '../../common/Dropzone';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
-  siteLogo: File; // TODO: Change to File type
+  siteLogo: File;
   oldSiteLogo: string;
   brandDisplaySetting: string;
   locale: string;
@@ -59,6 +59,7 @@ interface Props {
   updateTenant(
     siteName: string,
     siteLogo: File,
+    shouldDeleteSiteLogo: boolean,
     oldSiteLogo: string,
     brandDisplaySetting: string,
     locale: string,
@@ -97,6 +98,8 @@ const GeneralSiteSettingsP = ({
     formState: { isDirty, isSubmitSuccessful, errors },
     watch,
     control,
+    setValue,
+    getValues,
   } = useForm<ISiteSettingsGeneralForm>({
     defaultValues: {
       siteName: originForm.siteName,
@@ -126,7 +129,8 @@ const GeneralSiteSettingsP = ({
 
     updateTenant(
       data.siteName,
-      'siteLogo' in data ? data.siteLogo[0] : null,
+      'siteLogo' in data && data.siteLogo ? data.siteLogo[0] : null,
+      shouldDeleteSiteLogo,
       data.oldSiteLogo,
       data.brandDisplaySetting,
       data.locale,
@@ -176,6 +180,7 @@ const GeneralSiteSettingsP = ({
   // Site logo
   const [siteLogoFile, setSiteLogoFile] = React.useState<any>([]);
   const [showSiteLogoDropzone, setShowSiteLogoDropzone] = React.useState([null, undefined, ''].includes(siteLogoUrl));
+  const [shouldDeleteSiteLogo, setShouldDeleteSiteLogo] = React.useState(false);
 
   return (
     <>
@@ -232,10 +237,16 @@ const GeneralSiteSettingsP = ({
             <div className="formGroup col-6">
               <label htmlFor="siteLogo">{ getLabel('tenant', 'site_logo') }</label>
 
-              { siteLogoUrl && <img src={siteLogoUrl} alt={`${originForm.siteName} logo`} className="siteLogoPreview" /> }
-
               {
                 siteLogoUrl &&
+                  <div className={`siteLogoPreview${shouldDeleteSiteLogo ? ' siteLogoPreviewShouldDelete' : ''}`}>
+                    <img src={siteLogoUrl} alt={`${originForm.siteName} logo`} className="siteLogoPreviewImg" />
+                  </div>
+              }
+
+              <div className="siteLogoActions">
+              {
+                (siteLogoUrl && !shouldDeleteSiteLogo) &&
                   (showSiteLogoDropzone ?
                     <ActionLink
                       onClick={() => setShowSiteLogoDropzone(false)}
@@ -251,6 +262,26 @@ const GeneralSiteSettingsP = ({
                       {I18n.t('common.buttons.edit')}
                     </ActionLink>)
               }
+
+              {
+                (siteLogoUrl && !showSiteLogoDropzone) &&
+                  (shouldDeleteSiteLogo ?
+                    <ActionLink
+                      onClick={() => setShouldDeleteSiteLogo(false)}
+                      icon={<CancelIcon />}
+                    >
+                      {I18n.t('common.buttons.cancel')}
+                    </ActionLink>
+                  :
+                    <ActionLink
+                      onClick={() => { setShouldDeleteSiteLogo(true); setValue('siteLogo', getValues('siteLogo'), { shouldDirty: true }) }}
+                      icon={<DeleteIcon />}
+                    >
+                      {I18n.t('common.buttons.delete')}
+                    </ActionLink>
+                  )
+              }
+              </div>
               
               {
                 showSiteLogoDropzone &&

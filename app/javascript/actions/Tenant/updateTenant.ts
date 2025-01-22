@@ -48,6 +48,7 @@ const tenantUpdateFailure = (error: string): TenantUpdateFailureAction => ({
 interface UpdateTenantParams {
   siteName?: string;
   siteLogo?: File;
+  shouldDeleteSiteLogo?: boolean;
   oldSiteLogo?: string;
   tenantSetting?: ITenantSetting;
   locale?: string;
@@ -58,6 +59,7 @@ interface UpdateTenantParams {
 export const updateTenant = ({
   siteName = null,
   siteLogo = null,
+  shouldDeleteSiteLogo = null,
   oldSiteLogo = null,
   tenantSetting = null,
   locale = null,
@@ -73,6 +75,8 @@ export const updateTenant = ({
       body.append('tenant[site_name]', siteName);
     if (siteLogo)
       body.append('tenant[site_logo]', siteLogo);
+    if (shouldDeleteSiteLogo)
+      body.append('tenant[should_delete_site_logo]', shouldDeleteSiteLogo.toString());
     if (oldSiteLogo)
       body.append('tenant[old_site_logo]', oldSiteLogo);
     if (locale)
