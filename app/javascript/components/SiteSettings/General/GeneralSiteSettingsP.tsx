@@ -26,7 +26,7 @@ import Dropzone from '../../common/Dropzone';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
-  siteLogo: any; // TODO: Change to File type
+  siteLogo: File; // TODO: Change to File type
   oldSiteLogo: string;
   brandDisplaySetting: string;
   locale: string;
@@ -121,11 +121,12 @@ const GeneralSiteSettingsP = ({
   });
   
   const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
+    // TODO: remove
     console.log(data);
 
     updateTenant(
       data.siteName,
-      data.siteLogo[0],
+      'siteLogo' in data ? data.siteLogo[0] : null,
       data.oldSiteLogo,
       data.brandDisplaySetting,
       data.locale,
@@ -256,7 +257,6 @@ const GeneralSiteSettingsP = ({
                   <Controller
                     name="siteLogo"
                     control={control}
-                    defaultValue={[]}
                     render={({ field }) => (
                       <Dropzone
                         files={siteLogoFile}
