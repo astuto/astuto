@@ -7,7 +7,7 @@
         {
           originForm: {
             siteName: @tenant.site_name,
-            siteLogo: @tenant.site_logo,
+            oldSiteLogo: @tenant.old_site_logo,
             brandDisplaySetting: @tenant_setting.brand_display,
             showVoteCount: @tenant_setting.show_vote_count,
             showVoteButtonInBoard: @tenant_setting.show_vote_button_in_board,
@@ -25,6 +25,7 @@
             locale: @tenant.locale,
             useBrowserLocale: @tenant_setting.use_browser_locale,
           },
+          siteLogoUrl: @tenant.site_logo.attached? ? url_for(@tenant.site_logo) : nil,
           boards: @tenant.boards.order(order: :asc),
           isMultiTenant: Rails.application.multi_tenancy?,
           authenticityToken: form_authenticity_token

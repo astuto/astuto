@@ -47,7 +47,8 @@ const tenantUpdateFailure = (error: string): TenantUpdateFailureAction => ({
 
 interface UpdateTenantParams {
   siteName?: string;
-  siteLogo?: string;
+  siteLogo?: File;
+  oldSiteLogo?: string;
   tenantSetting?: ITenantSetting;
   locale?: string;
   customDomain?: string;
@@ -57,6 +58,7 @@ interface UpdateTenantParams {
 export const updateTenant = ({
   siteName = null,
   siteLogo = null,
+  oldSiteLogo = null,
   tenantSetting = null,
   locale = null,
   customDomain = null,
@@ -64,24 +66,34 @@ export const updateTenant = ({
 }: UpdateTenantParams): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(tenantUpdateStart());
 
-  const tenant = Object.assign({},
-    siteName !== null ? { site_name: siteName } : null,
-    siteLogo !== null ? { site_logo: siteLogo } : null,
-    locale !== null ? { locale } : null,
-    customDomain !== null ? { custom_domain: customDomain } : null,
-  );
-
   try {
-    const body = JSON.stringify({
-      tenant: {
-        ...tenant,
-        tenant_setting_attributes: tenantSetting,
-      },
+    const body = new FormData();
+    
+    if (siteName)
+      body.append('tenant[site_name]', siteName);
+    if (siteLogo)
+      body.append('tenant[site_logo]', siteLogo);
+    if (oldSiteLogo)
+      body.append('tenant[old_site_logo]', oldSiteLogo);
+    if (locale)
+      body.append('tenant[locale]', locale);
+    if (customDomain)
+      body.append('tenant[custom_domain]', customDomain);
+    
+    Object.entries(tenantSetting).forEach(([key, value]) => {
+      body.append(`tenant[tenant_setting_attributes][${key}]`, value);
     });
+
+    // body.forEach((value, key) => {
+    //   console.log(key, value);
+    // });
 
     const res = await fetch(`/tenants/0`, {
       method: 'PATCH',
-      headers: buildRequestHeaders(authenticityToken),
+      headers: {
+        'X-CSRF-Token': authenticityToken,
+        // do not set Content-Type header when using FormData
+      },
       body,
     });
     const json = await res.json();

@@ -8,4 +8,10 @@
   .generalSiteSettingsSubmit {
     @extend .mb-4;
   }
+
+  .siteLogoPreview {
+    @extend .d-block, .my-2;
+    
+    height: 50px;
+  }
 }

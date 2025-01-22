@@ -18,7 +18,8 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   updateTenant(
     siteName: string,
-    siteLogo: string,
+    siteLogo: File,
+    oldSiteLogo: string,
     brandDisplaySetting: TenantSettingBrandDisplay,
     locale: string,
     useBrowserLocale: boolean,
@@ -40,6 +41,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     return dispatch(updateTenant({
       siteName,
       siteLogo,
+      oldSiteLogo,
       tenantSetting: {
         brand_display: brandDisplaySetting,
         use_browser_locale: useBrowserLocale,

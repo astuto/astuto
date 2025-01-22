@@ -3,7 +3,9 @@
     <%=
       link_to get_url_for_logo, class: "brand#{@tenant_setting.logo_links_to == 'nothing' ? ' brandDisabled' : ''}", tabindex: @tenant_setting.logo_links_to == 'nothing' ? -1 : 0 do
         app_name = content_tag :span, @tenant.site_name
-        logo = image_tag(@tenant.site_logo ? @tenant.site_logo : "", class: 'logo', skip_pipeline: true)
+        logo_url = @tenant.site_logo.attached? ? url_for(@tenant.site_logo) : @tenant.old_site_logo
+        
+        logo = image_tag(logo_url || "", class: 'logo', skip_pipeline: true)
 
         if @tenant_setting.brand_display == "name_and_logo"
           logo + app_name

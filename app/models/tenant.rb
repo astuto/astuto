@@ -12,6 +12,8 @@ class Tenant < ApplicationRecord
   # used to query all globally enabled default oauths that are also enabled by the specific tenant
   has_many :default_o_auths, -> { where tenant_id: nil, is_enabled: true }, through: :tenant_default_o_auths, source: :o_auth
 
+  has_one_attached :site_logo, service: ENV.fetch('ACTIVE_STORAGE_PUBLIC_SERVICE', :local).to_sym
+
   enum status: [:active, :pending, :blocked]
 
   after_initialize :set_default_status, if: :new_record?

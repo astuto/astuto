@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import I18n from 'i18n-js';
 
 import Box from '../../common/Box';
@@ -21,11 +21,13 @@ import { DangerText, SmallMutedText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
 import IBoardJSON from '../../../interfaces/json/IBoard';
 import ActionLink from '../../common/ActionLink';
-import { LearnMoreIcon } from '../../common/Icons';
+import { CancelIcon, EditIcon, LearnMoreIcon } from '../../common/Icons';
+import Dropzone from '../../common/Dropzone';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
-  siteLogo: string;
+  siteLogo: any; // TODO: Change to File type
+  oldSiteLogo: string;
   brandDisplaySetting: string;
   locale: string;
   useBrowserLocale: boolean;
@@ -46,6 +48,7 @@ export interface ISiteSettingsGeneralForm {
 
 interface Props {
   originForm: ISiteSettingsGeneralForm;
+  siteLogoUrl?: string;
   boards: IBoardJSON[];
   isMultiTenant: boolean;
   authenticityToken: string;
@@ -55,7 +58,8 @@ interface Props {
 
   updateTenant(
     siteName: string,
-    siteLogo: string,
+    siteLogo: File,
+    oldSiteLogo: string,
     brandDisplaySetting: string,
     locale: string,
     useBrowserLocale: boolean,
@@ -78,6 +82,7 @@ interface Props {
 
 const GeneralSiteSettingsP = ({
   originForm,
+  siteLogoUrl,
   boards,
   isMultiTenant,
   authenticityToken,
@@ -91,10 +96,11 @@ const GeneralSiteSettingsP = ({
     handleSubmit,
     formState: { isDirty, isSubmitSuccessful, errors },
     watch,
+    control,
   } = useForm<ISiteSettingsGeneralForm>({
     defaultValues: {
       siteName: originForm.siteName,
-      siteLogo: originForm.siteLogo,
+      oldSiteLogo: originForm.oldSiteLogo,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
       useBrowserLocale: originForm.useBrowserLocale,
@@ -115,9 +121,12 @@ const GeneralSiteSettingsP = ({
   });
   
   const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
+    console.log(data);
+
     updateTenant(
       data.siteName,
-      data.siteLogo,
+      data.siteLogo[0],
+      data.oldSiteLogo,
       data.brandDisplaySetting,
       data.locale,
       data.useBrowserLocale,
@@ -163,6 +172,10 @@ const GeneralSiteSettingsP = ({
     }
   }, []);
 
+  // Site logo
+  const [siteLogoFile, setSiteLogoFile] = React.useState<any>([]);
+  const [showSiteLogoDropzone, setShowSiteLogoDropzone] = React.useState([null, undefined, ''].includes(siteLogoUrl));
+
   return (
     <>
       <Box customClass="generalSiteSettingsContainer">
@@ -170,7 +183,7 @@ const GeneralSiteSettingsP = ({
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="formRow">
-            <div className="formGroup col-4">
+            <div className="formGroup col-6">
               <label htmlFor="siteName">{ getLabel('tenant', 'site_name') }</label>
               <input
                 {...register('siteName', { required: true })}
@@ -180,17 +193,7 @@ const GeneralSiteSettingsP = ({
               <DangerText>{errors.siteName && getValidationMessage(errors.siteName.type, 'tenant', 'site_name')}</DangerText>
             </div>
 
-            <div className="formGroup col-4">
-              <label htmlFor="siteLogo">{ getLabel('tenant', 'site_logo') }</label>
-              <input
-                {...register('siteLogo')}
-                placeholder='https://example.com/logo.png'
-                id="siteLogo"
-                className="formControl"
-              />
-            </div>
-
-            <div className="formGroup col-4">
+            <div className="formGroup col-6">
               <label htmlFor="brandSetting">{ getLabel('tenant_setting', 'brand_display') }</label>
               <select
                 {...register('brandDisplaySetting')}
@@ -210,6 +213,66 @@ const GeneralSiteSettingsP = ({
                   { I18n.t('site_settings.general.brand_setting_none') }
                 </option>
               </select>
+            </div>
+
+            {/* Hidden oldSiteLogo field for backwards compatibility */}
+            <div className="formGroup d-none">
+              <label htmlFor="oldSiteLogo">{ getLabel('tenant', 'site_logo') }</label>
+              <input
+                {...register('oldSiteLogo')}
+                placeholder='https://example.com/logo.png'
+                id="oldSiteLogo"
+                className="formControl"
+              />
+            </div>
+          </div>
+
+          <div className="formRow">
+            <div className="formGroup col-6">
+              <label htmlFor="siteLogo">{ getLabel('tenant', 'site_logo') }</label>
+
+              { siteLogoUrl && <img src={siteLogoUrl} alt={`${originForm.siteName} logo`} className="siteLogoPreview" /> }
+
+              {
+                siteLogoUrl &&
+                  (showSiteLogoDropzone ?
+                    <ActionLink
+                      onClick={() => setShowSiteLogoDropzone(false)}
+                      icon={<CancelIcon />}
+                    >
+                      {I18n.t('common.buttons.cancel')}
+                    </ActionLink>
+                  :
+                    <ActionLink
+                      onClick={() => setShowSiteLogoDropzone(true)}
+                      icon={<EditIcon />}
+                    >
+                      {I18n.t('common.buttons.edit')}
+                    </ActionLink>)
+              }
+              
+              {
+                showSiteLogoDropzone &&
+                  <Controller
+                    name="siteLogo"
+                    control={control}
+                    defaultValue={[]}
+                    render={({ field }) => (
+                      <Dropzone
+                        files={siteLogoFile}
+                        setFiles={setSiteLogoFile}
+                        onDrop={field.onChange}
+                        maxSizeKB={512}
+                        maxFiles={1}
+                      />
+                    )}
+                  />
+              }
+            </div>
+
+            <div className="formGroup col-6">
+              <label htmlFor="siteFavicon">{ getLabel('tenant', 'site_logo') }</label>
+              {/* <Dropzone /> */}
             </div>
           </div>
 

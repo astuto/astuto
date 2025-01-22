@@ -11,7 +11,11 @@ class TenantsController < ApplicationController
   end
 
   def show
-    render json: Current.tenant_or_raise!
+    tenant = Current.tenant_or_raise!
+
+    tenant.attributes.merge(site_logo_url: tenant.site_logo.attached? ? url_for(tenant.site_logo) : nil)
+
+    render json: tenant
   end
 
   def create
@@ -91,6 +95,12 @@ class TenantsController < ApplicationController
     # Since custom_domain is unique at db level, we need to set it to nil if it is blank
     # to avoid unique constraint violation
     params[:tenant][:custom_domain] = nil if params[:tenant][:custom_domain].blank?
+
+    # If site_logo is provided, remove the old one if it exists and attach the new one
+    if params[:tenant][:site_logo].present?
+      @tenant.site_logo.purge if @tenant.site_logo.attached?
+      @tenant.site_logo.attach(params[:tenant][:site_logo])
+    end
 
     if @tenant.update(tenant_update_params)
       render json: @tenant
