@@ -6,6 +6,7 @@ class OAuth < ApplicationRecord
   extend FriendlyId
 
   has_many :tenant_default_o_auths, dependent: :destroy
+  has_one_attached :logo, service: ENV.fetch('ACTIVE_STORAGE_PUBLIC_SERVICE', :local).to_sym
 
   attr_accessor :state
 
@@ -23,6 +24,10 @@ class OAuth < ApplicationRecord
 
   def is_default?
     tenant_id == nil
+  end
+
+  def logo_url
+    self.logo.attached? ? self.logo.blob.url : nil
   end
 
   def callback_url

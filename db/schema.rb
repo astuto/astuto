@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_21_093808) do
+ActiveRecord::Schema.define(version: 2025_01_22_131133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 2025_01_21_093808) do
 
   create_table "o_auths", force: :cascade do |t|
     t.string "name", null: false
-    t.string "logo"
     t.boolean "is_enabled", default: false, null: false
     t.string "client_id", null: false
     t.string "client_secret", null: false

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import I18n from 'i18n-js';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { DangerText } from '../../common/CustomTexts';
 import { getLabel, getValidationMessage } from '../../../helpers/formUtils';
@@ -11,20 +11,21 @@ import { AuthenticationPages } from './AuthenticationSiteSettingsP';
 import { useState } from 'react';
 import Separator from '../../common/Separator';
 import ActionLink from '../../common/ActionLink';
-import { BackIcon } from '../../common/Icons';
+import { BackIcon, CancelIcon, DeleteIcon, EditIcon } from '../../common/Icons';
+import Dropzone from '../../common/Dropzone';
 
 interface Props {
   selectedOAuth: IOAuth;
   page: AuthenticationPages;
   setPage: React.Dispatch<React.SetStateAction<AuthenticationPages>>;
 
-  handleSubmitOAuth(oAuth: IOAuth): void;
-  handleUpdateOAuth(id: number, form: ISiteSettingsOAuthForm): void;
+  handleSubmitOAuth(oAuth: IOAuth, oAuthLogo: File): void;
+  handleUpdateOAuth(id: number, form: ISiteSettingsOAuthForm, shouldDeleteLogo: boolean): void;
 }
 
 export interface ISiteSettingsOAuthForm {
   name: string;
-  logo: string;
+  logo?: File;
   clientId: string;
   clientSecret: string;
   authorizeUrl: string;
@@ -48,11 +49,14 @@ const OAuthForm = ({
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty }
+    formState: { errors, isDirty },
+    control,
+    setValue,
+    getValues,
   } = useForm<ISiteSettingsOAuthForm>({
     defaultValues: page === 'new' ? {
       name: '',
-      logo: '',
+      logo: null,
       clientId: '',
       clientSecret: '',
       authorizeUrl: '',
@@ -63,7 +67,6 @@ const OAuthForm = ({
       jsonUserNamePath: '',
     } : {
       name: selectedOAuth.name,
-      logo: selectedOAuth.logo,
       clientId: selectedOAuth.clientId,
       clientSecret: selectedOAuth.clientSecret,
       authorizeUrl: selectedOAuth.authorizeUrl,
@@ -79,15 +82,23 @@ const OAuthForm = ({
     const oAuth = { ...data, isEnabled: false };
 
     if (page === 'new') {
-      handleSubmitOAuth(oAuth);
+      handleSubmitOAuth(
+        oAuth,
+        'logo' in data && data.logo ? data.logo[0] : null
+      );
     } else if (page === 'edit') {
       if (editClientSecret === false) {
         delete oAuth.clientSecret;
       }
 
-      handleUpdateOAuth(selectedOAuth.id, oAuth as ISiteSettingsOAuthForm);
+      handleUpdateOAuth(selectedOAuth.id, oAuth as ISiteSettingsOAuthForm, shouldDeleteOAuthLogo);
     }
   };
+
+  // OAuth logo
+  const [oAuthLogoFile, setOAuthLogoFile] = React.useState<any>([]);
+  const [showOAuthLogoDropzone, setShowOAuthLogoDropzone] = React.useState([null, undefined, ''].includes(selectedOAuth?.logoUrl));
+  const [shouldDeleteOAuthLogo, setShouldDeleteOAuthLogo] = React.useState(false);
 
   return (
     <>
@@ -119,13 +130,70 @@ const OAuthForm = ({
 
         <div className="formGroup col-6">
           <label htmlFor="logo">{ getLabel('o_auth', 'logo') }</label>
-          <input
-            {...register('logo')}
-            placeholder='https://example.com/logo.png'
-            id="logo"
-            className="formControl"
-          />
-        </div>
+          
+          {
+            selectedOAuth && selectedOAuth.logoUrl &&
+              <div className={`oAuthLogoPreview${shouldDeleteOAuthLogo ? ' oAuthLogoPreviewShouldDelete' : ''}`}>
+                <img src={selectedOAuth.logoUrl} alt={`${selectedOAuth.name} OAuth logo`} className="oAuthLogoPreviewImg" />
+              </div>
+          }
+
+          <div className="oAuthLogoActions">
+          {
+            (selectedOAuth && selectedOAuth.logoUrl && !shouldDeleteOAuthLogo) &&
+              (showOAuthLogoDropzone ?
+                <ActionLink
+                  onClick={() => setShowOAuthLogoDropzone(false)}
+                  icon={<CancelIcon />}
+                >
+                  {I18n.t('common.buttons.cancel')}
+                </ActionLink>
+              :
+                <ActionLink
+                  onClick={() => setShowOAuthLogoDropzone(true)}
+                  icon={<EditIcon />}
+                >
+                  {I18n.t('common.buttons.edit')}
+                </ActionLink>)
+          }
+
+          {
+            (selectedOAuth && selectedOAuth.logoUrl && !showOAuthLogoDropzone) &&
+              (shouldDeleteOAuthLogo ?
+                <ActionLink
+                  onClick={() => setShouldDeleteOAuthLogo(false)}
+                  icon={<CancelIcon />}
+                >
+                  {I18n.t('common.buttons.cancel')}
+                </ActionLink>
+              :
+                <ActionLink
+                  onClick={() => { setShouldDeleteOAuthLogo(true); setValue('name', getValues('name'), { shouldDirty: true }) }}
+                  icon={<DeleteIcon />}
+                >
+                  {I18n.t('common.buttons.delete')}
+                </ActionLink>
+              )
+          }
+          </div>
+          
+          {
+            showOAuthLogoDropzone &&
+              <Controller
+                name="logo"
+                control={control}
+                render={({ field }) => (
+                  <Dropzone
+                    files={oAuthLogoFile}
+                    setFiles={setOAuthLogoFile}
+                    onDrop={field.onChange}
+                    maxSizeKB={64}
+                    maxFiles={1}
+                  />
+                )}
+              />
+          }
+          </div>
       </div>
 
       <h5>{ I18n.t('site_settings.authentication.form.subtitle_oauth_config') }</h5>

@@ -5,6 +5,7 @@ import HttpStatus from "../../constants/http_status";
 import ITenantSetting from "../../interfaces/ITenantSetting";
 import ITenantJSON from "../../interfaces/json/ITenant";
 import { State } from "../../reducers/rootReducer";
+import buildFormData from "../../helpers/buildFormData";
 
 export const TENANT_UPDATE_START = 'TENANT_UPDATE_START';
 interface TenantUpdateStartAction {
@@ -72,32 +73,24 @@ export const updateTenant = ({
   dispatch(tenantUpdateStart());
 
   try {
-    const body = new FormData();
-    
-    if (siteName)
-      body.append('tenant[site_name]', siteName);
-    if (siteLogo)
-      body.append('tenant[site_logo]', siteLogo);
-    if (shouldDeleteSiteLogo)
-      body.append('tenant[should_delete_site_logo]', shouldDeleteSiteLogo.toString());
-    if (oldSiteLogo)
-      body.append('tenant[old_site_logo]', oldSiteLogo);
-    if (siteFavicon)
-      body.append('tenant[site_favicon]', siteFavicon);
-    if (shouldDeleteSiteFavicon)
-      body.append('tenant[should_delete_site_favicon]', shouldDeleteSiteFavicon.toString());
-    if (locale)
-      body.append('tenant[locale]', locale);
-    if (customDomain)
-      body.append('tenant[custom_domain]', customDomain);
-    
-    Object.entries(tenantSetting).forEach(([key, value]) => {
-      body.append(`tenant[tenant_setting_attributes][${key}]`, value);
-    });
+    let formDataObj = {
+      'tenant[site_name]': siteName,
+      'tenant[site_logo]': siteLogo,
+      'tenant[should_delete_site_logo]': shouldDeleteSiteLogo.toString(),
+      'tenant[old_site_logo]': oldSiteLogo,
+      'tenant[site_favicon]': siteFavicon,
+      'tenant[should_delete_site_favicon]': shouldDeleteSiteFavicon.toString(),
+      'tenant[locale]': locale,
+      'tenant[custom_domain]': customDomain,
+    }
 
-    // body.forEach((value, key) => {
-    //   console.log(key, value);
-    // });
+    if (tenantSetting) {
+      Object.entries(tenantSetting).forEach(([key, value]) => {
+        formDataObj[`tenant[tenant_setting_attributes][${key}]`] = value;
+      });
+    }
+    
+    const body = buildFormData(formDataObj);
 
     const res = await fetch(`/tenants/0`, {
       method: 'PATCH',

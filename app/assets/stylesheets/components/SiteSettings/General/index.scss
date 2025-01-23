@@ -27,7 +27,7 @@
   .siteLogoPreview.siteLogoPreviewShouldDelete, .siteFaviconPreview.siteFaviconPreviewShouldDelete {
     border: 2px solid red;
     
-    .siteFaviconPreviewImg {
+    .siteLogoPreviewImg, .siteFaviconPreviewImg {
       filter: grayscale(100%);
     }
   }

@@ -129,9 +129,6 @@ const GeneralSiteSettingsP = ({
   });
   
   const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
-    // TODO: remove
-    console.log(data);
-
     updateTenant(
       data.siteName,
       'siteLogo' in data && data.siteLogo ? data.siteLogo[0] : null,
