@@ -71,7 +71,7 @@
   .oAuthLogoPreview.oAuthLogoPreviewShouldDelete {
     border: 2px solid red;
     
-    .oAuthPreviewImg { filter: grayscale(100%); }
+    .oAuthLogoPreviewImg { filter: grayscale(100%); }
   }
 
   .oAuthLogoActions { @extend .d-flex; }

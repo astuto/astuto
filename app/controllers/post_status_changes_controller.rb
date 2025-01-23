@@ -14,7 +14,7 @@ class PostStatusChangesController < ApplicationController
       .includes(user: { avatar_attachment: :blob }) # Preload avatars
 
     post_status_changes = post_status_changes.map do |post_status_change|
-      user_avatar_url = post_status_change.user.avatar.attached? ? url_for(post_status_change.user.avatar) : nil
+      user_avatar_url = post_status_change.user.avatar.attached? ? post_status_change.user.avatar.blob.url : nil
       post_status_change.attributes.merge(user_avatar: user_avatar_url)
     end
 

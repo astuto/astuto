@@ -3,7 +3,7 @@
     <%=
       link_to get_url_for_logo, class: "brand#{@tenant_setting.logo_links_to == 'nothing' ? ' brandDisabled' : ''}", tabindex: @tenant_setting.logo_links_to == 'nothing' ? -1 : 0 do
         app_name = content_tag :span, @tenant.site_name
-        logo_url = @tenant.site_logo.attached? ? url_for(@tenant.site_logo) : @tenant.old_site_logo
+        logo_url = @tenant.site_logo.attached? ? @tenant.site_logo.blob.url : @tenant.old_site_logo
         
         logo = image_tag(logo_url || "", class: 'logo', skip_pipeline: true)
 
@@ -45,7 +45,7 @@
           <li class="nav-item dropdown">
             <a class="profileToggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.avatar.attached? %>
-                <%= image_tag url_for(current_user.avatar), class: 'avatar', size: 24 %>
+                <%= image_tag current_user.avatar.blob.url, class: 'avatar', size: 24 %>
               <% else %>
                 <%= image_tag current_user.gravatar_url, class: 'avatar', alt: current_user.full_name, size: 24 %>
               <% end %>

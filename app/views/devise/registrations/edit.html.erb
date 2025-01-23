@@ -32,7 +32,7 @@
 
     <p>
       <% if resource.avatar.attached? %>
-        <%= image_tag url_for(resource.avatar), class: 'avatar', size: 48 %>
+        <%= image_tag resource.avatar.blob.url, class: 'avatar', size: 48 %>
 
         <%=
           react_component(

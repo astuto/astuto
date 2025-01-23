@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       .includes(user: { avatar_attachment: :blob }) # Preload avatars
 
     comments = comments.map do |comment|
-      user_avatar_url = comment.user.avatar.attached? ? url_for(comment.user.avatar) : nil
+      user_avatar_url = comment.user.avatar.attached? ? comment.user.avatar.blob.url : nil
       comment.attributes.merge(user_avatar: user_avatar_url)
     end
 
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
         {
           user_full_name: current_user.full_name,
           user_email: current_user.email,
-          user_avatar: current_user.avatar.attached? ? url_for(current_user.avatar) : nil,
+          user_avatar: current_user.avatar.attached? ? current_user.avatar.blob.url : nil,
           user_role: current_user.role_before_type_cast
         }
       ), status: :created
@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
         {
           user_full_name: @comment.user.full_name,
           user_email: @comment.user.email,
-          user_avatar: @comment.user.avatar.attached? ? url_for(@comment.user.avatar) : nil,
+          user_avatar: @comment.user.avatar.attached? ? @comment.user.avatar.blob.url : nil,
           user_role: @comment.user.role_before_type_cast
         }
       )

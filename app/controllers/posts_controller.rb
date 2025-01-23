@@ -161,7 +161,7 @@ class PostsController < ApplicationController
       .includes(user: { avatar_attachment: :blob }) # Preload avatars
 
       posts = posts.map do |post|
-      user_avatar_url = post.user.avatar.attached? ? url_for(post.user.avatar) : nil
+      user_avatar_url = post.user.avatar.attached? ? post.user.avatar.blob.url : nil
       post.attributes.merge(user_avatar: user_avatar_url)
     end
 

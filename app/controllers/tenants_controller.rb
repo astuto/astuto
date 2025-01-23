@@ -13,7 +13,7 @@ class TenantsController < ApplicationController
   def show
     tenant = Current.tenant_or_raise!
 
-    tenant.attributes.merge(site_logo_url: tenant.site_logo.attached? ? url_for(tenant.site_logo) : nil)
+    tenant.attributes.merge(site_logo_url: tenant.site_logo.attached? ? tenant.site_logo.blob.url : nil)
 
     render json: tenant
   end

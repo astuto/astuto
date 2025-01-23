@@ -15,7 +15,7 @@ class LikesController < ApplicationController
       .includes(user: { avatar_attachment: :blob }) # Preload avatars
 
     likes = likes.map do |like|
-      user_avatar_url = like.user.avatar.attached? ? url_for(like.user.avatar) : nil
+      user_avatar_url = like.user.avatar.attached? ? like.user.avatar.blob.url : nil
       like.attributes.merge(user_avatar: user_avatar_url)
     end
 
@@ -30,7 +30,7 @@ class LikesController < ApplicationController
         id: like.id,
         full_name: current_user.full_name,
         email: current_user.email,
-        user_avatar: current_user.avatar.attached? ? url_for(current_user.avatar) : nil,
+        user_avatar: current_user.avatar.attached? ? current_user.avatar.blob.url : nil,
       }, status: :created
     else
       render json: {

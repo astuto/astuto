@@ -25,8 +25,8 @@
             locale: @tenant.locale,
             useBrowserLocale: @tenant_setting.use_browser_locale,
           },
-          siteLogoUrl: @tenant.site_logo.attached? ? url_for(@tenant.site_logo) : nil,
-          siteFaviconUrl: @tenant.site_favicon.attached? ? url_for(@tenant.site_favicon) : nil,
+          siteLogoUrl: @tenant.site_logo.attached? ? @tenant.site_logo.blob.url : nil,
+          siteFaviconUrl: @tenant.site_favicon.attached? ? @tenant.site_favicon.blob.url : nil,
           boards: @tenant.boards.order(order: :asc),
           isMultiTenant: Rails.application.multi_tenancy?,
           authenticityToken: form_authenticity_token
