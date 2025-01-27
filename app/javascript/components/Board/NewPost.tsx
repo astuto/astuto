@@ -14,6 +14,8 @@ import IBoard from '../../interfaces/IBoard';
 import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import HttpStatus from '../../constants/http_status';
 import { POST_APPROVAL_STATUS_APPROVED } from '../../interfaces/IPost';
+import ActionLink from '../common/ActionLink';
+import { CancelIcon } from '../common/Icons';
 
 interface Props {
   board: IBoard;
@@ -208,31 +210,30 @@ class NewPost extends React.Component<Props, State> {
           {board.description}
         </ReactMarkdown>
 
-        <Button
-          onClick={() => {
-            
-            if (showForm) {
-              this.toggleForm();
-              return;
-            }
-
-            if (isLoggedIn) {
-              this.toggleForm();
-              this.setState({ isSubmissionAnonymous: false });
-            } else {
-              window.location.href = '/users/sign_in';
-            }
-          }}
-          className="submitBtn"
-          outline={showForm}
-        >
-          {
-            showForm ?
-              I18n.t('board.new_post.cancel_button')
-            :
-              I18n.t('board.new_post.submit_button')
-          }
-        </Button>
+        {
+          showForm ?
+            <ActionLink
+              onClick={this.toggleForm}
+              icon={<CancelIcon />}
+            >
+              {I18n.t('common.buttons.cancel')}
+            </ActionLink>
+          :
+            <Button
+              onClick={() => {
+                if (isLoggedIn) {
+                  this.toggleForm();
+                  this.setState({ isSubmissionAnonymous: false });
+                } else {
+                  window.location.href = '/users/sign_in';
+                }
+              }}
+              className="submitBtn"
+              outline={showForm}
+            >
+              {I18n.t('board.new_post.submit_button')}
+            </Button>
+        }
 
         {
           (isAnonymousFeedbackAllowed && !showForm) &&
