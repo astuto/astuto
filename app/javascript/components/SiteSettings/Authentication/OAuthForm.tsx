@@ -26,6 +26,7 @@ interface Props {
 export interface ISiteSettingsOAuthForm {
   name: string;
   logo?: File;
+  shouldDeleteLogo: boolean;
   clientId: string;
   clientSecret: string;
   authorizeUrl: string;
@@ -51,12 +52,12 @@ const OAuthForm = ({
     handleSubmit,
     formState: { errors, isDirty },
     control,
-    setValue,
-    getValues,
+    watch,
   } = useForm<ISiteSettingsOAuthForm>({
     defaultValues: page === 'new' ? {
       name: '',
       logo: null,
+      shouldDeleteLogo: false,
       clientId: '',
       clientSecret: '',
       authorizeUrl: '',
@@ -67,6 +68,8 @@ const OAuthForm = ({
       jsonUserNamePath: '',
     } : {
       name: selectedOAuth.name,
+      logo: null,
+      shouldDeleteLogo: false,
       clientId: selectedOAuth.clientId,
       clientSecret: selectedOAuth.clientSecret,
       authorizeUrl: selectedOAuth.authorizeUrl,
@@ -84,21 +87,23 @@ const OAuthForm = ({
     if (page === 'new') {
       handleSubmitOAuth(
         oAuth,
-        'logo' in data && data.logo ? data.logo[0] : null
+        data.logo ? data.logo : null
       );
     } else if (page === 'edit') {
       if (editClientSecret === false) {
         delete oAuth.clientSecret;
       }
 
-      handleUpdateOAuth(selectedOAuth.id, oAuth as ISiteSettingsOAuthForm, shouldDeleteOAuthLogo);
+      handleUpdateOAuth(
+        selectedOAuth.id,
+        oAuth as ISiteSettingsOAuthForm,
+        data.shouldDeleteLogo
+      );
     }
   };
 
-  // OAuth logo
-  const [oAuthLogoFile, setOAuthLogoFile] = React.useState<any>([]);
+  const shouldDeleteLogo = watch('shouldDeleteLogo');
   const [showOAuthLogoDropzone, setShowOAuthLogoDropzone] = React.useState([null, undefined, ''].includes(selectedOAuth?.logoUrl));
-  const [shouldDeleteOAuthLogo, setShouldDeleteOAuthLogo] = React.useState(false);
 
   return (
     <>
@@ -133,14 +138,14 @@ const OAuthForm = ({
           
           {
             selectedOAuth && selectedOAuth.logoUrl &&
-              <div className={`oAuthLogoPreview${shouldDeleteOAuthLogo ? ' oAuthLogoPreviewShouldDelete' : ''}`}>
+              <div className={`oAuthLogoPreview${shouldDeleteLogo ? ' oAuthLogoPreviewShouldDelete' : ''}`}>
                 <img src={selectedOAuth.logoUrl} alt={`${selectedOAuth.name} OAuth logo`} className="oAuthLogoPreviewImg" />
               </div>
           }
 
           <div className="oAuthLogoActions">
           {
-            (selectedOAuth && selectedOAuth.logoUrl && !shouldDeleteOAuthLogo) &&
+            (selectedOAuth && selectedOAuth.logoUrl && !shouldDeleteLogo) &&
               (showOAuthLogoDropzone ?
                 <ActionLink
                   onClick={() => setShowOAuthLogoDropzone(false)}
@@ -159,20 +164,32 @@ const OAuthForm = ({
 
           {
             (selectedOAuth && selectedOAuth.logoUrl && !showOAuthLogoDropzone) &&
-              (shouldDeleteOAuthLogo ?
-                <ActionLink
-                  onClick={() => setShouldDeleteOAuthLogo(false)}
-                  icon={<CancelIcon />}
-                >
-                  {I18n.t('common.buttons.cancel')}
-                </ActionLink>
-              :
-                <ActionLink
-                  onClick={() => { setShouldDeleteOAuthLogo(true); setValue('name', getValues('name'), { shouldDirty: true }) }}
-                  icon={<DeleteIcon />}
-                >
-                  {I18n.t('common.buttons.delete')}
-                </ActionLink>
+              (shouldDeleteLogo ?
+                <Controller
+                  name="shouldDeleteLogo"
+                  control={control}
+                  render={({ field }) => (
+                    <ActionLink
+                      onClick={() => field.onChange(false)}
+                      icon={<CancelIcon />}
+                    >
+                      {I18n.t('common.buttons.cancel')}
+                    </ActionLink>
+                  )}
+                />
+                :
+                <Controller
+                  name="shouldDeleteLogo"
+                  control={control}
+                  render={({ field }) => (
+                    <ActionLink
+                      onClick={() => field.onChange(true)}
+                      icon={<DeleteIcon />}
+                    >
+                      {I18n.t('common.buttons.delete')}
+                    </ActionLink>
+                  )}
+                />
               )
           }
           </div>
@@ -184,9 +201,8 @@ const OAuthForm = ({
                 control={control}
                 render={({ field }) => (
                   <Dropzone
-                    files={oAuthLogoFile}
-                    setFiles={setOAuthLogoFile}
-                    onDrop={field.onChange}
+                    files={field.value ? [field.value] : []}
+                    setFiles={files => files.length > 0 ? field.onChange(files[0]) : field.onChange(null)}
                     maxSizeKB={64}
                     maxFiles={1}
                   />

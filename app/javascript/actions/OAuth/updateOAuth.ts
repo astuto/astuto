@@ -66,7 +66,7 @@ export const updateOAuth = ({
   const o_auth = Object.assign({},
     form !== null ? {
       name: form.name,
-      logo: 'logo' in form && form.logo ? form.logo[0] : null,
+      logo: form.logo ? form.logo : null,
       client_id: form.clientId,
       client_secret: form.clientSecret,
       authorize_url: form.authorizeUrl,

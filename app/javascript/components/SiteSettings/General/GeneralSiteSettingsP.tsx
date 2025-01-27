@@ -26,9 +26,11 @@ import Dropzone from '../../common/Dropzone';
 
 export interface ISiteSettingsGeneralForm {
   siteName: string;
-  siteLogo: File;
+  siteLogo?: File;
+  shouldDeleteSiteLogo: boolean;
   oldSiteLogo: string;
-  siteFavicon: File;
+  siteFavicon?: File;
+  shouldDeleteSiteFavicon: boolean;
   brandDisplaySetting: string;
   locale: string;
   useBrowserLocale: boolean;
@@ -103,12 +105,15 @@ const GeneralSiteSettingsP = ({
     formState: { isDirty, isSubmitSuccessful, errors },
     watch,
     control,
-    setValue,
     getValues,
   } = useForm<ISiteSettingsGeneralForm>({
     defaultValues: {
       siteName: originForm.siteName,
+      siteLogo: null,
+      shouldDeleteSiteLogo: false,
       oldSiteLogo: originForm.oldSiteLogo,
+      siteFavicon: null,
+      shouldDeleteSiteFavicon: false,
       brandDisplaySetting: originForm.brandDisplaySetting,
       locale: originForm.locale,
       useBrowserLocale: originForm.useBrowserLocale,
@@ -131,11 +136,11 @@ const GeneralSiteSettingsP = ({
   const onSubmit: SubmitHandler<ISiteSettingsGeneralForm> = data => {
     updateTenant(
       data.siteName,
-      'siteLogo' in data && data.siteLogo ? data.siteLogo[0] : null,
-      shouldDeleteSiteLogo,
+      data.siteLogo ? data.siteLogo : null,
+      data.shouldDeleteSiteLogo,
       data.oldSiteLogo,
-      'siteFavicon' in data && data.siteFavicon ? data.siteFavicon[0] : null,
-      shouldDeleteSiteFavicon,
+      data.siteFavicon ? data.siteFavicon : null,
+      data.shouldDeleteSiteFavicon,
       data.brandDisplaySetting,
       data.locale,
       data.useBrowserLocale,
@@ -162,8 +167,6 @@ const GeneralSiteSettingsP = ({
     });
   };
 
-  const customDomain = watch('customDomain');
-
   React.useEffect(() => {
     if (window.location.hash) {
       const anchor = window.location.hash.substring(1);
@@ -181,15 +184,12 @@ const GeneralSiteSettingsP = ({
     }
   }, []);
 
-  // Site logo
-  const [siteLogoFile, setSiteLogoFile] = React.useState<any>([]);
-  const [showSiteLogoDropzone, setShowSiteLogoDropzone] = React.useState([null, undefined, ''].includes(siteLogoUrl));
-  const [shouldDeleteSiteLogo, setShouldDeleteSiteLogo] = React.useState(false);
+  const customDomain = watch('customDomain');
+  const shouldDeleteSiteLogo = watch('shouldDeleteSiteLogo');
+  const shouldDeleteSiteFavicon = watch('shouldDeleteSiteFavicon');
 
-  // Site favicon
-  const [siteFaviconFile, setSiteFaviconFile] = React.useState<any>([]);
+  const [showSiteLogoDropzone, setShowSiteLogoDropzone] = React.useState([null, undefined, ''].includes(siteLogoUrl));
   const [showSiteFaviconDropzone, setShowSiteFaviconDropzone] = React.useState([null, undefined, ''].includes(siteFaviconUrl));
-  const [shouldDeleteSiteFavicon, setShouldDeleteSiteFavicon] = React.useState(false);
 
   return (
     <>
@@ -275,19 +275,31 @@ const GeneralSiteSettingsP = ({
               {
                 (siteLogoUrl && !showSiteLogoDropzone) &&
                   (shouldDeleteSiteLogo ?
-                    <ActionLink
-                      onClick={() => setShouldDeleteSiteLogo(false)}
-                      icon={<CancelIcon />}
-                    >
-                      {I18n.t('common.buttons.cancel')}
-                    </ActionLink>
+                    <Controller
+                      name="shouldDeleteSiteLogo"
+                      control={control}
+                      render={({ field }) => (
+                        <ActionLink
+                          onClick={() => field.onChange(false)}
+                          icon={<CancelIcon />}
+                        >
+                          {I18n.t('common.buttons.cancel')}
+                        </ActionLink>
+                      )}
+                    />
                   :
-                    <ActionLink
-                      onClick={() => { setShouldDeleteSiteLogo(true); setValue('siteLogo', getValues('siteLogo'), { shouldDirty: true }) }}
-                      icon={<DeleteIcon />}
-                    >
-                      {I18n.t('common.buttons.delete')}
-                    </ActionLink>
+                    <Controller
+                      name="shouldDeleteSiteLogo"
+                      control={control}
+                      render={({ field }) => (
+                        <ActionLink
+                          onClick={() => field.onChange(true)}
+                          icon={<DeleteIcon />}
+                        >
+                          {I18n.t('common.buttons.delete')}
+                        </ActionLink>
+                      )}
+                    />
                   )
               }
               </div>
@@ -299,9 +311,8 @@ const GeneralSiteSettingsP = ({
                     control={control}
                     render={({ field }) => (
                       <Dropzone
-                        files={siteLogoFile}
-                        setFiles={setSiteLogoFile}
-                        onDrop={field.onChange}
+                        files={field.value ? [field.value] : []}
+                        setFiles={files => files.length > 0 ? field.onChange(files[0]) : field.onChange(null)}
                         maxSizeKB={256}
                         maxFiles={1}
                       />
@@ -342,19 +353,31 @@ const GeneralSiteSettingsP = ({
               {
                 (siteFaviconUrl && !showSiteFaviconDropzone) &&
                   (shouldDeleteSiteFavicon ?
-                    <ActionLink
-                      onClick={() => setShouldDeleteSiteFavicon(false)}
-                      icon={<CancelIcon />}
-                    >
-                      {I18n.t('common.buttons.cancel')}
-                    </ActionLink>
+                    <Controller
+                      name="shouldDeleteSiteFavicon"
+                      control={control}
+                      render={({ field }) => (
+                        <ActionLink
+                          onClick={() => field.onChange(false)}
+                          icon={<CancelIcon />}
+                        >
+                          {I18n.t('common.buttons.cancel')}
+                        </ActionLink>
+                      )}
+                    />
                   :
-                    <ActionLink
-                      onClick={() => { setShouldDeleteSiteFavicon(true); setValue('siteFavicon', getValues('siteFavicon'), { shouldDirty: true }) }}
-                      icon={<DeleteIcon />}
-                    >
-                      {I18n.t('common.buttons.delete')}
-                    </ActionLink>
+                    <Controller
+                      name="shouldDeleteSiteFavicon"
+                      control={control}
+                      render={({ field }) => (
+                        <ActionLink
+                          onClick={() => field.onChange(true)}
+                          icon={<DeleteIcon />}
+                        >
+                          {I18n.t('common.buttons.delete')}
+                        </ActionLink>
+                      )}
+                    />
                   )
               }
 
@@ -367,9 +390,8 @@ const GeneralSiteSettingsP = ({
                     control={control}
                     render={({ field }) => (
                       <Dropzone
-                        files={siteFaviconFile}
-                        setFiles={setSiteFaviconFile}
-                        onDrop={field.onChange}
+                        files={field.value ? [field.value] : []}
+                        setFiles={files => files.length > 0 ? field.onChange(files[0]) : field.onChange(null)}
                         maxSizeKB={64}
                         maxFiles={1}
                         accept={['image/x-icon', 'image/icon', 'image/png', 'image/jpeg', 'image/jpg']}

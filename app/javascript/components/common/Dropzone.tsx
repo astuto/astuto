@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDropzone} from 'react-dropzone';
 import I18n from 'i18n-js';
 import { SmallMutedText } from './CustomTexts';
+import ActionLink from './ActionLink';
+import { DeleteIcon } from './Icons';
 
 interface Props {
   files: any[];
   setFiles: React.Dispatch<React.SetStateAction<any[]>>;
-  onDrop?: any;
   maxSizeKB?: number;
   maxFiles?: number;
   accept?: string[];
@@ -15,7 +16,6 @@ interface Props {
 const Dropzone = ({
   files,
   setFiles,
-  onDrop,
   maxSizeKB = 256,
   maxFiles = 1,
   accept = ['image/png', 'image/jpeg', 'image/jpg', 'image/x-icon', 'image/icon', 'image/svg+xml', 'image/svg', 'image/webp'],
@@ -42,22 +42,29 @@ const Dropzone = ({
       setFiles(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
-      if (onDrop) {
-        onDrop(acceptedFiles);
-      }
     },
   });
   
   const thumbnails = files.map(file => (
-    <div className="thumbnail" key={file.name}>
-      <div className="thumbnailInner">
-        <img
-          src={file.preview}
-          className="thumbnailImage"
-          // Revoke data uri after image is loaded
-          onLoad={() => { URL.revokeObjectURL(file.preview) }}
-        />
+    <div className="thumbnailContainer" key={file.name}>
+      <div className="thumbnail">
+        <div className="thumbnailInner">
+          <img
+            src={file.preview}
+            className="thumbnailImage"
+            // Revoke data uri after image is loaded
+            onLoad={() => { URL.revokeObjectURL(file.preview) }}
+          />
+        </div>
       </div>
+      
+      <ActionLink
+        onClick={() => setFiles(files.filter(f => f !== file))}
+        icon={<DeleteIcon />}
+        customClass="removeThumbnail"
+      >
+        {I18n.t('common.buttons.delete')}
+      </ActionLink>
     </div>
   ));
 
