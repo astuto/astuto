@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_22_131133) do
+ActiveRecord::Schema.define(version: 2025_01_27_115010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 2025_01_22_131133) do
     t.integer "logo_links_to", default: 0, null: false
     t.string "logo_custom_url"
     t.boolean "hide_unused_statuses_in_filter_by_status", default: false, null: false
+    t.boolean "allow_attachment_upload", default: true
     t.index ["tenant_id"], name: "index_tenant_settings_on_tenant_id"
   end
 

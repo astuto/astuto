@@ -39,6 +39,7 @@ export interface ISiteSettingsGeneralForm {
   isPrivate: boolean;
   allowAnonymousFeedback: boolean;
   feedbackApprovalPolicy: string;
+  allowAttachmentUpload: boolean;
   logoLinksTo: string;
   logoCustomUrl?: string;
   showRoadmapInHeader: boolean;
@@ -75,6 +76,7 @@ interface Props {
     isPrivate: boolean,
     allowAnonymousFeedback: boolean,
     feedbackApprovalPolicy: string,
+    allowAttachmentUpload: boolean,
     logoLinksTo: string,
     logoCustomUrl: string,
     showRoadmapInHeader: boolean,
@@ -105,7 +107,6 @@ const GeneralSiteSettingsP = ({
     formState: { isDirty, isSubmitSuccessful, errors },
     watch,
     control,
-    getValues,
   } = useForm<ISiteSettingsGeneralForm>({
     defaultValues: {
       siteName: originForm.siteName,
@@ -122,6 +123,7 @@ const GeneralSiteSettingsP = ({
       isPrivate: originForm.isPrivate,
       allowAnonymousFeedback: originForm.allowAnonymousFeedback,
       feedbackApprovalPolicy: originForm.feedbackApprovalPolicy,
+      allowAttachmentUpload: originForm.allowAttachmentUpload,
       logoLinksTo: originForm.logoLinksTo,
       logoCustomUrl: originForm.logoCustomUrl,
       showRoadmapInHeader: originForm.showRoadmapInHeader,
@@ -149,6 +151,7 @@ const GeneralSiteSettingsP = ({
       data.isPrivate,
       data.allowAnonymousFeedback,
       data.feedbackApprovalPolicy,
+      data.allowAttachmentUpload,
       data.logoLinksTo,
       data.logoCustomUrl,
       data.showRoadmapInHeader,
@@ -523,6 +526,16 @@ const GeneralSiteSettingsP = ({
               <SmallMutedText>
                 { I18n.t('site_settings.general.feedback_approval_policy_help') }
               </SmallMutedText>
+            </div>
+
+            <div className="formGroup">
+              <div className="checkboxSwitch">
+                <input {...register('allowAttachmentUpload')} type="checkbox" id="allow_attachment_upload" />
+                <label htmlFor="allow_attachment_upload">{ getLabel('tenant_setting', 'allow_attachment_upload') }</label>
+                <SmallMutedText>
+                  { I18n.t('site_settings.general.allow_attachment_upload_help') }
+                </SmallMutedText>
+              </div>
             </div>
           </div>
 

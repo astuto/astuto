@@ -215,6 +215,7 @@ en:
       feedback_approval_policy_never_require_approval: 'Never require approval'
       feedback_approval_policy_always_require_approval: 'Always require approval'
       feedback_approval_policy_help: 'If you require approval, submitted feedback will remain hidden from the public until a moderator or administrator approves it. Feedback submitted by moderators and administrators is always approved automatically.'
+      allow_attachment_upload_help: 'If you enable this setting, users will be able to upload images to their feedback.'
       subtitle_header: 'Header'
       logo_links_to_root_page: 'Root page'
       logo_links_to_custom_url: 'Custom URL'
