@@ -4,12 +4,15 @@ import I18n from 'i18n-js';
 import Button from '../common/Button';
 import { SmallMutedText } from '../common/CustomTexts';
 import { MarkdownIcon } from '../common/Icons';
+import Dropzone from '../common/Dropzone';
 
 interface Props {
   title: string;
   description: string;
+  attachments: File[];
   handleTitleChange(title: string): void;
   handleDescriptionChange(description: string): void;
+  handleAttachmentsChange(attachments: File[]): void;
 
   handleSubmit(e: object): void;
 
@@ -25,8 +28,10 @@ interface Props {
 const NewPostForm = ({
   title,
   description,
+  attachments,
   handleTitleChange,
   handleDescriptionChange,
+  handleAttachmentsChange,
 
   handleSubmit,
 
@@ -39,7 +44,9 @@ const NewPostForm = ({
   isSubmissionAnonymous,
   }: Props) => (
   <div className="newPostForm">
-    <form>
+    <form encType="multipart/form-data">
+
+      { /* Title */ }
       <div className="form-group">
         <input
           type="text"
@@ -84,6 +91,7 @@ const NewPostForm = ({
         className="form-control"
       />
 
+      { /* Description */ }
       <div className="form-group">
         <textarea
           value={description}
@@ -97,6 +105,16 @@ const NewPostForm = ({
         <div style={{position: 'relative', width: 0, height: 0}}>
           <MarkdownIcon style={{position: 'absolute', left: '6px', top: '-28px'}} />
         </div>
+      </div>
+
+      { /* Attachments */ }
+      <div className="form-group">
+        <Dropzone
+          files={attachments}
+          setFiles={handleAttachmentsChange}
+          maxSizeKB={2048}
+          maxFiles={5}
+        />
       </div>
 
       <Button onClick={e => handleSubmit(e)} className="submitBtn d-block mx-auto">

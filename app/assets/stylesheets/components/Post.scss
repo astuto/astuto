@@ -149,6 +149,17 @@
       }
     }
 
+    .postAttachments {
+      @extend .mb-4;
+
+      .postAttachment {
+        @extend .mx-2, .p-2;
+
+        height: 80px;
+        border: thin solid var(--astuto-grey-light);
+      }
+    }
+
     .postFooter {
       .postAuthor {
         @extend

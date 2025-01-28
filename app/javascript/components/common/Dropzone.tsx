@@ -34,12 +34,17 @@ const Dropzone = ({
     accept: acceptDict,
     maxSize: maxSizeKB * 1024,
     maxFiles: maxFiles,
+    disabled: files.length >= maxFiles,
     onDrop: (acceptedFiles, fileRejections) => {
       if (fileRejections.length > 0) {
         alert(I18n.t('common.errors.invalid_file', { errors: fileRejections.map(rejection => rejection.errors[0].message).join(', ') }));
       }
 
-      setFiles(acceptedFiles.map(file => Object.assign(file, {
+      // If number of files already uploaded is lower than maxFiles, add the new files
+      const filesAfterDrop = (files.length + acceptedFiles.length <= maxFiles) ? files.concat(acceptedFiles) : acceptedFiles;
+
+
+      setFiles(filesAfterDrop.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
     },
@@ -75,7 +80,7 @@ const Dropzone = ({
 
   return (
     <section>
-      <div {...getRootProps({className: 'dropzone' + (isDragAccept ? ' dropzone-accept' : isDragReject ? ' dropzone-reject' : '')})}>
+      <div {...getRootProps({className: 'dropzone' + (isDragAccept ? ' dropzone-accept' : isDragReject ? ' dropzone-reject' : '') + (files.length >= maxFiles ? ' dropzone-disabled' : '')})}>
         <input {...getInputProps()} />
         <SmallMutedText>{I18n.t('common.drag_and_drop', { maxCount: maxFiles, maxSize: maxSizeKB })}</SmallMutedText>
       </div>

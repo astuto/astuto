@@ -359,6 +359,10 @@ body {
   cursor: pointer;
 }
 
+.dropzone-disabled {
+  cursor: not-allowed;
+}
+
 .dropzone-accept {
   border-color: rgb(0, 189, 0);
 }

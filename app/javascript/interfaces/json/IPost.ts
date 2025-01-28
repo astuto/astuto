@@ -5,6 +5,7 @@ interface IPostJSON {
   title: string;
   slug?: string;
   description?: string;
+  attachment_urls?: string[];
   approval_status: PostApprovalStatus;
   board_id: number;
   post_status_id?: number;

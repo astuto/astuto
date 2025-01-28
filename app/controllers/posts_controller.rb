@@ -57,6 +57,11 @@ class PostsController < ApplicationController
     @post = Post.new(approval_status: approval_status)
     @post.assign_attributes(post_create_params(is_anonymous: is_anonymous))
 
+    # handle attachments
+    if params[:post][:attachments].present?
+      @post.attachments.attach(params[:post][:attachments])
+    end
+
     if @post.save
       Follow.create(post_id: @post.id, user_id: current_user.id) unless is_anonymous
       
@@ -87,7 +92,7 @@ class PostsController < ApplicationController
       )
       .eager_load(:user) # left outer join
       .find(params[:id])
-    
+
     @post_statuses = PostStatus.select(:id, :name, :color).order(order: :asc)
     @board = @post.board
 
@@ -96,7 +101,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
 
-      format.json { render json: @post }
+      format.json { render json: @post.as_json.merge(attachment_urls: @post.attachments.map { |attachment| attachment.blob.url }) }
     end
   end
 

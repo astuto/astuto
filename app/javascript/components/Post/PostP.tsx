@@ -9,6 +9,7 @@ import ITenantSetting from '../../interfaces/ITenantSetting';
 
 import PostUpdateList from './PostUpdateList';
 import PostEditForm from './PostEditForm';
+import PostAttachments from './PostAttachments';
 import PostFooter from './PostFooter';
 import LikeList from './LikeList';
 import ActionBox from './ActionBox';
@@ -293,6 +294,10 @@ class PostP extends React.Component<Props, State> {
               >
                 {postToShow.description}
               </ReactMarkdown>
+
+              <PostAttachments
+                attachmentUrls={postToShow?.attachmentUrls}
+              />
 
               <PostFooter
                 createdAt={postToShow.createdAt}

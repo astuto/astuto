@@ -1,6 +1,11 @@
 class PostPolicy < ApplicationPolicy
   def permitted_attributes_for_create
-    [:title, :description, :board_id]
+    [
+      :title,
+      :description,
+      :attachments,
+      :board_id,
+    ]
   end
 
   def permitted_attributes_for_update

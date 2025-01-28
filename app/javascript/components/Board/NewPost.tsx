@@ -11,11 +11,11 @@ import {
 import Button from '../common/Button';
 
 import IBoard from '../../interfaces/IBoard';
-import buildRequestHeaders from '../../helpers/buildRequestHeaders';
 import HttpStatus from '../../constants/http_status';
 import { POST_APPROVAL_STATUS_APPROVED } from '../../interfaces/IPost';
 import ActionLink from '../common/ActionLink';
 import { CancelIcon } from '../common/Icons';
+import buildFormData from '../../helpers/buildFormData';
 
 interface Props {
   board: IBoard;
@@ -36,6 +36,7 @@ interface State {
 
   title: string;
   description: string;
+  attachments: File[];
   isSubmissionAnonymous: boolean;
 
   // Honeypot anti-spam measure
@@ -57,6 +58,7 @@ class NewPost extends React.Component<Props, State> {
 
       title: '',
       description: '',
+      attachments: [],
       isSubmissionAnonymous: false,
 
       dnf1: '',
@@ -66,6 +68,7 @@ class NewPost extends React.Component<Props, State> {
     this.toggleForm = this.toggleForm.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
+    this.onAttachmentsChange = this.onAttachmentsChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
 
     this.onDnf1Change = this.onDnf1Change.bind(this)
@@ -94,6 +97,12 @@ class NewPost extends React.Component<Props, State> {
     });
   }
 
+  onAttachmentsChange(attachments: File[]) {
+    this.setState({
+      attachments,
+    });
+  }
+
   onDnf1Change(dnf1: string) {
     this.setState({
       dnf1,
@@ -117,7 +126,7 @@ class NewPost extends React.Component<Props, State> {
 
     const boardId = this.props.board.id;
     const { authenticityToken, componentRenderedAt } = this.props;
-    const { title, description, isSubmissionAnonymous, dnf1, dnf2 } = this.state;
+    const { title, description, attachments, isSubmissionAnonymous, dnf1, dnf2 } = this.state;
 
     if (title === '') {
       this.setState({
@@ -128,22 +137,23 @@ class NewPost extends React.Component<Props, State> {
     }
 
     try {
+      let formDataObj = {
+        'post[title]': title,
+        'post[description]': description,
+        'post[attachments][]': attachments,
+        'post[board_id]': boardId,
+        'post[is_anonymous]': isSubmissionAnonymous.toString(),
+        'post[dnf1]': dnf1,
+        'post[dnf2]': dnf2,
+        'post[form_rendered_at]': componentRenderedAt,
+      };
+
+      const body = buildFormData(formDataObj);
+      
       const res = await fetch('/posts', {
         method: 'POST',
-        headers: buildRequestHeaders(authenticityToken),
-        body: JSON.stringify({
-          post: {
-            title,
-            description,
-            board_id: boardId,
-
-            is_anonymous: isSubmissionAnonymous,
-            
-            dnf1,
-            dnf2,
-            form_rendered_at: componentRenderedAt,
-          },
-        }),
+        headers: { 'X-CSRF-Token': authenticityToken },
+        body: body,
       });
       const json = await res.json();
       this.setState({isLoading: false});
@@ -192,6 +202,7 @@ class NewPost extends React.Component<Props, State> {
       
       title,
       description,
+      attachments,
       isSubmissionAnonymous,
 
       dnf1,
@@ -253,12 +264,14 @@ class NewPost extends React.Component<Props, State> {
         }
 
         {
-          showForm ?
+          showForm &&
             <NewPostForm
               title={title}
               description={description}
+              attachments={attachments}
               handleTitleChange={this.onTitleChange}
               handleDescriptionChange={this.onDescriptionChange}
+              handleAttachmentsChange={this.onAttachmentsChange}
 
               handleSubmit={this.submitForm}
 
@@ -270,8 +283,6 @@ class NewPost extends React.Component<Props, State> {
               currentUserFullName={currentUserFullName}
               isSubmissionAnonymous={isSubmissionAnonymous}
             />
-          :
-            null
         }
 
         { isLoading ? <Spinner /> : null }

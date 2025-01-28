@@ -15,6 +15,7 @@ interface IPost {
   title: string;
   slug?: string;
   description?: string;
+  attachmentUrls?: string[];
   approvalStatus: PostApprovalStatus;
   boardId: number;
   postStatusId?: number;
