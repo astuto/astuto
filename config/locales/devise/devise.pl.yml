@@ -60,6 +60,6 @@ pl:
       not_locked: "nie był zablokowany"
       not_saved:
         one: "1 błąd uniemożliwiał zapisanie %{resource}:"
-        few: "%{count} errors prohibited this %{resource} from being saved:"
+        few: "%{count} błędów uniemożliwiało zapisanie %{resource}:"
         many: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
         other: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
