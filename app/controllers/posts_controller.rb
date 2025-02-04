@@ -114,8 +114,13 @@ class PostsController < ApplicationController
     # handle attachment deletion
     if params[:post][:attachments_to_delete].present? && @post.attachments.attached?
       @post.attachments.order(:created_at).each_with_index do |attachment, index|
-        attachment.purge if params[:post][:attachments_to_delete].include?(index)
+        attachment.purge if params[:post][:attachments_to_delete].include?(index.to_s)
       end
+    end
+
+    # handle attachments
+    if Current.tenant.tenant_setting.allow_attachment_upload && params[:post][:attachments].present?
+      @post.attachments.attach(params[:post][:attachments])
     end
 
     if @post.save

@@ -11,6 +11,7 @@ interface Props {
   maxSizeKB?: number;
   maxFiles?: number;
   accept?: string[];
+  customStyle?: { [key: string]: string };
 }
 
 const Dropzone = ({
@@ -19,6 +20,7 @@ const Dropzone = ({
   maxSizeKB = 256,
   maxFiles = 1,
   accept = ['image/png', 'image/jpeg', 'image/jpg', 'image/x-icon', 'image/icon', 'image/svg+xml', 'image/svg', 'image/webp'],
+  customStyle = {}
 }: Props) => {
   const acceptDict = accept.reduce((acc, type) => {
     acc[type] = [];
@@ -80,7 +82,7 @@ const Dropzone = ({
 
   return (
     <section>
-      <div {...getRootProps({className: 'dropzone' + (isDragAccept ? ' dropzone-accept' : isDragReject ? ' dropzone-reject' : '') + (files.length >= maxFiles ? ' dropzone-disabled' : '')})}>
+      <div {...getRootProps({className: 'dropzone' + (isDragAccept ? ' dropzone-accept' : isDragReject ? ' dropzone-reject' : '') + (files.length >= maxFiles ? ' dropzone-disabled' : '')})} style={customStyle}>
         <input {...getInputProps()} />
         <SmallMutedText>{I18n.t('common.drag_and_drop', { maxCount: maxFiles, maxSize: maxSizeKB })}</SmallMutedText>
       </div>

@@ -45,9 +45,10 @@ const mapDispatchToProps = (dispatch) => ({
     boardId: number,
     postStatusId: number,
     attachmentsToDelete: number[],
+    attachments: File[],
     authenticityToken: string,
   ) {
-    return dispatch(updatePost(postId, title, description, boardId, postStatusId, attachmentsToDelete, authenticityToken));
+    return dispatch(updatePost(postId, title, description, boardId, postStatusId, attachmentsToDelete, attachments, authenticityToken));
   },
 
   toggleEditMode() {

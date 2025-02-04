@@ -10,6 +10,9 @@ import Button from '../common/Button';
 import Spinner from '../common/Spinner';
 import ActionLink from '../common/ActionLink';
 import { CancelIcon, DeleteIcon } from '../common/Icons';
+import ITenantSetting from '../../interfaces/ITenantSetting';
+import Dropzone from '../common/Dropzone';
+import { DangerText } from '../common/CustomTexts';
 
 interface Props {
   title: string;
@@ -26,6 +29,7 @@ interface Props {
   handleChangeBoard(boardId: number): void;
   handleChangePostStatus(postStatusId: number): void;
 
+  tenantSetting: ITenantSetting;
   isPowerUser: boolean;
   boards: Array<IBoard>;
   postStatuses: Array<IPostStatus>;
@@ -37,6 +41,7 @@ interface Props {
     boardId: number,
     postStatusId: number,
     attachmentsToDelete: number[],
+    attachments: File[],
   ): void;
 }
 
@@ -55,6 +60,7 @@ const PostEditForm = ({
   handleChangeBoard,
   handleChangePostStatus,
 
+  tenantSetting,
   isPowerUser,
   boards,
   postStatuses,
@@ -63,9 +69,11 @@ const PostEditForm = ({
   handleUpdatePost,
 }: Props) => {
   const [attachmentsToDelete, setAttachmentsToDelete] = React.useState<number[]>([]);
+  const [attachments, setAttachments] = React.useState<File[]>([]);
 
-  console.log('attachmentsToDelete', attachmentsToDelete);
-
+  React.useEffect(() => {
+    setAttachmentsToDelete([]);
+  }, [attachmentUrls]);
 
   return (
     <div className="postEditForm">
@@ -141,15 +149,31 @@ const PostEditForm = ({
       }
       </div>
 
+      { /* Attachments dropzone */ }
+      {
+        tenantSetting.allow_attachment_upload &&
+          <div className="form-group">
+            <Dropzone
+              files={attachments}
+              setFiles={setAttachments}
+              maxSizeKB={2048}
+              maxFiles={5}
+              customStyle={{ minHeight: '60px', marginTop: '16px' }}
+            />
+          </div>
+      }
+
       <div className="postEditFormButtons">
         <ActionLink onClick={toggleEditMode} icon={<CancelIcon />}>
           {I18n.t('common.buttons.cancel')}
         </ActionLink>
         &nbsp;
-        <Button onClick={() => handleUpdatePost(title, description, boardId, postStatusId, attachmentsToDelete)}>
+        <Button onClick={() => handleUpdatePost(title, description, boardId, postStatusId, attachmentsToDelete, attachments)}>
           { isUpdating ? <Spinner /> : I18n.t('common.buttons.update') }
         </Button>
       </div>
+      
+      { error && <DangerText>{error}</DangerText> }
     </div>
   );
 };

@@ -60,6 +60,7 @@ interface Props {
     boardId: number,
     postStatusId: number,
     attachmentsToDelete: number[],
+    attachments: File[],
     authenticityToken: string,
   ): Promise<any>;
 
@@ -115,7 +116,14 @@ class PostP extends React.Component<Props, State> {
     this.props.requestPostStatusChanges(postId);
   }
 
-  _handleUpdatePost(title: string, description: string, boardId: number, postStatusId: number, attachmentsToDelete: number[]) {
+  _handleUpdatePost(
+    title: string,
+    description: string,
+    boardId: number,
+    postStatusId: number,
+    attachmentsToDelete: number[],
+    attachments: File[],
+  ) {
     const {
       postId,
       post,
@@ -136,6 +144,7 @@ class PostP extends React.Component<Props, State> {
       boardId,
       postStatusId,
       attachmentsToDelete,
+      attachments,
       authenticityToken,
     ).then(res => {
       if (res?.status !== HttpStatus.OK) return;
@@ -244,6 +253,7 @@ class PostP extends React.Component<Props, State> {
               handleChangeBoard={handleChangeEditFormBoard}
               handleChangePostStatus={handleChangeEditFormPostStatus}
 
+              tenantSetting={tenantSetting}
               isPowerUser={isPowerUser}
               boards={boards}
               postStatuses={postStatuses}
