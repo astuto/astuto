@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import { SmallMutedText } from '../common/CustomTexts';
 import { MarkdownIcon } from '../common/Icons';
 import Dropzone from '../common/Dropzone';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   title: string;
@@ -21,6 +22,7 @@ interface Props {
   handleDnf1Change(dnf1: string): void;
   handleDnf2Change(dnf2: string): void;
 
+  tenantSetting: ITenantSetting;
   currentUserFullName: string;
   isSubmissionAnonymous: boolean;
 }
@@ -40,6 +42,7 @@ const NewPostForm = ({
   handleDnf1Change,
   handleDnf2Change,
 
+  tenantSetting,
   currentUserFullName,
   isSubmissionAnonymous,
   }: Props) => (
@@ -108,14 +111,17 @@ const NewPostForm = ({
       </div>
 
       { /* Attachments */ }
-      <div className="form-group">
-        <Dropzone
-          files={attachments}
-          setFiles={handleAttachmentsChange}
-          maxSizeKB={2048}
-          maxFiles={5}
-        />
-      </div>
+      {
+        tenantSetting.allow_attachment_upload &&
+          <div className="form-group">
+            <Dropzone
+              files={attachments}
+              setFiles={handleAttachmentsChange}
+              maxSizeKB={2048}
+              maxFiles={5}
+            />
+          </div>
+      }
 
       <Button onClick={e => handleSubmit(e)} className="submitBtn d-block mx-auto">
         {I18n.t('board.new_post.submit_button')}

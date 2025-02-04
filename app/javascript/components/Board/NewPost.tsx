@@ -16,9 +16,11 @@ import { POST_APPROVAL_STATUS_APPROVED } from '../../interfaces/IPost';
 import ActionLink from '../common/ActionLink';
 import { CancelIcon } from '../common/Icons';
 import buildFormData from '../../helpers/buildFormData';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   board: IBoard;
+  tenantSetting: ITenantSetting;
   isLoggedIn: boolean;
   currentUserFullName: string;
   isAnonymousFeedbackAllowed: boolean;
@@ -189,6 +191,7 @@ class NewPost extends React.Component<Props, State> {
   render() {
     const {
       board,
+      tenantSetting,
       isLoggedIn,
       currentUserFullName,
       isAnonymousFeedbackAllowed
@@ -280,6 +283,7 @@ class NewPost extends React.Component<Props, State> {
               handleDnf1Change={this.onDnf1Change}
               handleDnf2Change={this.onDnf2Change}
 
+              tenantSetting={tenantSetting}
               currentUserFullName={currentUserFullName}
               isSubmissionAnonymous={isSubmissionAnonymous}
             />

@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     @post.assign_attributes(post_create_params(is_anonymous: is_anonymous))
 
     # handle attachments
-    if params[:post][:attachments].present?
+    if Current.tenant.tenant_setting.allow_attachment_upload && params[:post][:attachments].present?
       @post.attachments.attach(params[:post][:attachments])
     end
 
