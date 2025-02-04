@@ -101,7 +101,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
 
-      format.json { render json: @post.as_json.merge(attachment_urls: @post.attachments.map { |attachment| attachment.blob.url }) }
+      format.json { render json: @post.as_json.merge(attachment_urls: @post.attachments.order(:created_at).map { |attachment| attachment.blob.url }) }
     end
   end
 
@@ -110,6 +110,13 @@ class PostsController < ApplicationController
     authorize @post
     
     @post.assign_attributes(post_update_params)
+
+    # handle attachment deletion
+    if params[:post][:attachments_to_delete].present? && @post.attachments.attached?
+      @post.attachments.order(:created_at).each_with_index do |attachment, index|
+        attachment.purge if params[:post][:attachments_to_delete].include?(index)
+      end
+    end
 
     if @post.save
       if @post.post_status_id_previously_changed?
@@ -120,7 +127,7 @@ class PostsController < ApplicationController
         ).run
       end
 
-      render json: @post
+      render json: @post.as_json.merge(attachment_urls: @post.attachments.order(:created_at).map { |attachment| attachment.blob.url })
     else
       render json: {
         error: @post.errors.full_messages
@@ -198,6 +205,10 @@ class PostsController < ApplicationController
     def post_update_params
       params
         .require(:post)
-        .permit(policy(@post).permitted_attributes_for_update)
+        .permit(
+          policy(@post)
+            .permitted_attributes_for_update
+            .concat([{ additional_params: [:attachments_to_delete] }])
+        )
     end
 end

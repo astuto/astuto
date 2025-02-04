@@ -50,6 +50,7 @@ export const updatePost = (
   description: string,
   boardId: number,
   postStatusId: number,
+  attachmentsToDelete: number[],
   authenticityToken: string,
 ): ThunkAction<void, State, null, Action<string>> => async (dispatch) => {
   dispatch(postUpdateStart());
@@ -64,7 +65,8 @@ export const updatePost = (
           description,
           board_id: boardId,
           post_status_id: postStatusId,
-        }
+          attachments_to_delete: attachmentsToDelete,
+        },
       }),
     });
     const json = await res.json();

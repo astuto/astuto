@@ -184,7 +184,7 @@
       }
 
       .postEditFormButtons {
-        @extend .d-flex, .justify-content-end;
+        @extend .d-flex, .justify-content-end, .mt-3;
       }
 
       #selectPickerBoard { margin-right: 4px !important; }

@@ -63,6 +63,7 @@ const postReducer = (
         ...state,
         title: action.post.title,
         description: action.post.description,
+        attachmentUrls: action.post.attachment_urls,
         boardId: action.post.board_id,
         postStatusId: action.post.post_status_id,
         approvalStatus: action.post.approval_status,

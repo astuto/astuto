@@ -398,5 +398,11 @@ body {
         height: 100%;
       }
     }
+
+    &.thumbnailToDelete {
+      border: 2px solid red;
+      
+      .thumbnailInner { filter: grayscale(100%); }
+    }
   }
 }
