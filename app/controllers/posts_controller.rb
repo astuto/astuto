@@ -32,6 +32,11 @@ class PostsController < ApplicationController
 
     # apply post status filter if present
     posts = posts.where(post_status_id: params[:post_status_ids].map { |id| id == "0" ? nil : id }) if params[:post_status_ids].present?
+
+    # check if posts have attachments
+    posts = posts.map do |post|
+      post.attributes.merge(has_attachments: post.attachments.attached?)
+    end
     
     render json: posts
   end

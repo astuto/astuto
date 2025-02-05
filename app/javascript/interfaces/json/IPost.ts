@@ -6,6 +6,7 @@ interface IPostJSON {
   slug?: string;
   description?: string;
   attachment_urls?: string[];
+  has_attachments?: boolean;
   approval_status: PostApprovalStatus;
   board_id: number;
   post_status_id?: number;

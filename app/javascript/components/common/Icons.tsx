@@ -19,7 +19,7 @@ import {
   MdAdd,
   MdAttachFile,
 } from 'react-icons/md';
-import { FaUserNinja, FaMarkdown } from "react-icons/fa";
+import { FaUserNinja, FaMarkdown, FaRegImage } from "react-icons/fa";
 import { FaDroplet } from "react-icons/fa6";
 
 export const EditIcon = () => <FiEdit />;
@@ -110,3 +110,5 @@ export const MarkdownIcon = ({size = 24, style = {}}) => (
 );
 
 export const AttachIcon = ({size = 24}) => <MdAttachFile size={size} />;
+
+export const ImageIcon = ({size = 24}) => <FaRegImage size={size} />;
