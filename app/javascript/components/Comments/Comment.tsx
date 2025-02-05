@@ -10,11 +10,13 @@ import CommentEditForm from './CommentEditForm';
 import CommentFooter from './CommentFooter';
 import { StaffIcon } from '../common/Icons';
 import Avatar from '../common/Avatar';
+import CommentAttachments from './CommentAttachments';
 
 interface Props {
   id: number;
   body: string;
   isPostUpdate: boolean;
+  attachmentUrls?: string[];
   userFullName: string;
   userEmail: string;
   userAvatar?: string;
@@ -26,7 +28,7 @@ interface Props {
   handleToggleCommentReply(): void;
   handleCommentReplyBodyChange(e: React.FormEvent): void;
 
-  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
+  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean, attachments: File[], onSuccess: Function): void;
   handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 
@@ -70,6 +72,7 @@ class Comment extends React.Component<Props, State> {
       id,
       body,
       isPostUpdate,
+      attachmentUrls,
       userFullName,
       userEmail,
       userAvatar,
@@ -99,12 +102,10 @@ class Comment extends React.Component<Props, State> {
           { userRole > 0 && <StaffIcon /> }
 
           {
-            isPostUpdate ?
+            isPostUpdate &&
               <span className="postUpdateBadge">
                 {I18n.t('post.comments.post_update_badge')}
               </span>
-            :
-              null
           }
         </div>
 
@@ -129,6 +130,11 @@ class Comment extends React.Component<Props, State> {
               >
                 {body}
               </ReactMarkdown>
+
+              {
+                attachmentUrls && attachmentUrls.length > 0 &&
+                  <CommentAttachments attachmentUrls={attachmentUrls} />
+              }
 
               <CommentFooter
                 id={id}

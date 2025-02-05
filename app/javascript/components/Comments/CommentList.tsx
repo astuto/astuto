@@ -14,7 +14,7 @@ interface Props {
   toggleCommentReply(commentId: number): void;
   setCommentReplyBody(commentId: number, body: string): void;
 
-  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean): void;
+  handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean, attachments: File[], onSuccess: Function): void;
   handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 

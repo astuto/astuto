@@ -91,6 +91,7 @@ en:
       reject: 'Reject'
       copy_to_clipboard: 'Copy to clipboard'
       preview: 'Preview'
+      attach: 'Attach'
     datetime:
       now: 'just now'
       minutes:

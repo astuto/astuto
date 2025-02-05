@@ -3,6 +3,7 @@ interface ICommentJSON {
   body: string;
   parent_id: number;
   is_post_update: boolean;
+  attachment_urls?: string[];
   user_full_name: string;
   user_email: string;
   user_avatar?: string;

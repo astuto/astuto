@@ -44,9 +44,13 @@ const mapDispatchToProps = (dispatch) => ({
     body: string,
     parentId: number,
     isPostUpdate: boolean,
+    attachments: File[],
+    onSuccess: Function,
     authenticityToken: string,
   ) {
-    dispatch(submitComment(postId, body, parentId, isPostUpdate, authenticityToken));
+    dispatch(submitComment(postId, body, parentId, isPostUpdate, attachments, authenticityToken)).then(res => {
+      if (res && res.status === HttpStatus.Created) onSuccess();
+    });
   },
 
   updateComment(

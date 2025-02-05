@@ -17,6 +17,7 @@ import {
   MdCheck,
   MdClear,
   MdAdd,
+  MdAttachFile,
 } from 'react-icons/md';
 import { FaUserNinja, FaMarkdown } from "react-icons/fa";
 import { FaDroplet } from "react-icons/fa6";
@@ -107,3 +108,5 @@ export const MarkdownIcon = ({size = 24, style = {}}) => (
   <Tooltip id="markdown-tooltip" />
   </>
 );
+
+export const AttachIcon = ({size = 24}) => <MdAttachFile size={size} />;

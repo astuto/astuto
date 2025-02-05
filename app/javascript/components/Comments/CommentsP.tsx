@@ -33,6 +33,8 @@ interface Props {
     body: string,
     parentId: number,
     isPostUpdate: boolean,
+    attachments: File[],
+    onSuccess: Function,
     authenticityToken: string,
   ): void;
   updateComment(
@@ -55,12 +57,14 @@ class CommentsP extends React.Component<Props> {
     this.props.requestComments(this.props.postId);
   }
 
-  _handleSubmitComment = (body: string, parentId: number, isPostUpdate: boolean) => {
+  _handleSubmitComment = (body: string, parentId: number, isPostUpdate: boolean, attachments: File[], onSuccess: Function) => {
     this.props.submitComment(
       this.props.postId,
       body,
       parentId,
       isPostUpdate,
+      attachments,
+      onSuccess,
       this.props.authenticityToken,
     );
   }

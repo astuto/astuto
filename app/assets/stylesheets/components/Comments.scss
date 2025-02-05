@@ -22,14 +22,27 @@
       .flex-column,
       .mt-4;
 
-    .commentBodyForm {
+    .newCommentBodyForm {
       @extend .d-flex;
+    }
+
+    .newCommentFooter {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .align-items-center;
+
+      .showAttachFilesNewComment {
+        margin-right: 116px;
+        margin-top: 1rem;
+      }
     }
 
     .commentIsUpdateForm {
       @extend
         .d-flex,
         .justify-content-between,
+        .align-self-start,
         .mt-3;
 
       margin-left: 58px;
@@ -114,6 +127,17 @@
 
       p { @extend .my-2; }
       p:nth-child(1) { @extend .m-0; }
+    }
+
+    .commentAttachments {
+      @extend .mb-4;
+
+      .commentAttachment {
+        @extend .mx-2, .p-2;
+
+        height: 60px;
+        border: thin solid var(--astuto-grey-light);
+      }
     }
 
     .commentFooter {
