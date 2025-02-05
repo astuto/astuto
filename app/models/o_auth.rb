@@ -19,6 +19,9 @@ class OAuth < ApplicationRecord
   validates :profile_url, presence: true
   validates :scope, presence: true
   validates :json_user_email_path, presence: true
+  validates :logo,
+    content_type: Rails.application.accepted_image_types,
+    size: { less_than: 64.kilobytes }
 
   friendly_id :generate_random_slug, use: :scoped, scope: :tenant_id
 
