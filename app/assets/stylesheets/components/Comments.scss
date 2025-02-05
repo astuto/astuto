@@ -34,8 +34,8 @@
         .justify-content-between,
         .align-items-center;
 
-      .showAttachFilesNewComment {
-        margin-right: 116px;
+      .attachFilesSection {
+        margin-left: 58px;
         margin-top: 1rem;
       }
     }
@@ -47,7 +47,8 @@
         .align-self-start,
         .mt-3;
 
-      margin-left: 58px;
+      &.commentIsUpdateFormWithAttachment { margin-right: 108px; }
+      &.commentIsUpdateFormWithoutAttachment { margin-left: 58px; }
     }
 
     .currentUserAvatar {
@@ -68,7 +69,12 @@
   }
 
   .editCommentForm {
-    .commentFormContainer { @extend .d-block; }
+    @extend .my-3;
+
+    background-color: rgb(255 255 215);
+    padding: 16px;
+
+    .commentFormContainer, .editCommentFormAttachments { @extend .d-block; }
 
     textarea {
       @extend .my-2;
@@ -78,6 +84,13 @@
       @extend
         .d-flex,
         .justify-content-between;
+    }
+
+    .editCommentFormFooter {
+      @extend
+        .d-flex,
+        .justify-content-between,
+        .align-items-center;
     }
 
     .editCommentFormActions { @extend .d-flex; }

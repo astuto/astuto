@@ -30,7 +30,7 @@ interface Props {
   handleCommentReplyBodyChange(e: React.FormEvent): void;
 
   handleSubmitComment(body: string, parentId: number, isPostUpdate: boolean, attachments: File[], onSuccess: Function): void;
-  handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
+  handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, attachmentsToDelete: number[], attachments: File[], onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 
   tenantSetting: ITenantSetting;
@@ -60,11 +60,13 @@ class Comment extends React.Component<Props, State> {
     this.setState({editMode: !this.state.editMode});
   }
 
-  _handleUpdateComment(body: string, isPostUpdate: boolean) {
+  _handleUpdateComment(body: string, isPostUpdate: boolean, attachmentsToDelete: number[], attachments: File[]) {
     this.props.handleUpdateComment(
       this.props.id,
       body,
       isPostUpdate,
+      attachmentsToDelete,
+      attachments,
       this.toggleEditMode,
     );
   }
@@ -118,8 +120,10 @@ class Comment extends React.Component<Props, State> {
               id={id}
               initialBody={body}
               initialIsPostUpdate={isPostUpdate}
+              attachmentUrls={attachmentUrls}
 
               isPowerUser={isPowerUser}
+              tenantSetting={tenantSetting}
 
               handleUpdateComment={this._handleUpdateComment}
               toggleEditMode={this.toggleEditMode}

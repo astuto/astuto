@@ -44,6 +44,8 @@ interface Props {
     commentId: number,
     body: string,
     isPostUpdate: boolean,
+    attachmentsToDelete: number[],
+    attachments: File[],
     onSuccess: Function,
     authenticityToken: string,
   ): void;
@@ -71,12 +73,14 @@ class CommentsP extends React.Component<Props> {
     );
   }
 
-  _handleUpdateComment = (commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function) => {
+  _handleUpdateComment = (commentId: number, body: string, isPostUpdate: boolean, attachmentsToDelete: number[], attachments: File[], onSuccess: Function) => {
     this.props.updateComment(
       this.props.postId,
       commentId,
       body,
       isPostUpdate,
+      attachmentsToDelete,
+      attachments,
       onSuccess,
       this.props.authenticityToken,
     );

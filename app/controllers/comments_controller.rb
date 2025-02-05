@@ -66,9 +66,24 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     authorize @comment
 
-    if @comment.update(comment_update_params)
+    @comment.assign_attributes(comment_update_params)
+
+    # handle attachment deletion
+    if params[:comment][:attachments_to_delete].present? && @comment.attachments.attached?
+      @comment.attachments.order(:created_at).each_with_index do |attachment, index|
+        attachment.purge if params[:comment][:attachments_to_delete].include?(index.to_s)
+      end
+    end
+
+    # handle attachments
+    if Current.tenant.tenant_setting.allow_attachment_upload && params[:comment][:attachments].present?
+      @comment.attachments.attach(params[:comment][:attachments])
+    end
+
+    if @comment.save
       render json: @comment.attributes.merge(
         {
+          attachment_urls: @comment.attachments.order(:created_at).map { |attachment| attachment.blob.url },
           user_full_name: @comment.user.full_name,
           user_email: @comment.user.email,
           user_avatar: @comment.user.avatar.attached? ? @comment.user.avatar.blob.url : nil,

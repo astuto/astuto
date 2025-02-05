@@ -91,15 +91,6 @@ const NewComment = ({
                 </Button>
               </div>
               <div className="newCommentFooter">
-                { /* Post update flag */ }
-                {
-                  isPowerUser && parentId == null &&
-                    <NewCommentUpdateSection
-                      postUpdateFlagValue={postUpdateFlagValue}
-                      handlePostUpdateFlag={handlePostUpdateFlag}
-                    />
-                }
-
                 { /* Attach files */ }
                 <div className={`attachFilesSection${allowAttachmentUpload ? '' : ' attachFilesSectionHidden'}`}>
                 {
@@ -131,6 +122,16 @@ const NewComment = ({
                     />
                 }
                 </div>
+
+                { /* Post update flag */ }
+                {
+                  isPowerUser && parentId == null &&
+                    <NewCommentUpdateSection
+                      postUpdateFlagValue={postUpdateFlagValue}
+                      handlePostUpdateFlag={handlePostUpdateFlag}
+                      allowAttachmentUpload={allowAttachmentUpload}
+                    />
+                }
               </div>
             </>
           :

@@ -58,10 +58,12 @@ const mapDispatchToProps = (dispatch) => ({
     commentId: number,
     body: string,
     isPostUpdate: boolean,
+    attachmentsToDelete: number[],
+    attachments: File[],
     onSuccess: Function,
     authenticityToken: string,
   ) {
-    dispatch(updateComment(postId, commentId, body, isPostUpdate, authenticityToken)).then(res => {
+    dispatch(updateComment(postId, commentId, body, isPostUpdate, attachmentsToDelete, attachments, authenticityToken)).then(res => {
       if (res && res.status === HttpStatus.OK) onSuccess();
     });
   },

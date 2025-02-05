@@ -113,7 +113,7 @@ const PostEditForm = ({
       />
 
       { /* Attachments */ }
-      <div className="thumbnailsContainer">
+      <div className="thumbnailsContainer" style={{ display: attachmentUrls && attachmentUrls.length > 0 ? 'flex' : 'none' }}>
       {
         attachmentUrls && attachmentUrls.map((attachmentUrl, i) => (
           <div className="thumbnailContainer" key={i}>
