@@ -11,6 +11,7 @@ import CommentFooter from './CommentFooter';
 import { StaffIcon } from '../common/Icons';
 import Avatar from '../common/Avatar';
 import CommentAttachments from './CommentAttachments';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   id: number;
@@ -32,6 +33,7 @@ interface Props {
   handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 
+  tenantSetting: ITenantSetting;
   isLoggedIn: boolean;
   isPowerUser: boolean;
   currentUserEmail: string;
@@ -87,6 +89,7 @@ class Comment extends React.Component<Props, State> {
       handleSubmitComment,
       handleDeleteComment,
     
+      tenantSetting,
       isLoggedIn,
       isPowerUser,
       currentUserEmail,
@@ -163,6 +166,7 @@ class Comment extends React.Component<Props, State> {
               handlePostUpdateFlag={() => null}
               handleSubmit={handleSubmitComment}
 
+              allowAttachmentUpload={tenantSetting.allow_attachment_upload}
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               userEmail={currentUserEmail}

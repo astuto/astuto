@@ -328,6 +328,7 @@ class PostP extends React.Component<Props, State> {
           
           <Comments
             postId={this.props.postId}
+            tenantSetting={tenantSetting}
             isLoggedIn={isLoggedIn}
             isPowerUser={isPowerUser}
             userEmail={currentUserEmail}

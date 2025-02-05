@@ -1,6 +1,8 @@
 .commentsContainer {
   @extend .mt-2;
 
+  .attachFilesSectionHidden { display: none; }
+
   .commentForm {
     @extend
       .form-control,

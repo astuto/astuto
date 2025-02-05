@@ -27,6 +27,7 @@ interface Props {
     onSuccess: Function,
   ): void;
 
+  allowAttachmentUpload: boolean;
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
@@ -43,6 +44,7 @@ const NewComment = ({
   handlePostUpdateFlag,
   handleSubmit,
 
+  allowAttachmentUpload,
   isLoggedIn,
   isPowerUser,
   userEmail,
@@ -99,7 +101,7 @@ const NewComment = ({
                 }
 
                 { /* Attach files */ }
-                <div>
+                <div className={`attachFilesSection${allowAttachmentUpload ? '' : ' attachFilesSectionHidden'}`}>
                 {
                   isAttachingFiles ?
                     <ActionLink

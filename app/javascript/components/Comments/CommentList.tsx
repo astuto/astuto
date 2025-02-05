@@ -4,6 +4,7 @@ import Comment from './Comment';
 
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   comments: Array<IComment>;
@@ -18,6 +19,7 @@ interface Props {
   handleUpdateComment(commentId: number, body: string, isPostUpdate: boolean, onSuccess: Function): void;
   handleDeleteComment(id: number): void;
 
+  tenantSetting: ITenantSetting;
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
@@ -36,6 +38,7 @@ const CommentList = ({
   handleUpdateComment,
   handleDeleteComment,
 
+  tenantSetting,
   isLoggedIn,
   isPowerUser,
   userEmail,
@@ -61,6 +64,7 @@ const CommentList = ({
 
               {...comment}
 
+              tenantSetting={tenantSetting}
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               currentUserEmail={userEmail}
@@ -80,6 +84,7 @@ const CommentList = ({
               handleUpdateComment={handleUpdateComment}
               handleDeleteComment={handleDeleteComment}
 
+              tenantSetting={tenantSetting}
               isLoggedIn={isLoggedIn}
               isPowerUser={isPowerUser}
               userEmail={userEmail}

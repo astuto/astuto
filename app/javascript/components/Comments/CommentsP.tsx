@@ -9,9 +9,11 @@ import { DangerText, MutedText } from '../common/CustomTexts';
 import IComment from '../../interfaces/IComment';
 import { ReplyFormState } from '../../reducers/replyFormReducer';
 import Separator from '../common/Separator';
+import ITenantSetting from '../../interfaces/ITenantSetting';
 
 interface Props {
   postId: number;
+  tenantSetting: ITenantSetting;
   isLoggedIn: boolean;
   isPowerUser: boolean;
   userEmail: string;
@@ -90,6 +92,7 @@ class CommentsP extends React.Component<Props> {
 
   render() {
     const {
+      tenantSetting,
       isLoggedIn,
       isPowerUser,
       userEmail,
@@ -123,6 +126,7 @@ class CommentsP extends React.Component<Props> {
           handlePostUpdateFlag={toggleCommentIsPostUpdateFlag}
           handleSubmit={this._handleSubmitComment}
 
+          allowAttachmentUpload={tenantSetting.allow_attachment_upload}
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
           userEmail={userEmail}
@@ -149,6 +153,7 @@ class CommentsP extends React.Component<Props> {
           handleDeleteComment={this._handleDeleteComment}
           parentId={null}
           level={1}
+          tenantSetting={tenantSetting}
           isLoggedIn={isLoggedIn}
           isPowerUser={isPowerUser}
           userEmail={userEmail}
