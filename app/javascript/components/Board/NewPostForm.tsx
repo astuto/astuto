@@ -112,7 +112,7 @@ const NewPostForm = ({
 
       { /* Attachments */ }
       {
-        tenantSetting.allow_attachment_upload &&
+        tenantSetting.allow_attachment_upload && !isSubmissionAnonymous &&
           <div className="form-group">
             <Dropzone
               files={attachments}
