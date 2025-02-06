@@ -102,6 +102,7 @@ class TenantsController < ApplicationController
     elsif params[:tenant][:site_logo].present?
       @tenant.site_logo.purge if @tenant.site_logo.attached?
       @tenant.site_logo.attach(params[:tenant][:site_logo])
+      should_delete_old_site_logo = true
     end
 
     # Handle site favicon attachment
@@ -112,7 +113,10 @@ class TenantsController < ApplicationController
       @tenant.site_favicon.attach(params[:tenant][:site_favicon])
     end
 
-    if @tenant.update(tenant_update_params)
+    @tenant.assign_attributes(tenant_update_params)
+    @tenant.old_site_logo = nil if should_delete_old_site_logo
+
+    if @tenant.save
       render json: @tenant
     else
       render json: {
