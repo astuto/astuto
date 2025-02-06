@@ -43,12 +43,17 @@
     .commentIsUpdateForm {
       @extend
         .d-flex,
-        .justify-content-between,
-        .align-self-start,
+        .flex-column,
         .mt-3;
 
-      &.commentIsUpdateFormWithAttachment { margin-right: 108px; }
-      &.commentIsUpdateFormWithoutAttachment { margin-left: 58px; }
+      &.commentIsUpdateFormWithAttachment {
+        margin-right: 108px;
+        .checkboxSwitch { align-self: flex-end; }
+      }
+      &.commentIsUpdateFormWithoutAttachment {
+        margin-left: 58px;
+        .checkboxSwitch { align-self: flex-start; }
+      }
     }
 
     .currentUserAvatar {
