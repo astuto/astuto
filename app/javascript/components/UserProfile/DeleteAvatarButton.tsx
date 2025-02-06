@@ -8,10 +8,11 @@ import Spinner from '../common/Spinner';
 
 interface Props {
   deleteAvatarEndpoint: string;
+  userProfileUrl: string;
   authenticityToken: string;
 }
 
-const DeleteAvatarButton = ({ deleteAvatarEndpoint, authenticityToken }: Props) => {
+const DeleteAvatarButton = ({ deleteAvatarEndpoint, userProfileUrl, authenticityToken }: Props) => {
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [error, setError] = React.useState('');
 
@@ -29,7 +30,7 @@ const DeleteAvatarButton = ({ deleteAvatarEndpoint, authenticityToken }: Props) 
           });
 
           if (response.ok) {
-            location.reload();
+            window.location.href = userProfileUrl;
           } else {
             throw new Error();
           }
