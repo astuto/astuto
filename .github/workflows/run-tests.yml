@@ -17,11 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set ACTIVE_STORAGE_PRIVATE_SERVICE to local in docker-compose.yml
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq eval '.services.web.environment["ACTIVE_STORAGE_PRIVATE_SERVICE"] = "test"' -i docker-compose.yml
-
       - name: Build Docker production image
         run: docker compose -f docker-compose.yml -f docker-compose-prod.yml build --build-arg ENVIRONMENT=production
 
