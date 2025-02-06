@@ -1,6 +1,4 @@
 class LocalFilesController < ApplicationController
-  skip_forgery_protection
-
   def show
     blob = ActiveStorage::Blob.find_by(key: params[:key])
 
