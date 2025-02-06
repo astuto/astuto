@@ -79,7 +79,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def delete_avatar
     user = User.find(current_user.id)
-    user.avatar.purge_later
+    user.avatar.purge
 
     render json: { success: true }, status: :ok
   end
