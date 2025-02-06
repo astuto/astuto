@@ -44,6 +44,7 @@
       @extend
         .d-flex,
         .flex-column,
+        .align-self-start,
         .mt-3;
 
       &.commentIsUpdateFormWithAttachment {
