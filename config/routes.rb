@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   if !Rails.application.multi_tenancy?
     mount Rswag::Api::Engine => '/api-docs'
+    
+    # in case active storage backend is local disk
+    get "/local_files/:key", to: "local_files#show", as: :local_file
   end
 
   if Rails.application.multi_tenancy?
