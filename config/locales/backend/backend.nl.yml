@@ -1,133 +1,133 @@
 nl:
   errors:
-    unknown: 'An unknown error occurred'
-    unauthorized: 'You are not authorized'
-    email_domain_not_allowed: 'You cannot register with the provided email address'
-    not_logged_in: 'You must be logged in to access this page'
-    not_enough_privileges: 'You do not have the privilegies to access this page'
-    user_blocked_or_deleted: 'You cannot access your account because it has been blocked or deleted.'
-    o_auth_login_error: 'There was an error logging in with %{name}. Please contact the site administrator or try a different provider.'
+    unknown: 'Er is een onbekende fout opgetreden'
+    unauthorized: 'U bent niet gemachtigd'
+    email_domain_not_allowed: 'U kunt u niet registreren met het opgegeven e-mailadres'
+    not_logged_in: 'U moet ingelogd zijn om deze pagina te openen.'
+    not_enough_privileges: 'U heeft geen privileges om deze pagina te openen'
+    user_blocked_or_deleted: 'Je hebt geen toegang tot je account omdat deze geblokkeerd of verwijderd is.'
+    o_auth_login_error: 'Er is een fout opgetreden bij het inloggen met %{name}. Neem contact op met de sitebeheerder of probeer een andere provider.'
     board:
-      update_order: 'There was an error in reordering boards'
+      update_order: 'Er is een fout opgetreden bij het herschikken van de boards'
     post_status:
-      update_order: 'There was an error in reordering statuses'
+      update_order: 'Er is een fout opgetreden bij het herschikken van statussen'
   defaults:
-    user_full_name: 'Anonymous User'
-    deleted_user_full_name: 'Deleted User'
+    user_full_name: 'Anonieme gebruiker'
+    deleted_user_full_name: 'Verwijderde gebruiker'
   mailers:
     devise:
-      welcome_greeting: 'Welcome to %{site_name}, %{email}!'
-      opening_greeting: 'Hello %{email}!'
+      welcome_greeting: 'Welkom bij %{site_name}, %{email}!'
+      opening_greeting: 'Hallo %{email}!'
       confirmation_instructions:
-        body: 'You can confirm your account email through the link below:'
-        action: 'Confirm my account'
+        body: 'U kunt uw e-mailadres bevestigen via onderstaande link:'
+        action: 'Bevestig mijn account'
       email_changed:
-        body: "We're contacting you to notify you that your email is being changed to %{email}."
-        body2: "We're contacting you to notify you that your email has been changed to %{email}."
+        body: "We nemen contact met u op om u te informeren dat uw e-mailadres wordt gewijzigd naar %{email}."
+        body2: "We nemen contact met u op om u te informeren dat uw e-mailadres is gewijzigd naar %{email}."
       password_change:
-        body: "We're contacting you to notify you that your password has been changed."
+        body: "Wij nemen contact met u op om u te laten weten dat uw wachtwoord is gewijzigd."
       reset_password:
-        body: 'Someone has requested a link to change your password. You can do this through the link below.'
-        body2: "If you didn't request this, please ignore this email."
-        body3: "Your password won't change until you access the link above and create a new one."
-        action: 'Change my password'
+        body: 'Iemand heeft gevraagd uw wachtwoord te wijzigen. U kunt dit doen via onderstaande link.'
+        body2: "Als dit verzoek niet van u kwam, kunt u dit bericht negeren."
+        body3: "Uw wachtwoord zal niet wijzigen totdat u op de bovenstaande link klikt en een nieuw wachtwoord instelt."
+        action: 'Mijn wachtwoord wijzigen'
     user:
-      opening_greeting: 'Hello %{name}!'
-      closing_greeting: 'Have a great day!'
-      learn_more: 'Click here to learn more'
-      unsubscribe_from_post_html: 'Annoyed? You can turn off notifications for this post %{href}'
-      unsubscribe_from_site_html: 'Annoyed? You can turn off all notifications %{href}'
-      unsubscribe_link: 'here'
+      opening_greeting: 'Hallo %{name}!'
+      closing_greeting: 'Fijne dag nog!'
+      learn_more: 'Klik hier voor meer informatie'
+      unsubscribe_from_post_html: 'Geïrriteerd? Je kunt meldingen voor deze post %{href} uitschakelen'
+      unsubscribe_from_site_html: 'Geïrriteerd? U kunt alle meldingen %{href} uitschakelen'
+      unsubscribe_link: 'hier'
       notify_post_owner:
-        subject: '[%{site_name}] New comment on "%{post}"'
-        body_html: 'There is a new comment by <b>%{user}</b> on your post <b>%{post}</b>'
+        subject: '[%{site_name}] Nieuwe opmerking op "%{post}"'
+        body_html: 'Er is een nieuwe opmerking door <b>%{user}</b> op je bericht <b>%{post}</b>'
       notify_comment_owner:
-        subject: '[%{site_name}] New reply on your comment on post "%{post}"'
-        body_html: 'There is a new reply by <b>%{user}</b> to your comment on post <b>%{post}</b>'
+        subject: '[%{site_name}] Nieuwe reactie op uw reactie op bericht "%{post}"'
+        body_html: 'Er is een nieuw antwoord van <b>%{user}</b> op je reactie op bericht <b>%{post}</b>'
       notify_follower_of_post_update:
-        subject: '[%{site_name}] New update for post "%{post}"'
-        body_html: 'There is a new update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Nieuwe update voor bericht "%{post}"'
+        body_html: 'Er is een nieuwe update op het bericht dat u volgt <b>%{post}</b>'
       notify_follower_of_post_status_change:
-        subject: '[%{site_name}] Status change on post "%{post}"'
-        body_html: 'There is a status update on the post you are following <b>%{post}</b>'
+        subject: '[%{site_name}] Status wijziging op bericht "%{post}"'
+        body_html: 'Er is een update van de status op het bericht dat u volgt <b>%{post}</b>'
       recap:
-        subject: '[%{site_name}] %{frequency} recap of feedback space activity'
-        body_html: 'Here is the %{frequency} recap of activities in your feedback space'
-        published_posts_count_html: 'New published feedback: %{count}'
-        pending_posts_count_html: 'New feedback pending approval: %{count}'
+        subject: '[%{site_name}] %{frequency} recap van feedback ruimte activiteit'
+        body_html: 'Hier is de %{frequency} samenvatting van activiteiten in jouw feedbackruimte'
+        published_posts_count_html: 'Nieuw gepubliceerde feedback: %{count}'
+        pending_posts_count_html: 'Nieuwe feedback in afwachting van goedkeuring: %{count}'
   activerecord:
     models:
       board:
-        one: 'Board'
-        other: 'Boards'
+        one: 'Bord'
+        other: 'Borden'
       comment:
-        one: 'Comment'
-        other: 'Comments'
+        one: 'Reactie'
+        other: 'Reacties'
       like:
-        one: 'Vote'
-        other: 'Votes'
+        one: 'Stem'
+        other: 'Stemmen'
       o_auth:
         one: 'OAuth'
         other: 'OAuths'
       post_status:
         one: 'Status'
-        other: 'Statuses'
+        other: 'Statussen'
       post:
-        one: 'Post'
-        other: 'Posts'
+        one: 'Bericht'
+        other: 'Berichten'
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Gebruiker'
+        other: 'Gebruikers'
       webhook:
         one: 'Webhook'
         other: 'Webhooks'
     attributes:
       board:
-        name: 'Name'
-        description: 'Description'
+        name: 'Naam'
+        description: 'Beschrijving'
         order: 'Order'
       comment:
         body: 'Body'
         is_post_update: 'Post update'
         user_id: 'Author'
-        post_id: 'Post'
-        parent_id: 'Parent comment'
+        post_id: 'Bericht'
+        parent_id: 'Bovenliggende opmerking'
       follow:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Gebruiker'
+        post_id: 'Bericht'
       like:
-        user_id: 'User'
-        post_id: 'Post'
+        user_id: 'Gebruiker'
+        post_id: 'Bericht'
       o_auth:
-        name: 'Name'
+        name: 'Naam'
         logo: 'Logo'
-        is_enabled: 'Enabled'
-        client_id: 'Client ID'
-        client_secret: 'Client secret'
-        authorize_url: 'Authorize URL'
+        is_enabled: 'Actief'
+        client_id: 'Klant ID'
+        client_secret: 'Klant geheim'
+        authorize_url: 'Autorisatie URL'
         token_url: 'Token URL'
-        profile_url: 'Profile URL'
-        scope: 'Scope'
-        json_user_name_path: 'JSON path to user name'
-        json_user_email_path: 'JSON path to user email'
+        profile_url: 'Profiel URL'
+        scope: 'Toepassingsgebied'
+        json_user_name_path: 'JSON-pad naar de gebruikersnaam'
+        json_user_email_path: 'JSON pad naar e-mailadres gebruiker'
       post_status:
-        name: 'Name'
-        color: 'Color'
-        order: 'Order'
-        show_in_roadmap: 'Show in roadmap'
+        name: 'Naam'
+        color: 'Kleur'
+        order: 'Volgorde'
+        show_in_roadmap: 'Weergeven in roadmap'
       post:
-        title: 'Title'
-        description: 'Description'
-        approval_status: 'Approval status'
-        approval_status_approved: 'Approved'
-        approval_status_pending: 'Pending approval'
-        approval_status_rejected: 'Rejected'
-        board_id: 'Post board'
-        user_id: 'Post author'
-        post_status_id: 'Post status'
+        title: 'Titel'
+        description: 'Beschrijving'
+        approval_status: 'Status goedkeuring'
+        approval_status_approved: 'Goedgekeurd'
+        approval_status_pending: 'Wacht op goedkeuring'
+        approval_status_rejected: 'Afgewezen'
+        board_id: 'Bericht bord'
+        user_id: 'Auteur bericht'
+        post_status_id: 'Berichtstatus'
       tenant:
-        site_name: 'Site name'
-        site_logo: 'Site logo'
+        site_name: 'Website naam'
+        site_logo: 'Website logo'
         subdomain: 'Subdomain'
         locale: 'Language'
         custom_domain: 'Custom domain'
@@ -160,7 +160,7 @@ nl:
       webhook:
         name: 'Name'
         description: 'Description'
-        is_enabled: 'Enabled'
+        is_enabled: 'Actief'
         trigger: 'Trigger'
         url: 'URL'
         http_body: 'HTTP request body'
