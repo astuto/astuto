@@ -26,7 +26,7 @@ else
       # Use LocalFilesController to serve local files if active storage service is local disk
       # Otherwise use the default ActiveStorage::Blob#url method
       def url(**options)
-        if service.is_a?(ActiveStorage::Service::DiskService)
+        if Rails.application.config.active_storage.service == :local
           Rails.application.routes.url_helpers.local_file_url(key: key, host: Rails.application.base_url)
         else
           service.url(
