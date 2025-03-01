@@ -78,7 +78,6 @@ const UserSignUpForm = ({
               <OAuthProviderLink
                 oAuthId={oAuth.id}
                 oAuthName={oAuth.name}
-                oAuthLogo={oAuth.logo}
                 oAuthReason='tenantsignup'
                 isSignUp
                 key={i}

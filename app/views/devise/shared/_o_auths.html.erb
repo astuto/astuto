@@ -7,7 +7,7 @@
         {
           oAuthId: o_auth.id,
           oAuthName: o_auth.name,
-          oAuthLogo: o_auth.logo,
+          oAuthLogo: o_auth.logo.attached? ? o_auth.logo.blob.url : nil,
           oAuthReason: "login",
           isSignUp: defined?(is_sign_up) ? is_sign_up : false,
           href: get_url_for(method(:o_auth_start_url), resource: o_auth.id, disallow_custom_domain: true, options: { reason: "login" }),
