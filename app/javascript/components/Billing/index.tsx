@@ -125,7 +125,7 @@ const Billing = ({
           <p>Subscription {isExpired ? 'expired' : 'expires'} on {subscriptionEndsAtFormatted}</p>
       }
 
-      {
+      {/* {
         (tenantBilling.status === TENANT_BILLING_STATUS_TRIAL) && chosenPrice === null &&
           <PricingTable
             prices={prices}
@@ -169,7 +169,14 @@ const Billing = ({
               You will be redirected to Stripe, our billing partner.
             </SmallMutedText>
           </div>
-      }
+      } */}
+
+      <p>
+        If you want to manage your current subscription, please <a href="mailto:info@astuto.io">contact us via email</a>.
+      </p>
+      <p>
+        We do not accept new subscriptions right now.
+      </p>
 
       <div className="billingUsefulLinks">
         <ActionLink onClick={() => window.open('https://astuto.io/terms-of-service', '_blank')} icon={<LearnMoreIcon />}>
