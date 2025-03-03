@@ -7,6 +7,7 @@ import ConfirmEmailSignUpPage from './ConfirmEmailSignUpPage';
 import ConfirmOAuthSignUpPage from './ConfirmOAuthSignUpPage';
 import { IOAuth } from '../../interfaces/IOAuth';
 import HttpStatus from '../../constants/http_status';
+import Box from '../common/Box';
 
 interface Props {
   oAuthLoginCompleted: boolean;
@@ -116,57 +117,70 @@ const TenantSignUpP = ({
     });
   }
 
+  // return (
+  //   <>
+  //   <img src={astutoLogoImage} width={64} height={64} className="astutoLogo" />
+    
+  //   <div className="tenantSignUpContainer">
+  //     {
+  //       (currentStep === 1 || currentStep === 2) &&
+  //         <UserSignUpForm
+  //           currentStep={currentStep}
+  //           setCurrentStep={setCurrentStep}
+  //           authMethod={authMethod}
+  //           setAuthMethod={setAuthMethod}
+  //           oAuths={oAuths}
+  //           userData={userData}
+  //           setUserData={setUserData}
+  //           setGoneBack={setGoneBack}
+  //         />
+  //     }
+
+  //     {
+  //       (goneBack || currentStep === 2) &&
+  //         <TenantSignUpForm
+  //           isSubmitting={isSubmitting}
+  //           error={error}
+  //           handleSignUpSubmit={handleSignUpSubmit}
+  //           trialPeriodDays={trialPeriodDays}
+  //           currentStep={currentStep}
+  //           setCurrentStep={setCurrentStep}
+  //         />
+  //     }
+
+  //     {
+  //       currentStep === 3 && authMethod === 'oauth' &&
+  //         <ConfirmOAuthSignUpPage
+  //           baseUrl={baseUrl}
+  //           subdomain={tenantData.subdomain}
+  //           feedbackSpaceCreatedImage={feedbackSpaceCreatedImage}
+  //         />
+  //     }
+
+  //     {
+  //       currentStep === 3 && authMethod === 'email' &&
+  //         <ConfirmEmailSignUpPage
+  //           subdomain={tenantData.subdomain}
+  //           userEmail={userData.email}
+  //           pendingTenantImage={pendingTenantImage}
+  //         />
+  //     }
+  //   </div>
+  //   </>
+  // );
+
   return (
     <>
-    <img src={astutoLogoImage} width={64} height={64} className="astutoLogo" />
-    
-    <div className="tenantSignUpContainer">
-      {
-        (currentStep === 1 || currentStep === 2) &&
-          <UserSignUpForm
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-            authMethod={authMethod}
-            setAuthMethod={setAuthMethod}
-            oAuths={oAuths}
-            userData={userData}
-            setUserData={setUserData}
-            setGoneBack={setGoneBack}
-          />
-      }
-
-      {
-        (goneBack || currentStep === 2) &&
-          <TenantSignUpForm
-            isSubmitting={isSubmitting}
-            error={error}
-            handleSignUpSubmit={handleSignUpSubmit}
-            trialPeriodDays={trialPeriodDays}
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-          />
-      }
-
-      {
-        currentStep === 3 && authMethod === 'oauth' &&
-          <ConfirmOAuthSignUpPage
-            baseUrl={baseUrl}
-            subdomain={tenantData.subdomain}
-            feedbackSpaceCreatedImage={feedbackSpaceCreatedImage}
-          />
-      }
-
-      {
-        currentStep === 3 && authMethod === 'email' &&
-          <ConfirmEmailSignUpPage
-            subdomain={tenantData.subdomain}
-            userEmail={userData.email}
-            pendingTenantImage={pendingTenantImage}
-          />
-      }
-    </div>
+      <img src={astutoLogoImage} width={64} height={64} className="astutoLogo" />
+      
+      <div className="tenantSignUpContainer">
+        <Box>
+          <p>It is not possible to sign up to Astuto.</p>
+          <p>You can <a href="https://github.com/astuto/astuto">self-host your own instance</a> instead.</p>
+        </Box>
+      </div>
     </>
-  );
+  )
 }
 
 export default TenantSignUpP;
