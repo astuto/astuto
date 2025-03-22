@@ -49,8 +49,8 @@ ru:
       many: '%{count} комментариев'
       other: '%{count} комментариев'
     no_status: 'Нет статуса'
-    select_no_options_available: 'No options available'
-    select_placeholder: 'Select...'
+    select_no_options_available: 'Нет доступных вариантов'
+    select_placeholder: 'Выбрать...'
     loading: 'Загрузка...'
     confirmation: 'Вы уверены?'
     confirmation_board_delete: 'Внимание: если на этой достке есть сообщения с отзывами, то ВСЕ эти сообщения также будут удалены. Это действие не может быть отменено.'
@@ -74,7 +74,7 @@ ru:
       clear: 'Очистить'
       approve: 'Утвердить'
       reject: 'Отклонить'
-      copy_to_clipboard: 'Copy to clipboard'
+      copy_to_clipboard: 'Скопировать в буфер'
     datetime:
       now: 'только что'
       minutes:
@@ -186,7 +186,7 @@ ru:
       boards: 'Доски'
       post_statuses: 'Статусы'
       roadmap: 'Дорожная Карта'
-      invitations: 'Invitations'
+      invitations: 'ПРиглашения'
       appearance: 'Внешний вид'
     info_box:
       up_to_date: 'Все изменения сохранены'
@@ -198,9 +198,9 @@ ru:
       brand_setting_name: 'Только название'
       brand_setting_logo: 'Только логотип'
       brand_setting_none: 'Нет'
-      use_browser_locale_help: "If you enable this setting, the feedback space will be displayed in the user's browser preferred language. If the language is not available, the default language will be used."
-      subtitle_privacy: 'Privacy'
-      is_private_help: 'If you enable this setting, only logged in users will be able to see the content of the feedback space.'
+      use_browser_locale_help: "Если включить эту настройку, область обратной связи будет отображаться на предпочитаемом языке браузера пользователя. Если язык недоступен, будет использоваться язык по умолчанию."
+      subtitle_privacy: 'Конфиденциальность'
+      is_private_help: 'Если вы включите этот параметр, только вошедшие в систему пользователи смогут видеть содержимое области обратной связи.'
       subtitle_moderation: 'Модерация'
       allow_anonymous_feedback_help: 'Незарегистрированные пользователи смогут оставлять отзывы.'
       feedback_approval_policy_anonymous_require_approval: 'Требовать одобрения только для анонимных отзывов'
@@ -218,7 +218,7 @@ ru:
       custom_domain_learn_more: 'Узнайте, как настроить пользовательский домен'
       show_vote_count_help: 'При включении этой настройки, пользователи смогут видеть количество голосов. Это может стимулировать пользователей голосовать за уже популярные записи, приводя к эффекту снежного кома (эффект накопления и усиления).'
       show_vote_button_in_board_help: 'Если включить эту опцию, пользователи смогут голосовать за сообщения со страницы форума. Это может стимулировать пользователей голосовать за больше записей, что приведет к большему количеству голосов, но менее значимому результату.'
-      hide_unused_statuses_in_filter_by_status_help: 'If you enable this setting, only statuses that are assigned to at least one post in that board will be shown in the filter by status sidebar filter.'
+      hide_unused_statuses_in_filter_by_status_help: 'Если вы включите этот параметр, в фильтре по статусу боковой панели будут отображаться только статусы, назначенные хотя бы одному сообщению на этой доске.'
     boards:
       title: 'Доски'
       empty: 'Доски отсутствуют. Создайте доску!'
@@ -235,59 +235,59 @@ ru:
     roadmap:
       title: 'Дорожная Карта'
       title2: 'Не в дорожной карте'
-      title_embed: 'Embed roadmap'
+      title_embed: 'Встроить карту'
       empty: 'Дорожная карта пуста.'
       help: 'Вы можете добавить статусы к дорожной карте, перетаскивая их из раздела ниже. Если вы хотите создать новый статус или изменить его порядок, перейдите в Настройки сайта > Статусы.'
-      show_board_filter: 'Show board filter'
-      show_post_status_filter: 'Show status filter'
-      embed_help: 'You can embed the roadmap in your website by copying the code above.'
+      show_board_filter: 'Показать фильтр доски'
+      show_post_status_filter: 'Показать фильтр статуса'
+      embed_help: 'Вы можете встроить дорожную карту на свой сайт, скопировав код выше.'
     invitations:
-      new_invitations_title: 'New invitations'
-      past_invitations_title: 'Invitations'
-      to: 'Send invitations to'
-      to_help: 'Email addresses of people you want to invite, separated by commas.'
-      subject: 'Email subject'
-      subject_default: 'We value your feedback! Join us in shaping %{name}!'
-      body: 'Email body'
+      new_invitations_title: 'Новые приглашения'
+      past_invitations_title: 'Приглашения'
+      to: 'Отправить приглашения'
+      to_help: 'Адреса электронной почты людей, которых вы хотите пригласить, разделенные запятыми.'
+      subject: 'Тема письма'
+      subject_default: 'Мы ценим ваши отзывы! Присоединяйтесь к нам в формировании %{name}!'
+      body: 'Тело письма'
       body_default: |
-        Hello!
+        Привет!
 
-        We truly appreciate your experience with %{name} and would love to hear your feedback. Your insights help us improve and continue delivering the best possible service.
+        Мы действительно ценим ваш опыт работы с %{name} и хотели бы услышать ваши отзывы. Ваши идеи помогают нам совершенствоваться и продолжать предоставлять наилучший сервис.
 
-        Click the link below to share your thoughts and make your voice heard:
+        Нажмите на ссылку ниже, чтобы поделиться своими мыслями и сделать так, чтобы ваш голос был услышан:
 
         %link%
 
-        Have a great day!
+        Хорошего дня!
       send:
-        one: 'Send invitation'
-        few: 'Send %{count} invitations'
-        many: 'Send %{count} invitations'
-        other: 'Send %{count} invitations'
-      submit_success: 'Invitations sent!'
-      submit_failure: 'An error occurred while sending invitations'
-      invalid_emails: 'Invalid email addresses: %{emails}'
-      too_many_emails: 'You can only send %{count} invitations at a time.'
-      invitation_link_not_found: 'You must use the %link% placeholder in the email body'
-      test_invitation_button: 'Test send invitation'
-      test_invitation_help: 'This will send a test invitation email to %{email}'
-      test_invitation_success: 'A test invitation email has been sent to %{email}'
-      all: 'All'
-      pending: 'Pending'
-      accepted: 'Accepted'
-      sent_at: 'Sent %{when}'
-      accepted_at: 'Accepted %{when}'
+        one: 'Отправить приглашение'
+        few: 'Отправить %{count} приглашений'
+        many: 'Отправить %{count} приглашений'
+        other: 'Отправить %{count} приглашения'
+      submit_success: 'Приглашения отправлены!'
+      submit_failure: 'Произошла ошибка при отправке приглашений'
+      invalid_emails: 'Недействительные адреса электронной почты: %{emails}'
+      too_many_emails: 'Вы можете отправить не более %{count} приглашений за один раз.'
+      invitation_link_not_found: 'В тексте письма необходимо использовать заполнитель %link%.'
+      test_invitation_button: 'Тестовая отправка приглашения'
+      test_invitation_help: 'Это отправит тестовое приглашение по электронной почте на адрес %{email}'
+      test_invitation_success: 'Тестовое приглашение было отправлено на адрес %{email}'
+      all: 'Все'
+      pending: 'В ожидании'
+      accepted: 'Принято'
+      sent_at: 'Отправлено %{when}'
+      accepted_at: 'Принято %{when}'
     appearance:
       title: 'Внешний вид'
       learn_more: 'Узнайте, как настроить внешний вид'
     authentication:
       title: 'Аутентификация'
       learn_more: 'Узнайте, как настроить пользовательские провайдеры OAuth'
-      email_registration_subtitle: 'Email registration'
-      email_registration_policy_all: 'Anyone can register with email'
-      email_registration_policy_none: 'No one can register with email'
-      email_registration_policy_custom: 'Only users with certain email domains can register with email'
-      allowed_email_domains_help: 'Separate domains with commas. Example: "gmail.com,yahoo.com,hotmail.com". Leave blank to allow any domain.'
+      email_registration_subtitle: 'Регистрация по электронной почте'
+      email_registration_policy_all: 'Любой желающий может зарегистрироваться по электронной почте'
+      email_registration_policy_none: 'Никто не может зарегистрироваться по электронной почте'
+      email_registration_policy_custom: 'Только пользователи с определенными доменами электронной почты могут зарегистрироваться с помощью электронной почты.'
+      allowed_email_domains_help: 'Разделяйте домены запятыми. Пример: "gmail.com,yahoo.com,hotmail.com". Оставьте пустым, чтобы разрешить любой домен.'
       oauth_subtitle: 'Поставщики OAuth'
       default_oauth: 'Поставщик OAuth по-умолчанию'
       copy_url: 'Копировать ссылку'
