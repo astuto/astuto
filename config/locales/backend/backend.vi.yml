@@ -149,3 +149,12 @@ vi:
         taken: 'đã tồn tại'
         too_short: 'quá ngắn (ít nhất %{count} ký tự)'
         too_long: 'quá dài (tối đa %{count} ký tự)'
+  search:
+    placeholder: 'Tìm kiếm theo tên hoặc email...'
+    all_users: 'Tất cả người dùng'
+    active_users: 'Người dùng hoạt động'
+    blocked_users: 'Người dùng bị chặn'
+    all_roles: 'Tất cả vai trò'
+    admin: 'Quản trị viên'
+    moderator: 'Người điều hành'
+    user: 'Người dùng'

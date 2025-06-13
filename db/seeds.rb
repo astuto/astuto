@@ -6,11 +6,14 @@ tenant = Tenant.create(
 )
 Current.tenant = tenant
 
+# Use email and password provided in environment variables or default values
+admin_email = ENV.fetch('ADMIN_EMAIL', 'admin@example.com')
+admin_password = ENV.fetch('ADMIN_PASSWORD', 'password')
 # Create an admin user and confirm its email automatically
 owner = User.create(
   full_name: 'Admin',
-  email: 'admin@example.com',
-  password: 'password',
+  email: admin_email,
+  password: admin_password,
   role: 'owner',
   confirmed_at: Time.zone.now
 )

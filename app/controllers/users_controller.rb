@@ -3,10 +3,18 @@ class UsersController < ApplicationController
 
   def index
     authorize User
-
-    @users = User
-      .all
-      .order(role: :desc, created_at: :desc)
+    
+    @users = User.all
+    if params[:search].present?
+      search_term = "%#{params[:search].downcase}%"
+      @users = @users.where(
+        'LOWER(full_name) LIKE ? OR LOWER(email) LIKE ?',
+        search_term
+      )
+    end
+    @users = @users.where(role: params[:role]) if params[:role].present?
+    @users = @users.where(blocked: params[:blocked]) if params[:blocked].present?
+    @users = @users.order(role: :desc, created_at: :desc)
 
     render json: @users
   end

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.name }}
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.image.name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.image.name }}
+    spec:
+      securityContext:
+        fsGroup: 999
+        runAsUser: 999
+      {{- if .Values.image.pullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecret }}
+      {{- end }}
+      containers:
+        - name: {{ .Values.image.name }}
+          image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.web.port }}
+          env:
+            - name: APP_ROOT
+              value: /astuto
+            - name: BASE_URL
+              value: https://{{ .Values.web.host | default (printf "%s-%s" .Values.image.name .Release.Namespace) }}{{- if .Values.web.hostSuffix }}.{{ .Values.web.hostSuffix }}{{- end }}
+            - name: SECRET_KEY_BASE
+              value: {{ .Values.web.env.SECRET_KEY_BASE | quote }}
+            - name: DB_CONFIG_PATH
+              value: {{ .Values.web.secretMountPath }}/credentials
+            - name: EMAIL_DELIVERY_METHOD
+              value: {{ .Values.web.env.EMAIL_DELIVERY_METHOD | quote }}
+            - name: EMAIL_SMTP_HOST
+              value: {{ .Values.web.env.EMAIL_SMTP_HOST | quote }}
+            - name: EMAIL_SMTP_PORT
+              value: {{ .Values.web.env.EMAIL_SMTP_PORT | quote }}
+            - name: EMAIL_SMTP_USER
+              value: {{ .Values.web.env.EMAIL_SMTP_USER | quote }}
+            - name: EMAIL_SMTP_PASS
+              value: {{ .Values.web.env.EMAIL_SMTP_PASS | quote }}
+            - name: EMAIL_MAIL_FROM
+              value: {{ .Values.web.env.EMAIL_MAIL_FROM | quote }}
+            - name: EMAIL_MAIL_REPLY_TO
+              value: {{ .Values.web.env.EMAIL_MAIL_REPLY_TO | quote }}
+            - name: EMAIL_RAISE_DELIVERY_ERRORS
+              value: {{- if .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS }}{{ .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS | quote }}{{- else }}"false"{{- end }}
+            - name: RAILS_LOG_TO_STDOUT
+              value: {{- if .Values.web.env.RAILS_LOG_TO_STDOUT }}{{ .Values.web.env.RAILS_LOG_TO_STDOUT | quote }}{{- else }}"false"{{- end }}
+            - name: EMAIL_SMTP_AUTH
+              value: {{- if .Values.web.env.EMAIL_SMTP_AUTH }}{{ .Values.web.env.EMAIL_SMTP_AUTH | quote }}{{- else }}"login"{{- end }}
+          volumeMounts:
+            - name: db-secret
+              mountPath: {{ .Values.web.secretMountPath }}
+              readOnly: true
+      volumes:
+        - name: db-secret
+          secret:
+            secretName: {{ .Values.web.secretName }}

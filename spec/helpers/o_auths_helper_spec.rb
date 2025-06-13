@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OAuthsHelper, type: :helper do
   context 'query_path_from_object method' do
     it 'queries a path from hash' do
-      email = "admin@example.com"
+      email = ENV.fetch('ADMIN_EMAIL', 'admin@example.com')
       name = "Admin"
       surname = "Example"
       hash = {
@@ -60,7 +60,7 @@ RSpec.describe OAuthsHelper, type: :helper do
     end
 
     it 'returns nil if path not found' do
-      email = "admin@example.com"
+      email = ENV.fetch('ADMIN_EMAIL', 'admin@example.com')
       name = "Admin"
       hash = {
         "email" => email,

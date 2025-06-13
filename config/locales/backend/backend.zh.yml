@@ -149,3 +149,12 @@ zh-CN:
         taken: '已在使用中'
         too_short: '太短 (最少为 %{count} 个字符)'
         too_long: '太长 (最多为 %{count} 个字符)'
+  search:
+    placeholder: '搜索姓名或邮箱...'
+    all_users: '所有用户'
+    active_users: '活跃用户'
+    blocked_users: '被阻止的用户'
+    all_roles: '所有角色'
+    admin: '管理员'
+    moderator: '版主'
+    user: '用户'

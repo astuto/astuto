@@ -156,3 +156,12 @@ it:
         taken: 'è già in uso'
         too_short: 'è troppo corto (almeno %{count} caratteri)'
         too_long: 'è troppo lungo (massimo %{count} caratteri)'
+  search:
+    placeholder: 'Cerca per nome o email...'
+    all_users: 'Tutti gli utenti'
+    active_users: 'Utenti attivi'
+    blocked_users: 'Utenti bloccati'
+    all_roles: 'Tutti i ruoli'
+    admin: 'Admin'
+    moderator: 'Moderatore'
+    user: 'Utente'

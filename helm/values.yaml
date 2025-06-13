@@ -1,0 +1,26 @@
+image:
+  registry: localhost:31999
+  name: astuto
+  tag: 1.0.0
+  pullPolicy: Always
+  pullSecret: "dockerregistry-config"
+db:
+  name: psql
+  namespace: psql
+web:
+  replicaCount: 1
+  secretName: astuto-db-secret1 # Nome del Secret già presente in cluster
+  secretMountPath: /psql-db/secret/ # Dove montare il file nel container
+  env:
+    SECRET_KEY_BASE: 1A # generate with https://www.grc.com/passwords.htm
+    EMAIL_DELIVERY_METHOD: smtp
+    EMAIL_SMTP_HOST: smtpauth.mail.net.sap
+    EMAIL_SMTP_PORT: 587
+    EMAIL_SMTP_USER: xxx
+    EMAIL_SMTP_PASS: xxx
+    EMAIL_MAIL_FROM: xxx@sap.corp
+    EMAIL_MAIL_REPLY_TO: xxx@sap.corp
+    EMAIL_SMTP_AUTH: login
+  port: 3000
+  host: astuto-kyma
+  hostSuffix: xxx.kyma.ondemand.com

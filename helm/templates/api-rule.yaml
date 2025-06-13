@@ -1,0 +1,19 @@
+apiVersion: gateway.kyma-project.io/v2
+kind: APIRule
+metadata:
+  name: expose-{{ .Values.image.name }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.image.name }}
+spec:
+  gateway: kyma-system/kyma-gateway
+  rules:
+    - path: /*
+      methods:
+        - GET
+        - POST
+      noAuth: true
+  service:
+    name: {{ .Values.image.name }}
+    port:  {{ .Values.web.port }}
+  hosts:
+    - {{ .Values.web.host | default (printf "%s-%s" .Values.image.name .Release.Namespace) }}

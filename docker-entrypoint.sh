@@ -9,6 +9,12 @@ rm -f $APP_ROOT/tmp/pids/server.pid
 # Prepare database
 echo "Preparing database..."
 
+# Generate config/database.yml from ERB template if present
+if [ -f "$APP_ROOT/config/database.yml.erb" ]; then
+  echo "Generating config/database.yml from ERB template..."
+  ruby -rerb -e "File.write('$APP_ROOT/config/database.yml', ERB.new(File.read('$APP_ROOT/config/database.yml.erb')).result)"
+fi
+
 # Wait for database
 until bundle exec rake db:version; do
   >&2 echo "Waiting for postgres to initialize..."
