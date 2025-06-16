@@ -9,8 +9,8 @@ services:
   init:
     image: registry-default-kyma-system.cb6ec21.stage.kyma.ondemand.com/astuto-init:1.0.0
     environment:
-      POSTGRES_USER: xxx
-      POSTGRES_PASSWORD: xxx
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
       POSTGRES_HOST: dbhost
       POSTGRES_PORT: 1239
       POSTGRES_DBNAME: dbname
