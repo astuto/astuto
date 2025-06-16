@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dbinit-flag-cm
+  namespace: {{ .Release.Namespace }}
+data:
+  ready: "false"

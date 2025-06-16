@@ -25,6 +25,35 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.web.port }}
+          
+          command:
+            - sh
+            - -c
+            - |
+                set -e
+                APISERVER="https://kubernetes.default.svc"
+                NAMESPACE="${KUBERNETES_NAMESPACE:-{{ .Release.Namespace }}}"
+                TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                CACERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+                CONFIGMAP="dbinit-flag-cm"
+                echo "[INFO] Waiting for ConfigMap $CONFIGMAP ready=true..."
+                while true; do
+                  READY=$(curl -s --cacert $CACERT -H "Authorization: Bearer $TOKEN" \
+                    $APISERVER/api/v1/namespaces/$NAMESPACE/configmaps/$CONFIGMAP | grep -o '"ready"\s*:\s*"[^"]*"' | cut -d':' -f2 | tr -d '" \n\r\t')
+                  echo "[INFO ]$APISERVER ConfigMap $NAMESPACE $CONFIGMAP ready=$READY"
+                  if [ "$READY" = "true" ]; then
+                    echo "[INFO] ConfigMap ready=true detected, resetting to false..."
+                    curl -s -X PATCH --cacert $CACERT \
+                      -H "Authorization: Bearer $TOKEN" \
+                      -H "Content-Type: application/merge-patch+json" \
+                      $APISERVER/api/v1/namespaces/$NAMESPACE/configmaps/$CONFIGMAP \
+                      -d '{"data":{"ready":"false"}}'
+                    break
+                  fi
+                  sleep 2
+                done
+                echo "[INFO] Launch Rails server in production..."
+                bundle exec rails server -e production
           env:
             - name: APP_ROOT
               value: /astuto
@@ -49,11 +78,13 @@ spec:
             - name: EMAIL_MAIL_REPLY_TO
               value: {{ .Values.web.env.EMAIL_MAIL_REPLY_TO | quote }}
             - name: EMAIL_RAISE_DELIVERY_ERRORS
-              value: {{- if .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS }}{{ .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS | quote }}{{- else }}"false"{{- end }}
+              value: {{ if .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS }}{{ .Values.web.env.EMAIL_RAISE_DELIVERY_ERRORS | quote }}{{ else }}"false"{{ end }}
             - name: RAILS_LOG_TO_STDOUT
-              value: {{- if .Values.web.env.RAILS_LOG_TO_STDOUT }}{{ .Values.web.env.RAILS_LOG_TO_STDOUT | quote }}{{- else }}"false"{{- end }}
+              value: {{ if .Values.web.env.RAILS_LOG_TO_STDOUT }}{{ .Values.web.env.RAILS_LOG_TO_STDOUT | quote }}{{ else }}"false"{{ end }}
             - name: EMAIL_SMTP_AUTH
-              value: {{- if .Values.web.env.EMAIL_SMTP_AUTH }}{{ .Values.web.env.EMAIL_SMTP_AUTH | quote }}{{- else }}"login"{{- end }}
+              value: {{ if .Values.web.env.EMAIL_SMTP_AUTH }}{{ .Values.web.env.EMAIL_SMTP_AUTH | quote }}{{ else }}"plain"{{ end }}
+            - name: POSTGRES_DBNAME
+              value: {{ if .Values.web.env.POSTGRES_DBNAME }}{{ .Values.web.env.POSTGRES_DBNAME | quote }}{{ else }}"astuto"{{ end }}
           volumeMounts:
             - name: db-secret
               mountPath: {{ .Values.web.secretMountPath }}

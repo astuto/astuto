@@ -12,7 +12,7 @@ def reload_dynamic_db_connection
       host:     secret['hostname'],
       username: secret['username'],
       password: secret['password'],
-      database: secret['dbname'],
+      database: ENV.fetch("POSTGRES_DBNAME", secret['dbname']),
       port:     secret['port'] || 5432
     }
     ActiveRecord::Base.establish_connection(db_config)

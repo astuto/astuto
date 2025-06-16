@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= db_config['dbname'] %>
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>
 
 test:
   <<: *default
-  database: <%= db_config['dbname'] %>_test
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>_test
 
 production:
   <<: *default
-  database: <%= db_config['dbname'] %>
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>

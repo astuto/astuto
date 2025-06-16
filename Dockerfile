@@ -49,6 +49,53 @@ ENTRYPOINT ["./docker-entrypoint-dev.sh"]
 
 EXPOSE 3000
 
+# -- INIT STAGE --
+FROM ruby:3.0.6-slim AS init
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --fix-missing \
+      build-essential \
+      libpq-dev \
+      postgresql-client \
+    curl \
+ && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set environment variables
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
+# Copy Gemfiles and install gems
+#COPY Gemfile Gemfile.lock ./
+#RUN gem install bundler && bundle install
+# Install bundler (optional: specify version if needed)
+RUN gem install bundler
+
+# Copy Gemfile and Gemfile.lock
+COPY Gemfile Gemfile.lock ./
+
+# Install gems
+RUN bundle install
+# Copy the rest of the application code
+COPY . .
+
+# Ensure the entrypoint script is executable
+RUN chmod +x docker-entrypoint.sh
+
+# Set rights
+RUN chown -R appuser:appgroup $APP_ROOT
+
+# Switch to non-root user
+USER appuser
+
+# Set entrypoint
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
 # -- PRODUCTION STAGE --
 FROM ruby:3.0.6-slim AS prod
 

@@ -4,3 +4,6 @@ metadata:
   name: {{ .Release.Namespace }}
   labels:
     istio-injection: enabled
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": before-hook-creation

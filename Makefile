@@ -15,12 +15,12 @@ echo "REGISTRY_ADDRESS=$$REGISTRY_ADDRESS"; \
 
 build:
 	docker login -u "$(REGISTRY_USERNAME)" -p "$(REGISTRY_PASSWORD)" "$(REGISTRY_ADDRESS)"
-	docker buildx build --platform linux/amd64,linux/arm64 --build-arg ENVIRONMENT=production --push -t $(REGISTRY_ADDRESS)/astuto:$(VERSION) --target prod -f Dockerfile .
+	docker buildx build --platform linux/amd64,linux/arm64 --build-arg ENVIRONMENT=production --push -t $(REGISTRY_ADDRESS)/astuto-init:$(VERSION) --target init -f Dockerfile .
 	docker buildx build --platform linux/amd64,linux/arm64  --build-arg ENVIRONMENT=production --push -t $(REGISTRY_ADDRESS)/astuto:$(VERSION) --target prod -f Dockerfile .
 
 build-podman:
 	podman login -u "$(REGISTRY_USERNAME)" -p "$(REGISTRY_PASSWORD)" "$(REGISTRY_ADDRESS)"
-	podman build --platform linux/amd64,linux/arm64 --build-arg ENVIRONMENT=production -t $(REGISTRY_ADDRESS)/astuto-init:$(VERSION) --target prod -f Dockerfile .
+	podman build --platform linux/amd64,linux/arm64 --build-arg ENVIRONMENT=production -t $(REGISTRY_ADDRESS)/astuto-init:$(VERSION) --target init -f Dockerfile .
 	podman push $(REGISTRY_ADDRESS)/astuto-init:$(VERSION)
 	podman build --platform linux/amd64,linux/arm64 -t $(REGISTRY_ADDRESS)/astuto:$(VERSION) --target prod -f Dockerfile .
 	podman push $(REGISTRY_ADDRESS)/astuto:$(VERSION)
