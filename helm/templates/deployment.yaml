@@ -42,12 +42,7 @@ spec:
                     $APISERVER/api/v1/namespaces/$NAMESPACE/configmaps/$CONFIGMAP | grep -o '"ready"\s*:\s*"[^"]*"' | cut -d':' -f2 | tr -d '" \n\r\t')
                   echo "[INFO ]$APISERVER ConfigMap $NAMESPACE $CONFIGMAP ready=$READY"
                   if [ "$READY" = "true" ]; then
-                    echo "[INFO] ConfigMap ready=true detected, resetting to false..."
-                    curl -s -X PATCH --cacert $CACERT \
-                      -H "Authorization: Bearer $TOKEN" \
-                      -H "Content-Type: application/merge-patch+json" \
-                      $APISERVER/api/v1/namespaces/$NAMESPACE/configmaps/$CONFIGMAP \
-                      -d '{"data":{"ready":"false"}}'
+                    echo "[INFO] ConfigMap ready=true detected..."
                     break
                   fi
                   sleep 2
