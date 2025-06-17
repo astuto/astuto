@@ -44,3 +44,9 @@ yarn-debug.log*
 
 # Ignore Swagger spec file
 /swagger/*
+
+/vendor/bundle/ruby/3.0.0/bin/*
+/vendor/bundle/ruby/3.0.0/cache/*
+/vendor/bundle/ruby/3.0.0/gems/*
+/vendor/bundle/ruby/3.0.0/specifications/*
+/vendor/bundle/ruby/3.0.0/extensions/*
