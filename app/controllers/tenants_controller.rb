@@ -19,6 +19,9 @@ class TenantsController < ApplicationController
   end
 
   def create
+    # NOTE: new tenants registrations disabled
+    raise "Tenant registration disabled"
+
     @tenant = Tenant.new
     @tenant.assign_attributes(tenant_create_params)
     authorize @tenant

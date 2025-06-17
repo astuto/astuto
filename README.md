@@ -1,15 +1,11 @@
 <p align="center">
-  <a href="https://astuto.io/?utm_campaign=github_logo&utm_source=github.com">
-    <img width="400" src="./images/logo-and-name.png" />
-  </a>
+  <img width="400" src="./images/logo-and-name.png" />
 </p>
 <p align="center">
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=neutral&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
   <br>
   <h3 align="center">
     <a href="https://feedback.astuto.io/">✨ Try it out</a>
-    &nbsp;•&nbsp;
-    <a href="https://astuto.io/?utm_campaign=github_learnmore&utm_source=github.com">📖 Learn more</a>
   </h3>
 </p>
 
@@ -30,22 +26,6 @@ Astuto is an open source customer feedback tool. It helps you collect, manage an
 - **... and more**: invitation system, brand customization, recap emails for administrators, private site settings, and more!
 
 ## Get started
-
-### Hosted
-
-We offer a hosted solution, so you don't have to provision your own server. This is the easiest and fastest way to get started: you can sign up and start collecting feedback in a few minutes.
-
-[Start your 7-day free trial](https://login.astuto.io/signup) without entering any payment method, then it's 15 €/month with annual subscription or 20 €/month with monthly subscription. [Learn more on astuto.io](https://astuto.io/?utm_campaign=github_getstarted&utm_source=github.com).
-
-With the paid plan:
-
-- You avoid deployment hassles like renting a server, issuing SSL certificates, configuring a mail server and managing updates
-- You get some OAuth providers out of the box: Google, Facebook and GitHub are ready to log your users in, no configuration needed
-- You get priority support
-- You support open source and get our eternal gratitude :)
-
-
-### Self-hosted
 
 Read the [Deploy with Docker instructions](https://docs.astuto.io/deploy-docker) for the most comprehensive and up to date guide on installing and configuring Astuto.
 

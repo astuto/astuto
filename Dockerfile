@@ -1,102 +1,148 @@
-###
-### Build stage ###
-###
-FROM ruby:3.0.6 AS builder
+# -- BUILD STAGE --
+FROM ruby:3.0.6-slim AS builder
 
-RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
+# Install system dependencies
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends --fix-missing \
+    build-essential \
+    libpq-dev \
+    postgresql-client \
+    ca-certificates \
+    curl \
+    gnupg \
+    git
+
+# Node.js & Yarn install (Node 20)
 RUN mkdir -p /etc/apt/keyrings && \
   curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update && apt-get install -y --fix-missing --no-install-recommends nodejs
 RUN npm install -g yarn
+
 RUN gem install bundler -v 2.3
 
-ENV APP_ROOT /astuto
-WORKDIR ${APP_ROOT}
-
-# Build as development by default,
-# unless --build-arg ENVIRONMENT=production is specificed
-ARG ENVIRONMENT
-ENV NODE_ENV=${ENVIRONMENT:-development}
-ENV RAILS_ENV=${ENVIRONMENT:-development}
-
-# Config bundler
-RUN if [ "$ENVIRONMENT" = "production" ]; then bundle config set deployment true --local; fi
-RUN if [ "$ENVIRONMENT" = "production" ]; then bundle config set without development test --local; fi
-# yarn is already configured by NODE_ENV
-
-# Copy Gemfile and install gems
-COPY Gemfile Gemfile.lock ${APP_ROOT}/
+# Copy and install Ruby gems
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# Copy package.json and install packages
-COPY package.json yarn.lock ${APP_ROOT}/
+# Copy and install JS deps
+COPY package.json yarn.lock ./
 RUN yarn install --check-files
 
-# Copy all files
-COPY . ${APP_ROOT}/
+# Copy the remaining application files
+COPY . . 
 
-# Build Swagger API documentation
+# Build Swagger API documentation (optional: can be done in stage prod)
 RUN RSWAG_SWAGGERIZE=true RAILS_ENV=test bundle exec rake rswag:specs:swaggerize
 
-# Compile assets if production
-# SECRET_KEY_BASE=1 is a workaround (see https://github.com/rails/rails/issues/32947)
-RUN if [ "$ENVIRONMENT" = "production" ]; then SECRET_KEY_BASE=1 ACTIVE_STORAGE_PRIVATE_SERVICE=test ./bin/rails assets:precompile; fi
+# Precompile assets (prod only, optional)
+RUN SECRET_KEY_BASE=dummy RAILS_ENV=production bundle exec rails assets:precompile
 
-###
-### Dev stage ###
-###
+# -- Dev stage --
 FROM builder AS dev
 
 ENTRYPOINT ["./docker-entrypoint-dev.sh"]
 
 EXPOSE 3000
 
-###
-### Prod stage ###
-###
+# -- INIT STAGE --
+FROM ruby:3.0.6-slim AS init
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --fix-missing \
+      build-essential \
+      libpq-dev \
+      postgresql-client \
+    curl \
+ && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set environment variables
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
+# Copy Gemfiles and install gems
+#COPY Gemfile Gemfile.lock ./
+#RUN gem install bundler && bundle install
+# Install bundler (optional: specify version if needed)
+RUN gem install bundler
+
+# Copy Gemfile and Gemfile.lock
+COPY Gemfile Gemfile.lock ./
+
+# Install gems
+RUN bundle install
+# Copy the rest of the application code
+COPY . .
+
+# Ensure the entrypoint script is executable
+RUN chmod +x docker-entrypoint.sh
+
+# Set rights
+RUN chown -R appuser:appgroup $APP_ROOT
+
+# Switch to non-root user
+USER appuser
+
+# Set entrypoint
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
+# -- PRODUCTION STAGE --
 FROM ruby:3.0.6-slim AS prod
 
-RUN apt-get update -qq && \
-  apt-get install -yq  \
-  postgresql-client \
-  nodejs && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-  truncate -s 0 /var/log/*log
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+ENV APP_ROOT=/astuto
+WORKDIR $APP_ROOT
+
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends --fix-missing  \
+    postgresql-client \
+    build-essential \
+    libpq-dev \
+    curl \
+    gnupg && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir -p /etc/apt/keyrings && \
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+  apt-get update && apt-get install --fix-missing -y nodejs && \
+  npm install -g yarn
 
 RUN gem install bundler -v 2.3
 
-ENV APP_ROOT /astuto
-WORKDIR ${APP_ROOT}
+# Copy only crucial files for bundle install
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
 
-# Copy gems, packages and compiled assets
-COPY --from=builder ${APP_ROOT}/vendor/bundle/ ${APP_ROOT}/vendor/bundle/
-COPY --from=builder ${APP_ROOT}/node_modules/ ${APP_ROOT}/node_modules/
-COPY --from=builder ${APP_ROOT}/public/ ${APP_ROOT}/public/
+# Copy all app sources (escludi node_modules, vendor/bundle se per errore nel contesto)
+COPY . .
 
-# Copy application code
-COPY --from=builder ${APP_ROOT}/app/ ${APP_ROOT}/app/
-COPY --from=builder ${APP_ROOT}/bin/ ${APP_ROOT}/bin/
-COPY --from=builder ${APP_ROOT}/config/ ${APP_ROOT}/config/
-COPY --from=builder ${APP_ROOT}/db/ ${APP_ROOT}/db/
-COPY --from=builder ${APP_ROOT}/spec/ ${APP_ROOT}/spec/
+# Copy assets and Swagger docs generated in builder
+COPY --from=builder $APP_ROOT/public ./public
+COPY --from=builder $APP_ROOT/swagger ./swagger
 
-# Copy scripts and configuration files
-COPY --from=builder ${APP_ROOT}/docker-entrypoint.sh ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/docker-entrypoint-prod.sh ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/Gemfile ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/Gemfile.lock ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/.ruby-version ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/config.ru ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/Rakefile ${APP_ROOT}/
-COPY --from=builder ${APP_ROOT}/lib/tasks/ ${APP_ROOT}/lib/tasks/
-COPY --from=builder /usr/local/bundle/config /usr/local/bundle/config
+# Install JS deps (run again per sicurezza multiarch!)
+RUN yarn install --check-files
 
-# Copy Swagger API documentation
-COPY --from=builder ${APP_ROOT}/swagger/ ${APP_ROOT}/swagger/
+# Assets:precompile or leave it commented
+# RUN SECRET_KEY_BASE=dummy RAILS_ENV=production bundle exec rails assets:precompile
+# Set rights
+RUN chown -R appuser:appgroup $APP_ROOT
 
+# Switch to non-root user
+USER appuser
+# Entrypoint
 ENTRYPOINT ["./docker-entrypoint-prod.sh"]
 
 EXPOSE 3000

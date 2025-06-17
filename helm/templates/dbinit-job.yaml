@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.image.name }}-dbinit
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.image.name }}
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      {{- if .Values.image.pullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecret }}
+      {{- end }}
+      restartPolicy: OnFailure
+      containers:
+        - name: dbinit
+          image: "{{ .Values.image.registry }}/{{ .Values.image.initName }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_ROOT
+              value: /astuto
+            - name: DB_CONFIG_PATH
+              value: {{ .Values.web.secretMountPath }}/credentials
+            - name: RAILS_LOG_TO_STDOUT
+              value: {{ if .Values.web.env.RAILS_LOG_TO_STDOUT }}{{ .Values.web.env.RAILS_LOG_TO_STDOUT | quote }}{{ else }}"false"{{ end }}
+            - name: POSTGRES_DBNAME
+              value: {{ if .Values.web.env.POSTGRES_DBNAME }}{{ .Values.web.env.POSTGRES_DBNAME | quote }}{{ else }}"astuto"{{ end }}
+          volumeMounts:
+            - name: db-secret
+              mountPath: {{ .Values.web.secretMountPath }}
+              readOnly: true
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              # Make initialization database
+              if [ -x $APP_ROOT/docker-entrypoint.sh ]; then
+                $APP_ROOT/docker-entrypoint.sh
+                # Update dbinitready Custom Resource via API server
+                APISERVER="https://kubernetes.default.svc"
+                NAMESPACE="${KUBERNETES_NAMESPACE:-{{ .Release.Namespace }}}"
+                TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                CACERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+                curl -X PATCH \
+                  --cacert $CACERT \
+                  -H "Authorization: Bearer $TOKEN" \
+                  -H "Content-Type: application/merge-patch+json" \
+                  $APISERVER/api/v1/namespaces/$NAMESPACE/configmaps/dbinit-flag-cm \
+                  -d '{"data":{"ready":"true"}}'
+              else
+                echo "Entrypoint not found $APP_ROOT/docker-entrypoint.sh"
+              fi
+      volumes:
+        - name: db-secret
+          secret:
+            secretName: {{ .Values.web.secretName }}

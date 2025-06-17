@@ -6,19 +6,38 @@ services:
       POSTGRES_PASSWORD: dbpass
     volumes:
       - dbdata:/var/lib/postgresql/data
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: dev
+  init:
+    image: registry-default-kyma-system.cb6ec21.stage.kyma.ondemand.com/astuto-init:1.0.0
     environment:
-      <<: *db-env
-      BASE_URL: http://localhost:3000
-      SECRET_KEY_BASE: secretkeybasehere
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: dbhost
+      POSTGRES_PORT: 1239
+      POSTGRES_DBNAME: dbname
+      DB_CONFIG_PATH: /astuto/secret.json
+    volumes:
+     - ./secret.json:/astuto/secret.json
+  web:
+    image: registry-default-kyma-system.cb6ec21.stage.kyma.ondemand.com/astuto:1.0.0
+    #build:
+     # context: .
+     # dockerfile: Dockerfile
+     # target: dev
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: dbhost
+      POSTGRES_PORT: 1239
+      POSTGRES_DBNAME: dbname
+      BASE_URL: http://localhost:3001
+      SECRET_KEY_BASE: 1A #g enerate with https://www.grc.com/passwords.htm
+#      RAILS_LOG_TO_STDOUT: "true"          # debug
+      DB_CONFIG_PATH: /astuto/secret.json
+#    depends_on:
+#      - db
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-
+      - "3001:3000"
+    volumes:
+     - ./secret.json:/astuto/secret.json
 volumes:
   dbdata:

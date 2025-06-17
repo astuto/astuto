@@ -3,4 +3,9 @@
 public/assets
 public/packs
 public/packs-test
-tmp
+vendor/
+node_modules/
+.bundle/
+log/
+tmp/
+.DS_Store

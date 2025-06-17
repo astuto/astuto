@@ -1,0 +1,21 @@
+<% require 'json'; db_config = JSON.parse(File.read(ENV.fetch("DB_CONFIG_PATH"))) %>
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  host: <%= db_config['hostname'] %>
+  port: <%= db_config['port'] %>
+  username: <%= db_config['username'] %>
+  password: <%= db_config['password'] %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>_test
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DBNAME", db_config['dbname']) %>

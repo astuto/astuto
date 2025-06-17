@@ -1,4 +1,0 @@
-services:
-  web:
-    volumes:
-      - .:/astuto

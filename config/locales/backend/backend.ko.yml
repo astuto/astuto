@@ -149,3 +149,12 @@ ko:
         taken: 'is already in use'
         too_short: 'is too short (minimum %{count} characters)'
         too_long: 'is too long (maximum %{count} characters)'
+  search:
+    placeholder: 'Search by name or email...'
+    all_users: 'All Users'
+    active_users: 'Active Users'
+    blocked_users: 'Blocked Users'
+    all_roles: 'All Roles'
+    admin: 'Admin'
+    moderator: 'Moderator'
+    user: 'User'

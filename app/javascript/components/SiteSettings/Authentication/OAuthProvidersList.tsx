@@ -35,7 +35,7 @@ const OAuthProvidersList = ({
 
     <p style={{textAlign: 'left'}}>
       <ActionLink
-        onClick={() => window.open('https://docs.astuto.io/oauth/oauth-configuration-basics', '_blank')}
+        onClick={() => window.open('https://docs.astuto.io/oauth/oauth-configuration-basics/', '_blank')}
         icon={<LearnMoreIcon />}
       >
         {I18n.t('site_settings.authentication.learn_more')}

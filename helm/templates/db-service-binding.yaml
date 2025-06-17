@@ -1,0 +1,16 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ .Values.image.name }}
+  name: {{ .Values.image.name }}-{{ .Values.db.name }}-{{ .Values.web.secretName }}
+spec:
+  credentialsRotationPolicy:
+    enabled: true
+    rotatedBindingTTL: 24h
+    rotationFrequency: 720h
+  externalName: {{ .Values.image.name }}-{{ .Values.db.name }}-{{ .Values.web.secretName }}
+  secretKey: credentials
+  secretName: {{ .Values.web.secretName }}
+  serviceInstanceName: {{ .Values.db.name }}
+  serviceInstanceNamespace: {{ .Values.db.namespace }}
