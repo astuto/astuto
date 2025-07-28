@@ -2,7 +2,7 @@ zh-CN:
   errors:
     unknown: '发生了未知错误'
     unauthorized: '您未被授权'
-    email_domain_not_allowed: 'You cannot register with the provided email address'
+    email_domain_not_allowed: '电子邮件域名不允许'
     not_logged_in: '您必须登录才能访问该页面'
     not_enough_privileges: '你没有访问此页面的权限'
     user_blocked_or_deleted: '您的账户已被封禁或删除，无法访问。'
@@ -50,6 +50,11 @@ zh-CN:
       notify_follower_of_post_status_change:
         subject: '[%{site_name}] 帖子状态变化 "%{post}"'
         body_html: '您关注的帖子 <b>%{post}</b> 状态发生改变'
+      recap:
+        subject: '[%{site_name}] %{frequency} 用户摘要邮件主题'
+        body_html: '用户摘要邮件正文 %{frequency}'
+        published_posts_count_html: '新发布的反馈: %{count}'
+        pending_posts_count_html: '等待批准的新反馈: %{count}'
   activerecord:
     models:
       board:
@@ -66,6 +71,8 @@ zh-CN:
         other: '帖子'
       user:
         other: '用户'
+      webhook:
+        other: '网络钩子'
     attributes:
       board:
         name: '名称'
@@ -103,10 +110,10 @@ zh-CN:
       post:
         title: '标题'
         description: '描述'
-        approval_status: 'Approval status'
-        approval_status_approved: 'Approved'
-        approval_status_pending: 'Pending approval'
-        approval_status_rejected: 'Rejected'
+        approval_status: '批准状态'
+        approval_status_approved: '批准'
+        approval_status_pending: '等待批准'
+        approval_status_rejected: '拒绝'
         board_id: '帖子版块'
         user_id: '帖子作者'
         post_status_id: '帖子状态'
@@ -115,22 +122,22 @@ zh-CN:
         site_logo: '网站图标'
         subdomain: '子域名'
         locale: '语言'
-        custom_domain: 'Custom domain'
+        custom_domain: '自定义域名'
       tenant_setting:
         brand_display: '显示模式'
-        use_browser_locale: 'Use browser language'
-        is_private: 'Private site'
-        email_registration_policy: 'Email registration policy'
-        allowed_email_domains: 'Allowed email domains'
-        allow_anonymous_feedback: 'Allow anonymous feedback'
-        feedback_approval_policy: 'Feedback approval policy'
+        use_browser_locale: '使用浏览器语言'
+        is_private: '私有站点'
+        email_registration_policy: '电子邮件注册政策'
+        allowed_email_domains: '允许的邮箱域名'
+        allow_anonymous_feedback: '允许匿名反馈'
+        feedback_approval_policy: '反馈审批政策'
         show_vote_count: '对用户显示投票数'
         show_vote_button_in_board: '在版块页面显示投票按钮'
-        hide_unused_statuses_in_filter_by_status: 'Hide unused statuses in filter by status'
+        hide_unused_statuses_in_filter_by_status: '在按状态过滤中隐藏未使用的状态'
         show_powered_by: '显示 "技术支持: Astuto"'
         root_board_id: '首页'
-        logo_links_to: 'Logo links to'
-        logo_custom_url: 'Logo custom URL'
+        logo_links_to: '图标链接到'
+        logo_custom_url: '图标自定义URL'
         show_roadmap_in_header: '在页眉显示开发路线图链接'
         collapse_boards_in_header: '折叠页眉中的版块'
         custom_css: '自定义 CSS'
@@ -141,6 +148,16 @@ zh-CN:
         password_confirmation: '确认密码'
         role: '角色'
         notifications_enabled: '开启通知'
+        recap_notification_frequency: '重述通知频率'
+      webhook:
+        name: '名称'
+        description: '描述'
+        is_enabled: '启用'
+        trigger: '触发'
+        url: 'URL'
+        http_body: 'HTTP 请求 body'
+        http_method: 'HTTP 方法'
+        http_headers: 'HTTP 请求头'
     errors:
       messages:
         invalid: '无效'
