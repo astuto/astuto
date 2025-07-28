@@ -1,12 +1,12 @@
 cs:
   common:
     words:
-      or: 'or'
+      or: 'nebo'
     errors:
-      unknown: 'An unknown error occurred, please try again'
+      unknown: 'Došlo k neznámé chybě. Opakujte akci'
     validations:
-      required: '%{attribute} is required'
-      email: 'Invalid email'
+      required: 'Je nutné vyplnit pole "%{attribute}"'
+      email: 'Neplatný e-mail, zadejte znovu'
       url: 'Invalid URL'
       password: 'Password must have at least %{n} characters'
       password_mismatch: 'Password and password confirmation must match'
@@ -262,7 +262,7 @@ cs:
       new_invitations_title: 'New invitations'
       past_invitations_title: 'Pozvánky'
       to: 'Send invitations to'
-      to_help: 'Email addresses of people you want to invite, separated by commas.'
+      to_help: 'E-mailové adresy lidí, které chcete pozvat, oddělené čárkami.'
       subject: 'Email subject'
       subject_default: 'We value your feedback! Join us in shaping %{name}!'
       body: 'Email body'
@@ -281,8 +281,8 @@ cs:
         few: 'Send %{count} invitations'
         many: 'Send %{count} invitations'
         other: 'Send %{count} invitations'
-      submit_success: 'Invitations sent!'
-      submit_failure: 'An error occurred while sending invitations'
+      submit_success: '!'
+      submit_failure: 'Při odesílání pozvání došlo k chybě'
       invalid_emails: 'Invalid email addresses: %{emails}'
       too_many_emails: 'You can only send %{count} invitations at a time.'
       invitation_link_not_found: 'You must use the %link% placeholder in the email body'
