@@ -48,7 +48,7 @@ const WebhooksIndexPage = ({
 
       <p style={{textAlign: 'left'}}>
         <ActionLink
-          onClick={() => window.open('https://docs.astuto.io/webhooks/webhooks-introduction/', '_blank')}
+          onClick={() => window.open('https://github.com/astuto/astuto-docs/blob/main/docs/webhooks/webhooks-introduction.md', '_blank')}
           icon={<LearnMoreIcon />}
         >
           {I18n.t('site_settings.webhooks.learn_more')}
