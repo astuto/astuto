@@ -3,10 +3,6 @@
 </p>
 <p align="center">
   <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=neutral&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
-  <br>
-  <h3 align="center">
-    <a href="https://feedback.astuto.io/">✨ Try it out</a>
-  </h3>
 </p>
 
 Astuto is an open source customer feedback tool. It helps you collect, manage and prioritize feedback from your customers, so you can build a better product.
@@ -26,10 +22,6 @@ Astuto is an open source customer feedback tool. It helps you collect, manage an
 - **... and more**: invitation system, brand customization, recap emails for administrators, private site settings, and more!
 
 ## Get started
-
-Read the [Deploy with Docker instructions](https://docs.astuto.io/deploy-docker) for the most comprehensive and up to date guide on installing and configuring Astuto.
-
-What you find below are minimal instructions to get you started as quickly as possible:
 
 0. Ensure you have Docker and Docker Compose installed
 1. Create an empty folder
@@ -57,13 +49,9 @@ services:
 volumes:
   dbdata:
 ```
-3. Edit the environment variables to fit your needs. You can find more information about env variables in the [documentation](https://docs.astuto.io/deploy-docker/#2-edit-environment-variables).
+3. Edit the environment variables to fit your needs
 4. Run `docker compose pull && docker compose up`
 5. You should now have a running instance of Astuto on port 3000. A default user account has been created with credentials email: `admin@example.com`, password: `password`.
-
-## Documentation
-
-Check out [docs.astuto.io](https://docs.astuto.io/) to learn how to deploy Astuto, configure custom OAuth providers and webhooks, use our REST API and more!
 
 ## Contributing
 
