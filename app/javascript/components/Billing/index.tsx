@@ -172,20 +172,17 @@ const Billing = ({
       } */}
 
       <p>
-        If you want to manage your current subscription, please <a href="mailto:info@astuto.io">contact us via email</a>.
-      </p>
-      <p>
         We do not accept new subscriptions right now.
       </p>
 
-      <div className="billingUsefulLinks">
+      {/* <div className="billingUsefulLinks">
         <ActionLink onClick={() => window.open('https://astuto.io/terms-of-service', '_blank')} icon={<LearnMoreIcon />}>
           Terms of Service
         </ActionLink>
         <ActionLink onClick={() => window.open('https://astuto.io/privacy-policy', '_blank')} icon={<LearnMoreIcon />}>
           Privacy Policy
         </ActionLink>
-      </div>
+      </div> */}
     </Box>
   );
 }

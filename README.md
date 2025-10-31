@@ -2,14 +2,12 @@
   <img width="400" src="./images/logo-and-name.png" />
 </p>
 <p align="center">
-  <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=neutral&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" />
+  <a href="https://www.producthunt.com/posts/astuto?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-astuto" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=179870&theme=neutral&period=daily" alt="Astuto - An open source customer feedback tool 🦊 | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 </p>
 
 Astuto is an open source customer feedback tool. It helps you collect, manage and prioritize feedback from your customers, so you can build a better product.
 
-<a href="https://feedback.astuto.io/">
-  <img src="./images/hero-image.png" />
-</a>
+<img src="./images/hero-image.png" />
 
 ## Features
 
@@ -59,7 +57,7 @@ There are many ways to contribute to Astuto, not just coding. Proposing features
 
 ## Credits
 
-Astuto logo and all image assets are credited [here](https://astuto.io/credits).
+Astuto logo and all image assets are credited [here](https://github.com/astuto/astuto-io/blob/main/src/pages/Credits.jsx).
 
 A huge thank you to code contributors
 

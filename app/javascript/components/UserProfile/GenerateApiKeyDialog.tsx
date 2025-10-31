@@ -81,14 +81,6 @@ const GenerateApiKeyDialog = ({
       </>
     }
 
-    <br /><br />
-    <ActionLink
-      icon={<LearnMoreIcon />}
-      onClick={() => window.open('https://docs.astuto.io/api', '_blank')}
-    >
-      {I18n.t('common.forms.api_key.api_key_learn_more')}
-    </ActionLink>
-
     { error && <DangerText>{error}</DangerText> }
     </>
   );

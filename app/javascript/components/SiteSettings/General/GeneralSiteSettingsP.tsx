@@ -278,7 +278,7 @@ const GeneralSiteSettingsP = ({
               }
               <div style={{marginTop: 8}}>
                 <ActionLink
-                  onClick={() => window.open('https://docs.astuto.io/custom-domain', '_blank')}
+                  onClick={() => window.open('https://github.com/astuto/astuto-docs/blob/main/docs/custom-domain.md', '_blank')}
                   icon={<LearnMoreIcon />}
                 >
                   {I18n.t('site_settings.general.custom_domain_learn_more')}
