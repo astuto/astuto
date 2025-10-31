@@ -19,6 +19,10 @@ Astuto is an open source customer feedback tool. It helps you collect, manage an
 - **Anonymous Feedback**: enable unregistered users to publish feedback
 - **... and more**: invitation system, brand customization, recap emails for administrators, private site settings, and more!
 
+## Documentation
+
+Documentation website is not online anymore. You can read Astuto's documentation from the [GitHub repository](https://github.com/astuto/astuto-docs).
+
 ## Get started
 
 0. Ensure you have Docker and Docker Compose installed
